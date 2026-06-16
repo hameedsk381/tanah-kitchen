@@ -76,11 +76,9 @@ export default function Testimonials() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden"
+      className="relative overflow-hidden py-28"
       style={{ 
         background: 'var(--color-cream)',
-        paddingTop: '8rem',
-        paddingBottom: '8rem'
       }}
       aria-labelledby="testimonials-heading"
     >
@@ -120,7 +118,7 @@ export default function Testimonials() {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="w-full p-8 md:p-12 border"
+                className="w-full p-8 md:p-12 border rounded-3xl"
                 style={{
                   background: 'var(--color-beige)',
                   borderColor: 'rgba(27, 67, 50, 0.05)'
@@ -170,7 +168,7 @@ export default function Testimonials() {
           <div className="flex items-center justify-center gap-6 mt-8">
             <button
               onClick={prev}
-              className="w-12 h-12 border flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer"
+              className="w-12 h-12 border rounded-full flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer"
               style={{
                 borderColor: 'var(--color-forest)',
                 color: 'var(--color-forest)'
@@ -194,7 +192,7 @@ export default function Testimonials() {
                 <button
                   key={i}
                   onClick={() => goTo(i)}
-                  className="transition-all duration-300 rounded-none h-1.5 cursor-pointer"
+                  className="transition-all duration-300 rounded-full h-1.5 cursor-pointer"
                   style={{
                     width: i === current ? '24px' : '8px',
                     background: i === current ? 'var(--color-terracotta)' : 'var(--color-forest)',
@@ -207,7 +205,7 @@ export default function Testimonials() {
 
             <button
               onClick={next}
-              className="w-12 h-12 border flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer"
+              className="w-12 h-12 border rounded-full flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer"
               style={{
                 borderColor: 'var(--color-forest)',
                 color: 'var(--color-forest)'

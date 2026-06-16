@@ -49,7 +49,7 @@ function DishCard({ dish, index, isInView }) {
       onMouseLeave={() => setHovered(false)}
     >
       {/* Image Container with Custom Zoom */}
-      <div className="hover-zoom aspect-[4/3] w-full relative mb-6 overflow-hidden">
+      <div className="hover-zoom aspect-[4/3] w-full relative mb-6 overflow-hidden rounded-3xl">
         <img
           src={dish.image}
           alt={dish.name}
@@ -133,17 +133,15 @@ export default function SignatureDishes() {
     <section
       id="signature-dishes"
       ref={ref}
-      className="relative overflow-hidden"
+      className="relative overflow-hidden py-28"
       style={{ 
         background: 'var(--color-beige)',
-        paddingTop: '8rem',
-        paddingBottom: '8rem'
       }}
       aria-labelledby="signature-heading"
     >
       <div 
-        className="px-6 md:px-12 relative z-10"
-        style={{ maxWidth: '1400px', margin: '0 auto' }}
+        className="px-8 relative z-10"
+        style={{ maxWidth: '1280px', margin: '0 auto' }}
       >
         {/* Section Header */}
         <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end md:justify-between gap-6">

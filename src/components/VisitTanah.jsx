@@ -13,13 +13,11 @@ export default function VisitTanah() {
     <section
       id="visit-tanah"
       ref={ref}
-      className="relative overflow-hidden w-full"
       style={{
         background: 'var(--color-charcoal)', // Dark earth charcoal tone #1E1E1E
-        paddingTop: '8rem',
-        paddingBottom: '8rem',
         color: 'var(--color-cream)'
       }}
+      className="relative overflow-hidden w-full py-28"
       aria-labelledby="visit-heading"
     >
       {/* Warm ambient rooftop lighting effects */}
@@ -48,8 +46,8 @@ export default function VisitTanah() {
       />
 
       <div 
-        className="px-6 md:px-12 relative z-10"
-        style={{ maxWidth: '1400px', margin: '0 auto' }}
+        className="px-8 relative z-10"
+        style={{ maxWidth: '1280px', margin: '0 auto' }}
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
@@ -92,7 +90,7 @@ export default function VisitTanah() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.15 }}
-                className="p-6 md:p-8 flex flex-col justify-between"
+                className="p-6 md:p-8 flex flex-col justify-between rounded-3xl"
                 style={{
                   background: 'rgba(255, 253, 248, 0.03)',
                   backdropFilter: 'blur(16px)',
@@ -117,7 +115,7 @@ export default function VisitTanah() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="p-6 md:p-8 space-y-6 flex flex-col justify-between"
+                className="p-6 md:p-8 space-y-6 flex flex-col justify-between rounded-3xl"
                 style={{
                   background: 'rgba(255, 253, 248, 0.03)',
                   backdropFilter: 'blur(16px)',
@@ -205,7 +203,7 @@ export default function VisitTanah() {
             />
             
             <div 
-              className="w-full h-[320px] sm:h-[450px] shadow-2xl overflow-hidden relative border"
+              className="w-full h-[320px] sm:h-[450px] shadow-2xl overflow-hidden relative border rounded-3xl"
               style={{ 
                 borderColor: 'rgba(255, 253, 248, 0.08)',
                 background: '#151515'

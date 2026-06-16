@@ -1,31 +1,29 @@
 import { useEffect } from 'react'
-import Hero from '../components/Hero'
-import About from '../components/About'
-import SignatureDishes from '../components/SignatureDishes'
-import WhyChooseUs from '../components/WhyChooseUs'
-import Experience from '../components/Experience'
-import Testimonials from '../components/Testimonials'
-import Reservation from '../components/Reservation'
-import VisitTanah from '../components/VisitTanah'
+import HeroExperience from '../components/HeroExperience'
+import Philosophy from '../components/Philosophy'
+import SignatureExperiences from '../components/SignatureExperiences'
+import ArtGastronomy from '../components/ArtGastronomy'
+import GalleryPreview from '../components/GalleryPreview'
+import ReservationCTA from '../components/ReservationCTA'
+import LocationSection from '../components/LocationSection'
 
 export default function Home() {
   // Set title & meta
   useEffect(() => {
-    document.title = 'Tanah Kitchen | Rooted in Nature. Crafted with Passion.'
+    document.title = 'Tanah Kitchen & Bar | Architectural Gastronomy'
     window.scrollTo(0, 0)
   }, [])
 
   return (
     <main className="flex-grow">
-      <h1 className="sr-only">Tanah Kitchen - Luxury Organic Restaurant</h1>
-      <Hero />
-      <About />
-      <SignatureDishes />
-      <WhyChooseUs />
-      <Experience />
-      <Testimonials />
-      <Reservation />
-      <VisitTanah />
+      <h1 className="sr-only">Tanah Kitchen & Bar - Luxury Organic Dining in Hyderabad</h1>
+      <HeroExperience />
+      <Philosophy />
+      <SignatureExperiences />
+      <ArtGastronomy />
+      <GalleryPreview />
+      <ReservationCTA />
+      <LocationSection />
     </main>
   )
 }

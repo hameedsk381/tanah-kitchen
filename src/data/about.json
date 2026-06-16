@@ -1,0 +1,71 @@
+{
+  "story": {
+    "subtitle": "01 / Foundation",
+    "title": "Listening to the Seasons",
+    "paragraph1": "Tanah Kitchen & Bar was founded upon a singular realization: that contemporary dining has lost its connection with local soil cycles. Our journey began not in industrial kitchens, but in local small-scale crop trials where we cultivated indigenous millets and ancient grains.",
+    "paragraph2": "We design menus around direct agrarian partnerships. Every morning, fresh root vegetables, hand-pressed oils, and farm herbs are delivered directly from organic cooperative fields in Gachibowli's agricultural greenbelts.",
+    "image": "/assets/Ambiance/TANAH_Amb01029.jpg"
+  },
+  "philosophy": {
+    "subtitle": "Our Philosophy",
+    "title": "Nurtured by Soil,",
+    "titleItalic": "Inspired by Architecture.",
+    "paragraph1": "At Tanah, our name translates to \"Earth\". We view dining not merely as a menu to be ordered, but as a complete spatial and sensory choreography. The organic curves of our wood-fired hearth and the raw basalt stone tables reflect our architectural heritage.",
+    "paragraph2": "By working in tandem with the seasonal soil cycles of Gachibowli's organic network, we receive raw heirloom crops and wood-fire them on open coals. No chemical enhancers, no industrial scale — just raw fire, clay pots, and mindful preservation.",
+    "image": "/assets/Ambiance/TANAH_Amb01025.jpg"
+  },
+  "quoteSection": {
+    "subtitle": "Stewardship",
+    "quote": "We treat agricultural harvesting as curated exhibitions. The goal is to let the raw ingredients express their heritage, fire-grilled simply on coals and seasoned with natural sea salt.",
+    "author": "Culinary Directors, Tanah"
+  },
+  "sustainability": {
+    "title": "Sustainability & Circularity",
+    "paragraph": "We design our rooftop kitchen to be completely zero-waste, feeding organic compost back into Gachibowli greenbelt soils.",
+    "items": [
+      {
+        "title": "Zero Food Waste",
+        "desc": "Every vegetable scrap is fermented into premium broth, pickled, or composted back into agricultural soil."
+      },
+      {
+        "title": "Plastic-Free Sourcing",
+        "desc": "All kitchen ingredients are received in woven jute sacks, brass canisters, or reusable terracotta crates."
+      },
+      {
+        "title": "Solar Powered Cooking",
+        "desc": "Our tandoors and wood ovens operate in balance with green solar power grids to heat water and run machines."
+      }
+    ]
+  },
+  "team": [
+    {
+      "name": "Chef Harish Chandra",
+      "role": "Culinary Director",
+      "desc": "20+ years of wood-fired gastronomy, specialized in ancient claypot slow cooking and seed selection.",
+      "image": "/assets/Ambiance/TANAH_Amb01050.jpg"
+    },
+    {
+      "name": "Devika Nair",
+      "role": "Sourcing Partner",
+      "desc": "Directs our cooperative farm networks, establishing regenerative agricultural soil cycles.",
+      "image": "/assets/Ambiance/TANAH_Amb01051.jpg"
+    }
+  ],
+  "timeline": [
+    {
+      "year": "2018",
+      "title": "The First Seed",
+      "desc": "Began cultivation trials on small organic plots using native heirloom crop grains."
+    },
+    {
+      "year": "2021",
+      "title": "Tanah Cooperative",
+      "desc": "Partnered with local family farms to secure fair-trade crop supplies."
+    },
+    {
+      "year": "2025",
+      "title": "Rooftop Hearth Opening",
+      "desc": "Launched our luxury rooftop dining sanctuary overlooking Gachibowli."
+    }
+  ]
+}

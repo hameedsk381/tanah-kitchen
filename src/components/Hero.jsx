@@ -86,8 +86,8 @@ export default function Hero() {
 
       {/* Hero Content */}
       <motion.div
-        className="relative z-10 text-center px-6"
-        style={{ opacity, maxWidth: '1400px', margin: '0 auto' }}
+        className="relative z-10 text-center px-8"
+        style={{ opacity, maxWidth: '1280px', margin: '0 auto' }}
       >
         {/* Subtle Tagline */}
         <motion.div

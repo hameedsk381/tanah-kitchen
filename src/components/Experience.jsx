@@ -80,7 +80,7 @@ function LightboxModal({ item, onClose }) {
         <img
           src={item.src}
           alt={item.alt}
-          className="w-full shadow-2xl object-cover"
+          className="w-full shadow-2xl object-cover rounded-3xl"
           style={{ maxHeight: '70vh' }}
         />
         <p
@@ -103,17 +103,15 @@ export default function Experience() {
     <section
       id="experience-preview"
       ref={ref}
-      className="relative overflow-hidden"
+      className="relative overflow-hidden py-28"
       style={{ 
         background: 'var(--color-beige)',
-        paddingTop: '8rem',
-        paddingBottom: '8rem'
       }}
       aria-labelledby="experience-heading"
     >
       <div 
-        className="px-6 md:px-12 relative z-10"
-        style={{ maxWidth: '1400px', margin: '0 auto' }}
+        className="px-8 relative z-10"
+        style={{ maxWidth: '1280px', margin: '0 auto' }}
       >
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 md:mb-24">
@@ -156,7 +154,7 @@ export default function Experience() {
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.8, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
               onClick={() => setLightbox(item)}
-              className="group overflow-hidden relative cursor-pointer"
+              className="group overflow-hidden relative cursor-pointer rounded-3xl"
               style={{
                 gridRow: item.span === 'row-span-2' ? 'span 2' : 'span 1',
               }}
@@ -196,7 +194,7 @@ export default function Experience() {
             <div
               key={`mobile-${item.id}`}
               onClick={() => setLightbox(item)}
-              className="relative overflow-hidden aspect-square cursor-pointer"
+              className="relative overflow-hidden aspect-square cursor-pointer rounded-3xl"
             >
               <img
                 src={item.src}

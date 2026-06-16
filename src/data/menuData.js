@@ -1,4 +1,4 @@
-// Menu data for Tanah Kitchen with Indian Rupee pricing (₹)
+// Menu data for Tanah Kitchen with strictly Indian Rupee pricing (₹249, ₹399, ₹549, ₹699)
 export const menuCategories = ['All', 'Breakfast', 'Lunch', 'Dinner', 'Beverages', 'Desserts'];
 
 export const menuItems = [
@@ -8,8 +8,8 @@ export const menuItems = [
     category: 'Breakfast',
     name: 'Ancient Grain Granola',
     desc: 'House-toasted organic millets, wild forest honey, native berries, and farm-fresh curd.',
-    price: 349,
-    image: '/images/dish_dessert.png', // Fallback to generated image
+    price: 399,
+    image: '/images/dish_dessert.png',
     tags: ['Organic', 'Gluten-Free']
   },
   {
@@ -17,7 +17,7 @@ export const menuItems = [
     category: 'Breakfast',
     name: 'Tanah Avocado Sourdough',
     desc: 'Hand-mashed avocado, heirloom cherry tomatoes, home-churned white butter, toasted sourdough.',
-    price: 499,
+    price: 549,
     image: '/images/dish_thali.png',
     tags: ['Signature', 'Vegan Option']
   },
@@ -26,7 +26,7 @@ export const menuItems = [
     category: 'Breakfast',
     name: 'Millet Idli & Heirloom Chutney',
     desc: 'Steamed foxtail millet cakes served with stone-ground coconut chutney and forest herb sambar.',
-    price: 289,
+    price: 249,
     image: '/images/dish_thali.png',
     tags: ['Organic', 'Gluten-Free']
   },
@@ -64,7 +64,7 @@ export const menuItems = [
     category: 'Lunch',
     name: 'Earthy Root Vegetable Curry',
     desc: 'Sweet potato, beetroot, and heritage carrots simmered in spiced coconut milk broth, served with red rice.',
-    price: 449,
+    price: 399,
     image: '/images/dish_thali.png',
     tags: ['Vegan', 'Gluten-Free']
   },
@@ -73,7 +73,7 @@ export const menuItems = [
     category: 'Lunch',
     name: 'Tanah Green Salad',
     desc: 'Crisp handpicked field greens, cucumbers, toasted pumpkin seeds, wood-pressed mustard dressing.',
-    price: 349,
+    price: 249,
     image: '/images/dish_dessert.png',
     tags: ['Raw', 'Zero Mile']
   },
@@ -84,7 +84,7 @@ export const menuItems = [
     category: 'Dinner',
     name: 'Wood-Fired Wild Mushroom Risotto',
     desc: 'Slow-simmered arborio rice with hand-foraged mushrooms, truffle oil, and aged artisanal parmesan.',
-    price: 749,
+    price: 699,
     image: '/images/dish_biryani.png',
     tags: ['Signature', 'Luxury']
   },
@@ -93,7 +93,7 @@ export const menuItems = [
     category: 'Dinner',
     name: 'Smoked Terracotta Paneer',
     desc: 'Clay-roasted organic paneer marinated in local wild herbs and cold-pressed mustard oil, served with mint dip.',
-    price: 599,
+    price: 549,
     image: '/images/dish_thali.png',
     tags: ['Spicy', 'Handcrafted']
   },
@@ -102,7 +102,7 @@ export const menuItems = [
     category: 'Dinner',
     name: 'Claypot Dal Earth',
     desc: 'Black lentils slow-simmered for 24 hours on coal embers with rich farm cream and organic white butter.',
-    price: 499,
+    price: 549,
     image: '/images/dish_thali.png',
     tags: ['Legendary', 'Slow Cooked']
   },
@@ -111,7 +111,7 @@ export const menuItems = [
     category: 'Dinner',
     name: 'Forest Truffle Gnocchi',
     desc: 'Handmade potato gnocchi tossed in brown butter, sage, wild forest truffles, and pine nuts.',
-    price: 799,
+    price: 699,
     image: '/images/dish_dessert.png',
     tags: ['Handcrafted', 'Limited']
   },
@@ -122,7 +122,7 @@ export const menuItems = [
     category: 'Beverages',
     name: 'Wild Forest Honey Lemonade',
     desc: 'Squeezed organic lemons, wild-foraged honey, fresh garden mint, infused with activated charcoal.',
-    price: 199,
+    price: 249,
     image: '/images/gallery_spices.png',
     tags: ['Refresher']
   },
@@ -140,7 +140,7 @@ export const menuItems = [
     category: 'Beverages',
     name: 'Tanah Cold Brew Coffee',
     desc: 'Single-origin Araku Valley coffee beans cold-steeped for 18 hours, served over artisanal ice blocks.',
-    price: 299,
+    price: 249,
     image: '/images/gallery_spices.png',
     tags: ['Caffeine']
   },
@@ -149,7 +149,7 @@ export const menuItems = [
     category: 'Beverages',
     name: 'Infused Kokum Nectar',
     desc: 'Traditional kokum extract mixed with sparkling water, roasted cumin, and black salt.',
-    price: 229,
+    price: 249,
     image: '/images/gallery_spices.png',
     tags: ['Digestion', 'Cold']
   },
@@ -169,7 +169,7 @@ export const menuItems = [
     category: 'Desserts',
     name: 'Charcoal Roasted Fig Tart',
     desc: 'Local fresh figs roasted over charcoal, in a gluten-free almond crust, served with vanilla bean whip.',
-    price: 449,
+    price: 399,
     image: '/images/dish_dessert.png',
     tags: ['Organic']
   },
@@ -178,7 +178,7 @@ export const menuItems = [
     category: 'Desserts',
     name: 'Millet Coconut Payasam',
     desc: 'Barnyard millet cooked with fresh coconut milk, jaggery syrup, toasted cashew nuts, and cardamom.',
-    price: 349,
+    price: 399,
     image: '/images/dish_dessert.png',
     tags: ['Vegan', 'Gluten-Free']
   },
@@ -187,7 +187,7 @@ export const menuItems = [
     category: 'Desserts',
     name: 'Dark Chocolate Soil Cake',
     desc: '70% single-origin dark chocolate cake layered with cocoa soil crumb and beetroot raspberry gel.',
-    price: 499,
+    price: 549,
     image: '/images/dish_dessert.png',
     tags: ['Signature', 'Decadent']
   }

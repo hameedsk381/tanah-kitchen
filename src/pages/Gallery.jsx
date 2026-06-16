@@ -1,84 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ZoomIn } from 'lucide-react'
-import VisitTanah from '../components/VisitTanah'
-
-const categories = ['All', 'Ambiance', 'Food', 'Farming']
-
-const galleryItems = [
-  {
-    id: 'g1',
-    category: 'Ambiance',
-    src: '/images/gallery_ambiance.png',
-    alt: 'Luxury Indian restaurant interior with hand-carved wooden arches and warm lighting',
-    caption: 'Our Carved Pillars Ambiance',
-    spanClass: 'md:col-span-2 md:row-span-2 aspect-[4/3] md:aspect-auto'
-  },
-  {
-    id: 'g2',
-    category: 'Food',
-    src: '/images/dish_thali.png',
-    alt: 'Royal Indian Thali spread on brass plate',
-    caption: 'Signature Heritage Thali Platter',
-    spanClass: 'aspect-square'
-  },
-  {
-    id: 'g3',
-    category: 'Farming',
-    src: '/images/farm_organic.png',
-    alt: 'Organic farm rows at sunrise',
-    caption: 'Sunset Harvest at the Aravalli Farmstead',
-    spanClass: 'aspect-square'
-  },
-  {
-    id: 'g4',
-    category: 'Ambiance',
-    src: '/images/gallery_dining.png',
-    alt: 'Elegant candlelight setup on table',
-    caption: 'Candlelit Intimacy',
-    spanClass: 'aspect-[3/4]'
-  },
-  {
-    id: 'g5',
-    category: 'Food',
-    src: '/images/dish_biryani.png',
-    alt: 'Earthen claypot Biryani rice',
-    caption: 'Forest Claypot Biryani Savor',
-    spanClass: 'md:col-span-2 aspect-[16/9]'
-  },
-  {
-    id: 'g6',
-    category: 'Farming',
-    src: '/images/gallery_spices.png',
-    alt: 'Indian spices flat-lay arrangement',
-    caption: 'Stone-Milled Organic Spices',
-    spanClass: 'aspect-square'
-  },
-  {
-    id: 'g7',
-    category: 'Food',
-    src: '/images/dish_dessert.png',
-    alt: 'Artisan plated dessert in clay bowl',
-    caption: 'Saffron Rabri Clay Bowl Sweet',
-    spanClass: 'aspect-[3/4]'
-  },
-  {
-    id: 'g8',
-    category: 'Ambiance',
-    src: '/images/about_chef.png',
-    alt: 'Co-founder Chef Harish standing in rustic kitchen',
-    caption: 'Chef Harish in our Hearth',
-    spanClass: 'aspect-square'
-  },
-  {
-    id: 'g9',
-    category: 'Farming',
-    src: '/images/about_farm.png',
-    alt: 'Woven baskets of direct partner farm fresh carrots',
-    caption: 'Daily Jute Baskets Delivery',
-    spanClass: 'aspect-square'
-  }
-]
+import galleryData from '../data/gallery.json'
 
 export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState('All')
@@ -86,131 +9,100 @@ export default function Gallery() {
   const [lightbox, setLightbox] = useState(null)
 
   useEffect(() => {
-    document.title = 'Visual Gallery | Tanah Kitchen'
+    document.title = 'Visual Archives | Tanah Kitchen & Bar'
     window.scrollTo(0, 0)
   }, [])
 
-  // Filter gallery items
   useEffect(() => {
     if (selectedCategory === 'All') {
-      setFilteredItems(galleryItems)
+      setFilteredItems(galleryData.items)
     } else {
-      setFilteredItems(galleryItems.filter(item => item.category === selectedCategory))
+      setFilteredItems(galleryData.items.filter(item => item.category === selectedCategory))
     }
   }, [selectedCategory])
 
   return (
-    <main className="flex-grow pt-24">
+    <main className="flex-grow pt-28 bg-bg-primary">
       
       {/* Editorial Header */}
-      <section 
-        className="relative py-20 md:py-28 text-center"
-        style={{ background: 'var(--color-forest)' }}
-      >
-        <div 
-          className="absolute inset-0 pointer-events-none opacity-5"
-          style={{
-            backgroundImage: 'radial-gradient(var(--color-cream) 1px, transparent 1px)',
-            backgroundSize: '24px 24px'
-          }}
-        />
-
-        <div 
-          className="relative z-10 px-6"
-          style={{ maxWidth: '1400px', margin: '0 auto' }}
-        >
-          <span className="text-xs font-semibold tracking-widest uppercase block mb-4" style={{ color: 'var(--color-terracotta-light)' }}>
-            VISUAL MEMORIES
+      <section className="relative py-20 md:py-28 text-center border-b border-gold/10">
+        <div className="relative z-10 px-8 max-w-container mx-auto">
+          <span className="text-[10px] font-medium tracking-[0.4em] uppercase text-gold block mb-4">
+            Archives
           </span>
           <h1 
-            className="font-display font-bold leading-none mb-6"
-            style={{ 
-              fontSize: 'clamp(3rem, 7vw, 5rem)',
-              color: 'var(--color-cream)'
-            }}
+            className="font-display font-light text-text-light leading-none mb-6"
+            style={{ fontSize: 'clamp(3rem, 7vw, 5rem)' }}
           >
-            The Gallery
+            The Visual Gallery
           </h1>
-          <p className="text-sm md:text-base font-light max-w-xl mx-auto" style={{ color: 'var(--color-beige)', opacity: 0.9 }}>
-            A photographic anthology of our soil cultivation, kitchen fires, handcrafted plates, and organic estate ambiance.
+          <p className="text-xs md:text-sm font-light max-w-xl mx-auto text-text-muted leading-relaxed">
+            A photographic archive documenting our agricultural soils, wood-fired kitchen flames, and architectural layouts.
           </p>
         </div>
       </section>
 
       {/* Main Grid */}
-      <section 
-        className="relative py-16 md:py-24"
-        style={{ background: 'var(--color-cream)' }}
-      >
-        <div 
-          className="px-6 md:px-12"
-          style={{ maxWidth: '1400px', margin: '0 auto' }}
-        >
+      <section className="relative py-20 bg-bg-primary">
+        <div className="max-w-container px-8 mx-auto space-y-12">
           
-          {/* Category Filter Tabs */}
-          <div className="flex items-center justify-center gap-2 overflow-x-auto w-full no-scrollbar pb-8 mb-16 border-b" style={{ borderColor: 'rgba(27, 67, 50, 0.08)' }}>
-            {categories.map((category) => {
-              const isActive = selectedCategory === category
+          {/* Categories Tab */}
+          <div className="flex items-center justify-center gap-6 overflow-x-auto w-full no-scrollbar pb-6 border-b border-gold/10">
+            {galleryData.categories.map((cat) => {
+              const isActive = selectedCategory === cat
               return (
                 <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className="px-5 py-2.5 text-xs font-semibold tracking-widest uppercase cursor-pointer transition-all duration-300"
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className="px-5 py-2 text-[10px] tracking-[0.2em] uppercase cursor-pointer transition-all duration-300"
                   style={{
-                    background: isActive ? 'var(--color-forest)' : 'transparent',
-                    color: isActive ? 'var(--color-cream)' : 'var(--color-forest)',
-                    border: isActive ? '1px solid var(--color-forest)' : '1px solid transparent'
+                    color: isActive ? 'var(--color-gold)' : 'var(--color-text-muted)',
+                    borderBottom: isActive ? '1px solid var(--color-gold)' : '1px solid transparent'
                   }}
                 >
-                  {category}
+                  {cat}
                 </button>
               )
             })}
           </div>
 
-          {/* Masonry / Responsive Grid */}
+          {/* Masonry Grid */}
           <motion.div 
             layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8"
           >
             <AnimatePresence mode="popLayout">
-              {filteredItems.map((item, idx) => (
+              {filteredItems.map((item) => (
                 <motion.div
                   key={item.id}
                   layout
-                  initial={{ opacity: 0, scale: 0.95 }}
+                  initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                   onClick={() => setLightbox(item)}
-                  className={`group relative overflow-hidden cursor-pointer shadow-sm ${item.spanClass}`}
+                  className={`group relative overflow-hidden cursor-pointer bg-bg-secondary ${item.spanClass}`}
                 >
                   <img
                     src={item.src}
                     alt={item.alt}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 filter brightness-90 group-hover:brightness-75 contrast-105"
                   />
                   
-                  {/* Subtle Gradient Overlay */}
-                  <div 
-                    className="absolute inset-0 flex items-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{
-                      background: 'linear-gradient(to top, rgba(27, 67, 50, 0.85) 0%, transparent 60%)'
-                    }}
-                  >
+                  {/* Hover Info */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/90 via-transparent to-transparent flex items-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="flex items-center justify-between w-full">
                       <div>
-                        <span className="text-[9px] font-semibold tracking-widest uppercase text-white/50 block mb-1">
+                        <span className="text-[8px] font-medium tracking-[0.2em] uppercase text-gold block mb-1">
                           {item.category}
                         </span>
-                        <p className="font-display text-xl font-bold text-white leading-tight">
+                        <p className="font-display text-2xl font-light text-text-light leading-tight">
                           {item.caption}
                         </p>
                       </div>
-                      <ZoomIn className="w-5 h-5 text-white/80" />
+                      <ZoomIn className="w-5 h-5 text-gold/80" />
                     </div>
                   </div>
-
                 </motion.div>
               ))}
             </AnimatePresence>
@@ -227,32 +119,32 @@ export default function Gallery() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setLightbox(null)}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-charcoal/95"
-            style={{ background: 'rgba(30,30,30,0.95)' }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-6"
+            style={{ background: 'rgba(15, 15, 15, 0.98)' }}
             role="dialog"
             aria-modal="true"
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
+              initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-4xl w-full flex flex-col items-center"
+              className="relative max-w-5xl w-full flex flex-col items-center"
             >
               <button
                 onClick={() => setLightbox(null)}
-                className="absolute -top-12 right-0 text-white/80 hover:text-white transition-colors cursor-pointer"
-                aria-label="Close image preview"
+                className="absolute -top-12 right-0 text-text-muted hover:text-gold transition-colors cursor-pointer"
+                aria-label="Close"
               >
                 <X className="w-8 h-8" />
               </button>
               <img
                 src={lightbox.src}
                 alt={lightbox.alt}
-                className="w-full max-h-[75vh] object-contain shadow-2xl"
+                className="w-full max-h-[75vh] object-contain border border-gold/15 shadow-2xl"
               />
-              <p className="text-center mt-6 font-display text-2xl font-bold text-cream tracking-wide">
+              <p className="text-center mt-6 font-display text-2xl font-light text-text-light tracking-wide">
                 {lightbox.caption}
               </p>
             </motion.div>
@@ -260,7 +152,6 @@ export default function Gallery() {
         )}
       </AnimatePresence>
 
-      <VisitTanah />
     </main>
   )
 }

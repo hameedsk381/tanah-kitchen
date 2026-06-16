@@ -69,10 +69,8 @@ export default function Reservation() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden"
+      className="relative overflow-hidden py-28"
       style={{ 
-        paddingTop: '8rem',
-        paddingBottom: '8rem',
         background: 'var(--color-forest-dark)'
       }}
       aria-labelledby="reservation-heading"
@@ -93,8 +91,8 @@ export default function Reservation() {
       </div>
 
       <div 
-        className="px-6 md:px-12 relative z-10"
-        style={{ maxWidth: '1400px', margin: '0 auto' }}
+        className="px-8 relative z-10"
+        style={{ maxWidth: '1280px', margin: '0 auto' }}
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
@@ -147,7 +145,7 @@ export default function Reservation() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="p-10 text-center"
+                className="p-10 text-center rounded-3xl"
                 style={{ 
                   background: 'rgba(255, 253, 248, 0.03)',
                   border: '1px solid rgba(255, 253, 248, 0.1)'
@@ -170,7 +168,7 @@ export default function Reservation() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="p-8 md:p-12 space-y-6"
+                className="p-8 md:p-12 space-y-6 rounded-3xl"
                 style={{
                   background: 'rgba(27, 67, 50, 0.65)',
                   backdropFilter: 'blur(30px)',

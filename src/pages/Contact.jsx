@@ -1,63 +1,38 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { MapPin, Phone, Mail, Clock, Globe, MessageSquare, CheckCircle } from 'lucide-react'
-
-const InstagramIcon = (props) => (
-  <svg
-    viewBox="0 0 24 24"
-    width="24"
-    height="24"
-    stroke="currentColor"
-    strokeWidth="2"
-    fill="none"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    {...props}
-  >
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-  </svg>
-)
-
-const socials = [
-  { icon: InstagramIcon, label: 'Instagram', href: 'https://instagram.com' },
-  { icon: Globe, label: 'Website', href: '/' },
-  { icon: MessageSquare, label: 'WhatsApp Chat', href: '#' },
-]
+import { MapPin, Phone, MessageSquare, Mail, Clock, CheckCircle } from 'lucide-react'
+import contactData from '../data/contact.json'
 
 export default function Contact() {
   const [form, setForm] = useState({
     name: '',
     email: '',
     phone: '',
-    subject: 'Table Booking Inquiry',
+    subject: 'General Inquiry',
     message: ''
   })
   const [submitted, setSubmitted] = useState(false)
   const [errors, setErrors] = useState({})
 
   useEffect(() => {
-    document.title = 'Contact & Location | Tanah Kitchen'
+    document.title = 'Contact & Location | Tanah Kitchen & Bar'
     window.scrollTo(0, 0)
   }, [])
-
-  const validate = () => {
-    const errs = {}
-    if (!form.name.trim()) errs.name = 'Please enter your name.'
-    if (!/^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(form.email.trim())) {
-      errs.email = 'Please enter a valid email address.'
-    }
-    if (!form.phone.trim()) errs.phone = 'Please enter your phone number.'
-    if (!form.message.trim()) errs.message = 'Please type a message details.'
-    return errs
-  }
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
     if (errors[e.target.name]) {
       setErrors({ ...errors, [e.target.name]: undefined })
     }
+  }
+
+  const validate = () => {
+    const errs = {}
+    if (!form.name.trim()) errs.name = 'Please enter your name.'
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) errs.email = 'Please enter a valid email.'
+    if (!form.phone.trim()) errs.phone = 'Please enter your phone number.'
+    if (!form.message.trim()) errs.message = 'Please enter your message details.'
+    return errs
   }
 
   const handleSubmit = (e) => {
@@ -67,305 +42,200 @@ export default function Contact() {
       setErrors(errs)
       return
     }
+    console.log('Form Submitted (Console Track Only):', form)
     setSubmitted(true)
   }
 
   return (
-    <main className="flex-grow pt-24">
+    <main className="flex-grow pt-28 bg-bg-primary">
       
-      {/* Page Header */}
-      <section 
-        className="relative py-20 md:py-28 text-center"
-        style={{ background: 'var(--color-forest)' }}
-      >
-        <div 
-          className="absolute inset-0 pointer-events-none opacity-5"
-          style={{
-            backgroundImage: 'radial-gradient(var(--color-cream) 1px, transparent 1px)',
-            backgroundSize: '24px 24px'
-          }}
-        />
-
-        <div 
-          className="relative z-10 px-6"
-          style={{ maxWidth: '1400px', margin: '0 auto' }}
-        >
-          <span className="text-xs font-semibold tracking-widest uppercase block mb-4" style={{ color: 'var(--color-terracotta-light)' }}>
-            REACH OUT
+      {/* Editorial Header */}
+      <section className="relative py-28 md:py-36 text-center border-b border-gold/10 overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-15">
+          <img
+            src={contactData.heroImage}
+            alt="Tanah Bar ambience banner"
+            className="w-full h-full object-cover filter brightness-50"
+          />
+        </div>
+        <div className="relative z-10 px-8 max-w-container mx-auto">
+          <span className="text-[10px] font-medium tracking-[0.4em] uppercase text-gold block mb-4">
+            Connect
           </span>
           <h1 
-            className="font-display font-bold leading-none mb-6"
-            style={{ 
-              fontSize: 'clamp(3rem, 7vw, 5rem)',
-              color: 'var(--color-cream)'
-            }}
+            className="font-display font-light text-text-light leading-none mb-6"
+            style={{ fontSize: 'clamp(3rem, 7vw, 5rem)' }}
           >
-            Contact & Bookings
+            Contact & Coordinates
           </h1>
-          <p className="text-sm md:text-base font-light max-w-xl mx-auto" style={{ color: 'var(--color-beige)', opacity: 0.9 }}>
-            Join us for an evening of handcrafted hospitality. Book tables, request custom event catering, or drop by our farm.
+          <p className="text-xs md:text-sm font-light max-w-xl mx-auto text-text-muted leading-relaxed">
+            Reach out to our hospitality desk. Ask about events, corporate bookings, or special dining arrangements.
           </p>
         </div>
       </section>
 
-      {/* Main Details and Form Section */}
-      <section 
-        className="relative py-16 md:py-24"
-        style={{ background: 'var(--color-cream)' }}
-      >
-        <div 
-          className="px-6 md:px-12"
-          style={{ maxWidth: '1400px', margin: '0 auto' }}
-        >
+      {/* Details Section */}
+      <section className="relative py-20 bg-bg-primary">
+        <div className="max-w-container px-8 mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
             
-            {/* Left Column: Business Details */}
-            <div className="lg:col-span-5 space-y-12">
-              <div>
-                <span className="text-xs font-semibold tracking-widest uppercase block mb-4" style={{ color: 'var(--color-terracotta)' }}>
-                  OUR HEARTH
+            {/* Left Column: Info Coordinates */}
+            <div className="lg:col-span-5 space-y-10">
+              <div className="space-y-4">
+                <span className="text-[10px] font-medium tracking-[0.4em] uppercase text-gold block">
+                  Location & Contacts
                 </span>
-                <h2 className="font-display text-3xl font-bold mb-6" style={{ color: 'var(--color-forest)' }}>
-                  Location & Contact Details
+                <h2 className="font-display text-3xl md:text-4xl font-light text-text-light">
+                  {contactData.brandName}
                 </h2>
-                
-                <ul className="space-y-6">
-                  <li className="flex items-start gap-4">
-                    <MapPin className="w-5 h-5 mt-1 flex-shrink-0" style={{ color: 'var(--color-terracotta)' }} />
-                    <div>
-                      <h4 className="font-display text-lg font-bold" style={{ color: 'var(--color-forest)' }}>Address</h4>
-                      <p className="text-sm font-light leading-relaxed mt-1" style={{ color: 'var(--color-charcoal)', opacity: 0.9 }}>
-                        Tanah Farmstead, 12 Green Valley,<br />
-                        Aravalli Foothills, Gurgaon - 122102
-                      </p>
-                    </div>
-                  </li>
-                  
-                  <li className="flex items-start gap-4">
-                    <Phone className="w-5 h-5 mt-1 flex-shrink-0" style={{ color: 'var(--color-terracotta)' }} />
-                    <div>
-                      <h4 className="font-display text-lg font-bold" style={{ color: 'var(--color-forest)' }}>Reservations</h4>
-                      <p className="text-sm font-light leading-relaxed mt-1" style={{ color: 'var(--color-charcoal)', opacity: 0.9 }}>
-                        +91 98765 43210 <br />
-                        +91 124 2345 6789
-                      </p>
-                    </div>
-                  </li>
-                  
-                  <li className="flex items-start gap-4">
-                    <Mail className="w-5 h-5 mt-1 flex-shrink-0" style={{ color: 'var(--color-terracotta)' }} />
-                    <div>
-                      <h4 className="font-display text-lg font-bold" style={{ color: 'var(--color-forest)' }}>E-Mail Inquiry</h4>
-                      <p className="text-sm font-light leading-relaxed mt-1" style={{ color: 'var(--color-charcoal)', opacity: 0.9 }}>
-                        contact@tanahkitchen.in <br />
-                        events@tanahkitchen.in
-                      </p>
-                    </div>
-                  </li>
-                </ul>
               </div>
 
-              {/* Hours */}
-              <div>
-                <span className="text-xs font-semibold tracking-widest uppercase block mb-4" style={{ color: 'var(--color-terracotta)' }}>
-                  OPERATING TIMINGS
-                </span>
-                <div className="flex gap-4">
-                  <Clock className="w-5 h-5 mt-1 flex-shrink-0" style={{ color: 'var(--color-terracotta)' }} />
+              <div className="space-y-6 text-sm font-light text-text-muted leading-relaxed">
+                <div className="flex gap-4 items-start">
+                  <MapPin className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-display text-lg font-bold" style={{ color: 'var(--color-forest)' }}>Weekly Hours</h4>
-                    <p className="text-sm font-light leading-relaxed mt-1" style={{ color: 'var(--color-charcoal)', opacity: 0.9 }}>
-                      <strong>Tuesday – Sunday:</strong> <br />
-                      Lunch: 12:00 PM – 3:30 PM <br />
-                      Dinner: 6:00 PM – 11:00 PM <br />
-                      <span className="text-xs italic mt-2 block" style={{ color: 'var(--color-terracotta)' }}>
-                        * Monday: Closed (Staff farm rest day)
-                      </span>
-                    </p>
+                    <h4 className="font-display text-lg text-text-light mb-1">Address</h4>
+                    <p>{contactData.address}</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4 items-start">
+                  <Phone className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-display text-lg text-text-light mb-1">Reservations</h4>
+                    <p>{contactData.phone1}</p>
+                    <p>{contactData.phone2}</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4 items-start">
+                  <Mail className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-display text-lg text-text-light mb-1">E-Mail</h4>
+                    <p>{contactData.email}</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4 items-start">
+                  <Clock className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-display text-lg text-text-light mb-1">Operating timinigs</h4>
+                    <p>{contactData.timings.days}</p>
+                    <p>Lunch: {contactData.timings.lunch}</p>
+                    <p>Dinner: {contactData.timings.dinner}</p>
+                    <p className="text-[10px] text-gold mt-1">{contactData.timings.note}</p>
                   </div>
                 </div>
               </div>
 
-              {/* Social Connections */}
-              <div>
-                <span className="text-xs font-semibold tracking-widest uppercase block mb-4" style={{ color: 'var(--color-terracotta)' }}>
-                  FOLLOW OUR GROWTH
-                </span>
-                <div className="flex gap-4">
-                  {socials.map((soc, sIdx) => (
-                    <a
-                      key={sIdx}
-                      href={soc.href}
-                      className="w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300"
-                      style={{
-                        borderColor: 'rgba(27, 67, 50, 0.15)',
-                        background: 'transparent',
-                        color: 'var(--color-forest)'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'var(--color-forest)'
-                        e.currentTarget.style.color = 'var(--color-cream)'
-                        e.currentTarget.style.borderColor = 'var(--color-forest)'
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'transparent'
-                        e.currentTarget.style.color = 'var(--color-forest)'
-                        e.currentTarget.style.borderColor = 'rgba(27, 67, 50, 0.15)'
-                      }}
-                    >
-                      <soc.icon className="w-4 h-4" />
-                    </a>
-                  ))}
-                </div>
+              {/* Action shortcuts */}
+              <div className="flex flex-wrap gap-4 pt-4">
+                <a
+                  href={`tel:${contactData.phone1.replace(/\s+/g, '')}`}
+                  className="btn-primary py-3.5 px-8 text-[9px] tracking-[0.2em] flex items-center gap-3"
+                >
+                  <Phone className="w-3.5 h-3.5" />
+                  Call CTA
+                </a>
+                <a
+                  href={`https://wa.me/${contactData.whatsappNumber.replace(/[^0-9]/g, '')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline py-3.5 px-8 text-[9px] tracking-[0.2em] flex items-center gap-3 border-gold/40 text-gold hover:bg-gold/5"
+                >
+                  <MessageSquare className="w-3.5 h-3.5" />
+                  WhatsApp CTA
+                </a>
               </div>
             </div>
 
-            {/* Right Column: Premium Contact Form */}
+            {/* Right Column: Contact form */}
             <div className="lg:col-span-7">
               {submitted ? (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
+                  initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="p-10 text-center border"
-                  style={{
-                    background: 'var(--color-beige)',
-                    borderColor: 'rgba(27, 67, 50, 0.05)'
-                  }}
+                  className="p-10 border border-gold/20 bg-bg-secondary text-center space-y-6"
                 >
-                  <CheckCircle className="w-16 h-16 mx-auto mb-6 text-terracotta" style={{ color: 'var(--color-terracotta)' }} />
-                  <h3 className="font-display text-3xl font-bold mb-4 text-forest" style={{ color: 'var(--color-forest)' }}>
-                    Message Received
+                  <CheckCircle className="w-12 h-12 text-gold mx-auto" />
+                  <h3 className="font-display text-2xl font-light text-text-light">
+                    Inquiry Received
                   </h3>
-                  <p className="text-sm font-light leading-relaxed mb-8" style={{ color: 'var(--color-charcoal)' }}>
-                    Thank you for writing to Tanah. Our hospitality team will review your inquiry details regarding <span className="font-semibold text-forest">"{form.subject}"</span> and reply back via <span className="font-semibold text-forest">{form.email}</span> within 24 hours.
+                  <p className="text-xs font-light text-text-muted leading-relaxed">
+                    Thank you for contacting Tanah Kitchen & Bar. Our hospitality desk will get in touch with you at <span className="text-text-light font-medium">{form.email}</span> shortly.
                   </p>
                   <button
-                    onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', subject: 'Table Booking Inquiry', message: '' }); }}
-                    className="btn-primary"
+                    onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', subject: 'General Inquiry', message: '' }) }}
+                    className="btn-gold-outline text-[10px] py-3 px-6 mt-4"
                   >
                     Send Another Message
                   </button>
                 </motion.div>
               ) : (
-                <form 
+                <form
                   onSubmit={handleSubmit}
-                  className="p-8 md:p-12 space-y-6 border"
-                  style={{
-                    background: 'var(--color-beige)',
-                    borderColor: 'rgba(27, 67, 50, 0.05)'
-                  }}
+                  noValidate
+                  className="p-8 md:p-12 border border-gold/15 bg-bg-secondary space-y-6"
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Name */}
-                    <div>
-                      <label className="block text-[10px] font-semibold tracking-widest uppercase mb-2 text-forest/70">
-                        Full Name
-                      </label>
+                    <div className="space-y-2">
+                      <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-gold block">Your Name</label>
                       <input
-                        name="name"
                         type="text"
+                        name="name"
                         value={form.name}
                         onChange={handleChange}
                         placeholder="John Doe"
-                        className="form-input"
-                        maxLength={80}
+                        className="form-input text-xs"
                       />
-                      {errors.name && (
-                        <span className="text-[10px] mt-1 block" style={{ color: 'var(--color-terracotta)' }}>
-                          {errors.name}
-                        </span>
-                      )}
+                      {errors.name && <span className="text-[10px] text-terracotta block">{errors.name}</span>}
                     </div>
 
-                    {/* Phone */}
-                    <div>
-                      <label className="block text-[10px] font-semibold tracking-widest uppercase mb-2 text-forest/70">
-                        Phone Number
-                      </label>
+                    <div className="space-y-2">
+                      <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-gold block">Phone Number</label>
                       <input
-                        name="phone"
                         type="tel"
+                        name="phone"
                         value={form.phone}
                         onChange={handleChange}
-                        placeholder="+91 XXXXX XXXXX"
-                        className="form-input"
-                        maxLength={20}
+                        placeholder="Phone Number"
+                        className="form-input text-xs"
                       />
-                      {errors.phone && (
-                        <span className="text-[10px] mt-1 block" style={{ color: 'var(--color-terracotta)' }}>
-                          {errors.phone}
-                        </span>
-                      )}
+                      {errors.phone && <span className="text-[10px] text-terracotta block">{errors.phone}</span>}
                     </div>
                   </div>
 
-                  {/* Email */}
-                  <div>
-                    <label className="block text-[10px] font-semibold tracking-widest uppercase mb-2 text-forest/70">
-                      Email Address
-                    </label>
+                  <div className="space-y-2">
+                    <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-gold block">Email Address</label>
                     <input
-                      name="email"
                       type="email"
+                      name="email"
                       value={form.email}
                       onChange={handleChange}
                       placeholder="you@domain.com"
-                      className="form-input"
-                      maxLength={120}
+                      className="form-input text-xs"
                     />
-                    {errors.email && (
-                      <span className="text-[10px] mt-1 block" style={{ color: 'var(--color-terracotta)' }}>
-                        {errors.email}
-                      </span>
-                    )}
+                    {errors.email && <span className="text-[10px] text-terracotta block">{errors.email}</span>}
                   </div>
 
-                  {/* Subject Dropdown */}
-                  <div>
-                    <label className="block text-[10px] font-semibold tracking-widest uppercase mb-2 text-forest/70">
-                      Nature of Inquiry
-                    </label>
-                    <select
-                      name="subject"
-                      value={form.subject}
-                      onChange={handleChange}
-                      className="form-input"
-                      style={{ height: '54px' }}
-                    >
-                      <option value="Table Booking Inquiry">Table Booking Inquiry</option>
-                      <option value="Private Event Catering">Private Event Catering</option>
-                      <option value="Media & Press Relations">Media & Press Relations</option>
-                      <option value="Farm Sourcing Partnership">Farm Sourcing Partnership</option>
-                      <option value="General Feedback">General Feedback</option>
-                    </select>
-                  </div>
-
-                  {/* Message */}
-                  <div>
-                    <label className="block text-[10px] font-semibold tracking-widest uppercase mb-2 text-forest/70">
-                      Tell Us More
-                    </label>
+                  <div className="space-y-2">
+                    <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-gold block">Message / Inquiry Details</label>
                     <textarea
                       name="message"
                       value={form.message}
                       onChange={handleChange}
-                      placeholder="Please details what you need..."
-                      className="form-input resize-none"
+                      placeholder="Tell us what you would like to ask..."
                       rows={5}
-                      maxLength={1000}
+                      className="form-input text-xs resize-none"
                     />
-                    {errors.message && (
-                      <span className="text-[10px] mt-1 block" style={{ color: 'var(--color-terracotta)' }}>
-                        {errors.message}
-                      </span>
-                    )}
+                    {errors.message && <span className="text-[10px] text-terracotta block">{errors.message}</span>}
                   </div>
 
                   <button
                     type="submit"
-                    className="btn-primary w-full text-center justify-center py-4"
+                    className="btn-primary w-full justify-center text-center text-[10px] py-4"
                   >
-                    Send Secure Message
+                    Send Message
                   </button>
                 </form>
               )}
@@ -375,17 +245,14 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Embedded Google Map Section */}
-      <section 
-        className="w-full relative leading-none"
-        style={{ borderTop: '1px solid rgba(27, 67, 50, 0.05)' }}
-      >
+      {/* Embedded grayscale map */}
+      <section className="w-full relative leading-none border-t border-gold/15">
         <iframe
-          title="Tanah Kitchen Estate Google Map Location"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112340.91223940182!2d76.99341498145155!3d28.369342931448834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d3d3c80fffff7%3A0x6b453ebce01e4a1a!2sSohna%20Road%20Gurugram!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+          title="Tanah Kitchen & Bar Google Map Location"
+          src={contactData.mapUrl}
           width="100%"
-          height="480"
-          style={{ border: 0, filter: 'grayscale(0.9) contrast(1.1) invert(0)' }}
+          height="450"
+          style={{ border: 0, filter: 'grayscale(1) contrast(1.1) invert(0.9)' }}
           allowFullScreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"

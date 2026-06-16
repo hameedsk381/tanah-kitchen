@@ -37,11 +37,9 @@ export default function WhyChooseUs() {
     <section
       id="why-choose-us"
       ref={ref}
-      className="relative overflow-hidden"
+      className="relative overflow-hidden py-28"
       style={{ 
         background: 'var(--color-cream)',
-        paddingTop: '8rem',
-        paddingBottom: '8rem'
       }}
       aria-labelledby="why-us-heading"
     >
@@ -55,8 +53,8 @@ export default function WhyChooseUs() {
       />
 
       <div 
-        className="px-6 md:px-12 relative z-10"
-        style={{ maxWidth: '1400px', margin: '0 auto' }}
+        className="px-8 relative z-10"
+        style={{ maxWidth: '1280px', margin: '0 auto' }}
       >
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 md:mb-24">
@@ -94,7 +92,7 @@ export default function WhyChooseUs() {
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                className="group relative p-8 transition-all duration-500 hover:shadow-2xl border"
+                className="group relative p-8 transition-all duration-500 hover:shadow-2xl border rounded-3xl"
                 style={{
                   background: 'var(--color-beige)',
                   borderColor: 'rgba(27, 67, 50, 0.05)',
@@ -145,7 +143,7 @@ export default function WhyChooseUs() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, delay: 0.6 }}
-          className="mt-16 lg:mt-24 p-12 text-center relative overflow-hidden"
+          className="mt-16 lg:mt-24 p-12 text-center relative overflow-hidden rounded-3xl"
           style={{ background: 'var(--color-forest)' }}
         >
           {/* Subtle design circles */}

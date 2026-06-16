@@ -1,0 +1,14 @@
+{
+  "imageUrl": "/assets/Ambiance/TANAH_Amb01017.jpg",
+  "heading": "Nurtured by Earth.",
+  "headingItalic": "Crafted for the Soul.",
+  "subheading": "Tanah Kitchen & Bar",
+  "ctaPrimary": {
+    "label": "Reserve Table",
+    "path": "/book"
+  },
+  "ctaSecondary": {
+    "label": "Discover Menu",
+    "path": "/menu"
+  }
+}

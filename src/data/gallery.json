@@ -1,0 +1,85 @@
+{
+  "categories": ["All", "Ambience", "Rooftop", "Events", "Food"],
+  "items": [
+    {
+      "id": "g1",
+      "category": "Ambience",
+      "src": "/assets/Ambiance/TANAH_Amb01010.jpg",
+      "alt": "Luxury interior table setups",
+      "caption": "The Basalt Archway",
+      "spanClass": "md:col-span-8 md:row-span-2 aspect-[16/10] md:aspect-auto"
+    },
+    {
+      "id": "g2",
+      "category": "Rooftop",
+      "src": "/assets/Ambiance/TANAH_Amb01016.jpg",
+      "alt": "Rooftop deck seating view",
+      "caption": "Rooftop Skyline Deck",
+      "spanClass": "md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g3",
+      "category": "Ambience",
+      "src": "/assets/Ambiance/TANAH_Amb01018.jpg",
+      "alt": "Glass walls and warm lighting",
+      "caption": "Glass Atrium",
+      "spanClass": "md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g4",
+      "category": "Food",
+      "src": "/assets/food/016.jpg",
+      "alt": "Artisanal plated recipe",
+      "caption": "Stone-ground Heritage Curry",
+      "spanClass": "md:col-span-4 aspect-[3/4]"
+    },
+    {
+      "id": "g5",
+      "category": "Events",
+      "src": "/assets/Ambiance/TANAH_Amb01022.jpg",
+      "alt": "Private dining salon gathering",
+      "caption": "The Gallery Salon",
+      "spanClass": "md:col-span-8 aspect-[16/9]"
+    },
+    {
+      "id": "g6",
+      "category": "Rooftop",
+      "src": "/assets/Ambiance/TANAH_Amb01027.jpg",
+      "alt": "Rooftop terrace overlooking horizon",
+      "caption": "Sunset Lounge",
+      "spanClass": "md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g7",
+      "category": "Food",
+      "src": "/assets/food/017.jpg",
+      "alt": "Rooftop coal grilled dish",
+      "caption": "Hickory-Smoked Embers Platter",
+      "spanClass": "md:col-span-4 aspect-[3/4]"
+    },
+    {
+      "id": "g8",
+      "category": "Ambience",
+      "src": "/assets/Ambiance/TANAH_Amb01037.jpg",
+      "alt": "Earthy clay moldings inside hearth",
+      "caption": "Basalt Hearth Details",
+      "spanClass": "md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g9",
+      "category": "Rooftop",
+      "src": "/assets/Ambiance/TANAH_Amb01038.jpg",
+      "alt": "Rooftop night view",
+      "caption": "Night Skyline Vistas",
+      "spanClass": "md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g10",
+      "category": "Food",
+      "src": "/assets/food/018.jpg",
+      "alt": "Cold brewed elixir glass",
+      "caption": "Aravalli Botanical Nectar",
+      "spanClass": "md:col-span-4 aspect-square"
+    }
+  ]
+}

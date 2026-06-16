@@ -11,11 +11,9 @@ export default function About() {
     <section
       id="about-preview"
       ref={ref}
-      className="relative overflow-hidden"
+      className="relative overflow-hidden py-28"
       style={{ 
         background: 'var(--color-cream)',
-        paddingTop: '8rem',
-        paddingBottom: '8rem'
       }}
       aria-labelledby="about-preview-heading"
     >
@@ -36,8 +34,8 @@ export default function About() {
       </div>
 
       <div 
-        className="px-6 md:px-12 relative z-10"
-        style={{ maxWidth: '1400px', margin: '0 auto' }}
+        className="px-8 relative z-10"
+        style={{ maxWidth: '1280px', margin: '0 auto' }}
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
@@ -49,7 +47,7 @@ export default function About() {
             className="relative"
           >
             {/* Primary Image */}
-            <div className="hover-zoom aspect-[4/5] overflow-hidden shadow-2xl relative">
+            <div className="hover-zoom aspect-[4/5] overflow-hidden shadow-2xl relative rounded-3xl">
               <img
                 src="/images/farm_organic.png"
                 alt="Tanah partners organic farm harvest at golden hour"
@@ -68,7 +66,7 @@ export default function About() {
               initial={{ scale: 0.9, opacity: 0, x: 20 }}
               animate={isInView ? { scale: 1, opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute -bottom-10 -right-4 md:-right-10 p-8 shadow-2xl max-w-[280px] hidden sm:block"
+              className="absolute -bottom-10 -right-4 md:-right-10 p-8 shadow-2xl max-w-[280px] hidden sm:block rounded-3xl"
               style={{ background: 'var(--color-forest)', color: 'var(--color-cream)' }}
             >
               <Leaf className="w-8 h-8 mb-4" style={{ color: 'var(--color-terracotta-light)' }} />
