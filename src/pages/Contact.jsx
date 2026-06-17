@@ -47,28 +47,28 @@ export default function Contact() {
   }
 
   return (
-    <main className="flex-grow pt-28 bg-bg-primary">
+    <main className="flex-grow pt-24 bg-bg-primary text-warm-ivory">
       
       {/* Editorial Header */}
-      <section className="relative py-28 md:py-36 text-center border-b border-gold/10 overflow-hidden">
+      <section className="relative py-28 md:py-36 text-center border-b border-terracotta/10 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-15">
           <img
-            src={contactData.heroImage}
+            src="/assets/Ambiance/TANAH_Amb01058.jpg"
             alt="Tanah Bar ambience banner"
             className="w-full h-full object-cover filter brightness-50"
           />
         </div>
         <div className="relative z-10 px-8 max-w-container mx-auto">
-          <span className="text-[10px] font-medium tracking-[0.4em] uppercase text-gold block mb-4">
+          <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-terracotta block mb-4">
             Connect
           </span>
           <h1 
-            className="font-display font-light text-text-light leading-none mb-6"
-            style={{ fontSize: 'clamp(3rem, 7vw, 5rem)' }}
+            className="font-display font-light text-warm-ivory leading-none mb-6"
+            style={{ fontSize: 'clamp(2.5rem, 7vw, 5rem)' }}
           >
             Contact & Coordinates
           </h1>
-          <p className="text-xs md:text-sm font-light max-w-xl mx-auto text-text-muted leading-relaxed">
+          <p className="text-xs md:text-sm font-light max-w-xl mx-auto text-sand-beige leading-relaxed">
             Reach out to our hospitality desk. Ask about events, corporate bookings, or special dining arrangements.
           </p>
         </div>
@@ -82,48 +82,48 @@ export default function Contact() {
             {/* Left Column: Info Coordinates */}
             <div className="lg:col-span-5 space-y-10">
               <div className="space-y-4">
-                <span className="text-[10px] font-medium tracking-[0.4em] uppercase text-gold block">
+                <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-terracotta block">
                   Location & Contacts
                 </span>
-                <h2 className="font-display text-3xl md:text-4xl font-light text-text-light">
+                <h2 className="font-display text-3xl md:text-4xl font-light text-warm-ivory">
                   {contactData.brandName}
                 </h2>
               </div>
 
-              <div className="space-y-6 text-sm font-light text-text-muted leading-relaxed">
+              <div className="space-y-6 text-sm font-light text-sand-beige leading-relaxed">
                 <div className="flex gap-4 items-start">
-                  <MapPin className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
+                  <MapPin className="w-5 h-5 text-terracotta flex-shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-display text-lg text-text-light mb-1">Address</h4>
-                    <p>{contactData.address}</p>
+                    <h4 className="font-display text-lg text-warm-ivory mb-1">Address</h4>
+                    <p className="whitespace-pre-line">{contactData.address}</p>
                   </div>
                 </div>
 
                 <div className="flex gap-4 items-start">
-                  <Phone className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
+                  <Phone className="w-5 h-5 text-terracotta flex-shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-display text-lg text-text-light mb-1">Reservations</h4>
+                    <h4 className="font-display text-lg text-warm-ivory mb-1">Reservations</h4>
                     <p>{contactData.phone1}</p>
                     <p>{contactData.phone2}</p>
                   </div>
                 </div>
 
                 <div className="flex gap-4 items-start">
-                  <Mail className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
+                  <Mail className="w-5 h-5 text-terracotta flex-shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-display text-lg text-text-light mb-1">E-Mail</h4>
+                    <h4 className="font-display text-lg text-warm-ivory mb-1">E-Mail</h4>
                     <p>{contactData.email}</p>
                   </div>
                 </div>
 
                 <div className="flex gap-4 items-start">
-                  <Clock className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
+                  <Clock className="w-5 h-5 text-terracotta flex-shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-display text-lg text-text-light mb-1">Operating timinigs</h4>
+                    <h4 className="font-display text-lg text-warm-ivory mb-1">Operating Timings</h4>
                     <p>{contactData.timings.days}</p>
                     <p>Lunch: {contactData.timings.lunch}</p>
                     <p>Dinner: {contactData.timings.dinner}</p>
-                    <p className="text-[10px] text-gold mt-1">{contactData.timings.note}</p>
+                    <p className="text-[10px] text-copper mt-1">{contactData.timings.note}</p>
                   </div>
                 </div>
               </div>
@@ -132,19 +132,19 @@ export default function Contact() {
               <div className="flex flex-wrap gap-4 pt-4">
                 <a
                   href={`tel:${contactData.phone1.replace(/\s+/g, '')}`}
-                  className="btn-primary py-3.5 px-8 text-[9px] tracking-[0.2em] flex items-center gap-3"
+                  className="btn-primary py-3.5 px-8 text-[9px] tracking-[0.2em] flex items-center gap-3 cursor-pointer"
                 >
                   <Phone className="w-3.5 h-3.5" />
-                  Call CTA
+                  Call Now
                 </a>
                 <a
                   href={`https://wa.me/${contactData.whatsappNumber.replace(/[^0-9]/g, '')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-outline py-3.5 px-8 text-[9px] tracking-[0.2em] flex items-center gap-3 border-gold/40 text-gold hover:bg-gold/5"
+                  className="btn-outline py-3.5 px-8 text-[9px] tracking-[0.2em] flex items-center gap-3 border-copper/40 text-copper hover:bg-copper/5 cursor-pointer"
                 >
                   <MessageSquare className="w-3.5 h-3.5" />
-                  WhatsApp CTA
+                  WhatsApp Us
                 </a>
               </div>
             </div>
@@ -155,18 +155,18 @@ export default function Contact() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="p-10 border border-gold/20 bg-bg-secondary text-center space-y-6"
+                  className="p-10 border border-terracotta/20 bg-bg-secondary text-center space-y-6"
                 >
-                  <CheckCircle className="w-12 h-12 text-gold mx-auto" />
-                  <h3 className="font-display text-2xl font-light text-text-light">
+                  <CheckCircle className="w-12 h-12 text-terracotta mx-auto animate-pulse-slow" />
+                  <h3 className="font-display text-2xl font-light text-warm-ivory">
                     Inquiry Received
                   </h3>
-                  <p className="text-xs font-light text-text-muted leading-relaxed">
-                    Thank you for contacting Tanah Kitchen & Bar. Our hospitality desk will get in touch with you at <span className="text-text-light font-medium">{form.email}</span> shortly.
+                  <p className="text-xs font-light text-sand-beige leading-relaxed">
+                    Thank you for contacting Tanah Kitchen & Bar. Our hospitality desk will get in touch with you at <span className="text-warm-ivory font-medium">{form.email}</span> shortly.
                   </p>
                   <button
                     onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', subject: 'General Inquiry', message: '' }) }}
-                    className="btn-gold-outline text-[10px] py-3 px-6 mt-4"
+                    className="btn-gold-outline text-[10px] py-3 px-6 mt-4 cursor-pointer"
                   >
                     Send Another Message
                   </button>
@@ -175,11 +175,11 @@ export default function Contact() {
                 <form
                   onSubmit={handleSubmit}
                   noValidate
-                  className="p-8 md:p-12 border border-gold/15 bg-bg-secondary space-y-6"
+                  className="p-8 md:p-12 border border-terracotta/15 bg-bg-secondary space-y-6"
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-gold block">Your Name</label>
+                      <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-terracotta block">Your Name</label>
                       <input
                         type="text"
                         name="name"
@@ -188,11 +188,11 @@ export default function Contact() {
                         placeholder="John Doe"
                         className="form-input text-xs"
                       />
-                      {errors.name && <span className="text-[10px] text-terracotta block">{errors.name}</span>}
+                      {errors.name && <span className="text-[10px] text-burnt-earth block">{errors.name}</span>}
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-gold block">Phone Number</label>
+                      <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-terracotta block">Phone Number</label>
                       <input
                         type="tel"
                         name="phone"
@@ -201,12 +201,12 @@ export default function Contact() {
                         placeholder="Phone Number"
                         className="form-input text-xs"
                       />
-                      {errors.phone && <span className="text-[10px] text-terracotta block">{errors.phone}</span>}
+                      {errors.phone && <span className="text-[10px] text-burnt-earth block">{errors.phone}</span>}
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-gold block">Email Address</label>
+                    <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-terracotta block">Email Address</label>
                     <input
                       type="email"
                       name="email"
@@ -215,11 +215,11 @@ export default function Contact() {
                       placeholder="you@domain.com"
                       className="form-input text-xs"
                     />
-                    {errors.email && <span className="text-[10px] text-terracotta block">{errors.email}</span>}
+                    {errors.email && <span className="text-[10px] text-burnt-earth block">{errors.email}</span>}
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-gold block">Message / Inquiry Details</label>
+                    <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-terracotta block">Message / Inquiry Details</label>
                     <textarea
                       name="message"
                       value={form.message}
@@ -228,12 +228,12 @@ export default function Contact() {
                       rows={5}
                       className="form-input text-xs resize-none"
                     />
-                    {errors.message && <span className="text-[10px] text-terracotta block">{errors.message}</span>}
+                    {errors.message && <span className="text-[10px] text-burnt-earth block">{errors.message}</span>}
                   </div>
 
                   <button
                     type="submit"
-                    className="btn-primary w-full justify-center text-center text-[10px] py-4"
+                    className="btn-primary w-full justify-center text-center text-[10px] py-4 cursor-pointer"
                   >
                     Send Message
                   </button>
@@ -246,13 +246,13 @@ export default function Contact() {
       </section>
 
       {/* Embedded grayscale map */}
-      <section className="w-full relative leading-none border-t border-gold/15">
+      <section className="w-full relative leading-none border-t border-terracotta/15">
         <iframe
           title="Tanah Kitchen & Bar Google Map Location"
           src={contactData.mapUrl}
           width="100%"
           height="450"
-          style={{ border: 0, filter: 'grayscale(1) contrast(1.1) invert(0.9)' }}
+          style={{ border: 0, filter: 'grayscale(1) contrast(1.2) invert(0.9) brightness(0.9)' }}
           allowFullScreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"

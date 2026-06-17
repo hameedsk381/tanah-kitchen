@@ -35,16 +35,15 @@ export default function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? 'glass py-4 shadow-2xl' : 'bg-transparent py-7'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'glass py-4 shadow-2xl' : 'bg-transparent py-7'
+          }`}
         style={{
           borderBottom: scrolled ? '1px solid rgba(200, 164, 106, 0.2)' : '1px solid rgba(245, 242, 234, 0.05)',
         }}
         role="navigation"
         aria-label="Main navigation"
       >
-        <div 
+        <div
           className="px-8 flex items-center justify-between max-w-container"
         >
           {/* Logo */}
@@ -54,11 +53,11 @@ export default function Navbar() {
             aria-label="Tanah Kitchen & Bar Home"
           >
             <span
-              className="font-display text-2xl font-bold tracking-[0.15em] uppercase text-text-light transition-colors duration-300 group-hover:text-gold"
+              className="font-display text-2xl font-bold tracking-[0.15em] uppercase text-warm-ivory transition-colors duration-300 group-hover:text-terracotta"
             >
               Tanah
             </span>
-            <span className="text-[8px] tracking-[0.4em] uppercase text-gold -mt-1 font-body">
+            <span className="text-[8px] tracking-[0.4em] uppercase text-terracotta -mt-1 font-body">
               Kitchen & Bar
             </span>
           </Link>
@@ -72,18 +71,17 @@ export default function Navbar() {
                   <Link
                     to={link.path}
                     className="text-[10px] font-medium tracking-[0.2em] uppercase transition-colors duration-300 relative py-1 group"
-                    style={{ 
-                      color: isActive 
-                        ? 'var(--color-gold)' 
-                        : 'rgba(245, 242, 234, 0.8)' 
+                    style={{
+                      color: isActive
+                        ? 'var(--color-terracotta)'
+                        : 'var(--color-sand-beige)'
                     }}
                   >
                     {link.label}
                     <span
-                      className={`absolute -bottom-1 left-0 h-[1px] transition-all duration-300 ${
-                        isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                      }`}
-                      style={{ background: 'var(--color-gold)' }}
+                      className={`absolute -bottom-1 left-0 h-[1px] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                        }`}
+                      style={{ background: 'var(--color-terracotta)' }}
                     />
                   </Link>
                 </li>
@@ -103,7 +101,7 @@ export default function Navbar() {
 
           {/* Mobile Hamburger */}
           <button
-            className="md:hidden p-2 transition-colors cursor-pointer text-text-light hover:text-gold"
+            className="md:hidden p-2 transition-colors cursor-pointer text-warm-ivory hover:text-terracotta"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
@@ -121,7 +119,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-x-0 top-0 z-40 flex flex-col pt-28 px-10 pb-12 gap-8 shadow-2xl border-b border-gold/20"
+            className="fixed inset-x-0 top-0 z-40 flex flex-col pt-28 px-10 pb-12 gap-8 shadow-2xl border-b border-terracotta/20"
             style={{ background: 'var(--color-bg-secondary)' }}
             role="dialog"
             aria-label="Mobile navigation menu"
@@ -139,10 +137,10 @@ export default function Navbar() {
                     <Link
                       to={link.path}
                       className="font-display text-2xl font-light block py-2 transition-colors duration-300"
-                      style={{ 
-                        color: isActive 
-                          ? 'var(--color-gold)' 
-                          : 'var(--color-text-light)' 
+                      style={{
+                        color: isActive
+                          ? 'var(--color-terracotta)'
+                          : 'var(--color-warm-ivory)'
                       }}
                     >
                       {link.label}

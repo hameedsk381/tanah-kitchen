@@ -37,13 +37,12 @@ export default function Footer() {
   return (
     <footer
       id="footer"
-      className="relative overflow-hidden border-t"
+      className="relative overflow-hidden border-t border-terracotta/10"
       style={{
         background: 'var(--color-bg-secondary)',
-        borderColor: 'rgba(200, 164, 106, 0.15)',
         paddingTop: '8rem',
         paddingBottom: '3rem',
-        color: 'var(--color-text-light)'
+        color: 'var(--color-warm-ivory)'
       }}
       aria-label="Site footer"
     >
@@ -54,21 +53,21 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="space-y-6">
             <Link to="/" className="flex flex-col group">
-              <span className="font-display text-2xl font-bold tracking-[0.15em] uppercase text-text-light group-hover:text-gold transition-colors duration-300">
+              <span className="font-display text-2xl font-bold tracking-[0.15em] uppercase text-warm-ivory group-hover:text-terracotta transition-colors duration-300">
                 Tanah
               </span>
-              <span className="text-[8px] tracking-[0.4em] uppercase text-gold -mt-1 font-body">
+              <span className="text-[8px] tracking-[0.4em] uppercase text-terracotta -mt-1 font-body">
                 Kitchen & Bar
               </span>
             </Link>
-            <p className="text-xs font-light leading-relaxed text-text-muted">
+            <p className="text-xs font-light leading-relaxed text-sand-beige">
               Tanah represents connection to the Earth. Our culinary destination in Hyderabad honors natural architectural design, slow wood-fired hearths, and premium sustainable ingredients.
             </p>
           </div>
 
           {/* Navigation Links */}
           <div>
-            <h4 className="font-body text-[10px] font-semibold tracking-[0.2em] uppercase mb-6 text-gold">
+            <h4 className="font-body text-[10px] font-semibold tracking-[0.2em] uppercase mb-6 text-terracotta">
               Explore
             </h4>
             <ul className="flex flex-col gap-4">
@@ -76,7 +75,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     to={link.path}
-                    className="text-xs font-light transition-all duration-300 flex items-center gap-3 text-text-muted hover:text-gold"
+                    className="text-xs font-light transition-all duration-300 flex items-center gap-3 text-sand-beige hover:text-terracotta"
                   >
                     {link.label}
                   </Link>
@@ -87,34 +86,34 @@ export default function Footer() {
 
           {/* Contact Details */}
           <div>
-            <h4 className="font-body text-[10px] font-semibold tracking-[0.2em] uppercase mb-6 text-gold">
+            <h4 className="font-body text-[10px] font-semibold tracking-[0.2em] uppercase mb-6 text-terracotta">
               Tanah Gachibowli
             </h4>
-            <ul className="flex flex-col gap-5 text-xs font-light text-text-muted">
+            <ul className="flex flex-col gap-5 text-xs font-light text-sand-beige">
               <li className="leading-relaxed">
                 {contactData.address}
               </li>
               <li>
                 Reservations: <br />
-                <span className="text-text-light hover:text-gold transition-colors font-medium">{contactData.phone1}</span> <br />
-                <span className="text-text-light hover:text-gold transition-colors font-medium">{contactData.phone2}</span>
+                <span className="text-warm-ivory hover:text-terracotta transition-colors font-medium">{contactData.phone1}</span> <br />
+                <span className="text-warm-ivory hover:text-terracotta transition-colors font-medium">{contactData.phone2}</span>
               </li>
             </ul>
           </div>
 
           {/* Newsletter */}
           <div>
-            <h4 className="font-body text-[10px] font-semibold tracking-[0.2em] uppercase mb-6 text-gold">
+            <h4 className="font-body text-[10px] font-semibold tracking-[0.2em] uppercase mb-6 text-terracotta">
               Chronicles
             </h4>
-            <p className="text-xs font-light mb-6 leading-relaxed text-text-muted">
+            <p className="text-xs font-light mb-6 leading-relaxed text-sand-beige">
               Subscribe to recieve updates on rare seasonal menus, events, and table openings.
             </p>
             {subscribed ? (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-[10px] py-4 px-5 border border-gold/30 bg-gold/5 text-gold"
+                className="text-[10px] py-4 px-5 border border-terracotta/30 bg-terracotta/5 text-terracotta"
               >
                 Welcome to Tanah.
               </motion.div>
@@ -134,14 +133,14 @@ export default function Footer() {
                   />
                   <button
                     type="submit"
-                    className="w-12 h-12 flex items-center justify-center flex-shrink-0 transition-colors duration-300 bg-gold text-bg-primary hover:bg-gold/80"
+                    className="w-12 h-12 flex items-center justify-center flex-shrink-0 transition-colors duration-300 bg-terracotta text-bg-primary hover:bg-terracotta/80"
                     aria-label="Subscribe"
                   >
                     <Send className="w-4 h-4" />
                   </button>
                 </div>
                 {emailError && (
-                  <p className="text-[10px] text-terracotta" role="alert">
+                  <p className="text-[10px] text-burnt-earth" role="alert">
                     {emailError}
                   </p>
                 )}
@@ -151,16 +150,16 @@ export default function Footer() {
         </div>
 
         {/* Separator */}
-        <div className="w-full h-px mb-8 bg-gold/10" />
+        <div className="w-full h-px mb-8 bg-terracotta/10" />
 
         {/* Bottom */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-          <p className="text-[10px] font-light text-text-muted text-center sm:text-left">
+          <p className="text-[10px] font-light text-sand-beige text-center sm:text-left">
             © {new Date().getFullYear()} Tanah Kitchen & Bar. Architectural Gastronomy. All rights reserved.
           </p>
-          <div className="flex gap-6 text-[10px] font-light text-text-muted">
-            <a href="#" className="hover:text-gold transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-gold transition-colors">Terms of Use</a>
+          <div className="flex gap-6 text-[10px] font-light text-sand-beige">
+            <a href="#" className="hover:text-terracotta transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-terracotta transition-colors">Terms of Use</a>
           </div>
         </div>
       </div>
@@ -168,7 +167,7 @@ export default function Footer() {
       {/* Scroll to Top */}
       <motion.button
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 z-40 w-12 h-12 flex items-center justify-center cursor-pointer bg-gold text-bg-primary hover:bg-gold/80"
+        className="fixed bottom-8 right-8 z-40 w-12 h-12 flex items-center justify-center cursor-pointer bg-terracotta text-warm-ivory hover:bg-terracotta/85"
         whileHover={{ scale: 1.05, y: -2 }}
         whileTap={{ scale: 0.95 }}
         aria-label="Scroll back to top"

@@ -10,7 +10,7 @@ const dishes = [
     desc: 'Curated selection of local seasonal curries, indigenous red rice, house-made pickles, and rustic flatbreads.',
     price: 699,
     tag: 'Chef Signature',
-    image: '/images/dish_thali.png',
+    image: '/assets/food/06.jpg',
     rating: '4.9',
     badge: 'Legendary'
   },
@@ -20,7 +20,7 @@ const dishes = [
     desc: 'Fragrant basmati rice layered with slow-cooked organic farm vegetables and rare local spices, served in an earthen pot.',
     price: 549,
     tag: 'Slow Cooked',
-    image: '/images/dish_biryani.png',
+    image: '/assets/food/07.jpg',
     rating: '4.8',
     badge: 'Best Seller'
   },
@@ -30,182 +30,144 @@ const dishes = [
     desc: 'Slow-reduced pasture milk infused with Kashmiri saffron, topped with edible silver leaf, pistachio crumble.',
     price: 399,
     tag: 'Handcrafted',
-    image: '/images/dish_dessert.png',
+    image: '/assets/food/026.jpg',
     rating: '4.9',
     badge: 'Seasonal Dessert'
   }
 ]
 
-function DishCard({ dish, index, isInView }) {
-  const [hovered, setHovered] = useState(false)
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
-      className="flex flex-col group cursor-pointer"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {/* Image Container with Custom Zoom */}
-      <div className="hover-zoom aspect-[4/3] w-full relative mb-6 overflow-hidden rounded-3xl">
-        <img
-          src={dish.image}
-          alt={dish.name}
-          className="w-full h-full object-cover"
-        />
-        
-        {/* Soft elegant gradient */}
-        <div
-          className="absolute inset-0 transition-opacity duration-300"
-          style={{
-            background: 'linear-gradient(to bottom, transparent 60%, rgba(27, 67, 50, 0.4) 100%)',
-            opacity: hovered ? 1 : 0.6
-          }}
-        />
-
-        {/* Floating Badge */}
-        <div
-          className="absolute top-4 left-4 px-3.5 py-1 text-[10px] font-semibold tracking-widest uppercase"
-          style={{ background: 'var(--color-terracotta)', color: 'var(--color-cream)' }}
-        >
-          {dish.badge}
-        </div>
-      </div>
-
-      {/* Info Container */}
-      <div className="flex flex-col flex-1">
-        <div className="flex items-center justify-between mb-2">
-          <span
-            className="text-[11px] font-semibold tracking-widest uppercase"
-            style={{ color: 'var(--color-terracotta-light)' }}
-          >
-            {dish.tag}
-          </span>
-          <span className="flex items-center gap-1 text-xs">
-            <Star className="w-3.5 h-3.5 fill-current" style={{ color: 'var(--color-terracotta)' }} />
-            {dish.rating}
-          </span>
-        </div>
-
-        <h3
-          className="font-display text-2xl font-bold mb-3 transition-colors duration-300"
-          style={{ color: hovered ? 'var(--color-terracotta)' : 'var(--color-forest)' }}
-        >
-          {dish.name}
-        </h3>
-        
-        <p
-          className="text-sm font-light leading-relaxed mb-4 flex-1"
-          style={{ color: 'var(--color-charcoal)', opacity: 0.85 }}
-        >
-          {dish.desc}
-        </p>
-
-        <div className="flex items-center justify-between pt-2">
-          <span
-            className="font-display text-2xl font-semibold"
-            style={{ color: 'var(--color-forest)' }}
-          >
-            ₹{dish.price}
-          </span>
-          
-          <Link
-            to="/menu"
-            className="text-xs font-semibold tracking-widest uppercase flex items-center gap-2 group-hover:text-terracotta transition-colors duration-300"
-            style={{ color: 'var(--color-forest)' }}
-          >
-            Order Now
-            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </Link>
-        </div>
-      </div>
-    </motion.div>
-  )
-}
-
 export default function SignatureDishes() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const [hoveredIndex, setHoveredIndex] = useState(null)
 
   return (
     <section
       id="signature-dishes"
       ref={ref}
-      className="relative overflow-hidden py-28"
-      style={{ 
-        background: 'var(--color-beige)',
-      }}
+      className="relative w-full py-[var(--spacing-section)] bg-bg-secondary overflow-hidden"
       aria-labelledby="signature-heading"
     >
-      <div 
-        className="px-8 relative z-10"
-        style={{ maxWidth: '1280px', margin: '0 auto' }}
-      >
-        {/* Section Header */}
-        <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <div className="max-w-xl">
-            <span
-              className="text-xs font-semibold tracking-widest uppercase block mb-4"
-              style={{ color: 'var(--color-terracotta)' }}
-            >
+      {/* Background Ambience Glow */}
+      <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-terracotta/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="px-8 max-w-container mx-auto relative z-10">
+        
+        {/* Editorial Section Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20 items-end">
+          <div className="lg:col-span-8">
+            <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-terracotta block mb-4">
               Earth's Bounty
             </span>
             <h2
               id="signature-heading"
-              className="font-display leading-none"
-              style={{
-                fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
-                color: 'var(--color-forest)',
-              }}
+              className="font-display font-light text-warm-ivory leading-[1.1]"
+              style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
             >
-              Signature Dishes
+              Signature Gastronomy
             </h2>
           </div>
-          <p
-            className="text-base font-light max-w-sm"
-            style={{ color: 'var(--color-charcoal)', opacity: 0.85 }}
-          >
-            A curated glimpse of our handcrafted seasonal favorites, prepared with pure farm ingredients and coal-fired passion.
-          </p>
+          <div className="lg:col-span-4">
+            <p className="text-sm font-light text-sand-beige leading-relaxed">
+              A curated glimpse of our handcrafted seasonal favorites, prepared with pure farm ingredients and coal-fired passion.
+            </p>
+          </div>
         </div>
 
-        {/* Dish Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
-          {dishes.map((dish, i) => (
-            <DishCard key={dish.id} dish={dish} index={i} isInView={isInView} />
-          ))}
+        {/* Asymmetrical Staggered Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-12 items-stretch">
+          {dishes.map((dish, i) => {
+            const isSecond = i === 1
+            const isThird = i === 2
+            
+            return (
+              <motion.div
+                key={dish.id}
+                initial={{ opacity: 0, y: 60 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 1.2, delay: i * 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className={`flex flex-col justify-between group cursor-pointer ${
+                  isSecond ? 'lg:translate-y-12' : isThird ? 'lg:-translate-y-6' : ''
+                }`}
+                onMouseEnter={() => setHoveredIndex(i)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                <div>
+                  {/* Image Container */}
+                  <div className="aspect-[4/5] w-full relative mb-8 overflow-hidden bg-bg-primary">
+                    <img
+                      src={dish.image}
+                      alt={dish.name}
+                      className="w-full h-full object-cover transition-transform duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                    />
+                    
+                    {/* Dark gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-transparent to-transparent opacity-80" />
+                    
+                    {/* Custom Terracotta Border frame on hover */}
+                    <div className="absolute inset-4 border border-terracotta/0 group-hover:border-terracotta/40 transition-all duration-500 pointer-events-none" />
+
+                    {/* Floating Badge */}
+                    <span className="absolute top-4 left-4 bg-terracotta text-warm-ivory text-[9px] font-semibold tracking-widest uppercase py-1.5 px-3">
+                      {dish.badge}
+                    </span>
+                  </div>
+
+                  {/* Text Details */}
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-medium tracking-[0.3em] uppercase text-copper">
+                        {dish.tag}
+                      </span>
+                      <span className="flex items-center gap-1 text-[11px] text-sand-beige">
+                        <Star className="w-3.5 h-3.5 fill-terracotta text-terracotta" />
+                        {dish.rating}
+                      </span>
+                    </div>
+
+                    <h3 className="font-display font-light text-2xl text-warm-ivory group-hover:text-copper transition-colors duration-300">
+                      {dish.name}
+                    </h3>
+
+                    <p className="text-xs sm:text-sm font-light text-sand-beige/85 leading-relaxed">
+                      {dish.desc}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between border-t border-terracotta/10 pt-6 mt-8">
+                  <span className="font-display text-2xl text-warm-ivory">
+                    ₹{dish.price}
+                  </span>
+                  
+                  <Link
+                    to="/menu"
+                    className="text-[10px] font-semibold tracking-[0.2em] uppercase flex items-center gap-2 text-warm-ivory group-hover:text-terracotta transition-colors duration-300"
+                  >
+                    Explore Menu
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
 
-        {/* CTA Banner */}
+        {/* Bottom CTA Button */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-center mt-16 lg:mt-24"
+          transition={{ duration: 1.2, delay: 0.6 }}
+          className="text-center mt-24 lg:mt-32"
         >
           <Link
             to="/menu"
-            className="btn-primary"
+            className="btn-primary py-4 px-12"
           >
             Explore Full Seasonal Menu
           </Link>
         </motion.div>
-      </div>
 
-      {/* Decorative divider curve at the bottom */}
-      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none">
-        <svg
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-          className="relative block w-full h-[60px]"
-        >
-          <path
-            d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
-            fill="var(--color-cream)"
-          />
-        </svg>
       </div>
     </section>
   )

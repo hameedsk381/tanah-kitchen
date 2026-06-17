@@ -11,11 +11,11 @@ export default function SignatureExperiences() {
       <div className="max-w-container px-8 mx-auto">
         {/* Section Header */}
         <div className="mb-24 text-center">
-          <span className="text-[10px] font-medium tracking-[0.4em] uppercase text-gold block mb-4">
-            {eventsData.featuredTitle}
+          <span className="text-[10px] font-medium tracking-[0.4em] uppercase text-terracotta block mb-4">
+            Rooftop & Art Spaces
           </span>
-          <h2 className="font-display font-light text-text-light" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.2rem)' }}>
-            {eventsData.featuredSubtitle}
+          <h2 className="font-display font-light text-warm-ivory" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.2rem)' }}>
+            Ambience & Experience
           </h2>
         </div>
 
@@ -49,7 +49,7 @@ export default function SignatureExperiences() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/45 to-transparent pointer-events-none" />
                   </div>
-                  <div className="absolute inset-4 border border-gold/10 pointer-events-none" />
+                  <div className="absolute inset-4 border border-terracotta/10 pointer-events-none" />
                 </motion.div>
 
                 {/* Info side */}
@@ -60,17 +60,17 @@ export default function SignatureExperiences() {
                   className="w-full lg:w-1/2 space-y-6"
                 >
                   <div className="flex items-baseline gap-4">
-                    <span className="font-display text-4xl font-light text-gold/30">
+                    <span className="font-display text-4xl font-light text-terracotta/30">
                       {exp.num}
                     </span>
-                    <span className="text-[9px] font-semibold tracking-[0.25em] uppercase text-gold">
+                    <span className="text-[9px] font-semibold tracking-[0.25em] uppercase text-copper">
                       {exp.tag}
                     </span>
                   </div>
-                  <h3 className="font-display font-light text-text-light text-3xl md:text-4xl leading-tight">
+                  <h3 className="font-display font-light text-warm-ivory text-3xl md:text-4xl leading-tight">
                     {exp.title}
                   </h3>
-                  <p className="text-sm font-light text-text-muted leading-relaxed">
+                  <p className="text-sm font-light text-sand-beige leading-relaxed">
                     {exp.desc}
                   </p>
                 </motion.div>

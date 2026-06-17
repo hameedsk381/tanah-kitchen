@@ -20,16 +20,16 @@ export default function GalleryPreview() {
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-baseline gap-6">
           <div>
-            <span className="text-[10px] font-medium tracking-[0.4em] uppercase text-gold block mb-4">
+            <span className="text-[10px] font-medium tracking-[0.4em] uppercase text-terracotta block mb-4">
               Visual Archives
             </span>
-            <h2 className="font-display font-light text-text-light" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.2rem)' }}>
-              A View of <span className="italic text-gold">Tanah</span>
+            <h2 className="font-display font-light text-warm-ivory" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.2rem)' }}>
+              A View of <span className="italic text-copper">Tanah</span>
             </h2>
           </div>
           <Link
             to="/gallery"
-            className="text-[10px] font-semibold tracking-[0.2em] uppercase text-gold hover:text-text-light transition-colors duration-300"
+            className="text-[10px] font-semibold tracking-[0.2em] uppercase text-terracotta hover:text-warm-ivory transition-colors duration-300"
           >
             Explore Full Gallery &rarr;
           </Link>
@@ -45,14 +45,14 @@ export default function GalleryPreview() {
               transition={{ duration: 1.2, delay: idx * 0.2, ease: [0.16, 1, 0.3, 1] }}
               className={`${img.spanClass || 'col-span-12 md:col-span-4 aspect-video'} relative hover-zoom overflow-hidden`}
             >
-              <div className="w-full h-full bg-bg-primary relative">
+              <div className="w-full h-full bg-bg-primary relative animate-pulse-slow">
                 <img
                   src={img.src}
                   alt={img.alt}
                   className="w-full h-full object-cover filter brightness-75 contrast-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/80 via-transparent to-transparent flex items-end p-8 opacity-0 hover:opacity-100 transition-opacity duration-500">
-                  <span className="font-display text-2xl font-light text-text-light">
+                  <span className="font-display text-2xl font-light text-warm-ivory">
                     {img.caption}
                   </span>
                 </div>
