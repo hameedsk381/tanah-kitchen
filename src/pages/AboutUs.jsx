@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import aboutData from '../data/about.json'
 
 export default function AboutUs() {
@@ -17,6 +17,13 @@ export default function AboutUs() {
   const quoteRef = useRef(null)
   const isQuoteInView = useInView(quoteRef, { once: true, margin: '-100px' })
 
+  const { scrollYProgress: quoteScrollY } = useScroll({
+    target: quoteRef,
+    offset: ['start end', 'end start'],
+  })
+  const quoteBgY = useTransform(quoteScrollY, [0, 1], ['-15%', '15%'])
+  const quoteBgScale = useTransform(quoteScrollY, [0, 1], [1.12, 1.02])
+
   const sustainabilityRef = useRef(null)
   const isSustainabilityInView = useInView(sustainabilityRef, { once: true, margin: '-100px' })
 
@@ -30,10 +37,10 @@ export default function AboutUs() {
     <main className="flex-grow pt-24 bg-bg-primary overflow-hidden text-warm-ivory">
       
       {/* Editorial Page Header */}
-      <section className="relative py-[10rem] flex items-center justify-center border-b border-terracotta/10">
+      <section className="relative py-24 md:py-[10rem] flex items-center justify-center border-b border-terracotta/10">
         <div className="absolute inset-0 opacity-15">
           <img
-            src="/assets/Ambiance/TANAH_Amb01029.jpg"
+            src="/assets/Tanha Ambiance/Ambiance-12.webp"
             alt="Lush agricultural landscape"
             className="w-full h-full object-cover filter brightness-50"
           />
@@ -155,9 +162,21 @@ export default function AboutUs() {
       {/* Quote Section */}
       <section 
         ref={quoteRef}
-        className="relative py-[var(--spacing-section)] bg-bg-primary"
+        className="relative py-[var(--spacing-section)] bg-bg-primary overflow-hidden"
       >
-        <div className="max-w-[900px] px-8 mx-auto text-center">
+        {/* Background parallax image */}
+        <motion.div 
+          style={{ y: quoteBgY, scale: quoteBgScale }}
+          className="absolute inset-0 z-0 w-full h-full pointer-events-none opacity-[0.08] filter grayscale brightness-50"
+        >
+          <img
+            src="/assets/Tanha Ambiance/Ambiance-1.webp"
+            alt="Luxury dining room background"
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+
+        <div className="max-w-[900px] px-8 mx-auto text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isQuoteInView ? { opacity: 1, y: 0 } : {}}

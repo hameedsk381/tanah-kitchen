@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import { ArrowDownRight } from 'lucide-react'
 
 export default function HeroExperience() {
   const containerRef = useRef(null)
@@ -11,133 +11,101 @@ export default function HeroExperience() {
     offset: ['start start', 'end start'],
   })
 
-  // Smooth parallax scroll animations
-  const yBg = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
-  const yText = useTransform(scrollYProgress, [0, 1], ['0%', '40%'])
-  const scaleBg = useTransform(scrollYProgress, [0, 1], [1, 1.08])
-  const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0])
-
-  const handleScroll = () => {
-    const nextSection = document.getElementById('philosophy')
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
+  // Parallax offsets
+  const yBg = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
+  const yText = useTransform(scrollYProgress, [0, 1], ['0%', '-5%'])
+  const opacityText = useTransform(scrollYProgress, [0, 0.6], [1, 0])
 
   return (
     <section
       ref={containerRef}
-      className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-bg-primary"
+      className="relative h-screen w-full flex items-center overflow-hidden bg-bg-primary"
       aria-label="Hero Experience"
     >
-      {/* Cinematic Fullscreen Background (Video with Parallax Wrapper) */}
+      {/* Fullscreen Video Background */}
       <motion.div
-        style={{ y: yBg, scale: scaleBg }}
+        style={{ y: yBg }}
         className="absolute inset-0 z-0 w-full h-full"
       >
-        {/* Background Video */}
         <video
           autoPlay
           muted
           loop
           playsInline
-          poster="/assets/Ambiance/TANAH_Amb01017.jpg"
-          className="w-full h-full object-cover filter brightness-[0.55] contrast-[1.05]"
-          style={{ width: '100vw', height: '100vh' }}
+          poster="/assets/Tanha Ambiance/Ambiance-11.webp"
+          className="w-full h-full object-cover filter brightness-[0.45] contrast-[1.05]"
         >
           <source src="/video/hero-video.mp4" type="video/mp4" />
-          {/* Legacy fallback img inside video tag */}
           <img
-            src="/assets/Ambiance/TANAH_Amb01017.jpg"
-            alt="Luxury rooftop dining ambience fallback"
+            src="/assets/Tanha Ambiance/Ambiance-11.webp"
+            alt="Luxury rooftop dining ambience at Tanha"
             className="w-full h-full object-cover"
           />
         </video>
-
-        {/* Ambient Dark Terracotta Gradient Overlay (65% Opacity) */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: 'linear-gradient(135deg, #2A1208 0%, #3B170A 50%, #5A2410 100%)',
-            opacity: 0.65
-          }}
-        />
+        
+        {/* Subtle Luxury Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-bg-primary via-bg-primary/50 to-transparent pointer-events-none" />
       </motion.div>
 
-      {/* Cinematic Hero Content (Centered) */}
-      <motion.div
-        style={{ y: yText, opacity }}
-        className="relative z-10 text-center px-6 max-w-container mx-auto"
-      >
-        {/* Brand Tag */}
-        <motion.span
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[10px] font-semibold tracking-[0.45em] uppercase text-copper block mb-6 font-body"
-        >
-          Tanah Kitchen & Bar
-        </motion.span>
-
-        {/* Hero Title: Where Art, Ambience & Gastronomy Meet */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.4, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display font-light text-warm-ivory leading-[1.05] mb-8"
-          style={{
-            fontSize: 'clamp(2.5rem, 6.5vw, 6.2rem)',
-          }}
-        >
-          Where Art, Ambience<br />
-          <span className="font-light italic text-copper">& Gastronomy Meet</span>
-        </motion.h1>
-
-        {/* Subheading */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="text-xs sm:text-sm md:text-base font-light text-sand-beige max-w-2xl mx-auto mb-12 leading-relaxed font-body"
-        >
-          Experience elevated dining, handcrafted cocktails, live sports, and unforgettable evenings at Tanah Kitchen & Bar.
-        </motion.p>
-
-        {/* Dynamic Buttons */}
+      {/* Editorial Content Overlay (Asymmetric & Left-Aligned) */}
+      <div className="max-w-container mx-auto px-8 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col sm:flex-row justify-center gap-6"
+          style={{ y: yText, opacity: opacityText }}
+          className="lg:col-span-7 flex flex-col justify-center text-left"
         >
-          <Link
-            to="/menu"
-            className="btn-primary py-4 px-10 text-[9px] tracking-[0.25em]"
-          >
-            View Menu
-          </Link>
-          <Link
-            to="/book"
-            className="btn-outline py-4 px-10 text-[9px] tracking-[0.25em]"
-          >
-            Book A Table
-          </Link>
-        </motion.div>
-      </motion.div>
 
-      {/* Scroll Down Indicator */}
-      <motion.button
-        onClick={handleScroll}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3 cursor-pointer bg-transparent border-none text-warm-ivory/55 hover:text-copper transition-colors duration-300"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-        aria-label="Scroll down"
-      >
-        <span className="text-[8px] font-medium tracking-[0.3em] uppercase">
-          Explore
+
+          <span className="text-[10px] font-semibold tracking-[0.5em] uppercase text-copper block mb-4 font-body">
+            TANHA KITCHEN & BAR
+          </span>
+
+          <h1
+            className="font-display font-light text-warm-ivory leading-[1.02] mb-8"
+            style={{
+              fontSize: 'clamp(2.8rem, 6vw, 6rem)',
+            }}
+          >
+            Where Art &<br />
+            <span className="font-light italic text-copper">Sky Collide</span>
+          </h1>
+
+          <p className="text-sm font-light text-sand-beige max-w-md mb-10 leading-relaxed font-body">
+            A premium rooftop destination elevating Hyderabad's dining scene. Experience progressive gastronomy, botanical mixology, and high-altitude art installations under open skies.
+          </p>
+
+          <div className="flex flex-wrap gap-6 items-center">
+            <Link
+              to="/book"
+              className="btn-primary py-4 px-10 text-[9px] tracking-[0.25em]"
+            >
+              Reserve a Table
+            </Link>
+            <Link
+              to="/menu"
+              className="text-[10px] font-medium tracking-[0.2em] uppercase text-warm-ivory hover:text-copper transition-colors duration-300 flex items-center gap-3 group"
+            >
+              Explore Menu
+              <ArrowDownRight className="w-4 h-4 text-copper group-hover:translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-300" />
+            </Link>
+          </div>
+        </motion.div>
+
+      </div>
+
+      {/* Floating scroll explorer at bottom-left */}
+      <div className="absolute bottom-12 left-8 hidden lg:flex items-center gap-4 z-20">
+        <span className="text-[8px] font-mono tracking-[0.3em] text-muted-beige uppercase">
+          SCROLL TO DISCOVER
         </span>
-        <ChevronDown className="w-4 h-4 text-copper" />
-      </motion.button>
+        <div className="w-16 h-[1px] bg-terracotta/30 relative overflow-hidden">
+          <motion.div
+            animate={{ x: [-64, 64] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute top-0 left-0 w-8 h-full bg-copper"
+          />
+        </div>
+      </div>
     </section>
   )
 }

@@ -53,7 +53,7 @@ export default function Contact() {
       <section className="relative py-28 md:py-36 text-center border-b border-terracotta/10 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-15">
           <img
-            src="/assets/Ambiance/TANAH_Amb01058.jpg"
+            src="/assets/Tanha Ambiance/Ambiance-21.webp"
             alt="Tanah Bar ambience banner"
             className="w-full h-full object-cover filter brightness-50"
           />
@@ -146,6 +146,16 @@ export default function Contact() {
                   <MessageSquare className="w-3.5 h-3.5" />
                   WhatsApp Us
                 </a>
+              </div>
+
+              {/* Ambient preview image frame */}
+              <div className="aspect-[16/10] w-full overflow-hidden bg-bg-secondary relative border border-terracotta/10 pt-4">
+                <img
+                  src="/assets/Tanha Ambiance/Ambiance-18.webp"
+                  alt="Tanha glass atrium dining details"
+                  className="w-full h-full object-cover filter brightness-[0.8] contrast-[1.05]"
+                />
+                <div className="absolute inset-3 border border-warm-ivory/10 pointer-events-none" />
               </div>
             </div>
 

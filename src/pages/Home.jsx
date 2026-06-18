@@ -2,15 +2,15 @@ import { useEffect } from 'react'
 import HeroExperience from '../components/HeroExperience'
 import Philosophy from '../components/Philosophy'
 import SignatureDishes from '../components/SignatureDishes'
+import LiquidAlchemy from '../components/LiquidAlchemy'
 import SignatureExperiences from '../components/SignatureExperiences'
 import GalleryPreview from '../components/GalleryPreview'
-import LiveSportsEvents from '../components/LiveSportsEvents'
 import ReservationCTA from '../components/ReservationCTA'
 
 export default function Home() {
   // Set title & meta
   useEffect(() => {
-    document.title = 'Tanah Kitchen & Bar | Architectural Rooftop Gastronomy'
+    document.title = 'Tanah Kitchen & Bar | Architectural Rooftop Destination'
     window.scrollTo(0, 0)
   }, [])
 
@@ -18,25 +18,25 @@ export default function Home() {
     <main className="flex-grow bg-bg-primary overflow-x-hidden">
       <h1 className="sr-only">Tanah Kitchen & Bar - Luxury Rooftop Dining in Hyderabad</h1>
       
-      {/* 1. Hero Experience */}
+      {/* 1. Hero Experience (Asymmetrical split canvas) */}
       <HeroExperience />
       
-      {/* 2. The Tanah Story */}
+      {/* 2. The Tanah Story (Overlapping editorial canvas) */}
       <Philosophy />
       
-      {/* 3. Signature Dishes */}
+      {/* 3. Signature Dishes (Staggered interactive split list) */}
       <SignatureDishes />
+
+      {/* 4. Liquid Alchemy (Asymmetrical botanical cocktail showcase) */}
+      <LiquidAlchemy />
       
-      {/* 4. Ambience & Rooftop Experience */}
+      {/* 5. Spaces & Ambience (Full-bleed parallax panels) */}
       <SignatureExperiences />
       
-      {/* 5. Gallery Showcase */}
+      {/* 6. Gallery Showcase (Masonry off-grid mosaic) */}
       <GalleryPreview />
       
-      {/* 6. Live Sports & Events */}
-      <LiveSportsEvents />
-      
-      {/* 7. Reservation CTA */}
+      {/* 7. Reservation CTA (Luxury booking deck) */}
       <ReservationCTA />
     </main>
   )

@@ -1,37 +1,34 @@
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, useInView } from 'framer-motion'
-import { Star, ArrowRight } from 'lucide-react'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
+import { ArrowUpRight } from 'lucide-react'
 
 const dishes = [
   {
     id: 'dish-thali',
     name: 'Heritage Soil Thali',
-    desc: 'Curated selection of local seasonal curries, indigenous red rice, house-made pickles, and rustic flatbreads.',
+    desc: 'A masterfully curated selection of local seasonal curries, indigenous red rice, house-made pickles, and rustic coal-baked flatbreads.',
     price: 699,
-    tag: 'Chef Signature',
-    image: '/assets/food/06.jpg',
-    rating: '4.9',
+    tag: 'CHEF SIGNATURE',
+    image: '/assets/Tanha Ambiance/Tanha Food/food-22.webp',
     badge: 'Legendary'
   },
   {
     id: 'dish-biryani',
     name: 'Forest Claypot Biryani',
-    desc: 'Fragrant basmati rice layered with slow-cooked organic farm vegetables and rare local spices, served in an earthen pot.',
+    desc: 'Fragrant, aged basmati rice layered with slow-cooked organic forest mushrooms, heritage root vegetables, and rare local spices, sealed in raw clay.',
     price: 549,
-    tag: 'Slow Cooked',
-    image: '/assets/food/07.jpg',
-    rating: '4.8',
-    badge: 'Best Seller'
+    tag: 'SLOW COOKED',
+    image: '/assets/Tanha Ambiance/Tanha Food/food-15.webp',
+    badge: 'Signature'
   },
   {
     id: 'dish-dessert',
     name: 'Saffron Rabri Terracotta Bowl',
-    desc: 'Slow-reduced pasture milk infused with Kashmiri saffron, topped with edible silver leaf, pistachio crumble.',
+    desc: 'Pasture-fed milk slow-reduced over coal fires, infused with Kashmiri saffron, and finished with a pistachio crumble and organic honey.',
     price: 399,
-    tag: 'Handcrafted',
-    image: '/assets/food/026.jpg',
-    rating: '4.9',
+    tag: 'HANDCRAFTED',
+    image: '/assets/Tanha Ambiance/Tanha Food/food-27.webp',
     badge: 'Seasonal Dessert'
   }
 ]
@@ -39,7 +36,7 @@ const dishes = [
 export default function SignatureDishes() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
-  const [hoveredIndex, setHoveredIndex] = useState(null)
+  const [activeIdx, setActiveIdx] = useState(0)
 
   return (
     <section
@@ -48,125 +45,109 @@ export default function SignatureDishes() {
       className="relative w-full py-[var(--spacing-section)] bg-bg-secondary overflow-hidden"
       aria-labelledby="signature-heading"
     >
-      {/* Background Ambience Glow */}
-      <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-terracotta/5 rounded-full blur-3xl pointer-events-none" />
+      {/* Background glow */}
+      <div className="absolute top-1/2 left-10 w-96 h-96 bg-terracotta/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="px-8 max-w-container mx-auto relative z-10">
         
-        {/* Editorial Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20 items-end">
-          <div className="lg:col-span-8">
-            <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-terracotta block mb-4">
-              Earth's Bounty
-            </span>
-            <h2
-              id="signature-heading"
-              className="font-display font-light text-warm-ivory leading-[1.1]"
-              style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
-            >
-              Signature Gastronomy
-            </h2>
-          </div>
-          <div className="lg:col-span-4">
-            <p className="text-sm font-light text-sand-beige leading-relaxed">
-              A curated glimpse of our handcrafted seasonal favorites, prepared with pure farm ingredients and coal-fired passion.
-            </p>
-          </div>
+        {/* Header */}
+        <div className="mb-20">
+          <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-terracotta block mb-4">
+            CULINARY NARRATIVE
+          </span>
+          <h2
+            id="signature-heading"
+            className="font-display font-light text-warm-ivory leading-tight"
+            style={{ fontSize: 'clamp(2.5rem, 5.5vw, 4.2rem)' }}
+          >
+            Signature Gastronomy
+          </h2>
         </div>
 
-        {/* Asymmetrical Staggered Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-12 items-stretch">
-          {dishes.map((dish, i) => {
-            const isSecond = i === 1
-            const isThird = i === 2
-            
-            return (
-              <motion.div
-                key={dish.id}
-                initial={{ opacity: 0, y: 60 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 1.2, delay: i * 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className={`flex flex-col justify-between group cursor-pointer ${
-                  isSecond ? 'lg:translate-y-12' : isThird ? 'lg:-translate-y-6' : ''
-                }`}
-                onMouseEnter={() => setHoveredIndex(i)}
-                onMouseLeave={() => setHoveredIndex(null)}
-              >
-                <div>
-                  {/* Image Container */}
-                  <div className="aspect-[4/5] w-full relative mb-8 overflow-hidden bg-bg-primary">
-                    <img
-                      src={dish.image}
-                      alt={dish.name}
-                      className="w-full h-full object-cover transition-transform duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-                    />
-                    
-                    {/* Dark gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-transparent to-transparent opacity-80" />
-                    
-                    {/* Custom Terracotta Border frame on hover */}
-                    <div className="absolute inset-4 border border-terracotta/0 group-hover:border-terracotta/40 transition-all duration-500 pointer-events-none" />
+        {/* Interactive Editorial Split */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+          
+          {/* Left Column: Huge Dynamic Showcase Frame */}
+          <div className="lg:col-span-6 xl:col-span-7 relative">
+            <div className="aspect-[4/5] lg:aspect-[3/4] w-full overflow-hidden bg-bg-primary relative border border-terracotta/10">
+              
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={activeIdx}
+                  src={dishes[activeIdx].image}
+                  alt={dishes[activeIdx].name}
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute inset-0 w-full h-full object-cover filter brightness-[0.8] contrast-[1.05]"
+                />
+              </AnimatePresence>
 
-                    {/* Floating Badge */}
-                    <span className="absolute top-4 left-4 bg-terracotta text-warm-ivory text-[9px] font-semibold tracking-widest uppercase py-1.5 px-3">
-                      {dish.badge}
+              {/* Decorative framing overlay */}
+              <div className="absolute inset-6 border border-warm-ivory/10 pointer-events-none" />
+              
+              <div className="absolute bottom-10 left-10 z-10 text-left">
+                <span className="bg-terracotta text-warm-ivory text-[8px] font-semibold tracking-widest uppercase py-1.5 px-3 block w-fit mb-2">
+                  {dishes[activeIdx].badge}
+                </span>
+                <p className="text-lg font-display italic text-sand-beige">
+                  Featured Plating
+                </p>
+              </div>
+            </div>
+
+            {/* Behind layout details */}
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 border-l border-b border-terracotta/20 -z-10 pointer-events-none" />
+          </div>
+
+          {/* Right Column: Menu Detail Selection List */}
+          <div className="lg:col-span-6 xl:col-span-5 flex flex-col justify-center space-y-2">
+            {dishes.map((dish, idx) => {
+              const isActive = idx === activeIdx
+              
+              return (
+                <div
+                  key={dish.id}
+                  className={`p-8 border-b border-terracotta/10 cursor-pointer transition-all duration-500 relative ${
+                    isActive ? 'bg-[#181514]/60 border-l-2 border-l-terracotta' : 'hover:bg-[#141211]/30'
+                  }`}
+                  onMouseEnter={() => setActiveIdx(idx)}
+                  onClick={() => setActiveIdx(idx)}
+                >
+                  <div className="flex justify-between items-baseline mb-3">
+                    <span className="text-[9px] font-mono tracking-widest text-copper">
+                      {dish.tag}
+                    </span>
+                    <span className="text-xl font-display text-warm-ivory">
+                      ₹{dish.price}
                     </span>
                   </div>
 
-                  {/* Text Details */}
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-medium tracking-[0.3em] uppercase text-copper">
-                        {dish.tag}
-                      </span>
-                      <span className="flex items-center gap-1 text-[11px] text-sand-beige">
-                        <Star className="w-3.5 h-3.5 fill-terracotta text-terracotta" />
-                        {dish.rating}
-                      </span>
-                    </div>
+                  <h3 className="font-display font-light text-2xl text-warm-ivory mb-3 transition-colors duration-300">
+                    {dish.name}
+                  </h3>
 
-                    <h3 className="font-display font-light text-2xl text-warm-ivory group-hover:text-copper transition-colors duration-300">
-                      {dish.name}
-                    </h3>
-
-                    <p className="text-xs sm:text-sm font-light text-sand-beige/85 leading-relaxed">
-                      {dish.desc}
-                    </p>
-                  </div>
+                  <p className={`text-xs font-light leading-relaxed transition-all duration-300 ${
+                    isActive ? 'text-sand-beige h-auto opacity-100' : 'text-muted-beige/60 h-0 overflow-hidden opacity-0'
+                  }`}>
+                    {dish.desc}
+                  </p>
                 </div>
+              )
+            })}
 
-                <div className="flex items-center justify-between border-t border-terracotta/10 pt-6 mt-8">
-                  <span className="font-display text-2xl text-warm-ivory">
-                    ₹{dish.price}
-                  </span>
-                  
-                  <Link
-                    to="/menu"
-                    className="text-[10px] font-semibold tracking-[0.2em] uppercase flex items-center gap-2 text-warm-ivory group-hover:text-terracotta transition-colors duration-300"
-                  >
-                    Explore Menu
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-                  </Link>
-                </div>
-              </motion.div>
-            )
-          })}
+            <div className="pt-8 pl-8">
+              <Link
+                to="/menu"
+                className="btn-gold-outline py-3.5 px-10 text-[9px] tracking-[0.2em]"
+              >
+                Discover Full Seasonal Menu
+              </Link>
+            </div>
+          </div>
+
         </div>
-
-        {/* Bottom CTA Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1.2, delay: 0.6 }}
-          className="text-center mt-24 lg:mt-32"
-        >
-          <Link
-            to="/menu"
-            className="btn-primary py-4 px-12"
-          >
-            Explore Full Seasonal Menu
-          </Link>
-        </motion.div>
 
       </div>
     </section>

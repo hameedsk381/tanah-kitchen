@@ -66,10 +66,10 @@ export default function Gallery() {
             })}
           </div>
 
-          {/* Masonry Grid */}
+          {/* Uniform Gallery Grid */}
           <motion.div 
             layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             <AnimatePresence mode="popLayout">
               {filteredItems.map((item) => (
@@ -81,7 +81,7 @@ export default function Gallery() {
                   exit={{ opacity: 0, scale: 0.98 }}
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                   onClick={() => setLightbox(item)}
-                  className={`group relative overflow-hidden cursor-pointer bg-bg-secondary ${item.spanClass}`}
+                  className="group relative overflow-hidden cursor-pointer bg-bg-secondary aspect-square border border-terracotta/10"
                 >
                   <img
                     src={item.src}
@@ -107,7 +107,6 @@ export default function Gallery() {
               ))}
             </AnimatePresence>
           </motion.div>
-
         </div>
       </section>
 

@@ -60,9 +60,9 @@ export default function Book() {
       {/* Fullscreen background image */}
       <div className="absolute inset-0 z-0 w-full h-full">
         <img
-          src="/assets/Ambiance/TANAH_Amb01056.jpg"
+          src="/assets/Tanha Ambiance/Ambiance-20.webp"
           alt="Luxury rooftop sanctuary"
-          className="w-full h-full object-cover filter brightness-[0.25] contrast-[1.05]"
+          className="w-full h-full object-cover filter brightness-[0.22] contrast-[1.05]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-transparent to-bg-primary/70" />
       </div>
@@ -71,20 +71,33 @@ export default function Book() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
           {/* Informational column */}
-          <div className="lg:col-span-5 space-y-6">
-            <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-terracotta block">
-              Reservations
-            </span>
-            <h1 className="font-display font-light text-warm-ivory leading-tight" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
-              Secure Your<br />
-              <span className="italic text-copper">Basalt Table</span>
-            </h1>
-            <p className="text-sm font-light text-sand-beige leading-relaxed">
-              We look forward to welcoming you to Tanah Kitchen & Bar. Due to the sourcing of fresh daily crops and slow coal embers, reservations are highly recommended.
-            </p>
-            <div className="border-l border-terracotta/30 pl-6 space-y-4">
-              <h4 className="font-display text-lg text-warm-ivory font-light">Resort Casual Policy</h4>
-              <p className="text-xs text-sand-beige font-light leading-relaxed">
+          <div className="lg:col-span-5 space-y-8">
+            <div className="space-y-4">
+              <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-terracotta block">
+                Reservations
+              </span>
+              <h1 className="font-display font-light text-warm-ivory leading-tight" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
+                Secure Your<br />
+                <span className="italic text-copper">Basalt Table</span>
+              </h1>
+              <p className="text-xs sm:text-sm font-light text-sand-beige leading-relaxed">
+                We look forward to welcoming you to Tanah Kitchen & Bar. Due to the sourcing of fresh daily crops and slow coal embers, reservations are highly recommended.
+              </p>
+            </div>
+
+            {/* Visual Frame of the Space */}
+            <div className="aspect-[16/10] w-full overflow-hidden bg-bg-secondary relative border border-terracotta/10">
+              <img
+                src="/assets/Tanha Ambiance/Ambiance-15.webp"
+                alt="Tanha glass atrium dining space"
+                className="w-full h-full object-cover filter brightness-[0.8] contrast-[1.05]"
+              />
+              <div className="absolute inset-3 border border-warm-ivory/10 pointer-events-none" />
+            </div>
+
+            <div className="border-l border-terracotta/30 pl-6 space-y-2">
+              <h4 className="font-display text-base text-warm-ivory font-light">Resort Casual Policy</h4>
+              <p className="text-[11px] text-sand-beige font-light leading-relaxed">
                 We encourage mindful attire. Smart casual is recommended to complement the premium design and atmosphere.
               </p>
             </div>

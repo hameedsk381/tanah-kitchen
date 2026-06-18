@@ -7,7 +7,7 @@
       "name": "Ancient Grain Granola",
       "desc": "House-toasted organic millets, wild forest honey, native berries, and farm-fresh curd.",
       "price": 399,
-      "image": "/assets/food/01.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/01.webp",
       "tags": ["Organic", "Gluten-Free"]
     },
     {
@@ -16,7 +16,7 @@
       "name": "Tanah Avocado Sourdough",
       "desc": "Hand-mashed avocado, heirloom cherry tomatoes, home-churned white butter, toasted sourdough.",
       "price": 549,
-      "image": "/assets/food/02.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/food-2.webp",
       "tags": ["Signature", "Vegan Option"]
     },
     {
@@ -25,7 +25,7 @@
       "name": "Millet Idli & Heirloom Chutney",
       "desc": "Steamed foxtail millet cakes served with stone-ground coconut chutney and forest herb sambar.",
       "price": 249,
-      "image": "/assets/food/03.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/03.webp",
       "tags": ["Organic", "Gluten-Free"]
     },
     {
@@ -34,7 +34,7 @@
       "name": "Spiced Forest Mushroom Omelette",
       "desc": "Pasture-raised eggs, wild mushrooms, baby spinach, aged artisanal cheese, and rustic toast.",
       "price": 399,
-      "image": "/assets/food/04.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/food-4.webp",
       "tags": ["Fresh Eggs"]
     },
     {
@@ -43,7 +43,7 @@
       "name": "Earthy Quinoa Upma",
       "desc": "Fluffy quinoa cooked with organic garden vegetables, toasted mustard seeds, curry leaves, and cashews.",
       "price": 249,
-      "image": "/assets/food/05.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/05.webp",
       "tags": ["Hearty", "Vegan"]
     },
     {
@@ -52,7 +52,7 @@
       "name": "Heritage Soil Thali",
       "desc": "Curated selection of local seasonal curries, indigenous red rice, house-made pickles, and flatbreads.",
       "price": 549,
-      "image": "/assets/food/06.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/food-6.webp",
       "tags": ["Must Try", "Chef Selection"]
     },
     {
@@ -61,7 +61,7 @@
       "name": "Forest Claypot Biryani",
       "desc": "Fragrant basmati rice layered with slow-cooked organic vegetables, local spices, served in a clay pot.",
       "price": 549,
-      "image": "/assets/food/07.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/07.webp",
       "tags": ["Best Seller", "Signature"]
     },
     {
@@ -70,7 +70,7 @@
       "name": "Earthy Root Vegetable Curry",
       "desc": "Sweet potato, beetroot, and heritage carrots simmered in spiced coconut milk broth, served with red rice.",
       "price": 399,
-      "image": "/assets/food/08.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/food-8.webp",
       "tags": ["Vegan", "Gluten-Free"]
     },
     {
@@ -79,7 +79,7 @@
       "name": "Tanah Green Salad",
       "desc": "Crisp handpicked field greens, cucumbers, toasted pumpkin seeds, wood-pressed mustard dressing.",
       "price": 249,
-      "image": "/assets/food/09.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/food-9.webp",
       "tags": ["Raw", "Zero Mile"]
     },
     {
@@ -88,7 +88,7 @@
       "name": "Basil Pesto Millet Bowl",
       "desc": "Cracked millets tossed in organic basil-walnut pesto, cherry tomatoes, and grilled yellow zucchini.",
       "price": 399,
-      "image": "/assets/food/010.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/010.webp",
       "tags": ["Green", "Healthy"]
     },
     {
@@ -97,7 +97,7 @@
       "name": "Wood-Fired Wild Mushroom Risotto",
       "desc": "Slow-simmered arborio rice with hand-foraged mushrooms, truffle oil, and aged artisanal parmesan.",
       "price": 549,
-      "image": "/assets/food/011.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/food-11.webp",
       "tags": ["Signature", "Luxury"]
     },
     {
@@ -106,7 +106,7 @@
       "name": "Smoked Terracotta Paneer",
       "desc": "Clay-roasted organic paneer marinated in local wild herbs and cold-pressed mustard oil, served with mint dip.",
       "price": 549,
-      "image": "/assets/food/012.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/food-12.webp",
       "tags": ["Spicy", "Handcrafted"]
     },
     {
@@ -115,7 +115,7 @@
       "name": "Claypot Dal Earth",
       "desc": "Black lentils slow-simmered for 24 hours on coal embers with rich farm cream and organic white butter.",
       "price": 399,
-      "image": "/assets/food/013.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/food-13.webp",
       "tags": ["Legendary", "Slow Cooked"]
     },
     {
@@ -124,7 +124,7 @@
       "name": "Barley & Beetroot Risotto",
       "desc": "Ancient barley grains cooked with roasted beetroot purée, local goat cheese, and fresh microgreens.",
       "price": 549,
-      "image": "/assets/food/014.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/food-14.webp",
       "tags": ["Creamy", "Artisanal"]
     },
     {
@@ -133,7 +133,7 @@
       "name": "Wood-fired Herb Crusted Potatoes",
       "desc": "Slow-roasted baby potatoes tossed in cold-pressed olive oil, wild garlic, and fresh rosemary sprigs.",
       "price": 399,
-      "image": "/assets/food/015.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/food-15.webp",
       "tags": ["Comfort", "Coal Cooked"]
     },
     {
@@ -142,7 +142,7 @@
       "name": "Wild Forest Honey Lemonade",
       "desc": "Squeezed organic lemons, wild-foraged honey, fresh garden mint, infused with activated charcoal.",
       "price": 249,
-      "image": "/assets/food/016.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/food-16.webp",
       "tags": ["Refresher"]
     },
     {
@@ -151,7 +151,7 @@
       "name": "Golden Soil Milk",
       "desc": "Warm organic almond milk infused with fresh turmeric root, green cardamom, black pepper, and honey.",
       "price": 249,
-      "image": "/assets/food/017.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/food-17.webp",
       "tags": ["Healing", "Warm"]
     },
     {
@@ -160,7 +160,7 @@
       "name": "Araku Valley Cold Brew",
       "desc": "Single-origin Araku Valley coffee beans cold-steeped for 18 hours, served over artisanal ice blocks.",
       "price": 249,
-      "image": "/assets/food/018.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/018.webp",
       "tags": ["Caffeine"]
     },
     {
@@ -169,7 +169,7 @@
       "name": "Sparkling Kokum Nectar",
       "desc": "Traditional kokum extract mixed with sparkling water, roasted cumin, and black salt.",
       "price": 249,
-      "image": "/assets/food/019.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/food-19.webp",
       "tags": ["Digestion", "Cold"]
     },
     {
@@ -178,7 +178,7 @@
       "name": "Chilled Hibiscus Brew",
       "desc": "Dried hibiscus flowers cold brewed with cardamoms and sweetened with wild honey.",
       "price": 249,
-      "image": "/assets/food/020.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/020.webp",
       "tags": ["Floral", "Iced"]
     },
     {
@@ -187,7 +187,7 @@
       "name": "Rooftop Smoked Old Fashioned",
       "desc": "Premium hand-blended oak infusion, orange bitters, organic cane extract, smoked under hickory smoke.",
       "price": 549,
-      "image": "/assets/food/021.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/021.webp",
       "tags": ["Signature", "Smoked"]
     },
     {
@@ -196,7 +196,7 @@
       "name": "Earthy Hibiscus Elixir",
       "desc": "Fermented kokum nectar, botanical gin infusion, tonic water, dried rose hips garnish.",
       "price": 549,
-      "image": "/assets/food/022.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/food-22.webp",
       "tags": ["Botanical", "Artisanal"]
     },
     {
@@ -205,7 +205,7 @@
       "name": "Basalt Stone Margarita",
       "desc": "Agave distillate, fresh lime juice, organic orange nectar, served with a smoked black lava salt rim.",
       "price": 549,
-      "image": "/assets/food/023.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/food-23.webp",
       "tags": ["Lava Salt", "Citrus"]
     },
     {
@@ -214,7 +214,7 @@
       "name": "Forest Herbal Mule",
       "desc": "Vodka infused with fresh ginger root, lemongrass, mint leaves, topped with carbonated ginger beer.",
       "price": 549,
-      "image": "/assets/food/024.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/food-24.webp",
       "tags": ["Spicy", "Refreshing"]
     },
     {
@@ -223,7 +223,7 @@
       "name": "Vedic Bramble Tonic",
       "desc": "Wild forest blackberry juice, gin, fresh lemon juice, simple cane syrup, and green cardamoms.",
       "price": 549,
-      "image": "/assets/food/025.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/025.webp",
       "tags": ["Vedic", "Berry"]
     },
     {
@@ -232,7 +232,7 @@
       "name": "Saffron Rabri Terracotta Bowl",
       "desc": "Slow-reduced milk infused with Kashmiri saffron, topped with silver leaf, pistachios, served in clay bowl.",
       "price": 399,
-      "image": "/assets/food/026.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/food-26.webp",
       "tags": ["Chef Special", "Traditional"]
     },
     {
@@ -241,7 +241,7 @@
       "name": "Charcoal Roasted Fig Tart",
       "desc": "Local fresh figs roasted over charcoal, in a gluten-free almond crust, served with vanilla bean whip.",
       "price": 399,
-      "image": "/assets/food/027.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/food-27.webp",
       "tags": ["Organic"]
     },
     {
@@ -250,7 +250,7 @@
       "name": "Millet Coconut Payasam",
       "desc": "Barnyard millet cooked with fresh coconut milk, jaggery syrup, toasted cashew nuts, and cardamom.",
       "price": 399,
-      "image": "/assets/food/028.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/food-28.webp",
       "tags": ["Vegan", "Gluten-Free"]
     },
     {
@@ -259,7 +259,7 @@
       "name": "Dark Chocolate Soil Cake",
       "desc": "70% single-origin dark chocolate cake layered with cocoa soil crumb and beetroot raspberry gel.",
       "price": 549,
-      "image": "/assets/food/029.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/food-29.webp",
       "tags": ["Signature", "Decadent"]
     },
     {
@@ -268,7 +268,7 @@
       "name": "Dehydrated Apple Rose Tart",
       "desc": "Thinly sliced red apples arranged in rose shape, over stone ground almond flour base and forest honey.",
       "price": 399,
-      "image": "/assets/food/030.jpg",
+      "image": "/assets/Tanha Ambiance/Tanha Food/food-30.webp",
       "tags": ["Rose Art", "Sweet"]
     }
   ]
