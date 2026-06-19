@@ -1,98 +1,126 @@
 import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { TribalDiamond } from './illustrations'
 
-const experiences = [
+const occasions = [
   {
-    num: "01",
-    title: "Rooftop Embers & Basalt Hearth",
-    desc: "An open-air culinary experience where native wood fires flame-grill seasonal harvest under Gachibowli’s night skies. Savor progressive platings served on raw basalt slate.",
-    image: "/assets/Tanha Ambiance/Ambiance-19.webp",
-    tag: "FIRE & SKY"
+    title: "Team Bonding Events",
+    desc: "Celebrate milestones, project completions, and achievement"
   },
   {
-    num: "02",
-    title: "Fermented Elixirs & Botanicals",
-    desc: "A curated ritual of native tonics, house-made vinegars, and forest honey infusions. Poured in custom architectural ceramics in our glass atrium lounge.",
-    image: "/assets/Tanha Ambiance/Ambiance-13.webp",
-    tag: "ATRIUM & ALCHEMY"
+    title: "Leadership Dinners",
+    desc: "Host meaningful conversations with key stakeholders."
   },
   {
-    num: "03",
-    title: "The Gallery Dining Salon",
-    desc: "Dine in an environment where modern Indian painting, sculptural clay molding, and gastronomy converge. A collaborative experience featuring seasonal art installations.",
-    image: "/assets/Tanha Ambiance/Ambiance-25.webp",
-    tag: "ART & CULTURE"
+    title: "Client Entertainment",
+    desc: "Impress clients in a refined yet relaxed setting."
+  },
+  {
+    title: "Employee Recognition Programs",
+    desc: "Reward teams with memorable experiences."
+  },
+  {
+    title: "Festival & Seasonal Celebrations",
+    desc: "Create moments employees genuinely look forward to"
   }
 ]
 
 export default function SignatureExperiences() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
+
   return (
-    <section id="experiences" className="relative w-full bg-bg-primary">
-      <div className="py-24 text-center max-w-container px-8 mx-auto">
-        <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-terracotta block mb-4">
-          ATMOSPHERE & SPACES
-        </span>
-        <h2 className="font-display font-light text-warm-ivory" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.2rem)' }}>
-          Signature Spaces
-        </h2>
-      </div>
+    <section id="experiences" ref={ref} className="relative w-full bg-[#E8D8C0] py-24 overflow-hidden">
+      {/* Background paper texture SVG */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none z-0" 
+           style={{ 
+             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' fill='none'/%3E%3Cpath d='M10 0 L10 100 M90 0 L90 100' stroke='%23000000' stroke-width='0.5'/%3E%3C/svg%3E")`,
+             backgroundSize: '80px 80px'
+           }} 
+      />
 
-      {/* Full-bleed panels */}
-      <div className="w-full">
-        {experiences.map((exp, idx) => {
-          const containerRef = useRef(null)
-          const { scrollYProgress } = useScroll({
-            target: containerRef,
-            offset: ["start end", "end start"]
-          })
+      <div className="max-w-container px-8 mx-auto relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+          
+          {/* Left Block: Terracotta Occasion Card (Page 5 left column) */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 bg-[#882B06] text-[#F2E8D8] p-8 md:p-12 shadow-2xl flex flex-col justify-between relative border border-[#581B0A]"
+          >
+            {/* Background pattern details */}
+            <div className="absolute top-0 bottom-0 right-4 w-[2px] bg-[#F2E8D8]/10 flex flex-col justify-around py-8 items-center">
+              <span className="w-1.5 h-1.5 rotate-45 border border-[#F2E8D8]/30" />
+              <span className="w-1.5 h-1.5 rotate-45 border border-[#F2E8D8]/30" />
+              <span className="w-1.5 h-1.5 rotate-45 border border-[#F2E8D8]/30" />
+            </div>
 
-          // Parallax effect on image
-          const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"])
+            <div>
+              <span className="text-[10px] font-semibold tracking-[0.5em] uppercase text-bg-secondary block mb-4 opacity-95">
+                CURATED EVENTS
+              </span>
+              
+              <h2 className="font-display font-light text-bg-primary leading-tight mb-10" style={{ fontSize: 'clamp(2.2rem, 4vw, 3rem)' }}>
+                A SPACE DESIGNED FOR<br />
+                EVERY OCCASION
+              </h2>
 
-          return (
-            <div
-              key={exp.num}
-              ref={containerRef}
-              className="relative min-h-[80vh] lg:h-[80vh] w-full overflow-hidden flex items-center border-b border-bg-primary py-16 lg:py-0"
-            >
-              {/* Parallax Background Image */}
-              <motion.div style={{ y }} className="absolute inset-0 w-full h-[120%] -top-[10%] z-0">
-                <img
-                  src={exp.image}
-                  alt={exp.title}
-                  className="w-full h-full object-cover filter brightness-[0.55] contrast-[1.05]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-bg-primary via-bg-primary/50 to-transparent pointer-events-none" />
-              </motion.div>
-
-              {/* Floating Typography overlay */}
-              <div className="max-w-container px-8 mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8">
-                <div className="lg:col-span-6 space-y-6">
-                  <div className="flex items-center gap-4">
-                    <span className="font-mono text-xs tracking-widest text-copper">
-                      {exp.tag}
+              <div className="space-y-6 max-w-lg">
+                {occasions.map((occ, i) => (
+                  <div key={i} className="flex gap-4 items-start border-b border-bg-secondary/15 pb-4 last:border-b-0">
+                    <span className="font-display italic text-lg text-bg-secondary min-w-[24px]">
+                      {String(i + 1).padStart(2, '0')}
                     </span>
-                    <span className="w-6 h-[1px] bg-terracotta" />
-                    <span className="font-display text-2xl font-light text-warm-ivory/45">
-                      {exp.num}
-                    </span>
+                    <div>
+                      <h4 className="font-display font-semibold text-lg text-bg-primary">{occ.title}</h4>
+                      <p className="text-sm font-light text-bg-secondary/90 leading-relaxed mt-1">{occ.desc}</p>
+                    </div>
                   </div>
+                ))}
+              </div>
+            </div>
 
-                  <h3 className="font-display font-light text-warm-ivory text-3xl md:text-5xl leading-tight">
-                    {exp.title}
-                  </h3>
+            <div className="mt-12 pt-6 border-t border-bg-secondary/15">
+              <p className="text-base font-display italic text-bg-secondary">
+                At Tanah, every gathering becomes a story worth sharing. Because every great gathering deserves the right setting.
+              </p>
+            </div>
+          </motion.div>
 
-                  <p className="text-sm font-light text-sand-beige/90 leading-relaxed max-w-lg">
-                    {exp.desc}
-                  </p>
+          {/* Right Block: Image with vertical tribal detail on side */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 relative flex flex-col justify-between"
+          >
+            <div className="aspect-[4/3] lg:aspect-[16/11] w-full overflow-hidden relative shadow-xl border border-dark-brown/10">
+              <img
+                src="/assets/Tanha Ambiance/Ambiance-25.webp"
+                alt="Tanah roof dining night view"
+                className="w-full h-full object-cover filter brightness-[0.8] contrast-[1.05]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark-brown/50 to-transparent pointer-events-none" />
+            </div>
+
+            {/* Tribal detail underneath the image */}
+            <div className="flex items-center justify-between mt-8">
+              <div className="flex items-center gap-4 text-terracotta">
+                <TribalDiamond className="w-12 h-12" color="var(--color-terracotta)" />
+                <div>
+                  <h4 className="font-display text-lg font-bold uppercase tracking-wider text-text-dark">Corporate Gathering</h4>
+                  <p className="text-xs text-accent tracking-widest font-mono uppercase">Scale from 10 to 200 Guests</p>
                 </div>
               </div>
-
-              {/* Frame details */}
-              <div className="absolute inset-8 border border-warm-ivory/5 pointer-events-none" />
+              
+              <div className="hidden sm:flex gap-1 text-[#882B06] opacity-75">
+                <span>◇</span><span>.</span><span>◇</span><span>.</span><span>◇</span><span>.</span><span>◇</span>
+              </div>
             </div>
-          )
-        })}
+          </motion.div>
+
+        </div>
       </div>
     </section>
   )

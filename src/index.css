@@ -5,22 +5,22 @@
    ============================================================ */
 
 @theme {
-  /* Premium Earth & Mural Inspired Palette */
-  --color-bg-primary: #0F0F0F;
-  --color-bg-secondary: #1B1715;
+  /* Tanah Company Profile Inspired Palette */
+  --color-bg-primary: #F2E8D8;
+  --color-bg-secondary: #E7D7BF;
+  --color-text-dark: #3B2417;
+  --color-accent: #8A3412;
+  --color-deep-earth: #581B0A;
+  --color-muted-earth: #9A754B;
   --color-terracotta: #8A3412;
-  --color-burnt-earth: #A3471C;
-  --color-copper: #C06A2D;
-  --color-warm-ivory: #F5E9D8;
-  --color-sand-beige: #D7C4AA;
-  --color-muted-beige: #B9A58E;
 
   /* Typography */
   --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 
   /* Spacing */
-  --spacing-section: clamp(8rem, 12vw, 12rem);
+  --spacing-section: clamp(6rem, 10vw, 10rem);
 }
 
 /* ============================================================
@@ -30,15 +30,30 @@ html {
   scroll-behavior: smooth;
   font-size: 16px;
   background-color: var(--color-bg-primary);
-  color: var(--color-warm-ivory);
+  color: var(--color-text-dark);
 }
 
 body {
   font-family: var(--font-body);
   background-color: var(--color-bg-primary);
-  color: var(--color-warm-ivory);
+  color: var(--color-text-dark);
   line-height: 1.8;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+/* Subtle paper texture overlay applied globally */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 /* Base Headings */
@@ -56,19 +71,19 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 
-/* Glassmorphism utility */
+/* Glassmorphism utility - adapted for warm cream paper look */
 .glass {
-  background: rgba(27, 23, 21, 0.75);
+  background: rgba(232, 216, 192, 0.75);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(138, 52, 18, 0.15);
+  border: 1px solid rgba(136, 43, 6, 0.15);
 }
 
 .glass-premium {
-  background: rgba(15, 15, 15, 0.85);
+  background: rgba(242, 232, 216, 0.9);
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
-  border: 1px solid rgba(138, 52, 18, 0.2);
+  border: 1px solid rgba(136, 43, 6, 0.25);
 }
 
 /* Custom premium buttons */
@@ -78,7 +93,7 @@ h1, h2, h3, h4, h5, h6 {
   gap: 12px;
   padding: 16px 36px;
   background-color: var(--color-terracotta);
-  color: var(--color-warm-ivory);
+  color: var(--color-bg-primary);
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 0.75rem;
@@ -101,7 +116,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--color-bg-primary);
+  background: var(--color-deep-earth);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -114,9 +129,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary:hover {
-  color: var(--color-terracotta);
+  color: var(--color-bg-primary);
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(138, 52, 18, 0.25);
+  box-shadow: 0 12px 30px rgba(136, 43, 6, 0.25);
 }
 
 .btn-outline {
@@ -125,13 +140,13 @@ h1, h2, h3, h4, h5, h6 {
   gap: 12px;
   padding: 16px 36px;
   background: transparent;
-  color: var(--color-warm-ivory);
+  color: var(--color-terracotta);
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 0.75rem;
   letter-spacing: 3px;
   text-transform: uppercase;
-  border: 1px solid rgba(245, 233, 216, 0.3);
+  border: 1px solid rgba(136, 43, 6, 0.5);
   border-radius: 0;
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -139,9 +154,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-outline:hover {
-  background: var(--color-warm-ivory);
+  background: var(--color-terracotta);
   color: var(--color-bg-primary);
-  border-color: var(--color-warm-ivory);
+  border-color: var(--color-terracotta);
   transform: translateY(-2px);
 }
 
@@ -151,13 +166,13 @@ h1, h2, h3, h4, h5, h6 {
   gap: 12px;
   padding: 16px 36px;
   background: transparent;
-  color: var(--color-copper);
+  color: var(--color-accent);
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 0.75rem;
   letter-spacing: 3px;
   text-transform: uppercase;
-  border: 1px solid var(--color-copper);
+  border: 1px solid var(--color-accent);
   border-radius: 0;
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -165,7 +180,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-gold-outline:hover {
-  background: var(--color-copper);
+  background: var(--color-accent);
   color: var(--color-bg-primary);
   transform: translateY(-2px);
 }
@@ -174,9 +189,9 @@ h1, h2, h3, h4, h5, h6 {
 .form-input {
   width: 100%;
   padding: 18px 22px;
-  background: rgba(27, 23, 21, 0.4);
-  border: 1px solid rgba(215, 196, 170, 0.2);
-  color: var(--color-warm-ivory);
+  background: rgba(232, 216, 192, 0.4);
+  border: 1px solid rgba(136, 43, 6, 0.2);
+  color: var(--color-text-dark);
   font-family: var(--font-body);
   font-size: 0.85rem;
   outline: none;
@@ -185,8 +200,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .form-input:focus {
-  border-color: var(--color-copper);
-  background: rgba(27, 23, 21, 0.6);
+  border-color: var(--color-terracotta);
+  background: rgba(232, 216, 192, 0.6);
 }
 
 /* Custom image zooming */

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import { LogoOwl } from './illustrations'
 
 const navLinks = [
   { label: 'Home', path: '/' },
@@ -35,35 +36,42 @@ export default function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'glass py-4 shadow-2xl' : 'bg-transparent py-7'
-          }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled ? 'py-3 shadow-md' : 'py-5'
+        }`}
         style={{
-          borderBottom: scrolled ? '1px solid rgba(200, 164, 106, 0.2)' : '1px solid rgba(245, 242, 234, 0.05)',
+          background: 'rgba(242, 232, 216, 0.92)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          borderBottom: '1px solid rgba(138, 52, 18, 0.15)',
         }}
         role="navigation"
         aria-label="Main navigation"
       >
         <div
-          className="px-8 flex items-center justify-between max-w-container"
+          className="px-8 flex items-center justify-between max-w-container mx-auto"
         >
-          {/* Logo */}
+          {/* Logo with Custom SVG Owl */}
           <Link
             to="/"
-            className="flex flex-col group"
+            className="flex items-center gap-3 group"
             aria-label="Tanah Kitchen & Bar Home"
           >
-            <span
-              className="font-display text-2xl font-bold tracking-[0.15em] uppercase text-warm-ivory transition-colors duration-300 group-hover:text-terracotta"
-            >
-              Tanah
-            </span>
-            <span className="text-[8px] tracking-[0.4em] uppercase text-terracotta -mt-1 font-body">
-              Kitchen & Bar
-            </span>
+            <LogoOwl className="w-10 h-10 text-terracotta transition-transform duration-500 group-hover:rotate-12" color="var(--color-terracotta)" />
+            <div className="flex flex-col">
+              <span
+                className="font-display text-2xl font-bold tracking-[0.1em] uppercase text-text-dark transition-colors duration-300 group-hover:text-terracotta"
+              >
+                Tanah
+              </span>
+              <span className="text-[8px] tracking-[0.3em] uppercase text-accent -mt-1 font-body">
+                Kitchen & Bar
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Links */}
-          <ul className="hidden md:flex items-center gap-10">
+          <ul className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => {
               const isActive = location.pathname === link.path
               return (
@@ -74,12 +82,12 @@ export default function Navbar() {
                     style={{
                       color: isActive
                         ? 'var(--color-terracotta)'
-                        : 'var(--color-sand-beige)'
+                        : 'var(--color-text-dark)'
                     }}
                   >
                     {link.label}
                     <span
-                      className={`absolute -bottom-1 left-0 h-[1px] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                      className={`absolute -bottom-1 left-0 h-[1.5px] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'
                         }`}
                       style={{ background: 'var(--color-terracotta)' }}
                     />
@@ -93,7 +101,7 @@ export default function Navbar() {
           <div className="hidden md:block">
             <Link
               to="/book"
-              className="btn-primary py-3 px-8 text-[9px] tracking-[0.25em] font-semibold"
+              className="btn-primary py-2.5 px-6 text-[9px] tracking-[0.25em] font-semibold"
             >
               Reserve
             </Link>
@@ -101,7 +109,7 @@ export default function Navbar() {
 
           {/* Mobile Hamburger */}
           <button
-            className="md:hidden p-2 transition-colors cursor-pointer text-warm-ivory hover:text-terracotta"
+            className="md:hidden p-2 transition-colors cursor-pointer text-text-dark hover:text-terracotta"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
@@ -119,12 +127,12 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-x-0 top-0 z-40 flex flex-col pt-28 px-10 pb-12 gap-8 shadow-2xl border-b border-terracotta/20"
+            className="fixed inset-x-0 top-0 z-40 flex flex-col pt-24 px-10 pb-10 gap-8 shadow-2xl border-b border-terracotta/20"
             style={{ background: 'var(--color-bg-secondary)' }}
             role="dialog"
             aria-label="Mobile navigation menu"
           >
-            <div className="flex flex-col gap-6 text-center">
+            <div className="flex flex-col gap-5 text-center">
               {navLinks.map((link, i) => {
                 const isActive = location.pathname === link.path
                 return (
@@ -136,11 +144,11 @@ export default function Navbar() {
                   >
                     <Link
                       to={link.path}
-                      className="font-display text-2xl font-light block py-2 transition-colors duration-300"
+                      className="font-display text-2xl font-light block py-1.5 transition-colors duration-300"
                       style={{
                         color: isActive
                           ? 'var(--color-terracotta)'
-                          : 'var(--color-warm-ivory)'
+                          : 'var(--color-text-dark)'
                       }}
                     >
                       {link.label}
@@ -158,7 +166,7 @@ export default function Navbar() {
             >
               <Link
                 to="/book"
-                className="btn-primary text-center justify-center w-64 py-3.5 tracking-[0.2em]"
+                className="btn-primary text-center justify-center w-64 py-3 tracking-[0.2em]"
               >
                 Reserve Table
               </Link>
@@ -174,7 +182,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-30 bg-black/80 md:hidden backdrop-blur-md"
+            className="fixed inset-0 z-30 bg-dark-brown/40 md:hidden backdrop-blur-md"
             onClick={() => setMenuOpen(false)}
           />
         )}

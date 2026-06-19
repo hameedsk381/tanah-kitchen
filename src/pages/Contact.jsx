@@ -47,15 +47,15 @@ export default function Contact() {
   }
 
   return (
-    <main className="flex-grow pt-24 bg-bg-primary text-warm-ivory">
+    <main className="flex-grow pt-24 bg-bg-primary text-text-dark">
       
       {/* Editorial Header */}
-      <section className="relative py-28 md:py-36 text-center border-b border-terracotta/10 overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-15">
+      <section className="relative py-28 md:py-36 text-center border-b border-terracotta/15 bg-bg-secondary overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-15 mix-blend-multiply">
           <img
             src="/assets/Tanha Ambiance/Ambiance-21.webp"
             alt="Tanah Bar ambience banner"
-            className="w-full h-full object-cover filter brightness-50"
+            className="w-full h-full object-cover filter brightness-75"
           />
         </div>
         <div className="relative z-10 px-8 max-w-container mx-auto">
@@ -63,12 +63,12 @@ export default function Contact() {
             Connect
           </span>
           <h1 
-            className="font-display font-light text-warm-ivory leading-none mb-6"
+            className="font-display font-light text-text-dark leading-none mb-6"
             style={{ fontSize: 'clamp(2.5rem, 7vw, 5rem)' }}
           >
             Contact & Coordinates
           </h1>
-          <p className="text-xs md:text-sm font-light max-w-xl mx-auto text-sand-beige leading-relaxed">
+          <p className="text-xs md:text-sm font-light max-w-xl mx-auto text-text-dark/80 leading-relaxed">
             Reach out to our hospitality desk. Ask about events, corporate bookings, or special dining arrangements.
           </p>
         </div>
@@ -80,50 +80,50 @@ export default function Contact() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
             
             {/* Left Column: Info Coordinates */}
-            <div className="lg:col-span-5 space-y-10">
+            <div className="lg:col-span-5 space-y-10 text-left">
               <div className="space-y-4">
-                <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-terracotta block">
+                <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-accent block">
                   Location & Contacts
                 </span>
-                <h2 className="font-display text-3xl md:text-4xl font-light text-warm-ivory">
+                <h2 className="font-display text-3xl md:text-4xl font-light text-text-dark">
                   {contactData.brandName}
                 </h2>
               </div>
 
-              <div className="space-y-6 text-sm font-light text-sand-beige leading-relaxed">
+              <div className="space-y-6 text-sm font-light text-text-dark/95 leading-relaxed font-body">
                 <div className="flex gap-4 items-start">
                   <MapPin className="w-5 h-5 text-terracotta flex-shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-display text-lg text-warm-ivory mb-1">Address</h4>
-                    <p className="whitespace-pre-line">{contactData.address}</p>
+                    <h4 className="font-display text-lg text-text-dark mb-1 font-semibold">Address</h4>
+                    <p className="whitespace-pre-line text-text-dark/80">{contactData.address}</p>
                   </div>
                 </div>
 
                 <div className="flex gap-4 items-start">
                   <Phone className="w-5 h-5 text-terracotta flex-shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-display text-lg text-warm-ivory mb-1">Reservations</h4>
-                    <p>{contactData.phone1}</p>
-                    <p>{contactData.phone2}</p>
+                    <h4 className="font-display text-lg text-text-dark mb-1 font-semibold">Reservations</h4>
+                    <p className="text-text-dark/80">{contactData.phone1}</p>
+                    <p className="text-text-dark/80">{contactData.phone2}</p>
                   </div>
                 </div>
 
                 <div className="flex gap-4 items-start">
                   <Mail className="w-5 h-5 text-terracotta flex-shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-display text-lg text-warm-ivory mb-1">E-Mail</h4>
-                    <p>{contactData.email}</p>
+                    <h4 className="font-display text-lg text-text-dark mb-1 font-semibold">E-Mail</h4>
+                    <p className="text-text-dark/80">{contactData.email}</p>
                   </div>
                 </div>
 
                 <div className="flex gap-4 items-start">
                   <Clock className="w-5 h-5 text-terracotta flex-shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-display text-lg text-warm-ivory mb-1">Operating Timings</h4>
-                    <p>{contactData.timings.days}</p>
-                    <p>Lunch: {contactData.timings.lunch}</p>
-                    <p>Dinner: {contactData.timings.dinner}</p>
-                    <p className="text-[10px] text-copper mt-1">{contactData.timings.note}</p>
+                    <h4 className="font-display text-lg text-text-dark mb-1 font-semibold">Operating Timings</h4>
+                    <p className="text-text-dark/80">{contactData.timings.days}</p>
+                    <p className="text-text-dark/80">Lunch: {contactData.timings.lunch}</p>
+                    <p className="text-text-dark/80">Dinner: {contactData.timings.dinner}</p>
+                    <p className="text-[10px] text-accent mt-1">{contactData.timings.note}</p>
                   </div>
                 </div>
               </div>
@@ -141,7 +141,7 @@ export default function Contact() {
                   href={`https://wa.me/${contactData.whatsappNumber.replace(/[^0-9]/g, '')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-outline py-3.5 px-8 text-[9px] tracking-[0.2em] flex items-center gap-3 border-copper/40 text-copper hover:bg-copper/5 cursor-pointer"
+                  className="btn-outline py-3.5 px-8 text-[9px] tracking-[0.2em] flex items-center gap-3 cursor-pointer"
                 >
                   <MessageSquare className="w-3.5 h-3.5" />
                   WhatsApp Us
@@ -155,7 +155,7 @@ export default function Contact() {
                   alt="Tanha glass atrium dining details"
                   className="w-full h-full object-cover filter brightness-[0.8] contrast-[1.05]"
                 />
-                <div className="absolute inset-3 border border-warm-ivory/10 pointer-events-none" />
+                <div className="absolute inset-3 border border-bg-primary/10 pointer-events-none" />
               </div>
             </div>
 
@@ -168,15 +168,15 @@ export default function Contact() {
                   className="p-10 border border-terracotta/20 bg-bg-secondary text-center space-y-6"
                 >
                   <CheckCircle className="w-12 h-12 text-terracotta mx-auto animate-pulse-slow" />
-                  <h3 className="font-display text-2xl font-light text-warm-ivory">
+                  <h3 className="font-display text-2xl font-light text-text-dark">
                     Inquiry Received
                   </h3>
-                  <p className="text-xs font-light text-sand-beige leading-relaxed">
-                    Thank you for contacting Tanah Kitchen & Bar. Our hospitality desk will get in touch with you at <span className="text-warm-ivory font-medium">{form.email}</span> shortly.
+                  <p className="text-xs font-light text-text-dark/80 leading-relaxed font-body">
+                    Thank you for contacting Tanah Kitchen & Bar. Our hospitality desk will get in touch with you at <span className="text-text-dark font-medium">{form.email}</span> shortly.
                   </p>
                   <button
                     onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', subject: 'General Inquiry', message: '' }) }}
-                    className="btn-gold-outline text-[10px] py-3 px-6 mt-4 cursor-pointer"
+                    className="btn-primary text-[10px] py-3 px-6 mt-4 cursor-pointer"
                   >
                     Send Another Message
                   </button>
@@ -185,7 +185,7 @@ export default function Contact() {
                 <form
                   onSubmit={handleSubmit}
                   noValidate
-                  className="p-8 md:p-12 border border-terracotta/15 bg-bg-secondary space-y-6"
+                  className="p-8 md:p-12 border border-terracotta/15 bg-bg-secondary space-y-6 shadow-lg text-left"
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
@@ -198,7 +198,7 @@ export default function Contact() {
                         placeholder="John Doe"
                         className="form-input text-xs"
                       />
-                      {errors.name && <span className="text-[10px] text-burnt-earth block">{errors.name}</span>}
+                      {errors.name && <span className="text-[10px] text-terracotta block">{errors.name}</span>}
                     </div>
 
                     <div className="space-y-2">
@@ -211,7 +211,7 @@ export default function Contact() {
                         placeholder="Phone Number"
                         className="form-input text-xs"
                       />
-                      {errors.phone && <span className="text-[10px] text-burnt-earth block">{errors.phone}</span>}
+                      {errors.phone && <span className="text-[10px] text-terracotta block">{errors.phone}</span>}
                     </div>
                   </div>
 
@@ -225,7 +225,7 @@ export default function Contact() {
                       placeholder="you@domain.com"
                       className="form-input text-xs"
                     />
-                    {errors.email && <span className="text-[10px] text-burnt-earth block">{errors.email}</span>}
+                    {errors.email && <span className="text-[10px] text-terracotta block">{errors.email}</span>}
                   </div>
 
                   <div className="space-y-2">
@@ -238,7 +238,7 @@ export default function Contact() {
                       rows={5}
                       className="form-input text-xs resize-none"
                     />
-                    {errors.message && <span className="text-[10px] text-burnt-earth block">{errors.message}</span>}
+                    {errors.message && <span className="text-[10px] text-terracotta block">{errors.message}</span>}
                   </div>
 
                   <button
@@ -262,7 +262,7 @@ export default function Contact() {
           src={contactData.mapUrl}
           width="100%"
           height="450"
-          style={{ border: 0, filter: 'grayscale(1) contrast(1.2) invert(0.9) brightness(0.9)' }}
+          style={{ border: 0, filter: 'sepia(0.2) contrast(1.1) brightness(0.95)' }}
           allowFullScreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"

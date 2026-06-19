@@ -56,31 +56,31 @@ export default function Book() {
   }
 
   return (
-    <main className="relative flex-grow pt-24 bg-bg-primary min-h-screen flex items-center overflow-hidden text-warm-ivory">
+    <main className="relative flex-grow pt-24 bg-bg-primary min-h-screen flex items-center overflow-hidden text-text-dark">
       {/* Fullscreen background image */}
       <div className="absolute inset-0 z-0 w-full h-full">
         <img
           src="/assets/Tanha Ambiance/Ambiance-20.webp"
           alt="Luxury rooftop sanctuary"
-          className="w-full h-full object-cover filter brightness-[0.22] contrast-[1.05]"
+          className="w-full h-full object-cover filter brightness-[0.4] contrast-[1.05]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-transparent to-bg-primary/70" />
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-transparent to-bg-primary/70 mix-blend-multiply pointer-events-none" />
       </div>
 
       <div className="relative z-10 max-w-[1200px] px-8 mx-auto w-full py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
           {/* Informational column */}
-          <div className="lg:col-span-5 space-y-8">
+          <div className="lg:col-span-5 space-y-8 text-left">
             <div className="space-y-4">
               <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-terracotta block">
                 Reservations
               </span>
-              <h1 className="font-display font-light text-warm-ivory leading-tight" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
+              <h1 className="font-display font-light text-text-dark leading-tight" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
                 Secure Your<br />
-                <span className="italic text-copper">Basalt Table</span>
+                <span className="italic text-terracotta">Basalt Table</span>
               </h1>
-              <p className="text-xs sm:text-sm font-light text-sand-beige leading-relaxed">
+              <p className="text-xs sm:text-sm font-light text-text-dark/80 leading-relaxed font-body">
                 We look forward to welcoming you to Tanah Kitchen & Bar. Due to the sourcing of fresh daily crops and slow coal embers, reservations are highly recommended.
               </p>
             </div>
@@ -92,12 +92,12 @@ export default function Book() {
                 alt="Tanha glass atrium dining space"
                 className="w-full h-full object-cover filter brightness-[0.8] contrast-[1.05]"
               />
-              <div className="absolute inset-3 border border-warm-ivory/10 pointer-events-none" />
+              <div className="absolute inset-3 border border-bg-primary/10 pointer-events-none" />
             </div>
 
             <div className="border-l border-terracotta/30 pl-6 space-y-2">
-              <h4 className="font-display text-base text-warm-ivory font-light">Resort Casual Policy</h4>
-              <p className="text-[11px] text-sand-beige font-light leading-relaxed">
+              <h4 className="font-display text-base text-text-dark font-light font-semibold">Resort Casual Policy</h4>
+              <p className="text-[11px] text-text-dark/80 font-light leading-relaxed font-body">
                 We encourage mindful attire. Smart casual is recommended to complement the premium design and atmosphere.
               </p>
             </div>
@@ -116,16 +116,16 @@ export default function Book() {
                   className="p-10 border border-terracotta/25 bg-bg-secondary text-center space-y-6"
                 >
                   <CheckCircle className="w-12 h-12 text-terracotta mx-auto animate-pulse-slow" />
-                  <h3 className="font-display text-3xl font-light text-warm-ivory">
+                  <h3 className="font-display text-3xl font-light text-text-dark">
                     Reservation Requested
                   </h3>
-                  <p className="text-xs font-light text-sand-beige max-w-md mx-auto leading-relaxed">
-                    Thank you, <span className="text-warm-ivory font-medium">{form.name}</span>. We are saving a basalt table for your party of <span className="text-warm-ivory font-medium">{form.guests}</span> on <span className="text-warm-ivory font-medium">{form.date}</span> at <span className="text-warm-ivory font-medium">{form.time}</span>. A confirmation has been dispatched to your email address.
+                  <p className="text-xs font-light text-text-dark/80 max-w-md mx-auto leading-relaxed font-body">
+                    Thank you, <span className="text-text-dark font-medium">{form.name}</span>. We are saving a basalt table for your party of <span className="text-text-dark font-medium">{form.guests}</span> on <span className="text-text-dark font-medium">{form.date}</span> at <span className="text-text-dark font-medium">{form.time}</span>. A confirmation has been dispatched to your email address.
                   </p>
                   <div className="pt-4">
                     <button
                       onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', date: '', time: '', guests: '', notes: '' }) }}
-                      className="btn-gold-outline text-[10px] py-3.5 px-8 cursor-pointer"
+                      className="btn-primary text-[10px] py-3.5 px-8 cursor-pointer"
                     >
                       Book Another Table
                     </button>
@@ -136,7 +136,7 @@ export default function Book() {
                   key="form"
                   onSubmit={handleSubmit}
                   noValidate
-                  className="p-8 md:p-12 border border-terracotta/15 bg-bg-secondary space-y-6"
+                  className="p-8 md:p-12 border border-terracotta/15 bg-bg-secondary space-y-6 shadow-xl text-left"
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Name */}
@@ -152,7 +152,7 @@ export default function Book() {
                         placeholder="John Doe"
                         className="form-input text-xs"
                       />
-                      {errors.name && <span className="text-[10px] text-burnt-earth block">{errors.name}</span>}
+                      {errors.name && <span className="text-[10px] text-terracotta block">{errors.name}</span>}
                     </div>
 
                     {/* Phone */}
@@ -168,7 +168,7 @@ export default function Book() {
                         placeholder="89777 30291"
                         className="form-input text-xs"
                       />
-                      {errors.phone && <span className="text-[10px] text-burnt-earth block">{errors.phone}</span>}
+                      {errors.phone && <span className="text-[10px] text-terracotta block">{errors.phone}</span>}
                     </div>
                   </div>
 
@@ -185,7 +185,7 @@ export default function Book() {
                       placeholder="you@domain.com"
                       className="form-input text-xs"
                     />
-                    {errors.email && <span className="text-[10px] text-burnt-earth block">{errors.email}</span>}
+                    {errors.email && <span className="text-[10px] text-terracotta block">{errors.email}</span>}
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -200,9 +200,8 @@ export default function Book() {
                         value={form.date}
                         onChange={handleChange}
                         className="form-input text-xs"
-                        style={{ colorScheme: 'dark' }}
                       />
-                      {errors.date && <span className="text-[10px] text-burnt-earth block">{errors.date}</span>}
+                      {errors.date && <span className="text-[10px] text-terracotta block">{errors.date}</span>}
                     </div>
 
                     {/* Time */}
@@ -220,7 +219,7 @@ export default function Book() {
                         <option value="">Choose Time</option>
                         {timeSlots.map(t => <option key={t} value={t}>{t}</option>)}
                       </select>
-                      {errors.time && <span className="text-[10px] text-burnt-earth block">{errors.time}</span>}
+                      {errors.time && <span className="text-[10px] text-terracotta block">{errors.time}</span>}
                     </div>
 
                     {/* Guests */}
@@ -238,7 +237,7 @@ export default function Book() {
                         <option value="">Guests count</option>
                         {partySizes.map(g => <option key={g} value={g}>{g}</option>)}
                       </select>
-                      {errors.guests && <span className="text-[10px] text-burnt-earth block">{errors.guests}</span>}
+                      {errors.guests && <span className="text-[10px] text-terracotta block">{errors.guests}</span>}
                     </div>
                   </div>
 

@@ -57,7 +57,7 @@ export default function SignatureDishes() {
           </span>
           <h2
             id="signature-heading"
-            className="font-display font-light text-warm-ivory leading-tight"
+            className="font-display font-light text-text-dark leading-tight"
             style={{ fontSize: 'clamp(2.5rem, 5.5vw, 4.2rem)' }}
           >
             Signature Gastronomy
@@ -85,13 +85,13 @@ export default function SignatureDishes() {
               </AnimatePresence>
 
               {/* Decorative framing overlay */}
-              <div className="absolute inset-6 border border-warm-ivory/10 pointer-events-none" />
+              <div className="absolute inset-6 border border-bg-secondary/15 pointer-events-none" />
               
               <div className="absolute bottom-10 left-10 z-10 text-left">
-                <span className="bg-terracotta text-warm-ivory text-[8px] font-semibold tracking-widest uppercase py-1.5 px-3 block w-fit mb-2">
+                <span className="bg-terracotta text-bg-primary text-[8px] font-semibold tracking-widest uppercase py-1.5 px-3 block w-fit mb-2">
                   {dishes[activeIdx].badge}
                 </span>
-                <p className="text-lg font-display italic text-sand-beige">
+                <p className="text-lg font-display italic text-bg-secondary">
                   Featured Plating
                 </p>
               </div>
@@ -110,26 +110,26 @@ export default function SignatureDishes() {
                 <div
                   key={dish.id}
                   className={`p-8 border-b border-terracotta/10 cursor-pointer transition-all duration-500 relative ${
-                    isActive ? 'bg-[#181514]/60 border-l-2 border-l-terracotta' : 'hover:bg-[#141211]/30'
+                    isActive ? 'bg-bg-primary/65 border-l-2 border-l-terracotta' : 'hover:bg-bg-primary/20'
                   }`}
                   onMouseEnter={() => setActiveIdx(idx)}
                   onClick={() => setActiveIdx(idx)}
                 >
                   <div className="flex justify-between items-baseline mb-3">
-                    <span className="text-[9px] font-mono tracking-widest text-copper">
+                    <span className="text-[9px] font-mono tracking-widest text-accent font-semibold">
                       {dish.tag}
                     </span>
-                    <span className="text-xl font-display text-warm-ivory">
+                    <span className="text-xl font-display text-text-dark font-medium">
                       ₹{dish.price}
                     </span>
                   </div>
 
-                  <h3 className="font-display font-light text-2xl text-warm-ivory mb-3 transition-colors duration-300">
+                  <h3 className="font-display font-light text-2xl text-text-dark mb-3 transition-colors duration-300">
                     {dish.name}
                   </h3>
 
                   <p className={`text-xs font-light leading-relaxed transition-all duration-300 ${
-                    isActive ? 'text-sand-beige h-auto opacity-100' : 'text-muted-beige/60 h-0 overflow-hidden opacity-0'
+                    isActive ? 'text-text-dark/80 h-auto opacity-100' : 'text-text-dark/40 h-0 overflow-hidden opacity-0'
                   }`}>
                     {dish.desc}
                   </p>
@@ -140,7 +140,7 @@ export default function SignatureDishes() {
             <div className="pt-8 pl-8">
               <Link
                 to="/menu"
-                className="btn-gold-outline py-3.5 px-10 text-[9px] tracking-[0.2em]"
+                className="btn-primary py-3.5 px-10 text-[9px] tracking-[0.2em]"
               >
                 Discover Full Seasonal Menu
               </Link>

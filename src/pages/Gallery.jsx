@@ -22,21 +22,21 @@ export default function Gallery() {
   }, [selectedCategory])
 
   return (
-    <main className="flex-grow pt-24 bg-bg-primary text-warm-ivory">
+    <main className="flex-grow pt-24 bg-bg-primary text-text-dark">
       
       {/* Editorial Header */}
-      <section className="relative py-24 md:py-32 text-center border-b border-terracotta/10">
+      <section className="relative py-24 md:py-32 text-center border-b border-terracotta/15 bg-bg-secondary">
         <div className="relative z-10 px-8 max-w-container mx-auto">
           <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-terracotta block mb-4">
             Visual Archive
           </span>
           <h1 
-            className="font-display font-light text-warm-ivory leading-none mb-6"
+            className="font-display font-light text-text-dark leading-none mb-6"
             style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
           >
             The Visual Gallery
           </h1>
-          <p className="text-xs md:text-sm font-light max-w-xl mx-auto text-sand-beige leading-relaxed">
+          <p className="text-xs md:text-sm font-light max-w-xl mx-auto text-text-dark/80 leading-relaxed">
             A photographic archive documenting our agricultural soils, wood-fired kitchen flames, and architectural layouts.
           </p>
         </div>
@@ -54,9 +54,9 @@ export default function Gallery() {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className="px-5 py-2 text-[10px] tracking-[0.2em] uppercase cursor-pointer transition-all duration-300"
+                  className="px-5 py-2 text-[10px] tracking-[0.2em] uppercase cursor-pointer transition-all duration-300 font-semibold"
                   style={{
-                    color: isActive ? 'var(--color-terracotta)' : 'var(--color-sand-beige)',
+                    color: isActive ? 'var(--color-terracotta)' : 'var(--color-text-dark)',
                     borderBottom: isActive ? '2px solid var(--color-terracotta)' : '2px solid transparent'
                   }}
                 >
@@ -66,45 +66,50 @@ export default function Gallery() {
             })}
           </div>
 
-          {/* Uniform Gallery Grid */}
+          {/* Magazine-Style Asymmetrical Grid */}
           <motion.div 
             layout
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             <AnimatePresence mode="popLayout">
-              {filteredItems.map((item) => (
-                <motion.div
-                  key={item.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                  onClick={() => setLightbox(item)}
-                  className="group relative overflow-hidden cursor-pointer bg-bg-secondary aspect-square border border-terracotta/10"
-                >
-                  <img
-                    src={item.src}
-                    alt={item.alt}
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 filter brightness-90 group-hover:brightness-75 contrast-105"
-                  />
-                  
-                  {/* Hover Info */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/90 via-transparent to-transparent flex items-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="flex items-center justify-between w-full">
-                      <div>
-                        <span className="text-[8px] font-semibold tracking-[0.2em] uppercase text-copper block mb-1">
-                          {item.category}
-                        </span>
-                        <p className="font-display text-2xl font-light text-warm-ivory leading-tight">
-                          {item.caption}
-                        </p>
+              {filteredItems.map((item, idx) => {
+                // Asymmetrical height classes for magazine layout
+                const heightClass = idx % 3 === 0 ? "aspect-[3/4]" : idx % 3 === 1 ? "aspect-square" : "aspect-[4/3]";
+                
+                return (
+                  <motion.div
+                    key={item.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    onClick={() => setLightbox(item)}
+                    className={`group relative overflow-hidden cursor-pointer bg-bg-secondary ${heightClass} border border-terracotta/10 shadow-lg`}
+                  >
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 filter brightness-95 group-hover:brightness-75 contrast-[1.02]"
+                    />
+                    
+                    {/* Hover Info */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-brown/90 via-transparent to-transparent flex items-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="flex items-center justify-between w-full text-left">
+                        <div>
+                          <span className="text-[8px] font-semibold tracking-[0.2em] uppercase text-[#E8D8C0] block mb-1">
+                            {item.category}
+                          </span>
+                          <p className="font-display text-xl font-light text-bg-primary leading-tight">
+                            {item.caption}
+                          </p>
+                        </div>
+                        <ZoomIn className="w-5 h-5 text-bg-secondary" />
                       </div>
-                      <ZoomIn className="w-5 h-5 text-terracotta/80" />
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                )
+              })}
             </AnimatePresence>
           </motion.div>
         </div>
@@ -119,7 +124,7 @@ export default function Gallery() {
             exit={{ opacity: 0 }}
             onClick={() => setLightbox(null)}
             className="fixed inset-0 z-[100] flex items-center justify-center p-6"
-            style={{ background: 'rgba(15, 15, 15, 0.98)' }}
+            style={{ background: 'rgba(44, 17, 13, 0.98)' }}
             role="dialog"
             aria-modal="true"
           >
@@ -133,7 +138,7 @@ export default function Gallery() {
             >
               <button
                 onClick={() => setLightbox(null)}
-                className="absolute -top-12 right-0 text-sand-beige hover:text-terracotta transition-colors cursor-pointer"
+                className="absolute -top-12 right-0 text-bg-secondary hover:text-terracotta transition-colors cursor-pointer"
                 aria-label="Close"
               >
                 <X className="w-8 h-8" />
@@ -143,7 +148,7 @@ export default function Gallery() {
                 alt={lightbox.alt}
                 className="w-full max-h-[75vh] object-contain border border-terracotta/15 shadow-2xl"
               />
-              <p className="text-center mt-6 font-display text-2xl font-light text-warm-ivory tracking-wide">
+              <p className="text-center mt-6 font-display text-2xl font-light text-bg-primary tracking-wide">
                 {lightbox.caption}
               </p>
             </motion.div>

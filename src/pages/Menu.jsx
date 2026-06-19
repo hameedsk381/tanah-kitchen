@@ -184,33 +184,33 @@ export default function Menu() {
   const activeShowcaseItem = hoveredItem || filteredItems[0]
 
   return (
-    <main className="flex-grow pt-24 bg-bg-primary text-warm-ivory">
+    <main className="flex-grow pt-24 bg-bg-primary text-text-dark">
       
       {/* Page Header */}
-      <section className="relative py-20 md:py-28 text-center border-b border-terracotta/10">
+      <section className="relative py-20 md:py-28 text-center border-b border-terracotta/15 bg-bg-secondary">
         <div className="relative z-10 px-8 max-w-container mx-auto">
           <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-terracotta block mb-4">
             Gastronomy Catalog
           </span>
           <h1 
-            className="font-display font-light text-warm-ivory leading-none mb-6"
+            className="font-display font-light text-text-dark leading-none mb-6"
             style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
           >
             The Seasonal Menu
           </h1>
-          <p className="text-xs md:text-sm font-light max-w-xl mx-auto text-sand-beige leading-relaxed">
+          <p className="text-xs md:text-sm font-light max-w-xl mx-auto text-text-dark/80 leading-relaxed">
             A chronicle of wood-fired gastronomy, traditional slow cooking, and stone-ground spices. Rested, prepared, and plated in Hyderabad.
           </p>
 
           {/* Mode Selector Toggle */}
           <div className="flex justify-center mt-12">
-            <div className="inline-flex border border-terracotta/20 p-1 bg-bg-secondary/60 backdrop-blur">
+            <div className="inline-flex border border-terracotta/20 p-1 bg-bg-primary/90 backdrop-blur">
               <button
                 onClick={() => setViewMode('classic')}
                 className={`px-6 py-2.5 text-[10px] tracking-[0.25em] uppercase transition-all duration-300 cursor-pointer ${
                   viewMode === 'classic' 
-                    ? 'bg-terracotta text-warm-ivory' 
-                    : 'text-sand-beige hover:text-warm-ivory'
+                    ? 'bg-terracotta text-bg-primary font-medium' 
+                    : 'text-text-dark/70 hover:text-terracotta'
                 }`}
               >
                 Classic Catalog
@@ -219,8 +219,8 @@ export default function Menu() {
                 onClick={() => setViewMode('sensory')}
                 className={`px-6 py-2.5 text-[10px] tracking-[0.25em] uppercase transition-all duration-300 cursor-pointer flex items-center gap-2 ${
                   viewMode === 'sensory' 
-                    ? 'bg-terracotta text-warm-ivory' 
-                    : 'text-sand-beige hover:text-warm-ivory'
+                    ? 'bg-terracotta text-bg-primary font-medium' 
+                    : 'text-text-dark/70 hover:text-terracotta'
                 }`}
               >
                 <Sliders className="w-3.5 h-3.5" />
@@ -248,13 +248,13 @@ export default function Menu() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.5 }}
-                    className="p-6 md:p-8 border border-terracotta/15 bg-bg-secondary/35 backdrop-blur space-y-8"
+                    className="p-6 md:p-8 border border-terracotta/15 bg-bg-secondary/45 backdrop-blur space-y-8"
                   >
                     <div className="text-center md:text-left">
-                      <h2 className="text-xl font-light text-warm-ivory tracking-wide">
+                      <h2 className="text-xl font-light text-text-dark tracking-wide font-display">
                         Curate Your Culinary Profile
                       </h2>
-                      <p className="text-xs text-sand-beige/70 mt-1">
+                      <p className="text-xs text-text-dark/70 mt-1">
                         Adjust the flavor dimensions or select a journey to align the menu.
                       </p>
                     </div>
@@ -265,12 +265,12 @@ export default function Menu() {
                         <button
                           key={journey.name}
                           onClick={() => handlePresetSelect(journey.profile)}
-                          className="p-3 text-left border border-terracotta/10 bg-bg-primary/45 hover:border-copper/40 transition-all duration-300 group cursor-pointer"
+                          className="p-3 text-left border border-terracotta/10 bg-bg-primary/45 hover:border-terracotta/40 transition-all duration-300 group cursor-pointer"
                         >
-                          <span className="block text-[10px] uppercase tracking-wider text-copper group-hover:text-warm-ivory transition-colors">
+                          <span className="block text-[10px] uppercase tracking-wider text-accent group-hover:text-terracotta transition-colors font-semibold">
                             {journey.name}
                           </span>
-                          <span className="block text-[9px] text-sand-beige/50 mt-1 font-light leading-snug">
+                          <span className="block text-[9px] text-text-dark/60 mt-1 font-light leading-snug">
                             {journey.desc}
                           </span>
                         </button>
@@ -282,11 +282,11 @@ export default function Menu() {
                       {/* Spicy Slider */}
                       <div className="space-y-2.5">
                         <div className="flex justify-between items-center text-[10px] uppercase tracking-wider">
-                          <span className="flex items-center gap-1.5 text-sand-beige">
-                            <Flame className="w-3.5 h-3.5 text-orange-500" />
+                          <span className="flex items-center gap-1.5 text-text-dark/80">
+                            <Flame className="w-3.5 h-3.5 text-orange-600" />
                             Heat & Spice
                           </span>
-                          <span className="text-copper">{sensoryPrefs.spicy}%</span>
+                          <span className="text-terracotta font-semibold">{sensoryPrefs.spicy}%</span>
                         </div>
                         <input
                           type="range"
@@ -294,18 +294,18 @@ export default function Menu() {
                           max="100"
                           value={sensoryPrefs.spicy}
                           onChange={(e) => handleSliderChange('spicy', e.target.value)}
-                          className="w-full accent-terracotta bg-bg-primary/80 h-1 cursor-ew-resize"
+                          className="w-full accent-terracotta bg-bg-secondary h-1 cursor-ew-resize"
                         />
                       </div>
 
                       {/* Sweet Slider */}
                       <div className="space-y-2.5">
                         <div className="flex justify-between items-center text-[10px] uppercase tracking-wider">
-                          <span className="flex items-center gap-1.5 text-sand-beige">
-                            <Cookie className="w-3.5 h-3.5 text-amber-300" />
+                          <span className="flex items-center gap-1.5 text-text-dark/80">
+                            <Cookie className="w-3.5 h-3.5 text-amber-600" />
                             Sweetness
                           </span>
-                          <span className="text-copper">{sensoryPrefs.sweet}%</span>
+                          <span className="text-terracotta font-semibold">{sensoryPrefs.sweet}%</span>
                         </div>
                         <input
                           type="range"
@@ -313,18 +313,18 @@ export default function Menu() {
                           max="100"
                           value={sensoryPrefs.sweet}
                           onChange={(e) => handleSliderChange('sweet', e.target.value)}
-                          className="w-full accent-terracotta bg-bg-primary/80 h-1 cursor-ew-resize"
+                          className="w-full accent-terracotta bg-bg-secondary h-1 cursor-ew-resize"
                         />
                       </div>
 
                       {/* Earthy Slider */}
                       <div className="space-y-2.5">
                         <div className="flex justify-between items-center text-[10px] uppercase tracking-wider">
-                          <span className="flex items-center gap-1.5 text-sand-beige">
-                            <Sprout className="w-3.5 h-3.5 text-emerald-500" />
+                          <span className="flex items-center gap-1.5 text-text-dark/80">
+                            <Sprout className="w-3.5 h-3.5 text-emerald-600" />
                             Earthiness
                           </span>
-                          <span className="text-copper">{sensoryPrefs.earthy}%</span>
+                          <span className="text-terracotta font-semibold">{sensoryPrefs.earthy}%</span>
                         </div>
                         <input
                           type="range"
@@ -332,18 +332,18 @@ export default function Menu() {
                           max="100"
                           value={sensoryPrefs.earthy}
                           onChange={(e) => handleSliderChange('earthy', e.target.value)}
-                          className="w-full accent-terracotta bg-bg-primary/80 h-1 cursor-ew-resize"
+                          className="w-full accent-terracotta bg-bg-secondary h-1 cursor-ew-resize"
                         />
                       </div>
 
                       {/* Rich Slider */}
                       <div className="space-y-2.5">
                         <div className="flex justify-between items-center text-[10px] uppercase tracking-wider">
-                          <span className="flex items-center gap-1.5 text-sand-beige">
-                            <GlassWater className="w-3.5 h-3.5 text-sky-400" />
+                          <span className="flex items-center gap-1.5 text-text-dark/80">
+                            <GlassWater className="w-3.5 h-3.5 text-sky-500" />
                             Richness
                           </span>
-                          <span className="text-copper">{sensoryPrefs.rich}%</span>
+                          <span className="text-terracotta font-semibold">{sensoryPrefs.rich}%</span>
                         </div>
                         <input
                           type="range"
@@ -351,7 +351,7 @@ export default function Menu() {
                           max="100"
                           value={sensoryPrefs.rich}
                           onChange={(e) => handleSliderChange('rich', e.target.value)}
-                          className="w-full accent-terracotta bg-bg-primary/80 h-1 cursor-ew-resize"
+                          className="w-full accent-terracotta bg-bg-secondary h-1 cursor-ew-resize"
                         />
                       </div>
                     </div>
@@ -373,7 +373,7 @@ export default function Menu() {
                           onClick={() => setSelectedCategory(cat)}
                           className="px-5 py-2 text-[10px] tracking-[0.25em] uppercase cursor-pointer transition-all duration-300 whitespace-nowrap"
                           style={{
-                            color: isActive ? 'var(--color-terracotta)' : 'var(--color-sand-beige)',
+                            color: isActive ? 'var(--color-terracotta)' : 'var(--color-text-dark)',
                             borderBottom: isActive ? '2px solid var(--color-terracotta)' : '2px solid transparent'
                           }}
                         >
@@ -382,8 +382,8 @@ export default function Menu() {
                       )
                     })
                   ) : (
-                    <div className="flex items-center gap-2 text-[10px] tracking-[0.2em] text-copper uppercase whitespace-nowrap">
-                      <Sparkles className="w-3.5 h-3.5 text-copper animate-pulse" />
+                    <div className="flex items-center gap-2 text-[10px] tracking-[0.2em] text-terracotta uppercase whitespace-nowrap font-semibold">
+                      <Sparkles className="w-3.5 h-3.5 text-terracotta animate-pulse" />
                       Sorted by match accuracy
                     </div>
                   )}
@@ -396,10 +396,10 @@ export default function Menu() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search catalog..."
-                    className="form-input text-xs pr-10 py-3"
+                    className="form-input text-xs pr-10 py-3 text-text-dark"
                     maxLength={50}
                   />
-                  <Search className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-copper/60" />
+                  <Search className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-terracotta/60" />
                 </div>
               </div>
 
@@ -418,9 +418,9 @@ export default function Menu() {
                       exit={{ opacity: 0, scale: 0.98 }}
                       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                       onMouseEnter={() => setHoveredItem(item)}
-                      className="flex gap-6 items-start pb-6 border-b border-terracotta/5 group relative cursor-pointer"
+                      className="flex gap-6 items-start pb-6 border-b border-terracotta/5 group relative cursor-pointer text-left"
                     >
-                      {/* Inline thumbnail (Fallback for mobile, interactive preview on hover for desktop) */}
+                      {/* Inline thumbnail */}
                       <div className="w-16 h-16 md:w-20 md:h-20 overflow-hidden bg-bg-secondary flex-shrink-0 relative lg:group-hover:border-terracotta/30 border border-transparent transition-all">
                         <img
                           src={item.image}
@@ -434,23 +434,23 @@ export default function Menu() {
                       <div className="flex-grow space-y-1">
                         <div className="flex items-baseline justify-between gap-4">
                           <div className="flex items-center gap-2">
-                            <h3 className="font-display text-lg md:text-xl font-light text-warm-ivory group-hover:text-copper transition-colors duration-300">
+                            <h3 className="font-display text-lg md:text-xl font-light text-text-dark group-hover:text-terracotta transition-colors duration-300">
                               {item.name}
                             </h3>
                             
                             {/* Match Tag in Sensory Mode */}
                             {viewMode === 'sensory' && (
-                              <span className="text-[9px] tracking-[0.1em] px-2 py-0.5 bg-terracotta/20 border border-terracotta/40 text-warm-ivory rounded-full font-sans font-medium">
+                              <span className="text-[9px] tracking-[0.1em] px-2 py-0.5 bg-terracotta/10 border border-terracotta/30 text-terracotta rounded-full font-sans font-semibold">
                                 {item.matchScore}% Match
                               </span>
                             )}
                           </div>
-                          <span className="font-display text-base text-copper font-light">
+                          <span className="font-display text-base text-terracotta font-medium">
                             ₹{item.price}
                           </span>
                         </div>
                         
-                        <p className="text-xs font-light text-sand-beige/90 leading-relaxed">
+                        <p className="text-xs font-light text-text-dark/80 leading-relaxed font-body">
                           {item.desc}
                         </p>
                         
@@ -458,7 +458,7 @@ export default function Menu() {
                           {item.tags.map((tag, tIdx) => (
                             <span 
                               key={tIdx} 
-                              className="text-[8px] tracking-[0.15em] uppercase text-copper/85 bg-copper/5 px-2 py-0.5 border border-copper/10"
+                              className="text-[8px] tracking-[0.15em] uppercase text-accent bg-accent/5 px-2 py-0.5 border border-accent/10 font-semibold"
                             >
                               {tag}
                             </span>
@@ -477,12 +477,12 @@ export default function Menu() {
                   animate={{ opacity: 1 }}
                   className="text-center py-20 border border-terracotta/15 bg-bg-secondary"
                 >
-                  <p className="font-display text-xl text-warm-ivory">
+                  <p className="font-display text-xl text-text-dark">
                     No items match your search.
                   </p>
                   <button 
                     onClick={() => { setSelectedCategory('All'); setSearchQuery(''); }}
-                    className="btn-gold-outline mt-6 text-[10px] py-3 px-8 cursor-pointer"
+                    className="btn-primary mt-6 text-[10px] py-3 px-8 cursor-pointer"
                   >
                     Reset Catalog
                   </button>
@@ -492,11 +492,11 @@ export default function Menu() {
             </div>
 
             {/* RIGHT COLUMN: Sticky Hover Showcase (Large Image View) */}
-            <div className="hidden lg:block lg:col-span-5 sticky top-28 w-full">
+            <div className="hidden lg:block lg:col-span-5 sticky top-28 w-full text-left">
               {activeShowcaseItem ? (
                 <motion.div
                   layout
-                  className="border border-terracotta/15 bg-bg-secondary/45 backdrop-blur-md p-6 space-y-6"
+                  className="border border-terracotta/15 bg-bg-secondary p-6 space-y-6 shadow-xl"
                 >
                   <div className="relative aspect-[4/5] w-full overflow-hidden bg-bg-primary border border-terracotta/10">
                     <AnimatePresence mode="wait">
@@ -514,65 +514,65 @@ export default function Menu() {
 
                     {/* Sensory Scores overlay */}
                     <div className="absolute top-4 left-4 flex flex-col gap-2">
-                      <span className="text-[8px] tracking-[0.2em] uppercase bg-bg-primary/80 backdrop-blur px-2.5 py-1 border border-terracotta/20 text-warm-ivory">
+                      <span className="text-[8px] tracking-[0.2em] uppercase bg-bg-primary/95 backdrop-blur px-2.5 py-1 border border-terracotta/20 text-terracotta font-semibold">
                         {activeShowcaseItem.category}
                       </span>
                     </div>
 
                     {viewMode === 'sensory' && (
-                      <div className="absolute bottom-4 right-4 bg-bg-primary/90 backdrop-blur px-3 py-2 border border-terracotta/20 text-[10px] tracking-[0.1em] font-medium flex items-center gap-1.5 rounded">
-                        <Sparkles className="w-3.5 h-3.5 text-copper animate-spin-slow" />
-                        <span className="text-warm-ivory">{activeShowcaseItem.matchScore}% Sensory Match</span>
+                      <div className="absolute bottom-4 right-4 bg-bg-primary/95 backdrop-blur px-3 py-2 border border-terracotta/20 text-[10px] tracking-[0.1em] font-semibold flex items-center gap-1.5 rounded text-terracotta">
+                        <Sparkles className="w-3.5 h-3.5 text-terracotta animate-spin-slow" />
+                        <span>{activeShowcaseItem.matchScore}% Sensory Match</span>
                       </div>
                     )}
                   </div>
 
                   <div className="space-y-3">
                     <div className="flex justify-between items-baseline border-b border-terracotta/10 pb-3">
-                      <h4 className="font-display text-2xl font-light text-warm-ivory">
+                      <h4 className="font-display text-2xl font-light text-text-dark">
                         {activeShowcaseItem.name}
                       </h4>
-                      <span className="font-display text-xl text-copper font-light">
+                      <span className="font-display text-xl text-terracotta font-medium">
                         ₹{activeShowcaseItem.price}
                       </span>
                     </div>
 
-                    <p className="text-xs font-light text-sand-beige leading-relaxed">
+                    <p className="text-xs font-light text-text-dark/80 leading-relaxed font-body">
                       {activeShowcaseItem.desc}
                     </p>
 
                     {/* Sensory radar profile summary */}
-                    <div className="grid grid-cols-2 gap-x-6 gap-y-3 pt-3 border-t border-terracotta/10 text-[9px] uppercase tracking-wider text-sand-beige/70">
+                    <div className="grid grid-cols-2 gap-x-6 gap-y-3 pt-3 border-t border-terracotta/10 text-[9px] uppercase tracking-wider text-text-dark/70 font-semibold">
                       <div className="flex justify-between items-center">
                         <span className="flex items-center gap-1">
-                          <Flame className="w-3 h-3 text-orange-500" /> Spice
+                          <Flame className="w-3 h-3 text-orange-600" /> Spice
                         </span>
-                        <span className="text-copper font-mono font-medium">{activeShowcaseItem.profile.spicy}%</span>
+                        <span className="text-terracotta font-mono">{activeShowcaseItem.profile.spicy}%</span>
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="flex items-center gap-1">
-                          <Cookie className="w-3 h-3 text-amber-300" /> Sweet
+                          <Cookie className="w-3 h-3 text-amber-600" /> Sweet
                         </span>
-                        <span className="text-copper font-mono font-medium">{activeShowcaseItem.profile.sweet}%</span>
+                        <span className="text-terracotta font-mono">{activeShowcaseItem.profile.sweet}%</span>
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="flex items-center gap-1">
-                          <Sprout className="w-3 h-3 text-emerald-500" /> Earth
+                          <Sprout className="w-3 h-3 text-emerald-600" /> Earth
                         </span>
-                        <span className="text-copper font-mono font-medium">{activeShowcaseItem.profile.earthy}%</span>
+                        <span className="text-terracotta font-mono">{activeShowcaseItem.profile.earthy}%</span>
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="flex items-center gap-1">
-                          <GlassWater className="w-3 h-3 text-sky-400" /> Rich
+                          <GlassWater className="w-3 h-3 text-sky-500" /> Rich
                         </span>
-                        <span className="text-copper font-mono font-medium">{activeShowcaseItem.profile.rich}%</span>
+                        <span className="text-terracotta font-mono">{activeShowcaseItem.profile.rich}%</span>
                       </div>
                     </div>
                   </div>
                 </motion.div>
               ) : (
-                <div className="h-[400px] border border-terracotta/10 bg-bg-secondary/20 flex items-center justify-center text-center p-8">
-                  <p className="text-xs text-sand-beige/50 tracking-widest uppercase">
+                <div className="h-[400px] border border-terracotta/10 bg-bg-secondary/40 flex items-center justify-center text-center p-8">
+                  <p className="text-xs text-text-dark/50 tracking-widest uppercase">
                     Hover over menu items to preview
                   </p>
                 </div>

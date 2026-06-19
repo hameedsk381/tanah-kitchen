@@ -1,6 +1,17 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
+import { DiamondDivider } from './illustrations'
+
+const packages = [
+  "Team Lunch Packages",
+  "Team Dinner Packages",
+  "Happy Hour Packages",
+  "Exclusive Area Booking",
+  "Full Venue Buyouts",
+  "Customized Menus",
+  "Custom Branding Opportunities",
+  "Entertainment & Engagement Add-ons"
+]
 
 export default function LiquidAlchemy() {
   const containerRef = useRef(null)
@@ -9,76 +20,81 @@ export default function LiquidAlchemy() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full py-[var(--spacing-section)] bg-bg-primary overflow-hidden"
+      className="relative w-full py-24 bg-[#581B0A] text-[#F2E8D8] overflow-hidden"
     >
-      {/* Dynamic glow element */}
-      <div className="absolute -right-20 top-1/4 w-[35vw] h-[35vw] rounded-full bg-copper/5 blur-[120px] pointer-events-none" />
+      {/* Subtle overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-dark-brown/50 to-transparent pointer-events-none" />
 
       <div className="max-w-container px-8 mx-auto relative z-10">
-        
-        {/* Asymmetrical composition */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
-          {/* Left Block: Narrative text */}
+          {/* Left Block: Customizable Corporate Packages */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 space-y-8 order-2 lg:order-1"
+            className="lg:col-span-6 space-y-8 text-left"
           >
-            <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-terracotta block">
-              BOTANICAL MIXOLOGY
+            <span className="text-[10px] font-semibold tracking-[0.5em] uppercase text-bg-secondary block opacity-90 font-body">
+              TAILORED EXPERIENCES
             </span>
 
             <h2
-              className="font-display font-light text-warm-ivory leading-tight"
-              style={{ fontSize: 'clamp(2.3rem, 5vw, 3.8rem)' }}
+              className="font-display font-light text-bg-primary leading-tight"
+              style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.4rem)' }}
             >
-              Liquid Alchemy &<br />
-              <span className="italic text-copper">Slow Infusions</span>
+              CUSTOMIZED CORPORATE<br />
+              PACKAGES
             </h2>
 
-            <p className="text-sm font-light text-sand-beige leading-relaxed">
-              Our cocktail program is a curated ritual of native botanicals, organic honey, house-fermented vinegars, and hand-pressed fruit elixirs. Inspired by Vedic apothecary traditions, each drink is structured to complement the elevation and atmosphere of our rooftop deck.
+            <p className="text-base font-light text-bg-secondary/95 leading-relaxed font-body">
+              We understand that every organization is unique. Our team works closely with corporate partners to create tailored experiences based on:
             </p>
 
-            <p className="text-xs font-light text-muted-beige/80 font-mono tracking-wide leading-relaxed">
-              HIGHLIGHTS: Wildflower Mead, Fermented Aravalli Nectar, Smoked Claypot Toddy
-            </p>
-
-            <div className="pt-6">
-              <Link
-                to="/menu"
-                className="btn-gold-outline py-3.5 px-10 text-[9px] tracking-[0.2em]"
-              >
-                View Spirits Collection
-              </Link>
+            <div className="border-t border-bg-secondary/15 pt-6">
+              <h3 className="font-display text-xl text-bg-primary mb-4 font-semibold italic">Flexible Options</h3>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+                {packages.map((pkg, i) => (
+                  <li key={i} className="flex items-center gap-3 text-sm font-light text-bg-secondary/90">
+                    <span className="text-accent text-sm">◇</span>
+                    {pkg}
+                  </li>
+                ))}
+              </ul>
             </div>
+
+            <p className="text-base font-display text-bg-secondary italic pt-4">
+              We handle the experience so you can focus on your people.
+            </p>
           </motion.div>
 
-          {/* Right Block: Image frame with offset border */}
+          {/* Right Block: Image of corporate team dining */}
           <motion.div
             initial={{ opacity: 0, scale: 0.98, y: 50 }}
             animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
             transition={{ duration: 1.4, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 relative order-1 lg:order-2"
+            className="lg:col-span-6 relative"
           >
-            <div className="aspect-[16/10] xl:aspect-[16/9] w-full overflow-hidden bg-bg-secondary relative border border-terracotta/10">
+            <div className="aspect-[4/3] w-full overflow-hidden bg-bg-secondary relative border border-bg-secondary/10 shadow-2xl">
               <img
-                src="/assets/Tanha Ambiance/Tanha Food/food-11.webp"
-                alt="Slow-infused botanical cocktails and elixirs"
-                className="w-full h-full object-cover filter brightness-[0.8] contrast-[1.08] transition-transform duration-[2s] hover:scale-105"
+                src="/assets/Tanha Ambiance/Ambiance-6.webp"
+                alt="Corporate partners dining together at Tanah"
+                className="w-full h-full object-cover filter brightness-[0.8] contrast-[1.05] transition-transform duration-[2s] hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/40 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute inset-6 border border-warm-ivory/10 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark-brown/40 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-6 border border-bg-primary/10 pointer-events-none" />
             </div>
 
-            {/* Architectural Grid Details */}
-            <div className="absolute -top-6 -right-6 w-32 h-32 border-t border-r border-terracotta/20 -z-10 pointer-events-none" />
+            {/* Tribal diamond divider overlay at bottom right */}
+            <div className="absolute -bottom-8 -right-8 w-32 h-32 border-b border-r border-bg-secondary/25 -z-10 pointer-events-none" />
           </motion.div>
 
         </div>
 
+        {/* Horizontal Diamond Divider at bottom */}
+        <div className="mt-16">
+          <DiamondDivider color="var(--color-bg-secondary)" />
+        </div>
       </div>
     </section>
   )

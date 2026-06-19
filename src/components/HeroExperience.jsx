@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowDownRight } from 'lucide-react'
+import { DiamondDivider } from './illustrations'
 
 export default function HeroExperience() {
   const containerRef = useRef(null)
@@ -22,56 +23,52 @@ export default function HeroExperience() {
       className="relative h-screen w-full flex items-center overflow-hidden bg-bg-primary"
       aria-label="Hero Experience"
     >
-      {/* Fullscreen Video Background */}
+      {/* Ambience Background Photo */}
       <motion.div
         style={{ y: yBg }}
         className="absolute inset-0 z-0 w-full h-full"
       >
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/assets/Tanha Ambiance/Ambiance-11.webp"
-          className="w-full h-full object-cover filter brightness-[0.45] contrast-[1.05]"
-        >
-          <source src="/video/hero-video.mp4" type="video/mp4" />
-          <img
-            src="/assets/Tanha Ambiance/Ambiance-11.webp"
-            alt="Luxury rooftop dining ambience at Tanha"
-            className="w-full h-full object-cover"
-          />
-        </video>
+        <img
+          src="/assets/Tanha Ambiance/Ambiance-11.webp"
+          alt="Tanah rooftop architecture and dining ambience"
+          className="w-full h-full object-cover filter brightness-[0.5] contrast-[1.05]"
+        />
         
-        {/* Subtle Luxury Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-bg-primary via-bg-primary/50 to-transparent pointer-events-none" />
+        {/* Warm Terracotta and Deep Earth Overlay for Company Profile styling */}
+        <div className="absolute inset-0 bg-gradient-to-t from-dark-brown via-terracotta/45 to-dark-brown/60 mix-blend-multiply pointer-events-none" />
+        {/* Paper grain visual texture layer */}
+        <div className="absolute inset-0 opacity-10 bg-repeat bg-center pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
       </motion.div>
 
-      {/* Editorial Content Overlay (Asymmetric & Left-Aligned) */}
+      {/* Editorial Content Overlay */}
       <div className="max-w-container mx-auto px-8 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
         <motion.div
           style={{ y: yText, opacity: opacityText }}
-          className="lg:col-span-7 flex flex-col justify-center text-left"
+          className="lg:col-span-8 flex flex-col justify-center text-left"
         >
-
-
-          <span className="text-[10px] font-semibold tracking-[0.5em] uppercase text-copper block mb-4 font-body">
-            TANHA KITCHEN & BAR
+          <span className="text-[10px] font-semibold tracking-[0.5em] uppercase text-bg-primary block mb-3 font-body opacity-80">
+            ESTD 2025 • TANAH KITCHEN & BAR
           </span>
 
           <h1
-            className="font-display font-light text-warm-ivory leading-[1.02] mb-8"
+            className="font-display font-light text-bg-primary leading-[1.1] mb-6"
             style={{
-              fontSize: 'clamp(2.8rem, 6vw, 6rem)',
+              fontSize: 'clamp(2.5rem, 5.5vw, 5.2rem)',
             }}
           >
-            Where Art &<br />
-            <span className="font-light italic text-copper">Sky Collide</span>
+            Where Teams Gather.<br />
+            Conversations Flow.<br />
+            <span className="font-light italic text-bg-secondary">Connections Grow.</span>
           </h1>
 
-          <p className="text-sm font-light text-sand-beige max-w-md mb-10 leading-relaxed font-body">
-            A premium rooftop destination elevating Hyderabad's dining scene. Experience progressive gastronomy, botanical mixology, and high-altitude art installations under open skies.
+          {/* Decorative Tribal Divider Exactly Like PDF Page 2 */}
+          <div className="w-full max-w-xl mb-6">
+            <DiamondDivider color="var(--color-bg-secondary)" className="my-2 justify-start" />
+          </div>
+
+          <p className="text-lg font-light text-bg-secondary max-w-xl mb-8 leading-relaxed font-display">
+            A place inspired by the earth, built for meaningful moments.
           </p>
 
           <div className="flex flex-wrap gap-6 items-center">
@@ -83,10 +80,10 @@ export default function HeroExperience() {
             </Link>
             <Link
               to="/menu"
-              className="text-[10px] font-medium tracking-[0.2em] uppercase text-warm-ivory hover:text-copper transition-colors duration-300 flex items-center gap-3 group"
+              className="text-[10px] font-medium tracking-[0.2em] uppercase text-bg-primary hover:text-accent transition-colors duration-300 flex items-center gap-3 group"
             >
               Explore Menu
-              <ArrowDownRight className="w-4 h-4 text-copper group-hover:translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-300" />
+              <ArrowDownRight className="w-4 h-4 text-bg-secondary group-hover:translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-300" />
             </Link>
           </div>
         </motion.div>
@@ -95,14 +92,14 @@ export default function HeroExperience() {
 
       {/* Floating scroll explorer at bottom-left */}
       <div className="absolute bottom-12 left-8 hidden lg:flex items-center gap-4 z-20">
-        <span className="text-[8px] font-mono tracking-[0.3em] text-muted-beige uppercase">
+        <span className="text-[8px] font-mono tracking-[0.3em] text-bg-secondary uppercase opacity-75">
           SCROLL TO DISCOVER
         </span>
-        <div className="w-16 h-[1px] bg-terracotta/30 relative overflow-hidden">
+        <div className="w-16 h-[1px] bg-bg-secondary/35 relative overflow-hidden">
           <motion.div
             animate={{ x: [-64, 64] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute top-0 left-0 w-8 h-full bg-copper"
+            className="absolute top-0 left-0 w-8 h-full bg-bg-secondary"
           />
         </div>
       </div>
