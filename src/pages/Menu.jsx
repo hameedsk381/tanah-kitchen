@@ -11,17 +11,17 @@ function getMappedCategory(item) {
   if (item.category === 'Cocktails') return 'Cocktails'
   if (item.category === 'Beverages') return 'Beverages'
   if (item.category === 'Desserts') return 'Desserts'
-  
+
   // Custom mapping for Breakfast/Lunch/Dinner into Starters/Mains
   const startersNames = [
-    "Ancient Grain Granola", 
-    "Millet Idli & Heirloom Chutney", 
-    "Earthy Quinoa Upma", 
-    "Tanah Green Salad", 
-    "Smoked Terracotta Paneer", 
+    "Ancient Grain Granola",
+    "Millet Idli & Heirloom Chutney",
+    "Earthy Quinoa Upma",
+    "Tanah Green Salad",
+    "Smoked Terracotta Paneer",
     "Wood-fired Herb Crusted Potatoes"
   ]
-  
+
   if (startersNames.includes(item.name)) {
     return 'Starters'
   }
@@ -126,13 +126,13 @@ export default function Menu() {
   useEffect(() => {
     let result = menuData.items.map(item => {
       const profile = calculateSensoryProfile(item)
-      
+
       // Calculate match percentage
       const diffSpicy = Math.abs(profile.spicy - sensoryPrefs.spicy)
       const diffSweet = Math.abs(profile.sweet - sensoryPrefs.sweet)
       const diffEarthy = Math.abs(profile.earthy - sensoryPrefs.earthy)
       const diffRich = Math.abs(profile.rich - sensoryPrefs.rich)
-      
+
       const avgDiff = (diffSpicy + diffSweet + diffEarthy + diffRich) / 4
       const matchScore = Math.max(0, Math.min(100, Math.round(100 - avgDiff)))
 
@@ -154,8 +154,8 @@ export default function Menu() {
     }
 
     if (searchQuery.trim() !== '') {
-      result = result.filter(item => 
-        item.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      result = result.filter(item =>
+        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.desc.toLowerCase().includes(searchQuery.toLowerCase())
       )
     }
@@ -185,14 +185,14 @@ export default function Menu() {
 
   return (
     <main className="flex-grow pt-24 bg-bg-primary text-text-dark">
-      
+
       {/* Page Header */}
       <section className="relative py-20 md:py-28 text-center border-b border-terracotta/15 bg-bg-secondary">
         <div className="relative z-10 px-8 max-w-container mx-auto">
           <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-terracotta block mb-4">
             Gastronomy Catalog
           </span>
-          <h1 
+          <h1
             className="font-display font-light text-text-dark leading-none mb-6"
             style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
           >
@@ -207,21 +207,19 @@ export default function Menu() {
             <div className="inline-flex border border-terracotta/20 p-1 bg-bg-primary/90 backdrop-blur">
               <button
                 onClick={() => setViewMode('classic')}
-                className={`px-6 py-2.5 text-[10px] tracking-[0.25em] uppercase transition-all duration-300 cursor-pointer ${
-                  viewMode === 'classic' 
-                    ? 'bg-terracotta text-bg-primary font-medium' 
+                className={`px-6 py-2.5 text-[10px] tracking-[0.25em] uppercase transition-all duration-300 cursor-pointer ${viewMode === 'classic'
+                    ? 'bg-terracotta text-bg-primary font-medium'
                     : 'text-text-dark/70 hover:text-terracotta'
-                }`}
+                  }`}
               >
                 Classic Catalog
               </button>
               <button
                 onClick={() => setViewMode('sensory')}
-                className={`px-6 py-2.5 text-[10px] tracking-[0.25em] uppercase transition-all duration-300 cursor-pointer flex items-center gap-2 ${
-                  viewMode === 'sensory' 
-                    ? 'bg-terracotta text-bg-primary font-medium' 
+                className={`px-6 py-2.5 text-[10px] tracking-[0.25em] uppercase transition-all duration-300 cursor-pointer flex items-center gap-2 ${viewMode === 'sensory'
+                    ? 'bg-terracotta text-bg-primary font-medium'
                     : 'text-text-dark/70 hover:text-terracotta'
-                }`}
+                  }`}
               >
                 <Sliders className="w-3.5 h-3.5" />
                 Sensory Matcher
@@ -234,12 +232,12 @@ export default function Menu() {
       {/* Menu Container */}
       <section className="relative py-16 bg-bg-primary">
         <div className="max-w-container px-8 mx-auto">
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-            
+
             {/* LEFT COLUMN: Controls & Menu list */}
             <div className="lg:col-span-7 space-y-12 w-full">
-              
+
               {/* SENSORY CONTROLS PANEL */}
               <AnimatePresence mode="wait">
                 {viewMode === 'sensory' && (
@@ -361,7 +359,7 @@ export default function Menu() {
 
               {/* Filters and Search */}
               <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-terracotta/10 pb-6">
-                
+
                 {/* Category selection - Only visible in Classic view */}
                 <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto no-scrollbar py-2">
                   {viewMode === 'classic' ? (
@@ -404,7 +402,7 @@ export default function Menu() {
               </div>
 
               {/* Editorial Menu Grid */}
-              <motion.div 
+              <motion.div
                 layout
                 className="flex flex-col gap-10"
               >
@@ -437,7 +435,7 @@ export default function Menu() {
                             <h3 className="font-display text-lg md:text-xl font-light text-text-dark group-hover:text-terracotta transition-colors duration-300">
                               {item.name}
                             </h3>
-                            
+
                             {/* Match Tag in Sensory Mode */}
                             {viewMode === 'sensory' && (
                               <span className="text-[9px] tracking-[0.1em] px-2 py-0.5 bg-terracotta/10 border border-terracotta/30 text-terracotta rounded-full font-sans font-semibold">
@@ -449,15 +447,15 @@ export default function Menu() {
                             ₹{item.price}
                           </span>
                         </div>
-                        
+
                         <p className="text-xs font-light text-text-dark/80 leading-relaxed font-body">
                           {item.desc}
                         </p>
-                        
+
                         <div className="flex flex-wrap gap-2 pt-1">
                           {item.tags.map((tag, tIdx) => (
-                            <span 
-                              key={tIdx} 
+                            <span
+                              key={tIdx}
                               className="text-[8px] tracking-[0.15em] uppercase text-accent bg-accent/5 px-2 py-0.5 border border-accent/10 font-semibold"
                             >
                               {tag}
@@ -472,7 +470,7 @@ export default function Menu() {
 
               {/* Empty state */}
               {filteredItems.length === 0 && (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   className="text-center py-20 border border-terracotta/15 bg-bg-secondary"
@@ -480,7 +478,7 @@ export default function Menu() {
                   <p className="font-display text-xl text-text-dark">
                     No items match your search.
                   </p>
-                  <button 
+                  <button
                     onClick={() => { setSelectedCategory('All'); setSearchQuery(''); }}
                     className="btn-primary mt-6 text-[10px] py-3 px-8 cursor-pointer"
                   >
@@ -488,7 +486,7 @@ export default function Menu() {
                   </button>
                 </motion.div>
               )}
-              
+
             </div>
 
             {/* RIGHT COLUMN: Sticky Hover Showcase (Large Image View) */}

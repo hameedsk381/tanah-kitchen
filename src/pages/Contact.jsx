@@ -48,7 +48,7 @@ export default function Contact() {
 
   return (
     <main className="flex-grow pt-24 bg-bg-primary text-text-dark">
-      
+
       {/* Editorial Header */}
       <section className="relative py-28 md:py-36 text-center border-b border-terracotta/15 bg-bg-secondary overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-15 mix-blend-multiply">
@@ -62,7 +62,7 @@ export default function Contact() {
           <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-terracotta block mb-4">
             Connect
           </span>
-          <h1 
+          <h1
             className="font-display font-light text-text-dark leading-none mb-6"
             style={{ fontSize: 'clamp(2.5rem, 7vw, 5rem)' }}
           >
@@ -78,7 +78,7 @@ export default function Contact() {
       <section className="relative py-20 bg-bg-primary">
         <div className="max-w-container px-8 mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-            
+
             {/* Left Column: Info Coordinates */}
             <div className="lg:col-span-5 space-y-10 text-left">
               <div className="space-y-4">
@@ -185,65 +185,66 @@ export default function Contact() {
                 <form
                   onSubmit={handleSubmit}
                   noValidate
-                  className="p-8 md:p-12 border border-terracotta/15 bg-bg-secondary space-y-6 shadow-lg text-left"
+                  className="p-8 md:p-12 border border-primary-dark/10 bg-light-cream space-y-6 shadow-2xl text-left rounded"
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-terracotta block">Your Name</label>
+                      <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">Your Name</label>
                       <input
                         type="text"
                         name="name"
                         value={form.name}
                         onChange={handleChange}
                         placeholder="John Doe"
-                        className="form-input text-xs"
+                        className="form-input text-xs bg-white border border-primary-dark/15 text-near-black placeholder:text-near-black/40 focus:bg-white focus:border-primary-dark"
                       />
-                      {errors.name && <span className="text-[10px] text-terracotta block">{errors.name}</span>}
+                      {errors.name && <span className="text-[10px] text-primary-dark block font-semibold">{errors.name}</span>}
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-terracotta block">Phone Number</label>
+                      <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">Phone Number</label>
                       <input
                         type="tel"
                         name="phone"
                         value={form.phone}
                         onChange={handleChange}
                         placeholder="Phone Number"
-                        className="form-input text-xs"
+                        className="form-input text-xs bg-white border border-primary-dark/15 text-near-black placeholder:text-near-black/40 focus:bg-white focus:border-primary-dark"
                       />
-                      {errors.phone && <span className="text-[10px] text-terracotta block">{errors.phone}</span>}
+                      {errors.phone && <span className="text-[10px] text-primary-dark block font-semibold">{errors.phone}</span>}
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-terracotta block">Email Address</label>
+                    <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">Email Address</label>
                     <input
                       type="email"
                       name="email"
                       value={form.email}
                       onChange={handleChange}
                       placeholder="you@domain.com"
-                      className="form-input text-xs"
+                      className="form-input text-xs bg-white border border-primary-dark/15 text-near-black placeholder:text-near-black/40 focus:bg-white focus:border-primary-dark"
                     />
-                    {errors.email && <span className="text-[10px] text-terracotta block">{errors.email}</span>}
+                    {errors.email && <span className="text-[10px] text-primary-dark block font-semibold">{errors.email}</span>}
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-terracotta block">Message / Inquiry Details</label>
+                    <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">Message / Inquiry Details</label>
                     <textarea
                       name="message"
                       value={form.message}
                       onChange={handleChange}
                       placeholder="Tell us what you would like to ask..."
                       rows={5}
-                      className="form-input text-xs resize-none"
+                      className="form-input text-xs bg-white border border-primary-dark/15 text-near-black placeholder:text-near-black/40 focus:bg-white focus:border-primary-dark resize-none"
                     />
-                    {errors.message && <span className="text-[10px] text-terracotta block">{errors.message}</span>}
+                    {errors.message && <span className="text-[10px] text-primary-dark block font-semibold">{errors.message}</span>}
                   </div>
 
                   <button
                     type="submit"
                     className="btn-primary w-full justify-center text-center text-[10px] py-4 cursor-pointer"
+                    style={{ backgroundColor: '#7A2D2D', borderColor: '#7A2D2D', color: '#F2E8D5' }}
                   >
                     Send Message
                   </button>

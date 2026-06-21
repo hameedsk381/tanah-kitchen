@@ -69,7 +69,7 @@ export default function Book() {
 
       <div className="relative z-10 max-w-[1200px] px-8 mx-auto w-full py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          
+
           {/* Informational column */}
           <div className="lg:col-span-5 space-y-8 text-left">
             <div className="space-y-4">
@@ -136,12 +136,12 @@ export default function Book() {
                   key="form"
                   onSubmit={handleSubmit}
                   noValidate
-                  className="p-8 md:p-12 border border-terracotta/15 bg-bg-secondary space-y-6 shadow-xl text-left"
+                  className="p-8 md:p-12 border border-primary-dark/10 bg-light-cream space-y-6 shadow-2xl text-left rounded"
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Name */}
                     <div className="space-y-2">
-                      <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-terracotta block">
+                      <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">
                         Full Name
                       </label>
                       <input
@@ -150,14 +150,14 @@ export default function Book() {
                         value={form.name}
                         onChange={handleChange}
                         placeholder="John Doe"
-                        className="form-input text-xs"
+                        className="form-input text-xs bg-white border border-primary-dark/15 text-near-black placeholder:text-near-black/40 focus:bg-white focus:border-primary-dark"
                       />
-                      {errors.name && <span className="text-[10px] text-terracotta block">{errors.name}</span>}
+                      {errors.name && <span className="text-[10px] text-primary-dark block font-semibold">{errors.name}</span>}
                     </div>
 
                     {/* Phone */}
                     <div className="space-y-2">
-                      <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-terracotta block">
+                      <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">
                         Phone Number
                       </label>
                       <input
@@ -166,15 +166,15 @@ export default function Book() {
                         value={form.phone}
                         onChange={handleChange}
                         placeholder="89777 30291"
-                        className="form-input text-xs"
+                        className="form-input text-xs bg-white border border-primary-dark/15 text-near-black placeholder:text-near-black/40 focus:bg-white focus:border-primary-dark"
                       />
-                      {errors.phone && <span className="text-[10px] text-terracotta block">{errors.phone}</span>}
+                      {errors.phone && <span className="text-[10px] text-primary-dark block font-semibold">{errors.phone}</span>}
                     </div>
                   </div>
 
                   {/* Email */}
                   <div className="space-y-2">
-                    <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-terracotta block">
+                    <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">
                       E-Mail Address
                     </label>
                     <input
@@ -183,15 +183,15 @@ export default function Book() {
                       value={form.email}
                       onChange={handleChange}
                       placeholder="you@domain.com"
-                      className="form-input text-xs"
+                      className="form-input text-xs bg-white border border-primary-dark/15 text-near-black placeholder:text-near-black/40 focus:bg-white focus:border-primary-dark"
                     />
-                    {errors.email && <span className="text-[10px] text-terracotta block">{errors.email}</span>}
+                    {errors.email && <span className="text-[10px] text-primary-dark block font-semibold">{errors.email}</span>}
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {/* Date */}
                     <div className="space-y-2">
-                      <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-terracotta block">
+                      <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">
                         Select Date
                       </label>
                       <input
@@ -199,51 +199,49 @@ export default function Book() {
                         name="date"
                         value={form.date}
                         onChange={handleChange}
-                        className="form-input text-xs"
+                        className="form-input text-xs bg-white border border-primary-dark/15 text-near-black focus:bg-white focus:border-primary-dark"
                       />
-                      {errors.date && <span className="text-[10px] text-terracotta block">{errors.date}</span>}
+                      {errors.date && <span className="text-[10px] text-primary-dark block font-semibold">{errors.date}</span>}
                     </div>
 
                     {/* Time */}
                     <div className="space-y-2">
-                      <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-terracotta block">
+                      <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">
                         Select Time
                       </label>
                       <select
                         name="time"
                         value={form.time}
                         onChange={handleChange}
-                        className="form-input text-xs"
-                        style={{ height: '54px' }}
+                        className="form-input text-xs bg-white border border-primary-dark/15 text-near-black focus:bg-white focus:border-primary-dark h-[54px]"
                       >
-                        <option value="">Choose Time</option>
-                        {timeSlots.map(t => <option key={t} value={t}>{t}</option>)}
+                        <option value="" className="text-near-black">Choose Time</option>
+                        {timeSlots.map(t => <option key={t} value={t} className="text-near-black">{t}</option>)}
                       </select>
-                      {errors.time && <span className="text-[10px] text-terracotta block">{errors.time}</span>}
+                      {errors.time && <span className="text-[10px] text-primary-dark block font-semibold">{errors.time}</span>}
                     </div>
 
                     {/* Guests */}
                     <div className="space-y-2">
-                      <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-terracotta block">
+                      <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">
                         Party Size
                       </label>
                       <select
                         name="guests"
                         value={form.guests}
                         onChange={handleChange}
-                        className="form-input text-xs"
-                        style={{ height: '54px' }}
+                        className="form-input text-xs bg-white border border-primary-dark/15 text-near-black focus:bg-white focus:border-primary-dark h-[54px]"
                       >
-                        <option value="">Guests count</option>
-                        {partySizes.map(g => <option key={g} value={g}>{g}</option>)}
+                        <option value="" className="text-near-black">Guests count</option>
+                        {partySizes.map(g => <option key={g} value={g} className="text-near-black">{g}</option>)}
                       </select>
-                      {errors.guests && <span className="text-[10px] text-terracotta block">{errors.guests}</span>}
+                      {errors.guests && <span className="text-[10px] text-primary-dark block font-semibold">{errors.guests}</span>}
                     </div>
                   </div>
 
                   {/* Notes */}
                   <div className="space-y-2">
-                    <label className="text-[9px] font-semibold tracking-[0.25em] uppercase text-terracotta block">
+                    <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">
                       Special seating or Dietary notes
                     </label>
                     <textarea
@@ -252,13 +250,14 @@ export default function Book() {
                       onChange={handleChange}
                       placeholder="Allergies, seating requests..."
                       rows={3}
-                      className="form-input text-xs resize-none"
+                      className="form-input text-xs bg-white border border-primary-dark/15 text-near-black placeholder:text-near-black/40 focus:bg-white focus:border-primary-dark resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
                     className="btn-primary w-full justify-center text-center text-[10px] py-4 cursor-pointer"
+                    style={{ backgroundColor: '#7A2D2D', borderColor: '#7A2D2D', color: '#F2E8D5' }}
                   >
                     Send Reservation Request
                   </button>

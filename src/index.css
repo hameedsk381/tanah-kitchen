@@ -5,34 +5,28 @@
    ============================================================ */
 
 @theme {
-  /* Tanah Company Profile Master Design System Palette */
-  --color-dark-1: #1B1714;
-  --color-dark-2: #241C18;
-  --color-dark-3: #2E241D;
-  --color-light-1: #F5F0E6;
-  --color-light-2: #EFE4D0;
-  --color-light-3: #E6D5BB;
-  --color-accent-1: #A65A3A;
-  --color-accent-2: #8C5A3C;
-  --color-accent-3: #C48A57;
-  --color-extra-dark: #0E0B0A;
+  /* Tanah Kitchen & Bar – Custom Premium Design System Palette */
+  --color-primary-dark: #7A2D2D;
+  --color-light-cream: #F2E8D5;
+  --color-accent-gold: #C9A66B;
+  --color-border-accent: #E8DCC0;
+  --color-near-black: #2B2B2B;
 
-  /* Global mapping fallback variables */
-  --color-bg-primary: #F5F0E6;
-  --color-bg-secondary: #EFE4D0;
-  --color-text-dark: #1B1714;
-  --color-accent: #A65A3A;
-  --color-deep-earth: #1B1714;
-  --color-muted-earth: #8C5A3C;
-  --color-terracotta: #A65A3A;
+  /* Global mappings mapping fallback variables */
+  --color-bg-primary: #F2E8D5;
+  --color-bg-secondary: #7A2D2D;
+  --color-text-dark: #2B2B2B;
+  --color-text-light: #F2E8D5;
+  --color-accent: #7A2D2D;
+  --color-accent-gold-color: #C9A66B;
 
   /* Typography */
-  --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-display: 'Baloo 2', 'Inter', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 
   /* Spacing */
-  --spacing-section: clamp(6rem, 10vw, 10rem);
+  --spacing-section: clamp(5rem, 8vw, 8rem);
 }
 
 /* ============================================================
@@ -41,14 +35,14 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  background-color: var(--color-light-1);
-  color: var(--color-dark-1);
+  background-color: var(--color-light-cream);
+  color: var(--color-near-black);
 }
 
 body {
   font-family: var(--font-body);
-  background-color: var(--color-light-1);
-  color: var(--color-dark-1);
+  background-color: var(--color-light-cream);
+  color: var(--color-near-black);
   line-height: 1.8;
   -webkit-font-smoothing: antialiased;
   position: relative;
@@ -62,18 +56,62 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.05;
+  opacity: 0.03;
   pointer-events: none;
   z-index: 9999;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
+/* Folk Art Tiled Pattern Background */
+.folk-art-bg {
+  position: relative;
+}
+.folk-art-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.08; /* ~8-10% opacity */
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cpath d='M30 40 C35 30 55 35 60 45 C50 50 40 50 30 40 Z' stroke='%23F2E8D5' stroke-width='1.5' fill='none'/%3E%3Cpath d='M45 35 L35 25 L40 32' stroke='%23F2E8D5' stroke-width='1.2' fill='none'/%3E%3Ccircle cx='110' cy='45' r='10' stroke='%23F2E8D5' stroke-width='1.5' fill='none'/%3E%3Cpath d='M110 30 L110 35 M110 55 L110 60 M95 45 L100 45 M120 45 L125 45' stroke='%23F2E8D5' stroke-width='1.2'/%3E%3Cpath d='M50 110 L58 110 L58 95 L68 90 L68 85 M58 95 L48 100 L43 110' stroke='%23F2E8D5' stroke-width='1.5' fill='none'/%3E%3Cpath d='M68 85 L72 80 M68 85 L65 80' stroke='%23F2E8D5' stroke-width='1.2'/%3E%3Ccircle cx='120' cy='115' r='4' stroke='%23F2E8D5' stroke-width='1.5' fill='none'/%3E%3Cpath d='M110 125 C115 120 125 120 130 125' stroke='%23F2E8D5' stroke-width='1.2' fill='none'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* Repeating outlined diamond (◇) border with dots */
+.diamond-border-divider {
+  display: block;
+  width: 100%;
+  height: 16px;
+  margin: 16px 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='16' viewBox='0 0 24 16'%3E%3Cpath d='M6 8 L12 3 L18 8 L12 13 Z' stroke='%23E8DCC0' fill='none' stroke-width='1.5'/%3E%3Ccircle cx='2' cy='8' r='1' fill='%23E8DCC0'/%3E%3Ccircle cx='22' cy='8' r='1' fill='%23E8DCC0'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+.diamond-border-divider-maroon {
+  display: block;
+  width: 100%;
+  height: 16px;
+  margin: 16px 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='16' viewBox='0 0 24 16'%3E%3Cpath d='M6 8 L12 3 L18 8 L12 13 Z' stroke='%237A2D2D' fill='none' stroke-width='1.5'/%3E%3Ccircle cx='2' cy='8' r='1' fill='%237A2D2D'/%3E%3Ccircle cx='22' cy='8' r='1' fill='%237A2D2D'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+/* Textured Display Headings styling helper */
+.textured-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
 /* Base Headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.15;
-  letter-spacing: -0.01em;
+  color: inherit;
 }
 
 /* Container limits (Max 1400px width for content) */
@@ -83,19 +121,19 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 
-/* Glassmorphism utility - adapted for warm cream paper look */
+/* Glassmorphism utility - adapted for light editorial theme */
 .glass {
-  background: rgba(232, 216, 192, 0.75);
+  background: rgba(242, 232, 213, 0.75);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(136, 43, 6, 0.15);
+  border: 1px solid rgba(122, 45, 45, 0.15);
 }
 
 .glass-premium {
-  background: rgba(242, 232, 216, 0.9);
+  background: rgba(242, 232, 213, 0.9);
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
-  border: 1px solid rgba(136, 43, 6, 0.25);
+  border: 1px solid rgba(122, 45, 45, 0.25);
 }
 
 /* Custom premium buttons */
@@ -104,21 +142,21 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 12px;
   padding: 16px 36px;
-  background-color: var(--color-terracotta);
-  color: var(--color-bg-primary);
+  background-color: var(--color-primary-dark);
+  color: var(--color-light-cream);
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 0.75rem;
   letter-spacing: 3px;
   text-transform: uppercase;
-  border-radius: 0; /* Premium architectural sharp corners */
+  border-radius: 0;
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   position: relative;
   overflow: hidden;
   z-index: 1;
-  border: 1px solid var(--color-terracotta);
+  border: 1px solid var(--color-primary-dark);
 }
 
 .btn-primary::before {
@@ -128,7 +166,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--color-deep-earth);
+  background: var(--color-near-black);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -141,9 +179,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary:hover {
-  color: var(--color-bg-primary);
+  color: var(--color-light-cream);
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(136, 43, 6, 0.25);
+  box-shadow: 0 12px 30px rgba(122, 45, 45, 0.25);
+  background-color: var(--color-near-black);
+  border-color: var(--color-near-black);
 }
 
 .btn-outline {
@@ -152,13 +192,13 @@ h1, h2, h3, h4, h5, h6 {
   gap: 12px;
   padding: 16px 36px;
   background: transparent;
-  color: var(--color-terracotta);
+  color: var(--color-primary-dark);
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 0.75rem;
   letter-spacing: 3px;
   text-transform: uppercase;
-  border: 1px solid rgba(136, 43, 6, 0.5);
+  border: 1px solid rgba(122, 45, 45, 0.5);
   border-radius: 0;
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -166,9 +206,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-outline:hover {
-  background: var(--color-terracotta);
-  color: var(--color-bg-primary);
-  border-color: var(--color-terracotta);
+  background: var(--color-primary-dark);
+  color: var(--color-light-cream);
+  border-color: var(--color-primary-dark);
   transform: translateY(-2px);
 }
 
@@ -178,13 +218,13 @@ h1, h2, h3, h4, h5, h6 {
   gap: 12px;
   padding: 16px 36px;
   background: transparent;
-  color: var(--color-accent);
+  color: var(--color-accent-gold);
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 0.75rem;
   letter-spacing: 3px;
   text-transform: uppercase;
-  border: 1px solid var(--color-accent);
+  border: 1px solid var(--color-accent-gold);
   border-radius: 0;
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -192,8 +232,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-gold-outline:hover {
-  background: var(--color-accent);
-  color: var(--color-bg-primary);
+  background: var(--color-accent-gold);
+  color: var(--color-light-cream);
   transform: translateY(-2px);
 }
 
@@ -213,9 +253,9 @@ h1, h2, h3, h4, h5, h6 {
 .form-input {
   width: 100%;
   padding: 18px 22px;
-  background: rgba(232, 216, 192, 0.4);
-  border: 1px solid rgba(136, 43, 6, 0.2);
-  color: var(--color-text-dark);
+  background: rgba(229, 213, 192, 0.4);
+  border: 1px solid rgba(122, 62, 50, 0.2);
+  color: var(--color-dark-accent);
   font-family: var(--font-body);
   font-size: 0.85rem;
   outline: none;
@@ -224,11 +264,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .form-input:focus {
-  border-color: var(--color-terracotta);
-  background: rgba(232, 216, 192, 0.6);
+  border-color: var(--color-decorative-border);
+  background: rgba(229, 213, 192, 0.6);
 }
 
-/* Custom image zooming */
+/* Custom image zooming & blend mode overlays */
 .hover-zoom {
   overflow: hidden;
 }
@@ -239,6 +279,25 @@ h1, h2, h3, h4, h5, h6 {
 
 .hover-zoom:hover img {
   transform: scale(1.08);
+}
+
+/* Photography Earthy Overlay Multiply System */
+.photo-blend-container {
+  position: relative;
+  background-color: rgba(106, 58, 42, 0.12); /* Subtle sand tint for brochure photos */
+  overflow: hidden;
+}
+
+.photo-blend-container img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-blend-bg {
+  background-color: rgba(106, 58, 42, 0.55) !important;
+  background-blend-mode: multiply !important;
 }
 
 /* Hide scrollbar */
@@ -258,6 +317,6 @@ h1, h2, h3, h4, h5, h6 {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(15, 15, 15, 0.95), transparent);
+  background: linear-gradient(to top, rgba(234, 221, 203, 0.95), transparent);
   pointer-events: none;
 }

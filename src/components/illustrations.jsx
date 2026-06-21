@@ -5,26 +5,26 @@ export const LogoOwl = ({ className = "w-24 h-24", color = "currentColor" }) => 
   <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
     {/* Head & Body Outline (Artistic, slightly rough hand-drawn look) */}
     <path d="M60,110 C60,50 140,50 140,110 C140,150 120,160 100,160 C80,160 60,150 60,110 Z" stroke={color} strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
-    
+
     {/* Large Single Tribal Eye (Inspired by the profile's stylized one-eyed owl designs) */}
     <circle cx="100" cy="95" r="24" stroke={color} strokeWidth="5" />
     <circle cx="100" cy="95" r="10" fill={color} />
-    
+
     {/* Brow / Feather detail above eye */}
     <path d="M75,65 C85,60 115,60 125,65" stroke={color} strokeWidth="5" strokeLinecap="round" />
-    
+
     {/* Branch the owl sits on */}
     <path d="M30,165 L170,165" stroke={color} strokeWidth="7" strokeLinecap="round" />
     {/* Branch details (small twigs) */}
     <path d="M45,165 L35,175" stroke={color} strokeWidth="5" strokeLinecap="round" />
     <path d="M150,165 L165,155" stroke={color} strokeWidth="5" strokeLinecap="round" />
-    
+
     {/* Beak / Twig held in beak */}
     <path d="M85,100 L70,95 L85,90" stroke={color} strokeWidth="4" fill="none" />
     {/* Stylized leafy twig held in beak */}
     <path d="M70,95 L40,80" stroke={color} strokeWidth="4" strokeLinecap="round" />
     <path d="M45,82 C42,75 48,72 52,78 C56,72 62,75 59,82" stroke={color} strokeWidth="3" fill={color} />
-    
+
     {/* Cup / Chalice next to the owl (as seen in logo) */}
     <path d="M125,165 L125,145 M115,145 L135,145 M115,120 L135,120 L130,145 L120,145 Z" stroke={color} strokeWidth="4" fill="none" />
     {/* Small steam or liquid drop */}
@@ -37,7 +37,7 @@ export const StoryNestOwl = ({ className = "w-48 h-48", color = "currentColor" }
   <svg viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
     {/* Owl Body */}
     <path d="M110,130 C110,70 185,70 185,130 C185,170 165,180 147,180 C130,180 110,170 110,130 Z" stroke={color} strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
-    
+
     {/* Tribal Eye */}
     <circle cx="147" cy="115" r="22" stroke={color} strokeWidth="5" />
     <circle cx="147" cy="115" r="9" fill={color} />
@@ -201,7 +201,7 @@ export const TribalDiamond = ({ className = "w-20 h-20", color = "#882B06" }) =>
     <path d="M50,25 L75,50 L50,75 L25,50 Z" stroke="currentColor" strokeWidth="3" />
     {/* Center Core */}
     <rect x="44" y="44" width="12" height="12" transform="rotate(45 50 50)" fill="currentColor" />
-    
+
     {/* Tribal spike marks around the outer diamond */}
     <path d="M50,10 L50,2 M90,50 L98,50 M50,90 L50,98 M10,50 L2,50" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
     <path d="M30,30 L24,24 M70,30 L76,24 M70,70 L76,76 M30,70 L24,76" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" />
@@ -239,3 +239,21 @@ export const TribalMuralBanner = ({ className = "w-full", color = "#882B06" }) =
     <DiamondDivider className="w-full" color={color} />
   </div>
 )
+
+// 11. Diamond-in-Diamond Corner Ornament Icon (looks like a target made of crossed lines and nested diamonds)
+export const DiamondCornerOrnament = ({ className = "w-12 h-12", color = "currentColor" }) => (
+  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* Crossed lines (target style) */}
+    <path d="M50 5 L50 95 M5 50 L95 50" stroke={color} strokeWidth="2" strokeLinecap="round" />
+    <path d="M18 18 L82 82 M18 82 L82 18" stroke={color} strokeWidth="1.5" strokeDasharray="3,3" strokeLinecap="round" />
+    
+    {/* Nested diamonds */}
+    <path d="M50 15 L85 50 L50 85 L15 50 Z" stroke={color} strokeWidth="2.5" strokeLinejoin="round" />
+    <path d="M50 30 L70 50 L50 70 L30 50 Z" stroke={color} strokeWidth="1.5" strokeLinejoin="round" />
+    
+    {/* Central target core */}
+    <circle cx="50" cy="50" r="5" fill={color} />
+    <circle cx="50" cy="50" r="10" stroke={color} strokeWidth="1" />
+  </svg>
+)
+

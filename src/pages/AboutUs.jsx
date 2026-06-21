@@ -31,7 +31,7 @@ export default function AboutUs() {
 
   return (
     <main className="flex-grow pt-24 bg-bg-primary overflow-hidden text-text-dark">
-      
+
       {/* Editorial Page Header */}
       <section className="relative py-24 md:py-[8rem] flex items-center justify-center border-b border-terracotta/15 bg-bg-secondary">
         <div className="absolute inset-0 opacity-15 mix-blend-multiply">
@@ -45,7 +45,7 @@ export default function AboutUs() {
           <span className="text-[10px] font-semibold tracking-[0.5em] uppercase text-terracotta block mb-4">
             The Chronicle
           </span>
-          <h1 
+          <h1
             className="font-display font-light text-text-dark leading-none"
             style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
           >
@@ -59,15 +59,15 @@ export default function AboutUs() {
       </section>
 
       {/* Why Tanah? Booklet Section (Matches Page 3 of PDF) */}
-      <section 
+      <section
         ref={whyRef}
         className="relative py-20 bg-bg-primary"
       >
         <div className="max-w-container px-8 mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            
+
             {/* Left Column: Why Tanah text & list */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-6 space-y-8 text-left"
               initial={{ opacity: 0, y: 40 }}
               animate={isWhyInView ? { opacity: 1, y: 0 } : {}}
@@ -100,7 +100,7 @@ export default function AboutUs() {
             </motion.div>
 
             {/* Right Column: Double Editorial Image Spread with Tribal motif */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-6 grid grid-cols-12 gap-4 items-center relative"
               initial={{ opacity: 0, scale: 0.98 }}
               animate={isWhyInView ? { opacity: 1 } : {}}
@@ -116,7 +116,7 @@ export default function AboutUs() {
 
               <div className="col-span-5 flex flex-col gap-6 items-center">
                 <TribalDiamond className="w-16 h-16 text-terracotta" color="var(--color-terracotta)" />
-                
+
                 <div className="w-full aspect-[3/4] overflow-hidden shadow-xl border border-dark-brown/10">
                   <img
                     src="/assets/Tanha Ambiance/Ambiance-3.webp"
@@ -136,14 +136,14 @@ export default function AboutUs() {
       </section>
 
       {/* The Story Section */}
-      <section 
+      <section
         ref={storyRef}
         className="relative py-20 bg-bg-secondary"
       >
         <div className="max-w-container px-8 mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            
-            <motion.div 
+
+            <motion.div
               className="lg:col-span-7 relative order-2 lg:order-1 hover-zoom"
               initial={{ opacity: 0, x: -30 }}
               animate={isStoryInView ? { opacity: 1, x: 0 } : {}}
@@ -159,7 +159,7 @@ export default function AboutUs() {
               <div className="absolute inset-4 border border-terracotta/20 pointer-events-none" />
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="lg:col-span-5 space-y-6 order-1 lg:order-2 text-left"
               initial={{ opacity: 0, y: 40 }}
               animate={isStoryInView ? { opacity: 1, y: 0 } : {}}
@@ -184,7 +184,7 @@ export default function AboutUs() {
       </section>
 
       {/* Circularity & Sustainability Section */}
-      <section 
+      <section
         ref={sustainabilityRef}
         className="relative py-20 bg-bg-primary border-t border-terracotta/10"
       >
@@ -218,7 +218,7 @@ export default function AboutUs() {
                 We recycle organic kitchen scraps into compost for native growers, maintaining a closed-loop food lifecycle.
               </p>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isSustainabilityInView ? { opacity: 1, y: 0 } : {}}
@@ -230,7 +230,7 @@ export default function AboutUs() {
                 Partnering exclusively with local micro-farms within a 100km radius to ensure the highest quality seasonal ingredients.
               </p>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isSustainabilityInView ? { opacity: 1, y: 0 } : {}}

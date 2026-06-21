@@ -38,7 +38,7 @@ export default function Footer() {
   return (
     <footer
       id="footer"
-      className="relative overflow-hidden border-t border-accent-1/20 bg-[#FAF8F5] text-stone-850 pt-20 pb-12"
+      className="relative overflow-hidden border-t border-primary-dark/20 bg-light-cream text-near-black pt-20 pb-12"
       aria-label="Site footer"
     >
       {/* Background paper texture layer */}
@@ -49,7 +49,7 @@ export default function Footer() {
 
         {/* Cover Page 1 Style Tribal Mural Banner */}
         <div className="w-full mb-16 opacity-80">
-          <TribalMuralBanner color="var(--color-accent-1)" />
+          <TribalMuralBanner color="var(--color-primary-dark)" />
         </div>
 
         {/* Main Grid */}
@@ -58,21 +58,21 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="space-y-6">
             <Link to="/" className="flex flex-col group">
-              <span className="font-display text-2xl font-bold tracking-[0.15em] uppercase text-stone-900 group-hover:text-accent-1 transition-colors duration-300">
+              <span className="font-display text-2xl font-bold tracking-[0.15em] uppercase text-primary-dark transition-colors duration-300">
                 Tanah
               </span>
-              <span className="text-[8px] tracking-[0.4em] uppercase text-accent-1 -mt-1 font-body">
+              <span className="text-[8px] tracking-[0.4em] uppercase text-accent-gold -mt-1 font-body font-bold">
                 Kitchen & Bar
               </span>
             </Link>
-            <p className="text-xs font-light leading-relaxed text-stone-600 font-body">
+            <p className="text-xs font-light leading-relaxed text-near-black/70 font-body">
               Tanah represents connection to the Earth. Our culinary destination in Hyderabad honors natural architectural design, slow wood-fired hearths, and premium sustainable ingredients.
             </p>
           </div>
 
           {/* Navigation Links */}
           <div>
-            <h4 className="font-body text-[10px] font-semibold tracking-[0.2em] uppercase mb-6 text-accent-1">
+            <h4 className="font-body text-[10px] font-semibold tracking-[0.2em] uppercase mb-6 text-primary-dark font-bold">
               Explore
             </h4>
             <ul className="flex flex-col gap-4 font-body">
@@ -80,7 +80,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     to={link.path}
-                    className="text-xs font-light transition-all duration-300 flex items-center gap-3 text-stone-800 hover:text-accent-1"
+                    className="text-xs font-light transition-all duration-300 flex items-center gap-3 text-near-black hover:text-primary-dark"
                   >
                     {link.label}
                   </Link>
@@ -91,34 +91,34 @@ export default function Footer() {
 
           {/* Contact Details */}
           <div>
-            <h4 className="font-body text-[10px] font-semibold tracking-[0.2em] uppercase mb-6 text-accent-1">
+            <h4 className="font-body text-[10px] font-semibold tracking-[0.2em] uppercase mb-6 text-primary-dark font-bold">
               Tanah Gachibowli
             </h4>
-            <ul className="flex flex-col gap-5 text-xs font-light text-stone-800 font-body">
-              <li className="leading-relaxed text-stone-600">
+            <ul className="flex flex-col gap-5 text-xs font-light text-near-black font-body">
+              <li className="leading-relaxed text-near-black/70">
                 {contactData.address}
               </li>
               <li>
                 Reservations: <br />
-                <span className="text-stone-850 hover:text-accent-1 transition-colors font-medium">{contactData.phone1}</span> <br />
-                <span className="text-stone-850 hover:text-accent-1 transition-colors font-medium">{contactData.phone2}</span>
+                <span className="text-near-black hover:text-primary-dark transition-colors font-medium">{contactData.phone1}</span> <br />
+                <span className="text-near-black hover:text-primary-dark transition-colors font-medium">{contactData.phone2}</span>
               </li>
             </ul>
           </div>
 
           {/* Newsletter */}
           <div>
-            <h4 className="font-body text-[10px] font-semibold tracking-[0.2em] uppercase mb-6 text-accent-1">
+            <h4 className="font-body text-[10px] font-semibold tracking-[0.2em] uppercase mb-6 text-primary-dark font-bold">
               Chronicles
             </h4>
-            <p className="text-xs font-light mb-6 leading-relaxed text-stone-600 font-body">
+            <p className="text-xs font-light mb-6 leading-relaxed text-near-black/70 font-body">
               Subscribe to receive updates on rare seasonal menus, events, and table openings.
             </p>
             {subscribed ? (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-[10px] py-4 px-5 border border-accent-1/30 bg-accent-1/10 text-accent-1"
+                className="text-[10px] py-4 px-5 border border-primary-dark/30 bg-primary-dark/10 text-primary-dark"
               >
                 Welcome to Tanah.
               </motion.div>
@@ -133,19 +133,19 @@ export default function Footer() {
                       if (emailError) setEmailError('')
                     }}
                     placeholder="E-mail Address"
-                    className="form-input text-xs flex-1 py-3.5 px-4 bg-white border border-stone-300 text-stone-900 placeholder:text-stone-400 focus:bg-stone-50/50 focus:border-accent-1"
+                    className="form-input text-xs flex-1 py-3.5 px-4 bg-white/70 border border-primary-dark/20 text-near-black placeholder:text-near-black/40 focus:bg-white focus:border-primary-dark"
                     maxLength={120}
                   />
                   <button
                     type="submit"
-                    className="w-12 h-12 flex items-center justify-center flex-shrink-0 transition-colors duration-300 bg-accent-1 text-white hover:bg-accent-1/85 cursor-pointer"
+                    className="w-12 h-12 flex items-center justify-center flex-shrink-0 transition-colors duration-300 bg-primary-dark text-light-cream hover:bg-primary-dark/85 cursor-pointer"
                     aria-label="Subscribe"
                   >
                     <Send className="w-4 h-4" />
                   </button>
                 </div>
                 {emailError && (
-                  <p className="text-[10px] text-accent-1 font-semibold" role="alert">
+                  <p className="text-[10px] text-primary-dark font-semibold" role="alert">
                     {emailError}
                   </p>
                 )}
@@ -155,16 +155,16 @@ export default function Footer() {
         </div>
 
         {/* Separator */}
-        <div className="w-full h-px mb-8 bg-stone-300" />
+        <div className="w-full h-px mb-8 bg-primary-dark/10" />
 
         {/* Bottom */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 font-body">
-          <p className="text-[10px] font-light text-stone-500 text-center sm:text-left">
+          <p className="text-[10px] font-light text-near-black/60 text-center sm:text-left">
             © {new Date().getFullYear()} Tanah Kitchen & Bar. Architectural Gastronomy. All rights reserved.
           </p>
-          <div className="flex gap-6 text-[10px] font-light text-stone-500">
-            <a href="#" className="hover:text-accent-1 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-accent-1 transition-colors">Terms of Use</a>
+          <div className="flex gap-6 text-[10px] font-light text-near-black/60">
+            <a href="#" className="hover:text-primary-dark transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-primary-dark transition-colors">Terms of Use</a>
           </div>
         </div>
       </div>
@@ -172,7 +172,7 @@ export default function Footer() {
       {/* Scroll to Top */}
       <motion.button
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 z-40 w-12 h-12 flex items-center justify-center cursor-pointer bg-accent-1 text-white hover:bg-accent-1/90 shadow-2xl"
+        className="fixed bottom-8 right-8 z-40 w-12 h-12 flex items-center justify-center cursor-pointer bg-primary-dark text-light-cream hover:bg-primary-dark/90 shadow-2xl"
         whileHover={{ scale: 1.05, y: -2 }}
         whileTap={{ scale: 0.95 }}
         aria-label="Scroll back to top"

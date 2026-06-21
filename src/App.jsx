@@ -11,7 +11,7 @@ import Footer from './components/Footer'
 function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen bg-bg-primary text-text-light">
+      <div className="flex flex-col min-h-screen bg-bg-primary text-text-dark">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

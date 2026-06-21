@@ -23,14 +23,14 @@ export default function Gallery() {
 
   return (
     <main className="flex-grow pt-24 bg-bg-primary text-text-dark">
-      
+
       {/* Editorial Header */}
       <section className="relative py-24 md:py-32 text-center border-b border-terracotta/15 bg-bg-secondary">
         <div className="relative z-10 px-8 max-w-container mx-auto">
           <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-terracotta block mb-4">
             Visual Archive
           </span>
-          <h1 
+          <h1
             className="font-display font-light text-text-dark leading-none mb-6"
             style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
           >
@@ -45,7 +45,7 @@ export default function Gallery() {
       {/* Main Grid */}
       <section className="relative py-20 bg-bg-primary">
         <div className="max-w-container px-8 mx-auto space-y-12">
-          
+
           {/* Categories Tab */}
           <div className="flex items-center justify-center gap-6 overflow-x-auto w-full no-scrollbar pb-6 border-b border-terracotta/10">
             {galleryData.categories.map((cat) => {
@@ -67,7 +67,7 @@ export default function Gallery() {
           </div>
 
           {/* Magazine-Style Asymmetrical Grid */}
-          <motion.div 
+          <motion.div
             layout
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
@@ -75,7 +75,7 @@ export default function Gallery() {
               {filteredItems.map((item, idx) => {
                 // Asymmetrical height classes for magazine layout
                 const heightClass = idx % 3 === 0 ? "aspect-[3/4]" : idx % 3 === 1 ? "aspect-square" : "aspect-[4/3]";
-                
+
                 return (
                   <motion.div
                     key={item.id}
@@ -92,7 +92,7 @@ export default function Gallery() {
                       alt={item.alt}
                       className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 filter brightness-95 group-hover:brightness-75 contrast-[1.02]"
                     />
-                    
+
                     {/* Hover Info */}
                     <div className="absolute inset-0 bg-gradient-to-t from-dark-brown/90 via-transparent to-transparent flex items-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="flex items-center justify-between w-full text-left">
