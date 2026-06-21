@@ -5,18 +5,30 @@
    ============================================================ */
 
 @theme {
-  /* Tanah Company Profile Inspired Palette */
-  --color-bg-primary: #F2E8D8;
-  --color-bg-secondary: #E7D7BF;
-  --color-text-dark: #3B2417;
-  --color-accent: #8A3412;
-  --color-deep-earth: #581B0A;
-  --color-muted-earth: #9A754B;
-  --color-terracotta: #8A3412;
+  /* Tanah Company Profile Master Design System Palette */
+  --color-dark-1: #1B1714;
+  --color-dark-2: #241C18;
+  --color-dark-3: #2E241D;
+  --color-light-1: #F5F0E6;
+  --color-light-2: #EFE4D0;
+  --color-light-3: #E6D5BB;
+  --color-accent-1: #A65A3A;
+  --color-accent-2: #8C5A3C;
+  --color-accent-3: #C48A57;
+  --color-extra-dark: #0E0B0A;
+
+  /* Global mapping fallback variables */
+  --color-bg-primary: #F5F0E6;
+  --color-bg-secondary: #EFE4D0;
+  --color-text-dark: #1B1714;
+  --color-accent: #A65A3A;
+  --color-deep-earth: #1B1714;
+  --color-muted-earth: #8C5A3C;
+  --color-terracotta: #A65A3A;
 
   /* Typography */
   --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
-  --font-body: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 
   /* Spacing */
@@ -29,14 +41,14 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-dark);
+  background-color: var(--color-light-1);
+  color: var(--color-dark-1);
 }
 
 body {
   font-family: var(--font-body);
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-dark);
+  background-color: var(--color-light-1);
+  color: var(--color-dark-1);
   line-height: 1.8;
   -webkit-font-smoothing: antialiased;
   position: relative;
@@ -183,6 +195,18 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--color-accent);
   color: var(--color-bg-primary);
   transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .btn-primary, .btn-outline, .btn-gold-outline {
+    padding: 12px 20px;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    gap: 8px;
+    white-space: nowrap;
+    display: inline-flex;
+    justify-content: center;
+  }
 }
 
 /* Premium input elements */
