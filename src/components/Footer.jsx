@@ -38,7 +38,7 @@ export default function Footer() {
   return (
     <footer
       id="footer"
-      className="relative overflow-hidden border-t border-primary-dark/20 bg-light-cream text-near-black pt-20 pb-12"
+      className="section-light relative overflow-hidden border-t border-primary-dark/20 pt-20 pb-12"
       aria-label="Site footer"
     >
       {/* Background paper texture layer */}

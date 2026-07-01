@@ -22,32 +22,32 @@ export default function Gallery() {
   }, [selectedCategory])
 
   return (
-    <main className="flex-grow pt-24 bg-bg-primary text-text-dark">
+    <main className="flex-grow pt-24 overflow-hidden">
 
       {/* Editorial Header */}
-      <section className="relative py-24 md:py-32 text-center border-b border-terracotta/15 bg-bg-secondary">
+      <section className="section-dark relative py-24 md:py-32 text-center border-b border-light-cream/15">
         <div className="relative z-10 px-8 max-w-container mx-auto">
-          <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-terracotta block mb-4">
+          <span className="text-[10px] font-semibold tracking-[0.4em] uppercase section-accent block mb-4">
             Visual Archive
           </span>
           <h1
-            className="font-display font-light text-text-dark leading-none mb-6"
+            className="font-display font-light leading-none mb-6"
             style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
           >
             The Visual Gallery
           </h1>
-          <p className="text-xs md:text-sm font-light max-w-xl mx-auto text-text-dark/80 leading-relaxed">
+          <p className="text-xs md:text-sm font-light max-w-xl mx-auto opacity-80 leading-relaxed font-body">
             A photographic archive documenting our agricultural soils, wood-fired kitchen flames, and architectural layouts.
           </p>
         </div>
       </section>
 
       {/* Main Grid */}
-      <section className="relative py-20 bg-bg-primary">
+      <section className="section-light relative py-20">
         <div className="max-w-container px-8 mx-auto space-y-12">
 
           {/* Categories Tab */}
-          <div className="flex items-center justify-center gap-6 overflow-x-auto w-full no-scrollbar pb-6 border-b border-terracotta/10">
+          <div className="flex items-center justify-center gap-6 overflow-x-auto w-full no-scrollbar pb-6 border-b border-primary-dark/10">
             {galleryData.categories.map((cat) => {
               const isActive = selectedCategory === cat
               return (
@@ -56,8 +56,8 @@ export default function Gallery() {
                   onClick={() => setSelectedCategory(cat)}
                   className="px-5 py-2 text-[10px] tracking-[0.2em] uppercase cursor-pointer transition-all duration-300 font-semibold"
                   style={{
-                    color: isActive ? 'var(--color-terracotta)' : 'var(--color-text-dark)',
-                    borderBottom: isActive ? '2px solid var(--color-terracotta)' : '2px solid transparent'
+                    color: isActive ? '#6B2523' : '#3A2E2A',
+                    borderBottom: isActive ? '2px solid #6B2523' : '2px solid transparent'
                   }}
                 >
                   {cat}
@@ -73,8 +73,8 @@ export default function Gallery() {
           >
             <AnimatePresence mode="popLayout">
               {filteredItems.map((item, idx) => {
-                // Asymmetrical height classes for magazine layout
-                const heightClass = idx % 3 === 0 ? "aspect-[3/4]" : idx % 3 === 1 ? "aspect-square" : "aspect-[4/3]";
+                // Set all images to the same square aspect ratio for grid alignment
+                const heightClass = "aspect-square";
 
                 return (
                   <motion.div
@@ -85,7 +85,7 @@ export default function Gallery() {
                     exit={{ opacity: 0, scale: 0.98 }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     onClick={() => setLightbox(item)}
-                    className={`group relative overflow-hidden cursor-pointer bg-bg-secondary ${heightClass} border border-terracotta/10 shadow-lg`}
+                    className={`group relative overflow-hidden cursor-pointer bg-[#6B2523]/5 ${heightClass} border border-primary-dark/10 shadow-lg`}
                   >
                     <img
                       src={item.src}
@@ -94,17 +94,17 @@ export default function Gallery() {
                     />
 
                     {/* Hover Info */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark-brown/90 via-transparent to-transparent flex items-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex items-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="flex items-center justify-between w-full text-left">
                         <div>
-                          <span className="text-[8px] font-semibold tracking-[0.2em] uppercase text-[#E8D8C0] block mb-1">
+                          <span className="text-[8px] font-semibold tracking-[0.2em] uppercase text-[#E8DCC0] block mb-1">
                             {item.category}
                           </span>
-                          <p className="font-display text-xl font-light text-bg-primary leading-tight">
+                          <p className="font-display text-xl font-light text-[#F2E8D5] leading-tight">
                             {item.caption}
                           </p>
                         </div>
-                        <ZoomIn className="w-5 h-5 text-bg-secondary" />
+                        <ZoomIn className="w-5 h-5 text-[#F2E8D5]" />
                       </div>
                     </div>
                   </motion.div>
@@ -124,7 +124,7 @@ export default function Gallery() {
             exit={{ opacity: 0 }}
             onClick={() => setLightbox(null)}
             className="fixed inset-0 z-[100] flex items-center justify-center p-6"
-            style={{ background: 'rgba(44, 17, 13, 0.98)' }}
+            style={{ background: 'rgba(58, 58, 58, 0.98)' }}
             role="dialog"
             aria-modal="true"
           >
@@ -138,7 +138,7 @@ export default function Gallery() {
             >
               <button
                 onClick={() => setLightbox(null)}
-                className="absolute -top-12 right-0 text-bg-secondary hover:text-terracotta transition-colors cursor-pointer"
+                className="absolute -top-12 right-0 text-white hover:text-accent-gold transition-colors cursor-pointer"
                 aria-label="Close"
               >
                 <X className="w-8 h-8" />
@@ -146,9 +146,9 @@ export default function Gallery() {
               <img
                 src={lightbox.src}
                 alt={lightbox.alt}
-                className="w-full max-h-[75vh] object-contain border border-terracotta/15 shadow-2xl"
+                className="w-full max-h-[75vh] object-contain border border-light-cream/15 shadow-2xl"
               />
-              <p className="text-center mt-6 font-display text-2xl font-light text-bg-primary tracking-wide">
+              <p className="text-center mt-6 font-display text-2xl font-light text-white tracking-wide">
                 {lightbox.caption}
               </p>
             </motion.div>

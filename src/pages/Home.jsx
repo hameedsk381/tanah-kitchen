@@ -2,9 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import {
   CalendarDays,
-  Mail,
-  Phone,
-  MapPin,
   CheckCircle,
   Briefcase,
   Users,
@@ -15,8 +12,7 @@ import {
   LogoOwl,
   StoryNestOwl,
   TribalDiamond,
-  DiamondCornerOrnament,
-  FlyingBird
+  DiamondCornerOrnament
 } from '../components/illustrations'
 
 const timeSlots = [
@@ -26,8 +22,8 @@ const timeSlots = [
 
 const guestOptions = ['1-4 Guests', '5-10 Guests', '11-20 Guests', '21-50 Guests', '50+ Guests']
 
-const NAME_PATTERN = /^[a-zA-Z\s'\-]{2,80}$/
-const EMAIL_PATTERN = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/
+const NAME_PATTERN = /^[a-zA-Z\s'-]{2,80}$/
+const EMAIL_PATTERN = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
 export default function Home() {
   useEffect(() => {
@@ -109,57 +105,58 @@ export default function Home() {
       <h1 className="sr-only">Tanah Kitchen & Bar - Premium Corporate Gathering & Dining</h1>
 
       {/* ==========================================
-          1. HERO SECTION (Theme: Dark Maroon #7A2D2D)
+          1. CINEMATIC HERO (Theme: Dark Atmosphere)
           ========================================== */}
-      <section 
-        className="relative min-h-screen flex flex-col justify-center items-center pt-32 pb-20 px-6 md:px-12 text-light-cream overflow-hidden bg-primary-dark folk-art-bg"
-        style={{
-          backgroundImage: `linear-gradient(rgba(122, 45, 45, 0.8), rgba(122, 45, 45, 0.85)), url('/assets/Tanha Ambiance/Ambiance-18.webp')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundBlendMode: 'multiply'
-        }}
+      <section
+        className="section-dark relative min-h-screen flex flex-col justify-center items-center pt-32 pb-20 px-6 md:px-12 overflow-hidden"
       >
-        <div className="absolute inset-0 bg-black/10 pointer-events-none z-0" />
-        
+        {/* Background Image */}
+        <img
+          src="/assets/Tanha%20Ambiance/Ambiance-9.webp"
+          alt="Tanah Ambiance"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
+        {/* Dark Vignette Overlay for Readability */}
+        <div className="absolute inset-0 bg-black/40 z-[1]" />
+
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative max-w-4xl mx-auto text-center flex flex-col items-center space-y-8 z-10"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+          className="relative max-w-5xl mx-auto text-center flex flex-col items-center space-y-10 z-10 w-full"
         >
           {/* Bird Mascot Logo Mark */}
-          <div className="bg-light-cream/10 p-5 rounded-full border border-light-cream/20 backdrop-blur-sm shadow-xl">
-            <LogoOwl className="w-20 h-20 text-light-cream" />
+          <div className="bg-white/10 p-5 rounded-full border border-white/20 backdrop-blur-sm shadow-xl">
+            <StoryNestOwl className="w-20 h-20 text-[#FFC470]" />
           </div>
 
-          <div className="space-y-4">
-            <span className="text-xs md:text-sm font-sans tracking-[0.4em] uppercase text-accent-gold font-bold">
+          <div className="space-y-4 px-4">
+            <span className="text-xs md:text-sm font-sans tracking-[0.4em] uppercase text-[#FFC470] font-bold">
               TANAH KITCHEN & BAR
             </span>
-            <h2 className="font-display font-extrabold text-light-cream leading-[1.1] tracking-wide" style={{ fontSize: 'clamp(2.5rem, 6.5vw, 5rem)' }}>
+            <h2 className="font-display font-extrabold leading-[1.2] tracking-wide text-[#F6E1CB]" style={{ fontSize: 'clamp(2.0rem, 6vw, 4.5rem)' }}>
               Where Teams Gather &<br />
-              <span className="italic text-accent-gold font-normal">Stories Unfold.</span>
+              <span className="italic font-normal text-[#FFC470]">Stories Unfold.</span>
             </h2>
           </div>
 
-          <div className="diamond-border-divider max-w-md mx-auto" />
+          <div className="diamond-border-divider max-w-md mx-auto w-[80%]" />
 
-          <p className="text-lg md:text-xl font-light max-w-2xl text-light-cream/90 leading-relaxed font-body">
-            An premium corporate sanctuary inspired by local elements, crafted for meaningful team interactions and refined gastronomy.
+          <p className="text-base md:text-xl font-light max-w-2xl leading-relaxed font-body text-[#EFE1D0] px-6">
+            A premium corporate sanctuary inspired by local elements, crafted for meaningful team interactions and refined gastronomy.
           </p>
 
-          <div className="pt-4 flex flex-wrap justify-center gap-4">
+          <div className="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4 w-full max-w-md px-6 sm:px-0">
             <a
               href="#contact-form"
-              className="btn-primary border-accent-gold bg-accent-gold hover:bg-light-cream text-primary-dark"
-              style={{ backgroundColor: '#C9A66B', borderColor: '#C9A66B', color: '#7A2D2D' }}
+              className="btn-primary w-full sm:w-auto text-center"
+              style={{ backgroundColor: '#FFC470', borderColor: '#FFC470', color: '#6B2523' }}
             >
               Reserve Experience
             </a>
             <a
               href="#where-teams-gather"
-              className="btn-outline border-light-cream/35 text-light-cream hover:bg-light-cream hover:text-primary-dark"
+              className="btn-outline w-full sm:w-auto text-center"
             >
               Explore Sanctuary
             </a>
@@ -168,12 +165,12 @@ export default function Home() {
       </section>
 
       {/* ==========================================
-          2. WHERE TEAMS GATHER (Theme: Dark Maroon, Full-bleed Right Image)
+          2. WHERE TEAMS GATHER (Theme: Light Cream #F2E8D5)
           ========================================== */}
       <section
         id="where-teams-gather"
         ref={sec2Ref}
-        className="relative min-h-[90vh] flex flex-col justify-center bg-primary-dark text-light-cream overflow-hidden lg:grid lg:grid-cols-12"
+        className="section-light relative min-h-[90vh] flex flex-col justify-center overflow-hidden lg:grid lg:grid-cols-12"
       >
         {/* Left Column Content */}
         <div className="col-span-6 py-20 px-8 md:px-16 lg:px-24 flex flex-col justify-center z-10 relative">
@@ -183,28 +180,28 @@ export default function Home() {
             transition={{ duration: 1.2 }}
             className="space-y-6 max-w-xl text-left"
           >
-            <span className="text-xs tracking-[0.4em] uppercase text-accent-gold font-bold font-sans block">
+            <span className="text-xs tracking-[0.4em] uppercase section-accent font-bold font-sans block">
               CORPORATE SANCTUARY
             </span>
-            
-            <h3 className="font-display font-bold text-light-cream leading-tight text-3xl md:text-5xl">
+
+            <h3 className="font-display font-bold leading-tight text-3xl md:text-5xl">
               Where Teams Gather
             </h3>
 
-            <div className="diamond-border-divider max-w-xs" />
+            <div className="diamond-border-divider-maroon max-w-xs" />
 
-            <p className="text-lg text-light-cream/95 leading-relaxed font-body">
+            <p className="text-lg leading-relaxed font-body">
               More than a venue, Tanah is a carefully orchestrated sanctuary. Our atmospheric spaces offer natural lighting, premium wooden features, and custom catering designed to build lasting professional bonds outside the office.
             </p>
 
-            <p className="text-base text-light-cream/80 leading-relaxed font-body">
+            <p className="text-base opacity-80 leading-relaxed font-body">
               Whether conducting board retreats, hosting key clients, or celebrating major milestones, we curate custom dining atmospheres that blend corporate precision with the ease of nature.
             </p>
 
             <div className="pt-4">
               <a
                 href="#why-tanah"
-                className="inline-flex items-center gap-2 text-accent-gold font-bold tracking-widest text-xs uppercase hover:underline"
+                className="inline-flex items-center gap-2 section-accent font-bold tracking-widest text-xs uppercase hover:underline"
               >
                 Learn More <ChevronRight className="w-4 h-4" />
               </a>
@@ -212,28 +209,28 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Right Column: Full bleed image with maroon color-wash/tint overlay */}
+        {/* Right Column: Full bleed image */}
         <div className="col-span-6 relative min-h-[400px] lg:min-h-full overflow-hidden">
-          <div className="absolute inset-0 bg-primary-dark/70 mix-blend-multiply z-10" />
+          <div className="absolute inset-0 bg-[#F6E1CB]/20 mix-blend-multiply z-10" />
           <img
-            src="/assets/Tanha Ambiance/Ambiance-11.webp"
+            src="/assets/Tanha Image/02.webp"
             alt="Tanah Kitchen Atmosphere"
-            className="absolute inset-0 w-full h-full object-cover filter brightness-[0.75]"
+            className="absolute inset-0 w-full h-full object-cover filter brightness-[0.9]"
           />
         </div>
       </section>
 
       {/* ==========================================
-          3. WHY TANAH (Theme: Light Cream #F2E8D5)
+          3. WHY TANAH (Theme: Dark Maroon #7A2D2D)
           ========================================== */}
       <section
         id="why-tanah"
         ref={sec3Ref}
-        className="relative py-24 md:py-32 px-6 md:px-12 bg-light-cream text-near-black"
+        className="section-dark relative py-24 md:py-32 px-6 md:px-12"
       >
         <div className="max-width-container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            
+
             {/* Left Content */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -241,21 +238,21 @@ export default function Home() {
               transition={{ duration: 1 }}
               className="lg:col-span-6 space-y-6 text-left"
             >
-              <span className="text-xs tracking-[0.4em] uppercase text-accent-gold font-bold font-sans block">
+              <span className="text-xs tracking-[0.4em] uppercase section-accent font-bold font-sans block">
                 TEAM BONDING EVENTS
               </span>
-              <h3 className="font-display font-bold text-primary-dark text-3xl md:text-5xl leading-tight">
+              <h3 className="font-display font-bold text-3xl md:text-5xl leading-tight">
                 Why Tanah
               </h3>
 
-              <div className="diamond-border-divider-maroon max-w-xs" />
+              <div className="diamond-border-divider max-w-xs" />
 
-              <p className="text-lg text-near-black/85 leading-relaxed font-body">
+              <p className="text-lg opacity-90 leading-relaxed font-body">
                 We believe in the power of shared tables. The name "Tanah" represents our deep connection to the earth, reflected in our rustic elements, raw bamboo layouts, and organic farm-sourced cuisines.
               </p>
 
-              {/* Bullet list in dark text */}
-              <ul className="space-y-4 pt-4 border-t border-primary-dark/15 text-near-black/90">
+              {/* Bullet list in cream/gold text */}
+              <ul className="space-y-4 pt-4 border-t border-light-cream/15">
                 {[
                   "Premium Board Meetings & Leadership Dinners",
                   "Fluid layouts perfect for client entertainment",
@@ -264,7 +261,7 @@ export default function Home() {
                   "Fully customizable culinary packages tailored to dietary needs"
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-3 text-base">
-                    <span className="text-primary-dark text-lg font-semibold mt-0.5">◇</span>
+                    <span className="section-accent text-lg font-semibold mt-0.5">◇</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -279,31 +276,31 @@ export default function Home() {
               className="lg:col-span-6 grid grid-cols-12 gap-4 items-center relative"
             >
               {/* Image 1 */}
-              <div className="col-span-7 aspect-[3/4] overflow-hidden rounded-sm shadow-2xl border border-primary-dark/10 p-1.5 bg-white relative">
+              <div className="col-span-12 md:col-span-7 aspect-[16/10] md:aspect-[3/4] overflow-hidden rounded-sm shadow-2xl border border-light-cream/10 p-1.5 bg-[#6B2523] relative">
                 <img
-                  src="/assets/Tanha Ambiance/Tanha Food/food-1.webp"
+                  src="/assets/Tanha Food/food-1.webp"
                   alt="Fine corporate gathering dish"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute top-4 left-4 z-20">
-                  <DiamondCornerOrnament className="w-8 h-8 text-primary-dark" />
+                  <DiamondCornerOrnament className="w-8 h-8 section-accent" />
                 </div>
               </div>
 
               {/* Decorative motif placed between them */}
-              <div className="col-span-2 flex justify-center items-center">
-                <TribalDiamond className="w-16 h-16 text-primary-dark animate-pulse" />
+              <div className="hidden md:flex md:col-span-2 justify-center items-center">
+                <TribalDiamond className="w-16 h-16 section-accent animate-pulse" />
               </div>
 
               {/* Image 2 */}
-              <div className="col-span-3 aspect-[3/5] overflow-hidden rounded-sm shadow-2xl border border-primary-dark/10 p-1.5 bg-white relative">
+              <div className="col-span-12 md:col-span-3 aspect-[16/10] md:aspect-[3/5] overflow-hidden rounded-sm shadow-2xl border border-light-cream/10 p-1.5 bg-[#6B2523] relative">
                 <img
                   src="/assets/Tanha Ambiance/Ambiance-22.webp"
                   alt="Tanah rooftop lighting"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute bottom-4 right-4 z-20">
-                  <DiamondCornerOrnament className="w-8 h-8 text-primary-dark" />
+                  <DiamondCornerOrnament className="w-8 h-8 section-accent" />
                 </div>
               </div>
             </motion.div>
@@ -313,15 +310,15 @@ export default function Home() {
       </section>
 
       {/* ==========================================
-          4. THE TANAH STORY (Theme: Dark Maroon #7A2D2D)
+          4. THE TANAH STORY (Theme: Light Cream #F2E8D5)
           ========================================== */}
       <section
         ref={sec4Ref}
-        className="relative py-24 md:py-32 px-6 md:px-12 bg-primary-dark text-light-cream overflow-hidden folk-art-bg"
+        className="section-light relative py-24 md:py-32 px-6 md:px-12 overflow-hidden folk-art-bg"
       >
         <div className="max-width-container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            
+
             {/* Story illustration - Nest owl */}
             <motion.div
               initial={{ opacity: 0, rotate: -10 }}
@@ -329,14 +326,14 @@ export default function Home() {
               transition={{ duration: 1.2 }}
               className="lg:col-span-5 flex justify-center"
             >
-              <div className="bg-light-cream/10 p-10 rounded-full border border-light-cream/15 shadow-2xl backdrop-blur-md relative max-w-sm">
-                <StoryNestOwl className="w-64 h-64 text-accent-gold" />
+              <div className="bg-[#6B2523]/10 p-10 rounded-full border border-[#6B2523]/15 shadow-2xl backdrop-blur-md relative max-w-sm">
+                <StoryNestOwl className="w-64 h-64 section-accent" />
                 {/* corner decorators */}
                 <div className="absolute top-2 left-2">
-                  <DiamondCornerOrnament className="w-8 h-8 text-accent-gold" />
+                  <DiamondCornerOrnament className="w-8 h-8 section-accent" />
                 </div>
                 <div className="absolute bottom-2 right-2">
-                  <DiamondCornerOrnament className="w-8 h-8 text-accent-gold" />
+                  <DiamondCornerOrnament className="w-8 h-8 section-accent" />
                 </div>
               </div>
             </motion.div>
@@ -348,20 +345,20 @@ export default function Home() {
               transition={{ duration: 1.2, delay: 0.2 }}
               className="lg:col-span-7 space-y-6 text-left"
             >
-              <span className="text-xs tracking-[0.4em] uppercase text-accent-gold font-bold font-sans block">
+              <span className="text-xs tracking-[0.4em] uppercase section-accent font-bold font-sans block">
                 OUR ANCESTRY
               </span>
-              <h3 className="font-display font-bold text-light-cream text-3xl md:text-5xl leading-tight">
+              <h3 className="font-display font-bold text-3xl md:text-5xl leading-tight">
                 The Tanah Story
               </h3>
 
-              <div className="diamond-border-divider max-w-sm" />
+              <div className="diamond-border-divider-maroon max-w-sm" />
 
-              <p className="text-xl font-display italic text-accent-gold leading-relaxed">
+              <p className="text-xl font-display italic section-accent leading-relaxed">
                 "Architecture shaped by the natural nest, menus inspired by agricultural ancestry."
               </p>
 
-              <div className="space-y-4 text-base text-light-cream/90 leading-relaxed font-body">
+              <div className="space-y-4 text-base opacity-90 leading-relaxed font-body">
                 <p>
                   Rooted in the earth, Tanah emerged in Gachibowli, Hyderabad, as a sanctuary for professionals to transition from stressful work schedules to relaxed, natural atmospheres. Our architecture utilizes raw bamboo arches, local basalt stone, and thatched roofs, letting teams experience an organic workspace.
                 </p>
@@ -380,11 +377,11 @@ export default function Home() {
           ========================================== */}
       <section
         ref={sec5Ref}
-        className="relative py-24 md:py-32 px-6 md:px-12 bg-primary-dark text-light-cream folk-art-bg"
+        className="section-dark relative py-24 md:py-32 px-6 md:px-12 folk-art-bg"
       >
         <div className="max-width-container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            
+
             {/* Left Content: icon-label-description rows */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
@@ -393,10 +390,10 @@ export default function Home() {
               className="lg:col-span-7 space-y-8 text-left"
             >
               <div className="space-y-3">
-                <span className="text-xs tracking-[0.4em] uppercase text-accent-gold font-bold font-sans block">
+                <span className="text-xs tracking-[0.4em] uppercase section-accent font-bold font-sans block">
                   SPATIAL EXCELLENCE
                 </span>
-                <h3 className="font-display font-bold text-light-cream text-3xl md:text-5xl leading-tight">
+                <h3 className="font-display font-bold text-3xl md:text-5xl leading-tight">
                   Designed for Every Occasion
                 </h3>
                 <div className="diamond-border-divider max-w-sm" />
@@ -406,17 +403,17 @@ export default function Home() {
               <div className="space-y-6">
                 {[
                   {
-                    icon: <Briefcase className="w-6 h-6 text-accent-gold" />,
+                    icon: <Briefcase className="w-6 h-6 section-accent" />,
                     label: "Executive Board Gatherings",
                     desc: "Closed-door networking and dynamic strategy sessions hosted in raw-stone private dining suites."
                   },
                   {
-                    icon: <Users className="w-6 h-6 text-accent-gold" />,
+                    icon: <Users className="w-6 h-6 section-accent" />,
                     label: "Team Bonding Receptions",
                     desc: "Vibrant high-energy spaces with live culinary setups, perfect for milestones and product launches."
                   },
                   {
-                    icon: <Compass className="w-6 h-6 text-accent-gold" />,
+                    icon: <Compass className="w-6 h-6 section-accent" />,
                     label: "Gastronomy Masterclasses",
                     desc: "Curated wood-fired cooking masterclasses led by our executive culinary curators for teams."
                   }
@@ -426,10 +423,10 @@ export default function Home() {
                       {row.icon}
                     </div>
                     <div className="space-y-1">
-                      <h4 className="font-display text-lg font-bold text-light-cream">
+                      <h4 className="font-display text-lg font-bold">
                         {row.label}
                       </h4>
-                      <p className="text-sm text-light-cream/80 leading-relaxed font-body">
+                      <p className="text-sm opacity-80 leading-relaxed font-body">
                         {row.desc}
                       </p>
                     </div>
@@ -453,10 +450,10 @@ export default function Home() {
                 />
                 {/* Corner ornament decorators */}
                 <div className="absolute top-4 left-4 z-20">
-                  <DiamondCornerOrnament className="w-10 h-10 text-accent-gold" />
+                  <DiamondCornerOrnament className="w-10 h-10 section-accent" />
                 </div>
                 <div className="absolute bottom-4 right-4 z-20">
-                  <DiamondCornerOrnament className="w-10 h-10 text-accent-gold" />
+                  <DiamondCornerOrnament className="w-10 h-10 section-accent" />
                 </div>
               </div>
             </motion.div>
@@ -467,14 +464,16 @@ export default function Home() {
 
       {/* ==========================================
           6. CUSTOMIZED CORPORATE PACKAGES (Theme: Dark Maroon #7A2D2D)
+          {/* ==========================================
+          6. CUSTOMIZED CORPORATE PACKAGES (Theme: Light Cream #F2E8D5)
           ========================================== */}
       <section
         ref={sec6Ref}
-        className="relative py-24 md:py-32 px-6 md:px-12 bg-primary-dark text-light-cream folk-art-bg"
+        className="section-light relative py-24 md:py-32 px-6 md:px-12 overflow-hidden folk-art-bg"
       >
         <div className="max-width-container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            
+
             {/* Left Photo */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
@@ -482,14 +481,14 @@ export default function Home() {
               transition={{ duration: 1.2 }}
               className="lg:col-span-5 relative order-2 lg:order-1"
             >
-              <div className="aspect-[4/5] overflow-hidden rounded shadow-2xl border border-light-cream/10 p-2 bg-light-cream/5 relative">
+              <div className="aspect-[16/10] md:aspect-[4/5] overflow-hidden rounded shadow-2xl border border-primary-dark/10 p-2 bg-white relative">
                 <img
-                  src="/assets/Tanha Ambiance/Ambiance-18.webp"
+                  src="/assets/Tanha Image/10.webp"
                   alt="Exclusive corporate package setup"
-                  className="w-full h-full object-cover filter brightness-[0.85]"
+                  className="w-full h-full object-cover filter brightness-[0.9]"
                 />
                 <div className="absolute top-4 right-4 z-20">
-                  <DiamondCornerOrnament className="w-8 h-8 text-accent-gold" />
+                  <DiamondCornerOrnament className="w-8 h-8 section-accent" />
                 </div>
               </div>
             </motion.div>
@@ -502,22 +501,22 @@ export default function Home() {
               className="lg:col-span-7 space-y-8 text-left order-1 lg:order-2"
             >
               <div className="space-y-3">
-                <span className="text-xs tracking-[0.4em] uppercase text-accent-gold font-bold font-sans block">
+                <span className="text-xs tracking-[0.4em] uppercase section-accent font-bold font-sans block">
                   BESPOKE PACKAGES
                 </span>
-                <h3 className="font-display font-bold text-light-cream text-3xl md:text-5xl leading-tight">
+                <h3 className="font-display font-bold text-3xl md:text-5xl leading-tight">
                   Customized Corporate Packages
                 </h3>
                 {/* Horizontal repeating border/divider */}
-                <div className="diamond-border-divider" />
+                <div className="diamond-border-divider-maroon" />
               </div>
 
-              <p className="text-base text-light-cream/90 leading-relaxed font-body">
+              <p className="text-base opacity-95 leading-relaxed font-body">
                 Our curated packages take care of every detail, from multi-course farm-to-table menus to dedicated team co-ordinators and high-end presentation configurations.
               </p>
 
               {/* Bullet list */}
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-light-cream/80">
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm opacity-90">
                 {[
                   "✦ Dedicated AV & Screen Setup",
                   "✦ Custom Menu Curation",
@@ -535,8 +534,8 @@ export default function Home() {
               <div className="pt-4">
                 <a
                   href="#contact-form"
-                  className="btn-primary border-accent-gold bg-accent-gold text-primary-dark"
-                  style={{ backgroundColor: '#C9A66B', borderColor: '#C9A66B', color: '#7A2D2D' }}
+                  className="btn-primary border-primary-dark bg-primary-dark text-light-cream hover:bg-[#3A2E2A]"
+                  style={{ backgroundColor: '#6B2523', borderColor: '#6B2523', color: '#DEC8AB' }}
                 >
                   Request Proposal
                 </a>
@@ -548,15 +547,15 @@ export default function Home() {
       </section>
 
       {/* ==========================================
-          7. LET'S HOST YOUR NEXT TEAM GATHERING (Theme: Light Cream #F2E8D5)
+          7. LET'S HOST YOUR NEXT TEAM GATHERING (Theme: Dark Maroon #7A2D2D)
           ========================================== */}
       <section
         ref={sec7Ref}
-        className="relative py-24 md:py-32 px-6 md:px-12 bg-light-cream text-near-black"
+        className="section-dark relative py-24 md:py-32 px-6 md:px-12"
       >
         <div className="max-width-container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            
+
             {/* Left Content */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -564,30 +563,30 @@ export default function Home() {
               transition={{ duration: 1.2 }}
               className="lg:col-span-6 space-y-6 text-left"
             >
-              <span className="text-xs tracking-[0.4em] uppercase text-accent-gold font-bold font-sans block">
+              <span className="text-xs tracking-[0.4em] uppercase section-accent font-bold font-sans block">
                 PLAN AN EXPERIENCE
               </span>
-              <h3 className="font-display font-bold text-primary-dark text-3xl md:text-5xl leading-tight">
+              <h3 className="font-display font-bold text-3xl md:text-5xl leading-tight">
                 Let's Host Your Next Team Gathering
               </h3>
 
-              <div className="diamond-border-divider-maroon max-w-xs" />
+              <div className="diamond-border-divider max-w-xs" />
 
-              <p className="text-base text-near-black/80 leading-relaxed font-body">
+              <p className="text-base opacity-90 leading-relaxed font-body">
                 Let our corporate curators configure a tailored experience. Fill out the reservation details below or contact our events team.
               </p>
 
-              <ul className="space-y-3 pt-2 text-near-black/90">
+              <ul className="space-y-3 pt-2">
                 <li className="flex items-center gap-3">
-                  <span className="text-primary-dark">◇</span>
+                  <span className="section-accent">◇</span>
                   <span>Accommodates teams from 10 to 150 members</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="text-primary-dark">◇</span>
+                  <span className="section-accent">◇</span>
                   <span>Premium seating options in the interior and rooftop nests</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="text-primary-dark">◇</span>
+                  <span className="section-accent">◇</span>
                   <span>Bespoke visual branding options for corporate banners</span>
                 </li>
               </ul>
@@ -600,25 +599,25 @@ export default function Home() {
               transition={{ duration: 1.2, delay: 0.2 }}
               className="lg:col-span-6 grid grid-cols-2 gap-4 relative"
             >
-              <div className="aspect-[3/4] overflow-hidden rounded shadow-xl border border-primary-dark/10 p-1 bg-white relative">
+              <div className="aspect-[3/4] overflow-hidden rounded shadow-xl border border-light-cream/10 p-1 bg-[#6B2523] relative">
                 <img
                   src="/assets/Tanha Ambiance/Ambiance-26.webp"
                   alt="Gathering area setup"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute top-2 left-2 z-20">
-                  <DiamondCornerOrnament className="w-6 h-6 text-primary-dark" />
+                  <DiamondCornerOrnament className="w-6 h-6 section-accent" />
                 </div>
               </div>
 
-              <div className="aspect-[3/4] overflow-hidden rounded shadow-xl border border-primary-dark/10 p-1 bg-white relative mt-8">
+              <div className="aspect-[3/4] overflow-hidden rounded shadow-xl border border-light-cream/10 p-1 bg-[#6B2523] relative mt-8">
                 <img
-                  src="/assets/Tanha Ambiance/Ambiance-15.webp"
+                  src="/assets/Tanha Image/04.webp"
                   alt="Outdoor gathering setup"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute bottom-2 right-2 z-20">
-                  <DiamondCornerOrnament className="w-6 h-6 text-primary-dark" />
+                  <DiamondCornerOrnament className="w-6 h-6 section-accent" />
                 </div>
               </div>
             </motion.div>
@@ -633,24 +632,24 @@ export default function Home() {
       <section
         id="contact-form"
         ref={sec8Ref}
-        className="relative bg-light-cream text-near-black flex flex-col md:flex-row border-t border-primary-dark/10"
+        className="relative flex flex-col md:flex-row border-t border-primary-dark/10"
       >
         {/* Split Left Column: Narrow Cream Sidebar with logo */}
-        <div className="w-full md:w-1/4 bg-light-cream py-16 px-8 flex flex-col justify-between items-center text-center border-b md:border-b-0 md:border-r border-primary-dark/10">
+        <div className="section-light w-full md:w-1/4 py-16 px-8 flex flex-col justify-between items-center text-center border-b md:border-b-0 md:border-r border-primary-dark/10">
           <div className="my-auto space-y-6">
             <div className="flex justify-center">
-              <LogoOwl className="w-20 h-20 text-primary-dark" />
+              <LogoOwl className="w-20 h-20 logo-mark" />
             </div>
-            <h4 className="font-display text-2xl font-extrabold text-primary-dark uppercase tracking-widest">
+            <h4 className="font-display text-2xl font-extrabold uppercase tracking-widest">
               TANAH
             </h4>
             <div className="diamond-border-divider-maroon max-w-[120px] mx-auto" />
-            <p className="text-xs uppercase tracking-widest text-accent-gold font-bold">
+            <p className="text-xs uppercase tracking-widest section-accent font-bold">
               Rooted in Nature
             </p>
           </div>
-          
-          <div className="text-xs text-near-black/60 space-y-2 mt-8 font-body">
+
+          <div className="text-xs space-y-2 mt-8 font-body">
             <p>Gachibowli, Hyderabad</p>
             <p>gatherings@tanahkitchen.com</p>
             <p>+91 40 4821 9900</p>
@@ -659,7 +658,7 @@ export default function Home() {
 
         {/* Split Right Column: Large Maroon background photo area with form / Thank You */}
         <div
-          className="w-full md:w-3/4 py-16 px-6 md:px-16 text-light-cream relative overflow-hidden bg-primary-dark"
+          className="section-dark w-full md:w-3/4 py-16 px-6 md:px-16 relative overflow-hidden bg-primary-dark"
           style={{
             background: `linear-gradient(rgba(122, 45, 45, 0.9), rgba(122, 45, 45, 0.95)), url('/assets/Tanha Ambiance/Ambiance-23.webp')`,
             backgroundSize: 'cover',
@@ -672,7 +671,7 @@ export default function Home() {
             style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")` }} />
 
           <div className="max-w-2xl relative z-10 mx-auto text-left space-y-8">
-            
+
             {submitted ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -703,7 +702,7 @@ export default function Home() {
             ) : (
               <div className="space-y-8">
                 <div className="space-y-3">
-                  <span className="text-xs tracking-[0.4em] uppercase text-accent-gold font-bold font-sans block">
+                  <span className="text-xs tracking-[0.4em] uppercase section-accent font-bold font-sans block">
                     RESERVE YOUR NEST
                   </span>
                   <h3 className="font-display text-3xl md:text-5xl font-extrabold text-light-cream">
@@ -712,7 +711,7 @@ export default function Home() {
                   <div className="diamond-border-divider max-w-xs" />
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6 bg-light-cream p-6 md:p-10 rounded border border-primary-dark/10 shadow-2xl text-near-black" noValidate>
+                <form onSubmit={handleSubmit} className="space-y-6 bg-[#F6E1CB] p-6 md:p-10 rounded border border-primary-dark/10 shadow-2xl text-[#3A2E2A]" noValidate>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Name */}
                     <div className="text-left">
@@ -844,7 +843,7 @@ export default function Home() {
                   <button
                     type="submit"
                     className="btn-primary w-full text-center justify-center py-4 mt-2"
-                    style={{ backgroundColor: '#7A2D2D', borderColor: '#7A2D2D', color: '#F2E8D5' }}
+                    style={{ backgroundColor: '#6B2523', borderColor: '#6B2523', color: '#DEC8AB' }}
                   >
                     <CalendarDays className="w-4 h-4" />
                     Submit Event Inquiry

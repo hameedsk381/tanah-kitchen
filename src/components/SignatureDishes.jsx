@@ -10,7 +10,7 @@ const dishes = [
     desc: 'A masterfully curated selection of local seasonal curries, indigenous red rice, house-made pickles, and rustic coal-baked flatbreads.',
     price: 699,
     tag: 'CHEF SIGNATURE',
-    image: '/assets/Tanha Ambiance/Tanha Food/food-22.webp',
+    image: '/assets/Tanha Food/food-6.webp',
     badge: 'Legendary'
   },
   {
@@ -19,7 +19,7 @@ const dishes = [
     desc: 'Fragrant, aged basmati rice layered with slow-cooked organic forest mushrooms, heritage root vegetables, and rare local spices, sealed in raw clay.',
     price: 549,
     tag: 'SLOW COOKED',
-    image: '/assets/Tanha Ambiance/Tanha Food/food-15.webp',
+    image: '/assets/Tanha Image/11.webp',
     badge: 'Signature'
   },
   {
@@ -28,7 +28,7 @@ const dishes = [
     desc: 'Pasture-fed milk slow-reduced over coal fires, infused with Kashmiri saffron, and finished with a pistachio crumble and organic honey.',
     price: 399,
     tag: 'HANDCRAFTED',
-    image: '/assets/Tanha Ambiance/Tanha Food/food-27.webp',
+    image: '/assets/Tanha Food/food-26.webp',
     badge: 'Seasonal Dessert'
   }
 ]

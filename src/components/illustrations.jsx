@@ -1,35 +1,7 @@
 import React from 'react'
 
-// 1. Logo Owl: Central brand identity owl sitting on branch holding a leaf/twig with a glass/cup next to it
 export const LogoOwl = ({ className = "w-24 h-24", color = "currentColor" }) => (
-  <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
-    {/* Head & Body Outline (Artistic, slightly rough hand-drawn look) */}
-    <path d="M60,110 C60,50 140,50 140,110 C140,150 120,160 100,160 C80,160 60,150 60,110 Z" stroke={color} strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
-
-    {/* Large Single Tribal Eye (Inspired by the profile's stylized one-eyed owl designs) */}
-    <circle cx="100" cy="95" r="24" stroke={color} strokeWidth="5" />
-    <circle cx="100" cy="95" r="10" fill={color} />
-
-    {/* Brow / Feather detail above eye */}
-    <path d="M75,65 C85,60 115,60 125,65" stroke={color} strokeWidth="5" strokeLinecap="round" />
-
-    {/* Branch the owl sits on */}
-    <path d="M30,165 L170,165" stroke={color} strokeWidth="7" strokeLinecap="round" />
-    {/* Branch details (small twigs) */}
-    <path d="M45,165 L35,175" stroke={color} strokeWidth="5" strokeLinecap="round" />
-    <path d="M150,165 L165,155" stroke={color} strokeWidth="5" strokeLinecap="round" />
-
-    {/* Beak / Twig held in beak */}
-    <path d="M85,100 L70,95 L85,90" stroke={color} strokeWidth="4" fill="none" />
-    {/* Stylized leafy twig held in beak */}
-    <path d="M70,95 L40,80" stroke={color} strokeWidth="4" strokeLinecap="round" />
-    <path d="M45,82 C42,75 48,72 52,78 C56,72 62,75 59,82" stroke={color} strokeWidth="3" fill={color} />
-
-    {/* Cup / Chalice next to the owl (as seen in logo) */}
-    <path d="M125,165 L125,145 M115,145 L135,145 M115,120 L135,120 L130,145 L120,145 Z" stroke={color} strokeWidth="4" fill="none" />
-    {/* Small steam or liquid drop */}
-    <path d="M125,110 C123,115 127,115 125,120" stroke={color} strokeWidth="3" strokeLinecap="round" />
-  </svg>
+  <img src="/assets/logo.png" alt="Tanah Logo" className={className} />
 )
 
 // 2. Story Nest Owl: Owl perched on branch holding twig/leaf next to its nest basket
@@ -63,7 +35,7 @@ export const StoryNestOwl = ({ className = "w-48 h-48", color = "currentColor" }
 )
 
 // 3. Diamond Divider: Repeating diamond dot motif
-export const DiamondDivider = ({ className = "w-full my-4", color = "#882B06" }) => (
+export const DiamondDivider = ({ className = "w-full my-4", color = "currentColor" }) => (
   <div className={`flex items-center justify-center gap-2 ${className}`}>
     <span className="h-[1px] flex-grow bg-current opacity-30" style={{ color }} />
     <div className="flex items-center gap-1.5" style={{ color }}>
@@ -193,7 +165,7 @@ export const FlyingBird = ({ className = "w-16 h-16", color = "currentColor" }) 
 )
 
 // 9. Tribal Diamond: Standalone graphic symbol (Page 3)
-export const TribalDiamond = ({ className = "w-20 h-20", color = "#882B06" }) => (
+export const TribalDiamond = ({ className = "w-20 h-20", color = "currentColor" }) => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} style={{ color }}>
     {/* Outer Diamond */}
     <path d="M50,10 L90,50 L50,90 L10,50 Z" stroke="currentColor" strokeWidth="4" />
@@ -209,7 +181,7 @@ export const TribalDiamond = ({ className = "w-20 h-20", color = "#882B06" }) =>
 )
 
 // 10. Horizontal Row of Owls and Figures (As seen on Cover Page 1)
-export const TribalMuralBanner = ({ className = "w-full", color = "#882B06" }) => (
+export const TribalMuralBanner = ({ className = "w-full", color = "currentColor" }) => (
   <div className={`flex flex-col items-center gap-4 ${className}`}>
     <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12" style={{ color }}>
       <div className="flex items-center gap-2">

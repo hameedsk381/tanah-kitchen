@@ -4,61 +4,53 @@
     {
       "id": "g1",
       "category": "Ambience",
-      "src": "/assets/Tanha Ambiance/Ambiance-10.webp",
-      "alt": "Luxury interior table setups",
-      "caption": "The Basalt Archway",
+      "src": "/assets/Tanha Ambiance/Ambiance-1.webp",
+      "alt": "Premium dining ambiance",
+      "caption": "The Clay Arch",
       "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
     },
     {
       "id": "g2",
-      "category": "Rooftop",
-      "src": "/assets/Tanha Ambiance/Ambiance-16.webp",
-      "alt": "Rooftop deck seating view",
-      "caption": "Rooftop Skyline Deck",
+      "category": "Ambience",
+      "src": "/assets/Tanha Ambiance/Ambiance-2.webp",
+      "alt": "Atmospheric lighting setups",
+      "caption": "Atrium Seating",
       "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
     },
     {
       "id": "g3",
       "category": "Ambience",
-      "src": "/assets/Tanha Ambiance/Ambiance-18.webp",
-      "alt": "Glass walls and warm lighting",
-      "caption": "Glass Atrium",
+      "src": "/assets/Tanha Ambiance/Ambiance-3.webp",
+      "alt": "Tanah signature design",
+      "caption": "Hearth Corner",
       "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
     },
     {
       "id": "g4",
-      "category": "Food",
-      "src": "/assets/Tanha Ambiance/Tanha Food/food-16.webp",
-      "alt": "Artisanal plated recipe",
-      "caption": "Stone-ground Heritage Curry",
+      "category": "Ambience",
+      "src": "/assets/Tanha Ambiance/Ambiance-4.webp",
+      "alt": "Lush foliage interior design",
+      "caption": "Green Canopy",
       "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
     },
     {
       "id": "g5",
-      "category": "Events",
-      "src": "/assets/Tanha Ambiance/Ambiance-22.webp",
-      "alt": "Private dining salon gathering",
-      "caption": "The Gallery Salon",
+      "category": "Ambience",
+      "src": "/assets/Tanha Ambiance/Ambiance-5.webp",
+      "alt": "Rustic stone walls decoration",
+      "caption": "Basalt Pillars",
       "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
     },
     {
       "id": "g6",
-      "category": "Rooftop",
-      "src": "/assets/Tanha Ambiance/Ambiance-26.webp",
-      "alt": "Rooftop terrace overlooking horizon",
-      "caption": "Sunset Lounge",
+      "category": "Ambience",
+      "src": "/assets/Tanha Ambiance/Ambiance-6.webp",
+      "alt": "Tribal art installation",
+      "caption": "Artisanal Walls",
       "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
     },
     {
       "id": "g7",
-      "category": "Food",
-      "src": "/assets/Tanha Ambiance/Tanha Food/food-17.webp",
-      "alt": "Rooftop coal grilled dish",
-      "caption": "Hickory-Smoked Embers Platter",
-      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
-    },
-    {
-      "id": "g8",
       "category": "Ambience",
       "src": "/assets/Tanha Ambiance/Ambiance-7.webp",
       "alt": "Earthy clay moldings inside hearth",
@@ -66,7 +58,7 @@
       "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
     },
     {
-      "id": "g9",
+      "id": "g8",
       "category": "Rooftop",
       "src": "/assets/Tanha Ambiance/Ambiance-8.webp",
       "alt": "Rooftop night view",
@@ -74,11 +66,667 @@
       "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
     },
     {
+      "id": "g9",
+      "category": "Ambience",
+      "src": "/assets/Tanha Ambiance/Ambiance-9.webp",
+      "alt": "Cosy wooden table setup",
+      "caption": "Bamboo Alcove",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
       "id": "g10",
+      "category": "Ambience",
+      "src": "/assets/Tanha Ambiance/Ambiance-10.webp",
+      "alt": "Luxury interior table setups",
+      "caption": "The Basalt Archway",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g11",
+      "category": "Ambience",
+      "src": "/assets/Tanha Ambiance/Ambiance-11.webp",
+      "alt": "Main hall warm lighting",
+      "caption": "Atrium Vista",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g12",
+      "category": "Ambience",
+      "src": "/assets/Tanha Ambiance/Ambiance-12.webp",
+      "alt": "Earthy interior structures",
+      "caption": "Bamboo Lounge",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g13",
+      "category": "Ambience",
+      "src": "/assets/Tanha Ambiance/Ambiance-13.webp",
+      "alt": "Carved wood screen panels",
+      "caption": "Terracotta Shadows",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g14",
+      "category": "Ambience",
+      "src": "/assets/Tanha Ambiance/Ambiance-14.webp",
+      "alt": "Hearth fire setup",
+      "caption": "The Clay Furnace",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g15",
+      "category": "Rooftop",
+      "src": "/assets/Tanha Ambiance/Ambiance-15.webp",
+      "alt": "Rooftop dining decks",
+      "caption": "Rooftop Sanctuary",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g16",
+      "category": "Rooftop",
+      "src": "/assets/Tanha Ambiance/Ambiance-16.webp",
+      "alt": "Rooftop deck seating view",
+      "caption": "Rooftop Skyline Deck",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g17",
+      "category": "Ambience",
+      "src": "/assets/Tanha Ambiance/Ambiance-17.webp",
+      "alt": "Warm light setups in corner",
+      "caption": "Intimate Seating",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g18",
+      "category": "Ambience",
+      "src": "/assets/Tanha Ambiance/Ambiance-18.webp",
+      "alt": "Glass walls and warm lighting",
+      "caption": "Glass Atrium",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g19",
+      "category": "Ambience",
+      "src": "/assets/Tanha Ambiance/Ambiance-19.webp",
+      "alt": "Hearth oven textures",
+      "caption": "Textured Pillars",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g20",
+      "category": "Rooftop",
+      "src": "/assets/Tanha Ambiance/Ambiance-20.webp",
+      "alt": "Sunset rooftop bar",
+      "caption": "Rooftop Horizon",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g21",
+      "category": "Ambience",
+      "src": "/assets/Tanha Ambiance/Ambiance-21.webp",
+      "alt": "Premium bar design detailing",
+      "caption": "The Liquor Library",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g22",
+      "category": "Events",
+      "src": "/assets/Tanha Ambiance/Ambiance-22.webp",
+      "alt": "Private dining salon gathering",
+      "caption": "The Gallery Salon",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g23",
+      "category": "Ambience",
+      "src": "/assets/Tanha Ambiance/Ambiance-23.webp",
+      "alt": "Stone pillar detail",
+      "caption": "Hearth Corner View",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g24",
+      "category": "Ambience",
+      "src": "/assets/Tanha Ambiance/Ambiance-24.webp",
+      "alt": "Artisanal tableware",
+      "caption": "Handcrafted Plates",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g25",
+      "category": "Ambience",
+      "src": "/assets/Tanha Ambiance/Ambiance-25.webp",
+      "alt": "Rustic styling of corners",
+      "caption": "Mindful Corners",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g26",
+      "category": "Rooftop",
+      "src": "/assets/Tanha Ambiance/Ambiance-26.webp",
+      "alt": "Rooftop terrace overlooking horizon",
+      "caption": "Sunset Lounge",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g27",
+      "category": "Ambience",
+      "src": "/assets/Tanha Image/01.webp",
+      "alt": "Basalt Entrance Wall Sign",
+      "caption": "Tanah Welcome Archway",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g28",
+      "category": "Ambience",
+      "src": "/assets/Tanha Image/02.webp",
+      "alt": "Signature Nest Bar with woven twig arches",
+      "caption": "Woven Nest Bar",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g29",
+      "category": "Rooftop",
+      "src": "/assets/Tanha Image/04.webp",
+      "alt": "Rooftop deck seating view of city skyline",
+      "caption": "Sunset Skyline Lounge",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g30",
+      "category": "Ambience",
+      "src": "/assets/Tanha Image/05.webp",
+      "alt": "Luxury cocktail and liquor glassware selection",
+      "caption": "Artisanal Liquid Library",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g31",
       "category": "Food",
-      "src": "/assets/Tanha Ambiance/Tanha Food/food-18.webp",
-      "alt": "Cold brewed elixir glass",
-      "caption": "Aravalli Botanical Nectar",
+      "src": "/assets/Tanha Image/06.webp",
+      "alt": "Wood-Fired Gourmet Pizza with fresh ingredients",
+      "caption": "Sourdough Wood-Fired Pizza",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g32",
+      "category": "Food",
+      "src": "/assets/Tanha Image/07.webp",
+      "alt": "Continental Mutton Ravioli Pasta dish",
+      "caption": "Mutton Ravioli Pasta",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g33",
+      "category": "Food",
+      "src": "/assets/Tanha Image/08.webp",
+      "alt": "South India Kodi Chips served with mint dip",
+      "caption": "Podi Kodi Chips",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g34",
+      "category": "Food",
+      "src": "/assets/Tanha Image/09.webp",
+      "alt": "Tandoori Dahi Kebab served on platter",
+      "caption": "Tandoori Dahi Kebab",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g35",
+      "category": "Events",
+      "src": "/assets/Tanha Image/10.webp",
+      "alt": "Garnishing a signature purple cocktail",
+      "caption": "Mindful Corporate Mixology",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g36",
+      "category": "Food",
+      "src": "/assets/Tanha Image/11.webp",
+      "alt": "Claypot Mutton Biryani serving setup",
+      "caption": "Claypot Mutton Biryani",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g37",
+      "category": "Ambience",
+      "src": "/assets/Tanha Image/12.webp",
+      "alt": "Tanah Kitchen & Bar entrance sign welcoming guests",
+      "caption": "Welcome to Tanah",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g38",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-1.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Signature Plated Delicacy",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g39",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-2.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Artisanal Toast",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g40",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-3.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Millet Delicacy",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g41",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-4.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Coal Roasted Skewers",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g42",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-5.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Smoked Appetizer",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g43",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-6.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Traditional Curry Platter",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g44",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-7.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Hearth Sourdough Bread",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g45",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-8.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Organic Root Roast",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g46",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-9.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Zero-Mile Green Salad",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g47",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-10.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Cracked Millet Bowl",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g48",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-11.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Wood-Fired Risotto",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g49",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-12.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Terracotta Spiced Paneer",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g50",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-13.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Dal Earth Slow Cooked",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g51",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-14.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Artisanal Beetroot Risotto",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g52",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-15.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Wood-Fired Roast Potatoes",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g53",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-16.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Honey Charcoal Lemonade",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g54",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-17.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Healing Golden Soil Milk",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g55",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-18.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Araku Valley Cold Brew",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g56",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-19.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Sparkling Kokum Elixir",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g57",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-20.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Iced Hibiscus Infusion",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g58",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-21.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Smoked Old Fashioned",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g59",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-22.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Earthy Hibiscus Cocktail",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g60",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-23.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Basalt Stone Margarita",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g61",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-24.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Forest Lemongrass Mule",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g62",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-25.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Vedic Bramble Elixir",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g63",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-26.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Saffron Rabri Clay Pot",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g64",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-27.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Roasted Fig Tartlet",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g65",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-28.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Millet Coconut Payasam",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g66",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-29.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Dark Chocolate Soil Gateau",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g67",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-30.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Apple Rose Tart",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g68",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-31.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Wood-Fired Baked Dish",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g69",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-32.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Tandoori Platters",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g70",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-33.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Stone Ground Chutneys",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g71",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-34.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Folk Herbs Roast",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g72",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-35.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Traditional Specialities",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g73",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-36.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Earthy Grains bowl",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g74",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-37.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Chef Specially Curated",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g75",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-38.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Slow Cooked Curries",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g76",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-39.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Wild Mushrooms Sauté",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g77",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-40.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Charcoal Baked Platters",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g78",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-41.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Artisanal Curd Salad",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g79",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-42.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Vedic Tonics Selection",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g80",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-43.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Fermented botanical drinks",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g81",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-44.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Traditional Sweet Treats",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g82",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-45.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Gourmet Dessert Platings",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g83",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-46.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Heirloom Chutneys platter",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g84",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-47.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Warm turmeric brews",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g85",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-48.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Signature Vedic Mocktails",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g86",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-49.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Basil Pesto Millets",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g87",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-50.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Spiced Forest Mushrooms",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g88",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-51.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Avocado sourdough options",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g89",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-52.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Granola breakfast bowls",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g90",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-53.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Earthy Root Curries",
+      "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
+    },
+    {
+      "id": "g91",
+      "category": "Food",
+      "src": "/assets/Tanha Food/food-54.webp",
+      "alt": "Tanah signature food dish",
+      "caption": "Terracotta slow cooked dal",
       "spanClass": "col-span-12 sm:col-span-6 md:col-span-4 aspect-square"
     }
   ]

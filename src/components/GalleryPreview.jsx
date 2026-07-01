@@ -89,8 +89,8 @@ export default function GalleryPreview() {
               className="aspect-square relative hover-zoom overflow-hidden border border-terracotta/10 lg:translate-x-6"
             >
               <img
-                src="/assets/Tanha Ambiance/Tanha Food/food-21.webp"
-                alt="Specialty organic ingredient plating"
+              src="/assets/Tanha Image/05.webp"
+              alt="Premium bar shelves and glassware"
                 className="w-full h-full object-cover filter brightness-[0.75] contrast-[1.05]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/80 via-transparent to-transparent flex items-end p-8">

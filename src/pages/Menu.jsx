@@ -1,18 +1,31 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, Sliders, Sparkles, Flame, Cookie, Sprout, GlassWater } from 'lucide-react'
 import menuData from '../data/menu.json'
+import { LogoOwl } from '../components/illustrations'
+import {
+  BirdSingleMalt,
+  BirdWhiskey,
+  BirdVodkaGin,
+  BirdTequilaRum,
+  BirdBrandyLiquor,
+  BirdWine,
+  BirdBeerChampagne,
+  BirdSoftDrink,
+  BirdSignatureCocktail,
+  BirdMocktail,
+  BirdShooter
+} from '../components/BarMascots'
 
-// Frontend categories requested by the user
+// Frontend categories requested by the user for Food
 const DISPLAY_CATEGORIES = ["All", "Starters", "Main Course", "Cocktails", "Beverages", "Desserts"]
 
-// Helper function to map database categories/items to requested frontend categories
+// Helper function to map database categories/items to requested frontend categories for Food
 function getMappedCategory(item) {
   if (item.category === 'Cocktails') return 'Cocktails'
   if (item.category === 'Beverages') return 'Beverages'
   if (item.category === 'Desserts') return 'Desserts'
 
-  // Custom mapping for Breakfast/Lunch/Dinner into Starters/Mains
   const startersNames = [
     "Ancient Grain Granola",
     "Millet Idli & Heirloom Chutney",
@@ -28,7 +41,7 @@ function getMappedCategory(item) {
   return 'Main Course'
 }
 
-// Calculate sensory profile of a menu item
+// Calculate sensory profile of a menu item for Food
 function calculateSensoryProfile(item) {
   let spicy = 0
   let sweet = 0
@@ -39,7 +52,6 @@ function calculateSensoryProfile(item) {
   const nameLower = item.name.toLowerCase()
   const tagsLower = item.tags.map(t => t.toLowerCase())
 
-  // Spicy Profile
   if (tagsLower.includes('spicy') || tagsLower.includes('lava salt')) {
     spicy = 95
   } else if (descLower.includes('spic') || nameLower.includes('spic') || descLower.includes('chili') || descLower.includes('mustard') || descLower.includes('ginger') || descLower.includes('pepper')) {
@@ -48,7 +60,6 @@ function calculateSensoryProfile(item) {
     spicy = 30
   }
 
-  // Sweet Profile
   if (item.category === 'Desserts' || tagsLower.includes('sweet') || tagsLower.includes('decadent')) {
     sweet = 95
   } else if (descLower.includes('honey') || descLower.includes('jaggery') || descLower.includes('chocolate') || descLower.includes('sweet') || descLower.includes('nectar') || descLower.includes('fig') || descLower.includes('berry') || descLower.includes('apple') || descLower.includes('kokum')) {
@@ -57,7 +68,6 @@ function calculateSensoryProfile(item) {
     sweet = 50
   }
 
-  // Earthy Profile
   if (tagsLower.includes('organic') || tagsLower.includes('vegan') || tagsLower.includes('botanical') || tagsLower.includes('coal cooked') || tagsLower.includes('slow cooked')) {
     earthy = 90
   }
@@ -67,7 +77,6 @@ function calculateSensoryProfile(item) {
     earthy = Math.max(earthy, 60)
   }
 
-  // Richness Profile
   if (tagsLower.includes('luxury') || tagsLower.includes('creamy') || tagsLower.includes('decadent') || tagsLower.includes('hearty')) {
     rich = 95
   }
@@ -103,7 +112,284 @@ const PRESET_JOURNEYS = [
   }
 ]
 
+// Liquid Library (Bar Menu) Sections and Items Dataset
+const LIQUID_SECTIONS = [
+  {
+    id: 'singlemalt',
+    name: 'SINGLEMALT',
+    headers: ['30ML', 'BTL'],
+    watermark: '/assets/Tanha Food/food-21.webp', // Whiskey-like image in the card background
+    items: [
+      { name: 'Singleton 12 Yr', prices: ['799/-', '14,999/-'] },
+      { name: 'Talisker 10 Yr', prices: ['659/-', '13,999/-'] },
+      { name: 'Laphroaig', prices: ['699/-', '12,999/-'] },
+      { name: 'Glenlivet 12yr', prices: ['799/-', '13,999/-'] },
+      { name: 'Glenlivet 15yr', prices: ['899/-', '14,999/-'] },
+      { name: 'Glenlivet 18yr', prices: ['1299/-', '22,999/-'] },
+      { name: 'Glenmoriange 10yr', prices: ['899/-', '13,999/-'] },
+      { name: 'Glenfiddich 12yr', prices: ['799/-', '13,999/-'] },
+      { name: 'Glenfiddich 15yr', prices: ['899/-', '14,999/-'] },
+      { name: 'Glenfiddich 18yr', prices: ['1299/-', '23,000/-'] },
+      { name: 'Hibiki', prices: ['1899/-', '34,000/-'] }
+    ],
+    tagline: 'you get better with age',
+    Mascot: BirdSingleMalt
+  },
+  {
+    id: 'whiskey',
+    name: 'WHISKEY',
+    headers: ['30ML', 'BTL'],
+    watermark: '/assets/Tanha Food/food-21.webp', // Whiskey-like image in the card background
+    items: [
+      { name: 'Royal Salute', prices: ['2,999/-', '49,999/-'] },
+      { name: 'Chivas 12 YR', prices: ['459/-', '8,999/-'] },
+      { name: 'Chivas 18 YR', prices: ['899/-', '18,999/-'] },
+      { name: 'JW Black Label', prices: ['549/-', '8,999/-'] },
+      { name: "Teacher's Highland", prices: ['399/-', '5,999/-'] },
+      { name: "Teacher's 50", prices: ['459/-', '5,999/-'] },
+      { name: 'Ballantine', prices: ['459/-', '5,999/-'] },
+      { name: '100 Pipers 12YR', prices: ['459/-', '6,999/-'] },
+      { name: 'Jim Beam', prices: ['399/-', '5,899/-'] },
+      { name: 'Jameson', prices: ['499/-', '5,999/-'] },
+      { name: "Jack Daniel's NO 7", prices: ['399/-', '7,999/-'] }
+    ],
+    tagline: 'never delay opening a bottle of whisky.',
+    Mascot: BirdWhiskey
+  },
+  {
+    id: 'vodka',
+    name: 'VODKA',
+    headers: ['30ML', 'BTL'],
+    items: [
+      { name: 'Beluga Nobel', prices: ['999/-', '16,999/-'] },
+      { name: 'Grey Goose', prices: ['699/-', '12,999/-'] },
+      { name: 'Absolut', prices: ['499/-', '8,999/-'] },
+      { name: 'Ketel One', prices: ['499/-', '7,999/-'] }
+    ],
+    tagline: 'my willpower vs vodka (40%.) vodka wins!',
+    Mascot: BirdVodkaGin
+  },
+  {
+    id: 'gin',
+    name: 'GIN',
+    headers: ['30ML', 'BTL'],
+    items: [
+      { name: 'Greater Than', prices: ['399/-', '5,999/-'] },
+      { name: 'Bombay Sapphire', prices: ['499/-', '7,999/-'] },
+      { name: 'Beefeter', prices: ['499/-', '7,999/-'] },
+      { name: 'Tanqueray No 10', prices: ['659/-', '14,999/-'] },
+      { name: 'Monkey 47', prices: ['659/-', '14,999/-'] },
+      { name: 'Roku Gin', prices: ['799/-', '14,999/-'] }
+    ],
+    tagline: 'my willpower vs vodka (40%.) vodka wins!',
+    Mascot: BirdVodkaGin
+  },
+  {
+    id: 'tequila',
+    name: 'TEQUILA',
+    headers: ['30ML', 'BTL'],
+    items: [
+      { name: 'Don Angle', prices: ['599/-', '10,999/-'] },
+      { name: 'Jose Cuervo Silver', prices: ['599/-', '10,999/-'] },
+      { name: 'Jose Cuervo Reposado', prices: ['699/-', '12,999/-'] },
+      { name: '1800 Silver', prices: ['799/-', '13,999/-'] },
+      { name: 'Don Jilo', prices: ['899/-', '21,999/-'] },
+      { name: 'Patron Silver Tequila', prices: ['1299/-', '22,999/-'] }
+    ],
+    tagline: 'Magic Water for fun people',
+    Mascot: BirdTequilaRum
+  },
+  {
+    id: 'rum',
+    name: 'RUM',
+    headers: ['30ML', 'BTL'],
+    watermark: '/assets/Tanha Food/food-21.webp', // Rum-like image in the card background
+    items: [
+      { name: 'Old Monk', prices: ['299/-', '3,999/-'] },
+      { name: 'Bacardi Carta Blanc', prices: ['299/-', '4,999/-'] },
+      { name: 'Bacardi Aged Rum', prices: ['499/-', '7,999/-'] }
+    ],
+    tagline: 'Magic Water for fun people',
+    Mascot: BirdTequilaRum
+  },
+  {
+    id: 'brandy',
+    name: 'BRANDY & COGNAC',
+    headers: ['30ML', 'BTL'],
+    items: [
+      { name: 'Mansion House (Brandy)', prices: ['249/-', '3,999/-'] },
+      { name: 'Xclamation Brandy', prices: ['399/-', '5,999/-'] },
+      { name: 'Hennessy VS (Cognac)', prices: ['599/-', '14,999/-'] },
+      { name: 'St Remy Vsop', prices: ['699/-', '12,999/-'] }
+    ],
+    tagline: 'Coco cola pepsi, Balayya bab sexy!',
+    Mascot: BirdBrandyLiquor
+  },
+  {
+    id: 'liquor',
+    name: 'LIQUOR',
+    headers: ['30ML', 'BTL'],
+    items: [
+      { name: 'Baileys', prices: ['499/-', '9,999/-'] },
+      { name: 'Sambuca', prices: ['499/-', '9,999/-'] },
+      { name: 'Kahlua', prices: ['499/-', '9,999/-'] },
+      { name: 'Martini Roso', prices: ['499/-', '9,999/-'] },
+      { name: 'Jagermeister', prices: ['599/-', '10,999/-'] }
+    ],
+    tagline: 'Coco cola pepsi, Balayya bab sexy!',
+    Mascot: BirdBrandyLiquor
+  },
+  {
+    id: 'rosewine',
+    name: 'ROSE WINE',
+    headers: ['Glass', 'BTL'],
+    items: [
+      { name: 'Sula Zinfandle', prices: ['799/-', '5,999/-'] }
+    ],
+    tagline: 'Will you accept this rose?',
+    Mascot: BirdWine
+  },
+  {
+    id: 'redwhite',
+    name: 'RED WINE & WHITE WINE',
+    headers: ['Glass', 'BTL'],
+    items: [
+      { name: 'Sula Chardonny White', prices: ['799/-', '4,999/-'] },
+      { name: 'Sula Cabernet Shiraz (Red)', prices: ['799/-', '4,999/-'] },
+      { name: "Jacob's Creek Chardonny", prices: ['999/-', '5,999/-'] },
+      { name: "Jacob's Creek Shiraz", prices: ['999/-', '5,999/-'] }
+    ],
+    tagline: 'Will you accept this rose?',
+    Mascot: BirdWine
+  },
+  {
+    id: 'beer',
+    name: 'BEER & ALCOPOPS',
+    headers: ['Pint', 'Bucket'],
+    watermark: '/assets/Tanha Image/05.webp', // Beverage-related glassware image in background for Beer
+    items: [
+      { name: 'Corona Extrea', prices: ['699/-', '2,899/-'] },
+      { name: 'Hoegaarden', prices: ['699/-', '2,899/-'] },
+      { name: 'Heineken', prices: ['459/-', '2,299/-'] },
+      { name: 'Kingfisher Ultra', prices: ['459/-', '2,299/-'] },
+      { name: 'Budweiser', prices: ['459/-', '2,299/-'] }
+    ],
+    tagline: 'The sound of celebration begins with a cork.',
+    Mascot: BirdBeerChampagne
+  },
+  {
+    id: 'champagne',
+    name: 'CHAMPAGNE & SPARKLING',
+    headers: ['BTL only'],
+    items: [
+      { name: 'Zonin Prosecco', prices: ['10,999/-'] },
+      { name: 'Moet Chandon Brut', prices: ['27,999/-'] },
+      { name: 'Sula Brut', prices: ['2,499/-'] }
+    ],
+    tagline: 'The sound of celebration begins with a cork.',
+    Mascot: BirdBeerChampagne
+  },
+  {
+    id: 'softdrink',
+    name: 'SOFT DRINK',
+    headers: ['Price'],
+    items: [
+      { name: 'Fresh Lime Soda / Water', prices: ['189/-'] },
+      { name: 'Canned Juice', prices: ['199/-'] },
+      { name: 'Ginger Ale', prices: ['169/-'] },
+      { name: 'Tonic Water', prices: ['169/-'] },
+      { name: 'Red Bull', prices: ['299/-'] },
+      { name: 'Coke Can', prices: ['129/-'] },
+      { name: 'Sprite Can', prices: ['129/-'] },
+      { name: 'Water Bottle', prices: ['99/-'] },
+      { name: 'Dite Coke', prices: ['129/-'] },
+      { name: 'Fresh Juice (Orange, Watermelon)', prices: ['299/-'] },
+      { name: 'Aerated Water (Glass)', prices: ['99/-'] },
+      { name: 'Soda, Sprite, Thumsup', prices: [] }
+    ],
+    tagline: "It's time to Hydrate!",
+    Mascot: BirdSoftDrink
+  },
+  {
+    id: 'signature',
+    name: 'SIGNATURE COCKTAILS',
+    headers: ['Price'],
+    watermark: '/assets/Tanha Food/food-22.webp', // The red Earthy Hibiscus Cocktail image from your photo
+    items: [
+      { name: 'Palapitta Song', prices: ['659/-'], desc: 'Blend of Rum, Pineapple, Falernum, Narial Panni, Lime, & Salin' },
+      { name: 'Godavari Gulabi', prices: ['699/-'], desc: 'Bourbon, Blueberry, Lime, Basil, Form' },
+      { name: 'Botanical Garden', prices: ['699/-'], desc: 'Gin, Grape fruit juice, Simple Syrup, Lime juice tonic water' },
+      { name: 'Japanese Blossom', prices: ['699/-'], desc: 'Whiskey, Orange Juice, Yuzu Puree, Ssourmix' },
+      { name: 'Profit & Loass (P&L)', prices: ['699/-'], desc: 'Gin, Kaffir Lime, Basil, Lime Simple Syrup' },
+      { name: 'Echo of Tanah', prices: ['699/-'], desc: 'Gin, Kafferlime, Coconut water, Salin, Lime' },
+      { name: 'Tanah Queen', prices: ['699/-'], desc: 'Tequila Sour Mix, Bluepetea, Apple Juice, Lavender' },
+      { name: 'Yuzu Heaven', prices: ['799/-'], desc: 'Dark Rum, Cardammon, Pineapple Cordial, Yuzu & Lime' },
+      { name: 'Pineapple Ginger', prices: ['799/-'], desc: 'Vodka, Pinapple Ginger Sourmix, Ginger Burg' },
+      { name: 'The Og Picante', prices: ['799/-'], desc: 'Bartender Secret Recipe' }
+    ],
+    tagline: 'This Is Where We Create',
+    Mascot: BirdSignatureCocktail
+  },
+  {
+    id: 'mocktail',
+    name: 'MOCKTAIL',
+    headers: ['Price'],
+    watermark: '/assets/Tanha Food/food-22.webp', // The red Earthy Hibiscus Cocktail image from your photo
+    items: [
+      { name: 'Mamidi Madhuram', prices: ['349/-'], desc: 'Mango Coridal, Lime Simple Syrup, Bubbles' },
+      { name: 'Golconda Glow', prices: ['349/-'], desc: 'Rasberry, Granadine, Mint, Orange Juice, Simple Syrup, Bubles' },
+      { name: 'Pinky Promise', prices: ['349/-'], desc: 'Watermelon Pulp, Vanilla, Whipped Cream, Pineapple, Simple Syrup' },
+      { name: 'Pine Pathar', prices: ['349/-'], desc: 'Coffee Simple Srup, Tonic Water, Banana Foam' },
+      { name: 'Citrus Cluster', prices: ['349/-'], desc: 'Orange Juice, Passionfruit, Yuzu Puree Lie Juice, Basil Foam' },
+      { name: 'Tanah Verde', prices: ['349/-'], desc: 'Cucumber, Basil, Lime, Simple Syrup, Pineapple Bubbles' },
+      { name: 'Spicy Melon Tempest', prices: ['349/-'], desc: 'Watermelon Juice, Melon Syrup, Mint, Chatmasala, Soda' },
+      { name: 'Slush', prices: ['349/-'], desc: 'Ampanna & Greenapple, Kiwi & Chilly, Mango' },
+      { name: 'Ice Tea', prices: ['349/-'], desc: 'Black Tea, Peach, Passion Fruit, Lime' },
+      { name: 'Virgin Mojito', prices: ['349/-'], desc: 'Wateremelon, Orange, Curry Leaft' }
+    ],
+    tagline: 'I am unapologetically good',
+    Mascot: BirdMocktail
+  },
+  {
+    id: 'classic',
+    name: 'CLASSIC COCKTAIL',
+    headers: ['Price'],
+    watermark: '/assets/Tanha Food/food-22.webp', // The red Earthy Hibiscus Cocktail image from your photo
+    items: [
+      { name: 'LIIT', prices: ['999/-'], desc: 'Tequila, rum, vodka, gin, triple sec, lemon juice, Coke' },
+      { name: 'Cosmopolitan', prices: ['699/-'], desc: 'Vodka, triple sec, cranberry juice' },
+      { name: 'Moscow Mule', prices: ['699/-'], desc: 'Vodka, lemon juice, ginger ale' },
+      { name: 'Bramble', prices: ['699/-'], desc: 'Gin, lemon juice, simple syrup, raspberry purée' },
+      { name: 'Bees Knees', prices: ['699/-'], desc: 'Gin, lemon juice, honey syrup' },
+      { name: 'Whiskey Sour', prices: ['699/-'], desc: 'Whiskey, lemon juice, simple syrup, egg white, angostura bitter' },
+      { name: 'Mojito', prices: ['659/-'], desc: 'Rum, lemon juice, mint, soda' },
+      { name: 'Old Fashioned', prices: ['699/-'], desc: 'Whiskey, angostura bitters, sugar' },
+      { name: 'Margarita', prices: ['799/-'], desc: 'Tequila, triple sec, lemon juice' },
+      { name: '007 Martini', prices: ['699/-'], desc: 'Vodka or gin, olive brain, white wine' },
+      { name: 'Espresso Martini', prices: ['669/-'], desc: 'Vodka, Kahlua, coffee' }
+    ],
+    tagline: 'We respect the originals',
+    Mascot: BirdTequilaRum
+  },
+  {
+    id: 'shooter',
+    name: 'SHOOTER',
+    headers: ['Price'],
+    watermark: '/assets/Tanha Food/food-22.webp', // The red Earthy Hibiscus Cocktail image from your photo
+    items: [
+      { name: 'Kamikaze Shot', prices: ['499/-'], desc: 'Vodka, triple sec, lemon juice' },
+      { name: 'Cheesecake Shot', prices: ['559/-'], desc: 'Vodka, strawberry purée, cream, biscuit' },
+      { name: 'B-52', prices: ['669/-'], desc: 'Kahlua, Baileys, triple sec (layered)' },
+      { name: 'Flatliner', prices: ['699/-'], desc: 'tequila, tabasco, sambuca, vanilla foam' },
+      { name: 'Jager Bomb', prices: ['799/-'], desc: 'Jägermeister, Red Bull' }
+    ],
+    tagline: "It's Time to call your driver",
+    Mascot: BirdShooter
+  }
+]
+
 export default function Menu() {
+  const [menuType, setMenuType] = useState('food') // 'food' or 'liquid'
   const [viewMode, setViewMode] = useState('classic') // 'classic' or 'sensory'
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [searchQuery, setSearchQuery] = useState('')
@@ -119,9 +405,9 @@ export default function Menu() {
   })
 
   useEffect(() => {
-    document.title = 'Seasonal Menu | Tanah Kitchen & Bar'
+    document.title = menuType === 'food' ? 'Seasonal Menu | Tanah Kitchen & Bar' : 'Liquid Library | Tanah Kitchen & Bar'
     window.scrollTo(0, 0)
-  }, [])
+  }, [menuType])
 
   useEffect(() => {
     let result = menuData.items.map(item => {
@@ -184,405 +470,618 @@ export default function Menu() {
   const activeShowcaseItem = hoveredItem || filteredItems[0]
 
   return (
-    <main className="flex-grow pt-24 bg-bg-primary text-text-dark">
-
-      {/* Page Header */}
-      <section className="relative py-20 md:py-28 text-center border-b border-terracotta/15 bg-bg-secondary">
+    <main 
+      className={`flex-grow pt-24 overflow-hidden text-left transition-colors duration-500 ${
+        menuType === 'liquid' ? 'min-h-screen relative' : 'bg-[#F6E1CB]'
+      }`}
+      style={menuType === 'liquid' ? { backgroundColor: '#6F292C' } : {}}
+    >
+      
+      {/* 1. Page Header with Food/Liquid Switcher */}
+      <section className={`relative py-20 md:py-24 text-center ${menuType === 'liquid' ? 'border-b border-[#ECE9DA]/15 bg-transparent' : 'section-dark border-b border-light-cream/15'}`}>
         <div className="relative z-10 px-8 max-w-container mx-auto">
-          <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-terracotta block mb-4">
-            Gastronomy Catalog
-          </span>
-          <h1
-            className="font-display font-light text-text-dark leading-none mb-6"
-            style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
-          >
-            The Seasonal Menu
-          </h1>
-          <p className="text-xs md:text-sm font-light max-w-xl mx-auto text-text-dark/80 leading-relaxed">
-            A chronicle of wood-fired gastronomy, traditional slow cooking, and stone-ground spices. Rested, prepared, and plated in Hyderabad.
-          </p>
-
-          {/* Mode Selector Toggle */}
-          <div className="flex justify-center mt-12">
-            <div className="inline-flex border border-terracotta/20 p-1 bg-bg-primary/90 backdrop-blur">
+          
+          {/* Main Menu Type Selector */}
+          <div className="flex justify-center mb-8">
+            <div className={`inline-flex border p-1 backdrop-blur ${menuType === 'liquid' ? 'border-[#ECE9DA]/20 bg-[#ECE9DA]/10' : 'border-light-cream/20 bg-light-cream/10'}`}>
               <button
-                onClick={() => setViewMode('classic')}
-                className={`px-6 py-2.5 text-[10px] tracking-[0.25em] uppercase transition-all duration-300 cursor-pointer ${viewMode === 'classic'
-                    ? 'bg-terracotta text-bg-primary font-medium'
-                    : 'text-text-dark/70 hover:text-terracotta'
+                onClick={() => setMenuType('food')}
+                className={`px-6 py-2.5 text-[10px] tracking-[0.25em] uppercase transition-all duration-300 cursor-pointer ${menuType === 'food'
+                    ? 'bg-light-cream text-primary-dark font-medium'
+                    : (menuType === 'liquid' ? 'text-[#ECE9DA]/70 hover:text-[#ECE9DA]' : 'text-light-cream/70 hover:text-light-cream')
                   }`}
               >
-                Classic Catalog
+                Food Catalog
               </button>
               <button
-                onClick={() => setViewMode('sensory')}
-                className={`px-6 py-2.5 text-[10px] tracking-[0.25em] uppercase transition-all duration-300 cursor-pointer flex items-center gap-2 ${viewMode === 'sensory'
-                    ? 'bg-terracotta text-bg-primary font-medium'
-                    : 'text-text-dark/70 hover:text-terracotta'
+                onClick={() => setMenuType('liquid')}
+                className={`px-6 py-2.5 text-[10px] tracking-[0.25em] uppercase transition-all duration-300 cursor-pointer ${menuType === 'liquid'
+                    ? 'bg-[#ECE9DA] text-[#6F292C] font-semibold'
+                    : 'text-light-cream/70 hover:text-light-cream'
                   }`}
               >
-                <Sliders className="w-3.5 h-3.5" />
-                Sensory Matcher
+                Liquid Library
               </button>
             </div>
           </div>
+
+          {menuType === 'food' && (
+            <>
+              <span className="text-[10px] font-semibold tracking-[0.4em] uppercase section-accent block mb-4">
+                Gastronomy Catalog
+              </span>
+              <h1
+                className="font-display font-light leading-none mb-6"
+                style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
+              >
+                The Seasonal Menu
+              </h1>
+              <p className="text-xs md:text-sm font-light max-w-xl mx-auto opacity-80 leading-relaxed font-body">
+                A chronicle of wood-fired gastronomy, traditional slow cooking, and stone-ground spices. Rested, prepared, and plated in Hyderabad.
+              </p>
+
+              {/* Mode Selector Toggle */}
+              <div className="flex justify-center mt-10">
+                <div className="inline-flex border border-light-cream/20 p-1 bg-light-cream/10 backdrop-blur">
+                  <button
+                    onClick={() => setViewMode('classic')}
+                    className={`px-6 py-2.5 text-[10px] tracking-[0.25em] uppercase transition-all duration-300 cursor-pointer ${viewMode === 'classic'
+                        ? 'bg-light-cream text-primary-dark font-medium'
+                        : 'text-light-cream/70 hover:text-light-cream'
+                      }`}
+                  >
+                    Classic Catalog
+                  </button>
+                  <button
+                    onClick={() => setViewMode('sensory')}
+                    className={`px-6 py-2.5 text-[10px] tracking-[0.25em] uppercase transition-all duration-300 cursor-pointer flex items-center gap-2 ${viewMode === 'sensory'
+                        ? 'bg-light-cream text-primary-dark font-medium'
+                        : 'text-light-cream/70 hover:text-light-cream'
+                      }`}
+                  >
+                    <Sliders className="w-3.5 h-3.5" />
+                    Sensory Matcher
+                  </button>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </section>
 
-      {/* Menu Container */}
-      <section className="relative py-16 bg-bg-primary">
-        <div className="max-w-container px-8 mx-auto">
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-
-            {/* LEFT COLUMN: Controls & Menu list */}
-            <div className="lg:col-span-7 space-y-12 w-full">
-
-              {/* SENSORY CONTROLS PANEL */}
-              <AnimatePresence mode="wait">
-                {viewMode === 'sensory' && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.5 }}
-                    className="p-6 md:p-8 border border-terracotta/15 bg-bg-secondary/45 backdrop-blur space-y-8"
-                  >
-                    <div className="text-center md:text-left">
-                      <h2 className="text-xl font-light text-text-dark tracking-wide font-display">
-                        Curate Your Culinary Profile
-                      </h2>
-                      <p className="text-xs text-text-dark/70 mt-1">
-                        Adjust the flavor dimensions or select a journey to align the menu.
-                      </p>
-                    </div>
-
-                    {/* Preset Journeys */}
-                    <div className="grid grid-cols-2 gap-3">
-                      {PRESET_JOURNEYS.map((journey) => (
-                        <button
-                          key={journey.name}
-                          onClick={() => handlePresetSelect(journey.profile)}
-                          className="p-3 text-left border border-terracotta/10 bg-bg-primary/45 hover:border-terracotta/40 transition-all duration-300 group cursor-pointer"
-                        >
-                          <span className="block text-[10px] uppercase tracking-wider text-accent group-hover:text-terracotta transition-colors font-semibold">
-                            {journey.name}
-                          </span>
-                          <span className="block text-[9px] text-text-dark/60 mt-1 font-light leading-snug">
-                            {journey.desc}
-                          </span>
-                        </button>
-                      ))}
-                    </div>
-
-                    {/* Sliders Grid */}
-                    <div className="grid grid-cols-2 gap-6 pt-2">
-                      {/* Spicy Slider */}
-                      <div className="space-y-2.5">
-                        <div className="flex justify-between items-center text-[10px] uppercase tracking-wider">
-                          <span className="flex items-center gap-1.5 text-text-dark/80">
-                            <Flame className="w-3.5 h-3.5 text-orange-600" />
-                            Heat & Spice
-                          </span>
-                          <span className="text-terracotta font-semibold">{sensoryPrefs.spicy}%</span>
-                        </div>
-                        <input
-                          type="range"
-                          min="0"
-                          max="100"
-                          value={sensoryPrefs.spicy}
-                          onChange={(e) => handleSliderChange('spicy', e.target.value)}
-                          className="w-full accent-terracotta bg-bg-secondary h-1 cursor-ew-resize"
-                        />
-                      </div>
-
-                      {/* Sweet Slider */}
-                      <div className="space-y-2.5">
-                        <div className="flex justify-between items-center text-[10px] uppercase tracking-wider">
-                          <span className="flex items-center gap-1.5 text-text-dark/80">
-                            <Cookie className="w-3.5 h-3.5 text-amber-600" />
-                            Sweetness
-                          </span>
-                          <span className="text-terracotta font-semibold">{sensoryPrefs.sweet}%</span>
-                        </div>
-                        <input
-                          type="range"
-                          min="0"
-                          max="100"
-                          value={sensoryPrefs.sweet}
-                          onChange={(e) => handleSliderChange('sweet', e.target.value)}
-                          className="w-full accent-terracotta bg-bg-secondary h-1 cursor-ew-resize"
-                        />
-                      </div>
-
-                      {/* Earthy Slider */}
-                      <div className="space-y-2.5">
-                        <div className="flex justify-between items-center text-[10px] uppercase tracking-wider">
-                          <span className="flex items-center gap-1.5 text-text-dark/80">
-                            <Sprout className="w-3.5 h-3.5 text-emerald-600" />
-                            Earthiness
-                          </span>
-                          <span className="text-terracotta font-semibold">{sensoryPrefs.earthy}%</span>
-                        </div>
-                        <input
-                          type="range"
-                          min="0"
-                          max="100"
-                          value={sensoryPrefs.earthy}
-                          onChange={(e) => handleSliderChange('earthy', e.target.value)}
-                          className="w-full accent-terracotta bg-bg-secondary h-1 cursor-ew-resize"
-                        />
-                      </div>
-
-                      {/* Rich Slider */}
-                      <div className="space-y-2.5">
-                        <div className="flex justify-between items-center text-[10px] uppercase tracking-wider">
-                          <span className="flex items-center gap-1.5 text-text-dark/80">
-                            <GlassWater className="w-3.5 h-3.5 text-sky-500" />
-                            Richness
-                          </span>
-                          <span className="text-terracotta font-semibold">{sensoryPrefs.rich}%</span>
-                        </div>
-                        <input
-                          type="range"
-                          min="0"
-                          max="100"
-                          value={sensoryPrefs.rich}
-                          onChange={(e) => handleSliderChange('rich', e.target.value)}
-                          className="w-full accent-terracotta bg-bg-secondary h-1 cursor-ew-resize"
-                        />
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              {/* Filters and Search */}
-              <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-terracotta/10 pb-6">
-
-                {/* Category selection - Only visible in Classic view */}
-                <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto no-scrollbar py-2">
-                  {viewMode === 'classic' ? (
-                    DISPLAY_CATEGORIES.map((cat) => {
-                      const isActive = selectedCategory === cat
-                      return (
-                        <button
-                          key={cat}
-                          onClick={() => setSelectedCategory(cat)}
-                          className="px-5 py-2 text-[10px] tracking-[0.25em] uppercase cursor-pointer transition-all duration-300 whitespace-nowrap"
-                          style={{
-                            color: isActive ? 'var(--color-terracotta)' : 'var(--color-text-dark)',
-                            borderBottom: isActive ? '2px solid var(--color-terracotta)' : '2px solid transparent'
-                          }}
-                        >
-                          {cat}
-                        </button>
-                      )
-                    })
-                  ) : (
-                    <div className="flex items-center gap-2 text-[10px] tracking-[0.2em] text-terracotta uppercase whitespace-nowrap font-semibold">
-                      <Sparkles className="w-3.5 h-3.5 text-terracotta animate-pulse" />
-                      Sorted by match accuracy
-                    </div>
-                  )}
-                </div>
-
-                {/* Search */}
-                <div className="relative w-full md:w-64">
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search catalog..."
-                    className="form-input text-xs pr-10 py-3 text-text-dark"
-                    maxLength={50}
-                  />
-                  <Search className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-terracotta/60" />
-                </div>
-              </div>
-
-              {/* Editorial Menu Grid */}
-              <motion.div
-                layout
-                className="flex flex-col gap-10"
-              >
-                <AnimatePresence mode="popLayout">
-                  {filteredItems.map((item) => (
+      {menuType === 'food' ? (
+        /* ==========================================
+           FOOD MENU SECTION (Keep Original Layout)
+           ========================================== */
+        <section className="section-light relative py-16">
+          <div className="max-w-container px-8 mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+              
+              {/* LEFT COLUMN: Controls & Menu list */}
+              <div className="lg:col-span-7 space-y-12 w-full">
+                
+                {/* SENSORY CONTROLS PANEL */}
+                <AnimatePresence mode="wait">
+                  {viewMode === 'sensory' && (
                     <motion.div
-                      key={item.id}
-                      layout
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: -20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, scale: 0.98 }}
-                      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                      onMouseEnter={() => setHoveredItem(item)}
-                      className="flex gap-6 items-start pb-6 border-b border-terracotta/5 group relative cursor-pointer text-left"
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.5 }}
+                      className="p-6 md:p-8 border border-primary-dark/15 bg-primary-dark/5 backdrop-blur space-y-8"
                     >
-                      {/* Inline thumbnail */}
-                      <div className="w-16 h-16 md:w-20 md:h-20 overflow-hidden bg-bg-secondary flex-shrink-0 relative lg:group-hover:border-terracotta/30 border border-transparent transition-all">
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          loading="lazy"
-                          className="w-full h-full object-cover filter brightness-90 transition-transform duration-700 group-hover:scale-105"
-                        />
+                      <div className="text-center md:text-left">
+                        <h2 className="text-xl font-light tracking-wide font-display">
+                          Curate Your Culinary Profile
+                        </h2>
+                        <p className="text-xs opacity-75 mt-1 font-body">
+                          Adjust the flavor dimensions or select a journey to align the menu.
+                        </p>
                       </div>
 
-                      {/* Text Description */}
-                      <div className="flex-grow space-y-1">
-                        <div className="flex items-baseline justify-between gap-4">
-                          <div className="flex items-center gap-2">
-                            <h3 className="font-display text-lg md:text-xl font-light text-text-dark group-hover:text-terracotta transition-colors duration-300">
-                              {item.name}
-                            </h3>
+                      {/* Preset Journeys */}
+                      <div className="grid grid-cols-2 gap-3">
+                        {PRESET_JOURNEYS.map((journey) => (
+                          <button
+                            key={journey.name}
+                            onClick={() => handlePresetSelect(journey.profile)}
+                            className="p-3 text-left border border-primary-dark/10 bg-white/45 hover:border-primary-dark/40 transition-all duration-300 group cursor-pointer"
+                          >
+                            <span className="block text-[10px] uppercase tracking-wider section-accent group-hover:text-primary-dark transition-colors font-semibold">
+                              {journey.name}
+                            </span>
+                            <span className="block text-[9px] opacity-75 mt-1 font-light leading-snug font-body">
+                              {journey.desc}
+                            </span>
+                          </button>
+                        ))}
+                      </div>
 
-                            {/* Match Tag in Sensory Mode */}
-                            {viewMode === 'sensory' && (
-                              <span className="text-[9px] tracking-[0.1em] px-2 py-0.5 bg-terracotta/10 border border-terracotta/30 text-terracotta rounded-full font-sans font-semibold">
-                                {item.matchScore}% Match
-                              </span>
-                            )}
+                      {/* Sliders Grid */}
+                      <div className="grid grid-cols-2 gap-6 pt-2">
+                        {/* Spicy Slider */}
+                        <div className="space-y-2.5">
+                          <div className="flex justify-between items-center text-[10px] uppercase tracking-wider font-semibold">
+                            <span className="flex items-center gap-1.5 opacity-80">
+                              <Flame className="w-3.5 h-3.5 text-orange-600" />
+                              Heat & Spice
+                            </span>
+                            <span className="section-accent font-semibold">{sensoryPrefs.spicy}%</span>
                           </div>
-                          <span className="font-display text-base text-terracotta font-medium">
-                            ₹{item.price}
-                          </span>
+                          <input
+                            type="range"
+                            min="0"
+                            max="100"
+                            value={sensoryPrefs.spicy}
+                            onChange={(e) => handleSliderChange('spicy', e.target.value)}
+                            className="w-full accent-primary-dark bg-primary-dark/10 h-1 cursor-ew-resize"
+                          />
                         </div>
 
-                        <p className="text-xs font-light text-text-dark/80 leading-relaxed font-body">
-                          {item.desc}
-                        </p>
-
-                        <div className="flex flex-wrap gap-2 pt-1">
-                          {item.tags.map((tag, tIdx) => (
-                            <span
-                              key={tIdx}
-                              className="text-[8px] tracking-[0.15em] uppercase text-accent bg-accent/5 px-2 py-0.5 border border-accent/10 font-semibold"
-                            >
-                              {tag}
+                        {/* Sweet Slider */}
+                        <div className="space-y-2.5">
+                          <div className="flex justify-between items-center text-[10px] uppercase tracking-wider font-semibold">
+                            <span className="flex items-center gap-1.5 opacity-80">
+                              <Cookie className="w-3.5 h-3.5 text-amber-600" />
+                              Sweetness
                             </span>
-                          ))}
+                            <span className="section-accent font-semibold">{sensoryPrefs.sweet}%</span>
+                          </div>
+                          <input
+                            type="range"
+                            min="0"
+                            max="100"
+                            value={sensoryPrefs.sweet}
+                            onChange={(e) => handleSliderChange('sweet', e.target.value)}
+                            className="w-full accent-primary-dark bg-primary-dark/10 h-1 cursor-ew-resize"
+                          />
+                        </div>
+
+                        {/* Earthy Slider */}
+                        <div className="space-y-2.5">
+                          <div className="flex justify-between items-center text-[10px] uppercase tracking-wider font-semibold">
+                            <span className="flex items-center gap-1.5 opacity-80">
+                              <Sprout className="w-3.5 h-3.5 text-emerald-600" />
+                              Earthiness
+                            </span>
+                            <span className="section-accent font-semibold">{sensoryPrefs.earthy}%</span>
+                          </div>
+                          <input
+                            type="range"
+                            min="0"
+                            max="100"
+                            value={sensoryPrefs.earthy}
+                            onChange={(e) => handleSliderChange('earthy', e.target.value)}
+                            className="w-full accent-primary-dark bg-primary-dark/10 h-1 cursor-ew-resize"
+                          />
+                        </div>
+
+                        {/* Rich Slider */}
+                        <div className="space-y-2.5">
+                          <div className="flex justify-between items-center text-[10px] uppercase tracking-wider font-semibold">
+                            <span className="flex items-center gap-1.5 opacity-80">
+                              <GlassWater className="w-3.5 h-3.5 text-sky-500" />
+                              Richness
+                            </span>
+                            <span className="section-accent font-semibold">{sensoryPrefs.rich}%</span>
+                          </div>
+                          <input
+                            type="range"
+                            min="0"
+                            max="100"
+                            value={sensoryPrefs.rich}
+                            onChange={(e) => handleSliderChange('rich', e.target.value)}
+                            className="w-full accent-primary-dark bg-primary-dark/10 h-1 cursor-ew-resize"
+                          />
                         </div>
                       </div>
                     </motion.div>
-                  ))}
+                  )}
                 </AnimatePresence>
-              </motion.div>
 
-              {/* Empty state */}
-              {filteredItems.length === 0 && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="text-center py-20 border border-terracotta/15 bg-bg-secondary"
-                >
-                  <p className="font-display text-xl text-text-dark">
-                    No items match your search.
-                  </p>
-                  <button
-                    onClick={() => { setSelectedCategory('All'); setSearchQuery(''); }}
-                    className="btn-primary mt-6 text-[10px] py-3 px-8 cursor-pointer"
-                  >
-                    Reset Catalog
-                  </button>
-                </motion.div>
-              )}
-
-            </div>
-
-            {/* RIGHT COLUMN: Sticky Hover Showcase (Large Image View) */}
-            <div className="hidden lg:block lg:col-span-5 sticky top-28 w-full text-left">
-              {activeShowcaseItem ? (
-                <motion.div
-                  layout
-                  className="border border-terracotta/15 bg-bg-secondary p-6 space-y-6 shadow-xl"
-                >
-                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-bg-primary border border-terracotta/10">
-                    <AnimatePresence mode="wait">
-                      <motion.img
-                        key={activeShowcaseItem.id}
-                        src={activeShowcaseItem.image}
-                        alt={activeShowcaseItem.name}
-                        initial={{ opacity: 0, scale: 1.05 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.98 }}
-                        transition={{ duration: 0.4 }}
-                        className="w-full h-full object-cover filter brightness-[0.85] contrast-[1.05]"
-                      />
-                    </AnimatePresence>
-
-                    {/* Sensory Scores overlay */}
-                    <div className="absolute top-4 left-4 flex flex-col gap-2">
-                      <span className="text-[8px] tracking-[0.2em] uppercase bg-bg-primary/95 backdrop-blur px-2.5 py-1 border border-terracotta/20 text-terracotta font-semibold">
-                        {activeShowcaseItem.category}
-                      </span>
-                    </div>
-
-                    {viewMode === 'sensory' && (
-                      <div className="absolute bottom-4 right-4 bg-bg-primary/95 backdrop-blur px-3 py-2 border border-terracotta/20 text-[10px] tracking-[0.1em] font-semibold flex items-center gap-1.5 rounded text-terracotta">
-                        <Sparkles className="w-3.5 h-3.5 text-terracotta animate-spin-slow" />
-                        <span>{activeShowcaseItem.matchScore}% Sensory Match</span>
+                {/* Filters and Search */}
+                <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-primary-dark/10 pb-6">
+                  {/* Category selection */}
+                  <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto no-scrollbar py-2">
+                    {viewMode === 'classic' ? (
+                      DISPLAY_CATEGORIES.map((cat) => {
+                        const isActive = selectedCategory === cat
+                        return (
+                          <button
+                            key={cat}
+                            onClick={() => setSelectedCategory(cat)}
+                            className="px-5 py-2 text-[10px] tracking-[0.25em] uppercase cursor-pointer transition-all duration-300 whitespace-nowrap"
+                            style={{
+                              color: isActive ? '#6B2523' : '#3A2E2A',
+                              borderBottom: isActive ? '2px solid #6B2523' : '2px solid transparent'
+                            }}
+                          >
+                            {cat}
+                          </button>
+                        )
+                      })
+                    ) : (
+                      <div className="flex items-center gap-2 text-[10px] tracking-[0.2em] section-accent uppercase whitespace-nowrap font-semibold">
+                        <Sparkles className="w-3.5 h-3.5 text-primary-dark animate-pulse" />
+                        Sorted by match accuracy
                       </div>
                     )}
                   </div>
 
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-baseline border-b border-terracotta/10 pb-3">
-                      <h4 className="font-display text-2xl font-light text-text-dark">
-                        {activeShowcaseItem.name}
-                      </h4>
-                      <span className="font-display text-xl text-terracotta font-medium">
-                        ₹{activeShowcaseItem.price}
-                      </span>
-                    </div>
-
-                    <p className="text-xs font-light text-text-dark/80 leading-relaxed font-body">
-                      {activeShowcaseItem.desc}
-                    </p>
-
-                    {/* Sensory radar profile summary */}
-                    <div className="grid grid-cols-2 gap-x-6 gap-y-3 pt-3 border-t border-terracotta/10 text-[9px] uppercase tracking-wider text-text-dark/70 font-semibold">
-                      <div className="flex justify-between items-center">
-                        <span className="flex items-center gap-1">
-                          <Flame className="w-3 h-3 text-orange-600" /> Spice
-                        </span>
-                        <span className="text-terracotta font-mono">{activeShowcaseItem.profile.spicy}%</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="flex items-center gap-1">
-                          <Cookie className="w-3 h-3 text-amber-600" /> Sweet
-                        </span>
-                        <span className="text-terracotta font-mono">{activeShowcaseItem.profile.sweet}%</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="flex items-center gap-1">
-                          <Sprout className="w-3 h-3 text-emerald-600" /> Earth
-                        </span>
-                        <span className="text-terracotta font-mono">{activeShowcaseItem.profile.earthy}%</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="flex items-center gap-1">
-                          <GlassWater className="w-3 h-3 text-sky-500" /> Rich
-                        </span>
-                        <span className="text-terracotta font-mono">{activeShowcaseItem.profile.rich}%</span>
-                      </div>
-                    </div>
+                  {/* Search */}
+                  <div className="relative w-full md:w-64">
+                    <input
+                      type="text"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      placeholder="Search catalog..."
+                      className="form-input text-xs pr-10 py-3"
+                      maxLength={50}
+                    />
+                    <Search className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary-dark/60" />
                   </div>
-                </motion.div>
-              ) : (
-                <div className="h-[400px] border border-terracotta/10 bg-bg-secondary/40 flex items-center justify-center text-center p-8">
-                  <p className="text-xs text-text-dark/50 tracking-widest uppercase">
-                    Hover over menu items to preview
-                  </p>
                 </div>
-              )}
-            </div>
 
+                {/* Editorial Menu Grid */}
+                <motion.div layout className="flex flex-col gap-10">
+                  <AnimatePresence mode="popLayout">
+                    {filteredItems.map((item) => (
+                      <motion.div
+                        key={item.id}
+                        layout
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.98 }}
+                        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                        onMouseEnter={() => setHoveredItem(item)}
+                        className="flex gap-6 items-start pb-6 border-b border-primary-dark/5 group relative cursor-pointer text-left"
+                      >
+                        {/* Inline thumbnail */}
+                        <div className="w-16 h-16 md:w-20 md:h-20 overflow-hidden bg-primary-dark/5 flex-shrink-0 relative lg:group-hover:border-primary-dark/30 border border-transparent transition-all">
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            loading="lazy"
+                            className="w-full h-full object-cover filter brightness-90 transition-transform duration-700 group-hover:scale-105"
+                          />
+                        </div>
+
+                        {/* Text Description */}
+                        <div className="flex-grow space-y-1">
+                          <div className="flex items-baseline justify-between gap-4">
+                            <div className="flex items-center gap-2">
+                              <h3 className="font-display text-lg md:text-xl font-light group-hover:text-primary-dark transition-colors duration-300">
+                                {item.name}
+                              </h3>
+                              {viewMode === 'sensory' && (
+                                <span className="text-[9px] tracking-[0.1em] px-2 py-0.5 bg-primary-dark/10 border border-primary-dark/30 text-primary-dark rounded-full font-sans font-semibold">
+                                  {item.matchScore}% Match
+                                </span>
+                              )}
+                            </div>
+                            <span className="font-display text-base section-accent font-medium">
+                              ₹{item.price}
+                            </span>
+                          </div>
+
+                          <p className="text-xs font-light opacity-80 leading-relaxed font-body">
+                            {item.desc}
+                          </p>
+
+                          <div className="flex flex-wrap gap-2 pt-1">
+                            {item.tags.map((tag, tIdx) => (
+                              <span
+                                key={tIdx}
+                                className="text-[8px] tracking-[0.15em] uppercase section-accent bg-primary-dark/5 px-2 py-0.5 border border-primary-dark/10 font-semibold"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </AnimatePresence>
+                </motion.div>
+
+                {/* Empty state */}
+                {filteredItems.length === 0 && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-center py-20 border border-primary-dark/15 bg-primary-dark/5"
+                  >
+                    <p className="font-display text-xl">
+                      No items match your search.
+                    </p>
+                    <button
+                      onClick={() => { setSelectedCategory('All'); setSearchQuery(''); }}
+                      className="btn-primary mt-6 text-[10px] py-3 px-8 cursor-pointer"
+                    >
+                      Reset Catalog
+                    </button>
+                  </motion.div>
+                )}
+              </div>
+
+              {/* RIGHT COLUMN: Sticky Hover Showcase */}
+              <div className="hidden lg:block lg:col-span-5 sticky top-28 w-full text-left">
+                {activeShowcaseItem ? (
+                  <motion.div layout className="border border-primary-dark/15 bg-white p-6 space-y-6 shadow-xl">
+                    <div className="relative aspect-[4/5] w-full overflow-hidden bg-white border border-primary-dark/10">
+                      <AnimatePresence mode="wait">
+                        <motion.img
+                          key={activeShowcaseItem.id}
+                          src={activeShowcaseItem.image}
+                          alt={activeShowcaseItem.name}
+                          initial={{ opacity: 0, scale: 1.05 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.98 }}
+                          transition={{ duration: 0.4 }}
+                          className="w-full h-full object-cover filter brightness-[0.85] contrast-[1.05]"
+                        />
+                      </AnimatePresence>
+
+                      <div className="absolute top-4 left-4 flex flex-col gap-2">
+                        <span className="text-[8px] tracking-[0.2em] uppercase bg-white/95 backdrop-blur px-2.5 py-1 border border-primary-dark/20 text-primary-dark font-semibold">
+                          {activeShowcaseItem.category}
+                        </span>
+                      </div>
+
+                      {viewMode === 'sensory' && (
+                        <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur px-3 py-2 border border-primary-dark/20 text-[10px] tracking-[0.1em] font-semibold flex items-center gap-1.5 rounded text-primary-dark">
+                          <Sparkles className="w-3.5 h-3.5 text-primary-dark animate-spin-slow" />
+                          <span>{activeShowcaseItem.matchScore}% Sensory Match</span>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-baseline border-b border-primary-dark/10 pb-3">
+                        <h4 className="font-display text-2xl font-light">
+                          {activeShowcaseItem.name}
+                        </h4>
+                        <span className="font-display text-xl section-accent font-medium">
+                          ₹{activeShowcaseItem.price}
+                        </span>
+                      </div>
+
+                      <p className="text-xs font-light opacity-80 leading-relaxed font-body">
+                        {activeShowcaseItem.desc}
+                      </p>
+
+                      <div className="grid grid-cols-2 gap-x-6 gap-y-3 pt-3 border-t border-primary-dark/10 text-[9px] uppercase tracking-wider opacity-70 font-semibold">
+                        <div className="flex justify-between items-center">
+                          <span className="flex items-center gap-1">
+                            <Flame className="w-3.5 h-3.5 text-orange-600" /> Spice
+                          </span>
+                          <span className="section-accent font-mono">{activeShowcaseItem.profile.spicy}%</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="flex items-center gap-1">
+                            <Cookie className="w-3.5 h-3.5 text-amber-600" /> Sweet
+                          </span>
+                          <span className="section-accent font-mono">{activeShowcaseItem.profile.sweet}%</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="flex items-center gap-1">
+                            <Sprout className="w-3.5 h-3.5 text-emerald-600" /> Earth
+                          </span>
+                          <span className="section-accent font-mono">{activeShowcaseItem.profile.earthy}%</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="flex items-center gap-1">
+                            <GlassWater className="w-3.5 h-3.5 text-sky-500" /> Rich
+                          </span>
+                          <span className="section-accent font-mono">{activeShowcaseItem.profile.rich}%</span>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ) : (
+                  <div className="h-[400px] border border-primary-dark/10 bg-primary-dark/5 flex items-center justify-center text-center p-8">
+                    <p className="text-xs opacity-50 tracking-widest uppercase font-semibold">
+                      Hover over menu items to preview
+                    </p>
+                  </div>
+                )}
+              </div>
+
+            </div>
+          </div>
+        </section>
+      ) : (
+        /* ==========================================
+           LIQUID LIBRARY SECTION (Redesigned Bar Menu Book Layout)
+           ========================================== */
+        <div className="w-full relative overflow-x-hidden font-body pb-16">
+          {/* Global Background Image with 85% #6F292C overlay */}
+          <div 
+            className="fixed inset-0 z-0 pointer-events-none"
+            style={{
+              backgroundImage: "url('/assets/Tanha Ambiance/Ambiance-9.webp')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundAttachment: 'fixed'
+            }}
+          >
+            <div 
+              className="absolute inset-0 z-10" 
+              style={{ backgroundColor: '#6F292C', opacity: 0.85 }} 
+            />
           </div>
 
+          <div className="relative z-10 w-full pt-10">
+            {/* Diamond Border Strip */}
+            <div 
+              className="w-full overflow-hidden mb-16 flex justify-center tracking-[0.5em] font-bold opacity-90 select-none"
+              style={{ color: '#ECE9DA', fontSize: '18px' }}
+            >
+               ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆
+            </div>
+
+            {/* Page Header */}
+            <div className="text-center px-6 mb-16 space-y-2">
+              <h2 
+                className="font-bold tracking-wider leading-none m-0 uppercase"
+                style={{ 
+                  color: '#ECE9DA', 
+                  fontSize: 'clamp(56px, 8vw, 64px)', 
+                  fontFamily: "'Oswald', Impact, sans-serif" 
+                }}
+              >
+                LIQUID LIBRARY
+              </h2>
+              <p 
+                className="italic font-bold m-0"
+                style={{ 
+                  color: 'rgba(236, 233, 218, 0.8)', 
+                  fontSize: '28px', 
+                  fontFamily: "'Caveat', cursive" 
+                }}
+              >
+                The Bar Menu
+              </p>
+            </div>
+
+            {/* Menu Cards */}
+            <div className="w-full max-w-[780px] mx-auto px-4 sm:px-6 flex flex-col gap-[32px]">
+              {LIQUID_SECTIONS.map((section, index) => {
+                const Mascot = section.Mascot;
+                return (
+                  <React.Fragment key={section.id}>
+                    <div 
+                      className="w-full relative rounded-[8px] p-6 sm:p-10 md:p-12 overflow-hidden"
+                      style={{
+                        backgroundColor: '#ECE9DA',
+                        boxShadow: '0 4px 24px rgba(111,41,44,0.18)',
+                        // Apply the selective drink watermark directly as a background card overlay
+                        backgroundImage: section.watermark 
+                          ? `linear-gradient(rgba(236, 233, 218, 0.93), rgba(236, 233, 218, 0.93)), url('${section.watermark}')`
+                          : 'none',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                      }}
+                    >
+                      {/* Grain/Noise Overlay inside card */}
+                      <div 
+                        className="absolute inset-0 pointer-events-none opacity-25"
+                        style={{ 
+                          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+                        }} 
+                      />
+
+                      <div className="relative z-10">
+                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end border-b-[1px] pb-3 mb-8 gap-4" style={{ borderColor: 'rgba(117, 36, 42, 0.3)' }}>
+                          {/* Category Heading */}
+                          <h3 
+                            className="uppercase font-bold tracking-wider m-0 leading-none text-left"
+                            style={{ color: '#75242A', fontSize: '32px', fontFamily: "'Oswald', Impact, sans-serif" }}
+                          >
+                            {section.name}
+                          </h3>
+
+                          {/* Column Headers */}
+                          {section.headers && section.headers.length > 0 && (
+                            <div className="flex justify-end gap-8 sm:gap-12 font-bold uppercase" style={{ color: '#75242A', fontSize: '13px' }}>
+                              {section.headers.map((h, i) => (
+                                <span key={i} className="w-[60px] sm:w-[70px] text-right">{h}</span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Item Rows */}
+                        <div className="flex flex-col gap-[20px]">
+                          {section.items.map((item, idx) => (
+                            <div key={idx} className="flex flex-col sm:flex-row justify-between items-start sm:items-baseline gap-2 sm:gap-6">
+                              <div className="flex-1">
+                                <span className="font-semibold block leading-tight text-left" style={{ color: '#6B2D2C', fontSize: '18px' }}>
+                                  {item.name}
+                                </span>
+                                {item.desc && (
+                                  <p className="mt-1.5 mb-0 leading-snug text-left" style={{ color: '#8A7F7A', fontSize: '13px' }}>
+                                    {item.desc}
+                                  </p>
+                                )}
+                              </div>
+                              
+                              {/* Prices */}
+                              {item.prices && item.prices.length > 0 && (
+                                <div className="flex justify-end gap-8 sm:gap-12 font-bold whitespace-nowrap pt-1 sm:pt-0" style={{ color: '#050203', fontSize: '16px' }}>
+                                  {item.prices.map((price, pIdx) => (
+                                    <span key={pIdx} className="w-[60px] sm:w-[70px] text-right">{price}</span>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Card Bottom: Bird Mascot & Tagline */}
+                        <div className="mt-14 flex flex-col items-center justify-center text-center">
+                          <div className="mb-4">
+                            {Mascot && <Mascot className="w-[48px] h-[48px]" color="#75242A" />}
+                          </div>
+                          <p 
+                            className="italic font-bold mb-8"
+                            style={{ color: '#230E0B', fontSize: '26px', fontFamily: "'Caveat', cursive", lineHeight: 1.2 }}
+                          >
+                            "{section.tagline}"
+                          </p>
+                          
+                          {/* Very bottom text */}
+                          <div className="w-full flex flex-col sm:flex-row justify-between items-center mt-4 pt-6 border-t border-[#75242A]/10 gap-3">
+                            <span className="uppercase font-bold tracking-[0.25em]" style={{ color: '#8A7F7A', fontSize: '11px' }}>
+                              TANAH
+                            </span>
+                            <span className="italic" style={{ color: '#8A7F7A', fontSize: '11px' }}>
+                              *Subject to availability | Govt. Taxes applicable
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Divider Mascot between cards (if not last) */}
+                    {index < LIQUID_SECTIONS.length - 1 && (
+                      <div className="flex justify-center w-full py-4">
+                        <BirdSingleMalt className="w-[48px] h-[48px]" color="#ECE9DA" />
+                      </div>
+                    )}
+                  </React.Fragment>
+                );
+              })}
+            </div>
+
+            {/* Diamond Border Strip before Footer */}
+            <div 
+              className="w-full overflow-hidden mt-20 mb-8 flex justify-center tracking-[0.5em] font-bold opacity-90 select-none"
+              style={{ color: '#ECE9DA', fontSize: '18px' }}
+            >
+               ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆
+            </div>
+          </div>
+          
+          {/* Page Footer */}
+          <footer 
+            className="w-full relative z-10 py-16 flex flex-col items-center text-center border-t"
+            style={{ backgroundColor: '#6F292C', borderColor: 'rgba(236, 233, 218, 0.15)' }}
+          >
+            <LogoOwl className="w-[64px] h-[64px] mb-5" color="#ECE9DA" />
+            <h3 
+              className="uppercase tracking-[0.25em] font-bold mb-4"
+              style={{ color: '#ECE9DA', fontSize: '18px' }}
+            >
+              TANAH KITCHEN & BAR
+            </h3>
+            <p className="max-w-[320px] leading-relaxed mx-auto" style={{ color: '#ECE9DA', fontSize: '13px', opacity: 0.85 }}>
+              5th Floor, Vaishnavi Splendora, opp Meenakshi Bamboos, beside AIG Hospital, Gachibowli.
+            </p>
+          </footer>
         </div>
-      </section>
+      )}
 
     </main>
   )
 }
-

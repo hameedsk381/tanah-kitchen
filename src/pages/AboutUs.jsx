@@ -30,10 +30,10 @@ export default function AboutUs() {
   const isSustainabilityInView = useInView(sustainabilityRef, { once: true, margin: '-100px' })
 
   return (
-    <main className="flex-grow pt-24 bg-bg-primary overflow-hidden text-text-dark">
+    <main className="flex-grow pt-24 overflow-hidden">
 
       {/* Editorial Page Header */}
-      <section className="relative py-24 md:py-[8rem] flex items-center justify-center border-b border-terracotta/15 bg-bg-secondary">
+      <section className="section-dark relative py-24 md:py-[8rem] flex items-center justify-center border-b border-light-cream/15">
         <div className="absolute inset-0 opacity-15 mix-blend-multiply">
           <img
             src="/assets/Tanha Ambiance/Ambiance-12.webp"
@@ -42,18 +42,18 @@ export default function AboutUs() {
           />
         </div>
         <div className="relative z-10 text-center px-8 max-w-container mx-auto">
-          <span className="text-[10px] font-semibold tracking-[0.5em] uppercase text-terracotta block mb-4">
+          <span className="text-[10px] font-semibold tracking-[0.5em] uppercase section-accent block mb-4">
             The Chronicle
           </span>
           <h1
-            className="font-display font-light text-text-dark leading-none"
+            className="font-display font-light leading-none"
             style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
           >
             Rooted in Earth, <br />
-            <span className="italic text-terracotta">Choreographed by Fire</span>
+            <span className="italic section-accent">Choreographed by Fire</span>
           </h1>
           <div className="max-w-md mx-auto mt-4">
-            <DiamondDivider color="var(--color-terracotta)" />
+            <DiamondDivider className="section-divider" />
           </div>
         </div>
       </section>
@@ -61,7 +61,7 @@ export default function AboutUs() {
       {/* Why Tanah? Booklet Section (Matches Page 3 of PDF) */}
       <section
         ref={whyRef}
-        className="relative py-20 bg-bg-primary"
+        className="section-light relative py-20"
       >
         <div className="max-w-container px-8 mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -74,28 +74,28 @@ export default function AboutUs() {
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <div>
-                <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-accent block mb-2 font-body">
+                <span className="text-[10px] font-semibold tracking-[0.4em] uppercase section-accent block mb-2 font-body">
                   CORPORATE SOLUTIONS
                 </span>
-                <h2 className="font-display font-light text-text-dark text-4xl md:text-5xl leading-tight">
+                <h2 className="font-display font-light text-4xl md:text-5xl leading-tight">
                   Why Tanah?
                 </h2>
-                <p className="text-lg font-display italic text-terracotta mt-2">
+                <p className="text-lg font-display italic section-accent mt-2">
                   More than a venue. A place to build stronger teams.
                 </p>
               </div>
 
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 border-y border-terracotta/10 py-6">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 border-y border-[#6B2523]/10 py-6">
                 {whyTanahList.map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-3 text-sm font-light text-text-dark/90">
-                    <span className="text-terracotta text-sm">◇</span>
+                  <li key={idx} className="flex items-center gap-3 text-sm font-light">
+                    <span className="section-accent text-sm">◇</span>
                     {item}
                   </li>
                 ))}
               </ul>
 
-              <p className="text-base font-display text-text-dark/95 leading-relaxed bg-bg-secondary/40 p-4 border-l-2 border-terracotta">
-                Whether it's a team of <span className="font-semibold text-terracotta font-body text-lg">10</span> or a celebration of <span className="font-semibold text-terracotta font-body text-lg">200</span>, Tanah creates experiences people remember.
+              <p className="text-base font-display leading-relaxed bg-[#6B2523]/10 p-4 border-l-2 border-[#6B2523]">
+                Whether it's a team of <span className="font-semibold section-accent font-body text-lg">10</span> or a celebration of <span className="font-semibold section-accent font-body text-lg">200</span>, Tanah creates experiences people remember.
               </p>
             </motion.div>
 
@@ -108,14 +108,14 @@ export default function AboutUs() {
             >
               <div className="col-span-7 aspect-[3/4] overflow-hidden shadow-xl border border-dark-brown/10 relative">
                 <img
-                  src="/assets/Tanha Ambiance/Tanha Food/01.webp"
+                  src="/assets/Tanha Food/food-1.webp"
                   alt="Curated food at Tanah"
                   className="w-full h-full object-cover filter brightness-[0.9]"
                 />
               </div>
 
               <div className="col-span-5 flex flex-col gap-6 items-center">
-                <TribalDiamond className="w-16 h-16 text-terracotta" color="var(--color-terracotta)" />
+                <TribalDiamond className="w-16 h-16 section-accent" />
 
                 <div className="w-full aspect-[3/4] overflow-hidden shadow-xl border border-dark-brown/10">
                   <img
@@ -127,8 +127,8 @@ export default function AboutUs() {
               </div>
 
               {/* Background accent details */}
-              <div className="absolute -top-4 -right-4 w-12 h-12 border-t border-r border-terracotta/25 -z-10" />
-              <div className="absolute -bottom-4 -left-4 w-12 h-12 border-b border-l border-terracotta/25 -z-10" />
+              <div className="absolute -top-4 -right-4 w-12 h-12 border-t border-r border-[#6B2523]/25 -z-10" />
+              <div className="absolute -bottom-4 -left-4 w-12 h-12 border-b border-l border-[#6B2523]/25 -z-10" />
             </motion.div>
 
           </div>
@@ -138,7 +138,7 @@ export default function AboutUs() {
       {/* The Story Section */}
       <section
         ref={storyRef}
-        className="relative py-20 bg-bg-secondary"
+        className="section-dark relative py-20"
       >
         <div className="max-w-container px-8 mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -156,7 +156,7 @@ export default function AboutUs() {
                   className="w-full h-full object-cover filter brightness-90 contrast-105"
                 />
               </div>
-              <div className="absolute inset-4 border border-terracotta/20 pointer-events-none" />
+              <div className="absolute inset-4 border border-light-cream/20 pointer-events-none" />
             </motion.div>
 
             <motion.div
@@ -165,16 +165,16 @@ export default function AboutUs() {
               animate={isStoryInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-terracotta block">
+              <span className="text-[10px] font-semibold tracking-[0.4em] uppercase section-accent block">
                 THE TANAH STORY
               </span>
-              <h2 className="font-display font-light text-text-dark text-4xl leading-tight">
+              <h2 className="font-display font-light text-4xl leading-tight">
                 Our Foundation & Vision
               </h2>
-              <p className="text-sm font-light text-text-dark/80 leading-relaxed font-body">
+              <p className="text-sm font-light opacity-90 leading-relaxed font-body">
                 Every detail of our space, from the organic bamboo weave ceilings to the raw basalt dinner plates, is carefully crafted to reconnect people with nature. We aim to foster a culture of mindful gathering under Hyderabad's sky.
               </p>
-              <p className="text-sm font-light text-text-dark/80 leading-relaxed font-body">
+              <p className="text-sm font-light opacity-80 leading-relaxed font-body">
                 We design environments that are not just beautiful, but deeply personal—where conversations flow naturally and professionals can build authentic relationships beyond office walls.
               </p>
             </motion.div>
@@ -186,7 +186,7 @@ export default function AboutUs() {
       {/* Circularity & Sustainability Section */}
       <section
         ref={sustainabilityRef}
-        className="relative py-20 bg-bg-primary border-t border-terracotta/10"
+        className="section-light relative py-20 border-t border-[#6B2523]/10"
       >
         <div className="max-w-container px-8 mx-auto space-y-16">
           <motion.div
@@ -195,13 +195,13 @@ export default function AboutUs() {
             transition={{ duration: 1 }}
             className="text-center max-w-2xl mx-auto space-y-4"
           >
-            <span className="text-[10px] font-semibold tracking-[0.4em] uppercase text-terracotta block">
+            <span className="text-[10px] font-semibold tracking-[0.4em] uppercase section-accent block">
               Circularity
             </span>
-            <h2 className="font-display font-light text-text-dark text-4xl md:text-5xl leading-tight">
+            <h2 className="font-display font-light text-4xl md:text-5xl leading-tight">
               Earthy Stewardship
             </h2>
-            <p className="text-sm font-light text-text-dark/70 leading-relaxed font-body">
+            <p className="text-sm font-light opacity-80 leading-relaxed font-body">
               Our culinary philosophy centers on local stewardship, seasonal circularity, and reducing food waste through natural charcoal preservation.
             </p>
           </motion.div>
@@ -211,10 +211,10 @@ export default function AboutUs() {
               initial={{ opacity: 0, y: 20 }}
               animate={isSustainabilityInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="space-y-4 border-t border-terracotta/20 pt-8 text-left"
+              className="space-y-4 border-t border-[#6B2523]/20 pt-8 text-left"
             >
-              <h3 className="font-display text-2xl font-light text-terracotta">Zero Waste Kitchen</h3>
-              <p className="text-xs font-light text-text-dark/80 leading-relaxed font-body">
+              <h3 className="font-display text-2xl font-light section-accent">Zero Waste Kitchen</h3>
+              <p className="text-xs font-light opacity-80 leading-relaxed font-body">
                 We recycle organic kitchen scraps into compost for native growers, maintaining a closed-loop food lifecycle.
               </p>
             </motion.div>
@@ -223,10 +223,10 @@ export default function AboutUs() {
               initial={{ opacity: 0, y: 20 }}
               animate={isSustainabilityInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="space-y-4 border-t border-terracotta/20 pt-8 text-left"
+              className="space-y-4 border-t border-[#6B2523]/20 pt-8 text-left"
             >
-              <h3 className="font-display text-2xl font-light text-terracotta">Local Sourcing</h3>
-              <p className="text-xs font-light text-text-dark/80 leading-relaxed font-body">
+              <h3 className="font-display text-2xl font-light section-accent">Local Sourcing</h3>
+              <p className="text-xs font-light opacity-80 leading-relaxed font-body">
                 Partnering exclusively with local micro-farms within a 100km radius to ensure the highest quality seasonal ingredients.
               </p>
             </motion.div>
@@ -235,10 +235,10 @@ export default function AboutUs() {
               initial={{ opacity: 0, y: 20 }}
               animate={isSustainabilityInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="space-y-4 border-t border-terracotta/20 pt-8 text-left"
+              className="space-y-4 border-t border-[#6B2523]/20 pt-8 text-left"
             >
-              <h3 className="font-display text-2xl font-light text-terracotta">Handcrafted Ethos</h3>
-              <p className="text-xs font-light text-text-dark/80 leading-relaxed font-body">
+              <h3 className="font-display text-2xl font-light section-accent">Handcrafted Ethos</h3>
+              <p className="text-xs font-light opacity-80 leading-relaxed font-body">
                 All dinnerware, ceramics, and architecture are custom creations by local tribal artisans, preserving regional heritage.
               </p>
             </motion.div>
