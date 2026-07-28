@@ -30,6 +30,17 @@ export default function Navbar() {
     setMenuOpen(false)
   }, [location.pathname])
 
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [menuOpen])
+
   return (
     <>
       <motion.nav
@@ -40,7 +51,7 @@ export default function Navbar() {
           scrolled ? 'py-3 shadow-md' : 'py-5'
         }`}
         style={{
-          background: 'rgba(242, 232, 213, 0.95)',
+          background: '#6B2523',
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
           borderBottom: '1px solid rgba(122, 45, 45, 0.15)',
@@ -49,7 +60,7 @@ export default function Navbar() {
         aria-label="Main navigation"
       >
         <div
-          className="px-8 flex items-center justify-between max-w-container mx-auto"
+          className="px-8 flex items-center justify-between max-width-container mx-auto"
         >
           {/* Logo with Custom SVG Owl */}
           <Link
@@ -57,10 +68,10 @@ export default function Navbar() {
             className="flex items-center gap-3 group"
             aria-label="Tanah Kitchen & Bar Home"
           >
-            <LogoOwl className="w-10 h-10 text-primary-dark transition-transform duration-500 group-hover:rotate-12" />
+            <LogoOwl className="w-10 h-10 text-light-cream transition-transform duration-500 group-hover:rotate-12" />
             <div className="flex flex-col">
               <span
-                className="font-display text-2xl font-bold tracking-[0.1em] uppercase text-primary-dark transition-colors duration-300"
+                className="font-display text-2xl font-bold tracking-[0.1em] uppercase text-light-cream transition-colors duration-300"
               >
                 Tanah
               </span>
@@ -81,15 +92,15 @@ export default function Navbar() {
                     className="text-[10px] font-medium tracking-[0.2em] uppercase transition-colors duration-300 relative py-1 group"
                     style={{
                       color: isActive
-                        ? 'var(--color-primary-dark)'
-                        : 'var(--color-near-black)'
+                        ? 'var(--color-accent-gold)'
+                        : 'var(--color-light-cream)'
                     }}
                   >
                     {link.label}
                     <span
                       className={`absolute -bottom-1 left-0 h-[1.5px] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'
                         }`}
-                      style={{ background: 'var(--color-primary-dark)' }}
+                      style={{ background: 'var(--color-accent-gold)' }}
                     />
                   </Link>
                 </li>
@@ -101,7 +112,7 @@ export default function Navbar() {
           <div className="hidden md:block">
             <Link
               to="/book"
-              className="btn-primary py-2.5 px-6 text-[9px] tracking-[0.25em] font-semibold"
+              className="border border-accent-gold text-accent-gold hover:bg-accent-gold hover:text-primary-dark py-2.5 px-6 text-[9px] tracking-[0.25em] font-semibold transition-all duration-300"
             >
               Reserve
             </Link>
@@ -109,7 +120,7 @@ export default function Navbar() {
 
           {/* Mobile Hamburger */}
           <button
-            className="md:hidden p-2 transition-colors cursor-pointer text-near-black hover:text-primary-dark"
+            className="md:hidden p-2 transition-colors cursor-pointer text-light-cream hover:text-accent-gold"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}

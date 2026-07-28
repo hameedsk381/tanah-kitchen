@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Search, Sliders, Sparkles, Flame, Cookie, Sprout, GlassWater } from 'lucide-react'
 import menuData from '../data/menu.json'
 import { LogoOwl } from '../components/illustrations'
+import SEO from '../components/SEO'
 import {
   BirdSingleMalt,
   BirdWhiskey,
@@ -118,7 +119,7 @@ const LIQUID_SECTIONS = [
     id: 'singlemalt',
     name: 'SINGLEMALT',
     headers: ['30ML', 'BTL'],
-    watermark: '/assets/Tanha Food/food-21.webp', // Whiskey-like image in the card background
+    watermark: '/assets/Tanha Food/food-21.webp',
     items: [
       { name: 'Singleton 12 Yr', prices: ['799/-', '14,999/-'] },
       { name: 'Talisker 10 Yr', prices: ['659/-', '13,999/-'] },
@@ -126,7 +127,7 @@ const LIQUID_SECTIONS = [
       { name: 'Glenlivet 12yr', prices: ['799/-', '13,999/-'] },
       { name: 'Glenlivet 15yr', prices: ['899/-', '14,999/-'] },
       { name: 'Glenlivet 18yr', prices: ['1299/-', '22,999/-'] },
-      { name: 'Glenmoriange 10yr', prices: ['899/-', '13,999/-'] },
+      { name: 'Glenmorangie 10yr', prices: ['899/-', '13,999/-'] },
       { name: 'Glenfiddich 12yr', prices: ['799/-', '13,999/-'] },
       { name: 'Glenfiddich 15yr', prices: ['899/-', '14,999/-'] },
       { name: 'Glenfiddich 18yr', prices: ['1299/-', '23,000/-'] },
@@ -139,7 +140,7 @@ const LIQUID_SECTIONS = [
     id: 'whiskey',
     name: 'WHISKEY',
     headers: ['30ML', 'BTL'],
-    watermark: '/assets/Tanha Food/food-21.webp', // Whiskey-like image in the card background
+    watermark: '/assets/Tanha Food/food-21.webp',
     items: [
       { name: 'Royal Salute', prices: ['2,999/-', '49,999/-'] },
       { name: 'Chivas 12 YR', prices: ['459/-', '8,999/-'] },
@@ -166,7 +167,7 @@ const LIQUID_SECTIONS = [
       { name: 'Absolut', prices: ['499/-', '8,999/-'] },
       { name: 'Ketel One', prices: ['499/-', '7,999/-'] }
     ],
-    tagline: 'my willpower vs vodka (40%.) vodka wins!',
+    tagline: 'my willpower vs vodka (40%) vodka wins!',
     Mascot: BirdVodkaGin
   },
   {
@@ -176,12 +177,12 @@ const LIQUID_SECTIONS = [
     items: [
       { name: 'Greater Than', prices: ['399/-', '5,999/-'] },
       { name: 'Bombay Sapphire', prices: ['499/-', '7,999/-'] },
-      { name: 'Beefeter', prices: ['499/-', '7,999/-'] },
+      { name: 'Beefeater', prices: ['499/-', '7,999/-'] },
       { name: 'Tanqueray No 10', prices: ['659/-', '14,999/-'] },
       { name: 'Monkey 47', prices: ['659/-', '14,999/-'] },
       { name: 'Roku Gin', prices: ['799/-', '14,999/-'] }
     ],
-    tagline: 'my willpower vs vodka (40%.) vodka wins!',
+    tagline: 'my willpower vs vodka (40%) vodka wins!',
     Mascot: BirdVodkaGin
   },
   {
@@ -203,7 +204,7 @@ const LIQUID_SECTIONS = [
     id: 'rum',
     name: 'RUM',
     headers: ['30ML', 'BTL'],
-    watermark: '/assets/Tanha Food/food-21.webp', // Rum-like image in the card background
+    watermark: '/assets/Tanha Food/food-21.webp',
     items: [
       { name: 'Old Monk', prices: ['299/-', '3,999/-'] },
       { name: 'Bacardi Carta Blanc', prices: ['299/-', '4,999/-'] },
@@ -244,7 +245,7 @@ const LIQUID_SECTIONS = [
     name: 'ROSE WINE',
     headers: ['Glass', 'BTL'],
     items: [
-      { name: 'Sula Zinfandle', prices: ['799/-', '5,999/-'] }
+      { name: 'Sula Zinfandel', prices: ['799/-', '5,999/-'] }
     ],
     tagline: 'Will you accept this rose?',
     Mascot: BirdWine
@@ -254,9 +255,9 @@ const LIQUID_SECTIONS = [
     name: 'RED WINE & WHITE WINE',
     headers: ['Glass', 'BTL'],
     items: [
-      { name: 'Sula Chardonny White', prices: ['799/-', '4,999/-'] },
+      { name: 'Sula Chardonnay White', prices: ['799/-', '4,999/-'] },
       { name: 'Sula Cabernet Shiraz (Red)', prices: ['799/-', '4,999/-'] },
-      { name: "Jacob's Creek Chardonny", prices: ['999/-', '5,999/-'] },
+      { name: "Jacob's Creek Chardonnay", prices: ['999/-', '5,999/-'] },
       { name: "Jacob's Creek Shiraz", prices: ['999/-', '5,999/-'] }
     ],
     tagline: 'Will you accept this rose?',
@@ -266,9 +267,9 @@ const LIQUID_SECTIONS = [
     id: 'beer',
     name: 'BEER & ALCOPOPS',
     headers: ['Pint', 'Bucket'],
-    watermark: '/assets/Tanha Image/05.webp', // Beverage-related glassware image in background for Beer
+    watermark: '/assets/Tanha Image/05.webp',
     items: [
-      { name: 'Corona Extrea', prices: ['699/-', '2,899/-'] },
+      { name: 'Corona Extra', prices: ['699/-', '2,899/-'] },
       { name: 'Hoegaarden', prices: ['699/-', '2,899/-'] },
       { name: 'Heineken', prices: ['459/-', '2,299/-'] },
       { name: 'Kingfisher Ultra', prices: ['459/-', '2,299/-'] },
@@ -302,10 +303,10 @@ const LIQUID_SECTIONS = [
       { name: 'Coke Can', prices: ['129/-'] },
       { name: 'Sprite Can', prices: ['129/-'] },
       { name: 'Water Bottle', prices: ['99/-'] },
-      { name: 'Dite Coke', prices: ['129/-'] },
+      { name: 'Diet Coke', prices: ['129/-'] },
       { name: 'Fresh Juice (Orange, Watermelon)', prices: ['299/-'] },
       { name: 'Aerated Water (Glass)', prices: ['99/-'] },
-      { name: 'Soda, Sprite, Thumsup', prices: [] }
+      { name: 'Soda, Sprite, Thumsup', prices: ['99/-'] }
     ],
     tagline: "It's time to Hydrate!",
     Mascot: BirdSoftDrink
@@ -314,17 +315,17 @@ const LIQUID_SECTIONS = [
     id: 'signature',
     name: 'SIGNATURE COCKTAILS',
     headers: ['Price'],
-    watermark: '/assets/Tanha Food/food-22.webp', // The red Earthy Hibiscus Cocktail image from your photo
+    watermark: '/assets/Tanha Food/food-22.webp',
     items: [
       { name: 'Palapitta Song', prices: ['659/-'], desc: 'Blend of Rum, Pineapple, Falernum, Narial Panni, Lime, & Salin' },
-      { name: 'Godavari Gulabi', prices: ['699/-'], desc: 'Bourbon, Blueberry, Lime, Basil, Form' },
-      { name: 'Botanical Garden', prices: ['699/-'], desc: 'Gin, Grape fruit juice, Simple Syrup, Lime juice tonic water' },
-      { name: 'Japanese Blossom', prices: ['699/-'], desc: 'Whiskey, Orange Juice, Yuzu Puree, Ssourmix' },
-      { name: 'Profit & Loass (P&L)', prices: ['699/-'], desc: 'Gin, Kaffir Lime, Basil, Lime Simple Syrup' },
-      { name: 'Echo of Tanah', prices: ['699/-'], desc: 'Gin, Kafferlime, Coconut water, Salin, Lime' },
-      { name: 'Tanah Queen', prices: ['699/-'], desc: 'Tequila Sour Mix, Bluepetea, Apple Juice, Lavender' },
-      { name: 'Yuzu Heaven', prices: ['799/-'], desc: 'Dark Rum, Cardammon, Pineapple Cordial, Yuzu & Lime' },
-      { name: 'Pineapple Ginger', prices: ['799/-'], desc: 'Vodka, Pinapple Ginger Sourmix, Ginger Burg' },
+      { name: 'Godavari Gulabi', prices: ['699/-'], desc: 'Bourbon, Blueberry, Lime, Basil, Foam' },
+      { name: 'Botanical Garden', prices: ['699/-'], desc: 'Gin, Grapefruit Juice, Simple Syrup, Lime Juice, Tonic Water' },
+      { name: 'Japanese Blossom', prices: ['699/-'], desc: 'Whiskey, Orange Juice, Yuzu Puree, Sourmix' },
+      { name: 'Profit & Loss (P&L)', prices: ['699/-'], desc: 'Gin, Kaffir Lime, Basil, Lime Simple Syrup' },
+      { name: 'Echo of Tanah', prices: ['699/-'], desc: 'Gin, Kaffir Lime, Coconut Water, Salin, Lime' },
+      { name: 'Tanah Queen', prices: ['699/-'], desc: 'Tequila, Sour Mix, Bluepea Tea, Apple Juice, Lavender' },
+      { name: 'Yuzu Heaven', prices: ['799/-'], desc: 'Dark Rum, Cardamom, Pineapple Cordial, Yuzu & Lime' },
+      { name: 'Pineapple Ginger', prices: ['799/-'], desc: 'Vodka, Pineapple Ginger Sourmix, Ginger Beer' },
       { name: 'The Og Picante', prices: ['799/-'], desc: 'Bartender Secret Recipe' }
     ],
     tagline: 'This Is Where We Create',
@@ -334,18 +335,18 @@ const LIQUID_SECTIONS = [
     id: 'mocktail',
     name: 'MOCKTAIL',
     headers: ['Price'],
-    watermark: '/assets/Tanha Food/food-22.webp', // The red Earthy Hibiscus Cocktail image from your photo
+    watermark: '/assets/Tanha Food/food-22.webp',
     items: [
-      { name: 'Mamidi Madhuram', prices: ['349/-'], desc: 'Mango Coridal, Lime Simple Syrup, Bubbles' },
-      { name: 'Golconda Glow', prices: ['349/-'], desc: 'Rasberry, Granadine, Mint, Orange Juice, Simple Syrup, Bubles' },
+      { name: 'Mamidi Madhuram', prices: ['349/-'], desc: 'Mango Cordial, Lime Simple Syrup, Bubbles' },
+      { name: 'Golconda Glow', prices: ['349/-'], desc: 'Raspberry, Grenadine, Mint, Orange Juice, Simple Syrup, Bubbles' },
       { name: 'Pinky Promise', prices: ['349/-'], desc: 'Watermelon Pulp, Vanilla, Whipped Cream, Pineapple, Simple Syrup' },
-      { name: 'Pine Pathar', prices: ['349/-'], desc: 'Coffee Simple Srup, Tonic Water, Banana Foam' },
-      { name: 'Citrus Cluster', prices: ['349/-'], desc: 'Orange Juice, Passionfruit, Yuzu Puree Lie Juice, Basil Foam' },
+      { name: 'Pine Pathar', prices: ['349/-'], desc: 'Coffee Simple Syrup, Tonic Water, Banana Foam' },
+      { name: 'Citrus Cluster', prices: ['349/-'], desc: 'Orange Juice, Passionfruit, Yuzu Puree, Lime Juice, Basil Foam' },
       { name: 'Tanah Verde', prices: ['349/-'], desc: 'Cucumber, Basil, Lime, Simple Syrup, Pineapple Bubbles' },
       { name: 'Spicy Melon Tempest', prices: ['349/-'], desc: 'Watermelon Juice, Melon Syrup, Mint, Chatmasala, Soda' },
-      { name: 'Slush', prices: ['349/-'], desc: 'Ampanna & Greenapple, Kiwi & Chilly, Mango' },
+      { name: 'Slush', prices: ['349/-'], desc: 'Ampanna & Green Apple, Kiwi & Chilly, Mango' },
       { name: 'Ice Tea', prices: ['349/-'], desc: 'Black Tea, Peach, Passion Fruit, Lime' },
-      { name: 'Virgin Mojito', prices: ['349/-'], desc: 'Wateremelon, Orange, Curry Leaft' }
+      { name: 'Virgin Mojito', prices: ['349/-'], desc: 'Watermelon, Orange, Curry Leaf' }
     ],
     tagline: 'I am unapologetically good',
     Mascot: BirdMocktail
@@ -474,12 +475,26 @@ export default function Menu() {
       className={`flex-grow pt-24 overflow-hidden text-left transition-colors duration-500 ${
         menuType === 'liquid' ? 'min-h-screen relative' : 'bg-[#F6E1CB]'
       }`}
-      style={menuType === 'liquid' ? { backgroundColor: '#6F292C' } : {}}
+      style={menuType === 'liquid' ? { backgroundColor: 'var(--color-primary-dark)' } : {}}
     >
+      <SEO
+        title="Food Catalog & Liquid Library Bar Menu | Tanah Kitchen & Bar"
+        description="Explore the full culinary catalog and Liquid Library bar menu at Tanah Kitchen & Bar in Gachibowli. Sourdough wood-fired pizzas, South India Kodi Chips, mutton biryani, and 17 spirit categories."
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'Menu',
+          'name': 'Tanah Kitchen & Bar Gastronomy & Liquid Library Catalog',
+          'url': 'https://tanahkitchen.in/menu',
+          'mainEntity': {
+            '@type': 'FoodEstablishment',
+            'name': 'Tanah Kitchen & Bar'
+          }
+        }}
+      />
       
       {/* 1. Page Header with Food/Liquid Switcher */}
       <section className={`relative py-20 md:py-24 text-center ${menuType === 'liquid' ? 'border-b border-[#ECE9DA]/15 bg-transparent' : 'section-dark border-b border-light-cream/15'}`}>
-        <div className="relative z-10 px-8 max-w-container mx-auto">
+        <div className="relative z-10 px-8 max-width-container mx-auto">
           
           {/* Main Menu Type Selector */}
           <div className="flex justify-center mb-8">
@@ -554,7 +569,7 @@ export default function Menu() {
            FOOD MENU SECTION (Keep Original Layout)
            ========================================== */
         <section className="section-light relative py-16">
-          <div className="max-w-container px-8 mx-auto">
+          <div className="max-width-container px-8 mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
               
               {/* LEFT COLUMN: Controls & Menu list */}
@@ -580,7 +595,7 @@ export default function Menu() {
                       </div>
 
                       {/* Preset Journeys */}
-                      <div className="grid grid-cols-2 gap-3">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {PRESET_JOURNEYS.map((journey) => (
                           <button
                             key={journey.name}
@@ -907,7 +922,7 @@ export default function Menu() {
           >
             <div 
               className="absolute inset-0 z-10" 
-              style={{ backgroundColor: '#6F292C', opacity: 0.85 }} 
+              style={{ backgroundColor: 'var(--color-primary-dark)', opacity: 0.85 }} 
             />
           </div>
 
@@ -915,7 +930,7 @@ export default function Menu() {
             {/* Diamond Border Strip */}
             <div 
               className="w-full overflow-hidden mb-16 flex justify-center tracking-[0.5em] font-bold opacity-90 select-none"
-              style={{ color: '#ECE9DA', fontSize: '18px' }}
+              style={{ color: 'var(--color-beige)', fontSize: '18px' }}
             >
                ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆
             </div>
@@ -925,7 +940,7 @@ export default function Menu() {
               <h2 
                 className="font-bold tracking-wider leading-none m-0 uppercase"
                 style={{ 
-                  color: '#ECE9DA', 
+                  color: 'var(--color-beige)', 
                   fontSize: 'clamp(56px, 8vw, 64px)', 
                   fontFamily: "'Oswald', Impact, sans-serif" 
                 }}
@@ -953,7 +968,7 @@ export default function Menu() {
                     <div 
                       className="w-full relative rounded-[8px] p-6 sm:p-10 md:p-12 overflow-hidden"
                       style={{
-                        backgroundColor: '#ECE9DA',
+                        backgroundColor: 'var(--color-beige)',
                         boxShadow: '0 4px 24px rgba(111,41,44,0.18)',
                         // Apply the selective drink watermark directly as a background card overlay
                         backgroundImage: section.watermark 
@@ -972,20 +987,20 @@ export default function Menu() {
                       />
 
                       <div className="relative z-10">
-                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end border-b-[1px] pb-3 mb-8 gap-4" style={{ borderColor: 'rgba(117, 36, 42, 0.3)' }}>
+                        <div className="flex justify-between items-end border-b-[1px] pb-3 mb-8 gap-2" style={{ borderColor: 'rgba(117, 36, 42, 0.3)' }}>
                           {/* Category Heading */}
                           <h3 
-                            className="uppercase font-bold tracking-wider m-0 leading-none text-left"
-                            style={{ color: '#75242A', fontSize: '32px', fontFamily: "'Oswald', Impact, sans-serif" }}
+                            className="uppercase font-bold tracking-wider m-0 leading-none text-left text-2xl sm:text-3xl"
+                            style={{ color: 'var(--color-primary-dark)', fontFamily: "'Oswald', Impact, sans-serif" }}
                           >
                             {section.name}
                           </h3>
 
                           {/* Column Headers */}
                           {section.headers && section.headers.length > 0 && (
-                            <div className="flex justify-end gap-8 sm:gap-12 font-bold uppercase" style={{ color: '#75242A', fontSize: '13px' }}>
+                            <div className="flex justify-end gap-4 sm:gap-12 font-bold uppercase flex-shrink-0 text-xs sm:text-sm" style={{ color: 'var(--color-primary-dark)' }}>
                               {section.headers.map((h, i) => (
-                                <span key={i} className="w-[60px] sm:w-[70px] text-right">{h}</span>
+                                <span key={i} className="w-[50px] sm:w-[70px] text-right">{h}</span>
                               ))}
                             </div>
                           )}
@@ -994,13 +1009,13 @@ export default function Menu() {
                         {/* Item Rows */}
                         <div className="flex flex-col gap-[20px]">
                           {section.items.map((item, idx) => (
-                            <div key={idx} className="flex flex-col sm:flex-row justify-between items-start sm:items-baseline gap-2 sm:gap-6">
-                              <div className="flex-1">
-                                <span className="font-semibold block leading-tight text-left" style={{ color: '#6B2D2C', fontSize: '18px' }}>
+                            <div key={idx} className="flex justify-between items-baseline gap-2 sm:gap-6">
+                              <div className="flex-1 min-w-0 pr-2">
+                                <span className="font-semibold block leading-tight text-left text-sm sm:text-lg" style={{ color: 'var(--color-primary-dark)' }}>
                                   {item.name}
                                 </span>
                                 {item.desc && (
-                                  <p className="mt-1.5 mb-0 leading-snug text-left" style={{ color: '#8A7F7A', fontSize: '13px' }}>
+                                  <p className="mt-1 mb-0 leading-snug text-left text-[11px] sm:text-xs opacity-75" style={{ color: 'var(--color-text-muted)' }}>
                                     {item.desc}
                                   </p>
                                 )}
@@ -1008,9 +1023,9 @@ export default function Menu() {
                               
                               {/* Prices */}
                               {item.prices && item.prices.length > 0 && (
-                                <div className="flex justify-end gap-8 sm:gap-12 font-bold whitespace-nowrap pt-1 sm:pt-0" style={{ color: '#050203', fontSize: '16px' }}>
+                                <div className="flex justify-end gap-4 sm:gap-12 font-bold whitespace-nowrap text-xs sm:text-base flex-shrink-0" style={{ color: 'var(--color-near-black)' }}>
                                   {item.prices.map((price, pIdx) => (
-                                    <span key={pIdx} className="w-[60px] sm:w-[70px] text-right">{price}</span>
+                                    <span key={pIdx} className="w-[50px] sm:w-[70px] text-right">{price}</span>
                                   ))}
                                 </div>
                               )}
@@ -1025,17 +1040,17 @@ export default function Menu() {
                           </div>
                           <p 
                             className="italic font-bold mb-8"
-                            style={{ color: '#230E0B', fontSize: '26px', fontFamily: "'Caveat', cursive", lineHeight: 1.2 }}
+                            style={{ color: 'var(--color-near-black)', fontSize: '26px', fontFamily: "'Caveat', cursive", lineHeight: 1.2 }}
                           >
                             "{section.tagline}"
                           </p>
                           
                           {/* Very bottom text */}
                           <div className="w-full flex flex-col sm:flex-row justify-between items-center mt-4 pt-6 border-t border-[#75242A]/10 gap-3">
-                            <span className="uppercase font-bold tracking-[0.25em]" style={{ color: '#8A7F7A', fontSize: '11px' }}>
+                            <span className="uppercase font-bold tracking-[0.25em]" style={{ color: 'var(--color-text-muted)', fontSize: '11px' }}>
                               TANAH
                             </span>
-                            <span className="italic" style={{ color: '#8A7F7A', fontSize: '11px' }}>
+                            <span className="italic" style={{ color: 'var(--color-text-muted)', fontSize: '11px' }}>
                               *Subject to availability | Govt. Taxes applicable
                             </span>
                           </div>
@@ -1057,7 +1072,7 @@ export default function Menu() {
             {/* Diamond Border Strip before Footer */}
             <div 
               className="w-full overflow-hidden mt-20 mb-8 flex justify-center tracking-[0.5em] font-bold opacity-90 select-none"
-              style={{ color: '#ECE9DA', fontSize: '18px' }}
+              style={{ color: 'var(--color-beige)', fontSize: '18px' }}
             >
                ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆
             </div>
@@ -1066,16 +1081,16 @@ export default function Menu() {
           {/* Page Footer */}
           <footer 
             className="w-full relative z-10 py-16 flex flex-col items-center text-center border-t"
-            style={{ backgroundColor: '#6F292C', borderColor: 'rgba(236, 233, 218, 0.15)' }}
+            style={{ backgroundColor: 'var(--color-primary-dark)', borderColor: 'rgba(236, 233, 218, 0.15)' }}
           >
             <LogoOwl className="w-[64px] h-[64px] mb-5" color="#ECE9DA" />
             <h3 
               className="uppercase tracking-[0.25em] font-bold mb-4"
-              style={{ color: '#ECE9DA', fontSize: '18px' }}
+              style={{ color: 'var(--color-beige)', fontSize: '18px' }}
             >
               TANAH KITCHEN & BAR
             </h3>
-            <p className="max-w-[320px] leading-relaxed mx-auto" style={{ color: '#ECE9DA', fontSize: '13px', opacity: 0.85 }}>
+            <p className="max-w-[320px] leading-relaxed mx-auto" style={{ color: 'var(--color-beige)', fontSize: '13px', opacity: 0.85 }}>
               5th Floor, Vaishnavi Splendora, opp Meenakshi Bamboos, beside AIG Hospital, Gachibowli.
             </p>
           </footer>

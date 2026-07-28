@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import {
-  CalendarDays,
   CheckCircle,
   Briefcase,
   Users,
@@ -15,6 +14,8 @@ import {
   DiamondCornerOrnament
 } from '../components/illustrations'
 
+import SEO from '../components/SEO'
+
 const timeSlots = [
   '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM',
   '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM'
@@ -27,7 +28,6 @@ const EMAIL_PATTERN = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
 export default function Home() {
   useEffect(() => {
-    document.title = 'Tanah Kitchen & Bar | Premium Corporate Gatherings'
     window.scrollTo(0, 0)
   }, [])
 
@@ -102,6 +102,27 @@ export default function Home() {
 
   return (
     <main className="flex-grow overflow-x-hidden select-none bg-light-cream text-near-black">
+      <SEO
+        title="Tanah Kitchen & Bar | Rooftop Restaurant & Bar in Gachibowli, Hyderabad"
+        description="Experience Tanah Kitchen & Bar in Gachibowli, Hyderabad. Rooftop dining, organic farm-to-table cuisine, wood-fired hearths, Liquid Library signature cocktails, and corporate gathering spaces."
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': ['Restaurant', 'BarOrPub'],
+          'name': 'Tanah Kitchen & Bar',
+          'url': 'https://tanahkitchen.in/',
+          'telephone': '+91-8977730291',
+          'servesCuisine': ['Indian', 'Continental', 'Wood-Fired', 'Cocktails'],
+          'priceRange': '₹₹₹',
+          'address': {
+            '@type': 'PostalAddress',
+            'streetAddress': '5th Floor, Vaishnavi Splendora, opp Meenakshi Bamboos, beside AIG Hospital',
+            'addressLocality': 'Gachibowli',
+            'addressRegion': 'Telangana',
+            'postalCode': '500032',
+            'addressCountry': 'IN'
+          }
+        }}
+      />
       <h1 className="sr-only">Tanah Kitchen & Bar - Premium Corporate Gathering & Dining</h1>
 
       {/* ==========================================
@@ -125,11 +146,6 @@ export default function Home() {
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           className="relative max-w-5xl mx-auto text-center flex flex-col items-center space-y-10 z-10 w-full"
         >
-          {/* Bird Mascot Logo Mark */}
-          <div className="bg-white/10 p-5 rounded-full border border-white/20 backdrop-blur-sm shadow-xl">
-            <StoryNestOwl className="w-20 h-20 text-[#FFC470]" />
-          </div>
-
           <div className="space-y-4 px-4">
             <span className="text-xs md:text-sm font-sans tracking-[0.4em] uppercase text-[#FFC470] font-bold">
               TANAH KITCHEN & BAR
@@ -268,7 +284,7 @@ export default function Home() {
               </ul>
             </motion.div>
 
-            {/* Right Images with decorative diamond motif icon */}
+            {/* Right Images */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={isSec3InView ? { opacity: 1, scale: 1 } : {}}
@@ -276,32 +292,21 @@ export default function Home() {
               className="lg:col-span-6 grid grid-cols-12 gap-4 items-center relative"
             >
               {/* Image 1 */}
-              <div className="col-span-12 md:col-span-7 aspect-[16/10] md:aspect-[3/4] overflow-hidden rounded-sm shadow-2xl border border-light-cream/10 p-1.5 bg-[#6B2523] relative">
+              <div className="col-span-12 md:col-span-8 aspect-[16/10] md:aspect-[3/4] overflow-hidden rounded-sm shadow-2xl border border-light-cream/10 p-1.5 bg-[#6B2523] relative">
                 <img
                   src="/assets/Tanha Food/food-1.webp"
                   alt="Fine corporate gathering dish"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute top-4 left-4 z-20">
-                  <DiamondCornerOrnament className="w-8 h-8 section-accent" />
-                </div>
-              </div>
-
-              {/* Decorative motif placed between them */}
-              <div className="hidden md:flex md:col-span-2 justify-center items-center">
-                <TribalDiamond className="w-16 h-16 section-accent animate-pulse" />
               </div>
 
               {/* Image 2 */}
-              <div className="col-span-12 md:col-span-3 aspect-[16/10] md:aspect-[3/5] overflow-hidden rounded-sm shadow-2xl border border-light-cream/10 p-1.5 bg-[#6B2523] relative">
+              <div className="col-span-12 md:col-span-4 aspect-[16/10] md:aspect-[3/5] overflow-hidden rounded-sm shadow-2xl border border-light-cream/10 p-1.5 bg-[#6B2523] relative">
                 <img
                   src="/assets/Tanha Ambiance/Ambiance-22.webp"
                   alt="Tanah rooftop lighting"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute bottom-4 right-4 z-20">
-                  <DiamondCornerOrnament className="w-8 h-8 section-accent" />
-                </div>
               </div>
             </motion.div>
 
@@ -448,13 +453,6 @@ export default function Home() {
                   alt="Tanah space styling"
                   className="w-full h-full object-cover filter brightness-[0.85]"
                 />
-                {/* Corner ornament decorators */}
-                <div className="absolute top-4 left-4 z-20">
-                  <DiamondCornerOrnament className="w-10 h-10 section-accent" />
-                </div>
-                <div className="absolute bottom-4 right-4 z-20">
-                  <DiamondCornerOrnament className="w-10 h-10 section-accent" />
-                </div>
               </div>
             </motion.div>
 
@@ -487,9 +485,6 @@ export default function Home() {
                   alt="Exclusive corporate package setup"
                   className="w-full h-full object-cover filter brightness-[0.9]"
                 />
-                <div className="absolute top-4 right-4 z-20">
-                  <DiamondCornerOrnament className="w-8 h-8 section-accent" />
-                </div>
               </div>
             </motion.div>
 
@@ -605,9 +600,6 @@ export default function Home() {
                   alt="Gathering area setup"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute top-2 left-2 z-20">
-                  <DiamondCornerOrnament className="w-6 h-6 section-accent" />
-                </div>
               </div>
 
               <div className="aspect-[3/4] overflow-hidden rounded shadow-xl border border-light-cream/10 p-1 bg-[#6B2523] relative mt-8">
@@ -616,9 +608,6 @@ export default function Home() {
                   alt="Outdoor gathering setup"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute bottom-2 right-2 z-20">
-                  <DiamondCornerOrnament className="w-6 h-6 section-accent" />
-                </div>
               </div>
             </motion.div>
 
@@ -845,7 +834,6 @@ export default function Home() {
                     className="btn-primary w-full text-center justify-center py-4 mt-2"
                     style={{ backgroundColor: '#6B2523', borderColor: '#6B2523', color: '#DEC8AB' }}
                   >
-                    <CalendarDays className="w-4 h-4" />
                     Submit Event Inquiry
                   </button>
                 </form>

@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
-import { Sprout, ShieldAlert, Leaf } from 'lucide-react'
+import { Sprout, ShieldAlert } from 'lucide-react'
 
 export default function About() {
   const ref = useRef(null)
@@ -11,7 +11,7 @@ export default function About() {
     <section
       id="about-preview"
       ref={ref}
-      className="relative overflow-hidden py-28"
+      className="relative overflow-hidden py-[var(--spacing-section)]"
       style={{ 
         background: 'var(--color-cream)',
       }}
@@ -34,8 +34,7 @@ export default function About() {
       </div>
 
       <div 
-        className="px-8 relative z-10"
-        style={{ maxWidth: '1280px', margin: '0 auto' }}
+        className="max-width-container px-8 relative z-10"
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
@@ -66,10 +65,9 @@ export default function About() {
               initial={{ scale: 0.9, opacity: 0, x: 20 }}
               animate={isInView ? { scale: 1, opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute -bottom-10 -right-4 md:-right-10 p-8 shadow-2xl max-w-[280px] hidden sm:block rounded-3xl"
+              className="absolute -bottom-10 -right-4 md:-right-10 p-8 shadow-2xl max-w-[280px] rounded-3xl sm:absolute mt-6 sm:mt-0"
               style={{ background: 'var(--color-forest)', color: 'var(--color-cream)' }}
             >
-              <Leaf className="w-8 h-8 mb-4" style={{ color: 'var(--color-terracotta-light)' }} />
               <p className="font-display text-xl font-medium leading-snug mb-2">
                 100% Organically Certified
               </p>
@@ -146,7 +144,7 @@ export default function About() {
 
             <Link
               to="/about"
-              className="btn-outline-dark text-xs tracking-widest uppercase font-semibold"
+              className="btn-outline text-xs tracking-widest uppercase font-semibold"
             >
               Discover Our Journey
             </Link>

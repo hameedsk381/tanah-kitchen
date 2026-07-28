@@ -1,27 +1,27 @@
 {
-  "featuredTitle": "Curated Journeys",
+  "featuredTitle": "More Than Just Dinner",
   "featuredSubtitle": "Signature Experiences",
   "items": [
     {
       "num": "01",
       "title": "Rooftop Embers & Basalt Hearth",
-      "desc": "An open-air culinary experience where native wood and dry charcoal flame-grill seasonal harvest under Gachibowli’s night skies. Savor dishes served on raw basalt slate.",
+      "desc": "An open-air culinary experience where native wood and dry charcoal flame-grill seasonal harvest under Gachibowli's night skies. Savor dishes served on raw basalt slate.",
       "image": "/assets/Ambiance/TANAH_Amb01041.jpg",
       "tag": "Fire & Atmosphere"
     },
     {
       "num": "02",
-      "title": "Fermented Elixirs & Botanicals",
-      "desc": "A curated ritual of native tonics, house-made vinegars, and forest honey infusions. Crafted by master mixologists and poured in custom architectural ceramics.",
+      "title": "Live Sports, Big Screens",
+      "desc": "Catch every match on our massive screens while enjoying wood-fired wings, craft beers, and handcrafted cocktails. The best game day experience in Gachibowli.",
       "image": "/assets/Ambiance/TANAH_Amb01043.jpg",
-      "tag": "Infusion & Culture"
+      "tag": "Sports & Spirit"
     },
     {
       "num": "03",
-      "title": "The Gallery Dining Salon",
-      "desc": "Dine in an environment where modern Indian painting, sculptural architecture, and gastronomy converge. A collaborative experience featuring seasonal art installations.",
+      "title": "Private Dining & Celebrations",
+      "desc": "Host your next event in our elegant private dining spaces. Whether it's a birthday, corporate dinner, or anniversary, we craft a bespoke menu and atmosphere just for you.",
       "image": "/assets/Ambiance/TANAH_Amb01044.jpg",
-      "tag": "Art & Experience"
+      "tag": "Celebrate"
     }
   ]
 }

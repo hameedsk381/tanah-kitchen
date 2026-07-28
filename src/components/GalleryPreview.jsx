@@ -11,7 +11,7 @@ export default function GalleryPreview() {
       ref={ref}
       className="relative w-full bg-bg-secondary py-[var(--spacing-section)] overflow-hidden"
     >
-      <div className="max-w-container px-8 mx-auto space-y-16">
+      <div className="max-width-container px-8 mx-auto space-y-16">
         
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-baseline gap-6 border-b border-terracotta/10 pb-8">

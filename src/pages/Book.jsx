@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { CheckCircle } from 'lucide-react'
+import SEO from '../components/SEO'
 
 const timeSlots = [
   '12:30 PM', '1:00 PM', '1:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM', '9:00 PM'
@@ -22,7 +23,6 @@ export default function Book() {
   const [errors, setErrors] = useState({})
 
   useEffect(() => {
-    document.title = 'Reserve a Table | Tanah Kitchen & Bar'
     window.scrollTo(0, 0)
   }, [])
 
@@ -57,6 +57,28 @@ export default function Book() {
 
   return (
     <main className="section-light relative flex-grow pt-24 min-h-screen flex items-center overflow-hidden">
+      <SEO
+        title="Reserve a Table & Corporate Dining | Tanah Kitchen & Bar"
+        description="Book your table or host corporate dining events at Tanah Kitchen & Bar in Gachibowli. Select party size, date, time slots, and customized corporate dining packages."
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'FoodEstablishment',
+          'name': 'Tanah Kitchen & Bar Reservations',
+          'url': 'https://tanahkitchen.in/book',
+          'potentialAction': {
+            '@type': 'ReserveAction',
+            'target': {
+              '@type': 'EntryPoint',
+              'urlTemplate': 'https://tanahkitchen.in/book',
+              'actionPlatform': ['http://schema.org/DesktopWebPlatform', 'http://schema.org/MobileWebPlatform']
+            },
+            'result': {
+              '@type': 'FoodEstablishmentReservation',
+              'name': 'Table Reservation'
+            }
+          }
+        }}
+      />
       {/* Fullscreen background image */}
       <div className="absolute inset-0 z-0 w-full h-full">
         <img
@@ -80,7 +102,7 @@ export default function Book() {
               {/* RESERVATIONS label: #FFC470, bold, tracking */}
               <span
                 className="text-[10px] font-bold tracking-[3px] uppercase block"
-                style={{ color: '#FFC470' }}
+                style={{ color: 'var(--color-accent-gold)' }}
               >
                 Reservations
               </span>
@@ -90,44 +112,44 @@ export default function Book() {
                 className="font-display leading-tight"
                 style={{
                   fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-                  color: '#F2D9C4',
-                  WebkitTextFillColor: '#F2D9C4',
+                  color: 'var(--color-text-light)',
+                  WebkitTextFillColor: 'var(--color-text-light)',
                   textShadow: '0 2px 12px rgba(0,0,0,0.6)',
                 }}
               >
                 Secure Your<br />
-                <span style={{ fontStyle: 'italic', color: '#FFC470', WebkitTextFillColor: '#FFC470' }}>Basalt Table</span>
+                <span style={{ fontStyle: 'italic', color: 'var(--color-accent-gold)', WebkitTextFillColor: 'var(--color-accent-gold)' }}>Basalt Table</span>
               </h1>
 
               {/* Body paragraph: #EFE1D0 at 90% opacity */}
               <p
                 className="text-xs sm:text-sm font-light leading-relaxed font-body"
-                style={{ color: '#EFE1D0', WebkitTextFillColor: '#EFE1D0', opacity: 0.9 }}
+                style={{ color: 'var(--color-text-light)', WebkitTextFillColor: 'var(--color-text-light)', opacity: 0.9 }}
               >
                 We look forward to welcoming you to Tanah Kitchen &amp; Bar. Due to the sourcing of fresh daily crops and slow coal embers, reservations are highly recommended.
               </p>
             </div>
 
             {/* Visual Frame of the Space */}
-            <div className="aspect-[16/10] w-full overflow-hidden relative border border-white/10">
+            <div className="aspect-[16/10] w-full overflow-hidden relative border border-white/10 shadow-xl rounded-sm">
               <img
-                src="/assets/Tanha Image/11.webp"
-                alt="Table reservation guide mutton biryani details"
-                className="w-full h-full object-cover filter brightness-[0.8] contrast-[1.05]"
+                src="/assets/Tanha Ambiance/Ambiance-25.webp"
+                alt="Atmospheric rooftop dining experience at Tanah"
+                className="w-full h-full object-cover filter brightness-[0.85] contrast-[1.05]"
               />
               <div className="absolute inset-3 border border-white/10 pointer-events-none" />
             </div>
 
-            <div className="border-l-2 pl-6 space-y-2" style={{ borderColor: '#FFC470' }}>
+            <div className="border-l-2 pl-6 space-y-2" style={{ borderColor: 'var(--color-accent-gold)' }}>
               <h4
                 className="font-display text-base"
-                style={{ color: '#F2D9C4', WebkitTextFillColor: '#F2D9C4', textShadow: '0 1px 6px rgba(0,0,0,0.5)' }}
+                style={{ color: 'var(--color-text-light)', WebkitTextFillColor: 'var(--color-text-light)', textShadow: '0 1px 6px rgba(0,0,0,0.5)' }}
               >
                 Resort Casual Policy
               </h4>
               <p
                 className="text-[11px] font-light leading-relaxed font-body"
-                style={{ color: '#EFE1D0', WebkitTextFillColor: '#EFE1D0', opacity: 0.8 }}
+                style={{ color: 'var(--color-text-light)', WebkitTextFillColor: 'var(--color-text-light)', opacity: 0.8 }}
               >
                 We encourage mindful attire. Smart casual is recommended to complement the premium design and atmosphere.
               </p>
@@ -288,7 +310,7 @@ export default function Book() {
                   <button
                     type="submit"
                     className="btn-primary w-full justify-center text-center text-[10px] py-4 cursor-pointer"
-                    style={{ backgroundColor: '#6B2523', borderColor: '#6B2523', color: '#DEC8AB' }}
+                    style={{ backgroundColor: 'var(--color-primary-dark)', borderColor: 'var(--color-primary-dark)', color: 'var(--color-border-accent)' }}
                   >
                     Send Reservation Request
                   </button>

@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { X, ZoomIn } from 'lucide-react'
+import { X } from 'lucide-react'
 
 const galleryItems = [
   {
@@ -103,15 +103,14 @@ export default function Experience() {
     <section
       id="experience-preview"
       ref={ref}
-      className="relative overflow-hidden py-28"
+      className="relative overflow-hidden py-[var(--spacing-section)]"
       style={{ 
         background: 'var(--color-beige)',
       }}
       aria-labelledby="experience-heading"
     >
       <div 
-        className="px-8 relative z-10"
-        style={{ maxWidth: '1280px', margin: '0 auto' }}
+        className="max-width-container px-8 relative z-10"
       >
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 md:mb-24">
@@ -181,7 +180,7 @@ export default function Experience() {
                       {item.caption}
                     </p>
                   </div>
-                  <ZoomIn className="w-5 h-5 text-white/80" />
+
                 </div>
               </div>
             </motion.div>
@@ -219,7 +218,7 @@ export default function Experience() {
         <div className="text-center mt-12 lg:mt-16">
           <Link
             to="/gallery"
-            className="btn-outline-dark text-xs tracking-widest uppercase font-semibold"
+            className="btn-outline text-xs tracking-widest uppercase font-semibold"
           >
             View Full Gallery
           </Link>

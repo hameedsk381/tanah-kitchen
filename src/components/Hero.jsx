@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ChevronDown, UtensilsCrossed, CalendarDays } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 
 function BlobShape({ className, style }) {
   return (
@@ -32,7 +32,7 @@ export default function Hero() {
     <section
       ref={ref}
       id="hero"
-      className="relative h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
       aria-label="Hero section"
     >
       {/* Background Image / Overlay */}
@@ -114,7 +114,7 @@ export default function Hero() {
             letterSpacing: '-0.02em',
           }}
         >
-          Rooted in Nature.
+          Rooftop Dining.
           <br />
           <span
             style={{
@@ -136,8 +136,9 @@ export default function Hero() {
           className="text-lg md:text-xl font-light max-w-2xl mx-auto mb-12"
           style={{ color: 'var(--color-beige)', lineHeight: '1.8' }}
         >
-          An earth-inspired culinary sanctuary. Savor seasonal ingredients sourced 
-          directly from local organic farmsteads, prepared by masters of slow food.
+           Rooftop dining, wood-fired flavors, and unforgettable evenings. 
+           Premium farm-to-table cuisine, handcrafted cocktails, and live sports 
+           under the stars at Tanah Kitchen & Bar.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -152,7 +153,6 @@ export default function Hero() {
             className="btn-primary"
             id="hero-view-menu"
           >
-            <UtensilsCrossed className="w-4 h-4" />
             View Menu
           </Link>
           <Link
@@ -160,7 +160,6 @@ export default function Hero() {
             className="btn-outline"
             id="hero-reserve-table"
           >
-            <CalendarDays className="w-4 h-4" />
             Reserve Table
           </Link>
         </motion.div>

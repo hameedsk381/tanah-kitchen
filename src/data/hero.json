@@ -1,14 +1,14 @@
 {
   "imageUrl": "/assets/Tanha Ambiance/Ambiance-11.webp",
-  "heading": "Where Art, Ambience",
-  "headingItalic": "& Gastronomy Meet",
-  "subheading": "Experience elevated dining, handcrafted cocktails, live sports, and unforgettable evenings at Tanah Kitchen & Bar.",
+  "heading": "Rooftop Dining,",
+  "headingItalic": "Wood-Fired & Unforgettable",
+  "subheading": "Premium rooftop dining in Gachibowli, Hyderabad. Wood-fired cuisine, handcrafted cocktails, live sports, and unforgettable evenings under the stars.",
   "ctaPrimary": {
-    "label": "Reserve Table",
+    "label": "Reserve a Table",
     "path": "/book"
   },
   "ctaSecondary": {
-    "label": "Discover Menu",
+    "label": "Discover Our Menu",
     "path": "/menu"
   }
 }

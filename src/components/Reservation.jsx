@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { CalendarDays, Clock, Users, CheckCircle } from 'lucide-react'
+import { Clock, Users, CheckCircle } from 'lucide-react'
 
 const timeSlots = [
   '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM',
@@ -311,7 +311,6 @@ export default function Reservation() {
                   type="submit"
                   className="btn-primary w-full text-center justify-center py-4 mt-4"
                 >
-                  <CalendarDays className="w-4 h-4" />
                   Confirm Table Booking
                 </button>
               </form>

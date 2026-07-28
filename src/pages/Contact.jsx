@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { MapPin, Phone, MessageSquare, Mail, Clock, CheckCircle } from 'lucide-react'
 import contactData from '../data/contact.json'
+import SEO from '../components/SEO'
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -15,7 +16,6 @@ export default function Contact() {
   const [errors, setErrors] = useState({})
 
   useEffect(() => {
-    document.title = 'Contact & Location | Tanah Kitchen & Bar'
     window.scrollTo(0, 0)
   }, [])
 
@@ -48,6 +48,25 @@ export default function Contact() {
 
   return (
     <main className="flex-grow pt-24 overflow-hidden">
+      <SEO
+        title="Contact Us & Location Directions | Tanah Kitchen & Bar Gachibowli"
+        description="Get directions and contact information for Tanah Kitchen & Bar. Located on 5th Floor, Vaishnavi Splendora, opp Meenakshi Bamboos, beside AIG Hospital, Gachibowli, Hyderabad."
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'LocalBusiness',
+          'name': 'Tanah Kitchen & Bar',
+          'url': 'https://tanahkitchen.in/contact',
+          'telephone': '+91-8977730291',
+          'address': {
+            '@type': 'PostalAddress',
+            'streetAddress': '5th Floor, Vaishnavi Splendora, opp Meenakshi Bamboos, beside AIG Hospital',
+            'addressLocality': 'Gachibowli',
+            'addressRegion': 'Telangana',
+            'postalCode': '500032',
+            'addressCountry': 'IN'
+          }
+        }}
+      />
 
       {/* Editorial Header */}
       <section className="section-dark relative py-28 md:py-36 text-center border-b border-light-cream/15 overflow-hidden">
@@ -58,7 +77,7 @@ export default function Contact() {
             className="w-full h-full object-cover filter brightness-75"
           />
         </div>
-        <div className="relative z-10 px-8 max-w-container mx-auto">
+        <div className="relative z-10 px-8 max-width-container mx-auto">
           <span className="text-[10px] font-semibold tracking-[0.4em] uppercase section-accent block mb-4">
             Connect
           </span>
@@ -76,7 +95,7 @@ export default function Contact() {
 
       {/* Details Section */}
       <section className="section-light relative py-20">
-        <div className="max-w-container px-8 mx-auto">
+        <div className="max-width-container px-8 mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
 
             {/* Left Column: Info Coordinates */}
@@ -149,11 +168,11 @@ export default function Contact() {
               </div>
 
               {/* Ambient preview image frame */}
-              <div className="aspect-[16/10] w-full overflow-hidden bg-white/5 relative border border-primary-dark/10 pt-4">
+              <div className="aspect-[16/10] w-full overflow-hidden bg-white/5 relative border border-primary-dark/10 shadow-xl rounded-sm">
                 <img
-                  src="/assets/Tanha Image/01.webp"
-                  alt="Tanah Entrance Wall Sign"
-                  className="w-full h-full object-cover filter brightness-[0.8] contrast-[1.05]"
+                  src="/assets/Tanha Ambiance/Ambiance-9.webp"
+                  alt="Tanah Entrance & Bar Ambiance"
+                  className="w-full h-full object-cover filter brightness-[0.85] contrast-[1.05]"
                 />
                 <div className="absolute inset-3 border border-light-cream/10 pointer-events-none" />
               </div>
@@ -244,7 +263,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     className="btn-primary w-full justify-center text-center text-[10px] py-4 cursor-pointer"
-                    style={{ backgroundColor: '#6B2523', borderColor: '#6B2523', color: '#DEC8AB' }}
+                    style={{ backgroundColor: 'var(--color-primary-dark)', borderColor: 'var(--color-primary-dark)', color: 'var(--color-border-accent)' }}
                   >
                     Send Message
                   </button>

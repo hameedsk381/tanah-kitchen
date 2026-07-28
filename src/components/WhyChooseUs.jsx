@@ -37,7 +37,7 @@ export default function WhyChooseUs() {
     <section
       id="why-choose-us"
       ref={ref}
-      className="relative overflow-hidden py-28"
+      className="relative overflow-hidden py-[var(--spacing-section)]"
       style={{ 
         background: 'var(--color-cream)',
       }}
@@ -53,8 +53,7 @@ export default function WhyChooseUs() {
       />
 
       <div 
-        className="px-8 relative z-10"
-        style={{ maxWidth: '1280px', margin: '0 auto' }}
+        className="max-width-container px-8 relative z-10"
       >
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 md:mb-24">
@@ -143,7 +142,7 @@ export default function WhyChooseUs() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, delay: 0.6 }}
-          className="mt-16 lg:mt-24 p-12 text-center relative overflow-hidden rounded-3xl"
+          className="mt-16 lg:mt-24 p-8 md:p-12 text-center relative overflow-hidden rounded-3xl"
           style={{ background: 'var(--color-forest)' }}
         >
           {/* Subtle design circles */}

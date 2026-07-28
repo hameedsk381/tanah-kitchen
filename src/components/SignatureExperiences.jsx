@@ -39,7 +39,7 @@ export default function SignatureExperiences() {
         }}
       />
 
-      <div className="max-w-container px-8 mx-auto relative z-10">
+      <div className="max-width-container px-8 mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
 
           {/* Left Block: Terracotta Occasion Card (Page 5 left column) */}
@@ -104,14 +104,11 @@ export default function SignatureExperiences() {
               <div className="absolute inset-0 bg-gradient-to-t from-dark-brown/50 to-transparent pointer-events-none" />
             </div>
 
-            {/* Tribal detail underneath the image */}
+            {/* Detail underneath the image */}
             <div className="flex items-center justify-between mt-8">
-              <div className="flex items-center gap-4 text-terracotta">
-                <TribalDiamond className="w-12 h-12" color="var(--color-terracotta)" />
-                <div>
-                  <h4 className="font-display text-lg font-bold uppercase tracking-wider text-text-dark">Corporate Gathering</h4>
-                  <p className="text-xs text-accent tracking-widest font-mono uppercase">Scale from 10 to 200 Guests</p>
-                </div>
+              <div>
+                <h4 className="font-display text-lg font-bold uppercase tracking-wider text-text-dark">Corporate Gathering</h4>
+                <p className="text-xs text-accent tracking-widest font-mono uppercase">Scale from 10 to 200 Guests</p>
               </div>
 
               <div className="hidden sm:flex gap-1 text-[#882B06] opacity-75">

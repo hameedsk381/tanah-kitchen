@@ -25,7 +25,7 @@ export default function LiquidAlchemy() {
       {/* Subtle overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-dark-brown/50 to-transparent pointer-events-none" />
 
-      <div className="max-w-container px-8 mx-auto relative z-10">
+      <div className="max-width-container px-8 mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
           {/* Left Block: Customizable Corporate Packages */}
@@ -75,14 +75,13 @@ export default function LiquidAlchemy() {
             transition={{ duration: 1.4, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6 relative"
           >
-            <div className="aspect-[4/3] w-full overflow-hidden bg-bg-secondary relative border border-bg-secondary/10 shadow-2xl">
+            <div className="aspect-[4/3] max-w-lg mx-auto w-full overflow-hidden bg-bg-secondary relative border border-bg-secondary/10 shadow-2xl rounded-sm">
               <img
                 src="/assets/Tanha Ambiance/Ambiance-6.webp"
                 alt="Corporate partners dining together at Tanah"
-                className="w-full h-full object-cover filter brightness-[0.8] contrast-[1.05] transition-transform duration-[2s] hover:scale-105"
+                className="w-full h-full object-cover filter brightness-[0.85] contrast-[1.05] transition-transform duration-[2s] hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-dark-brown/40 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute inset-6 border border-bg-primary/10 pointer-events-none" />
             </div>
 
             {/* Tribal diamond divider overlay at bottom right */}

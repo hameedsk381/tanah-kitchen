@@ -5,20 +5,42 @@
    ============================================================ */
 
 @theme {
-  /* Tanah Kitchen & Bar – Custom Premium Design System Palette */
+  /* ============================================================
+     Tanah Kitchen & Bar – Design System Palette
+     ============================================================ */
+
+  /* Primary */
   --color-primary-dark: #6B2523;
   --color-light-cream: #F6E1CB;
   --color-accent-gold: #FFC470;
   --color-border-accent: #DEC8AB;
   --color-near-black: #3A2E2A;
 
-  /* Global mappings mapping fallback variables */
-  --color-bg-primary: #F6E1CB;
-  --color-bg-secondary: #6B2523;
-  --color-text-dark: #3A2E2A;
+  /* Background mappings */
+  --color-bg-primary: var(--color-light-cream);
+  --color-bg-secondary: var(--color-primary-dark);
+
+  /* Text */
+  --color-text-dark: var(--color-near-black);
   --color-text-light: #EFE1D0;
-  --color-accent: #6B2523;
-  --color-accent-gold-color: #FFC470;
+  --color-text-muted: #8A7F7A;
+
+  /* Accent (redundant alias kept for backward compat) */
+  --color-accent: var(--color-primary-dark);
+  --color-accent-gold-color: var(--color-accent-gold);
+
+  /* Undefined vars used across components – now defined */
+  --color-cream: #FFFDF8;
+  --color-forest: #1B4332;
+  --color-forest-dark: #14342A;
+  --color-terracotta: #882B06;
+  --color-terracotta-light: #D4A574;
+  --color-charcoal: #1E1E1E;
+  --color-brown: #8B4513;
+  --color-brown-light: #A0785A;
+  --color-beige: #F2E8D5;
+  --color-beige-dark: #D9C5A0;
+  --color-dark-brown: #2C1810;
 
   /* Typography */
   --font-display: 'Baloo 2', system-ui, sans-serif;
@@ -37,6 +59,8 @@ html {
   font-size: 16px;
   background-color: #F6E1CB;
   color: #3A2E2A;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 body {
@@ -46,37 +70,18 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   position: relative;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
-/* Subtle paper texture overlay applied globally */
-body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.03;
-  pointer-events: none;
-  z-index: 9999;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+/* Form inputs font sizing for iOS touch devices to prevent zoom */
+input, select, textarea {
+  font-size: 16px !important;
 }
 
-/* Folk Art Tiled Pattern Background */
+/* Folk Art Tiled Pattern Background (Clean) */
 .folk-art-bg {
   position: relative;
-}
-
-.folk-art-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0.08;
-  /* ~8-10% opacity */
-  pointer-events: none;
-  z-index: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cpath d='M30 40 C35 30 55 35 60 45 C50 50 40 50 30 40 Z' stroke='%23F6E1CB' stroke-width='1.5' fill='none'/%3E%3Cpath d='M45 35 L35 25 L40 32' stroke='%23F6E1CB' stroke-width='1.2' fill='none'/%3E%3Ccircle cx='110' cy='45' r='10' stroke='%23F6E1CB' stroke-width='1.5' fill='none'/%3E%3Cpath d='M110 30 L110 35 M110 55 L110 60 M95 45 L100 45 M120 45 L125 45' stroke='%23F6E1CB' stroke-width='1.2'/%3E%3Cpath d='M50 110 L58 110 L58 95 L68 90 L68 85 M58 95 L48 100 L43 110' stroke='%23F6E1CB' stroke-width='1.5' fill='none'/%3E%3Cpath d='M68 85 L72 80 M68 85 L65 80' stroke='%23F6E1CB' stroke-width='1.2'/%3E%3Ccircle cx='120' cy='115' r='4' stroke='%23F6E1CB' stroke-width='1.5' fill='none'/%3E%3Cpath d='M110 125 C115 120 125 120 130 125' stroke='%23F6E1CB' stroke-width='1.2' fill='none'/%3E%3C/svg%3E");
-  background-repeat: repeat;
 }
 
 /* Repeating outlined diamond (◇) border with dots */
@@ -151,7 +156,7 @@ body::before {
   stroke: #6B2523 !important;
 }
 
-/* Textured Display Headings styling helper & Base Headings */
+/* Display Headings & Base Headings */
 h1,
 h2,
 h3,
@@ -165,10 +170,6 @@ h6,
   line-height: 1.2 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.5px !important;
-
-  /* Stamped look distress texture using mask-image with dynamic SVG noise */
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -1.8 1.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -1.8 1.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 /* Container limits (Max 1400px width for content) */

@@ -41,7 +41,7 @@ export default function HeroExperience() {
       </motion.div>
 
       {/* Editorial Content Overlay */}
-      <div className="max-w-container mx-auto px-8 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="max-width-container mx-auto px-8 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
         <motion.div
           style={{ y: yText, opacity: opacityText }}
@@ -57,9 +57,9 @@ export default function HeroExperience() {
               fontSize: 'clamp(2.5rem, 5.5vw, 5.2rem)',
             }}
           >
-            Where Teams Gather.<br />
-            Conversations Flow.<br />
-            <span className="font-light italic text-bg-secondary">Connections Grow.</span>
+            Rooftop Dining.<br />
+            Wood-Fired.<br />
+            <span className="font-light italic text-bg-secondary">Unforgettable.</span>
           </h1>
 
           {/* Decorative Tribal Divider Exactly Like PDF Page 2 */}
@@ -68,7 +68,7 @@ export default function HeroExperience() {
           </div>
 
           <p className="text-lg font-light text-bg-secondary max-w-xl mb-8 leading-relaxed font-display">
-            A place inspired by the earth, built for meaningful moments.
+            Premium rooftop dining in Gachibowli — where great food, craft cocktails, and live sports come together under the stars.
           </p>
 
           <div className="flex flex-wrap gap-6 items-center">
@@ -91,7 +91,7 @@ export default function HeroExperience() {
       </div>
 
       {/* Floating scroll explorer at bottom-left */}
-      <div className="absolute bottom-12 left-8 hidden lg:flex items-center gap-4 z-20">
+      <div className="absolute bottom-12 left-8 hidden md:flex items-center gap-4 z-20">
         <span className="text-[8px] font-mono tracking-[0.3em] text-bg-secondary uppercase opacity-75">
           SCROLL TO DISCOVER
         </span>

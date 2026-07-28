@@ -43,7 +43,7 @@ export default function LiveSportsEvents() {
       {/* Texture Details */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-burnt-earth/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="px-8 max-w-container mx-auto relative z-10">
+      <div className="px-8 max-width-container mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
           
           {/* Left Column: Storytelling & Calendar Cards */}

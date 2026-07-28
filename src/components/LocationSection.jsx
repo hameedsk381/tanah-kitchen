@@ -12,7 +12,7 @@ export default function LocationSection() {
       ref={ref}
       className="relative w-full bg-bg-secondary py-[var(--spacing-section)] overflow-hidden"
     >
-      <div className="max-w-container px-8 mx-auto space-y-16">
+      <div className="max-width-container px-8 mx-auto space-y-16">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           

@@ -229,3 +229,80 @@ export const DiamondCornerOrnament = ({ className = "w-12 h-12", color = "curren
   </svg>
 )
 
+// 12. Mixologist Owl (This Is Where We Create - Signature Cocktails)
+export const MixologistOwl = ({ className = "w-20 h-20", color = "currentColor" }) => (
+  <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <path d="M30,85 C30,45 90,45 90,85 C90,115 75,120 60,120 C45,120 30,115 30,85 Z" stroke={color} strokeWidth="4" />
+    <circle cx="60" cy="65" r="14" stroke={color} strokeWidth="4" />
+    <circle cx="60" cy="65" r="6" fill={color} />
+    <path d="M60,80 L54,86 L66,86 Z" fill={color} />
+    {/* Branch */}
+    <path d="M15,120 L125,120" stroke={color} strokeWidth="5" strokeLinecap="round" />
+    {/* Cocktail Glass with Ice & Straw */}
+    <path d="M95,85 L120,85 L112,118 L103,118 Z" stroke={color} strokeWidth="3" fill="none" />
+    <path d="M100,75 L115,100" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+    <rect x="102" y="92" width="6" height="6" stroke={color} strokeWidth="2" />
+    <rect x="108" y="100" width="6" height="6" stroke={color} strokeWidth="2" />
+    {/* Dropper / Leaves */}
+    <path d="M80,35 Q95,45 85,60" stroke={color} strokeWidth="2.5" />
+    <path d="M85,35 Q75,25 70,35" stroke={color} strokeWidth="2" fill={color} />
+  </svg>
+)
+
+// 13. Single Malt Owl (you get better with age)
+export const SingleMaltOwl = ({ className = "w-20 h-20", color = "currentColor" }) => (
+  <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <path d="M35,70 C35,35 95,35 95,70 C95,105 80,110 65,110 C50,110 35,105 35,70 Z" stroke={color} strokeWidth="4" />
+    <circle cx="65" cy="55" r="12" stroke={color} strokeWidth="3.5" />
+    <circle cx="65" cy="55" r="5" fill={color} />
+    <path d="M65,70 L59,76 L71,76 Z" fill={color} />
+    <path d="M20,110 L130,110" stroke={color} strokeWidth="5" strokeLinecap="round" />
+    {/* Whiskey Glass on Rock */}
+    <path d="M15,80 L35,80 L32,108 L18,108 Z" stroke={color} strokeWidth="3" fill="none" />
+    <rect x="22" y="90" width="8" height="8" stroke={color} strokeWidth="2" fill={color} />
+    {/* Cloud Doodle */}
+    <path d="M25,45 C20,38 30,30 40,35 C48,28 60,35 55,43 Z" stroke={color} strokeWidth="2.5" fill="none" />
+  </svg>
+)
+
+// 14. Rose Owls (Will you accept this rose?)
+export const RoseOwls = ({ className = "w-24 h-24", color = "currentColor" }) => (
+  <svg viewBox="0 0 160 140" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    {/* Owl 1 */}
+    <path d="M20,70 C20,40 60,40 60,70 C60,95 50,100 40,100 C30,100 20,95 20,70 Z" stroke={color} strokeWidth="3.5" />
+    <circle cx="40" cy="58" r="8" stroke={color} strokeWidth="3" />
+    <circle cx="40" cy="58" r="3" fill={color} />
+    {/* Owl 2 */}
+    <path d="M90,70 C90,40 130,40 130,70 C130,95 120,100 110,100 C100,100 90,95 90,70 Z" stroke={color} strokeWidth="3.5" />
+    <path d="M102,60 Q110,65 118,60" stroke={color} strokeWidth="3" strokeLinecap="round" fill="none" />
+    {/* Rose between them */}
+    <path d="M75,65 L75,95" stroke={color} strokeWidth="2.5" />
+    <circle cx="75" cy="55" r="8" fill={color} />
+    <path d="M68,55 C68,48 75,44 82,55" stroke={color} strokeWidth="2" fill="none" />
+  </svg>
+)
+
+// 15. Shooter Owl (It's Time to call your driver)
+export const ShooterOwl = ({ className = "w-20 h-20", color = "currentColor" }) => (
+  <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <path d="M35,65 C35,30 95,30 95,65 C95,95 80,100 65,100 C50,100 35,95 35,65 Z" stroke={color} strokeWidth="4" />
+    <circle cx="65" cy="50" r="12" stroke={color} strokeWidth="4" />
+    <circle cx="65" cy="50" r="5" fill={color} />
+    <path d="M20,100 L125,100" stroke={color} strokeWidth="5" strokeLinecap="round" />
+    {/* Shot glass 1 on left wing */}
+    <path d="M15,75 L30,75 L26,98 L19,98 Z" stroke={color} strokeWidth="2.5" />
+    {/* Shot glass 2 on right wing */}
+    <path d="M100,75 L115,75 L111,98 L104,98 Z" stroke={color} strokeWidth="2.5" />
+  </svg>
+)
+
+// 16. Brand Slogan Badge Banner
+export const BarSloganBadge = ({ slogan, className = "" }) => (
+  <div className={`inline-flex items-center gap-2 px-4 py-2 bg-primary-dark/10 border border-primary-dark/30 text-primary-dark rounded-full font-serif italic text-sm md:text-base ${className}`}>
+    <span>✦</span>
+    <span>"{slogan}"</span>
+    <span>✦</span>
+  </div>
+)
+
+

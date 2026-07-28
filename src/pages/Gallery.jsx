@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ZoomIn } from 'lucide-react'
+import { X } from 'lucide-react'
 import galleryData from '../data/gallery.json'
+import SEO from '../components/SEO'
 
 export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState('All')
@@ -9,7 +10,6 @@ export default function Gallery() {
   const [lightbox, setLightbox] = useState(null)
 
   useEffect(() => {
-    document.title = 'Visual Archives | Tanah Kitchen & Bar'
     window.scrollTo(0, 0)
   }, [])
 
@@ -23,10 +23,20 @@ export default function Gallery() {
 
   return (
     <main className="flex-grow pt-24 overflow-hidden">
+      <SEO
+        title="Visual Gallery & Ambiance | Tanah Kitchen & Bar Hyderabad"
+        description="Browse high-definition photos of Tanah Kitchen & Bar. Rooftop dining terrace, woven bamboo tree canopy, custom ceramics, signature dishes, and mixology cocktails in Gachibowli."
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'ImageGallery',
+          'name': 'Tanah Kitchen & Bar Visual Archives',
+          'url': 'https://tanahkitchen.in/gallery'
+        }}
+      />
 
       {/* Editorial Header */}
       <section className="section-dark relative py-24 md:py-32 text-center border-b border-light-cream/15">
-        <div className="relative z-10 px-8 max-w-container mx-auto">
+        <div className="relative z-10 px-8 max-width-container mx-auto">
           <span className="text-[10px] font-semibold tracking-[0.4em] uppercase section-accent block mb-4">
             Visual Archive
           </span>
@@ -44,7 +54,7 @@ export default function Gallery() {
 
       {/* Main Grid */}
       <section className="section-light relative py-20">
-        <div className="max-w-container px-8 mx-auto space-y-12">
+        <div className="max-width-container px-8 mx-auto space-y-12">
 
           {/* Categories Tab */}
           <div className="flex items-center justify-center gap-6 overflow-x-auto w-full no-scrollbar pb-6 border-b border-primary-dark/10">
@@ -104,7 +114,6 @@ export default function Gallery() {
                             {item.caption}
                           </p>
                         </div>
-                        <ZoomIn className="w-5 h-5 text-[#F2E8D5]" />
                       </div>
                     </div>
                   </motion.div>

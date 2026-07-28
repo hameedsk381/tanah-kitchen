@@ -45,7 +45,7 @@ export default function Footer() {
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none z-0"
         style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
 
-      <div className="px-8 relative z-10 max-w-container mx-auto">
+      <div className="px-8 relative z-10 max-width-container mx-auto">
 
         {/* Cover Page 1 Style Tribal Mural Banner */}
         <div className="w-full mb-16 opacity-80">
@@ -66,7 +66,10 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-xs font-light leading-relaxed text-near-black/70 font-body">
-              Tanah represents connection to the Earth. Our culinary destination in Hyderabad honors natural architectural design, slow wood-fired hearths, and premium sustainable ingredients.
+              TANAH is not simply a restaurant—it is a gathering place where people reconnect with one another through food, drink, stories, and the comforting feeling of coming home.
+            </p>
+            <p className="text-[10px] font-light italic text-near-black/50 font-body mt-1">
+              Built on the symbolism of birds, nests, and the earth — celebrating belonging, rest, and authentic hospitality. ESTD 2025.
             </p>
           </div>
 

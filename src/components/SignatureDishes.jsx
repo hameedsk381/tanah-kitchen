@@ -1,9 +1,17 @@
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
 
 const dishes = [
+  {
+    id: 'dish-kodi-chips',
+    name: 'South India Kodi Chips',
+    desc: 'Crispy-fried chicken strips spiced with regional podi, served with wood-pressed curry leaf & mint chutneys.',
+    price: 399,
+    tag: 'SIGNATURE STARTER',
+    image: '/assets/Tanha Image/08.webp',
+    badge: 'Must Try'
+  },
   {
     id: 'dish-thali',
     name: 'Heritage Soil Thali',
@@ -15,21 +23,12 @@ const dishes = [
   },
   {
     id: 'dish-biryani',
-    name: 'Forest Claypot Biryani',
-    desc: 'Fragrant, aged basmati rice layered with slow-cooked organic forest mushrooms, heritage root vegetables, and rare local spices, sealed in raw clay.',
+    name: 'Claypot Mutton Biryani',
+    desc: 'Fragrant Basmati rice cooked with tender farm mutton, caramelized onions, cashew nuts, and rare spices, served in a clay pot.',
     price: 549,
     tag: 'SLOW COOKED',
     image: '/assets/Tanha Image/11.webp',
-    badge: 'Signature'
-  },
-  {
-    id: 'dish-dessert',
-    name: 'Saffron Rabri Terracotta Bowl',
-    desc: 'Pasture-fed milk slow-reduced over coal fires, infused with Kashmiri saffron, and finished with a pistachio crumble and organic honey.',
-    price: 399,
-    tag: 'HANDCRAFTED',
-    image: '/assets/Tanha Food/food-26.webp',
-    badge: 'Seasonal Dessert'
+    badge: 'Best Seller'
   }
 ]
 
@@ -48,7 +47,7 @@ export default function SignatureDishes() {
       {/* Background glow */}
       <div className="absolute top-1/2 left-10 w-96 h-96 bg-terracotta/5 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="px-8 max-w-container mx-auto relative z-10">
+      <div className="px-8 max-width-container mx-auto relative z-10">
         
         {/* Header */}
         <div className="mb-20">

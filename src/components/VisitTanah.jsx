@@ -206,7 +206,7 @@ export default function VisitTanah() {
               className="w-full h-[320px] sm:h-[450px] shadow-2xl overflow-hidden relative border rounded-3xl"
               style={{ 
                 borderColor: 'rgba(255, 253, 248, 0.08)',
-                background: '#151515'
+                background: 'var(--color-near-black)'
               }}
             >
               {/* Google Maps iFrame */}
