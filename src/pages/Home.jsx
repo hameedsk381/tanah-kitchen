@@ -485,7 +485,7 @@ export default function Home() {
                   </div>
                 </motion.div>
 
-                {/* Bento Tile 4: Dark Chocolate Soil Cake */}
+                {/* Bento Tile 4: Crispy Dahi & Herb Kebabs */}
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
@@ -494,14 +494,14 @@ export default function Home() {
                 >
                   <img
                     src="/assets/Tanha Food/food-29.webp"
-                    alt="Dark Chocolate Soil Cake"
+                    alt="Crispy Dahi & Herb Kebabs"
                     className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
 
                   <div className="relative z-10 flex items-center justify-between">
                     <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md font-sans">
-                      ★ DESSERT
+                      ★ VEG SPECIAL
                     </span>
                     <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-md">
                       <VegMark />
@@ -510,14 +510,14 @@ export default function Home() {
 
                   <div className="relative z-10 text-white space-y-1">
                     <span className="text-[9px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
-                      Confectionery
+                      Artisanal Starters
                     </span>
                     <div className="flex justify-between items-baseline gap-1">
                       <h4 className="font-display text-base sm:text-lg font-bold text-white leading-tight">
-                        Soil Cake
+                        Dahi Kebabs
                       </h4>
                       <span className="font-display text-lg font-extrabold text-[#FFC470]">
-                        ₹549
+                        ₹449
                       </span>
                     </div>
                   </div>
