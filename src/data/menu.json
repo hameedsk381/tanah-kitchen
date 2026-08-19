@@ -270,6 +270,24 @@
       "price": 399,
       "image": "/assets/Tanha Food/food-30.webp",
       "tags": ["Rose Art", "Sweet"]
+    },
+    {
+      "id": "ds6",
+      "category": "Desserts",
+      "name": "Mango Tres Leches",
+      "desc": "Airy sponge cake steeped in three rich milks, layered with fresh Alphonso mango compote and cardamom-scented cream.",
+      "price": 499,
+      "image": "/assets/Tanha Food/food-44.webp",
+      "tags": ["Chef Special", "Alphonso Mango"]
+    },
+    {
+      "id": "ds7",
+      "category": "Desserts",
+      "name": "Desi Tiramisu",
+      "desc": "Artisanal ladyfingers soaked in single-origin Araku Valley filter coffee, layered with whipped saffron mascarpone and cocoa pod dust.",
+      "price": 549,
+      "image": "/assets/Tanha Food/food-45.webp",
+      "tags": ["Signature", "Araku Kaapi"]
     }
   ]
 }
