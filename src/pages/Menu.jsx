@@ -839,18 +839,18 @@ export default function Menu() {
                           key={sIdx}
                           className="wp-card overflow-hidden group hover:border-[#6B2523]/30 transition-all flex flex-col justify-between"
                         >
-                          <div className="relative aspect-[16/10] overflow-hidden">
+                          <div className="relative aspect-[1/1] sm:aspect-[4/4.2] overflow-hidden bg-[#3A2E2A]/5">
                             <img
                               src={special.image}
                               alt={special.name}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                             />
-                            <div className="absolute top-2.5 left-2.5">
-                              <span className="text-[9px] font-bold tracking-wider px-2 py-0.5 rounded-full bg-[#6B2523] text-[#FFC470] shadow-sm">
+                            <div className="absolute top-3 left-3 z-10">
+                              <span className="text-[9px] font-bold tracking-wider px-2.5 py-1 rounded-full bg-[#6B2523]/90 text-[#FFC470] backdrop-blur-md border border-[#FFC470]/30 shadow-md">
                                 {special.tag}
                               </span>
                             </div>
-                            <div className="absolute top-2.5 right-2.5">
+                            <div className="absolute top-3 right-3 z-10 shadow-md">
                               {special.nonVeg ? <NonVegMark /> : <VegMark />}
                             </div>
                           </div>

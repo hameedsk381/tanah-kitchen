@@ -384,46 +384,47 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: dIdx * 0.1 }}
-                className="wp-card overflow-hidden group hover:border-[#6B2523]/30 transition-all flex flex-col justify-between"
+                className="wp-card overflow-hidden group hover:border-[#6B2523]/30 transition-all flex flex-col justify-between rounded-2xl shadow-lg"
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
+                {/* Full-View Food Image Container */}
+                <div className="relative aspect-[1/1] sm:aspect-[4/4.2] w-full overflow-hidden bg-[#3A2E2A]/5">
                   <img
                     src={dish.image}
                     alt={dish.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute top-3 left-3">
-                    <span className="text-[9px] font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-[#6B2523] text-[#FFC470] shadow-sm">
+                  <div className="absolute top-3 left-3 z-10">
+                    <span className="text-[9px] font-bold tracking-wider px-3 py-1 rounded-full bg-[#6B2523]/90 text-[#FFC470] backdrop-blur-md border border-[#FFC470]/30 shadow-md">
                       {dish.tag}
                     </span>
                   </div>
-                  <div className="absolute top-3 right-3 shadow-md">
+                  <div className="absolute top-3 right-3 z-10 shadow-md">
                     {dish.nonVeg ? <NonVegMark /> : <VegMark />}
                   </div>
                 </div>
 
-                <div className="p-5 space-y-3 flex-grow flex flex-col justify-between">
+                <div className="p-5 sm:p-6 space-y-3 flex-grow flex flex-col justify-between">
                   <div>
                     <div className="flex justify-between items-start gap-2 mb-1.5">
-                      <h4 className="font-display text-lg font-bold text-[#6B2523] leading-snug">
+                      <h4 className="font-display text-lg sm:text-xl font-bold text-[#6B2523] leading-snug">
                         {dish.name}
                       </h4>
-                      <span className="font-display text-lg font-bold text-[#6B2523] flex-shrink-0">
+                      <span className="font-display text-lg sm:text-xl font-extrabold text-[#6B2523] flex-shrink-0">
                         ₹{dish.price}
                       </span>
                     </div>
-                    <p className="text-xs text-[#3A2E2A]/75 font-body leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#3A2E2A]/75 font-body leading-relaxed font-light">
                       {dish.desc}
                     </p>
                   </div>
 
-                  <div className="pt-2 border-t border-[#6B2523]/10">
+                  <div className="pt-3 border-t border-[#6B2523]/10">
                     <a
                       href="/menu"
-                      className="text-xs font-bold text-[#6B2523] hover:text-[#882B06] flex items-center gap-1 transition-colors"
+                      className="text-xs font-bold text-[#6B2523] hover:text-[#882B06] inline-flex items-center gap-1.5 transition-colors group/link"
                     >
                       <span>Explore Dish Details</span>
-                      <ChevronRight className="w-3.5 h-3.5" />
+                      <ChevronRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
                     </a>
                   </div>
                 </div>
