@@ -152,20 +152,19 @@ export default function Navbar() {
         </nav>
       </header>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Drawer (WordPress Luxury Styling) */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-x-0 top-0 z-40 flex flex-col pt-24 px-10 pb-10 gap-8 shadow-2xl border-b border-primary-dark/20"
-            style={{ background: 'var(--color-light-cream)' }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-x-0 top-0 z-40 flex flex-col pt-24 px-8 pb-10 gap-6 shadow-2xl border-b border-[#FFC470]/20 bg-[#6B2523] text-[#F6E1CB]"
             role="dialog"
             aria-label="Mobile navigation menu"
           >
-            <div className="flex flex-col gap-5 text-center">
+            <div className="flex flex-col gap-4 text-center">
               {navLinks.map((link, i) => {
                 const isActive = location.pathname === link.path
                 return (
@@ -173,16 +172,15 @@ export default function Navbar() {
                     key={link.label}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.05, duration: 0.4 }}
+                    transition={{ delay: i * 0.04, duration: 0.3 }}
                   >
                     <Link
                       to={link.path}
-                      className="font-display text-2xl font-light block py-1.5 transition-colors duration-300"
-                      style={{
-                        color: isActive
-                          ? 'var(--color-primary-dark)'
-                          : 'var(--color-near-black)'
-                      }}
+                      className={`font-display text-xl font-bold block py-2 transition-colors duration-200 ${
+                        isActive
+                          ? 'text-[#FFC470]'
+                          : 'text-[#F6E1CB] hover:text-[#FFC470]'
+                      }`}
                     >
                       {link.label}
                     </Link>
@@ -194,15 +192,21 @@ export default function Navbar() {
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.4 }}
-              className="flex justify-center"
+              transition={{ delay: 0.25, duration: 0.3 }}
+              className="flex flex-col items-center gap-3 pt-2"
             >
               <Link
                 to="/book"
-                className="btn-primary text-center justify-center w-64 py-3 tracking-[0.2em]"
+                className="wp-btn-pill bg-[#FFC470] text-[#6B2523] hover:bg-white text-center justify-center w-full max-w-xs py-3 text-xs font-bold shadow-lg"
               >
-                Reserve Table
+                Book a Table
               </Link>
+              <a
+                href="tel:+918977730291"
+                className="text-xs text-[#FFC470] font-semibold tracking-wider hover:underline"
+              >
+                📞 Call: +91 89777 30291
+              </a>
             </motion.div>
           </motion.div>
         )}
@@ -215,7 +219,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-30 bg-dark-brown/40 md:hidden backdrop-blur-md"
+            className="fixed inset-0 z-30 bg-black/60 md:hidden backdrop-blur-sm"
             onClick={() => setMenuOpen(false)}
           />
         )}
