@@ -483,8 +483,8 @@ export default function AdminMenu() {
                 </div>
               </div>
 
-              {/* Spacious 4x2 Photo Gallery Grid (Zero Clipping) */}
-              <div className="p-6 overflow-y-auto max-h-[58vh] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 bg-[#FAF6F0]/40">
+              {/* Pure Visual Photo Gallery Grid (Zero Text Content) */}
+              <div className="p-6 overflow-y-auto max-h-[58vh] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-5 bg-[#FAF6F0]/40">
                 {paginatedPhotos.map((img) => {
                   const isSelected = editingItem.image === img.path
                   return (
@@ -493,36 +493,26 @@ export default function AdminMenu() {
                       onClick={() => {
                         setEditingItem({ ...editingItem, image: img.path })
                         setIsPhotoPickerOpen(false)
-                        showToast(`✓ Assigned ${img.id}.webp`)
+                        showToast(`✓ Photo assigned`)
                       }}
-                      className={`group relative rounded-2xl overflow-hidden cursor-pointer border-2 transition-all bg-white shadow-xs flex flex-col ${
+                      className={`group relative rounded-2xl overflow-hidden cursor-pointer border-2 transition-all shadow-xs h-40 sm:h-48 bg-white ${
                         isSelected
-                          ? 'border-[#6B2523] ring-4 ring-[#6B2523]/25 shadow-md scale-[1.02]'
-                          : 'border-[#6B2523]/15 hover:border-[#6B2523]/60 hover:shadow-md'
+                          ? 'border-[#6B2523] ring-4 ring-[#6B2523]/30 scale-[1.02] shadow-lg'
+                          : 'border-transparent hover:border-[#6B2523]/50 hover:shadow-md'
                       }`}
                     >
-                      <div className="w-full h-36 sm:h-40 overflow-hidden relative bg-black/5">
-                        <img
-                          src={img.path}
-                          alt={img.name}
-                          loading="lazy"
-                          decoding="async"
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                        {isSelected && (
-                          <div className="absolute top-2.5 right-2.5 bg-[#6B2523] text-[#FFC470] p-1 rounded-full shadow-lg">
-                            <Check className="w-4 h-4" />
-                          </div>
-                        )}
-                      </div>
-                      <div className="p-2.5 bg-white flex items-center justify-between border-t border-[#6B2523]/10 text-[#3A2E2A]">
-                        <span className="text-xs font-mono font-bold text-[#6B2523]">
-                          {img.id}.webp
-                        </span>
-                        <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-[#6B2523]/10 group-hover:bg-[#6B2523] group-hover:text-[#FFC470] text-[#6B2523] rounded-md transition-colors">
-                          Choose
-                        </span>
-                      </div>
+                      <img
+                        src={img.path}
+                        alt={img.name}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      {isSelected && (
+                        <div className="absolute top-3 right-3 bg-[#6B2523] text-[#FFC470] p-1.5 rounded-full shadow-xl">
+                          <Check className="w-4 h-4" />
+                        </div>
+                      )}
                     </div>
                   )
                 })}

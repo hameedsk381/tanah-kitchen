@@ -57,7 +57,7 @@ export default function Gallery() {
       <section className="wp-section bg-[#FAF6F0]">
         <div className="wp-container space-y-10">
 
-          {/* Categories Tab (WordPress Filter Pills) */}
+          {/* Categories Tab (Filter Pills) */}
           <div className="flex items-center justify-center gap-3 overflow-x-auto w-full no-scrollbar pb-2">
             {galleryData.categories.map((cat) => {
               const isActive = selectedCategory === cat
@@ -77,48 +77,32 @@ export default function Gallery() {
             })}
           </div>
 
-          {/* WordPress Image Grid */}
+          {/* Pure Visual Image Grid (Zero Content Overlays) */}
           <motion.div
             layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"
           >
             <AnimatePresence mode="popLayout">
-              {filteredItems.map((item) => {
-                const heightClass = "aspect-square";
-
-                return (
-                  <motion.div
-                    key={item.id}
-                    layout
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.5 }}
-                    onClick={() => setLightbox(item)}
-                    className={`group relative overflow-hidden cursor-pointer rounded-2xl ${heightClass} border border-[#6B2523]/15 shadow-md hover:shadow-2xl transition-all duration-500`}
-                  >
-                    <img
-                      src={item.src}
-                      alt={item.alt}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-95 group-hover:brightness-75 contrast-[1.02]"
-                    />
-
-                    {/* Hover Info Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="flex items-center justify-between w-full text-left">
-                        <div>
-                          <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-[#FFC470] block mb-1">
-                            {item.category}
-                          </span>
-                          <p className="font-display text-xl font-bold text-white leading-tight">
-                            {item.caption}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                )
-              })}
+              {filteredItems.map((item) => (
+                <motion.div
+                  key={item.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.4 }}
+                  onClick={() => setLightbox(item)}
+                  className="group relative overflow-hidden cursor-pointer rounded-2xl aspect-square border border-[#6B2523]/15 shadow-sm hover:shadow-xl transition-all duration-500 bg-white"
+                >
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-95 group-hover:brightness-90 contrast-[1.02]"
+                  />
+                </motion.div>
+              ))}
             </AnimatePresence>
           </motion.div>
         </div>
@@ -151,21 +135,12 @@ export default function Gallery() {
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="relative aspect-[4/3] w-full max-h-[70vh]">
+              <div className="relative aspect-[4/3] w-full max-h-[75vh]">
                 <img
                   src={lightbox.src}
                   alt={lightbox.alt}
                   className="w-full h-full object-contain bg-black"
                 />
-              </div>
-
-              <div className="p-6 bg-[#541B1A] text-left">
-                <span className="text-[9px] font-bold tracking-[0.25em] uppercase text-[#FFC470] block mb-1">
-                  {lightbox.category}
-                </span>
-                <h3 className="font-display text-xl font-bold text-[#F6E1CB]">
-                  {lightbox.caption}
-                </h3>
               </div>
             </motion.div>
           </motion.div>
