@@ -10,7 +10,26 @@ export default function SEO({
 }) {
   const location = useLocation()
   const siteUrl = 'https://tanahkitchen.in'
-  const currentUrl = canonical || `${siteUrl}${location.pathname}`
+
+  // Map known alias routes to their canonical master URL
+  const aliasMap = {
+    '/privacy': '/privacy-policy',
+    '/terms': '/terms-and-conditions'
+  }
+
+  // Canonical normalization: strip query params, normalize slashes
+  let cleanPath = location.pathname.toLowerCase()
+  if (aliasMap[cleanPath]) {
+    cleanPath = aliasMap[cleanPath]
+  }
+
+  // Ensure root is '/' and subpaths have no trailing slash
+  let normalizedPath = cleanPath
+  if (normalizedPath !== '/' && normalizedPath.endsWith('/')) {
+    normalizedPath = normalizedPath.slice(0, -1)
+  }
+
+  const currentUrl = canonical || (normalizedPath === '/' ? `${siteUrl}/` : `${siteUrl}${normalizedPath}`)
 
   useEffect(() => {
     // 1. Update Title
@@ -27,7 +46,7 @@ export default function SEO({
       element.setAttribute('content', content)
     }
 
-    // 3. Update Standard & Social Meta Tags
+    // 3. Update Standard & Social Meta Tags (Matching Canonical)
     setMetaTag('meta[name="description"]', 'name', 'description', description)
     setMetaTag('meta[property="og:title"]', 'property', 'og:title', title)
     setMetaTag('meta[property="og:description"]', 'property', 'og:description', description)
@@ -49,13 +68,19 @@ export default function SEO({
     // 5. Update JSON-LD Structured Data Schema if provided
     let scriptTag = document.getElementById('route-jsonld')
     if (schema) {
+      // Ensure schema url field matches canonical
+      const normalizedSchema = {
+        ...schema,
+        url: schema.url || currentUrl
+      }
+
       if (!scriptTag) {
         scriptTag = document.createElement('script')
         scriptTag.id = 'route-jsonld'
         scriptTag.type = 'application/ld+json'
         document.head.appendChild(scriptTag)
       }
-      scriptTag.textContent = JSON.stringify(schema)
+      scriptTag.textContent = JSON.stringify(normalizedSchema)
     } else if (scriptTag) {
       scriptTag.remove()
     }
