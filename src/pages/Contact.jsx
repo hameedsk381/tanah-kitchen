@@ -72,7 +72,7 @@ export default function Contact() {
       <section className="section-dark relative py-20 lg:py-28 text-center border-b border-light-cream/15 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20 mix-blend-multiply">
           <img
-            src="/assets/Tanha Image/02.webp"
+            src="/assets/Tanha Ambiance/Ambiance-9.webp"
             alt="Tanah Bar ambience banner"
             className="w-full h-full object-cover filter brightness-75"
           />

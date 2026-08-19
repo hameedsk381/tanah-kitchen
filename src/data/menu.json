@@ -34,7 +34,7 @@
       "name": "South India Kodi Chips",
       "desc": "Crispy-fried chicken strips spiced with regional podi, served with wood-pressed curry leaf and mint chutneys.",
       "price": 399,
-      "image": "/assets/Tanha Image/08.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": ["Signature", "Crispy"]
     },
     {
@@ -61,7 +61,7 @@
       "name": "Claypot Mutton Biryani",
       "desc": "Fragrant Basmati rice cooked with tender farm mutton, caramelized onions, cashew nuts, and rare spices, served with raita and salan.",
       "price": 549,
-      "image": "/assets/Tanha Image/11.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": ["Best Seller", "Signature"]
     },
     {
@@ -106,7 +106,7 @@
       "name": "Tandoori Dahi Kebab",
       "desc": "Pan-seared hung curd patties spiced with green chilies, coriander, and royal cumin, served with a stone-ground mint dip.",
       "price": 549,
-      "image": "/assets/Tanha Image/09.webp",
+      "image": "/assets/Tanha Food/food-2.webp",
       "tags": ["Vegetarian", "Melt-in-Mouth"]
     },
     {
@@ -124,7 +124,7 @@
       "name": "Continental Mutton Ravioli Pasta",
       "desc": "House-made ravioli pockets stuffed with spiced slow-cooked mutton mince, tossed in a creamy caper and herb butter sauce.",
       "price": 549,
-      "image": "/assets/Tanha Image/07.webp",
+      "image": "/assets/Tanha Food/food-12.webp",
       "tags": ["Signature", "Rich"]
     },
     {
@@ -133,7 +133,7 @@
       "name": "Wood-Fired Gourmet Pizza",
       "desc": "Artisanal hand-stretched sourdough crust topped with organic cherry tomatoes, sliced kalamata olives, crisp broccoli, and fresh house-made mozzarella.",
       "price": 399,
-      "image": "/assets/Tanha Image/06.webp",
+      "image": "/assets/Tanha Food/food-31.webp",
       "tags": ["Wood-Fired", "Artisanal"]
     },
     {
