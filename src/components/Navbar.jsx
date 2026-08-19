@@ -41,13 +41,19 @@ export default function Navbar() {
     }
   }, [menuOpen])
 
+  const isHome = location.pathname === '/'
+
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-        {/* Top Announcement / Info Bar (WordPress Style) */}
+        {/* Top Announcement / Info Bar */}
         <div
-          className={`hidden lg:block transition-all duration-300 text-[11px] font-medium tracking-wider border-b border-[#FFC470]/15 ${
-            scrolled ? 'h-0 opacity-0 overflow-hidden py-0' : 'py-2 bg-[#541B1A] text-[#F6E1CB]/85'
+          className={`hidden lg:block transition-all duration-300 text-[11px] font-medium tracking-wider ${
+            scrolled
+              ? 'h-0 opacity-0 overflow-hidden py-0'
+              : isHome
+              ? 'py-2 bg-black/20 backdrop-blur-xs text-[#F6E1CB]/90 border-b border-white/10'
+              : 'py-2 bg-[#541B1A] text-[#F6E1CB]/85 border-b border-[#FFC470]/15'
           }`}
         >
           <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
@@ -76,6 +82,8 @@ export default function Navbar() {
           className={`transition-all duration-300 ${
             scrolled
               ? 'py-3.5 bg-[#6B2523]/95 backdrop-blur-md shadow-lg border-b border-[#FFC470]/20'
+              : isHome
+              ? 'py-4 lg:py-5 bg-transparent border-b border-white/10 shadow-none'
               : 'py-4 lg:py-5 bg-[#6B2523] border-b border-[#FFC470]/10'
           }`}
           role="navigation"
