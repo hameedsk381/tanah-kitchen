@@ -666,27 +666,27 @@ export default function Home() {
               className="lg:col-span-6 space-y-6 text-left"
             >
               <span className="wp-badge wp-badge-gold">
-                TEAM BONDING EVENTS
+                ✦ CORPORATE HOSPITALITY &amp; RETREATS ✦
               </span>
 
               <h3 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#DEC8AB]">
-                Why Tanah
+                Why Leaders &amp; Teams Choose Tanah
               </h3>
 
               <div className="w-16 h-[2px] bg-[#FFC470]/60 rounded-full" />
 
               <p className="text-lg opacity-90 leading-relaxed font-body">
-                We believe in the power of shared tables. The name "Tanah" represents our deep connection to the earth, reflected in our rustic elements, raw bamboo layouts, and organic farm-sourced cuisines.
+                We believe in the transformative power of the shared table. Located in the heart of Gachibowli, Hyderabad, Tanah fuses raw architectural tranquility, zero-mile farm gastronomy, and bespoke luxury hospitality to host Hyderabad's most distinguished corporate retreats and celebrations.
               </p>
 
               {/* Bullet list in WordPress Card Container */}
               <div className="space-y-3 pt-2">
                 {[
-                  "Premium corporate and leadership gatherings",
-                  "Fluid layouts perfect for client entertainment",
-                  "A hands on culinary team experience",
-                  "Exclusive rooftop spaces with ambient festoon lighting",
-                  "Fully customizable culinary packages tailored to dietary needs"
+                  "Exclusive Executive Board Meetings & Private Dining Suites",
+                  "Spacious, flexible layouts engineered for premium client entertainment",
+                  "A hands-on culinary team experience & fire cooking masterclasses",
+                  "Panoramic open-sky rooftop terrace with ambient festoon lighting",
+                  "Bespoke multi-course culinary packages tailored to all dietary preferences"
                 ].map((item, index) => (
                   <div
                     key={index}
@@ -769,7 +769,7 @@ export default function Home() {
               className="lg:col-span-7 space-y-6 text-left"
             >
               <span className="wp-badge wp-badge-maroon">
-                OUR ANCESTRY
+                OUR ANCESTRY &amp; ETHOS
               </span>
 
               <h3 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#6B2523]">
@@ -781,16 +781,16 @@ export default function Home() {
               {/* Callout Quote Card */}
               <div className="p-6 rounded-2xl bg-[#6B2523]/5 border-l-4 border-[#6B2523]">
                 <p className="text-lg md:text-xl font-display italic text-[#6B2523] leading-relaxed">
-                  "Architecture shaped by the natural nest, menus inspired by agricultural ancestry."
+                  "Architecture shaped by the sanctuary of the nest, cuisine inspired by agricultural ancestry."
                 </p>
               </div>
 
               <div className="space-y-4 text-base text-[#3A2E2A]/85 leading-relaxed font-body">
                 <p>
-                  Rooted in the earth, Tanah emerged in Gachibowli, Hyderabad, as a sanctuary for professionals to transition from stressful work schedules to relaxed, natural atmospheres. Our architecture utilizes raw bamboo arches, local basalt stone, and thatched roofs, letting teams experience an organic workspace.
+                  Rooted in the Sanskrit &amp; regional earth tradition, Tanah emerged in Gachibowli, Hyderabad, as an architectural sanctuary where founders, corporate teams, and connoisseurs transition from demanding schedules to grounded, natural atmospheres. Our design blends handcrafted bamboo arches, local basalt stone, and living canopies into an organic gathering haven.
                 </p>
                 <p>
-                  Every gathering is elevated by our culinary practices, which draw heavily from fire cooking, seasonal micro-farming, and hand-milled grains. We bring ancient flavours and premium hospitality under one sky.
+                  Every gathering is elevated by our authentic wood-fired hearths, seasonal micro-farm produce, and hand-milled heirloom grains. We bring ancient gastronomic wisdom and world-class luxury hospitality together under one panoramic sky.
                 </p>
               </div>
             </motion.div>
@@ -831,21 +831,21 @@ export default function Home() {
                 {[
                   {
                     icon: <Briefcase className="w-6 h-6 text-[#FFC470]" />,
-                    label: "Executive Board Gatherings",
-                    capacity: "Capacity: 15–25 Guests • Private Lounge",
-                    desc: "Closed-door networking and dynamic strategy sessions hosted in raw-stone private dining suites."
+                    label: "Executive Board & Leadership Dining",
+                    capacity: "Capacity: 15–25 Guests • Private Dining Suite",
+                    desc: "High-impact executive meetings, private dinners, and strategic leadership retreats hosted in sound-insulated, raw-stone private dining suites with dedicated butler service and customized chef-curated tasting menus."
                   },
                   {
                     icon: <Users className="w-6 h-6 text-[#FFC470]" />,
-                    label: "Team Bonding Receptions",
-                    capacity: "Capacity: 40–60 Guests • Open Sky Terrace",
-                    desc: "Vibrant high-energy spaces with live culinary setups, perfect for milestones and product launches."
+                    label: "Corporate Celebrations & Team Receptions",
+                    capacity: "Capacity: 40–60 Guests • Open Sky Rooftop Terrace",
+                    desc: "High-energy team outings, quarterly milestones, and brand launch receptions on our panoramic open-air terrace with live artisanal wood-fired cooking and craft mixology."
                   },
                   {
                     icon: <Compass className="w-6 h-6 text-[#FFC470]" />,
-                    label: "Gastronomy Masterclasses",
+                    label: "Hands-On Culinary Team Experiences",
                     capacity: "Capacity: 20–30 Guests • Live Wood-Fired Hearth",
-                    desc: "Curated wood-fired cooking masterclasses led by our executive culinary curators for teams."
+                    desc: "Interactive team-building masterclasses and artisanal cocktail pairing workshops led by master culinary curators, designed to foster authentic collaboration and shared memories."
                   }
                 ].map((row, idx) => (
                   <div
