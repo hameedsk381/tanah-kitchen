@@ -160,8 +160,8 @@ export default function Footer() {
             © {new Date().getFullYear()} Tanah Kitchen &amp; Bar. Architectural Gastronomy. All rights reserved.
           </p>
           <div className="flex gap-6 text-xs font-light text-[#EFE1D0]/60">
-            <a href="#" className="hover:text-[#FFC470] transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-[#FFC470] transition-colors">Terms of Use</a>
+            <Link to="/privacy-policy" className="hover:text-[#FFC470] transition-colors">Privacy Policy</Link>
+            <Link to="/terms-and-conditions" className="hover:text-[#FFC470] transition-colors">Terms of Use</Link>
           </div>
         </div>
       </div>

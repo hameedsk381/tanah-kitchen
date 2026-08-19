@@ -5,6 +5,8 @@ import Menu from './pages/Menu'
 import Gallery from './pages/Gallery'
 import Book from './pages/Book'
 import Contact from './pages/Contact'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsAndConditions from './pages/TermsAndConditions'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import FloatingActionBar from './components/FloatingActionBar'
@@ -21,6 +23,10 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/book" element={<Book />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+          <Route path="/terms" element={<TermsAndConditions />} />
         </Routes>
         <Footer />
         <FloatingActionBar />
