@@ -28,7 +28,7 @@ const ALL_FOOD_IMAGES = Array.from({ length: 54 }, (_, i) => ({
 }))
 
 const DISHES_PER_PAGE = 12
-const PHOTOS_PER_PAGE = 12
+const PHOTOS_PER_PAGE = 8
 
 function VegMark() {
   return (
@@ -441,13 +441,15 @@ export default function AdminMenu() {
 
               {/* Photo Filter Tabs & Search */}
               <div className="p-4 border-b border-[#6B2523]/10 bg-white flex flex-col sm:flex-row items-center justify-between gap-3">
-                <div className="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto">
+                <div className="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0 scrollbar-none">
                   {[
-                    { label: 'Photos 1-12', page: 1 },
-                    { label: 'Photos 13-24', page: 2 },
-                    { label: 'Photos 25-36', page: 3 },
-                    { label: 'Photos 37-48', page: 4 },
-                    { label: 'Photos 49-54', page: 5 }
+                    { label: 'Photos 1–8', page: 1 },
+                    { label: 'Photos 9–16', page: 2 },
+                    { label: 'Photos 17–24', page: 3 },
+                    { label: 'Photos 25–32', page: 4 },
+                    { label: 'Photos 33–40', page: 5 },
+                    { label: 'Photos 41–48', page: 6 },
+                    { label: 'Photos 49–54', page: 7 }
                   ].map((tab) => (
                     <button
                       key={tab.page}
@@ -455,9 +457,9 @@ export default function AdminMenu() {
                         setImageSearchQuery('')
                         setPhotoPage(tab.page)
                       }}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
+                      className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
                         photoPage === tab.page && !imageSearchQuery
-                          ? 'bg-[#6B2523] text-[#FFC470]'
+                          ? 'bg-[#6B2523] text-[#FFC470] shadow-xs'
                           : 'bg-[#FAF6F0] text-[#3A2E2A]/75 hover:bg-[#6B2523]/10'
                       }`}
                     >
@@ -466,7 +468,7 @@ export default function AdminMenu() {
                   ))}
                 </div>
 
-                <div className="relative w-full sm:w-48">
+                <div className="relative w-full sm:w-48 flex-shrink-0">
                   <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-[#3A2E2A]/40" />
                   <input
                     type="text"
@@ -476,13 +478,13 @@ export default function AdminMenu() {
                       setPhotoPage(1)
                     }}
                     placeholder="Search photo #..."
-                    className="w-full pl-8 pr-3 py-1.5 bg-[#FAF6F0] rounded-lg border border-[#6B2523]/15 text-xs focus:outline-none"
+                    className="w-full pl-8 pr-3 py-1.5 bg-[#FAF6F0] rounded-xl border border-[#6B2523]/15 text-xs focus:outline-none"
                   />
                 </div>
               </div>
 
-              {/* Spacious 3x4 Photo Gallery Grid */}
-              <div className="p-6 overflow-y-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 flex-1 bg-[#FAF6F0]/30">
+              {/* Spacious 4x2 Photo Gallery Grid (Zero Clipping) */}
+              <div className="p-6 overflow-y-auto max-h-[58vh] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 bg-[#FAF6F0]/40">
                 {paginatedPhotos.map((img) => {
                   const isSelected = editingItem.image === img.path
                   return (
@@ -493,35 +495,34 @@ export default function AdminMenu() {
                         setIsPhotoPickerOpen(false)
                         showToast(`✓ Assigned ${img.id}.webp`)
                       }}
-                      className={`group relative rounded-2xl overflow-hidden cursor-pointer border-2 transition-all aspect-[4/3] bg-white shadow-xs ${
+                      className={`group relative rounded-2xl overflow-hidden cursor-pointer border-2 transition-all bg-white shadow-xs flex flex-col ${
                         isSelected
-                          ? 'border-[#6B2523] ring-4 ring-[#6B2523]/25 scale-[1.02]'
-                          : 'border-transparent hover:border-[#6B2523]/40 hover:shadow-md'
+                          ? 'border-[#6B2523] ring-4 ring-[#6B2523]/25 shadow-md scale-[1.02]'
+                          : 'border-[#6B2523]/15 hover:border-[#6B2523]/60 hover:shadow-md'
                       }`}
                     >
-                      <img
-                        src={img.path}
-                        alt={img.name}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
-
-                      <div className="absolute bottom-2 inset-x-2 flex items-center justify-between text-white">
-                        <span className="text-[11px] font-mono font-bold">
+                      <div className="w-full h-36 sm:h-40 overflow-hidden relative bg-black/5">
+                        <img
+                          src={img.path}
+                          alt={img.name}
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        {isSelected && (
+                          <div className="absolute top-2.5 right-2.5 bg-[#6B2523] text-[#FFC470] p-1 rounded-full shadow-lg">
+                            <Check className="w-4 h-4" />
+                          </div>
+                        )}
+                      </div>
+                      <div className="p-2.5 bg-white flex items-center justify-between border-t border-[#6B2523]/10 text-[#3A2E2A]">
+                        <span className="text-xs font-mono font-bold text-[#6B2523]">
                           {img.id}.webp
                         </span>
-                        <span className="text-[9px] uppercase px-2 py-0.5 bg-white/20 backdrop-blur-xs rounded-full">
-                          Select
+                        <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-[#6B2523]/10 group-hover:bg-[#6B2523] group-hover:text-[#FFC470] text-[#6B2523] rounded-md transition-colors">
+                          Choose
                         </span>
                       </div>
-
-                      {isSelected && (
-                        <div className="absolute top-2.5 right-2.5 bg-[#6B2523] text-[#FFC470] p-1 rounded-full shadow-lg">
-                          <Check className="w-4 h-4" />
-                        </div>
-                      )}
                     </div>
                   )
                 })}
@@ -533,25 +534,25 @@ export default function AdminMenu() {
                   <button
                     onClick={() => setPhotoPage((p) => Math.max(1, p - 1))}
                     disabled={photoPage === 1}
-                    className="px-3 py-1.5 rounded-lg bg-white border border-[#6B2523]/20 disabled:opacity-30 text-xs font-bold text-[#6B2523]"
+                    className="px-3 py-1.5 rounded-xl bg-white border border-[#6B2523]/20 disabled:opacity-30 text-xs font-bold text-[#6B2523]"
                   >
-                    ← Previous 12
+                    ← Previous
                   </button>
                   <span className="text-xs text-[#3A2E2A]/70 font-semibold px-2">
-                    {photoPage} / {totalPhotoPages}
+                    Page {photoPage} of {totalPhotoPages}
                   </span>
                   <button
                     onClick={() => setPhotoPage((p) => Math.min(totalPhotoPages, p + 1))}
                     disabled={photoPage === totalPhotoPages}
-                    className="px-3 py-1.5 rounded-lg bg-white border border-[#6B2523]/20 disabled:opacity-30 text-xs font-bold text-[#6B2523]"
+                    className="px-3 py-1.5 rounded-xl bg-white border border-[#6B2523]/20 disabled:opacity-30 text-xs font-bold text-[#6B2523]"
                   >
-                    Next 12 →
+                    Next →
                   </button>
                 </div>
 
                 <button
                   onClick={() => setIsPhotoPickerOpen(false)}
-                  className="px-5 py-2 rounded-xl bg-[#6B2523] text-[#FFC470] text-xs font-bold uppercase tracking-wider shadow-sm"
+                  className="px-5 py-2 rounded-xl bg-[#6B2523] text-[#FFC470] text-xs font-bold uppercase tracking-wider shadow-xs"
                 >
                   Close
                 </button>
