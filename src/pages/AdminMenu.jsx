@@ -13,8 +13,14 @@ import {
   X,
   Sparkles,
   Utensils,
+  LayoutGrid,
+  Images,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Sliders,
+  Flame,
+  Wine,
+  Save
 } from 'lucide-react'
 import { useMenu } from '../context/MenuContext'
 import SEO from '../components/SEO'
@@ -29,6 +35,7 @@ const ALL_FOOD_IMAGES = Array.from({ length: 54 }, (_, i) => ({
 
 const DISHES_PER_PAGE = 12
 const PHOTOS_PER_PAGE = 8
+const GALLERY_PER_PAGE = 12
 
 function VegMark() {
   return (
@@ -53,26 +60,57 @@ function NonVegMark() {
 }
 
 export default function AdminMenu() {
-  const { items, categories, updateItem, addItem, deleteItem, resetToDefault, exportJsonFile } =
-    useMenu()
+  const {
+    items,
+    categories,
+    updateItem,
+    addItem,
+    deleteItem,
+    resetToDefault,
+    exportJsonFile,
+    // Bento
+    bentoItems,
+    updateBentoSlot,
+    resetBento,
+    // Gallery
+    galleryCategories,
+    galleryItems,
+    updateGalleryItemCategory,
+    resetGallery,
+    exportGalleryJson
+  } = useMenu()
 
+  // Studio Top Tabs: 'bento' | 'menu' | 'gallery'
+  const [activeTab, setActiveTab] = useState('bento')
+
+  // Menu Search & Filter
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('All')
+  const [dishPage, setDishPage] = useState(1)
+
+  // Bento Editor State
+  const [editingBentoIndex, setEditingBentoIndex] = useState(null)
+  const [bentoDraft, setBentoDraft] = useState(null)
+
+  // Gallery Filter & State
+  const [galleryFilter, setGalleryFilter] = useState('All')
+  const [gallerySearch, setGallerySearch] = useState('')
+  const [galleryPage, setGalleryPage] = useState(1)
+
+  // Modals
   const [editingItem, setEditingItem] = useState(null)
   const [isPhotoPickerOpen, setIsPhotoPickerOpen] = useState(false)
-  const [toastMessage, setToastMessage] = useState('')
+  const [photoPickerTarget, setPhotoPickerTarget] = useState('menu') // 'menu' or 'bento'
   const [imageSearchQuery, setImageSearchQuery] = useState('')
-  
-  // Pagination States
-  const [dishPage, setDishPage] = useState(1)
   const [photoPage, setPhotoPage] = useState(1)
+  const [toastMessage, setToastMessage] = useState('')
 
   const showToast = (msg) => {
     setToastMessage(msg)
     setTimeout(() => setToastMessage(''), 3000)
   }
 
-  // Filtered dishes
+  // 1. Filtered dishes
   const filteredItems = useMemo(() => {
     return items.filter((item) => {
       const matchesCategory =
@@ -86,14 +124,33 @@ export default function AdminMenu() {
     })
   }, [items, selectedCategory, searchQuery])
 
-  // Paginated dishes
   const totalDishPages = Math.ceil(filteredItems.length / DISHES_PER_PAGE) || 1
   const paginatedDishes = useMemo(() => {
     const start = (dishPage - 1) * DISHES_PER_PAGE
     return filteredItems.slice(start, start + DISHES_PER_PAGE)
   }, [filteredItems, dishPage])
 
-  // Filtered images in picker
+  // 2. Filtered Gallery Items
+  const filteredGallery = useMemo(() => {
+    return galleryItems.filter((item) => {
+      const matchesCat =
+        galleryFilter === 'All' || item.category.toLowerCase() === galleryFilter.toLowerCase()
+      const matchesSearch =
+        !gallerySearch ||
+        item.id.toLowerCase().includes(gallerySearch.toLowerCase()) ||
+        item.src.toLowerCase().includes(gallerySearch.toLowerCase()) ||
+        (item.caption && item.caption.toLowerCase().includes(gallerySearch.toLowerCase()))
+      return matchesCat && matchesSearch
+    })
+  }, [galleryItems, galleryFilter, gallerySearch])
+
+  const totalGalleryPages = Math.ceil(filteredGallery.length / GALLERY_PER_PAGE) || 1
+  const paginatedGallery = useMemo(() => {
+    const start = (galleryPage - 1) * GALLERY_PER_PAGE
+    return filteredGallery.slice(start, start + GALLERY_PER_PAGE)
+  }, [filteredGallery, galleryPage])
+
+  // 3. Filtered images in Photo Picker
   const filteredImages = useMemo(() => {
     if (!imageSearchQuery) return ALL_FOOD_IMAGES
     return ALL_FOOD_IMAGES.filter((img) =>
@@ -103,14 +160,13 @@ export default function AdminMenu() {
     )
   }, [imageSearchQuery])
 
-  // Paginated images in picker
   const totalPhotoPages = Math.ceil(filteredImages.length / PHOTOS_PER_PAGE) || 1
   const paginatedPhotos = useMemo(() => {
     const start = (photoPage - 1) * PHOTOS_PER_PAGE
     return filteredImages.slice(start, start + PHOTOS_PER_PAGE)
   }, [filteredImages, photoPage])
 
-  // Save handler for the modal
+  // Menu Save
   const handleSaveItem = (e) => {
     e.preventDefault()
     if (!editingItem.name.trim()) {
@@ -128,18 +184,22 @@ export default function AdminMenu() {
     setEditingItem(null)
   }
 
-  // Copy JSON to clipboard
-  const handleCopyJson = () => {
-    const jsonStr = JSON.stringify({ categories, items }, null, 2)
-    navigator.clipboard.writeText(jsonStr)
-    showToast('📋 Menu JSON copied to clipboard!')
+  // Bento Slot Save
+  const handleSaveBentoSlot = (e) => {
+    e.preventDefault()
+    if (editingBentoIndex !== null && bentoDraft) {
+      updateBentoSlot(editingBentoIndex, bentoDraft)
+      showToast(`✓ Updated Bento Slot ${editingBentoIndex + 1}: ${bentoDraft.title}`)
+      setEditingBentoIndex(null)
+      setBentoDraft(null)
+    }
   }
 
   return (
     <main className="min-h-screen bg-[#FAF6F0] text-[#3A2E2A] pt-28 pb-20 font-body">
       <SEO
-        title="Menu & Content Management Studio | Tanah Kitchen"
-        description="Fast, spacious visual studio for matching dish photography, editing prices, and managing categories."
+        title="Admin Content & Bento Studio | Tanah Kitchen"
+        description="Live customizer for Home Page Bento Grid, Menu items, and Gallery category mapping."
       />
 
       {/* Toast Notification */}
@@ -164,256 +224,822 @@ export default function AdminMenu() {
           <div className="space-y-1.5">
             <div className="flex items-center gap-2">
               <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-[#6B2523] text-[#FFC470]">
-                ✦ CONTENT STUDIO ✦
+                ✦ STUDIO CONTROL ✦
               </span>
               <span className="text-xs font-semibold text-[#882B06] bg-[#882B06]/10 px-2.5 py-1 rounded-full">
-                {items.length} Dishes
+                Live Dynamic Sync
               </span>
             </div>
             <h1 className="font-display font-extrabold text-2xl sm:text-4xl text-[#6B2523]">
-              Menu &amp; Visual Content Studio
+              Visual Content &amp; Bento Studio
             </h1>
             <p className="text-xs sm:text-sm text-[#3A2E2A]/80 max-w-xl font-light">
-              Visually match authentic restaurant photographs, update descriptions, and synchronize prices live across the website.
+              Customize Home Page Bento Grid tiles, reassign gallery photo categories, and manage seasonal menu dishes.
             </p>
           </div>
 
-          {/* Action Tools */}
-          <div className="flex flex-wrap items-center gap-2.5">
+          {/* Studio Navigation Tabs */}
+          <div className="flex items-center gap-2 bg-[#FAF6F0] p-1.5 rounded-2xl border border-[#6B2523]/15">
             <button
-              onClick={() => {
-                setEditingItem({
-                  name: '',
-                  category: 'Lunch',
-                  desc: '',
-                  price: 499,
-                  image: '/assets/Tanha Food/food-1.webp',
-                  tags: ['Chef Special']
-                })
-              }}
-              className="px-4 py-2.5 rounded-xl bg-[#6B2523] text-[#FFC470] hover:bg-[#3A2E2A] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-md"
+              onClick={() => setActiveTab('bento')}
+              className={`px-4 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-2 ${
+                activeTab === 'bento'
+                  ? 'bg-[#6B2523] text-[#FFC470] shadow-md'
+                  : 'text-[#3A2E2A]/70 hover:text-[#6B2523]'
+              }`}
             >
-              <Plus className="w-4 h-4" />
-              <span>Add New Dish</span>
+              <LayoutGrid className="w-4 h-4" />
+              <span>Home Bento Grid</span>
             </button>
 
             <button
-              onClick={exportJsonFile}
-              className="px-3.5 py-2.5 rounded-xl bg-white border border-[#6B2523]/25 hover:bg-[#FAF6F0] text-[#6B2523] text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
-              title="Download updated menu.json"
+              onClick={() => setActiveTab('menu')}
+              className={`px-4 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-2 ${
+                activeTab === 'menu'
+                  ? 'bg-[#6B2523] text-[#FFC470] shadow-md'
+                  : 'text-[#3A2E2A]/70 hover:text-[#6B2523]'
+              }`}
             >
-              <Download className="w-4 h-4" />
-              <span>Export JSON</span>
+              <Utensils className="w-4 h-4" />
+              <span>Full Menu</span>
             </button>
 
             <button
-              onClick={handleCopyJson}
-              className="px-3.5 py-2.5 rounded-xl bg-white border border-[#6B2523]/25 hover:bg-[#FAF6F0] text-[#6B2523] text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
-              title="Copy JSON to clipboard"
+              onClick={() => setActiveTab('gallery')}
+              className={`px-4 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-2 ${
+                activeTab === 'gallery'
+                  ? 'bg-[#6B2523] text-[#FFC470] shadow-md'
+                  : 'text-[#3A2E2A]/70 hover:text-[#6B2523]'
+              }`}
             >
-              <Copy className="w-4 h-4" />
-              <span>Copy JSON</span>
-            </button>
-
-            <button
-              onClick={() => {
-                if (window.confirm('Reset all menu data back to factory defaults?')) {
-                  resetToDefault()
-                  showToast('↺ Menu reset to default')
-                }
-              }}
-              className="p-2.5 rounded-xl bg-white border border-red-200 hover:bg-red-50 text-red-600 transition-all shadow-xs"
-              title="Reset to default menu"
-            >
-              <RotateCcw className="w-4 h-4" />
+              <Images className="w-4 h-4" />
+              <span>Gallery Categories</span>
             </button>
           </div>
         </div>
 
-        {/* Search & Category Filter */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          
-          {/* Category Tabs */}
-          <div className="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 scrollbar-none">
-            {['All', 'Breakfast', 'Lunch', 'Dinner', 'Cocktails', 'Beverages', 'Desserts'].map((cat) => (
+        {/* ═══════════════════════════════════════════════════════════════
+            TAB 1: HOME BENTO GRID MANAGER
+            ═══════════════════════════════════════════════════════════════ */}
+        {activeTab === 'bento' && (
+          <div className="space-y-6">
+            
+            {/* Bento Control Bar */}
+            <div className="bg-white p-6 rounded-3xl border border-[#6B2523]/15 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div>
+                <h2 className="font-display font-bold text-xl text-[#6B2523] flex items-center gap-2">
+                  <Flame className="w-5 h-5 text-[#882B06]" />
+                  <span>Home Page Bento Grid (6 Dynamic Slots)</span>
+                </h2>
+                <p className="text-xs text-[#3A2E2A]/70 mt-1">
+                  Click any slot below to change the dish, photo, title, pricing, tag, or beverage pairing.
+                </p>
+              </div>
+
               <button
-                key={cat}
                 onClick={() => {
-                  setSelectedCategory(cat)
-                  setDishPage(1)
+                  if (window.confirm('Reset Bento Grid back to factory layout?')) {
+                    resetBento()
+                    showToast('↺ Bento Grid reset to default')
+                  }
                 }}
-                className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all whitespace-nowrap ${
-                  selectedCategory.toLowerCase() === cat.toLowerCase()
-                    ? 'bg-[#6B2523] text-[#FFC470] shadow-md'
-                    : 'bg-white text-[#3A2E2A]/75 hover:bg-white/80 border border-[#6B2523]/10'
-                }`}
+                className="px-4 py-2 rounded-xl bg-white border border-red-200 hover:bg-red-50 text-red-600 text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
               >
-                {cat}
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Reset Bento Layout</span>
               </button>
-            ))}
-          </div>
+            </div>
 
-          {/* Search Box */}
-          <div className="relative w-full sm:w-72">
-            <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#3A2E2A]/50" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => {
-                setSearchQuery(e.target.value)
-                setDishPage(1)
-              }}
-              placeholder="Search dishes or tags..."
-              className="w-full pl-10 pr-4 py-2.5 bg-white rounded-xl border border-[#6B2523]/15 text-xs text-[#3A2E2A] placeholder-[#3A2E2A]/40 focus:outline-none focus:ring-2 focus:ring-[#6B2523]/30"
-            />
-          </div>
-        </div>
+            {/* Live Bento Layout Preview / Click-to-Edit */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-5 text-left">
+              
+              {/* Slot 1: Hero Spotlight */}
+              {bentoItems[0] && (
+                <div
+                  onClick={() => {
+                    setEditingBentoIndex(0)
+                    setBentoDraft({ ...bentoItems[0] })
+                  }}
+                  className="md:col-span-7 relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all group cursor-pointer min-h-[320px] sm:min-h-[380px] border-2 border-transparent hover:border-[#6B2523] flex flex-col justify-between p-6 bg-black"
+                >
+                  <img
+                    src={bentoItems[0].image}
+                    alt={bentoItems[0].title}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-85"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20" />
 
-        {/* Dishes Grid (Paginated 12 per page) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {paginatedDishes.map((item) => {
-            const isVeg = !item.name.toLowerCase().includes('mutton') &&
-              !item.name.toLowerCase().includes('chicken') &&
-              !item.name.toLowerCase().includes('kodi') &&
-              !item.name.toLowerCase().includes('prawn') &&
-              !item.name.toLowerCase().includes('omelette')
-
-            return (
-              <div
-                key={item.id}
-                className="bg-white rounded-3xl overflow-hidden border border-[#6B2523]/15 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
-              >
-                <div>
-                  {/* Photo Frame */}
-                  <div className="relative aspect-[16/10] overflow-hidden bg-black/5">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-
-                    {/* Change Photo Overlay Button */}
-                    <button
-                      onClick={() => {
-                        setEditingItem(item)
-                        setIsPhotoPickerOpen(true)
-                        setPhotoPage(1)
-                      }}
-                      className="absolute inset-0 m-auto w-fit h-fit px-3.5 py-1.5 bg-black/80 hover:bg-[#6B2523] text-[#FFC470] backdrop-blur-md rounded-xl text-xs font-bold tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-all flex items-center gap-1.5 shadow-lg"
-                    >
-                      <ImageIcon className="w-3.5 h-3.5" />
-                      <span>Change Photo</span>
-                    </button>
-
-                    {/* Category & Veg Badge */}
-                    <div className="absolute top-3 left-3 flex items-center gap-2">
-                      <span className="text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/20">
-                        {item.category}
+                  <div className="relative z-10 flex items-center justify-between">
+                    <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md">
+                      SLOT 1: {bentoItems[0].tag}
+                    </span>
+                    <div className="flex items-center gap-2">
+                      <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-sm">
+                        {bentoItems[0].isVeg ? <VegMark /> : <NonVegMark />}
+                      </div>
+                      <span className="px-3 py-1 bg-white/20 group-hover:bg-[#6B2523] group-hover:text-[#FFC470] text-white backdrop-blur-md rounded-xl text-xs font-bold uppercase transition-colors">
+                        Click to Edit
                       </span>
-                    </div>
-
-                    <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-md p-1 rounded-md shadow-sm">
-                      {isVeg ? <VegMark /> : <NonVegMark />}
-                    </div>
-
-                    {/* Image path pill */}
-                    <div className="absolute bottom-2 left-3 text-[10px] text-white/90 font-mono bg-black/60 px-2 py-0.5 rounded backdrop-blur-xs">
-                      {item.image.replace('/assets/Tanha Food/', '')}
                     </div>
                   </div>
 
-                  {/* Details */}
-                  <div className="p-5 space-y-2">
-                    <div className="flex justify-between items-start gap-2">
-                      <h3 className="font-display font-bold text-lg text-[#6B2523] leading-tight">
-                        {item.name}
-                      </h3>
-                      <span className="font-display text-lg font-extrabold text-[#882B06] flex-shrink-0">
-                        ₹{item.price}
+                  <div className="relative z-10 text-white space-y-1.5">
+                    <span className="text-[10px] uppercase tracking-wider text-[#FFC470] font-semibold block">
+                      {bentoItems[0].category}
+                    </span>
+                    <div className="flex justify-between items-end gap-2">
+                      <div>
+                        <h3 className="font-display text-2xl font-bold text-white">
+                          {bentoItems[0].title}
+                        </h3>
+                        <p className="text-xs text-white/80 font-light max-w-md line-clamp-2 mt-1">
+                          {bentoItems[0].desc}
+                        </p>
+                      </div>
+                      <span className="font-display text-2xl font-extrabold text-[#FFC470] flex-shrink-0">
+                        ₹{bentoItems[0].price}
                       </span>
                     </div>
-
-                    <p className="text-xs text-[#3A2E2A]/80 font-light leading-relaxed line-clamp-2">
-                      {item.desc}
-                    </p>
-
-                    {/* Tags */}
-                    {item.tags && item.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-1 pt-1">
-                        {item.tags.map((tag, tIdx) => (
-                          <span
-                            key={tIdx}
-                            className="text-[9px] font-semibold px-2 py-0.5 rounded-md bg-[#6B2523]/5 text-[#6B2523] border border-[#6B2523]/10"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
+                    {bentoItems[0].pairing && (
+                      <span className="text-[10px] text-[#FFC470] block pt-1 font-semibold">
+                        {bentoItems[0].pairing}
+                      </span>
                     )}
                   </div>
                 </div>
+              )}
 
-                {/* Footer Controls */}
-                <div className="p-4 border-t border-[#6B2523]/10 bg-[#FAF6F0]/50 flex items-center justify-between">
-                  <span className="text-[10px] text-[#3A2E2A]/50 font-mono">ID: {item.id}</span>
-                  <div className="flex items-center gap-1.5">
-                    <button
-                      onClick={() => setEditingItem(item)}
-                      className="px-3 py-1.5 rounded-lg bg-white border border-[#6B2523]/20 hover:bg-[#6B2523] hover:text-[#FFC470] text-[#6B2523] text-xs font-bold flex items-center gap-1 transition-all"
-                    >
-                      <Edit2 className="w-3.5 h-3.5" />
-                      <span>Edit</span>
-                    </button>
-                    <button
-                      onClick={() => {
-                        if (window.confirm(`Delete "${item.name}" from menu?`)) {
-                          deleteItem(item.id)
-                          showToast(`🗑️ Deleted "${item.name}"`)
-                        }
-                      }}
-                      className="p-1.5 rounded-lg text-red-500 hover:bg-red-50 hover:text-red-700 transition-all"
-                      title="Delete dish"
-                    >
-                      <Trash2 className="w-3.5 h-3.5" />
-                    </button>
+              {/* Slot 2: Wide Top Right */}
+              {bentoItems[1] && (
+                <div
+                  onClick={() => {
+                    setEditingBentoIndex(1)
+                    setBentoDraft({ ...bentoItems[1] })
+                  }}
+                  className="md:col-span-5 relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all group cursor-pointer min-h-[320px] sm:min-h-[380px] border-2 border-transparent hover:border-[#6B2523] flex flex-col justify-between p-6 bg-black"
+                >
+                  <img
+                    src={bentoItems[1].image}
+                    alt={bentoItems[1].title}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-85"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20" />
+
+                  <div className="relative z-10 flex items-center justify-between">
+                    <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md">
+                      SLOT 2: {bentoItems[1].tag}
+                    </span>
+                    <div className="flex items-center gap-2">
+                      <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-sm">
+                        {bentoItems[1].isVeg ? <VegMark /> : <NonVegMark />}
+                      </div>
+                      <span className="px-3 py-1 bg-white/20 group-hover:bg-[#6B2523] group-hover:text-[#FFC470] text-white backdrop-blur-md rounded-xl text-xs font-bold uppercase transition-colors">
+                        Click to Edit
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="relative z-10 text-white space-y-1">
+                    <span className="text-[10px] uppercase tracking-wider text-[#FFC470] font-semibold block">
+                      {bentoItems[1].category}
+                    </span>
+                    <div className="flex justify-between items-end gap-2">
+                      <div>
+                        <h3 className="font-display text-xl font-bold text-white">
+                          {bentoItems[1].title}
+                        </h3>
+                        <p className="text-xs text-white/80 font-light max-w-xs line-clamp-2 mt-0.5">
+                          {bentoItems[1].desc}
+                        </p>
+                      </div>
+                      <span className="font-display text-xl font-extrabold text-[#FFC470] flex-shrink-0">
+                        ₹{bentoItems[1].price}
+                      </span>
+                    </div>
                   </div>
                 </div>
+              )}
 
+              {/* Slots 3, 4, 5, 6: Quad Cards */}
+              {[2, 3, 4, 5].map((slotIdx) => {
+                const bItem = bentoItems[slotIdx]
+                if (!bItem) return null
+                return (
+                  <div
+                    key={slotIdx}
+                    onClick={() => {
+                      setEditingBentoIndex(slotIdx)
+                      setBentoDraft({ ...bItem })
+                    }}
+                    className="md:col-span-6 lg:col-span-3 relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all group cursor-pointer min-h-[220px] border-2 border-transparent hover:border-[#6B2523] flex flex-col justify-between p-5 bg-black"
+                  >
+                    <img
+                      src={bItem.image}
+                      alt={bItem.title}
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-85"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+
+                    <div className="relative z-10 flex items-center justify-between">
+                      <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md">
+                        SLOT {slotIdx + 1}: {bItem.tag}
+                      </span>
+                      <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-sm">
+                        {bItem.isVeg ? <VegMark /> : <NonVegMark />}
+                      </div>
+                    </div>
+
+                    <div className="relative z-10 text-white space-y-1">
+                      <span className="text-[9px] uppercase tracking-wider text-[#FFC470] font-semibold block">
+                        {bItem.category}
+                      </span>
+                      <div className="flex justify-between items-baseline gap-1">
+                        <h4 className="font-display text-base font-bold text-white leading-tight">
+                          {bItem.title}
+                        </h4>
+                        <span className="font-display text-lg font-extrabold text-[#FFC470]">
+                          ₹{bItem.price}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+
+            </div>
+          </div>
+        )}
+
+        {/* ═══════════════════════════════════════════════════════════════
+            TAB 2: FULL SEASONAL MENU MANAGER
+            ═══════════════════════════════════════════════════════════════ */}
+        {activeTab === 'menu' && (
+          <div className="space-y-6">
+            
+            {/* Actions Bar */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              
+              {/* Category Filter */}
+              <div className="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 scrollbar-none">
+                {['All', 'Breakfast', 'Lunch', 'Dinner', 'Cocktails', 'Beverages', 'Desserts'].map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => {
+                      setSelectedCategory(cat)
+                      setDishPage(1)
+                    }}
+                    className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all whitespace-nowrap ${
+                      selectedCategory.toLowerCase() === cat.toLowerCase()
+                        ? 'bg-[#6B2523] text-[#FFC470] shadow-md'
+                        : 'bg-white text-[#3A2E2A]/75 hover:bg-white/80 border border-[#6B2523]/10'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
               </div>
-            )
-          })}
-        </div>
 
-        {/* Dishes Pagination Bar */}
-        {totalDishPages > 1 && (
-          <div className="flex items-center justify-center gap-2 pt-6">
-            <button
-              onClick={() => setDishPage((p) => Math.max(1, p - 1))}
-              disabled={dishPage === 1}
-              className="p-2 rounded-xl bg-white border border-[#6B2523]/20 disabled:opacity-30 hover:bg-[#FAF6F0] text-[#6B2523]"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <span className="text-xs font-semibold text-[#6B2523] px-3">
-              Page {dishPage} of {totalDishPages}
-            </span>
-            <button
-              onClick={() => setDishPage((p) => Math.min(totalDishPages, p + 1))}
-              disabled={dishPage === totalDishPages}
-              className="p-2 rounded-xl bg-white border border-[#6B2523]/20 disabled:opacity-30 hover:bg-[#FAF6F0] text-[#6B2523]"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
+              {/* Action Buttons & Search */}
+              <div className="flex items-center gap-3 w-full sm:w-auto">
+                <div className="relative flex-1 sm:w-64">
+                  <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#3A2E2A]/50" />
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => {
+                      setSearchQuery(e.target.value)
+                      setDishPage(1)
+                    }}
+                    placeholder="Search dishes..."
+                    className="w-full pl-10 pr-4 py-2 bg-white rounded-xl border border-[#6B2523]/15 text-xs focus:outline-none"
+                  />
+                </div>
+
+                <button
+                  onClick={() => {
+                    setEditingItem({
+                      name: '',
+                      category: 'Lunch',
+                      desc: '',
+                      price: 499,
+                      image: '/assets/Tanha Food/food-1.webp',
+                      tags: ['Chef Special']
+                    })
+                  }}
+                  className="px-4 py-2 rounded-xl bg-[#6B2523] text-[#FFC470] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-md flex-shrink-0"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>Add Dish</span>
+                </button>
+
+                <button
+                  onClick={exportJsonFile}
+                  className="p-2 bg-white rounded-xl border border-[#6B2523]/20 hover:bg-[#FAF6F0] text-[#6B2523] shadow-xs"
+                  title="Export menu.json"
+                >
+                  <Download className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* Dishes Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {paginatedDishes.map((item) => {
+                const isVeg = !item.name.toLowerCase().includes('mutton') &&
+                  !item.name.toLowerCase().includes('chicken') &&
+                  !item.name.toLowerCase().includes('kodi') &&
+                  !item.name.toLowerCase().includes('prawn') &&
+                  !item.name.toLowerCase().includes('omelette')
+
+                return (
+                  <div
+                    key={item.id}
+                    className="bg-white rounded-3xl overflow-hidden border border-[#6B2523]/15 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
+                  >
+                    <div>
+                      {/* Photo Frame */}
+                      <div className="relative aspect-[16/10] overflow-hidden bg-black/5">
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+
+                        <button
+                          onClick={() => {
+                            setEditingItem(item)
+                            setPhotoPickerTarget('menu')
+                            setIsPhotoPickerOpen(true)
+                            setPhotoPage(1)
+                          }}
+                          className="absolute inset-0 m-auto w-fit h-fit px-3.5 py-1.5 bg-black/80 hover:bg-[#6B2523] text-[#FFC470] backdrop-blur-md rounded-xl text-xs font-bold tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-all flex items-center gap-1.5 shadow-lg"
+                        >
+                          <ImageIcon className="w-3.5 h-3.5" />
+                          <span>Change Photo</span>
+                        </button>
+
+                        <div className="absolute top-3 left-3">
+                          <span className="text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/20">
+                            {item.category}
+                          </span>
+                        </div>
+
+                        <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-md p-1 rounded-md shadow-sm">
+                          {isVeg ? <VegMark /> : <NonVegMark />}
+                        </div>
+                      </div>
+
+                      {/* Details */}
+                      <div className="p-5 space-y-2">
+                        <div className="flex justify-between items-start gap-2">
+                          <h3 className="font-display font-bold text-lg text-[#6B2523] leading-tight">
+                            {item.name}
+                          </h3>
+                          <span className="font-display text-lg font-extrabold text-[#882B06] flex-shrink-0">
+                            ₹{item.price}
+                          </span>
+                        </div>
+
+                        <p className="text-xs text-[#3A2E2A]/80 font-light leading-relaxed line-clamp-2">
+                          {item.desc}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Footer Controls */}
+                    <div className="p-4 border-t border-[#6B2523]/10 bg-[#FAF6F0]/50 flex items-center justify-between">
+                      <span className="text-[10px] text-[#3A2E2A]/50 font-mono">ID: {item.id}</span>
+                      <div className="flex items-center gap-1.5">
+                        <button
+                          onClick={() => setEditingItem(item)}
+                          className="px-3 py-1.5 rounded-lg bg-white border border-[#6B2523]/20 hover:bg-[#6B2523] hover:text-[#FFC470] text-[#6B2523] text-xs font-bold flex items-center gap-1 transition-all"
+                        >
+                          <Edit2 className="w-3.5 h-3.5" />
+                          <span>Edit</span>
+                        </button>
+                        <button
+                          onClick={() => {
+                            if (window.confirm(`Delete "${item.name}"?`)) {
+                              deleteItem(item.id)
+                              showToast(`🗑️ Deleted "${item.name}"`)
+                            }
+                          }}
+                          className="p-1.5 rounded-lg text-red-500 hover:bg-red-50 hover:text-red-700 transition-all"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+
+            {/* Pagination */}
+            {totalDishPages > 1 && (
+              <div className="flex items-center justify-center gap-2 pt-6">
+                <button
+                  onClick={() => setDishPage((p) => Math.max(1, p - 1))}
+                  disabled={dishPage === 1}
+                  className="p-2 rounded-xl bg-white border border-[#6B2523]/20 disabled:opacity-30 hover:bg-[#FAF6F0] text-[#6B2523]"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <span className="text-xs font-semibold text-[#6B2523] px-3">
+                  Page {dishPage} of {totalDishPages}
+                </span>
+                <button
+                  onClick={() => setDishPage((p) => Math.min(totalDishPages, p + 1))}
+                  disabled={dishPage === totalDishPages}
+                  className="p-2 rounded-xl bg-white border border-[#6B2523]/20 disabled:opacity-30 hover:bg-[#FAF6F0] text-[#6B2523]"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* ═══════════════════════════════════════════════════════════════
+            TAB 3: GALLERY PHOTO CATEGORY MANAGER
+            ═══════════════════════════════════════════════════════════════ */}
+        {activeTab === 'gallery' && (
+          <div className="space-y-6">
+            
+            {/* Gallery Top Bar */}
+            <div className="bg-white p-6 rounded-3xl border border-[#6B2523]/15 flex flex-col md:flex-row items-center justify-between gap-4">
+              <div>
+                <h2 className="font-display font-bold text-xl text-[#6B2523] flex items-center gap-2">
+                  <Images className="w-5 h-5 text-[#882B06]" />
+                  <span>Gallery Photo Category Mapping</span>
+                </h2>
+                <p className="text-xs text-[#3A2E2A]/70 mt-1">
+                  Reassign photos between Ambience, Rooftop, Food, and Events. Changes reflect live on the website.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2.5">
+                <button
+                  onClick={exportGalleryJson}
+                  className="px-3.5 py-2 rounded-xl bg-white border border-[#6B2523]/20 hover:bg-[#FAF6F0] text-[#6B2523] text-xs font-bold flex items-center gap-1.5 shadow-xs"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Export gallery.json</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    if (window.confirm('Reset gallery categories back to factory defaults?')) {
+                      resetGallery()
+                      showToast('↺ Gallery categories reset to default')
+                    }
+                  }}
+                  className="px-3.5 py-2 rounded-xl bg-white border border-red-200 hover:bg-red-50 text-red-600 text-xs font-bold flex items-center gap-1.5 shadow-xs"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>Reset Categories</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Category Filter Tabs & Search */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 scrollbar-none">
+                {['All', 'Ambience', 'Rooftop', 'Events', 'Food'].map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => {
+                      setGalleryFilter(cat)
+                      setGalleryPage(1)
+                    }}
+                    className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all whitespace-nowrap ${
+                      galleryFilter.toLowerCase() === cat.toLowerCase()
+                        ? 'bg-[#6B2523] text-[#FFC470] shadow-md'
+                        : 'bg-white text-[#3A2E2A]/75 hover:bg-white/80 border border-[#6B2523]/10'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+
+              <div className="relative w-full sm:w-64">
+                <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#3A2E2A]/40" />
+                <input
+                  type="text"
+                  value={gallerySearch}
+                  onChange={(e) => {
+                    setGallerySearch(e.target.value)
+                    setGalleryPage(1)
+                  }}
+                  placeholder="Search photo ID or path..."
+                  className="w-full pl-10 pr-4 py-2 bg-white rounded-xl border border-[#6B2523]/15 text-xs focus:outline-none"
+                />
+              </div>
+            </div>
+
+            {/* Gallery Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+              {paginatedGallery.map((gItem) => (
+                <div
+                  key={gItem.id}
+                  className="bg-white rounded-2xl overflow-hidden border border-[#6B2523]/15 shadow-xs flex flex-col justify-between"
+                >
+                  <div className="w-full h-44 overflow-hidden relative bg-black/5">
+                    <img
+                      src={gItem.src}
+                      alt={gItem.alt || gItem.id}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-2 left-2 px-2 py-0.5 bg-black/70 backdrop-blur-xs text-white rounded text-[10px] font-mono">
+                      {gItem.id}
+                    </div>
+                  </div>
+
+                  <div className="p-3.5 space-y-2 bg-white border-t border-[#6B2523]/10">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#6B2523]">
+                        Category:
+                      </span>
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#6B2523]/10 text-[#6B2523]">
+                        {gItem.category}
+                      </span>
+                    </div>
+
+                    {/* Quick Category Switcher Select */}
+                    <select
+                      value={gItem.category}
+                      onChange={(e) => {
+                        updateGalleryItemCategory(gItem.id, e.target.value)
+                        showToast(`✓ Changed ${gItem.id} to "${e.target.value}"`)
+                      }}
+                      className="w-full px-3 py-1.5 rounded-xl border border-[#6B2523]/20 text-xs font-bold text-[#6B2523] bg-[#FAF6F0] focus:outline-none focus:ring-2 focus:ring-[#6B2523]/25 cursor-pointer"
+                    >
+                      {['Ambience', 'Rooftop', 'Events', 'Food'].map((catOpt) => (
+                        <option key={catOpt} value={catOpt}>
+                          Move to → {catOpt}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Gallery Pagination */}
+            {totalGalleryPages > 1 && (
+              <div className="flex items-center justify-center gap-2 pt-6">
+                <button
+                  onClick={() => setGalleryPage((p) => Math.max(1, p - 1))}
+                  disabled={galleryPage === 1}
+                  className="p-2 rounded-xl bg-white border border-[#6B2523]/20 disabled:opacity-30 hover:bg-[#FAF6F0] text-[#6B2523]"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <span className="text-xs font-semibold text-[#6B2523] px-3">
+                  Page {galleryPage} of {totalGalleryPages}
+                </span>
+                <button
+                  onClick={() => setGalleryPage((p) => Math.min(totalGalleryPages, p + 1))}
+                  disabled={galleryPage === totalGalleryPages}
+                  className="p-2 rounded-xl bg-white border border-[#6B2523]/20 disabled:opacity-30 hover:bg-[#FAF6F0] text-[#6B2523]"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            )}
           </div>
         )}
 
       </div>
 
-      {/* ── Visual Photo Picker Modal (Clean, Spacious & Paginated) ── */}
+      {/* ── BENTO SLOT EDIT MODAL ── */}
       <AnimatePresence>
-        {isPhotoPickerOpen && editingItem && (
+        {editingBentoIndex !== null && bentoDraft && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              className="bg-white w-full max-w-xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col border border-[#6B2523]/20"
+            >
+              <div className="p-5 border-b border-[#6B2523]/15 flex items-center justify-between bg-[#FAF6F0]">
+                <div>
+                  <h3 className="font-display font-bold text-xl text-[#6B2523]">
+                    Customize Bento Slot {editingBentoIndex + 1}
+                  </h3>
+                  <p className="text-xs text-[#3A2E2A]/70">
+                    Set the exact dish, tag, and photo shown in this Home Page tile.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setEditingBentoIndex(null)}
+                  className="p-2 rounded-xl hover:bg-black/5 text-[#3A2E2A]/70"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <form onSubmit={handleSaveBentoSlot} className="p-6 space-y-4 overflow-y-auto flex-1 text-left">
+                
+                {/* Autofill from Menu */}
+                <div className="p-3 bg-[#FAF6F0] rounded-2xl border border-[#6B2523]/15">
+                  <label className="text-[11px] font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                    ⚡ Quick Autofill from Seasonal Menu
+                  </label>
+                  <select
+                    onChange={(e) => {
+                      const selectedDish = items.find((i) => i.id === e.target.value)
+                      if (selectedDish) {
+                        const isVeg = !selectedDish.name.toLowerCase().includes('mutton') &&
+                          !selectedDish.name.toLowerCase().includes('chicken') &&
+                          !selectedDish.name.toLowerCase().includes('kodi') &&
+                          !selectedDish.name.toLowerCase().includes('prawn')
+
+                        setBentoDraft({
+                          ...bentoDraft,
+                          title: selectedDish.name,
+                          category: selectedDish.category || 'Specialty',
+                          price: selectedDish.price || 499,
+                          image: selectedDish.image || bentoDraft.image,
+                          desc: selectedDish.desc || '',
+                          isVeg: isVeg
+                        })
+                        showToast(`✓ Autofilled from "${selectedDish.name}"`)
+                      }
+                    }}
+                    className="w-full px-3 py-2 rounded-xl border border-[#6B2523]/20 text-xs font-semibold bg-white"
+                  >
+                    <option value="">-- Choose a dish to autofill --</option>
+                    {items.map((i) => (
+                      <option key={i.id} value={i.id}>
+                        {i.name} (₹{i.price})
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Photo Preview & Picker Button */}
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#FAF6F0] border border-[#6B2523]/15">
+                  <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 border border-[#6B2523]/20 bg-black">
+                    <img
+                      src={bentoDraft.image}
+                      alt="Selected preview"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <span className="text-[10px] font-mono text-[#3A2E2A]/70 block font-semibold">
+                      {bentoDraft.image}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setPhotoPickerTarget('bento')
+                        setIsPhotoPickerOpen(true)
+                        setPhotoPage(1)
+                      }}
+                      className="px-3.5 py-1.5 rounded-lg bg-[#6B2523] text-[#FFC470] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm hover:bg-[#3A2E2A]"
+                    >
+                      <ImageIcon className="w-3.5 h-3.5" />
+                      <span>Browse Photo Catalog</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Dish Title */}
+                <div>
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                    Tile Title *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={bentoDraft.title}
+                    onChange={(e) => setBentoDraft({ ...bentoDraft, title: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#6B2523]/30"
+                  />
+                </div>
+
+                {/* Subtitle/Category & Price */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                      Category / Subtitle
+                    </label>
+                    <input
+                      type="text"
+                      value={bentoDraft.category}
+                      onChange={(e) => setBentoDraft({ ...bentoDraft, category: e.target.value })}
+                      placeholder="e.g. Wood-Fired Hearth"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                      Price (₹)
+                    </label>
+                    <input
+                      type="number"
+                      value={bentoDraft.price}
+                      onChange={(e) => setBentoDraft({ ...bentoDraft, price: Number(e.target.value) })}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none"
+                    />
+                  </div>
+                </div>
+
+                {/* Tag & Veg/Non-Veg */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                      Tag Badge
+                    </label>
+                    <input
+                      type="text"
+                      value={bentoDraft.tag}
+                      onChange={(e) => setBentoDraft({ ...bentoDraft, tag: e.target.value })}
+                      placeholder="e.g. ★ BESTSELLER"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                      Dietary Type
+                    </label>
+                    <select
+                      value={bentoDraft.isVeg ? 'veg' : 'non-veg'}
+                      onChange={(e) => setBentoDraft({ ...bentoDraft, isVeg: e.target.value === 'veg' })}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm bg-white"
+                    >
+                      <option value="veg">🟢 Pure Veg</option>
+                      <option value="non-veg">🔴 Non-Veg</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <div>
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                    Description
+                  </label>
+                  <textarea
+                    rows={2}
+                    value={bentoDraft.desc}
+                    onChange={(e) => setBentoDraft({ ...bentoDraft, desc: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none"
+                  />
+                </div>
+
+                {/* Drink Pairing */}
+                <div>
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                    Drink Pairing (Optional)
+                  </label>
+                  <input
+                    type="text"
+                    value={bentoDraft.pairing || ''}
+                    onChange={(e) => setBentoDraft({ ...bentoDraft, pairing: e.target.value })}
+                    placeholder="e.g. 🍸 Pairs with: Rooftop Smoked Old Fashioned"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none"
+                  />
+                </div>
+
+                <div className="pt-3 flex items-center justify-end gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setEditingBentoIndex(null)}
+                    className="px-4 py-2 rounded-xl text-xs font-bold text-[#3A2E2A]/70 hover:bg-black/5"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-6 py-2.5 rounded-xl bg-[#6B2523] text-[#FFC470] hover:bg-[#3A2E2A] text-xs font-bold uppercase tracking-wider shadow-md"
+                  >
+                    Save Bento Tile
+                  </button>
+                </div>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* ── PHOTO PICKER MODAL (Pure Imagery) ── */}
+      <AnimatePresence>
+        {isPhotoPickerOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/70 backdrop-blur-md">
             <motion.div
               initial={{ opacity: 0, scale: 0.96 }}
@@ -425,10 +1051,10 @@ export default function AdminMenu() {
               <div className="p-5 sm:p-6 border-b border-[#6B2523]/15 flex items-center justify-between bg-[#FAF6F0]">
                 <div>
                   <h3 className="font-display font-bold text-lg sm:text-xl text-[#6B2523]">
-                    Select Photograph for &ldquo;{editingItem.name || 'Dish'}&rdquo;
+                    Select Food Photograph
                   </h3>
                   <p className="text-xs text-[#3A2E2A]/70 font-light mt-0.5">
-                    Click any photograph below to assign it. Showing page {photoPage} of {totalPhotoPages} ({filteredImages.length} available photos).
+                    Click any photograph below to assign it. Page {photoPage} of {totalPhotoPages}.
                   </p>
                 </div>
                 <button
@@ -439,7 +1065,7 @@ export default function AdminMenu() {
                 </button>
               </div>
 
-              {/* Photo Filter Tabs & Search */}
+              {/* Photo Filter Tabs */}
               <div className="p-4 border-b border-[#6B2523]/10 bg-white flex flex-col sm:flex-row items-center justify-between gap-3">
                 <div className="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0 scrollbar-none">
                   {[
@@ -483,17 +1109,24 @@ export default function AdminMenu() {
                 </div>
               </div>
 
-              {/* Pure Visual Photo Gallery Grid (Zero Text Content) */}
+              {/* Pure Visual Photo Grid */}
               <div className="p-6 overflow-y-auto max-h-[58vh] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-5 bg-[#FAF6F0]/40">
                 {paginatedPhotos.map((img) => {
-                  const isSelected = editingItem.image === img.path
+                  const currentImg =
+                    photoPickerTarget === 'bento' ? bentoDraft?.image : editingItem?.image
+                  const isSelected = currentImg === img.path
+
                   return (
                     <div
                       key={img.id}
                       onClick={() => {
-                        setEditingItem({ ...editingItem, image: img.path })
+                        if (photoPickerTarget === 'bento' && bentoDraft) {
+                          setBentoDraft({ ...bentoDraft, image: img.path })
+                        } else if (editingItem) {
+                          setEditingItem({ ...editingItem, image: img.path })
+                        }
                         setIsPhotoPickerOpen(false)
-                        showToast(`✓ Photo assigned`)
+                        showToast(`✓ Assigned ${img.id}.webp`)
                       }}
                       className={`group relative rounded-2xl overflow-hidden cursor-pointer border-2 transition-all shadow-xs h-40 sm:h-48 bg-white ${
                         isSelected
@@ -518,7 +1151,7 @@ export default function AdminMenu() {
                 })}
               </div>
 
-              {/* Picker Footer with Pagination */}
+              {/* Picker Footer */}
               <div className="p-4 border-t border-[#6B2523]/15 bg-[#FAF6F0] flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <button
@@ -552,7 +1185,7 @@ export default function AdminMenu() {
         )}
       </AnimatePresence>
 
-      {/* ── Dish Edit / Create Modal ── */}
+      {/* ── DISH EDIT MODAL ── */}
       <AnimatePresence>
         {editingItem && !isPhotoPickerOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md">
@@ -562,7 +1195,6 @@ export default function AdminMenu() {
               exit={{ opacity: 0, scale: 0.96 }}
               className="bg-white w-full max-w-lg max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col border border-[#6B2523]/20"
             >
-              {/* Header */}
               <div className="p-5 sm:p-6 border-b border-[#6B2523]/15 flex items-center justify-between bg-[#FAF6F0]">
                 <h3 className="font-display font-bold text-xl text-[#6B2523]">
                   {editingItem.id ? 'Edit Dish Details' : 'Create New Menu Dish'}
@@ -575,17 +1207,13 @@ export default function AdminMenu() {
                 </button>
               </div>
 
-              {/* Form */}
               <form onSubmit={handleSaveItem} className="p-6 space-y-4 overflow-y-auto flex-1 text-left">
                 
-                {/* Photo Preview & Browse button */}
                 <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#FAF6F0] border border-[#6B2523]/15">
                   <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 border border-[#6B2523]/20 bg-black/5">
                     <img
                       src={editingItem.image || '/assets/Tanha Food/food-1.webp'}
                       alt="Selected preview"
-                      loading="lazy"
-                      decoding="async"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -595,8 +1223,12 @@ export default function AdminMenu() {
                     </span>
                     <button
                       type="button"
-                      onClick={() => setIsPhotoPickerOpen(true)}
-                      className="px-3.5 py-1.5 rounded-lg bg-[#6B2523] text-[#FFC470] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm hover:bg-[#3A2E2A] transition-all"
+                      onClick={() => {
+                        setPhotoPickerTarget('menu')
+                        setIsPhotoPickerOpen(true)
+                        setPhotoPage(1)
+                      }}
+                      className="px-3.5 py-1.5 rounded-lg bg-[#6B2523] text-[#FFC470] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm hover:bg-[#3A2E2A]"
                     >
                       <ImageIcon className="w-3.5 h-3.5" />
                       <span>Browse Photo Catalog</span>
@@ -604,7 +1236,6 @@ export default function AdminMenu() {
                   </div>
                 </div>
 
-                {/* Dish Name */}
                 <div>
                   <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
                     Dish Name *
@@ -619,7 +1250,6 @@ export default function AdminMenu() {
                   />
                 </div>
 
-                {/* Category & Price */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
@@ -628,7 +1258,7 @@ export default function AdminMenu() {
                     <select
                       value={editingItem.category}
                       onChange={(e) => setEditingItem({ ...editingItem, category: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#6B2523]/30 bg-white"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm bg-white"
                     >
                       {['Breakfast', 'Lunch', 'Dinner', 'Cocktails', 'Beverages', 'Desserts'].map((cat) => (
                         <option key={cat} value={cat}>
@@ -650,12 +1280,11 @@ export default function AdminMenu() {
                       onChange={(e) =>
                         setEditingItem({ ...editingItem, price: Number(e.target.value) })
                       }
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#6B2523]/30"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm"
                     />
                   </div>
                 </div>
 
-                {/* Description */}
                 <div>
                   <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
                     Culinary Description
@@ -664,31 +1293,10 @@ export default function AdminMenu() {
                     rows={3}
                     value={editingItem.desc}
                     onChange={(e) => setEditingItem({ ...editingItem, desc: e.target.value })}
-                    placeholder="Describe ingredients and cooking craft..."
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#6B2523]/30"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm"
                   />
                 </div>
 
-                {/* Tags */}
-                <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
-                    Tags (Comma separated)
-                  </label>
-                  <input
-                    type="text"
-                    value={editingItem.tags ? editingItem.tags.join(', ') : ''}
-                    onChange={(e) =>
-                      setEditingItem({
-                        ...editingItem,
-                        tags: e.target.value.split(',').map((t) => t.trim()).filter(Boolean)
-                      })
-                    }
-                    placeholder="e.g. ★ BESTSELLER, Signature, Vegan"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#6B2523]/30"
-                  />
-                </div>
-
-                {/* Submit */}
                 <div className="pt-3 flex items-center justify-end gap-3">
                   <button
                     type="button"
@@ -701,7 +1309,7 @@ export default function AdminMenu() {
                     type="submit"
                     className="px-6 py-2.5 rounded-xl bg-[#6B2523] text-[#FFC470] hover:bg-[#3A2E2A] text-xs font-bold uppercase tracking-wider shadow-md"
                   >
-                    Save Changes
+                    Save Dish
                   </button>
                 </div>
               </form>

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
-import galleryData from '../data/gallery.json'
 import SEO from '../components/SEO'
+import { useMenu } from '../context/MenuContext'
 
 export default function Gallery() {
+  const { galleryItems, galleryCategories } = useMenu()
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [filteredItems, setFilteredItems] = useState([])
   const [lightbox, setLightbox] = useState(null)
@@ -15,11 +16,11 @@ export default function Gallery() {
 
   useEffect(() => {
     if (selectedCategory === 'All') {
-      setFilteredItems(galleryData.items)
+      setFilteredItems(galleryItems)
     } else {
-      setFilteredItems(galleryData.items.filter(item => item.category === selectedCategory))
+      setFilteredItems(galleryItems.filter(item => item.category.toLowerCase() === selectedCategory.toLowerCase()))
     }
-  }, [selectedCategory])
+  }, [selectedCategory, galleryItems])
 
   return (
     <main className="flex-grow pt-24 overflow-hidden bg-[#FAF6F0] text-[#3A2E2A]">
@@ -59,8 +60,8 @@ export default function Gallery() {
 
           {/* Categories Tab (Filter Pills) */}
           <div className="flex items-center justify-center gap-3 overflow-x-auto w-full no-scrollbar pb-2">
-            {galleryData.categories.map((cat) => {
-              const isActive = selectedCategory === cat
+            {(galleryCategories || ['All', 'Ambience', 'Rooftop', 'Events', 'Food']).map((cat) => {
+              const isActive = selectedCategory.toLowerCase() === cat.toLowerCase()
               return (
                 <button
                   key={cat}

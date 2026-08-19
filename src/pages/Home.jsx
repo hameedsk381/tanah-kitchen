@@ -14,6 +14,7 @@ import {
 } from '../components/illustrations'
 
 import SEO from '../components/SEO'
+import { useMenu } from '../context/MenuContext'
 
 const timeSlots = [
   '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM',
@@ -50,6 +51,8 @@ function NonVegMark() {
 }
 
 export default function Home() {
+  const { bentoItems } = useMenu()
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -351,261 +354,275 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-5 lg:gap-6 text-left">
             
             {/* Bento Tile 1: Hero Large (Left 7 Cols) */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7 }}
-              className="md:col-span-7 relative rounded-3xl overflow-hidden shadow-2xl group min-h-[360px] sm:min-h-[420px] lg:min-h-[460px] border border-[#6B2523]/15 flex flex-col justify-between p-6 sm:p-8"
-            >
-              <img
-                src="/assets/Tanha Food/food-1.webp"
-                alt="Claypot Mutton Biryani"
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10" />
+            {bentoItems[0] && (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7 }}
+                className="md:col-span-7 relative rounded-3xl overflow-hidden shadow-2xl group min-h-[360px] sm:min-h-[420px] lg:min-h-[460px] border border-[#6B2523]/15 flex flex-col justify-between p-6 sm:p-8"
+              >
+                <img
+                  src={bentoItems[0].image}
+                  alt={bentoItems[0].title}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10" />
 
-              {/* Top Badges */}
-              <div className="relative z-10 flex items-center justify-between">
-                <span className="text-[10px] font-bold tracking-widest uppercase px-3.5 py-1.5 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/40 shadow-lg font-sans">
-                  ★ BESTSELLER
-                </span>
-                <div className="bg-white/95 backdrop-blur-md p-1.5 rounded-lg shadow-md">
-                  <NonVegMark />
-                </div>
-              </div>
-
-              {/* Bottom Info Overlay */}
-              <div className="relative z-10 space-y-2 text-white">
-                <span className="text-[11px] uppercase tracking-[0.2em] text-[#FFC470] font-bold font-sans">
-                  Wood-Fired Hearth
-                </span>
-                <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
-                  <div>
-                    <h4 className="font-display text-2xl sm:text-3xl font-extrabold text-white leading-tight">
-                      Claypot Mutton Biryani
-                    </h4>
-                    <p className="text-xs sm:text-sm text-white/85 font-body leading-relaxed max-w-lg mt-1 font-light">
-                      Fragrant aged Basmati &amp; farm-raised mutton slow-simmered in porous earthen clay with caramelized saffron embers.
-                    </p>
+                {/* Top Badges */}
+                <div className="relative z-10 flex items-center justify-between">
+                  <span className="text-[10px] font-bold tracking-widest uppercase px-3.5 py-1.5 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/40 shadow-lg font-sans">
+                    {bentoItems[0].tag || '★ BESTSELLER'}
+                  </span>
+                  <div className="bg-white/95 backdrop-blur-md p-1.5 rounded-lg shadow-md">
+                    {bentoItems[0].isVeg ? <VegMark /> : <NonVegMark />}
                   </div>
-                  <span className="font-display text-2xl sm:text-3xl font-extrabold text-[#FFC470] flex-shrink-0">
-                    ₹549
-                  </span>
                 </div>
-                <div className="pt-2 flex flex-wrap items-center gap-2 text-xs font-semibold text-[#FFC470]">
-                  <span className="px-2.5 py-1 rounded-md bg-black/40 backdrop-blur-sm border border-white/10">
-                    🍸 Pairs with: Rooftop Smoked Old Fashioned
+
+                {/* Bottom Info Overlay */}
+                <div className="relative z-10 space-y-2 text-white">
+                  <span className="text-[11px] uppercase tracking-[0.2em] text-[#FFC470] font-bold font-sans">
+                    {bentoItems[0].category}
                   </span>
+                  <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+                    <div>
+                      <h4 className="font-display text-2xl sm:text-3xl font-extrabold text-white leading-tight">
+                        {bentoItems[0].title}
+                      </h4>
+                      <p className="text-xs sm:text-sm text-white/85 font-body leading-relaxed max-w-lg mt-1 font-light">
+                        {bentoItems[0].desc}
+                      </p>
+                    </div>
+                    <span className="font-display text-2xl sm:text-3xl font-extrabold text-[#FFC470] flex-shrink-0">
+                      ₹{bentoItems[0].price}
+                    </span>
+                  </div>
+                  {bentoItems[0].pairing && (
+                    <div className="pt-2 flex flex-wrap items-center gap-2 text-xs font-semibold text-[#FFC470]">
+                      <span className="px-2.5 py-1 rounded-md bg-black/40 backdrop-blur-sm border border-white/10">
+                        {bentoItems[0].pairing}
+                      </span>
+                    </div>
+                  )}
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            )}
 
             {/* Bento Tile 2: Wide Top (Right 5 Cols) */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.15 }}
-              className="md:col-span-5 relative rounded-3xl overflow-hidden shadow-xl group min-h-[320px] sm:min-h-[380px] lg:min-h-[460px] border border-[#6B2523]/15 flex flex-col justify-between p-6 sm:p-8"
-            >
-              <img
-                src="/assets/Tanha Food/food-11.webp"
-                alt="Wild Mushroom Risotto"
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+            {bentoItems[1] && (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.15 }}
+                className="md:col-span-5 relative rounded-3xl overflow-hidden shadow-xl group min-h-[320px] sm:min-h-[380px] lg:min-h-[460px] border border-[#6B2523]/15 flex flex-col justify-between p-6 sm:p-8"
+              >
+                <img
+                  src={bentoItems[1].image}
+                  alt={bentoItems[1].title}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
 
-              <div className="relative z-10 flex items-center justify-between">
-                <span className="text-[9px] font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md font-sans">
-                  ★ SIGNATURE
-                </span>
-                <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-md">
-                  <VegMark />
-                </div>
-              </div>
-
-              <div className="relative z-10 text-white flex justify-between items-end gap-2">
-                <div>
-                  <span className="text-[10px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
-                    Continental Gastronomy
+                <div className="relative z-10 flex items-center justify-between">
+                  <span className="text-[9px] font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md font-sans">
+                    {bentoItems[1].tag || '★ SIGNATURE'}
                   </span>
-                  <h4 className="font-display text-xl sm:text-2xl font-bold text-white leading-tight">
-                    Wild Mushroom Risotto
-                  </h4>
-                  <p className="text-xs sm:text-sm text-white/80 font-body leading-relaxed mt-1 font-light">
-                    Hand-foraged forest mushrooms, Italian arborio rice &amp; white truffle oil.
-                  </p>
+                  <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-md">
+                    {bentoItems[1].isVeg ? <VegMark /> : <NonVegMark />}
+                  </div>
                 </div>
-                <span className="font-display text-xl sm:text-2xl font-extrabold text-[#FFC470] flex-shrink-0">
-                  ₹549
-                </span>
-              </div>
-            </motion.div>
+
+                <div className="relative z-10 text-white flex justify-between items-end gap-2">
+                  <div>
+                    <span className="text-[10px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
+                      {bentoItems[1].category}
+                    </span>
+                    <h4 className="font-display text-xl sm:text-2xl font-bold text-white leading-tight">
+                      {bentoItems[1].title}
+                    </h4>
+                    <p className="text-xs sm:text-sm text-white/80 font-body leading-relaxed mt-1 font-light">
+                      {bentoItems[1].desc}
+                    </p>
+                  </div>
+                  <span className="font-display text-xl sm:text-2xl font-extrabold text-[#FFC470] flex-shrink-0">
+                    ₹{bentoItems[1].price}
+                  </span>
+                </div>
+              </motion.div>
+            )}
 
             {/* Bottom Row: Quad 4-Card Bento (3 Cols each on Desktop) */}
             
-            {/* Bento Tile 3: South India Kodi Crisp */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="md:col-span-6 lg:col-span-3 relative rounded-3xl overflow-hidden shadow-xl group min-h-[230px] border border-[#6B2523]/15 flex flex-col justify-between p-5"
-            >
-              <img
-                src="/assets/Tanha Food/food-14.webp"
-                alt="South India Kodi Crisp"
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
+            {/* Bento Tile 3 */}
+            {bentoItems[2] && (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="md:col-span-6 lg:col-span-3 relative rounded-3xl overflow-hidden shadow-xl group min-h-[230px] border border-[#6B2523]/15 flex flex-col justify-between p-5"
+              >
+                <img
+                  src={bentoItems[2].image}
+                  alt={bentoItems[2].title}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
 
-              <div className="relative z-10 flex items-center justify-between">
-                <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md font-sans">
-                  ✦ CHEF SPECIAL
-                </span>
-                <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-md">
-                  <NonVegMark />
-                </div>
-              </div>
-
-              <div className="relative z-10 text-white space-y-1">
-                <span className="text-[9px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
-                  Coastal Spice Bar
-                </span>
-                <div className="flex justify-between items-baseline gap-1">
-                  <h4 className="font-display text-base font-bold text-white leading-tight">
-                    Kodi Crisp
-                  </h4>
-                  <span className="font-display text-lg font-extrabold text-[#FFC470]">
-                    ₹399
+                <div className="relative z-10 flex items-center justify-between">
+                  <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md font-sans">
+                    {bentoItems[2].tag || '✦ SPECIAL'}
                   </span>
+                  <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-md">
+                    {bentoItems[2].isVeg ? <VegMark /> : <NonVegMark />}
+                  </div>
                 </div>
-              </div>
-            </motion.div>
 
-            {/* Bento Tile 4: Crispy Dahi & Herb Kebabs */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.25 }}
-              className="md:col-span-6 lg:col-span-3 relative rounded-3xl overflow-hidden shadow-xl group min-h-[230px] border border-[#6B2523]/15 flex flex-col justify-between p-5"
-            >
-              <img
-                src="/assets/Tanha Food/food-29.webp"
-                alt="Crispy Dahi & Herb Kebabs"
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
-
-              <div className="relative z-10 flex items-center justify-between">
-                <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md font-sans">
-                  ★ VEG SPECIAL
-                </span>
-                <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-md">
-                  <VegMark />
-                </div>
-              </div>
-
-              <div className="relative z-10 text-white space-y-1">
-                <span className="text-[9px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
-                  Artisanal Starters
-                </span>
-                <div className="flex justify-between items-baseline gap-1">
-                  <h4 className="font-display text-base font-bold text-white leading-tight">
-                    Dahi Kebabs
-                  </h4>
-                  <span className="font-display text-lg font-extrabold text-[#FFC470]">
-                    ₹449
+                <div className="relative z-10 text-white space-y-1">
+                  <span className="text-[9px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
+                    {bentoItems[2].category}
                   </span>
+                  <div className="flex justify-between items-baseline gap-1">
+                    <h4 className="font-display text-base font-bold text-white leading-tight">
+                      {bentoItems[2].title}
+                    </h4>
+                    <span className="font-display text-lg font-extrabold text-[#FFC470]">
+                      ₹{bentoItems[2].price}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            )}
 
-            {/* Bento Tile 5: Mango Tres Leches */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="md:col-span-6 lg:col-span-3 relative rounded-3xl overflow-hidden shadow-xl group min-h-[230px] border border-[#6B2523]/15 flex flex-col justify-between p-5"
-            >
-              <img
-                src="/assets/Tanha Food/food-44.webp"
-                alt="Mango Tres Leches"
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
+            {/* Bento Tile 4 */}
+            {bentoItems[3] && (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.25 }}
+                className="md:col-span-6 lg:col-span-3 relative rounded-3xl overflow-hidden shadow-xl group min-h-[230px] border border-[#6B2523]/15 flex flex-col justify-between p-5"
+              >
+                <img
+                  src={bentoItems[3].image}
+                  alt={bentoItems[3].title}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
 
-              <div className="relative z-10 flex items-center justify-between">
-                <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md font-sans">
-                  ★ DESSERT
-                </span>
-                <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-md">
-                  <VegMark />
-                </div>
-              </div>
-
-              <div className="relative z-10 text-white space-y-1">
-                <span className="text-[9px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
-                  Alphonso Mango
-                </span>
-                <div className="flex justify-between items-baseline gap-1">
-                  <h4 className="font-display text-base font-bold text-white leading-tight">
-                    Mango Tres Leches
-                  </h4>
-                  <span className="font-display text-lg font-extrabold text-[#FFC470]">
-                    ₹499
+                <div className="relative z-10 flex items-center justify-between">
+                  <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md font-sans">
+                    {bentoItems[3].tag || '★ VEG SPECIAL'}
                   </span>
+                  <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-md">
+                    {bentoItems[3].isVeg ? <VegMark /> : <NonVegMark />}
+                  </div>
                 </div>
-              </div>
-            </motion.div>
 
-            {/* Bento Tile 6: Desi Tiramisu */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.35 }}
-              className="md:col-span-6 lg:col-span-3 relative rounded-3xl overflow-hidden shadow-xl group min-h-[230px] border border-[#6B2523]/15 flex flex-col justify-between p-5"
-            >
-              <img
-                src="/assets/Tanha Food/food-45.webp"
-                alt="Desi Tiramisu"
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
-
-              <div className="relative z-10 flex items-center justify-between">
-                <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md font-sans">
-                  ★ DESSERT
-                </span>
-                <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-md">
-                  <VegMark />
-                </div>
-              </div>
-
-              <div className="relative z-10 text-white space-y-1">
-                <span className="text-[9px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
-                  Araku Kaapi Infusion
-                </span>
-                <div className="flex justify-between items-baseline gap-1">
-                  <h4 className="font-display text-base font-bold text-white leading-tight">
-                    Desi Tiramisu
-                  </h4>
-                  <span className="font-display text-lg font-extrabold text-[#FFC470]">
-                    ₹549
+                <div className="relative z-10 text-white space-y-1">
+                  <span className="text-[9px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
+                    {bentoItems[3].category}
                   </span>
+                  <div className="flex justify-between items-baseline gap-1">
+                    <h4 className="font-display text-base font-bold text-white leading-tight">
+                      {bentoItems[3].title}
+                    </h4>
+                    <span className="font-display text-lg font-extrabold text-[#FFC470]">
+                      ₹{bentoItems[3].price}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            )}
+
+            {/* Bento Tile 5 */}
+            {bentoItems[4] && (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.3 }}
+                className="md:col-span-6 lg:col-span-3 relative rounded-3xl overflow-hidden shadow-xl group min-h-[230px] border border-[#6B2523]/15 flex flex-col justify-between p-5"
+              >
+                <img
+                  src={bentoItems[4].image}
+                  alt={bentoItems[4].title}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
+
+                <div className="relative z-10 flex items-center justify-between">
+                  <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md font-sans">
+                    {bentoItems[4].tag || '★ DESSERT'}
+                  </span>
+                  <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-md">
+                    {bentoItems[4].isVeg ? <VegMark /> : <NonVegMark />}
+                  </div>
+                </div>
+
+                <div className="relative z-10 text-white space-y-1">
+                  <span className="text-[9px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
+                    {bentoItems[4].category}
+                  </span>
+                  <div className="flex justify-between items-baseline gap-1">
+                    <h4 className="font-display text-base font-bold text-white leading-tight">
+                      {bentoItems[4].title}
+                    </h4>
+                    <span className="font-display text-lg font-extrabold text-[#FFC470]">
+                      ₹{bentoItems[4].price}
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Bento Tile 6 */}
+            {bentoItems[5] && (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.35 }}
+                className="md:col-span-6 lg:col-span-3 relative rounded-3xl overflow-hidden shadow-xl group min-h-[230px] border border-[#6B2523]/15 flex flex-col justify-between p-5"
+              >
+                <img
+                  src={bentoItems[5].image}
+                  alt={bentoItems[5].title}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
+
+                <div className="relative z-10 flex items-center justify-between">
+                  <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md font-sans">
+                    {bentoItems[5].tag || '★ DESSERT'}
+                  </span>
+                  <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-md">
+                    {bentoItems[5].isVeg ? <VegMark /> : <NonVegMark />}
+                  </div>
+                </div>
+
+                <div className="relative z-10 text-white space-y-1">
+                  <span className="text-[9px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
+                    {bentoItems[5].category}
+                  </span>
+                  <div className="flex justify-between items-baseline gap-1">
+                    <h4 className="font-display text-base font-bold text-white leading-tight">
+                      {bentoItems[5].title}
+                    </h4>
+                    <span className="font-display text-lg font-extrabold text-[#FFC470]">
+                      ₹{bentoItems[5].price}
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            )}
 
           </div>
 
