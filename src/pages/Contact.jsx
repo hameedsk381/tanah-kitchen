@@ -47,7 +47,7 @@ export default function Contact() {
   }
 
   return (
-    <main className="flex-grow pt-24 overflow-hidden">
+    <main className="flex-grow pt-24 overflow-hidden bg-[#FAF6F0] text-[#3A2E2A]">
       <SEO
         title="Contact Us & Location Directions | Tanah Kitchen & Bar Gachibowli"
         description="Get directions and contact information for Tanah Kitchen & Bar. Located on 5th Floor, Vaishnavi Splendora, opp Meenakshi Bamboos, beside AIG Hospital, Gachibowli, Hyderabad."
@@ -68,113 +68,113 @@ export default function Contact() {
         }}
       />
 
-      {/* Editorial Header */}
-      <section className="section-dark relative py-28 md:py-36 text-center border-b border-light-cream/15 overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-15 mix-blend-multiply">
+      {/* ── 1. Page Header (WordPress Banner) ── */}
+      <section className="section-dark relative py-20 lg:py-28 text-center border-b border-light-cream/15 overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-20 mix-blend-multiply">
           <img
             src="/assets/Tanha Image/02.webp"
             alt="Tanah Bar ambience banner"
             className="w-full h-full object-cover filter brightness-75"
           />
         </div>
-        <div className="relative z-10 px-8 max-width-container mx-auto">
-          <span className="text-[10px] font-semibold tracking-[0.4em] uppercase section-accent block mb-4">
-            Connect
+        <div className="absolute inset-0 bg-gradient-to-t from-[#3A2E2A]/90 via-[#6B2523]/70 to-[#6B2523]/85" />
+
+        <div className="relative z-10 wp-container">
+          <span className="wp-badge wp-badge-gold mb-4">
+            ✦ GET IN TOUCH ✦
           </span>
           <h1
-            className="font-display font-light leading-none mb-6"
-            style={{ fontSize: 'clamp(2.5rem, 7vw, 5rem)' }}
+            className="font-display font-extrabold leading-tight text-[#F6E1CB] mb-4"
+            style={{ fontSize: 'clamp(2.4rem, 6vw, 4.5rem)' }}
           >
             Contact & Coordinates
           </h1>
-          <p className="text-xs md:text-sm font-light max-w-xl mx-auto opacity-80 leading-relaxed font-body">
+          <div className="w-20 h-[2px] bg-[#FFC470]/60 mx-auto rounded-full mb-4" />
+          <p className="text-sm md:text-base font-light max-w-xl mx-auto text-[#EFE1D0]/90 leading-relaxed font-body">
             Reach out to our hospitality desk. Ask about events, corporate bookings, or special dining arrangements.
           </p>
         </div>
       </section>
 
-      {/* Details Section */}
-      <section className="section-light relative py-20">
-        <div className="max-width-container px-8 mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+      {/* ── 2. Details & Form Section (WordPress 2-Column Block) ── */}
+      <section className="wp-section bg-[#FAF6F0]">
+        <div className="wp-container">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
-            {/* Left Column: Info Coordinates */}
-            <div className="lg:col-span-5 space-y-10 text-left">
-              <div className="space-y-4">
-                <span className="text-[10px] font-semibold tracking-[0.4em] uppercase section-accent block">
-                  Location & Contacts
+            {/* Left Column: Info Coordinates in WordPress Cards */}
+            <div className="lg:col-span-5 space-y-6 text-left">
+              <div>
+                <span className="wp-badge wp-badge-maroon mb-2">
+                  LOCATION & CONTACTS
                 </span>
-                <h2 className="font-display text-3xl md:text-4xl font-light">
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-[#6B2523]">
                   {contactData.brandName}
                 </h2>
               </div>
 
-              <div className="space-y-6 text-sm font-light leading-relaxed font-body">
-                <div className="flex gap-4 items-start">
-                  <MapPin className="w-5 h-5 section-icon flex-shrink-0 mt-1" />
+              <div className="space-y-3.5">
+                <div className="wp-card p-5 flex gap-4 items-start">
+                  <div className="p-2.5 rounded-xl bg-[#6B2523]/10 text-[#6B2523] flex-shrink-0">
+                    <MapPin className="w-5 h-5" />
+                  </div>
                   <div>
-                    <h4 className="font-display text-lg mb-1 font-semibold">Address</h4>
-                    <p className="whitespace-pre-line opacity-80">{contactData.address}</p>
+                    <h4 className="font-display text-base font-bold text-[#6B2523] mb-1">Address</h4>
+                    <p className="whitespace-pre-line text-xs text-[#3A2E2A]/80 font-body leading-relaxed">{contactData.address}</p>
                   </div>
                 </div>
 
-                <div className="flex gap-4 items-start">
-                  <Phone className="w-5 h-5 section-icon flex-shrink-0 mt-1" />
+                <div className="wp-card p-5 flex gap-4 items-start">
+                  <div className="p-2.5 rounded-xl bg-[#6B2523]/10 text-[#6B2523] flex-shrink-0">
+                    <Phone className="w-5 h-5" />
+                  </div>
                   <div>
-                    <h4 className="font-display text-lg mb-1 font-semibold">Reservations</h4>
-                    <p className="opacity-80">{contactData.phone1}</p>
-                    <p className="opacity-80">{contactData.phone2}</p>
+                    <h4 className="font-display text-base font-bold text-[#6B2523] mb-1">Reservations</h4>
+                    <p className="text-xs text-[#3A2E2A]/80 font-body">{contactData.phone1}</p>
+                    <p className="text-xs text-[#3A2E2A]/80 font-body">{contactData.phone2}</p>
                   </div>
                 </div>
 
-                <div className="flex gap-4 items-start">
-                  <Mail className="w-5 h-5 section-icon flex-shrink-0 mt-1" />
+                <div className="wp-card p-5 flex gap-4 items-start">
+                  <div className="p-2.5 rounded-xl bg-[#6B2523]/10 text-[#6B2523] flex-shrink-0">
+                    <Mail className="w-5 h-5" />
+                  </div>
                   <div>
-                    <h4 className="font-display text-lg mb-1 font-semibold">E-Mail</h4>
-                    <p className="opacity-80">{contactData.email}</p>
+                    <h4 className="font-display text-base font-bold text-[#6B2523] mb-1">E-Mail</h4>
+                    <p className="text-xs text-[#3A2E2A]/80 font-body">{contactData.email}</p>
                   </div>
                 </div>
 
-                <div className="flex gap-4 items-start">
-                  <Clock className="w-5 h-5 section-icon flex-shrink-0 mt-1" />
+                <div className="wp-card p-5 flex gap-4 items-start">
+                  <div className="p-2.5 rounded-xl bg-[#6B2523]/10 text-[#6B2523] flex-shrink-0">
+                    <Clock className="w-5 h-5" />
+                  </div>
                   <div>
-                    <h4 className="font-display text-lg mb-1 font-semibold">Operating Timings</h4>
-                    <p className="opacity-80">{contactData.timings.days}</p>
-                    <p className="opacity-80">Lunch: {contactData.timings.lunch}</p>
-                    <p className="opacity-80">Dinner: {contactData.timings.dinner}</p>
-                    <p className="text-[10px] section-accent mt-1">{contactData.timings.note}</p>
+                    <h4 className="font-display text-base font-bold text-[#6B2523] mb-1">Operating Timings</h4>
+                    <p className="text-xs text-[#3A2E2A]/80 font-body">{contactData.timings.days}</p>
+                    <p className="text-xs text-[#3A2E2A]/80 font-body">Lunch: {contactData.timings.lunch} | Dinner: {contactData.timings.dinner}</p>
+                    <p className="text-[11px] text-[#6B2523] font-semibold mt-1">{contactData.timings.note}</p>
                   </div>
                 </div>
               </div>
 
               {/* Action shortcuts */}
-              <div className="flex flex-wrap gap-4 pt-4">
+              <div className="flex flex-wrap gap-3 pt-2">
                 <a
                   href={`tel:${contactData.phone1.replace(/\s+/g, '')}`}
-                  className="btn-primary py-3.5 px-8 text-[9px] tracking-[0.2em] flex items-center gap-3 cursor-pointer"
+                  className="wp-btn-pill bg-[#6B2523] text-[#F6E1CB] hover:bg-[#3A2E2A] text-xs font-bold"
                 >
-                  <Phone className="w-3.5 h-3.5" />
+                  <Phone className="w-4 h-4" />
                   Call Now
                 </a>
                 <a
                   href={`https://wa.me/${contactData.whatsappNumber.replace(/[^0-9]/g, '')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-outline py-3.5 px-8 text-[9px] tracking-[0.2em] flex items-center gap-3 cursor-pointer"
+                  className="wp-btn-pill bg-[#25D366] text-white hover:bg-[#1EBE5D] text-xs font-bold shadow-md"
                 >
-                  <MessageSquare className="w-3.5 h-3.5" />
+                  <MessageSquare className="w-4 h-4" />
                   WhatsApp Us
                 </a>
-              </div>
-
-              {/* Ambient preview image frame */}
-              <div className="aspect-[16/10] w-full overflow-hidden bg-white/5 relative border border-primary-dark/10 shadow-xl rounded-sm">
-                <img
-                  src="/assets/Tanha Ambiance/Ambiance-9.webp"
-                  alt="Tanah Entrance & Bar Ambiance"
-                  className="w-full h-full object-cover filter brightness-[0.85] contrast-[1.05]"
-                />
-                <div className="absolute inset-3 border border-light-cream/10 pointer-events-none" />
               </div>
             </div>
 
@@ -184,18 +184,18 @@ export default function Contact() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="p-10 border border-primary-dark/20 bg-white text-center space-y-6"
+                  className="p-10 bg-white rounded-3xl text-center space-y-6 shadow-xl border border-[#6B2523]/10"
                 >
-                  <CheckCircle className="w-12 h-12 text-primary-dark mx-auto animate-pulse-slow" />
-                  <h3 className="font-display text-2xl font-bold">
+                  <CheckCircle className="w-16 h-16 text-[#6B2523] mx-auto" />
+                  <h3 className="font-display text-3xl font-bold text-[#6B2523]">
                     Inquiry Received
                   </h3>
-                  <p className="text-xs font-light opacity-80 leading-relaxed font-body">
-                    Thank you for contacting Tanah Kitchen & Bar. Our hospitality desk will get in touch with you at <span className="font-semibold">{form.email}</span> shortly.
+                  <p className="text-sm font-light text-[#3A2E2A]/80 leading-relaxed font-body max-w-md mx-auto">
+                    Thank you for contacting Tanah Kitchen & Bar. Our hospitality desk will get in touch with you at <span className="font-semibold text-[#6B2523]">{form.email}</span> shortly.
                   </p>
                   <button
                     onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', subject: 'General Inquiry', message: '' }) }}
-                    className="btn-primary text-[10px] py-3 px-6 mt-4 cursor-pointer"
+                    className="wp-btn-pill bg-[#6B2523] text-[#F6E1CB] hover:bg-[#3A2E2A] text-xs font-bold"
                   >
                     Send Another Message
                   </button>
@@ -204,66 +204,82 @@ export default function Contact() {
                 <form
                   onSubmit={handleSubmit}
                   noValidate
-                  className="p-8 md:p-12 border border-primary-dark/10 bg-[#F2E8D5] space-y-6 shadow-2xl text-left rounded text-[#3A3A3A]"
+                  className="p-8 md:p-12 bg-white rounded-3xl space-y-5 shadow-xl text-left border border-[#6B2523]/10 text-[#3A2E2A]"
                 >
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">Your Name</label>
+                  <div>
+                    <span className="wp-badge wp-badge-maroon mb-2">
+                      MESSAGE US
+                    </span>
+                    <h3 className="font-display text-2xl md:text-3xl font-bold text-[#6B2523]">
+                      Send an Inquiry
+                    </h3>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-xs font-bold tracking-wider uppercase text-[#6B2523] block mb-1.5">
+                        Your Name *
+                      </label>
                       <input
                         type="text"
                         name="name"
                         value={form.name}
                         onChange={handleChange}
-                        placeholder="John Doe"
-                        className="form-input text-xs bg-white border border-primary-dark/15 text-[#3A3A3A] placeholder:text-[#3A3A3A]/40 focus:bg-white focus:border-primary-dark"
+                        placeholder="e.g. John Doe"
+                        className="wp-form-input text-sm"
                       />
-                      {errors.name && <span className="text-[10px] text-primary-dark block font-semibold">{errors.name}</span>}
+                      {errors.name && <span className="text-xs text-red-600 block mt-1 font-medium">{errors.name}</span>}
                     </div>
 
-                    <div className="space-y-2">
-                      <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">Phone Number</label>
+                    <div>
+                      <label className="text-xs font-bold tracking-wider uppercase text-[#6B2523] block mb-1.5">
+                        Phone Number *
+                      </label>
                       <input
                         type="tel"
                         name="phone"
                         value={form.phone}
                         onChange={handleChange}
-                        placeholder="Phone Number"
-                        className="form-input text-xs bg-white border border-primary-dark/15 text-[#3A3A3A] placeholder:text-[#3A3A3A]/40 focus:bg-white focus:border-primary-dark"
+                        placeholder="e.g. 89777 30291"
+                        className="wp-form-input text-sm"
                       />
-                      {errors.phone && <span className="text-[10px] text-primary-dark block font-semibold">{errors.phone}</span>}
+                      {errors.phone && <span className="text-xs text-red-600 block mt-1 font-medium">{errors.phone}</span>}
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">Email Address</label>
+                  <div>
+                    <label className="text-xs font-bold tracking-wider uppercase text-[#6B2523] block mb-1.5">
+                      Email Address *
+                    </label>
                     <input
                       type="email"
                       name="email"
                       value={form.email}
                       onChange={handleChange}
                       placeholder="you@domain.com"
-                      className="form-input text-xs bg-white border border-primary-dark/15 text-[#3A3A3A] placeholder:text-[#3A3A3A]/40 focus:bg-white focus:border-primary-dark"
+                      className="wp-form-input text-sm"
                     />
-                    {errors.email && <span className="text-[10px] text-primary-dark block font-semibold">{errors.email}</span>}
+                    {errors.email && <span className="text-xs text-red-600 block mt-1 font-medium">{errors.email}</span>}
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">Message / Inquiry Details</label>
+                  <div>
+                    <label className="text-xs font-bold tracking-wider uppercase text-[#6B2523] block mb-1.5">
+                      Message / Inquiry Details *
+                    </label>
                     <textarea
                       name="message"
                       value={form.message}
                       onChange={handleChange}
                       placeholder="Tell us what you would like to ask..."
-                      rows={5}
-                      className="form-input text-xs bg-white border border-primary-dark/15 text-[#3A3A3A] placeholder:text-[#3A3A3A]/40 focus:bg-white focus:border-primary-dark resize-none"
+                      rows={4}
+                      className="wp-form-input text-sm resize-none"
                     />
-                    {errors.message && <span className="text-[10px] text-primary-dark block font-semibold">{errors.message}</span>}
+                    {errors.message && <span className="text-xs text-red-600 block mt-1 font-medium">{errors.message}</span>}
                   </div>
 
                   <button
                     type="submit"
-                    className="btn-primary w-full justify-center text-center text-[10px] py-4 cursor-pointer"
-                    style={{ backgroundColor: 'var(--color-primary-dark)', borderColor: 'var(--color-primary-dark)', color: 'var(--color-border-accent)' }}
+                    className="wp-btn-pill bg-[#6B2523] text-[#F6E1CB] hover:bg-[#3A2E2A] hover:text-white shadow-lg w-full py-4 text-xs font-bold tracking-widest mt-2"
                   >
                     Send Message
                   </button>
@@ -275,14 +291,14 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Embedded grayscale map */}
-      <section className="w-full relative leading-none border-t border-primary-dark/15">
+      {/* ── 3. Embedded Google Map ── */}
+      <section className="w-full relative leading-none border-t border-[#6B2523]/15">
         <iframe
           title="Tanah Kitchen & Bar Google Map Location"
           src={contactData.mapUrl}
           width="100%"
           height="450"
-          style={{ border: 0, filter: 'sepia(0.2) contrast(1.1) brightness(0.95)' }}
+          style={{ border: 0, filter: 'contrast(1.05) brightness(0.95)' }}
           allowFullScreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"

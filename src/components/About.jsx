@@ -17,22 +17,6 @@ export default function About() {
       }}
       aria-labelledby="about-preview-heading"
     >
-      {/* Organic divider curve at the top */}
-      <div className="absolute top-0 left-0 right-0 w-full overflow-hidden leading-none">
-        <svg
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-          className="relative block w-full h-[60px]"
-          style={{ transform: 'rotate(180deg)' }}
-        >
-          <path
-            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V94.35C58.89,78.53,123.47,76.54,185.34,80.78,242.9,84.73,292.74,67.89,321.39,56.44Z"
-            fill="var(--color-forest)"
-            opacity="0.05"
-          />
-        </svg>
-      </div>
-
       <div 
         className="max-width-container px-8 relative z-10"
       >

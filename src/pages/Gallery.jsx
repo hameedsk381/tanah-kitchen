@@ -22,7 +22,7 @@ export default function Gallery() {
   }, [selectedCategory])
 
   return (
-    <main className="flex-grow pt-24 overflow-hidden">
+    <main className="flex-grow pt-24 overflow-hidden bg-[#FAF6F0] text-[#3A2E2A]">
       <SEO
         title="Visual Gallery & Ambiance | Tanah Kitchen & Bar Hyderabad"
         description="Browse high-definition photos of Tanah Kitchen & Bar. Rooftop dining terrace, woven bamboo tree canopy, custom ceramics, signature dishes, and mixology cocktails in Gachibowli."
@@ -34,41 +34,42 @@ export default function Gallery() {
         }}
       />
 
-      {/* Editorial Header */}
-      <section className="section-dark relative py-24 md:py-32 text-center border-b border-light-cream/15">
-        <div className="relative z-10 px-8 max-width-container mx-auto">
-          <span className="text-[10px] font-semibold tracking-[0.4em] uppercase section-accent block mb-4">
-            Visual Archive
+      {/* ── 1. Page Header (WordPress Banner) ── */}
+      <section className="section-dark relative py-20 lg:py-28 text-center border-b border-light-cream/15">
+        <div className="relative z-10 wp-container">
+          <span className="wp-badge wp-badge-gold mb-4">
+            ✦ VISUAL ARCHIVE ✦
           </span>
           <h1
-            className="font-display font-light leading-none mb-6"
-            style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
+            className="font-display font-extrabold leading-tight text-[#F6E1CB] mb-4"
+            style={{ fontSize: 'clamp(2.4rem, 6vw, 4.5rem)' }}
           >
             The Visual Gallery
           </h1>
-          <p className="text-xs md:text-sm font-light max-w-xl mx-auto opacity-80 leading-relaxed font-body">
+          <div className="w-20 h-[2px] bg-[#FFC470]/60 mx-auto rounded-full mb-4" />
+          <p className="text-sm md:text-base font-light max-w-xl mx-auto text-[#EFE1D0]/90 leading-relaxed font-body">
             A photographic archive documenting our agricultural soils, wood-fired kitchen flames, and architectural layouts.
           </p>
         </div>
       </section>
 
-      {/* Main Grid */}
-      <section className="section-light relative py-20">
-        <div className="max-width-container px-8 mx-auto space-y-12">
+      {/* ── 2. Main Gallery Grid ── */}
+      <section className="wp-section bg-[#FAF6F0]">
+        <div className="wp-container space-y-10">
 
-          {/* Categories Tab */}
-          <div className="flex items-center justify-center gap-6 overflow-x-auto w-full no-scrollbar pb-6 border-b border-primary-dark/10">
+          {/* Categories Tab (WordPress Filter Pills) */}
+          <div className="flex items-center justify-center gap-3 overflow-x-auto w-full no-scrollbar pb-2">
             {galleryData.categories.map((cat) => {
               const isActive = selectedCategory === cat
               return (
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className="px-5 py-2 text-[10px] tracking-[0.2em] uppercase cursor-pointer transition-all duration-300 font-semibold"
-                  style={{
-                    color: isActive ? '#6B2523' : '#3A2E2A',
-                    borderBottom: isActive ? '2px solid #6B2523' : '2px solid transparent'
-                  }}
+                  className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase cursor-pointer transition-all duration-300 whitespace-nowrap ${
+                    isActive
+                      ? 'bg-[#6B2523] text-[#F6E1CB] shadow-sm'
+                      : 'bg-white text-[#3A2E2A] border border-[#6B2523]/15 hover:border-[#6B2523]/40'
+                  }`}
                 >
                   {cat}
                 </button>
@@ -76,14 +77,13 @@ export default function Gallery() {
             })}
           </div>
 
-          {/* Magazine-Style Asymmetrical Grid */}
+          {/* WordPress Image Grid */}
           <motion.div
             layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             <AnimatePresence mode="popLayout">
-              {filteredItems.map((item, idx) => {
-                // Set all images to the same square aspect ratio for grid alignment
+              {filteredItems.map((item) => {
                 const heightClass = "aspect-square";
 
                 return (
@@ -93,24 +93,24 @@ export default function Gallery() {
                     initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.5 }}
                     onClick={() => setLightbox(item)}
-                    className={`group relative overflow-hidden cursor-pointer bg-[#6B2523]/5 ${heightClass} border border-primary-dark/10 shadow-lg`}
+                    className={`group relative overflow-hidden cursor-pointer rounded-2xl ${heightClass} border border-[#6B2523]/15 shadow-md hover:shadow-2xl transition-all duration-500`}
                   >
                     <img
                       src={item.src}
                       alt={item.alt}
-                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 filter brightness-95 group-hover:brightness-75 contrast-[1.02]"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-95 group-hover:brightness-75 contrast-[1.02]"
                     />
 
-                    {/* Hover Info */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex items-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {/* Hover Info Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="flex items-center justify-between w-full text-left">
                         <div>
-                          <span className="text-[8px] font-semibold tracking-[0.2em] uppercase text-[#E8DCC0] block mb-1">
+                          <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-[#FFC470] block mb-1">
                             {item.category}
                           </span>
-                          <p className="font-display text-xl font-light text-[#F2E8D5] leading-tight">
+                          <p className="font-display text-xl font-bold text-white leading-tight">
                             {item.caption}
                           </p>
                         </div>
@@ -132,8 +132,7 @@ export default function Gallery() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setLightbox(null)}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-6"
-            style={{ background: 'rgba(58, 58, 58, 0.98)' }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/90 backdrop-blur-sm"
             role="dialog"
             aria-modal="true"
           >
@@ -141,30 +140,37 @@ export default function Gallery() {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-5xl w-full flex flex-col items-center"
+              className="relative max-w-4xl max-h-[85vh] bg-[#3A2E2A] rounded-2xl overflow-hidden shadow-2xl border border-white/10"
             >
               <button
                 onClick={() => setLightbox(null)}
-                className="absolute -top-12 right-0 text-white hover:text-accent-gold transition-colors cursor-pointer"
-                aria-label="Close"
+                className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black transition-colors"
+                aria-label="Close image"
               >
-                <X className="w-8 h-8" />
+                <X className="w-5 h-5" />
               </button>
-              <img
-                src={lightbox.src}
-                alt={lightbox.alt}
-                className="w-full max-h-[75vh] object-contain border border-light-cream/15 shadow-2xl"
-              />
-              <p className="text-center mt-6 font-display text-2xl font-light text-white tracking-wide">
-                {lightbox.caption}
-              </p>
+
+              <div className="relative aspect-[4/3] w-full max-h-[70vh]">
+                <img
+                  src={lightbox.src}
+                  alt={lightbox.alt}
+                  className="w-full h-full object-contain bg-black"
+                />
+              </div>
+
+              <div className="p-6 bg-[#541B1A] text-left">
+                <span className="text-[9px] font-bold tracking-[0.25em] uppercase text-[#FFC470] block mb-1">
+                  {lightbox.category}
+                </span>
+                <h3 className="font-display text-xl font-bold text-[#F6E1CB]">
+                  {lightbox.caption}
+                </h3>
+              </div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-
     </main>
   )
 }

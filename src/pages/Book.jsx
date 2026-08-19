@@ -56,7 +56,7 @@ export default function Book() {
   }
 
   return (
-    <main className="section-light relative flex-grow pt-24 min-h-screen flex items-center overflow-hidden">
+    <main className="section-dark relative flex-grow pt-28 min-h-screen flex items-center overflow-hidden">
       <SEO
         title="Reserve a Table & Corporate Dining | Tanah Kitchen & Bar"
         description="Book your table or host corporate dining events at Tanah Kitchen & Bar in Gachibowli. Select party size, date, time slots, and customized corporate dining packages."
@@ -79,84 +79,61 @@ export default function Book() {
           }
         }}
       />
-      {/* Fullscreen background image */}
+      {/* Fullscreen background image with modern dark gradient */}
       <div className="absolute inset-0 z-0 w-full h-full">
         <img
           src="/assets/Tanha Image/02.webp"
           alt="Luxury rooftop sanctuary"
-          className="w-full h-full object-cover filter brightness-[0.45] contrast-[1.05]"
+          className="w-full h-full object-cover filter brightness-[0.35] contrast-[1.05]"
         />
-        {/* Darkened overlay for legibility — rgba(20,10,8,0.5) */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: 'linear-gradient(rgba(20,10,8,0.5), rgba(20,10,8,0.5))' }}
-        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#3A2E2A]/95 via-[#6B2523]/80 to-[#6B2523]/90" />
       </div>
 
-      <div className="relative z-10 max-w-[1200px] px-8 mx-auto w-full py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+      <div className="relative z-10 wp-container py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
           {/* Informational column */}
-          <div className="lg:col-span-5 space-y-8 text-left">
+          <div className="lg:col-span-5 space-y-6 text-left">
             <div className="space-y-4">
-              {/* RESERVATIONS label: #FFC470, bold, tracking */}
-              <span
-                className="text-[10px] font-bold tracking-[3px] uppercase block"
-                style={{ color: 'var(--color-accent-gold)' }}
-              >
-                Reservations
+              <span className="wp-badge wp-badge-gold">
+                ✦ RESERVATIONS ✦
               </span>
 
-              {/* Main heading: warm cream-gold — WebkitTextFillColor bypasses section-light color !important */}
               <h1
-                className="font-display leading-tight"
-                style={{
-                  fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-                  color: 'var(--color-text-light)',
-                  WebkitTextFillColor: 'var(--color-text-light)',
-                  textShadow: '0 2px 12px rgba(0,0,0,0.6)',
-                }}
+                className="font-display font-extrabold leading-tight text-[#F6E1CB]"
+                style={{ fontSize: 'clamp(2.4rem, 5vw, 3.8rem)' }}
               >
                 Secure Your<br />
-                <span style={{ fontStyle: 'italic', color: 'var(--color-accent-gold)', WebkitTextFillColor: 'var(--color-accent-gold)' }}>Basalt Table</span>
+                <span className="italic font-normal text-[#FFC470]">Basalt Table</span>
               </h1>
 
-              {/* Body paragraph: #EFE1D0 at 90% opacity */}
-              <p
-                className="text-xs sm:text-sm font-light leading-relaxed font-body"
-                style={{ color: 'var(--color-text-light)', WebkitTextFillColor: 'var(--color-text-light)', opacity: 0.9 }}
-              >
+              <div className="w-16 h-[2px] bg-[#FFC470]/60 rounded-full" />
+
+              <p className="text-sm font-light leading-relaxed font-body text-[#EFE1D0]/90">
                 We look forward to welcoming you to Tanah Kitchen &amp; Bar. Due to the sourcing of fresh daily crops and slow coal embers, reservations are highly recommended.
               </p>
             </div>
 
             {/* Visual Frame of the Space */}
-            <div className="aspect-[16/10] w-full overflow-hidden relative border border-white/10 shadow-xl rounded-sm">
+            <div className="aspect-[16/10] w-full overflow-hidden relative border border-white/10 shadow-2xl rounded-2xl group">
               <img
                 src="/assets/Tanha Ambiance/Ambiance-25.webp"
                 alt="Atmospheric rooftop dining experience at Tanah"
-                className="w-full h-full object-cover filter brightness-[0.85] contrast-[1.05]"
+                className="w-full h-full object-cover filter brightness-[0.88] group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-3 border border-white/10 pointer-events-none" />
             </div>
 
-            <div className="border-l-2 pl-6 space-y-2" style={{ borderColor: 'var(--color-accent-gold)' }}>
-              <h4
-                className="font-display text-base"
-                style={{ color: 'var(--color-text-light)', WebkitTextFillColor: 'var(--color-text-light)', textShadow: '0 1px 6px rgba(0,0,0,0.5)' }}
-              >
+            <div className="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+              <h4 className="font-display text-base font-bold text-[#FFC470]">
                 Resort Casual Policy
               </h4>
-              <p
-                className="text-[11px] font-light leading-relaxed font-body"
-                style={{ color: 'var(--color-text-light)', WebkitTextFillColor: 'var(--color-text-light)', opacity: 0.8 }}
-              >
+              <p className="text-xs font-light leading-relaxed font-body text-[#EFE1D0]/80">
                 We encourage mindful attire. Smart casual is recommended to complement the premium design and atmosphere.
               </p>
             </div>
           </div>
 
-          {/* Form column */}
+          {/* Form column (WordPress Card Style) */}
           <div className="lg:col-span-7">
             <AnimatePresence mode="wait">
               {submitted ? (
@@ -165,20 +142,20 @@ export default function Book() {
                   initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                  className="p-10 border border-primary-dark/25 bg-white text-center space-y-6"
+                  transition={{ duration: 0.5 }}
+                  className="p-10 rounded-3xl bg-white text-center space-y-6 shadow-2xl border border-[#6B2523]/10"
                 >
-                  <CheckCircle className="w-12 h-12 text-primary-dark mx-auto animate-pulse-slow" />
-                  <h3 className="font-display text-3xl font-bold">
+                  <CheckCircle className="w-16 h-16 text-[#6B2523] mx-auto" />
+                  <h3 className="font-display text-3xl font-bold text-[#6B2523]">
                     Reservation Requested
                   </h3>
-                  <p className="text-xs font-light opacity-80 max-w-md mx-auto leading-relaxed font-body">
-                    Thank you, <span className="font-semibold">{form.name}</span>. We are saving a basalt table for your party of <span className="font-semibold">{form.guests}</span> on <span className="font-semibold">{form.date}</span> at <span className="font-semibold">{form.time}</span>. A confirmation has been dispatched to your email address.
+                  <p className="text-sm font-light text-[#3A2E2A]/80 max-w-md mx-auto leading-relaxed font-body">
+                    Thank you, <span className="font-semibold text-[#6B2523]">{form.name}</span>. We are saving a basalt table for your party of <span className="font-semibold text-[#6B2523]">{form.guests}</span> on <span className="font-semibold text-[#6B2523]">{form.date}</span> at <span className="font-semibold text-[#6B2523]">{form.time}</span>. A confirmation has been dispatched to your email address.
                   </p>
                   <div className="pt-4">
                     <button
                       onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', date: '', time: '', guests: '', notes: '' }) }}
-                      className="btn-primary text-[10px] py-3.5 px-8 cursor-pointer"
+                      className="wp-btn-pill bg-[#6B2523] text-[#F6E1CB] hover:bg-[#3A2E2A] text-xs font-bold"
                     >
                       Book Another Table
                     </button>
@@ -189,29 +166,38 @@ export default function Book() {
                   key="form"
                   onSubmit={handleSubmit}
                   noValidate
-                  className="p-8 md:p-12 border border-primary-dark/10 bg-[#F6E1CB] space-y-6 shadow-2xl text-left rounded text-[#3A2E2A]"
+                  className="p-8 md:p-12 bg-white rounded-3xl space-y-5 shadow-2xl text-left border border-[#6B2523]/10 text-[#3A2E2A]"
                 >
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <span className="wp-badge wp-badge-maroon mb-2">
+                      ONLINE BOOKING
+                    </span>
+                    <h3 className="font-display text-2xl md:text-3xl font-bold text-[#6B2523]">
+                      Reserve Your Experience
+                    </h3>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {/* Name */}
-                    <div className="space-y-2">
-                      <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">
-                        Full Name
+                    <div>
+                      <label className="text-xs font-bold tracking-wider uppercase text-[#6B2523] block mb-1.5">
+                        Full Name *
                       </label>
                       <input
                         type="text"
                         name="name"
                         value={form.name}
                         onChange={handleChange}
-                        placeholder="John Doe"
-                        className="form-input text-xs bg-white border border-primary-dark/15 text-[#3A2E2A] placeholder:text-[#3A2E2A]/40 focus:bg-white focus:border-primary-dark"
+                        placeholder="e.g. John Doe"
+                        className="wp-form-input text-sm"
                       />
-                      {errors.name && <span className="text-[10px] text-primary-dark block font-semibold">{errors.name}</span>}
+                      {errors.name && <span className="text-xs text-red-600 block mt-1 font-medium">{errors.name}</span>}
                     </div>
 
                     {/* Phone */}
-                    <div className="space-y-2">
-                      <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">
-                        Phone Number
+                    <div>
+                      <label className="text-xs font-bold tracking-wider uppercase text-[#6B2523] block mb-1.5">
+                        Phone Number *
                       </label>
                       <input
                         type="tel"
@@ -219,16 +205,16 @@ export default function Book() {
                         value={form.phone}
                         onChange={handleChange}
                         placeholder="89777 30291"
-                        className="form-input text-xs bg-white border border-primary-dark/15 text-[#3A2E2A] placeholder:text-[#3A2E2A]/40 focus:bg-white focus:border-primary-dark"
+                        className="wp-form-input text-sm"
                       />
-                      {errors.phone && <span className="text-[10px] text-primary-dark block font-semibold">{errors.phone}</span>}
+                      {errors.phone && <span className="text-xs text-red-600 block mt-1 font-medium">{errors.phone}</span>}
                     </div>
                   </div>
 
                   {/* Email */}
-                  <div className="space-y-2">
-                    <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">
-                      E-Mail Address
+                  <div>
+                    <label className="text-xs font-bold tracking-wider uppercase text-[#6B2523] block mb-1.5">
+                      Email Address *
                     </label>
                     <input
                       type="email"
@@ -236,81 +222,80 @@ export default function Book() {
                       value={form.email}
                       onChange={handleChange}
                       placeholder="you@domain.com"
-                      className="form-input text-xs bg-white border border-primary-dark/15 text-[#3A2E2A] placeholder:text-[#3A2E2A]/40 focus:bg-white focus:border-primary-dark"
+                      className="wp-form-input text-sm"
                     />
-                    {errors.email && <span className="text-[10px] text-primary-dark block font-semibold">{errors.email}</span>}
+                    {errors.email && <span className="text-xs text-red-600 block mt-1 font-medium">{errors.email}</span>}
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {/* Date */}
-                    <div className="space-y-2">
-                      <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">
-                        Select Date
+                    <div>
+                      <label className="text-xs font-bold tracking-wider uppercase text-[#6B2523] block mb-1.5">
+                        Date *
                       </label>
                       <input
                         type="date"
                         name="date"
                         value={form.date}
                         onChange={handleChange}
-                        className="form-input text-xs bg-white border border-primary-dark/15 text-[#3A2E2A] focus:bg-white focus:border-primary-dark"
+                        className="wp-form-input text-sm h-[48px]"
                       />
-                      {errors.date && <span className="text-[10px] text-primary-dark block font-semibold">{errors.date}</span>}
+                      {errors.date && <span className="text-xs text-red-600 block mt-1 font-medium">{errors.date}</span>}
                     </div>
 
                     {/* Time */}
-                    <div className="space-y-2">
-                      <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">
-                        Select Time
+                    <div>
+                      <label className="text-xs font-bold tracking-wider uppercase text-[#6B2523] block mb-1.5">
+                        Time Slot *
                       </label>
                       <select
                         name="time"
                         value={form.time}
                         onChange={handleChange}
-                        className="form-input text-xs bg-white border border-primary-dark/15 text-[#3A2E2A] focus:bg-white focus:border-primary-dark h-[54px]"
+                        className="wp-form-input text-sm h-[48px]"
                       >
-                        <option value="" className="text-near-black">Choose Time</option>
-                        {timeSlots.map(t => <option key={t} value={t} className="text-near-black">{t}</option>)}
+                        <option value="">Select Time</option>
+                        {timeSlots.map(t => <option key={t} value={t}>{t}</option>)}
                       </select>
-                      {errors.time && <span className="text-[10px] text-primary-dark block font-semibold">{errors.time}</span>}
+                      {errors.time && <span className="text-xs text-red-600 block mt-1 font-medium">{errors.time}</span>}
                     </div>
 
                     {/* Guests */}
-                    <div className="space-y-2">
-                      <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">
-                        Party Size
+                    <div>
+                      <label className="text-xs font-bold tracking-wider uppercase text-[#6B2523] block mb-1.5">
+                        Party Size *
                       </label>
                       <select
                         name="guests"
                         value={form.guests}
                         onChange={handleChange}
-                        className="form-input text-xs bg-white border border-primary-dark/15 text-[#3A2E2A] focus:bg-white focus:border-primary-dark h-[54px]"
+                        className="wp-form-input text-sm h-[48px]"
                       >
-                        <option value="" className="text-near-black">Guests count</option>
-                        {partySizes.map(g => <option key={g} value={g} className="text-near-black">{g}</option>)}
+                        <option value="">Guests Count</option>
+                        {partySizes.map(g => <option key={g} value={g}>{g}</option>)}
                       </select>
-                      {errors.guests && <span className="text-[10px] text-primary-dark block font-semibold">{errors.guests}</span>}
+                      {errors.guests && <span className="text-xs text-red-600 block mt-1 font-medium">{errors.guests}</span>}
                     </div>
                   </div>
 
                   {/* Notes */}
-                  <div className="space-y-2">
-                    <label className="text-[9px] font-bold tracking-[0.25em] uppercase text-primary-dark block">
-                      Special seating or Dietary notes
+                  <div>
+                    <label className="text-xs font-bold tracking-wider uppercase text-[#6B2523] block mb-1.5">
+                      Special Seating or Dietary Notes
                     </label>
                     <textarea
                       name="notes"
                       value={form.notes}
                       onChange={handleChange}
-                      placeholder="Allergies, seating requests..."
+                      placeholder="Allergies, rooftop seating preference, anniversary..."
                       rows={3}
-                      className="form-input text-xs bg-white border border-primary-dark/15 text-[#3A2E2A] placeholder:text-[#3A2E2A]/40 focus:bg-white focus:border-primary-dark resize-none"
+                      className="wp-form-input text-sm resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="btn-primary w-full justify-center text-center text-[10px] py-4 cursor-pointer"
-                    style={{ backgroundColor: 'var(--color-primary-dark)', borderColor: 'var(--color-primary-dark)', color: 'var(--color-border-accent)' }}
+                    className="wp-btn-pill bg-[#6B2523] text-[#F6E1CB] hover:bg-[#3A2E2A] hover:text-white shadow-lg w-full py-4 text-xs font-bold tracking-widest mt-2"
                   >
                     Send Reservation Request
                   </button>

@@ -43,92 +43,114 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.nav
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? 'py-3 shadow-md' : 'py-5'
-        }`}
-        style={{
-          background: '#6B2523',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
-          borderBottom: '1px solid rgba(122, 45, 45, 0.15)',
-        }}
-        role="navigation"
-        aria-label="Main navigation"
-      >
+      <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        {/* Top Announcement / Info Bar (WordPress Style) */}
         <div
-          className="px-8 flex items-center justify-between max-width-container mx-auto"
+          className={`hidden lg:block transition-all duration-300 text-[11px] font-medium tracking-wider border-b border-[#FFC470]/15 ${
+            scrolled ? 'h-0 opacity-0 overflow-hidden py-0' : 'py-2 bg-[#541B1A] text-[#F6E1CB]/85'
+          }`}
         >
-          {/* Logo with Custom SVG Owl */}
-          <Link
-            to="/"
-            className="flex items-center gap-3 group"
-            aria-label="Tanah Kitchen & Bar Home"
-          >
-            <LogoOwl className="w-10 h-10 text-light-cream transition-transform duration-500 group-hover:rotate-12" />
-            <div className="flex flex-col">
-              <span
-                className="font-display text-2xl font-bold tracking-[0.1em] uppercase text-light-cream transition-colors duration-300"
-              >
-                Tanah
+          <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
+            <div className="flex items-center gap-6">
+              <span className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FFC470]" />
+                Opp. Meenakshi Bamboo Road, Gachibowli, Hyderabad
               </span>
-              <span className="text-[8px] tracking-[0.3em] uppercase text-accent-gold -mt-1 font-body font-bold">
-                Kitchen & Bar
+              <span>•</span>
+              <span>Open Daily: 12:00 PM – 11:30 PM</span>
+            </div>
+            <div className="flex items-center gap-6">
+              <a href="tel:+918977730291" className="hover:text-[#FFC470] transition-colors">
+                📞 +91 89777 30291
+              </a>
+              <span className="text-[#FFC470]/40">|</span>
+              <span className="text-[#FFC470] font-semibold tracking-widest uppercase text-[10px]">
+                Architectural Gastronomy
               </span>
             </div>
-          </Link>
-
-          {/* Desktop Links */}
-          <ul className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => {
-              const isActive = location.pathname === link.path
-              return (
-                <li key={link.label}>
-                  <Link
-                    to={link.path}
-                    className="text-[10px] font-medium tracking-[0.2em] uppercase transition-colors duration-300 relative py-1 group"
-                    style={{
-                      color: isActive
-                        ? 'var(--color-accent-gold)'
-                        : 'var(--color-light-cream)'
-                    }}
-                  >
-                    {link.label}
-                    <span
-                      className={`absolute -bottom-1 left-0 h-[1.5px] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                        }`}
-                      style={{ background: 'var(--color-accent-gold)' }}
-                    />
-                  </Link>
-                </li>
-              )
-            })}
-          </ul>
-
-          {/* CTA Button (Desktop) */}
-          <div className="hidden md:block">
-            <Link
-              to="/book"
-              className="border border-accent-gold text-accent-gold hover:bg-accent-gold hover:text-primary-dark py-2.5 px-6 text-[9px] tracking-[0.25em] font-semibold transition-all duration-300"
-            >
-              Reserve
-            </Link>
           </div>
-
-          {/* Mobile Hamburger */}
-          <button
-            className="md:hidden p-2 transition-colors cursor-pointer text-light-cream hover:text-accent-gold"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={menuOpen}
-          >
-            {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
         </div>
-      </motion.nav>
+
+        {/* Main Sticky Navbar */}
+        <nav
+          className={`transition-all duration-300 ${
+            scrolled
+              ? 'py-3.5 bg-[#6B2523]/95 backdrop-blur-md shadow-lg border-b border-[#FFC470]/20'
+              : 'py-4 lg:py-5 bg-[#6B2523] border-b border-[#FFC470]/10'
+          }`}
+          role="navigation"
+          aria-label="Main navigation"
+        >
+          <div className="max-w-7xl px-6 sm:px-8 flex items-center justify-between mx-auto">
+            {/* Logo */}
+            <Link
+              to="/"
+              className="flex items-center gap-3.5 group"
+              aria-label="Tanah Kitchen & Bar Home"
+            >
+              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center p-1.5 border border-[#FFC470]/20 group-hover:border-[#FFC470] transition-colors">
+                <LogoOwl className="w-full h-full text-light-cream" />
+              </div>
+              <div className="flex flex-col text-left">
+                <span className="font-display text-2xl font-bold tracking-[0.12em] uppercase text-light-cream leading-tight">
+                  Tanah
+                </span>
+                <span className="text-[9px] tracking-[0.35em] uppercase text-accent-gold font-body font-semibold">
+                  Kitchen & Bar
+                </span>
+              </div>
+            </Link>
+
+            {/* Desktop Links */}
+            <ul className="hidden md:flex items-center gap-7 lg:gap-9">
+              {navLinks.map((link) => {
+                const isActive = location.pathname === link.path
+                return (
+                  <li key={link.label}>
+                    <Link
+                      to={link.path}
+                      className={`text-xs font-semibold tracking-[0.18em] uppercase transition-all duration-200 relative py-1.5 ${
+                        isActive
+                          ? 'text-[#FFC470]'
+                          : 'text-[#F6E1CB] hover:text-[#FFC470]'
+                      }`}
+                    >
+                      {link.label}
+                      {isActive && (
+                        <motion.span
+                          layoutId="nav-underline"
+                          className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#FFC470] rounded-full"
+                          transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                        />
+                      )}
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+
+            {/* CTA Button (Desktop) */}
+            <div className="hidden md:flex items-center gap-4">
+              <Link
+                to="/book"
+                className="wp-btn-pill bg-[#FFC470] text-[#6B2523] hover:bg-white hover:text-[#6B2523] shadow-md text-xs font-bold px-6 py-2.5"
+              >
+                Book a Table
+              </Link>
+            </div>
+
+            {/* Mobile Hamburger */}
+            <button
+              className="md:hidden p-2.5 rounded-lg bg-white/5 border border-white/10 text-light-cream hover:text-accent-gold transition-colors"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
+            >
+              {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </nav>
+      </header>
 
       {/* Mobile Menu */}
       <AnimatePresence>

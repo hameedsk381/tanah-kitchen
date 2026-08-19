@@ -31,14 +31,6 @@ export default function SignatureExperiences() {
 
   return (
     <section id="experiences" ref={ref} className="relative w-full bg-[#E8D8C0] py-24 overflow-hidden">
-      {/* Background paper texture SVG */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none z-0"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' fill='none'/%3E%3Cpath d='M10 0 L10 100 M90 0 L90 100' stroke='%23000000' stroke-width='0.5'/%3E%3C/svg%3E")`,
-          backgroundSize: '80px 80px'
-        }}
-      />
-
       <div className="max-width-container px-8 mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
 

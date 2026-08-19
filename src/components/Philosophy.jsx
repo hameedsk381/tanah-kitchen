@@ -27,13 +27,6 @@ export default function Philosophy() {
         ref={containerRef}
         className="relative w-full bg-[#882B06] text-[#F2E8D8] py-24 md:py-32 overflow-hidden"
       >
-        {/* Background Tribal Mural Overlay */}
-        <div className="absolute inset-0 opacity-[0.06] pointer-events-none select-none z-0"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 800 800' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50,100 L150,100 M100,50 L100,150 M300,200 L400,250 M500,80 L550,150 M700,300 C650,250 600,300 580,350 M250,550 L350,550 M300,500 L300,600 M600,600 L680,680 M100,650 C120,600 180,620 200,680' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' fill='none'/%3E%3Ccircle cx='450' cy='450' r='40' stroke='%23ffffff' stroke-width='3' fill='none'/%3E%3Cpath d='M450,380 L450,420 M450,480 L450,520 M380,450 L420,450 M480,450 L520,450' stroke='%23ffffff' stroke-width='2'/%3E%3C/svg%3E")`,
-            backgroundSize: '400px 400px'
-          }}
-        />
         <div className="absolute inset-0 bg-gradient-to-t from-dark-brown/40 via-transparent to-transparent pointer-events-none z-0" />
 
         <div className="max-width-container px-8 mx-auto relative z-10">
