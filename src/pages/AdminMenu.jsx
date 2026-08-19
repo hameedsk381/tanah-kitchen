@@ -1236,20 +1236,41 @@ export default function AdminMenu() {
                   </div>
                 </div>
 
-                <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
-                    Dish Name *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={editingItem.name}
-                    onChange={(e) => setEditingItem({ ...editingItem, name: e.target.value })}
-                    placeholder="e.g. Claypot Mutton Biryani"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#6B2523]/30"
-                  />
+                {/* Name & Special Tag */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="sm:col-span-2">
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                      Dish Name *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={editingItem.name}
+                      onChange={(e) => setEditingItem({ ...editingItem, name: e.target.value })}
+                      placeholder="e.g. Claypot Mutton Biryani"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#6B2523]/30"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                      Special Badge
+                    </label>
+                    <button
+                      type="button"
+                      onClick={() => setEditingItem({ ...editingItem, special: !editingItem.special })}
+                      className={`w-full py-2.5 px-3 rounded-xl text-xs font-bold transition-all border ${
+                        editingItem.special
+                          ? 'bg-[#6B2523] text-[#FFC470] border-[#6B2523]'
+                          : 'bg-white text-[#3A2E2A]/70 border-[#6B2523]/20'
+                      }`}
+                    >
+                      {editingItem.special ? '✦ Special' : 'Standard'}
+                    </button>
+                  </div>
                 </div>
 
+                {/* Category & Price */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
@@ -1285,14 +1306,97 @@ export default function AdminMenu() {
                   </div>
                 </div>
 
+                {/* Dietary Type & Spice Level */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                      Dietary Type
+                    </label>
+                    <select
+                      value={editingItem.nonVeg ? 'non-veg' : 'veg'}
+                      onChange={(e) => setEditingItem({ ...editingItem, nonVeg: e.target.value === 'non-veg' })}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm bg-white"
+                    >
+                      <option value="veg">🟢 Pure Vegetarian</option>
+                      <option value="non-veg">🔴 Non-Vegetarian</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                      Spice Level
+                    </label>
+                    <select
+                      value={
+                        editingItem.profile?.spicy >= 70
+                          ? '2'
+                          : editingItem.profile?.spicy >= 30
+                          ? '1'
+                          : '0'
+                      }
+                      onChange={(e) => {
+                        const level = Number(e.target.value)
+                        const spicyVal = level === 2 ? 85 : level === 1 ? 45 : 10
+                        setEditingItem({
+                          ...editingItem,
+                          profile: {
+                            ...(editingItem.profile || { earthy: 50, smoky: 40, sweet: 20 }),
+                            spicy: spicyVal
+                          }
+                        })
+                      }}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm bg-white"
+                    >
+                      <option value="0">Mild / Non-Spicy</option>
+                      <option value="1">Medium 🌶️</option>
+                      <option value="2">Hot &amp; Fiery 🌶️🌶️</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* Beverage / Liquid Pairing */}
+                <div>
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                    Drink Pairing Recommendation
+                  </label>
+                  <input
+                    type="text"
+                    value={editingItem.pairing || ''}
+                    onChange={(e) => setEditingItem({ ...editingItem, pairing: e.target.value })}
+                    placeholder="e.g. 🍸 Pairs with: Rooftop Smoked Old Fashioned"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm"
+                  />
+                </div>
+
+                {/* Culinary Description */}
                 <div>
                   <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
                     Culinary Description
                   </label>
                   <textarea
-                    rows={3}
+                    rows={2}
                     value={editingItem.desc}
                     onChange={(e) => setEditingItem({ ...editingItem, desc: e.target.value })}
+                    placeholder="Describe ingredients and cooking craft..."
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm"
+                  />
+                </div>
+
+                {/* Tags */}
+                <div>
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                    Tags (Comma separated)
+                  </label>
+                  <input
+                    type="text"
+                    value={editingItem.tags ? editingItem.tags.join(', ') : ''}
+                    onChange={(e) =>
+                      setEditingItem({
+                        ...editingItem,
+                        tags: e.target.value.split(',').map((t) => t.trim()).filter(Boolean)
+                      })
+                    }
+                    placeholder="e.g. ★ BESTSELLER, Signature, Vegan"
                     className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm"
                   />
                 </div>
@@ -1309,7 +1413,7 @@ export default function AdminMenu() {
                     type="submit"
                     className="px-6 py-2.5 rounded-xl bg-[#6B2523] text-[#FFC470] hover:bg-[#3A2E2A] text-xs font-bold uppercase tracking-wider shadow-md"
                   >
-                    Save Dish
+                    Save Dish Details
                   </button>
                 </div>
               </form>
