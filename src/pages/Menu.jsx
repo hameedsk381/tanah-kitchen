@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, Sliders, Sparkles, Flame, Cookie, Sprout, GlassWater } from 'lucide-react'
 import menuData from '../data/menu.json'
+import { useMenu } from '../context/MenuContext'
 import { LogoOwl } from '../components/illustrations'
 import SEO from '../components/SEO'
 import {
@@ -464,6 +465,7 @@ function NonVegMark() {
 }
 
 export default function Menu() {
+  const { items: contextItems } = useMenu()
   const [menuType, setMenuType] = useState('food') // 'food' or 'liquid'
   const [viewMode, setViewMode] = useState('classic') // 'classic' or 'sensory'
   const [selectedCategory, setSelectedCategory] = useState('All')
@@ -486,7 +488,8 @@ export default function Menu() {
   }, [menuType])
 
   useEffect(() => {
-    let result = menuData.items.map(item => {
+    const rawItems = contextItems && contextItems.length > 0 ? contextItems : menuData.items
+    let result = rawItems.map(item => {
       const profile = calculateSensoryProfile(item)
 
       // Calculate match percentage
@@ -538,7 +541,7 @@ export default function Menu() {
     } else {
       setHoveredItem(null)
     }
-  }, [selectedCategory, dietaryFilter, searchQuery, viewMode, sensoryPrefs])
+  }, [selectedCategory, dietaryFilter, searchQuery, viewMode, sensoryPrefs, contextItems])
 
   const handlePresetSelect = (profile) => {
     setSensoryPrefs(profile)
