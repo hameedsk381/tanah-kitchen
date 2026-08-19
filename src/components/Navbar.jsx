@@ -52,7 +52,7 @@ export default function Navbar() {
             scrolled
               ? 'h-0 opacity-0 overflow-hidden py-0'
               : isHome
-              ? 'py-2 bg-black/20 backdrop-blur-xs text-[#F6E1CB]/90 border-b border-white/10'
+              ? 'py-2 bg-transparent text-[#F6E1CB]/90 border-none'
               : 'py-2 bg-[#541B1A] text-[#F6E1CB]/85 border-b border-[#FFC470]/15'
           }`}
         >
@@ -83,7 +83,7 @@ export default function Navbar() {
             scrolled
               ? 'py-3.5 bg-[#6B2523]/95 backdrop-blur-md shadow-lg border-b border-[#FFC470]/20'
               : isHome
-              ? 'py-4 lg:py-5 bg-transparent border-b border-white/10 shadow-none'
+              ? 'py-4 lg:py-5 bg-transparent border-none shadow-none'
               : 'py-4 lg:py-5 bg-[#6B2523] border-b border-[#FFC470]/10'
           }`}
           role="navigation"
