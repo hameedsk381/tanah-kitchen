@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Search,
@@ -20,7 +20,10 @@ import {
   Sliders,
   Flame,
   Wine,
-  Save
+  Save,
+  Upload,
+  UploadCloud,
+  FolderPlus
 } from 'lucide-react'
 import { useMenu } from '../context/MenuContext'
 import SEO from '../components/SEO'
@@ -30,7 +33,8 @@ const ALL_FOOD_IMAGES = Array.from({ length: 54 }, (_, i) => ({
   path: `/assets/Tanha Food/food-${i + 1}.webp`,
   id: `food-${i + 1}`,
   number: i + 1,
-  name: `Photo #${i + 1}`
+  name: `Photo #${i + 1}`,
+  isCustom: false
 }))
 
 const DISHES_PER_PAGE = 12
@@ -97,20 +101,82 @@ export default function AdminMenu() {
   const [gallerySearch, setGallerySearch] = useState('')
   const [galleryPage, setGalleryPage] = useState(1)
 
-  // Modals
+  // Custom Uploaded Photos
+  const [customUploads, setCustomUploads] = useState(() => {
+    try {
+      const saved = localStorage.getItem('tanah_custom_uploads_v1')
+      if (saved) return JSON.parse(saved)
+    } catch (e) {}
+    return []
+  })
+
+  // Modals & Photo Picker
   const [editingItem, setEditingItem] = useState(null)
   const [isPhotoPickerOpen, setIsPhotoPickerOpen] = useState(false)
   const [photoPickerTarget, setPhotoPickerTarget] = useState('menu') // 'menu' or 'bento'
+  const [selectedPhotoTab, setSelectedPhotoTab] = useState('all') // 'all' | 'uploads' | page number
   const [imageSearchQuery, setImageSearchQuery] = useState('')
   const [photoPage, setPhotoPage] = useState(1)
   const [toastMessage, setToastMessage] = useState('')
+
+  const fileInputRef = useRef(null)
 
   const showToast = (msg) => {
     setToastMessage(msg)
     setTimeout(() => setToastMessage(''), 3000)
   }
 
-  // 1. Filtered dishes
+  // Upload handler for custom photos
+  const handleFileUpload = (file) => {
+    if (!file) return
+    if (!file.type.startsWith('image/')) {
+      showToast('⚠️ Please select a valid image file.')
+      return
+    }
+
+    if (file.size > 10 * 1024 * 1024) {
+      showToast('⚠️ Image must be under 10MB.')
+      return
+    }
+
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      const dataUrl = e.target.result
+      const newUpload = {
+        path: dataUrl,
+        id: `custom-upload-${Date.now()}`,
+        number: customUploads.length + 1,
+        name: file.name || `Uploaded Photo #${customUploads.length + 1}`,
+        isCustom: true
+      }
+
+      const updatedUploads = [newUpload, ...customUploads]
+      setCustomUploads(updatedUploads)
+      try {
+        localStorage.setItem('tanah_custom_uploads_v1', JSON.stringify(updatedUploads))
+      } catch (err) {
+        console.warn('LocalStorage full, uploaded photo will remain in memory for this session:', err)
+      }
+
+      // Assign directly
+      if (photoPickerTarget === 'bento' && bentoDraft) {
+        setBentoDraft({ ...bentoDraft, image: dataUrl })
+      } else if (editingItem) {
+        setEditingItem({ ...editingItem, image: dataUrl })
+      }
+
+      setIsPhotoPickerOpen(false)
+      showToast('✓ Photo uploaded and assigned!')
+    }
+    reader.readAsDataURL(file)
+  }
+
+  // Combined photo catalog (Custom Uploads + 54 DSLR Photos)
+  const allAvailablePhotos = useMemo(() => {
+    return [...customUploads, ...ALL_FOOD_IMAGES]
+  }, [customUploads])
+
+  // Filtered dishes
   const filteredItems = useMemo(() => {
     return items.filter((item) => {
       const matchesCategory =
@@ -130,7 +196,7 @@ export default function AdminMenu() {
     return filteredItems.slice(start, start + DISHES_PER_PAGE)
   }, [filteredItems, dishPage])
 
-  // 2. Filtered Gallery Items
+  // Filtered Gallery Items
   const filteredGallery = useMemo(() => {
     return galleryItems.filter((item) => {
       const matchesCat =
@@ -150,15 +216,19 @@ export default function AdminMenu() {
     return filteredGallery.slice(start, start + GALLERY_PER_PAGE)
   }, [filteredGallery, galleryPage])
 
-  // 3. Filtered images in Photo Picker
+  // Filtered images in Photo Picker
   const filteredImages = useMemo(() => {
-    if (!imageSearchQuery) return ALL_FOOD_IMAGES
-    return ALL_FOOD_IMAGES.filter((img) =>
+    let source = allAvailablePhotos
+    if (selectedPhotoTab === 'uploads') {
+      source = customUploads
+    }
+    if (!imageSearchQuery) return source
+    return source.filter((img) =>
       img.name.toLowerCase().includes(imageSearchQuery.toLowerCase()) ||
       img.id.toLowerCase().includes(imageSearchQuery.toLowerCase()) ||
       String(img.number).includes(imageSearchQuery)
     )
-  }, [imageSearchQuery])
+  }, [allAvailablePhotos, customUploads, selectedPhotoTab, imageSearchQuery])
 
   const totalPhotoPages = Math.ceil(filteredImages.length / PHOTOS_PER_PAGE) || 1
   const paginatedPhotos = useMemo(() => {
@@ -234,7 +304,7 @@ export default function AdminMenu() {
               Visual Content &amp; Bento Studio
             </h1>
             <p className="text-xs sm:text-sm text-[#3A2E2A]/80 max-w-xl font-light">
-              Customize Home Page Bento Grid tiles, reassign gallery photo categories, and manage seasonal menu dishes.
+              Upload custom photos, customize Home Page Bento Grid tiles, reassign gallery photo categories, and manage seasonal menu dishes.
             </p>
           </div>
 
@@ -292,7 +362,7 @@ export default function AdminMenu() {
                   <span>Home Page Bento Grid (6 Dynamic Slots)</span>
                 </h2>
                 <p className="text-xs text-[#3A2E2A]/70 mt-1">
-                  Click any slot below to change the dish, photo, title, pricing, tag, or beverage pairing.
+                  Click any slot below to change the dish, upload custom photos, edit title, pricing, tag, or beverage pairing.
                 </p>
               </div>
 
@@ -839,7 +909,7 @@ export default function AdminMenu() {
                     Customize Bento Slot {editingBentoIndex + 1}
                   </h3>
                   <p className="text-xs text-[#3A2E2A]/70">
-                    Set the exact dish, tag, and photo shown in this Home Page tile.
+                    Upload a custom photo or choose a dish from the catalog.
                   </p>
                 </div>
                 <button
@@ -889,31 +959,48 @@ export default function AdminMenu() {
                   </select>
                 </div>
 
-                {/* Photo Preview & Picker Button */}
-                <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#FAF6F0] border border-[#6B2523]/15">
-                  <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 border border-[#6B2523]/20 bg-black">
+                {/* Photo Preview & Dual Action Buttons (Upload & Browse) */}
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-2xl bg-[#FAF6F0] border border-[#6B2523]/15">
+                  <div className="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 border border-[#6B2523]/20 bg-black">
                     <img
                       src={bentoDraft.image}
                       alt="Selected preview"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="space-y-1.5">
-                    <span className="text-[10px] font-mono text-[#3A2E2A]/70 block font-semibold">
-                      {bentoDraft.image}
+                  <div className="space-y-2 flex-1">
+                    <span className="text-[10px] font-mono text-[#3A2E2A]/70 block font-semibold truncate max-w-xs">
+                      {bentoDraft.image.startsWith('data:') ? 'Custom Uploaded Image (Base64)' : bentoDraft.image}
                     </span>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setPhotoPickerTarget('bento')
-                        setIsPhotoPickerOpen(true)
-                        setPhotoPage(1)
-                      }}
-                      className="px-3.5 py-1.5 rounded-lg bg-[#6B2523] text-[#FFC470] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm hover:bg-[#3A2E2A]"
-                    >
-                      <ImageIcon className="w-3.5 h-3.5" />
-                      <span>Browse Photo Catalog</span>
-                    </button>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <label className="cursor-pointer px-3.5 py-1.5 rounded-lg bg-[#882B06] hover:bg-[#6B2523] text-[#FFC470] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm transition-all">
+                        <Upload className="w-3.5 h-3.5" />
+                        <span>Upload Photo</span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          className="hidden"
+                          onChange={(e) => {
+                            if (e.target.files?.[0]) {
+                              handleFileUpload(e.target.files[0])
+                            }
+                          }}
+                        />
+                      </label>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setPhotoPickerTarget('bento')
+                          setIsPhotoPickerOpen(true)
+                          setPhotoPage(1)
+                        }}
+                        className="px-3.5 py-1.5 rounded-lg bg-white border border-[#6B2523]/25 text-[#6B2523] hover:bg-[#FAF6F0] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-xs transition-all"
+                      >
+                        <ImageIcon className="w-3.5 h-3.5" />
+                        <span>Browse Catalog</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -1037,7 +1124,7 @@ export default function AdminMenu() {
         )}
       </AnimatePresence>
 
-      {/* ── PHOTO PICKER MODAL (Pure Imagery) ── */}
+      {/* ── PHOTO PICKER MODAL (With Upload + Catalog Tabs) ── */}
       <AnimatePresence>
         {isPhotoPickerOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/70 backdrop-blur-md">
@@ -1045,29 +1132,65 @@ export default function AdminMenu() {
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
-              className="bg-white w-full max-w-4xl max-h-[85vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col border border-[#6B2523]/20"
+              className="bg-white w-full max-w-4xl max-h-[88vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col border border-[#6B2523]/20"
             >
-              {/* Header */}
-              <div className="p-5 sm:p-6 border-b border-[#6B2523]/15 flex items-center justify-between bg-[#FAF6F0]">
+              {/* Header with Direct Upload Action */}
+              <div className="p-5 sm:p-6 border-b border-[#6B2523]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#FAF6F0]">
                 <div>
                   <h3 className="font-display font-bold text-lg sm:text-xl text-[#6B2523]">
-                    Select Food Photograph
+                    Select or Upload Food Photograph
                   </h3>
                   <p className="text-xs text-[#3A2E2A]/70 font-light mt-0.5">
-                    Click any photograph below to assign it. Page {photoPage} of {totalPhotoPages}.
+                    Click any photo to assign it, or upload your own custom high-res image.
                   </p>
                 </div>
-                <button
-                  onClick={() => setIsPhotoPickerOpen(false)}
-                  className="p-2 rounded-xl hover:bg-black/5 text-[#3A2E2A]/70"
-                >
-                  <X className="w-5 h-5" />
-                </button>
+
+                <div className="flex items-center gap-2">
+                  <label className="cursor-pointer px-4 py-2 rounded-xl bg-[#6B2523] hover:bg-[#3A2E2A] text-[#FFC470] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-md transition-all flex-shrink-0">
+                    <Upload className="w-3.5 h-3.5" />
+                    <span>Upload New Photo</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={(e) => {
+                        if (e.target.files?.[0]) {
+                          handleFileUpload(e.target.files[0])
+                        }
+                      }}
+                    />
+                  </label>
+
+                  <button
+                    onClick={() => setIsPhotoPickerOpen(false)}
+                    className="p-2 rounded-xl hover:bg-black/5 text-[#3A2E2A]/70"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
               </div>
 
-              {/* Photo Filter Tabs */}
+              {/* Photo Filter Tabs & Search */}
               <div className="p-4 border-b border-[#6B2523]/10 bg-white flex flex-col sm:flex-row items-center justify-between gap-3">
                 <div className="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0 scrollbar-none">
+                  {customUploads.length > 0 && (
+                    <button
+                      onClick={() => {
+                        setSelectedPhotoTab('uploads')
+                        setImageSearchQuery('')
+                        setPhotoPage(1)
+                      }}
+                      className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1 ${
+                        selectedPhotoTab === 'uploads'
+                          ? 'bg-[#882B06] text-[#FFC470] shadow-xs'
+                          : 'bg-[#882B06]/10 text-[#882B06] hover:bg-[#882B06]/20'
+                      }`}
+                    >
+                      <FolderPlus className="w-3 h-3" />
+                      <span>Uploaded ({customUploads.length})</span>
+                    </button>
+                  )}
+
                   {[
                     { label: 'Photos 1–8', page: 1 },
                     { label: 'Photos 9–16', page: 2 },
@@ -1080,11 +1203,12 @@ export default function AdminMenu() {
                     <button
                       key={tab.page}
                       onClick={() => {
+                        setSelectedPhotoTab('all')
                         setImageSearchQuery('')
                         setPhotoPage(tab.page)
                       }}
                       className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
-                        photoPage === tab.page && !imageSearchQuery
+                        photoPage === tab.page && selectedPhotoTab === 'all' && !imageSearchQuery
                           ? 'bg-[#6B2523] text-[#FFC470] shadow-xs'
                           : 'bg-[#FAF6F0] text-[#3A2E2A]/75 hover:bg-[#6B2523]/10'
                       }`}
@@ -1111,6 +1235,30 @@ export default function AdminMenu() {
 
               {/* Pure Visual Photo Grid */}
               <div className="p-6 overflow-y-auto max-h-[58vh] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-5 bg-[#FAF6F0]/40">
+                
+                {/* Upload Card as 1st Item */}
+                <label className="group relative rounded-2xl overflow-hidden cursor-pointer border-2 border-dashed border-[#6B2523]/30 hover:border-[#6B2523] transition-all h-40 sm:h-48 bg-white/70 hover:bg-white flex flex-col items-center justify-center text-center p-4">
+                  <div className="w-12 h-12 rounded-full bg-[#6B2523]/10 group-hover:bg-[#6B2523] text-[#6B2523] group-hover:text-[#FFC470] flex items-center justify-center mb-2 transition-all">
+                    <UploadCloud className="w-6 h-6" />
+                  </div>
+                  <span className="text-xs font-bold text-[#6B2523] block leading-tight">
+                    Upload Custom Photo
+                  </span>
+                  <span className="text-[9px] text-[#3A2E2A]/60 font-medium mt-1">
+                    PNG, JPG, WEBP
+                  </span>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(e) => {
+                      if (e.target.files?.[0]) {
+                        handleFileUpload(e.target.files[0])
+                      }
+                    }}
+                  />
+                </label>
+
                 {paginatedPhotos.map((img) => {
                   const currentImg =
                     photoPickerTarget === 'bento' ? bentoDraft?.image : editingItem?.image
@@ -1126,7 +1274,7 @@ export default function AdminMenu() {
                           setEditingItem({ ...editingItem, image: img.path })
                         }
                         setIsPhotoPickerOpen(false)
-                        showToast(`✓ Assigned ${img.id}.webp`)
+                        showToast(`✓ Assigned ${img.name || img.id}`)
                       }}
                       className={`group relative rounded-2xl overflow-hidden cursor-pointer border-2 transition-all shadow-xs h-40 sm:h-48 bg-white ${
                         isSelected
@@ -1144,6 +1292,11 @@ export default function AdminMenu() {
                       {isSelected && (
                         <div className="absolute top-3 right-3 bg-[#6B2523] text-[#FFC470] p-1.5 rounded-full shadow-xl">
                           <Check className="w-4 h-4" />
+                        </div>
+                      )}
+                      {img.isCustom && (
+                        <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-black/70 backdrop-blur-xs text-[9px] font-bold text-[#FFC470]">
+                          Custom Upload
                         </div>
                       )}
                     </div>
@@ -1209,30 +1362,48 @@ export default function AdminMenu() {
 
               <form onSubmit={handleSaveItem} className="p-6 space-y-4 overflow-y-auto flex-1 text-left">
                 
-                <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#FAF6F0] border border-[#6B2523]/15">
-                  <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 border border-[#6B2523]/20 bg-black/5">
+                {/* Photo Preview & Dual Action Buttons */}
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-2xl bg-[#FAF6F0] border border-[#6B2523]/15">
+                  <div className="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 border border-[#6B2523]/20 bg-black/5">
                     <img
                       src={editingItem.image || '/assets/Tanha Food/food-1.webp'}
                       alt="Selected preview"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="space-y-1.5">
-                    <span className="text-[10px] font-mono text-[#3A2E2A]/70 block font-semibold">
-                      {editingItem.image}
+                  <div className="space-y-2 flex-1">
+                    <span className="text-[10px] font-mono text-[#3A2E2A]/70 block font-semibold truncate max-w-xs">
+                      {editingItem.image?.startsWith('data:') ? 'Custom Uploaded Image (Base64)' : editingItem.image}
                     </span>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setPhotoPickerTarget('menu')
-                        setIsPhotoPickerOpen(true)
-                        setPhotoPage(1)
-                      }}
-                      className="px-3.5 py-1.5 rounded-lg bg-[#6B2523] text-[#FFC470] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm hover:bg-[#3A2E2A]"
-                    >
-                      <ImageIcon className="w-3.5 h-3.5" />
-                      <span>Browse Photo Catalog</span>
-                    </button>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <label className="cursor-pointer px-3.5 py-1.5 rounded-lg bg-[#882B06] hover:bg-[#6B2523] text-[#FFC470] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm transition-all">
+                        <Upload className="w-3.5 h-3.5" />
+                        <span>Upload Photo</span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          className="hidden"
+                          onChange={(e) => {
+                            if (e.target.files?.[0]) {
+                              handleFileUpload(e.target.files[0])
+                            }
+                          }}
+                        />
+                      </label>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setPhotoPickerTarget('menu')
+                          setIsPhotoPickerOpen(true)
+                          setPhotoPage(1)
+                        }}
+                        className="px-3.5 py-1.5 rounded-lg bg-white border border-[#6B2523]/25 text-[#6B2523] hover:bg-[#FAF6F0] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-xs transition-all"
+                      >
+                        <ImageIcon className="w-3.5 h-3.5" />
+                        <span>Browse Catalog</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
 
