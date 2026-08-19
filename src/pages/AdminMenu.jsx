@@ -13,23 +13,27 @@ import {
   X,
   Sparkles,
   Utensils,
-  Eye,
-  SlidersHorizontal
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react'
 import { useMenu } from '../context/MenuContext'
 import SEO from '../components/SEO'
 
-// Generate full catalog of available food photos (1 to 54)
+// Catalog of 54 pure DSLR food photos
 const ALL_FOOD_IMAGES = Array.from({ length: 54 }, (_, i) => ({
   path: `/assets/Tanha Food/food-${i + 1}.webp`,
   id: `food-${i + 1}`,
-  name: `Food Photo #${i + 1}`
+  number: i + 1,
+  name: `Photo #${i + 1}`
 }))
+
+const DISHES_PER_PAGE = 12
+const PHOTOS_PER_PAGE = 12
 
 function VegMark() {
   return (
     <span
-      className="inline-block w-4 h-4 border border-emerald-600 bg-emerald-50 p-0.5 rounded-sm flex-shrink-0"
+      className="inline-block w-3.5 h-3.5 border border-emerald-600 bg-emerald-50 p-0.5 rounded-xs flex-shrink-0"
       title="Pure Vegetarian"
     >
       <span className="block w-full h-full bg-emerald-600 rounded-full" />
@@ -40,7 +44,7 @@ function VegMark() {
 function NonVegMark() {
   return (
     <span
-      className="inline-block w-4 h-4 border border-rose-700 bg-rose-50 p-0.5 rounded-sm flex-shrink-0"
+      className="inline-block w-3.5 h-3.5 border border-rose-700 bg-rose-50 p-0.5 rounded-xs flex-shrink-0"
       title="Non-Vegetarian"
     >
       <span className="block w-full h-full bg-rose-700 rounded-full" />
@@ -58,10 +62,14 @@ export default function AdminMenu() {
   const [isPhotoPickerOpen, setIsPhotoPickerOpen] = useState(false)
   const [toastMessage, setToastMessage] = useState('')
   const [imageSearchQuery, setImageSearchQuery] = useState('')
+  
+  // Pagination States
+  const [dishPage, setDishPage] = useState(1)
+  const [photoPage, setPhotoPage] = useState(1)
 
   const showToast = (msg) => {
     setToastMessage(msg)
-    setTimeout(() => setToastMessage(''), 3500)
+    setTimeout(() => setToastMessage(''), 3000)
   }
 
   // Filtered dishes
@@ -78,14 +86,29 @@ export default function AdminMenu() {
     })
   }, [items, selectedCategory, searchQuery])
 
-  // Filtered images in the picker
+  // Paginated dishes
+  const totalDishPages = Math.ceil(filteredItems.length / DISHES_PER_PAGE) || 1
+  const paginatedDishes = useMemo(() => {
+    const start = (dishPage - 1) * DISHES_PER_PAGE
+    return filteredItems.slice(start, start + DISHES_PER_PAGE)
+  }, [filteredItems, dishPage])
+
+  // Filtered images in picker
   const filteredImages = useMemo(() => {
     if (!imageSearchQuery) return ALL_FOOD_IMAGES
     return ALL_FOOD_IMAGES.filter((img) =>
       img.name.toLowerCase().includes(imageSearchQuery.toLowerCase()) ||
-      img.id.toLowerCase().includes(imageSearchQuery.toLowerCase())
+      img.id.toLowerCase().includes(imageSearchQuery.toLowerCase()) ||
+      String(img.number).includes(imageSearchQuery)
     )
   }, [imageSearchQuery])
+
+  // Paginated images in picker
+  const totalPhotoPages = Math.ceil(filteredImages.length / PHOTOS_PER_PAGE) || 1
+  const paginatedPhotos = useMemo(() => {
+    const start = (photoPage - 1) * PHOTOS_PER_PAGE
+    return filteredImages.slice(start, start + PHOTOS_PER_PAGE)
+  }, [filteredImages, photoPage])
 
   // Save handler for the modal
   const handleSaveItem = (e) => {
@@ -116,7 +139,7 @@ export default function AdminMenu() {
     <main className="min-h-screen bg-[#FAF6F0] text-[#3A2E2A] pt-28 pb-20 font-body">
       <SEO
         title="Menu & Content Management Studio | Tanah Kitchen"
-        description="Internal visual management dashboard for updating dish photography, prices, descriptions, and categories."
+        description="Fast, spacious visual studio for matching dish photography, editing prices, and managing categories."
       />
 
       {/* Toast Notification */}
@@ -126,7 +149,7 @@ export default function AdminMenu() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-24 right-6 z-50 bg-[#6B2523] text-[#FFC470] px-5 py-3 rounded-xl shadow-2xl border border-[#FFC470]/30 text-sm font-semibold flex items-center gap-2"
+            className="fixed top-24 right-6 z-50 bg-[#6B2523] text-[#FFC470] px-5 py-3 rounded-2xl shadow-2xl border border-[#FFC470]/30 text-xs font-bold flex items-center gap-2"
           >
             <Sparkles className="w-4 h-4" />
             <span>{toastMessage}</span>
@@ -137,38 +160,37 @@ export default function AdminMenu() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Studio Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-white p-6 sm:p-8 rounded-3xl border border-[#6B2523]/15 shadow-md">
-          <div className="space-y-1">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-white p-6 sm:p-8 rounded-3xl border border-[#6B2523]/15 shadow-sm">
+          <div className="space-y-1.5">
             <div className="flex items-center gap-2">
               <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-[#6B2523] text-[#FFC470]">
-                ✦ ADMIN STUDIO ✦
+                ✦ CONTENT STUDIO ✦
               </span>
               <span className="text-xs font-semibold text-[#882B06] bg-[#882B06]/10 px-2.5 py-1 rounded-full">
-                {items.length} Total Dishes
+                {items.length} Dishes
               </span>
             </div>
             <h1 className="font-display font-extrabold text-2xl sm:text-4xl text-[#6B2523]">
               Menu &amp; Visual Content Studio
             </h1>
-            <p className="text-xs sm:text-sm text-[#3A2E2A]/80 max-w-xl">
-              Match authentic food photos, edit culinary descriptions, change prices, and customize dietary badges. Changes update the live site instantly.
+            <p className="text-xs sm:text-sm text-[#3A2E2A]/80 max-w-xl font-light">
+              Visually match authentic restaurant photographs, update descriptions, and synchronize prices live across the website.
             </p>
           </div>
 
           {/* Action Tools */}
           <div className="flex flex-wrap items-center gap-2.5">
             <button
-              onClick={() =>
+              onClick={() => {
                 setEditingItem({
                   name: '',
                   category: 'Lunch',
                   desc: '',
                   price: 499,
                   image: '/assets/Tanha Food/food-1.webp',
-                  tags: ['Chef Special'],
-                  isVeg: true
+                  tags: ['Chef Special']
                 })
-              }
+              }}
               className="px-4 py-2.5 rounded-xl bg-[#6B2523] text-[#FFC470] hover:bg-[#3A2E2A] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-md"
             >
               <Plus className="w-4 h-4" />
@@ -177,7 +199,7 @@ export default function AdminMenu() {
 
             <button
               onClick={exportJsonFile}
-              className="px-3.5 py-2.5 rounded-xl bg-white border border-[#6B2523]/25 hover:bg-[#FAF6F0] text-[#6B2523] text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm"
+              className="px-3.5 py-2.5 rounded-xl bg-white border border-[#6B2523]/25 hover:bg-[#FAF6F0] text-[#6B2523] text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
               title="Download updated menu.json"
             >
               <Download className="w-4 h-4" />
@@ -186,8 +208,8 @@ export default function AdminMenu() {
 
             <button
               onClick={handleCopyJson}
-              className="px-3.5 py-2.5 rounded-xl bg-white border border-[#6B2523]/25 hover:bg-[#FAF6F0] text-[#6B2523] text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm"
-              title="Copy raw JSON to clipboard"
+              className="px-3.5 py-2.5 rounded-xl bg-white border border-[#6B2523]/25 hover:bg-[#FAF6F0] text-[#6B2523] text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
+              title="Copy JSON to clipboard"
             >
               <Copy className="w-4 h-4" />
               <span>Copy JSON</span>
@@ -200,7 +222,7 @@ export default function AdminMenu() {
                   showToast('↺ Menu reset to default')
                 }
               }}
-              className="p-2.5 rounded-xl bg-white border border-red-200 hover:bg-red-50 text-red-600 transition-all shadow-sm"
+              className="p-2.5 rounded-xl bg-white border border-red-200 hover:bg-red-50 text-red-600 transition-all shadow-xs"
               title="Reset to default menu"
             >
               <RotateCcw className="w-4 h-4" />
@@ -208,15 +230,18 @@ export default function AdminMenu() {
           </div>
         </div>
 
-        {/* Search & Filter Bar */}
+        {/* Search & Category Filter */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           
-          {/* Category Filter Pills */}
+          {/* Category Tabs */}
           <div className="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 scrollbar-none">
             {['All', 'Breakfast', 'Lunch', 'Dinner', 'Cocktails', 'Beverages', 'Desserts'].map((cat) => (
               <button
                 key={cat}
-                onClick={() => setSelectedCategory(cat)}
+                onClick={() => {
+                  setSelectedCategory(cat)
+                  setDishPage(1)
+                }}
                 className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all whitespace-nowrap ${
                   selectedCategory.toLowerCase() === cat.toLowerCase()
                     ? 'bg-[#6B2523] text-[#FFC470] shadow-md'
@@ -234,16 +259,19 @@ export default function AdminMenu() {
             <input
               type="text"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value)
+                setDishPage(1)
+              }}
               placeholder="Search dishes or tags..."
               className="w-full pl-10 pr-4 py-2.5 bg-white rounded-xl border border-[#6B2523]/15 text-xs text-[#3A2E2A] placeholder-[#3A2E2A]/40 focus:outline-none focus:ring-2 focus:ring-[#6B2523]/30"
             />
           </div>
         </div>
 
-        {/* Dishes Grid */}
+        {/* Dishes Grid (Paginated 12 per page) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredItems.map((item) => {
+          {paginatedDishes.map((item) => {
             const isVeg = !item.name.toLowerCase().includes('mutton') &&
               !item.name.toLowerCase().includes('chicken') &&
               !item.name.toLowerCase().includes('kodi') &&
@@ -253,25 +281,27 @@ export default function AdminMenu() {
             return (
               <div
                 key={item.id}
-                className="bg-white rounded-3xl overflow-hidden border border-[#6B2523]/15 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                className="bg-white rounded-3xl overflow-hidden border border-[#6B2523]/15 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  {/* Dish Photo Box with Quick Change button */}
+                  {/* Photo Frame */}
                   <div className="relative aspect-[16/10] overflow-hidden bg-black/5">
                     <img
                       src={item.image}
                       alt={item.name}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
                     {/* Change Photo Overlay Button */}
                     <button
                       onClick={() => {
                         setEditingItem(item)
                         setIsPhotoPickerOpen(true)
+                        setPhotoPage(1)
                       }}
-                      className="absolute inset-0 m-auto w-fit h-fit px-3.5 py-1.5 bg-black/75 hover:bg-[#6B2523] text-[#FFC470] backdrop-blur-md rounded-xl text-xs font-bold tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-all flex items-center gap-1.5 shadow-lg"
+                      className="absolute inset-0 m-auto w-fit h-fit px-3.5 py-1.5 bg-black/80 hover:bg-[#6B2523] text-[#FFC470] backdrop-blur-md rounded-xl text-xs font-bold tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-all flex items-center gap-1.5 shadow-lg"
                     >
                       <ImageIcon className="w-3.5 h-3.5" />
                       <span>Change Photo</span>
@@ -284,18 +314,18 @@ export default function AdminMenu() {
                       </span>
                     </div>
 
-                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-md p-1 rounded-md shadow-md">
+                    <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-md p-1 rounded-md shadow-sm">
                       {isVeg ? <VegMark /> : <NonVegMark />}
                     </div>
 
                     {/* Image path pill */}
-                    <div className="absolute bottom-2 left-3 text-[10px] text-white/80 font-mono bg-black/50 px-2 py-0.5 rounded backdrop-blur-sm">
+                    <div className="absolute bottom-2 left-3 text-[10px] text-white/90 font-mono bg-black/60 px-2 py-0.5 rounded backdrop-blur-xs">
                       {item.image.replace('/assets/Tanha Food/', '')}
                     </div>
                   </div>
 
-                  {/* Card Content */}
-                  <div className="p-5 space-y-2.5">
+                  {/* Details */}
+                  <div className="p-5 space-y-2">
                     <div className="flex justify-between items-start gap-2">
                       <h3 className="font-display font-bold text-lg text-[#6B2523] leading-tight">
                         {item.name}
@@ -311,7 +341,7 @@ export default function AdminMenu() {
 
                     {/* Tags */}
                     {item.tags && item.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5 pt-1">
+                      <div className="flex flex-wrap gap-1 pt-1">
                         {item.tags.map((tag, tIdx) => (
                           <span
                             key={tIdx}
@@ -325,9 +355,9 @@ export default function AdminMenu() {
                   </div>
                 </div>
 
-                {/* Card Action Footer */}
+                {/* Footer Controls */}
                 <div className="p-4 border-t border-[#6B2523]/10 bg-[#FAF6F0]/50 flex items-center justify-between">
-                  <span className="text-[10px] text-[#3A2E2A]/60 font-mono">ID: {item.id}</span>
+                  <span className="text-[10px] text-[#3A2E2A]/50 font-mono">ID: {item.id}</span>
                   <div className="flex items-center gap-1.5">
                     <button
                       onClick={() => setEditingItem(item)}
@@ -356,35 +386,49 @@ export default function AdminMenu() {
           })}
         </div>
 
-        {/* Empty State */}
-        {filteredItems.length === 0 && (
-          <div className="text-center py-20 bg-white rounded-3xl border border-[#6B2523]/15 p-8 space-y-3">
-            <Utensils className="w-12 h-12 text-[#6B2523]/40 mx-auto" />
-            <h3 className="font-display text-xl font-bold text-[#6B2523]">No dishes found</h3>
-            <p className="text-xs text-[#3A2E2A]/70">Try adjusting your search query or category filter.</p>
+        {/* Dishes Pagination Bar */}
+        {totalDishPages > 1 && (
+          <div className="flex items-center justify-center gap-2 pt-6">
+            <button
+              onClick={() => setDishPage((p) => Math.max(1, p - 1))}
+              disabled={dishPage === 1}
+              className="p-2 rounded-xl bg-white border border-[#6B2523]/20 disabled:opacity-30 hover:bg-[#FAF6F0] text-[#6B2523]"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <span className="text-xs font-semibold text-[#6B2523] px-3">
+              Page {dishPage} of {totalDishPages}
+            </span>
+            <button
+              onClick={() => setDishPage((p) => Math.min(totalDishPages, p + 1))}
+              disabled={dishPage === totalDishPages}
+              className="p-2 rounded-xl bg-white border border-[#6B2523]/20 disabled:opacity-30 hover:bg-[#FAF6F0] text-[#6B2523]"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
           </div>
         )}
 
       </div>
 
-      {/* ── Visual Photo Picker Modal ── */}
+      {/* ── Visual Photo Picker Modal (Clean, Spacious & Paginated) ── */}
       <AnimatePresence>
         {isPhotoPickerOpen && editingItem && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/70 backdrop-blur-md">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white w-full max-w-5xl max-h-[85vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col border border-[#6B2523]/20"
+              exit={{ opacity: 0, scale: 0.96 }}
+              className="bg-white w-full max-w-4xl max-h-[85vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col border border-[#6B2523]/20"
             >
-              {/* Modal Header */}
-              <div className="p-6 border-b border-[#6B2523]/15 flex items-center justify-between bg-[#FAF6F0]">
+              {/* Header */}
+              <div className="p-5 sm:p-6 border-b border-[#6B2523]/15 flex items-center justify-between bg-[#FAF6F0]">
                 <div>
-                  <h3 className="font-display font-bold text-xl text-[#6B2523]">
-                    Visual Photo Gallery Picker
+                  <h3 className="font-display font-bold text-lg sm:text-xl text-[#6B2523]">
+                    Select Photograph for &ldquo;{editingItem.name || 'Dish'}&rdquo;
                   </h3>
-                  <p className="text-xs text-[#3A2E2A]/70">
-                    Click any food photograph to assign it to <strong>{editingItem.name || 'this dish'}</strong>.
+                  <p className="text-xs text-[#3A2E2A]/70 font-light mt-0.5">
+                    Click any photograph below to assign it. Showing page {photoPage} of {totalPhotoPages} ({filteredImages.length} available photos).
                   </p>
                 </div>
                 <button
@@ -395,23 +439,51 @@ export default function AdminMenu() {
                 </button>
               </div>
 
-              {/* Search Photo */}
-              <div className="p-4 border-b border-[#6B2523]/10 bg-white">
-                <div className="relative">
-                  <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-[#3A2E2A]/40" />
+              {/* Photo Filter Tabs & Search */}
+              <div className="p-4 border-b border-[#6B2523]/10 bg-white flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div className="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto">
+                  {[
+                    { label: 'Photos 1-12', page: 1 },
+                    { label: 'Photos 13-24', page: 2 },
+                    { label: 'Photos 25-36', page: 3 },
+                    { label: 'Photos 37-48', page: 4 },
+                    { label: 'Photos 49-54', page: 5 }
+                  ].map((tab) => (
+                    <button
+                      key={tab.page}
+                      onClick={() => {
+                        setImageSearchQuery('')
+                        setPhotoPage(tab.page)
+                      }}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
+                        photoPage === tab.page && !imageSearchQuery
+                          ? 'bg-[#6B2523] text-[#FFC470]'
+                          : 'bg-[#FAF6F0] text-[#3A2E2A]/75 hover:bg-[#6B2523]/10'
+                      }`}
+                    >
+                      {tab.label}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="relative w-full sm:w-48">
+                  <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-[#3A2E2A]/40" />
                   <input
                     type="text"
                     value={imageSearchQuery}
-                    onChange={(e) => setImageSearchQuery(e.target.value)}
-                    placeholder="Filter photos (e.g. food-1, food-20)..."
-                    className="w-full pl-9 pr-4 py-2 bg-[#FAF6F0] rounded-xl border border-[#6B2523]/15 text-xs focus:outline-none"
+                    onChange={(e) => {
+                      setImageSearchQuery(e.target.value)
+                      setPhotoPage(1)
+                    }}
+                    placeholder="Search photo #..."
+                    className="w-full pl-8 pr-3 py-1.5 bg-[#FAF6F0] rounded-lg border border-[#6B2523]/15 text-xs focus:outline-none"
                   />
                 </div>
               </div>
 
-              {/* Photo Gallery Grid */}
-              <div className="p-6 overflow-y-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 flex-1">
-                {filteredImages.map((img) => {
+              {/* Spacious 3x4 Photo Gallery Grid */}
+              <div className="p-6 overflow-y-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 flex-1 bg-[#FAF6F0]/30">
+                {paginatedPhotos.map((img) => {
                   const isSelected = editingItem.image === img.path
                   return (
                     <div
@@ -419,26 +491,35 @@ export default function AdminMenu() {
                       onClick={() => {
                         setEditingItem({ ...editingItem, image: img.path })
                         setIsPhotoPickerOpen(false)
-                        showToast(`Selected ${img.id}.webp`)
+                        showToast(`✓ Assigned ${img.id}.webp`)
                       }}
-                      className={`group relative rounded-2xl overflow-hidden cursor-pointer border-2 transition-all aspect-square ${
+                      className={`group relative rounded-2xl overflow-hidden cursor-pointer border-2 transition-all aspect-[4/3] bg-white shadow-xs ${
                         isSelected
-                          ? 'border-[#6B2523] ring-4 ring-[#6B2523]/20 scale-105'
-                          : 'border-transparent hover:border-[#6B2523]/40 hover:scale-102'
+                          ? 'border-[#6B2523] ring-4 ring-[#6B2523]/25 scale-[1.02]'
+                          : 'border-transparent hover:border-[#6B2523]/40 hover:shadow-md'
                       }`}
                     >
                       <img
                         src={img.path}
                         alt={img.name}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                      <span className="absolute bottom-1.5 inset-x-1.5 text-center text-[10px] font-mono text-white font-semibold truncate bg-black/40 py-0.5 rounded backdrop-blur-xs">
-                        {img.id}.webp
-                      </span>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+
+                      <div className="absolute bottom-2 inset-x-2 flex items-center justify-between text-white">
+                        <span className="text-[11px] font-mono font-bold">
+                          {img.id}.webp
+                        </span>
+                        <span className="text-[9px] uppercase px-2 py-0.5 bg-white/20 backdrop-blur-xs rounded-full">
+                          Select
+                        </span>
+                      </div>
+
                       {isSelected && (
-                        <div className="absolute top-2 right-2 bg-[#6B2523] text-[#FFC470] p-1 rounded-full shadow-md">
-                          <Check className="w-3.5 h-3.5" />
+                        <div className="absolute top-2.5 right-2.5 bg-[#6B2523] text-[#FFC470] p-1 rounded-full shadow-lg">
+                          <Check className="w-4 h-4" />
                         </div>
                       )}
                     </div>
@@ -446,13 +527,33 @@ export default function AdminMenu() {
                 })}
               </div>
 
-              {/* Modal Footer */}
-              <div className="p-4 border-t border-[#6B2523]/15 bg-[#FAF6F0] flex justify-end">
+              {/* Picker Footer with Pagination */}
+              <div className="p-4 border-t border-[#6B2523]/15 bg-[#FAF6F0] flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setPhotoPage((p) => Math.max(1, p - 1))}
+                    disabled={photoPage === 1}
+                    className="px-3 py-1.5 rounded-lg bg-white border border-[#6B2523]/20 disabled:opacity-30 text-xs font-bold text-[#6B2523]"
+                  >
+                    ← Previous 12
+                  </button>
+                  <span className="text-xs text-[#3A2E2A]/70 font-semibold px-2">
+                    {photoPage} / {totalPhotoPages}
+                  </span>
+                  <button
+                    onClick={() => setPhotoPage((p) => Math.min(totalPhotoPages, p + 1))}
+                    disabled={photoPage === totalPhotoPages}
+                    className="px-3 py-1.5 rounded-lg bg-white border border-[#6B2523]/20 disabled:opacity-30 text-xs font-bold text-[#6B2523]"
+                  >
+                    Next 12 →
+                  </button>
+                </div>
+
                 <button
                   onClick={() => setIsPhotoPickerOpen(false)}
-                  className="px-5 py-2 rounded-xl bg-[#6B2523] text-[#FFC470] text-xs font-bold uppercase tracking-wider"
+                  className="px-5 py-2 rounded-xl bg-[#6B2523] text-[#FFC470] text-xs font-bold uppercase tracking-wider shadow-sm"
                 >
-                  Done
+                  Close
                 </button>
               </div>
             </motion.div>
@@ -465,13 +566,13 @@ export default function AdminMenu() {
         {editingItem && !isPhotoPickerOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white w-full max-w-xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col border border-[#6B2523]/20"
+              exit={{ opacity: 0, scale: 0.96 }}
+              className="bg-white w-full max-w-lg max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col border border-[#6B2523]/20"
             >
               {/* Header */}
-              <div className="p-6 border-b border-[#6B2523]/15 flex items-center justify-between bg-[#FAF6F0]">
+              <div className="p-5 sm:p-6 border-b border-[#6B2523]/15 flex items-center justify-between bg-[#FAF6F0]">
                 <h3 className="font-display font-bold text-xl text-[#6B2523]">
                   {editingItem.id ? 'Edit Dish Details' : 'Create New Menu Dish'}
                 </h3>
@@ -486,23 +587,25 @@ export default function AdminMenu() {
               {/* Form */}
               <form onSubmit={handleSaveItem} className="p-6 space-y-4 overflow-y-auto flex-1 text-left">
                 
-                {/* Photo Preview & Change trigger */}
+                {/* Photo Preview & Browse button */}
                 <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#FAF6F0] border border-[#6B2523]/15">
-                  <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 border border-[#6B2523]/20">
+                  <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 border border-[#6B2523]/20 bg-black/5">
                     <img
                       src={editingItem.image || '/assets/Tanha Food/food-1.webp'}
                       alt="Selected preview"
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="space-y-1">
-                    <span className="text-[10px] font-mono text-[#3A2E2A]/70 block">
+                  <div className="space-y-1.5">
+                    <span className="text-[10px] font-mono text-[#3A2E2A]/70 block font-semibold">
                       {editingItem.image}
                     </span>
                     <button
                       type="button"
                       onClick={() => setIsPhotoPickerOpen(true)}
-                      className="px-3 py-1.5 rounded-lg bg-[#6B2523] text-[#FFC470] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm"
+                      className="px-3.5 py-1.5 rounded-lg bg-[#6B2523] text-[#FFC470] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm hover:bg-[#3A2E2A] transition-all"
                     >
                       <ImageIcon className="w-3.5 h-3.5" />
                       <span>Browse Photo Catalog</span>
@@ -564,18 +667,18 @@ export default function AdminMenu() {
                 {/* Description */}
                 <div>
                   <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
-                    Culinary Description / Tasting Notes
+                    Culinary Description
                   </label>
                   <textarea
                     rows={3}
                     value={editingItem.desc}
                     onChange={(e) => setEditingItem({ ...editingItem, desc: e.target.value })}
-                    placeholder="Describe the ingredients, cooking method, and flavor notes..."
+                    placeholder="Describe ingredients and cooking craft..."
                     className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#6B2523]/30"
                   />
                 </div>
 
-                {/* Tags (comma separated) */}
+                {/* Tags */}
                 <div>
                   <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
                     Tags (Comma separated)
@@ -589,13 +692,13 @@ export default function AdminMenu() {
                         tags: e.target.value.split(',').map((t) => t.trim()).filter(Boolean)
                       })
                     }
-                    placeholder="e.g. ★ BESTSELLER, Wood-Fired, Gluten-Free"
+                    placeholder="e.g. ★ BESTSELLER, Signature, Vegan"
                     className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#6B2523]/30"
                   />
                 </div>
 
-                {/* Submit button */}
-                <div className="pt-4 flex items-center justify-end gap-3">
+                {/* Submit */}
+                <div className="pt-3 flex items-center justify-end gap-3">
                   <button
                     type="button"
                     onClick={() => setEditingItem(null)}

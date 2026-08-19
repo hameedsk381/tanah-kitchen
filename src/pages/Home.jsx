@@ -360,6 +360,8 @@ export default function Home() {
               <img
                 src="/assets/Tanha Food/food-1.webp"
                 alt="Claypot Mutton Biryani"
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10" />
@@ -410,6 +412,8 @@ export default function Home() {
               <img
                 src="/assets/Tanha Food/food-11.webp"
                 alt="Wild Mushroom Risotto"
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
@@ -453,6 +457,8 @@ export default function Home() {
               <img
                 src="/assets/Tanha Food/food-14.webp"
                 alt="South India Kodi Crisp"
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
@@ -491,6 +497,8 @@ export default function Home() {
               <img
                 src="/assets/Tanha Food/food-29.webp"
                 alt="Crispy Dahi & Herb Kebabs"
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
@@ -529,6 +537,8 @@ export default function Home() {
               <img
                 src="/assets/Tanha Food/food-44.webp"
                 alt="Mango Tres Leches"
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
@@ -567,6 +577,8 @@ export default function Home() {
               <img
                 src="/assets/Tanha Food/food-45.webp"
                 alt="Desi Tiramisu"
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
