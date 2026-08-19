@@ -1,0 +1,8 @@
+# Robots.txt for Tanah Kitchen & Bar
+# https://tanahkitchen.in/
+
+User-agent: *
+Allow: /
+
+# Sitemap Index
+Sitemap: https://tanahkitchen.in/sitemap.xml
