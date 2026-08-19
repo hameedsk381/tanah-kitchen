@@ -76,6 +76,7 @@ export default function Home() {
   // Quick Hero Table Booking State
   const [quickGuests, setQuickGuests] = useState('2 Guests')
   const [quickMeal, setQuickMeal] = useState('Dinner (7:30 PM)')
+  const [selectedDishIndex, setSelectedDishIndex] = useState(0)
 
   // Form State
   const [submitted, setSubmitted] = useState(false)
@@ -324,13 +325,15 @@ export default function Home() {
       </section>
 
       {/* ==========================================
-          CHEF'S CULINARY SIGNATURES (Taste of Tanah Showcase)
+          CHEF'S CULINARY SIGNATURES (Editorial Restaurant Showcase - No Boxed Cards)
           ========================================== */}
       <section
         ref={secFoodRef}
         className="wp-section bg-[#FAF6F0] text-[#3A2E2A] border-b border-[#6B2523]/10 pt-16 pb-20"
       >
         <div className="wp-container space-y-12">
+          
+          {/* Header */}
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="wp-badge wp-badge-maroon">
               ✦ TASTE OF TANAH ✦
@@ -344,103 +347,221 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
-            {[
-              {
-                name: "Claypot Mutton Biryani",
-                desc: "Fragrant Basmati, farm mutton & caramelized onions cooked in earthen clay.",
-                price: 549,
-                image: "/assets/Tanha Image/11.webp",
-                tag: "★ BESTSELLER",
-                nonVeg: true
-              },
-              {
-                name: "Wild Mushroom Risotto",
-                desc: "Slow-simmered arborio rice with hand-foraged mushrooms & white truffle oil.",
-                price: 549,
-                image: "/assets/Tanha Food/food-11.webp",
-                tag: "★ SIGNATURE",
-                nonVeg: false
-              },
-              {
-                name: "South India Kodi Chips",
-                desc: "Crispy chicken strips spiced with regional podi & wood-pressed mint chutney.",
-                price: 399,
-                image: "/assets/Tanha Image/08.webp",
-                tag: "✦ CHEF SPECIAL",
-                nonVeg: true
-              },
-              {
-                name: "Dark Chocolate Soil Cake",
-                desc: "70% single-origin chocolate with cocoa soil crumb & raspberry gel.",
-                price: 549,
-                image: "/assets/Tanha Food/food-29.webp",
-                tag: "★ SIGNATURE DESSERT",
-                nonVeg: false
-              }
-            ].map((dish, dIdx) => (
-              <motion.div
-                key={dIdx}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: dIdx * 0.1 }}
-                className="wp-card overflow-hidden group hover:border-[#6B2523]/30 transition-all flex flex-col justify-between rounded-2xl shadow-lg"
-              >
-                {/* Full-View Food Image Container */}
-                <div className="relative aspect-[1/1] sm:aspect-[4/4.2] w-full overflow-hidden bg-[#3A2E2A]/5">
-                  <img
-                    src={dish.image}
-                    alt={dish.name}
+          {/* Editorial Split Spread (No Boxed Cards) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            
+            {/* Left: Large Pure DSLR Food Photography Frame */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={isSecFoodInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.8 }}
+              className="lg:col-span-6 flex flex-col space-y-4"
+            >
+              <div className="relative aspect-[4/3.8] md:aspect-[4/3.4] w-full rounded-3xl overflow-hidden shadow-2xl border border-[#6B2523]/15 bg-[#3A2E2A]/5 group">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={selectedDishIndex}
+                    src={[
+                      "/assets/Tanha Food/food-1.webp",
+                      "/assets/Tanha Food/food-11.webp",
+                      "/assets/Tanha Food/food-14.webp",
+                      "/assets/Tanha Food/food-29.webp"
+                    ][selectedDishIndex]}
+                    alt={[
+                      "Claypot Mutton Biryani",
+                      "Wild Mushroom Risotto",
+                      "South India Kodi Crisp",
+                      "Dark Chocolate Soil Cake"
+                    ][selectedDishIndex]}
+                    initial={{ opacity: 0, scale: 1.04 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.45 }}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute top-3 left-3 z-10">
-                    <span className="text-[9px] font-bold tracking-wider px-3 py-1 rounded-full bg-[#6B2523]/90 text-[#FFC470] backdrop-blur-md border border-[#FFC470]/30 shadow-md">
-                      {dish.tag}
-                    </span>
-                  </div>
-                  <div className="absolute top-3 right-3 z-10 shadow-md">
-                    {dish.nonVeg ? <NonVegMark /> : <VegMark />}
+                </AnimatePresence>
+
+                {/* Floating Category & Dietary Badge */}
+                <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
+                  <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-[#6B2523]/90 text-[#FFC470] backdrop-blur-md border border-[#FFC470]/30 shadow-md">
+                    {[
+                      "★ BESTSELLER",
+                      "★ SIGNATURE",
+                      "✦ CHEF SPECIAL",
+                      "★ SIGNATURE DESSERT"
+                    ][selectedDishIndex]}
+                  </span>
+                  <div className="bg-white/90 backdrop-blur-md p-1 rounded-md shadow-md">
+                    {[true, false, true, false][selectedDishIndex] ? <NonVegMark /> : <VegMark />}
                   </div>
                 </div>
 
-                <div className="p-5 sm:p-6 space-y-3 flex-grow flex flex-col justify-between">
+                {/* Floating Bottom Dish Title & Price Pill */}
+                <div className="absolute bottom-4 inset-x-4 p-4 rounded-2xl bg-black/60 backdrop-blur-md border border-white/20 text-white flex justify-between items-center shadow-xl">
                   <div>
-                    <div className="flex justify-between items-start gap-2 mb-1.5">
-                      <h4 className="font-display text-lg sm:text-xl font-bold text-[#6B2523] leading-snug">
-                        {dish.name}
-                      </h4>
-                      <span className="font-display text-lg sm:text-xl font-extrabold text-[#6B2523] flex-shrink-0">
-                        ₹{dish.price}
-                      </span>
-                    </div>
-                    <p className="text-xs sm:text-sm text-[#3A2E2A]/75 font-body leading-relaxed font-light">
-                      {dish.desc}
-                    </p>
+                    <span className="text-[10px] font-bold tracking-widest uppercase text-[#FFC470] block font-sans">
+                      {[
+                        "Wood-Fired Hearth",
+                        "Continental Gastronomy",
+                        "Coastal Spice Bar",
+                        "Artisanal Confectionery"
+                      ][selectedDishIndex]}
+                    </span>
+                    <h4 className="font-display text-lg sm:text-xl font-bold text-white">
+                      {[
+                        "Claypot Mutton Biryani",
+                        "Wild Mushroom Risotto",
+                        "South India Kodi Crisp",
+                        "Dark Chocolate Soil Cake"
+                      ][selectedDishIndex]}
+                    </h4>
                   </div>
-
-                  <div className="pt-3 border-t border-[#6B2523]/10">
-                    <a
-                      href="/menu"
-                      className="text-xs font-bold text-[#6B2523] hover:text-[#882B06] inline-flex items-center gap-1.5 transition-colors group/link"
-                    >
-                      <span>Explore Dish Details</span>
-                      <ChevronRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
-                    </a>
-                  </div>
+                  <span className="font-display text-2xl font-extrabold text-[#FFC470]">
+                    ₹{[549, 549, 399, 549][selectedDishIndex]}
+                  </span>
                 </div>
-              </motion.div>
-            ))}
+              </div>
+
+              {/* Tasting Notes Bar */}
+              <div className="p-4 rounded-2xl bg-[#6B2523]/5 border border-[#6B2523]/10 text-xs sm:text-sm text-[#6B2523] flex items-center justify-between gap-3 font-body">
+                <span className="font-semibold flex items-center gap-1.5">
+                  {[
+                    "🍸 Pairs with: Rooftop Smoked Old Fashioned",
+                    "🍷 Pairs with: Sula Dindori Viognier",
+                    "🍹 Pairs with: Forest Herbal Mule",
+                    "☕ Pairs with: Araku Valley Cold Brew"
+                  ][selectedDishIndex]}
+                </span>
+                <span className="text-[11px] text-[#3A2E2A]/70 italic hidden sm:inline">
+                  {[
+                    "Slow-cooked in earthen clay",
+                    "Infused with white truffle oil",
+                    "Spiced with Guntur chili podi",
+                    "Single-origin chocolate soil"
+                  ][selectedDishIndex]}
+                </span>
+              </div>
+            </motion.div>
+
+            {/* Right: Editorial Menu List (Clickable / Interactive) */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={isSecFoodInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="lg:col-span-6 space-y-3 text-left"
+            >
+              {[
+                {
+                  name: "Claypot Mutton Biryani",
+                  desc: "Fragrant Aged Basmati, farm-raised mutton & caramelized onions slow-simmered in porous earthen clay.",
+                  price: 549,
+                  category: "Wood-Fired Hearth",
+                  nonVeg: true,
+                  thumb: "/assets/Tanha Food/food-1.webp"
+                },
+                {
+                  name: "Wild Mushroom Risotto",
+                  desc: "Slow-simmered Italian arborio rice with hand-foraged forest mushrooms, aged parmesan & white truffle oil.",
+                  price: 549,
+                  category: "Continental Gastronomy",
+                  nonVeg: false,
+                  thumb: "/assets/Tanha Food/food-11.webp"
+                },
+                {
+                  name: "South India Kodi Crisp",
+                  desc: "Crispy chicken strips tossed in regional roasted podi, curry leaves & cold-pressed mint-cilantro dip.",
+                  price: 399,
+                  category: "Coastal Spice Bar",
+                  nonVeg: true,
+                  thumb: "/assets/Tanha Food/food-14.webp"
+                },
+                {
+                  name: "Dark Chocolate Soil Cake",
+                  desc: "70% single-origin dark chocolate gateau with cocoa soil crumble, edible florals & tart raspberry gel.",
+                  price: 549,
+                  category: "Artisanal Confectionery",
+                  nonVeg: false,
+                  thumb: "/assets/Tanha Food/food-29.webp"
+                }
+              ].map((dish, idx) => {
+                const isSelected = selectedDishIndex === idx
+                return (
+                  <div
+                    key={idx}
+                    onClick={() => setSelectedDishIndex(idx)}
+                    onMouseEnter={() => setSelectedDishIndex(idx)}
+                    className={`p-4 sm:p-5 rounded-2xl cursor-pointer transition-all duration-300 border ${
+                      isSelected
+                        ? "bg-white border-[#6B2523]/30 shadow-lg translate-x-1"
+                        : "bg-transparent border-transparent hover:bg-white/60 hover:border-[#6B2523]/10"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-3 min-w-0">
+                        {/* Clean Round Thumbnail */}
+                        <div className={`w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 border ${isSelected ? "border-[#6B2523] ring-2 ring-[#6B2523]/20" : "border-[#6B2523]/15"}`}>
+                          <img
+                            src={dish.thumb}
+                            alt={dish.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            {dish.nonVeg ? <NonVegMark /> : <VegMark />}
+                            <h4 className={`font-display text-base sm:text-lg font-bold transition-colors ${
+                              isSelected ? "text-[#6B2523]" : "text-[#3A2E2A]"
+                            }`}>
+                              {dish.name}
+                            </h4>
+                          </div>
+                          <span className="text-[10px] uppercase tracking-wider font-semibold text-[#882B06] font-sans">
+                            {dish.category}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Dotted connector & Price */}
+                      <div className="flex items-baseline gap-2 flex-shrink-0">
+                        <span className="font-display text-lg sm:text-xl font-extrabold text-[#6B2523]">
+                          ₹{dish.price}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Expandable description on active item */}
+                    {isSelected && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        className="pt-2 mt-2 border-t border-[#6B2523]/10 text-xs sm:text-sm font-light text-[#3A2E2A]/80 font-body leading-relaxed"
+                      >
+                        <p>{dish.desc}</p>
+                      </motion.div>
+                    )}
+                  </div>
+                )
+              })}
+
+              <div className="pt-4 flex flex-wrap gap-4 items-center">
+                <a
+                  href="/menu"
+                  className="wp-btn-pill bg-[#6B2523] text-[#F6E1CB] hover:bg-[#3A2E2A] hover:text-white text-xs font-bold tracking-widest uppercase shadow-lg inline-flex items-center gap-2"
+                >
+                  <span>Explore Full Seasonal Menu</span>
+                  <ChevronRight className="w-4 h-4" />
+                </a>
+                <a
+                  href="/book"
+                  className="text-xs font-bold text-[#6B2523] hover:text-[#882B06] inline-flex items-center gap-1 transition-colors"
+                >
+                  <span>Reserve Tasting Table →</span>
+                </a>
+              </div>
+            </motion.div>
+
           </div>
 
-          <div className="text-center pt-4">
-            <a
-              href="/menu"
-              className="wp-btn-pill bg-[#6B2523] text-[#F6E1CB] hover:bg-[#3A2E2A] hover:text-white text-xs font-bold tracking-widest uppercase shadow-lg inline-flex items-center gap-2"
-            >
-              <span>Explore Full Seasonal Menu</span>
-              <ChevronRight className="w-4 h-4" />
-            </a>
-          </div>
         </div>
       </section>
 

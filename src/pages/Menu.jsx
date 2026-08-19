@@ -811,7 +811,7 @@ export default function Menu() {
                           name: "Claypot Mutton Biryani",
                           desc: "Tender farm mutton, caramelized onions & rare spices in earthen clay.",
                           price: 549,
-                          image: "/assets/Tanha Image/11.webp",
+                          image: "/assets/Tanha Food/food-1.webp",
                           tag: "★ BESTSELLER",
                           nonVeg: true,
                           spice: 2
