@@ -325,13 +325,13 @@ export default function Home() {
       </section>
 
       {/* ==========================================
-          CHEF'S CULINARY SIGNATURES (Editorial Restaurant Showcase - No Boxed Cards)
+          CHEF'S CULINARY SIGNATURES (Image Grid Bento)
           ========================================== */}
       <section
         ref={secFoodRef}
         className="wp-section bg-[#FAF6F0] text-[#3A2E2A] border-b border-[#6B2523]/10 pt-16 pb-20"
       >
-        <div className="wp-container space-y-12">
+        <div className="wp-container space-y-10">
           
           {/* Header */}
           <div className="text-center max-w-2xl mx-auto space-y-3">
@@ -347,219 +347,204 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Editorial Split Spread (No Boxed Cards) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          {/* BENTO IMAGE GRID (Asymmetric Bento Boxes) */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-5 lg:gap-6 text-left">
             
-            {/* Left: Large Pure DSLR Food Photography Frame */}
+            {/* Bento Tile 1: Hero Large (Left 7 Cols, Full Height) */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={isSecFoodInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.8 }}
-              className="lg:col-span-6 flex flex-col space-y-4"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7 }}
+              className="md:col-span-7 relative rounded-3xl overflow-hidden shadow-2xl group min-h-[380px] sm:min-h-[480px] lg:min-h-[540px] border border-[#6B2523]/15 flex flex-col justify-between p-6 sm:p-8"
             >
-              <div className="relative aspect-[4/3.8] md:aspect-[4/3.4] w-full rounded-3xl overflow-hidden shadow-2xl border border-[#6B2523]/15 bg-[#3A2E2A]/5 group">
-                <AnimatePresence mode="wait">
-                  <motion.img
-                    key={selectedDishIndex}
-                    src={[
-                      "/assets/Tanha Food/food-1.webp",
-                      "/assets/Tanha Food/food-11.webp",
-                      "/assets/Tanha Food/food-14.webp",
-                      "/assets/Tanha Food/food-29.webp"
-                    ][selectedDishIndex]}
-                    alt={[
-                      "Claypot Mutton Biryani",
-                      "Wild Mushroom Risotto",
-                      "South India Kodi Crisp",
-                      "Dark Chocolate Soil Cake"
-                    ][selectedDishIndex]}
-                    initial={{ opacity: 0, scale: 1.04 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.45 }}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                  />
-                </AnimatePresence>
+              <img
+                src="/assets/Tanha Food/food-1.webp"
+                alt="Claypot Mutton Biryani"
+                className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10" />
 
-                {/* Floating Category & Dietary Badge */}
-                <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
-                  <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-[#6B2523]/90 text-[#FFC470] backdrop-blur-md border border-[#FFC470]/30 shadow-md">
-                    {[
-                      "★ BESTSELLER",
-                      "★ SIGNATURE",
-                      "✦ CHEF SPECIAL",
-                      "★ SIGNATURE DESSERT"
-                    ][selectedDishIndex]}
-                  </span>
-                  <div className="bg-white/90 backdrop-blur-md p-1 rounded-md shadow-md">
-                    {[true, false, true, false][selectedDishIndex] ? <NonVegMark /> : <VegMark />}
-                  </div>
+              {/* Top Badges */}
+              <div className="relative z-10 flex items-center justify-between">
+                <span className="text-[10px] font-bold tracking-widest uppercase px-3.5 py-1.5 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/40 shadow-lg font-sans">
+                  ★ BESTSELLER
+                </span>
+                <div className="bg-white/95 backdrop-blur-md p-1.5 rounded-lg shadow-md">
+                  <NonVegMark />
                 </div>
+              </div>
 
-                {/* Floating Bottom Dish Title & Price Pill */}
-                <div className="absolute bottom-4 inset-x-4 p-4 rounded-2xl bg-black/60 backdrop-blur-md border border-white/20 text-white flex justify-between items-center shadow-xl">
+              {/* Bottom Info Overlay */}
+              <div className="relative z-10 space-y-2 text-white">
+                <span className="text-[11px] uppercase tracking-[0.2em] text-[#FFC470] font-bold font-sans">
+                  Wood-Fired Hearth
+                </span>
+                <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
                   <div>
-                    <span className="text-[10px] font-bold tracking-widest uppercase text-[#FFC470] block font-sans">
-                      {[
-                        "Wood-Fired Hearth",
-                        "Continental Gastronomy",
-                        "Coastal Spice Bar",
-                        "Artisanal Confectionery"
-                      ][selectedDishIndex]}
-                    </span>
-                    <h4 className="font-display text-lg sm:text-xl font-bold text-white">
-                      {[
-                        "Claypot Mutton Biryani",
-                        "Wild Mushroom Risotto",
-                        "South India Kodi Crisp",
-                        "Dark Chocolate Soil Cake"
-                      ][selectedDishIndex]}
+                    <h4 className="font-display text-2xl sm:text-3xl font-extrabold text-white leading-tight">
+                      Claypot Mutton Biryani
                     </h4>
+                    <p className="text-xs sm:text-sm text-white/85 font-body leading-relaxed max-w-lg mt-1 font-light">
+                      Fragrant aged Basmati &amp; farm-raised mutton slow-simmered in porous earthen clay with caramelized saffron embers.
+                    </p>
                   </div>
-                  <span className="font-display text-2xl font-extrabold text-[#FFC470]">
-                    ₹{[549, 549, 399, 549][selectedDishIndex]}
+                  <span className="font-display text-2xl sm:text-3xl font-extrabold text-[#FFC470] flex-shrink-0">
+                    ₹549
+                  </span>
+                </div>
+                <div className="pt-2 flex flex-wrap items-center gap-2 text-xs font-semibold text-[#FFC470]">
+                  <span className="px-2.5 py-1 rounded-md bg-black/40 backdrop-blur-sm border border-white/10">
+                    🍸 Pairs with: Rooftop Smoked Old Fashioned
                   </span>
                 </div>
               </div>
-
-              {/* Tasting Notes Bar */}
-              <div className="p-4 rounded-2xl bg-[#6B2523]/5 border border-[#6B2523]/10 text-xs sm:text-sm text-[#6B2523] flex items-center justify-between gap-3 font-body">
-                <span className="font-semibold flex items-center gap-1.5">
-                  {[
-                    "🍸 Pairs with: Rooftop Smoked Old Fashioned",
-                    "🍷 Pairs with: Sula Dindori Viognier",
-                    "🍹 Pairs with: Forest Herbal Mule",
-                    "☕ Pairs with: Araku Valley Cold Brew"
-                  ][selectedDishIndex]}
-                </span>
-                <span className="text-[11px] text-[#3A2E2A]/70 italic hidden sm:inline">
-                  {[
-                    "Slow-cooked in earthen clay",
-                    "Infused with white truffle oil",
-                    "Spiced with Guntur chili podi",
-                    "Single-origin chocolate soil"
-                  ][selectedDishIndex]}
-                </span>
-              </div>
             </motion.div>
 
-            {/* Right: Editorial Menu List (Clickable / Interactive) */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={isSecFoodInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-6 space-y-3 text-left"
-            >
-              {[
-                {
-                  name: "Claypot Mutton Biryani",
-                  desc: "Fragrant Aged Basmati, farm-raised mutton & caramelized onions slow-simmered in porous earthen clay.",
-                  price: 549,
-                  category: "Wood-Fired Hearth",
-                  nonVeg: true,
-                  thumb: "/assets/Tanha Food/food-1.webp"
-                },
-                {
-                  name: "Wild Mushroom Risotto",
-                  desc: "Slow-simmered Italian arborio rice with hand-foraged forest mushrooms, aged parmesan & white truffle oil.",
-                  price: 549,
-                  category: "Continental Gastronomy",
-                  nonVeg: false,
-                  thumb: "/assets/Tanha Food/food-11.webp"
-                },
-                {
-                  name: "South India Kodi Crisp",
-                  desc: "Crispy chicken strips tossed in regional roasted podi, curry leaves & cold-pressed mint-cilantro dip.",
-                  price: 399,
-                  category: "Coastal Spice Bar",
-                  nonVeg: true,
-                  thumb: "/assets/Tanha Food/food-14.webp"
-                },
-                {
-                  name: "Dark Chocolate Soil Cake",
-                  desc: "70% single-origin dark chocolate gateau with cocoa soil crumble, edible florals & tart raspberry gel.",
-                  price: 549,
-                  category: "Artisanal Confectionery",
-                  nonVeg: false,
-                  thumb: "/assets/Tanha Food/food-29.webp"
-                }
-              ].map((dish, idx) => {
-                const isSelected = selectedDishIndex === idx
-                return (
-                  <div
-                    key={idx}
-                    onClick={() => setSelectedDishIndex(idx)}
-                    onMouseEnter={() => setSelectedDishIndex(idx)}
-                    className={`p-4 sm:p-5 rounded-2xl cursor-pointer transition-all duration-300 border ${
-                      isSelected
-                        ? "bg-white border-[#6B2523]/30 shadow-lg translate-x-1"
-                        : "bg-transparent border-transparent hover:bg-white/60 hover:border-[#6B2523]/10"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between gap-3">
-                      <div className="flex items-center gap-3 min-w-0">
-                        {/* Clean Round Thumbnail */}
-                        <div className={`w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 border ${isSelected ? "border-[#6B2523] ring-2 ring-[#6B2523]/20" : "border-[#6B2523]/15"}`}>
-                          <img
-                            src={dish.thumb}
-                            alt={dish.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <div>
-                          <div className="flex items-center gap-2">
-                            {dish.nonVeg ? <NonVegMark /> : <VegMark />}
-                            <h4 className={`font-display text-base sm:text-lg font-bold transition-colors ${
-                              isSelected ? "text-[#6B2523]" : "text-[#3A2E2A]"
-                            }`}>
-                              {dish.name}
-                            </h4>
-                          </div>
-                          <span className="text-[10px] uppercase tracking-wider font-semibold text-[#882B06] font-sans">
-                            {dish.category}
-                          </span>
-                        </div>
-                      </div>
+            {/* Right Column: 5 Cols Bento Stack */}
+            <div className="md:col-span-5 flex flex-col gap-5 lg:gap-6">
+              
+              {/* Bento Tile 2: Wide Top (Risotto) */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.15 }}
+                className="relative rounded-3xl overflow-hidden shadow-xl group min-h-[220px] sm:min-h-[250px] border border-[#6B2523]/15 flex flex-col justify-between p-6 flex-1"
+              >
+                <img
+                  src="/assets/Tanha Food/food-11.webp"
+                  alt="Wild Mushroom Risotto"
+                  className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
 
-                      {/* Dotted connector & Price */}
-                      <div className="flex items-baseline gap-2 flex-shrink-0">
-                        <span className="font-display text-lg sm:text-xl font-extrabold text-[#6B2523]">
-                          ₹{dish.price}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Expandable description on active item */}
-                    {isSelected && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        className="pt-2 mt-2 border-t border-[#6B2523]/10 text-xs sm:text-sm font-light text-[#3A2E2A]/80 font-body leading-relaxed"
-                      >
-                        <p>{dish.desc}</p>
-                      </motion.div>
-                    )}
+                <div className="relative z-10 flex items-center justify-between">
+                  <span className="text-[9px] font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md font-sans">
+                    ★ SIGNATURE
+                  </span>
+                  <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-md">
+                    <VegMark />
                   </div>
-                )
-              })}
+                </div>
 
-              <div className="pt-4 flex flex-wrap gap-4 items-center">
-                <a
-                  href="/menu"
-                  className="wp-btn-pill bg-[#6B2523] text-[#F6E1CB] hover:bg-[#3A2E2A] hover:text-white text-xs font-bold tracking-widest uppercase shadow-lg inline-flex items-center gap-2"
+                <div className="relative z-10 text-white flex justify-between items-end gap-2">
+                  <div>
+                    <span className="text-[10px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
+                      Continental Gastronomy
+                    </span>
+                    <h4 className="font-display text-xl sm:text-2xl font-bold text-white leading-tight">
+                      Wild Mushroom Risotto
+                    </h4>
+                    <p className="text-xs text-white/80 font-body leading-relaxed mt-0.5 hidden sm:block">
+                      Hand-foraged forest mushrooms &amp; white truffle oil.
+                    </p>
+                  </div>
+                  <span className="font-display text-xl sm:text-2xl font-extrabold text-[#FFC470] flex-shrink-0">
+                    ₹549
+                  </span>
+                </div>
+              </motion.div>
+
+              {/* Bento Row 2: 2 Compact Grid Tiles (Kodi Crisp + Soil Cake) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6 flex-1">
+                
+                {/* Bento Tile 3: South India Kodi Crisp */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.7, delay: 0.25 }}
+                  className="relative rounded-3xl overflow-hidden shadow-xl group min-h-[220px] sm:min-h-[250px] border border-[#6B2523]/15 flex flex-col justify-between p-5"
                 >
-                  <span>Explore Full Seasonal Menu</span>
-                  <ChevronRight className="w-4 h-4" />
-                </a>
-                <a
-                  href="/book"
-                  className="text-xs font-bold text-[#6B2523] hover:text-[#882B06] inline-flex items-center gap-1 transition-colors"
+                  <img
+                    src="/assets/Tanha Food/food-14.webp"
+                    alt="South India Kodi Crisp"
+                    className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
+
+                  <div className="relative z-10 flex items-center justify-between">
+                    <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md font-sans">
+                      ✦ CHEF SPECIAL
+                    </span>
+                    <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-md">
+                      <NonVegMark />
+                    </div>
+                  </div>
+
+                  <div className="relative z-10 text-white space-y-1">
+                    <span className="text-[9px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
+                      Coastal Spice Bar
+                    </span>
+                    <div className="flex justify-between items-baseline gap-1">
+                      <h4 className="font-display text-base sm:text-lg font-bold text-white leading-tight">
+                        Kodi Crisp
+                      </h4>
+                      <span className="font-display text-lg font-extrabold text-[#FFC470]">
+                        ₹399
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Bento Tile 4: Dark Chocolate Soil Cake */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.7, delay: 0.35 }}
+                  className="relative rounded-3xl overflow-hidden shadow-xl group min-h-[220px] sm:min-h-[250px] border border-[#6B2523]/15 flex flex-col justify-between p-5"
                 >
-                  <span>Reserve Tasting Table →</span>
-                </a>
+                  <img
+                    src="/assets/Tanha Food/food-29.webp"
+                    alt="Dark Chocolate Soil Cake"
+                    className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-90"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
+
+                  <div className="relative z-10 flex items-center justify-between">
+                    <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md font-sans">
+                      ★ DESSERT
+                    </span>
+                    <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-md">
+                      <VegMark />
+                    </div>
+                  </div>
+
+                  <div className="relative z-10 text-white space-y-1">
+                    <span className="text-[9px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
+                      Confectionery
+                    </span>
+                    <div className="flex justify-between items-baseline gap-1">
+                      <h4 className="font-display text-base sm:text-lg font-bold text-white leading-tight">
+                        Soil Cake
+                      </h4>
+                      <span className="font-display text-lg font-extrabold text-[#FFC470]">
+                        ₹549
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
+
               </div>
-            </motion.div>
 
+            </div>
+
+          </div>
+
+          {/* Action Row */}
+          <div className="text-center pt-4 flex flex-wrap justify-center items-center gap-4">
+            <a
+              href="/menu"
+              className="wp-btn-pill bg-[#6B2523] text-[#F6E1CB] hover:bg-[#3A2E2A] hover:text-white text-xs font-bold tracking-widest uppercase shadow-lg inline-flex items-center gap-2"
+            >
+              <span>Explore Full Seasonal Menu</span>
+              <ChevronRight className="w-4 h-4" />
+            </a>
+            <a
+              href="/book"
+              className="wp-btn-pill bg-[#FFC470] text-[#6B2523] hover:bg-white text-xs font-bold tracking-widest uppercase shadow-lg inline-flex items-center gap-2"
+            >
+              <span>Reserve a Table</span>
+              <ChevronRight className="w-4 h-4" />
+            </a>
           </div>
 
         </div>
