@@ -743,23 +743,27 @@ export default function Home() {
         <div className="wp-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-            {/* Story illustration - Nest owl in WordPress Showcase Frame */}
+            {/* Story Showcase - Authentic Sanctuary Ambiance Photo */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={isSec4InView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 1 }}
               className="lg:col-span-5 flex justify-center"
             >
-              <div className="bg-white p-8 md:p-12 rounded-3xl border border-[#6B2523]/15 shadow-xl flex flex-col items-center text-center max-w-sm w-full">
-                <div className="w-48 h-48 md:w-56 md:h-56 text-[#6B2523] mb-4">
-                  <StoryNestOwl className="w-full h-full" color="#6B2523" />
+              <div className="rounded-3xl overflow-hidden border border-[#6B2523]/15 shadow-xl aspect-[4/5] w-full max-w-sm relative group bg-white">
+                <img
+                  src="/assets/Tanha Ambiance/Ambiance-2.webp"
+                  alt="Tanah architectural rooftop sanctuary"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#3A2E2A]/85 via-transparent to-transparent flex flex-col justify-end p-6 text-left">
+                  <span className="text-xs uppercase tracking-[0.25em] font-bold text-[#FFC470]">
+                    Tanah Sanctuary
+                  </span>
+                  <span className="text-xs text-white/90 font-light mt-1 font-body">
+                    Handcrafted Bamboo Arches &amp; Basalt Stone
+                  </span>
                 </div>
-                <span className="text-xs uppercase tracking-[0.25em] font-bold text-[#6B2523]/70 font-sans">
-                  The Gathering Bird
-                </span>
-                <span className="text-[11px] text-[#3A2E2A]/60 italic font-body mt-1">
-                  Symbol of Homecoming & Belonging
-                </span>
               </div>
             </motion.div>
 
