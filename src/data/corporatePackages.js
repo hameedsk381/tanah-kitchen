@@ -4,7 +4,7 @@ export const corporatePackagesData = {
   contact: {
     venue: "TANAH Kitchen & Bar",
     phone: "+91 89777 30291",
-    email: "gm@tanahkitchen.com",
+    email: "reservations@tanahkitchen.com",
     website: "www.tanahkitchen.com",
     address: "5th Floor, Opp. Meenakshi Bamboos Road, Near AIG Hospital, P Janardhan Reddy Nagar, Gachibowli, Hyderabad, Telangana – 500032"
   },

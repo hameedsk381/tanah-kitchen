@@ -154,18 +154,24 @@ export default function Book() {
                 </p>
               </div>
 
-              <div className="space-y-3 pt-2 border-t border-[#6B2523]/10 text-xs">
+              <div className="space-y-2.5 pt-2 border-t border-[#6B2523]/10 text-xs">
                 <div className="flex items-center justify-between py-1">
-                  <span className="text-[#3A2E2A]/70 font-semibold">Lunch Hours</span>
-                  <span className="font-bold text-[#6B2523]">12:00 PM – 4:00 PM</span>
+                  <span className="text-[#3A2E2A]/70 font-semibold">Fri &amp; Sat</span>
+                  <span className="font-bold text-[#6B2523]">12:00 PM – 12:00 AM</span>
                 </div>
                 <div className="flex items-center justify-between py-1">
-                  <span className="text-[#3A2E2A]/70 font-semibold">Dinner Hours</span>
-                  <span className="font-bold text-[#6B2523]">6:30 PM – 11:30 PM</span>
+                  <span className="text-[#3A2E2A]/70 font-semibold">Sun – Thu</span>
+                  <span className="font-bold text-[#6B2523]">12:00 PM – 11:00 PM</span>
                 </div>
                 <div className="flex items-center justify-between py-1">
                   <span className="text-[#3A2E2A]/70 font-semibold">Valet Parking</span>
                   <span className="font-bold text-emerald-700">Complimentary</span>
+                </div>
+                <div className="flex items-center justify-between py-1">
+                  <span className="text-[#3A2E2A]/70 font-semibold">Reservations</span>
+                  <a href="mailto:reservations@tanahkitchen.com" className="font-bold text-[#882B06] hover:underline">
+                    reservations@tanahkitchen.com
+                  </a>
                 </div>
                 <div className="flex items-center justify-between py-1">
                   <span className="text-[#3A2E2A]/70 font-semibold">Direct Desk</span>

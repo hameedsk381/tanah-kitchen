@@ -1133,7 +1133,7 @@ export default function Home() {
                   <span>📍</span> 5th Floor, Opp. Meenakshi Bamboo Road, Gachibowli
                 </p>
                 <p className="flex items-center gap-2">
-                  <span>✉️</span> gatherings@tanahkitchen.com
+                  <span>✉️</span> reservations@tanahkitchen.com
                 </p>
                 <p className="flex items-center gap-2">
                   <span>📞</span> +91 89777 30291 / +91 89777 30292

@@ -150,9 +150,9 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-display text-base font-bold text-[#6B2523] mb-1">Operating Timings</h4>
-                    <p className="text-xs text-[#3A2E2A]/80 font-body">{contactData.timings.days}</p>
-                    <p className="text-xs text-[#3A2E2A]/80 font-body">Lunch: {contactData.timings.lunch} | Dinner: {contactData.timings.dinner}</p>
-                    <p className="text-[11px] text-[#6B2523] font-semibold mt-1">{contactData.timings.note}</p>
+                    <p className="text-xs text-[#3A2E2A]/80 font-body"><strong>Fri &amp; Sat:</strong> 12:00 PM – 12:00 AM (Midnight)</p>
+                    <p className="text-xs text-[#3A2E2A]/80 font-body"><strong>Sun – Thu:</strong> 12:00 PM – 11:00 PM</p>
+                    <p className="text-[11px] text-[#6B2523] font-semibold mt-1">✦ Open 7 Days a Week</p>
                   </div>
                 </div>
               </div>

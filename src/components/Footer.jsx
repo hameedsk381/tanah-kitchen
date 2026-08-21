@@ -92,13 +92,16 @@ export default function Footer() {
                 📍 {contactData.address}
               </li>
               <li>
-                <span className="text-[#FFC470] font-semibold">Reservations:</span><br />
-                <a href={`tel:${contactData.phone1.replace(/\s+/g, '')}`} className="hover:text-[#FFC470] transition-colors">
-                  📞 {contactData.phone1}
+                <span className="text-[#FFC470] font-semibold">Reservations &amp; Hours:</span><br />
+                <a href="tel:+918977730291" className="hover:text-[#FFC470] transition-colors">
+                  📞 +91 89777 30291
                 </a><br />
-                <a href={`tel:${contactData.phone2.replace(/\s+/g, '')}`} className="hover:text-[#FFC470] transition-colors">
-                  📞 {contactData.phone2}
-                </a>
+                <a href="mailto:reservations@tanahkitchen.com" className="hover:text-[#FFC470] transition-colors">
+                  ✉️ reservations@tanahkitchen.com
+                </a><br />
+                <span className="text-[11px] text-[#EFE1D0]/70 mt-1 block">
+                  Fri–Sat: 12 PM–12 AM | Sun–Thu: 12 PM–11 PM
+                </span>
               </li>
             </ul>
           </div>

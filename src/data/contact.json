@@ -3,15 +3,17 @@
   "address": "5th Floor, Vaishnavi Splendora, opp Meenakshi Bamboos, beside AIG Hospital, Gachibowli, Hyderabad, Telangana 500032",
   "phone1": "89777 30291",
   "phone2": "89777 30292",
-  "email": "contact@tanahkitchen.in",
+  "email": "reservations@tanahkitchen.com",
   "whatsappNumber": "+918977730291",
   "heroImage": "/assets/Tanha Ambiance/Ambiance-17.webp",
   "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.284795642944!2d78.34441508210352!3d17.446028131343717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93a206e921d7%3A0x6b1ed867566ea8f5!2sGachibowli%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
   "timings": {
-    "days": "Tuesday – Sunday",
-    "lunch": "12:00 PM – 3:30 PM",
-    "dinner": "6:00 PM – 11:00 PM",
-    "note": "* Monday: Closed (Cooperative farm rest day)"
+    "weekdays": "Sunday – Thursday: 12:00 PM – 11:00 PM",
+    "weekends": "Friday & Saturday: 12:00 PM – 12:00 AM",
+    "friday": "12:00 PM – 12:00 AM",
+    "saturday": "12:00 PM – 12:00 AM",
+    "sundayToThursday": "12:00 PM – 11:00 PM",
+    "note": "Open 7 Days a Week"
   },
-  "seoDescription": "Visit Tanah Kitchen & Bar in Gachibowli, Hyderabad. Open Tuesday–Sunday for rooftop dining, wood-fired cuisine, and handcrafted cocktails. Reserve your table today."
+  "seoDescription": "Visit Tanah Kitchen & Bar in Gachibowli, Hyderabad. Open daily from 12 PM for rooftop dining, wood-fired gastronomy, and handcrafted cocktails. Email: reservations@tanahkitchen.com."
 }
