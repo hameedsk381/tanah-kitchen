@@ -5,7 +5,8 @@
   "phone2": "89777 30292",
   "email": "reservations@tanahkitchen.com",
   "whatsappNumber": "+918977730291",
-  "mapUrl": "https://maps.google.com/maps?q=17.44367702161119,78.36776618465711&t=&z=17&ie=UTF8&iwloc=&output=embed",
+  "mapUrl": "https://maps.google.com/maps?q=17.44367702161119,78.36776618465711+(Tanah+Kitchen+%26+Bar)&t=&z=17&ie=UTF8&iwloc=&output=embed",
+  "googleMapsSearchUrl": "https://www.google.com/maps/search/?api=1&query=Tanah+Kitchen+%26+Bar+Gachibowli",
   "directionsUrl": "https://www.google.com/maps/dir/?api=1&destination=17.44367702161119,78.36776618465711",
   "coordinates": {
     "latitude": 17.44367702161119,

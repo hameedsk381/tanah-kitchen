@@ -212,7 +212,7 @@ export default function VisitTanah() {
               {/* Google Maps iFrame */}
               <iframe
                 title="Tanah Kitchen Rooftop Gachibowli Map Location"
-                src="https://maps.google.com/maps?q=17.44367702161119,78.36776618465711&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=17.44367702161119,78.36776618465711+(Tanah+Kitchen+%26+Bar)&t=&z=17&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
