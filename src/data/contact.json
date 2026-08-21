@@ -5,8 +5,12 @@
   "phone2": "89777 30292",
   "email": "reservations@tanahkitchen.com",
   "whatsappNumber": "+918977730291",
-  "heroImage": "/assets/Tanha Ambiance/Ambiance-17.webp",
-  "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.284795642944!2d78.34441508210352!3d17.446028131343717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93a206e921d7%3A0x6b1ed867566ea8f5!2sGachibowli%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
+  "mapUrl": "https://maps.google.com/maps?q=17.44367702161119,78.36776618465711&t=&z=17&ie=UTF8&iwloc=&output=embed",
+  "directionsUrl": "https://www.google.com/maps/dir/?api=1&destination=17.44367702161119,78.36776618465711",
+  "coordinates": {
+    "latitude": 17.44367702161119,
+    "longitude": 78.36776618465711
+  },
   "timings": {
     "weekdays": "Sunday – Thursday: 12:00 PM – 11:00 PM",
     "weekends": "Friday & Saturday: 12:00 PM – 12:00 AM",

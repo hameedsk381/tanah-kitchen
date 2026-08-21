@@ -212,10 +212,10 @@ export default function VisitTanah() {
               {/* Google Maps iFrame */}
               <iframe
                 title="Tanah Kitchen Rooftop Gachibowli Map Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.402434515185!2d78.3601243!3d17.4404561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93e25b152737%3A0xe54d9241b2c4bf50!2sGachibowli%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                src="https://maps.google.com/maps?q=17.44367702161119,78.36776618465711&t=&z=17&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
-                style={{ border: 0, filter: 'grayscale(0.8) contrast(1.2) invert(0.9) hue-rotate(90deg)' }}
+                style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

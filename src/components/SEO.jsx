@@ -57,8 +57,8 @@ export default function SEO({
       {/* 2. Geo & Location Metadata for Hyderabad Local SEO */}
       <meta name="geo.region" content="IN-TG" />
       <meta name="geo.placename" content="Gachibowli, Hyderabad" />
-      <meta name="geo.position" content="17.4460;78.3444" />
-      <meta name="ICBM" content="17.4460, 78.3444" />
+      <meta name="geo.position" content="17.443677;78.367766" />
+      <meta name="ICBM" content="17.443677, 78.367766" />
 
       {/* 3. OpenGraph Social Graph Tags */}
       <meta property="og:site_name" content="Tanah Kitchen & Bar" />
