@@ -182,13 +182,14 @@ export default function CorporatePackagesSection() {
         {/* TAB 2: PACKAGE COMPARISON MATRIX */}
         {activeTab === 'comparison' && (
           <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#6B2523]/15 shadow-sm overflow-x-auto">
-            <table className="w-full text-left text-xs sm:text-sm border-collapse min-w-[700px]">
+            <table className="w-full text-left text-xs sm:text-sm border-collapse min-w-[780px]">
               <thead>
                 <tr className="border-b-2 border-[#6B2523]/20 bg-[#FAF6F0]">
                   <th className="p-3.5 font-display font-bold text-[#6B2523] uppercase">Package</th>
                   <th className="p-3.5 font-display font-bold text-[#6B2523] uppercase">Price/Person</th>
                   <th className="p-3.5 font-semibold text-[#3A2E2A] uppercase">Veg Starters</th>
                   <th className="p-3.5 font-semibold text-[#3A2E2A] uppercase">Non-Veg Starters</th>
+                  <th className="p-3.5 font-semibold text-[#3A2E2A] uppercase">Pizza Selection</th>
                   <th className="p-3.5 font-semibold text-[#3A2E2A] uppercase">Veg Mains</th>
                   <th className="p-3.5 font-semibold text-[#3A2E2A] uppercase">Non-Veg Mains</th>
                   <th className="p-3.5 font-semibold text-[#3A2E2A] uppercase">Desserts</th>
@@ -202,6 +203,7 @@ export default function CorporatePackagesSection() {
                     <td className="p-3.5 font-extrabold text-[#882B06]">{row.price}</td>
                     <td className="p-3.5 font-bold text-emerald-700">{row.vegStarters}</td>
                     <td className="p-3.5 font-bold text-rose-700">{row.nonVegStarters}</td>
+                    <td className="p-3.5 font-bold text-[#882B06]">{row.pizza}</td>
                     <td className="p-3.5 font-bold text-emerald-700">{row.vegMains}</td>
                     <td className="p-3.5 font-bold text-rose-700">{row.nonVegMains}</td>
                     <td className="p-3.5 font-bold text-[#882B06]">{row.desserts}</td>
