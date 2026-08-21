@@ -5,6 +5,7 @@ import { MenuProvider } from './context/MenuContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import FloatingActionBar from './components/FloatingActionBar'
+import AIConcierge from './components/AIConcierge'
 
 // Code-split page chunks
 const Home = lazy(() => import('./pages/Home'))
@@ -55,6 +56,7 @@ function App() {
             </Suspense>
             <Footer />
             <FloatingActionBar />
+            <AIConcierge />
           </div>
         </Router>
       </MenuProvider>
