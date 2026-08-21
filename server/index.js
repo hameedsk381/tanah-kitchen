@@ -1,9 +1,14 @@
+import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import multer from 'multer'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { connectDB, isDbConnected } from './db.js'
+import { MenuItem } from './models/MenuItem.js'
+import { BentoSlot } from './models/BentoSlot.js'
+import { GalleryItem } from './models/GalleryItem.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -26,7 +31,7 @@ if (!fs.existsSync(UPLOADS_DIR)) {
   fs.mkdirSync(UPLOADS_DIR, { recursive: true })
 }
 
-// Helper: Read JSON file with fallback to default
+// Fallback JSON file handlers
 function readJsonFile(filePath, fallbackData) {
   try {
     if (fs.existsSync(filePath)) {
@@ -39,7 +44,6 @@ function readJsonFile(filePath, fallbackData) {
   return fallbackData
 }
 
-// Helper: Write JSON file
 function writeJsonFile(filePath, data) {
   try {
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8')
@@ -132,12 +136,11 @@ const DEFAULT_BENTO_DATA = [
   }
 ]
 
-// Data file paths
+// Data file paths (for fallback)
 const menuFilePath = path.join(DATA_DIR, 'menu.json')
 const bentoFilePath = path.join(DATA_DIR, 'bento.json')
 const galleryFilePath = path.join(DATA_DIR, 'gallery.json')
 
-// Initialize data files if not present
 if (!fs.existsSync(menuFilePath)) writeJsonFile(menuFilePath, DEFAULT_MENU_DATA)
 if (!fs.existsSync(bentoFilePath)) writeJsonFile(bentoFilePath, DEFAULT_BENTO_DATA)
 if (!fs.existsSync(galleryFilePath)) writeJsonFile(galleryFilePath, DEFAULT_GALLERY_DATA)
@@ -147,10 +150,8 @@ app.use(cors())
 app.use(express.json({ limit: '50mb' }))
 app.use(express.urlencoded({ extended: true, limit: '50mb' }))
 
-// Serve uploaded media
+// Static media
 app.use('/uploads', express.static(UPLOADS_DIR))
-
-// Serve public static assets (e.g. /assets/Tanha Food/...)
 app.use(express.static(path.join(ROOT_DIR, 'public')))
 
 // Configure Multer for file uploads
@@ -167,7 +168,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage,
-  limits: { fileSize: 20 * 1024 * 1024 }, // 20MB max
+  limits: { fileSize: 20 * 1024 * 1024 },
   fileFilter: (req, file, cb) => {
     if (file.mimetype.startsWith('image/')) {
       cb(null, true)
@@ -177,28 +178,49 @@ const upload = multer({
   }
 })
 
-// ── API ROUTES ──
-
-// Health Check
+// ── HEALTH & STATUS ──
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
     timestamp: new Date().toISOString(),
+    database: isDbConnected() ? 'mongodb' : 'file-fallback',
     service: 'Tanah Kitchen & Bar Management API'
   })
 })
 
 // ── 1. MENU APIs ──
-app.get('/api/menu', (req, res) => {
+app.get('/api/menu', async (req, res) => {
+  if (isDbConnected()) {
+    try {
+      const items = await MenuItem.find().sort({ createdAt: -1 }).lean()
+      return res.json({
+        categories: DEFAULT_MENU_DATA.categories,
+        items
+      })
+    } catch (err) {
+      console.error('MongoDB menu fetch error:', err)
+    }
+  }
   const data = readJsonFile(menuFilePath, DEFAULT_MENU_DATA)
   res.json(data)
 })
 
-app.put('/api/menu', (req, res) => {
+app.put('/api/menu', async (req, res) => {
   const { items, categories } = req.body
   if (!Array.isArray(items)) {
     return res.status(400).json({ error: 'items must be an array' })
   }
+
+  if (isDbConnected()) {
+    try {
+      await MenuItem.deleteMany({})
+      await MenuItem.insertMany(items)
+      return res.json({ success: true, count: items.length, database: 'mongodb' })
+    } catch (err) {
+      console.error('MongoDB menu put error:', err)
+    }
+  }
+
   const updated = {
     categories: categories || DEFAULT_MENU_DATA.categories,
     items
@@ -207,9 +229,8 @@ app.put('/api/menu', (req, res) => {
   res.json({ success: true, count: items.length, data: updated })
 })
 
-app.post('/api/menu/item', (req, res) => {
-  const current = readJsonFile(menuFilePath, DEFAULT_MENU_DATA)
-  const newItem = {
+app.post('/api/menu/item', async (req, res) => {
+  const newItemData = {
     id: req.body.id || `dish-${Date.now()}`,
     name: req.body.name,
     category: req.body.category || 'Lunch',
@@ -217,19 +238,43 @@ app.post('/api/menu/item', (req, res) => {
     desc: req.body.desc || '',
     image: req.body.image || '/assets/Tanha Food/food-1.webp',
     tags: req.body.tags || [],
-    special: req.body.special || false,
-    nonVeg: req.body.nonVeg || false,
+    special: Boolean(req.body.special),
+    nonVeg: Boolean(req.body.nonVeg),
     pairing: req.body.pairing || '',
     profile: req.body.profile || { earthy: 50, smoky: 40, sweet: 20, spicy: 10 }
   }
-  current.items.unshift(newItem)
+
+  if (isDbConnected()) {
+    try {
+      const created = await MenuItem.create(newItemData)
+      return res.status(201).json({ success: true, item: created, database: 'mongodb' })
+    } catch (err) {
+      console.error('MongoDB menu item create error:', err)
+    }
+  }
+
+  const current = readJsonFile(menuFilePath, DEFAULT_MENU_DATA)
+  current.items.unshift(newItemData)
   writeJsonFile(menuFilePath, current)
-  res.status(201).json({ success: true, item: newItem })
+  res.status(201).json({ success: true, item: newItemData })
 })
 
-app.put('/api/menu/item/:id', (req, res) => {
+app.put('/api/menu/item/:id', async (req, res) => {
+  const id = req.params.id
+
+  if (isDbConnected()) {
+    try {
+      const updated = await MenuItem.findOneAndUpdate({ id }, req.body, { new: true })
+      if (updated) {
+        return res.json({ success: true, item: updated, database: 'mongodb' })
+      }
+    } catch (err) {
+      console.error('MongoDB menu update error:', err)
+    }
+  }
+
   const current = readJsonFile(menuFilePath, DEFAULT_MENU_DATA)
-  const idx = current.items.findIndex((i) => i.id === req.params.id)
+  const idx = current.items.findIndex((i) => i.id === id)
   if (idx === -1) {
     return res.status(404).json({ error: 'Item not found' })
   }
@@ -238,10 +283,23 @@ app.put('/api/menu/item/:id', (req, res) => {
   res.json({ success: true, item: current.items[idx] })
 })
 
-app.delete('/api/menu/item/:id', (req, res) => {
+app.delete('/api/menu/item/:id', async (req, res) => {
+  const id = req.params.id
+
+  if (isDbConnected()) {
+    try {
+      const result = await MenuItem.deleteOne({ id })
+      if (result.deletedCount > 0) {
+        return res.json({ success: true, message: 'Item deleted from MongoDB' })
+      }
+    } catch (err) {
+      console.error('MongoDB delete error:', err)
+    }
+  }
+
   const current = readJsonFile(menuFilePath, DEFAULT_MENU_DATA)
   const initialLength = current.items.length
-  current.items = current.items.filter((i) => i.id !== req.params.id)
+  current.items = current.items.filter((i) => i.id !== id)
   if (current.items.length === initialLength) {
     return res.status(404).json({ error: 'Item not found' })
   }
@@ -249,27 +307,73 @@ app.delete('/api/menu/item/:id', (req, res) => {
   res.json({ success: true, message: 'Item deleted' })
 })
 
-app.post('/api/menu/reset', (req, res) => {
+app.post('/api/menu/reset', async (req, res) => {
+  if (isDbConnected()) {
+    try {
+      await MenuItem.deleteMany({})
+      if (DEFAULT_MENU_DATA.items?.length) {
+        await MenuItem.insertMany(DEFAULT_MENU_DATA.items)
+      }
+    } catch (err) {
+      console.error('MongoDB reset error:', err)
+    }
+  }
   writeJsonFile(menuFilePath, DEFAULT_MENU_DATA)
   res.json({ success: true, data: DEFAULT_MENU_DATA })
 })
 
 // ── 2. BENTO GRID APIs ──
-app.get('/api/bento', (req, res) => {
+app.get('/api/bento', async (req, res) => {
+  if (isDbConnected()) {
+    try {
+      const slots = await BentoSlot.find().sort({ slot: 1 }).lean()
+      if (slots.length === 6) {
+        return res.json(slots)
+      }
+    } catch (err) {
+      console.error('MongoDB bento fetch error:', err)
+    }
+  }
   const data = readJsonFile(bentoFilePath, DEFAULT_BENTO_DATA)
   res.json(data)
 })
 
-app.put('/api/bento', (req, res) => {
+app.put('/api/bento', async (req, res) => {
   if (!Array.isArray(req.body)) {
     return res.status(400).json({ error: 'Bento data must be an array' })
   }
+
+  if (isDbConnected()) {
+    try {
+      await BentoSlot.deleteMany({})
+      await BentoSlot.insertMany(req.body)
+      return res.json({ success: true, data: req.body, database: 'mongodb' })
+    } catch (err) {
+      console.error('MongoDB bento update error:', err)
+    }
+  }
+
   writeJsonFile(bentoFilePath, req.body)
   res.json({ success: true, data: req.body })
 })
 
-app.put('/api/bento/slot/:index', (req, res) => {
+app.put('/api/bento/slot/:index', async (req, res) => {
   const index = parseInt(req.params.index, 10)
+  const slotNumber = index + 1
+
+  if (isDbConnected()) {
+    try {
+      const updated = await BentoSlot.findOneAndUpdate(
+        { slot: slotNumber },
+        req.body,
+        { new: true, upsert: true }
+      )
+      return res.json({ success: true, slot: updated, database: 'mongodb' })
+    } catch (err) {
+      console.error('MongoDB bento slot update error:', err)
+    }
+  }
+
   const current = readJsonFile(bentoFilePath, DEFAULT_BENTO_DATA)
   if (isNaN(index) || index < 0 || index >= current.length) {
     return res.status(400).json({ error: 'Invalid slot index' })
@@ -279,22 +383,54 @@ app.put('/api/bento/slot/:index', (req, res) => {
   res.json({ success: true, slot: current[index] })
 })
 
-app.post('/api/bento/reset', (req, res) => {
+app.post('/api/bento/reset', async (req, res) => {
+  if (isDbConnected()) {
+    try {
+      await BentoSlot.deleteMany({})
+      await BentoSlot.insertMany(DEFAULT_BENTO_DATA)
+    } catch (err) {
+      console.error('MongoDB bento reset error:', err)
+    }
+  }
   writeJsonFile(bentoFilePath, DEFAULT_BENTO_DATA)
   res.json({ success: true, data: DEFAULT_BENTO_DATA })
 })
 
 // ── 3. GALLERY APIs ──
-app.get('/api/gallery', (req, res) => {
+app.get('/api/gallery', async (req, res) => {
+  if (isDbConnected()) {
+    try {
+      const items = await GalleryItem.find().lean()
+      if (items.length > 0) {
+        return res.json({
+          categories: DEFAULT_GALLERY_DATA.categories,
+          items
+        })
+      }
+    } catch (err) {
+      console.error('MongoDB gallery fetch error:', err)
+    }
+  }
   const data = readJsonFile(galleryFilePath, DEFAULT_GALLERY_DATA)
   res.json(data)
 })
 
-app.put('/api/gallery', (req, res) => {
+app.put('/api/gallery', async (req, res) => {
   const { items, categories } = req.body
   if (!Array.isArray(items)) {
     return res.status(400).json({ error: 'items must be an array' })
   }
+
+  if (isDbConnected()) {
+    try {
+      await GalleryItem.deleteMany({})
+      await GalleryItem.insertMany(items)
+      return res.json({ success: true, data: req.body, database: 'mongodb' })
+    } catch (err) {
+      console.error('MongoDB gallery put error:', err)
+    }
+  }
+
   const updated = {
     categories: categories || DEFAULT_GALLERY_DATA.categories,
     items
@@ -303,9 +439,22 @@ app.put('/api/gallery', (req, res) => {
   res.json({ success: true, data: updated })
 })
 
-app.put('/api/gallery/item/:id', (req, res) => {
+app.put('/api/gallery/item/:id', async (req, res) => {
+  const id = req.params.id
+
+  if (isDbConnected()) {
+    try {
+      const updated = await GalleryItem.findOneAndUpdate({ id }, req.body, { new: true })
+      if (updated) {
+        return res.json({ success: true, item: updated, database: 'mongodb' })
+      }
+    } catch (err) {
+      console.error('MongoDB gallery item update error:', err)
+    }
+  }
+
   const current = readJsonFile(galleryFilePath, DEFAULT_GALLERY_DATA)
-  const idx = current.items.findIndex((i) => i.id === req.params.id)
+  const idx = current.items.findIndex((i) => i.id === id)
   if (idx === -1) {
     return res.status(404).json({ error: 'Gallery item not found' })
   }
@@ -314,7 +463,17 @@ app.put('/api/gallery/item/:id', (req, res) => {
   res.json({ success: true, item: current.items[idx] })
 })
 
-app.post('/api/gallery/reset', (req, res) => {
+app.post('/api/gallery/reset', async (req, res) => {
+  if (isDbConnected()) {
+    try {
+      await GalleryItem.deleteMany({})
+      if (DEFAULT_GALLERY_DATA.items?.length) {
+        await GalleryItem.insertMany(DEFAULT_GALLERY_DATA.items)
+      }
+    } catch (err) {
+      console.error('MongoDB gallery reset error:', err)
+    }
+  }
   writeJsonFile(galleryFilePath, DEFAULT_GALLERY_DATA)
   res.json({ success: true, data: DEFAULT_GALLERY_DATA })
 })
@@ -366,8 +525,11 @@ if (fs.existsSync(DIST_DIR)) {
   })
 }
 
-app.listen(PORT, () => {
-  console.log(`✨ Tanah Kitchen & Bar Server running on http://localhost:${PORT}`)
-  console.log(`📁 Serving static assets from ${DIST_DIR}`)
-  console.log(`📸 Uploads directory ready at ${UPLOADS_DIR}`)
+// Connect to MongoDB and start server
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`✨ Tanah Kitchen & Bar Server running on http://localhost:${PORT}`)
+    console.log(`📁 Serving static assets from ${DIST_DIR}`)
+    console.log(`📸 Uploads directory ready at ${UPLOADS_DIR}`)
+  })
 })
