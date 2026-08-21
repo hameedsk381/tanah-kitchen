@@ -685,9 +685,9 @@ export default function Home() {
               {/* Bullet list in WordPress Card Container */}
               <div className="space-y-3 pt-2">
                 {[
-                  "Exclusive Executive Board Meetings & Private Dining Suites",
+                  "Premium corporate and leadership gatherings",
                   "Spacious, flexible layouts engineered for premium client entertainment",
-                  "A hands-on culinary team experience & fire cooking masterclasses",
+                  "A hands-on culinary team experience",
                   "Panoramic open-sky rooftop terrace with ambient festoon lighting",
                   "Bespoke multi-course culinary packages tailored to all dietary preferences"
                 ].map((item, index) => (
