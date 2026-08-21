@@ -395,9 +395,11 @@ export default function AdminMenu() {
         >
           {/* Logo & Header */}
           <div className="flex flex-col items-center text-center space-y-3">
-            <div className="w-16 h-16 rounded-full bg-[#6B2523] text-[#FFC470] p-3 shadow-lg flex items-center justify-center border-2 border-[#FFC470]/30">
-              <LogoOwl className="w-full h-full text-light-cream" />
-            </div>
+            <img
+              src="/assets/logo.png"
+              alt="Tanah Logo"
+              className="h-16 w-16 sm:h-20 sm:w-20 object-contain drop-shadow-lg"
+            />
             <div>
               <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#882B06] block">
                 ✦ TANAH RESTAURANT STUDIO ✦

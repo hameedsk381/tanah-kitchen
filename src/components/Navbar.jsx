@@ -93,17 +93,19 @@ export default function Navbar() {
             {/* Logo */}
             <Link
               to="/"
-              className="flex items-center gap-3.5 group"
+              className="flex items-center gap-2.5 sm:gap-3.5 md:gap-4 group transition-transform duration-300 hover:scale-[1.02]"
               aria-label="Tanah Kitchen & Bar Home"
             >
-              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center p-1.5 border border-[#FFC470]/20 group-hover:border-[#FFC470] transition-colors">
-                <LogoOwl className="w-full h-full text-light-cream" />
-              </div>
+              <img
+                src="/assets/logo.png"
+                alt="Tanah Logo"
+                className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 object-contain filter drop-shadow-md transition-all duration-300 group-hover:brightness-110 flex-shrink-0"
+              />
               <div className="flex flex-col text-left">
-                <span className="font-display text-2xl font-bold tracking-[0.12em] uppercase text-light-cream leading-tight">
+                <span className="font-display text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-[0.12em] uppercase text-light-cream leading-none">
                   Tanah
                 </span>
-                <span className="text-[9px] tracking-[0.35em] uppercase text-accent-gold font-body font-semibold">
+                <span className="text-[8px] sm:text-[9px] md:text-[10px] tracking-[0.35em] uppercase text-accent-gold font-body font-bold mt-1">
                   Kitchen & Bar
                 </span>
               </div>

@@ -1178,9 +1178,11 @@ export default function Home() {
             {/* Left Brand Summary Card */}
             <div className="lg:col-span-4 bg-[#6B2523] text-[#F6E1CB] p-8 md:p-10 rounded-3xl flex flex-col justify-between shadow-xl border border-[#FFC470]/20 text-left">
               <div className="space-y-6">
-                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center p-2 border border-[#FFC470]/30">
-                  <LogoOwl className="w-full h-full text-light-cream" />
-                </div>
+                <img
+                  src="/assets/logo.png"
+                  alt="Tanah Logo"
+                  className="h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 object-contain drop-shadow-xl"
+                />
                 
                 <div>
                   <span className="text-[10px] tracking-[0.3em] uppercase text-[#FFC470] font-bold block mb-1 font-body">
