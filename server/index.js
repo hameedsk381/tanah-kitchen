@@ -759,7 +759,9 @@ if (fs.existsSync(DIST_DIR)) {
       !req.path.startsWith('/assets') &&
       !req.path.includes('.')
     ) {
-      res.setHeader('Cache-Control', 'no-cache')
+      res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0')
+      res.setHeader('Pragma', 'no-cache')
+      res.setHeader('Expires', '0')
       return res.sendFile(path.join(DIST_DIR, 'index.html'))
     }
     next()

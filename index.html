@@ -16,6 +16,29 @@
   <meta name="theme-color" content="#6B2523" />
   <link rel="canonical" href="https://tanahkitchen.in/" />
 
+  <!-- Auto-Recovery on Deployments & Dynamic Chunk Updates -->
+  <script>
+    window.addEventListener('vite:preloadError', function (event) {
+      event.preventDefault();
+      window.location.reload();
+    });
+    window.addEventListener('error', function (e) {
+      var msg = (e && e.message) ? e.message.toLowerCase() : '';
+      if (
+        msg.indexOf('dynamically imported module') !== -1 ||
+        msg.indexOf('loading chunk') !== -1 ||
+        msg.indexOf('mime type') !== -1
+      ) {
+        var lastReload = parseInt(sessionStorage.getItem('tanah_auto_reload') || '0', 10);
+        var now = Date.now();
+        if (now - lastReload > 4000) {
+          sessionStorage.setItem('tanah_auto_reload', String(now));
+          window.location.reload();
+        }
+      }
+    });
+  </script>
+
   <!-- Localized Geo Meta Tags for Gachibowli, Hyderabad -->
   <meta name="geo.region" content="IN-TG" />
   <meta name="geo.placename" content="Gachibowli, Hyderabad" />
