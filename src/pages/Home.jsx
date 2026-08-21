@@ -907,11 +907,11 @@ export default function Home() {
               ✦ LIVE ROOFTOP EXPERIENCES ✦
             </span>
           </div>
-          <h3 className="font-display font-extrabold text-2xl sm:text-4xl text-[#F6E1CB]">
-            Weekend Sundowners &amp; Acoustic Evenings
+          <h3 className="font-display font-extrabold text-2xl sm:text-4xl text-[#F6E1CB] uppercase tracking-wide">
+            Weekend Sundowners &amp; Live Music
           </h3>
           <p className="text-xs sm:text-sm text-[#EFE1D0]/85 max-w-xl mx-auto font-body leading-relaxed">
-            Every Thursday to Sunday from 6:30 PM. Unwind under the Gachibowli skyline with live acoustic jazz, signature Liquid Library mixology, and chef's wood-fired embers.
+            Unwind with rooftop views, soulful live music, refreshing cocktails, and delicious food. The perfect setting to relax, connect, and enjoy beautiful evenings at Tanah.
           </p>
           <div className="pt-2">
             <a
