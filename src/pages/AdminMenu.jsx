@@ -87,6 +87,9 @@ export default function AdminMenu() {
     // Gallery
     galleryCategories,
     galleryItems,
+    addGalleryItem,
+    updateGalleryItem,
+    deleteGalleryItem,
     updateGalleryItemCategory,
     resetGallery,
     exportGalleryJson
@@ -126,6 +129,11 @@ export default function AdminMenu() {
   const [galleryFilter, setGalleryFilter] = useState('All')
   const [gallerySearch, setGallerySearch] = useState('')
   const [galleryPage, setGalleryPage] = useState(1)
+  const [editingGalleryItem, setEditingGalleryItem] = useState(null)
+  const [galleryDraft, setGalleryDraft] = useState(null)
+  const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false)
+  const [isAddGallery, setIsAddGallery] = useState(false)
+  const [deleteGalleryConfirmId, setDeleteGalleryConfirmId] = useState(null)
 
   // Custom Uploaded Photos
   const [customUploads, setCustomUploads] = useState(() => {
@@ -264,6 +272,8 @@ export default function AdminMenu() {
 
           if (photoPickerTarget === 'bento' && bentoDraft) {
             setBentoDraft({ ...bentoDraft, image: data.url })
+          } else if (photoPickerTarget === 'gallery' && galleryDraft) {
+            setGalleryDraft({ ...galleryDraft, src: data.url, image: data.url })
           } else if (editingItem) {
             setEditingItem({ ...editingItem, image: data.url })
           }
@@ -299,6 +309,8 @@ export default function AdminMenu() {
 
       if (photoPickerTarget === 'bento' && bentoDraft) {
         setBentoDraft({ ...bentoDraft, image: dataUrl })
+      } else if (photoPickerTarget === 'gallery' && galleryDraft) {
+        setGalleryDraft({ ...galleryDraft, src: dataUrl, image: dataUrl })
       } else if (editingItem) {
         setEditingItem({ ...editingItem, image: dataUrl })
       }
@@ -1019,20 +1031,39 @@ export default function AdminMenu() {
               <div>
                 <h2 className="font-display font-bold text-xl text-[#6B2523] flex items-center gap-2">
                   <Images className="w-5 h-5 text-[#882B06]" />
-                  <span>Gallery Photo Category Mapping (MongoDB)</span>
+                  <span>Gallery Photo Studio & Category Manager (MongoDB)</span>
                 </h2>
                 <p className="text-xs text-[#3A2E2A]/70 mt-1">
-                  Reassign photos between Ambience, Rooftop, Food, and Events. Changes reflect live on the website.
+                  Add new photos, update titles and categories, or remove photos. Changes sync live on the website.
                 </p>
               </div>
 
               <div className="flex flex-wrap items-center gap-2.5">
                 <button
+                  onClick={() => {
+                    setGalleryDraft({
+                      id: `gallery-${Date.now()}`,
+                      title: 'New Gallery Highlight',
+                      alt: 'Tanah Kitchen & Bar',
+                      category: 'Ambience',
+                      src: '/assets/Tanha Ambiance/Ambiance-1.webp',
+                      caption: ''
+                    })
+                    setIsAddGallery(true)
+                    setIsGalleryModalOpen(true)
+                  }}
+                  className="px-4 py-2 rounded-xl bg-[#6B2523] text-[#FFC470] hover:bg-[#3A2E2A] text-xs font-bold flex items-center gap-1.5 shadow-md transition-all cursor-pointer"
+                >
+                  <Plus className="w-3.5 h-3.5" />
+                  <span>Add Photo</span>
+                </button>
+
+                <button
                   onClick={exportGalleryJson}
                   className="px-3.5 py-2 rounded-xl bg-white border border-[#6B2523]/20 hover:bg-[#FAF6F0] text-[#6B2523] text-xs font-bold flex items-center gap-1.5 shadow-xs"
                 >
                   <Download className="w-3.5 h-3.5" />
-                  <span>Export gallery.json</span>
+                  <span>Export JSON</span>
                 </button>
 
                 <button
@@ -1045,7 +1076,7 @@ export default function AdminMenu() {
                   className="px-3.5 py-2 rounded-xl bg-white border border-red-200 hover:bg-red-50 text-red-600 text-xs font-bold flex items-center gap-1.5 shadow-xs"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
-                  <span>Reset Categories</span>
+                  <span>Reset</span>
                 </button>
               </div>
             </div>
@@ -1091,27 +1122,62 @@ export default function AdminMenu() {
               {paginatedGallery.map((gItem) => (
                 <div
                   key={gItem.id}
-                  className="bg-white rounded-2xl overflow-hidden border border-[#6B2523]/15 shadow-xs flex flex-col justify-between"
+                  className="bg-white rounded-2xl overflow-hidden border border-[#6B2523]/15 shadow-xs flex flex-col justify-between group hover:shadow-md transition-shadow"
                 >
                   <div className="w-full h-44 overflow-hidden relative bg-black/5">
                     <img
-                      src={gItem.src}
-                      alt={gItem.alt || gItem.id}
+                      src={gItem.src || gItem.image}
+                      alt={gItem.alt || gItem.title || gItem.id}
                       loading="lazy"
                       decoding="async"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-2 left-2 px-2 py-0.5 bg-black/70 backdrop-blur-xs text-white rounded text-[10px] font-mono">
                       {gItem.id}
                     </div>
+
+                    {/* Quick Edit / Delete Overlay Buttons */}
+                    <div className="absolute top-2 right-2 flex items-center gap-1.5 opacity-90 group-hover:opacity-100 transition-opacity">
+                      <button
+                        onClick={() => {
+                          setGalleryDraft({
+                            id: gItem.id,
+                            title: gItem.title || gItem.alt || 'Tanah Moment',
+                            alt: gItem.alt || gItem.title || 'Tanah Moment',
+                            category: gItem.category || 'Ambience',
+                            src: gItem.src || gItem.image,
+                            caption: gItem.caption || ''
+                          })
+                          setIsAddGallery(false)
+                          setIsGalleryModalOpen(true)
+                        }}
+                        title="Edit Photo"
+                        className="p-1.5 rounded-lg bg-white/90 hover:bg-white text-[#6B2523] shadow-md transition-colors cursor-pointer"
+                      >
+                        <Edit3 className="w-3.5 h-3.5" />
+                      </button>
+
+                      <button
+                        onClick={() => {
+                          if (window.confirm(`Delete photo "${gItem.id}" from gallery?`)) {
+                            deleteGalleryItem(gItem.id)
+                            showToast(`🗑️ Deleted ${gItem.id}`)
+                          }
+                        }}
+                        title="Delete Photo"
+                        className="p-1.5 rounded-lg bg-red-600/90 hover:bg-red-600 text-white shadow-md transition-colors cursor-pointer"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
                   </div>
 
-                  <div className="p-3.5 space-y-2 bg-white border-t border-[#6B2523]/10">
+                  <div className="p-3.5 space-y-2.5 bg-white border-t border-[#6B2523]/10">
                     <div className="flex items-center justify-between">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#6B2523]">
-                        Category:
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#6B2523] truncate">
+                        {gItem.title || gItem.alt || gItem.id}
                       </span>
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#6B2523]/10 text-[#6B2523]">
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#6B2523]/10 text-[#6B2523] flex-shrink-0">
                         {gItem.category}
                       </span>
                     </div>
@@ -1394,6 +1460,178 @@ export default function AdminMenu() {
         )}
       </AnimatePresence>
 
+      {/* ── GALLERY PHOTO EDIT / ADD MODAL ── */}
+      <AnimatePresence>
+        {isGalleryModalOpen && galleryDraft && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              className="bg-white w-full max-w-xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col border border-[#6B2523]/20"
+            >
+              <div className="p-5 border-b border-[#6B2523]/15 flex items-center justify-between bg-[#FAF6F0]">
+                <div>
+                  <h3 className="font-display font-bold text-xl text-[#6B2523]">
+                    {isAddGallery ? 'Add New Gallery Photo' : 'Edit Gallery Photo'}
+                  </h3>
+                  <p className="text-xs text-[#3A2E2A]/70">
+                    Set title, category, and choose a high-resolution photo.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setIsGalleryModalOpen(false)}
+                  className="p-2 rounded-xl hover:bg-black/5 text-[#3A2E2A]/70"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault()
+                  if (isAddGallery) {
+                    addGalleryItem({
+                      id: galleryDraft.id,
+                      title: galleryDraft.title,
+                      alt: galleryDraft.alt || galleryDraft.title,
+                      category: galleryDraft.category,
+                      src: galleryDraft.src,
+                      image: galleryDraft.src,
+                      caption: galleryDraft.caption
+                    })
+                    showToast(`✓ Added "${galleryDraft.title}" to Gallery!`)
+                  } else {
+                    updateGalleryItem(galleryDraft.id, {
+                      title: galleryDraft.title,
+                      alt: galleryDraft.alt || galleryDraft.title,
+                      category: galleryDraft.category,
+                      src: galleryDraft.src,
+                      image: galleryDraft.src,
+                      caption: galleryDraft.caption
+                    })
+                    showToast(`✓ Updated gallery photo!`)
+                  }
+                  setIsGalleryModalOpen(false)
+                }}
+                className="p-6 space-y-4 overflow-y-auto flex-1 text-left"
+              >
+                {/* Photo Preview & Choose/Upload */}
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-2xl bg-[#FAF6F0] border border-[#6B2523]/15">
+                  <div className="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 border border-[#6B2523]/20 bg-black">
+                    <img
+                      src={galleryDraft.src}
+                      alt="Selected preview"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  <div className="flex-1 space-y-2">
+                    <span className="text-xs font-bold text-[#6B2523] block">
+                      Gallery Photo Source
+                    </span>
+                    <div className="flex flex-wrap gap-2">
+                      <label className="cursor-pointer px-3.5 py-2 rounded-xl bg-[#6B2523] hover:bg-[#3A2E2A] text-[#FFC470] text-xs font-bold flex items-center gap-1.5 shadow-xs transition-all">
+                        <Upload className="w-3.5 h-3.5" />
+                        <span>Upload File</span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          className="hidden"
+                          onChange={(e) => {
+                            if (e.target.files?.[0]) {
+                              setPhotoPickerTarget('gallery')
+                              handleFileUpload(e.target.files[0])
+                            }
+                          }}
+                        />
+                      </label>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setPhotoPickerTarget('gallery')
+                          setIsPhotoPickerOpen(true)
+                        }}
+                        className="px-3.5 py-2 rounded-xl bg-white border border-[#6B2523]/20 hover:bg-white/80 text-[#6B2523] text-xs font-bold flex items-center gap-1.5 shadow-xs cursor-pointer"
+                      >
+                        <Images className="w-3.5 h-3.5" />
+                        <span>Browse Catalog</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Title & Category */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                      Photo Title / Alt
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={galleryDraft.title}
+                      onChange={(e) => setGalleryDraft({ ...galleryDraft, title: e.target.value, alt: e.target.value })}
+                      placeholder="e.g. Sunset on the Rooftop"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                      Category
+                    </label>
+                    <select
+                      value={galleryDraft.category}
+                      onChange={(e) => setGalleryDraft({ ...galleryDraft, category: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm bg-white"
+                    >
+                      {['Ambience', 'Rooftop', 'Events', 'Food'].map((catOpt) => (
+                        <option key={catOpt} value={catOpt}>
+                          {catOpt}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Caption */}
+                <div>
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                    Caption / Story (Optional)
+                  </label>
+                  <textarea
+                    rows={2}
+                    value={galleryDraft.caption || ''}
+                    onChange={(e) => setGalleryDraft({ ...galleryDraft, caption: e.target.value })}
+                    placeholder="Short description of this moment..."
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none"
+                  />
+                </div>
+
+                {/* Footer Buttons */}
+                <div className="pt-4 flex items-center justify-end gap-3 border-t border-[#6B2523]/10">
+                  <button
+                    type="button"
+                    onClick={() => setIsGalleryModalOpen(false)}
+                    className="px-4 py-2 rounded-xl border border-gray-300 text-xs font-semibold text-gray-700 hover:bg-gray-50 cursor-pointer"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-5 py-2 rounded-xl bg-[#6B2523] hover:bg-[#3A2E2A] text-[#FFC470] text-xs font-bold uppercase tracking-wider shadow-md cursor-pointer"
+                  >
+                    {isAddGallery ? 'Add to Gallery' : 'Save Changes'}
+                  </button>
+                </div>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
       {/* ── PHOTO PICKER MODAL (With Upload + Catalog Tabs) ── */}
       <AnimatePresence>
         {isPhotoPickerOpen && (
@@ -1531,7 +1769,11 @@ export default function AdminMenu() {
 
                 {paginatedPhotos.map((img) => {
                   const currentImg =
-                    photoPickerTarget === 'bento' ? bentoDraft?.image : editingItem?.image
+                    photoPickerTarget === 'bento'
+                      ? bentoDraft?.image
+                      : photoPickerTarget === 'gallery'
+                      ? galleryDraft?.src
+                      : editingItem?.image
                   const isSelected = currentImg === img.path
 
                   return (
@@ -1540,6 +1782,8 @@ export default function AdminMenu() {
                       onClick={() => {
                         if (photoPickerTarget === 'bento' && bentoDraft) {
                           setBentoDraft({ ...bentoDraft, image: img.path })
+                        } else if (photoPickerTarget === 'gallery' && galleryDraft) {
+                          setGalleryDraft({ ...galleryDraft, src: img.path, image: img.path })
                         } else if (editingItem) {
                           setEditingItem({ ...editingItem, image: img.path })
                         }

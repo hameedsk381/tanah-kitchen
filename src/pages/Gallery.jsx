@@ -96,8 +96,8 @@ export default function Gallery() {
                   className="group relative overflow-hidden cursor-pointer rounded-2xl aspect-square border border-[#6B2523]/15 shadow-sm hover:shadow-xl transition-all duration-500 bg-white"
                 >
                   <img
-                    src={item.src}
-                    alt={item.alt}
+                    src={item.src || item.image}
+                    alt={item.alt || item.title || item.id}
                     loading="lazy"
                     decoding="async"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-95 group-hover:brightness-90 contrast-[1.02]"
@@ -138,9 +138,9 @@ export default function Gallery() {
 
               <div className="relative aspect-[4/3] w-full max-h-[75vh]">
                 <img
-                  src={lightbox.src}
-                  alt={lightbox.alt}
-                  className="w-full h-full object-contain bg-black"
+                  src={lightbox.src || lightbox.image}
+                  alt={lightbox.alt || lightbox.title || lightbox.id}
+                  className="w-full h-full object-contain"
                 />
               </div>
             </motion.div>

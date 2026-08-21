@@ -15,6 +15,7 @@ import {
 
 import SEO from '../components/SEO'
 import { useMenu } from '../context/MenuContext'
+import CorporatePackagesSection from '../components/CorporatePackagesSection'
 
 const timeSlots = [
   '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM',
@@ -925,82 +926,9 @@ export default function Home() {
       </section>
 
       {/* ==========================================
-          6. CUSTOMIZED CORPORATE PACKAGES (WordPress Feature Grid)
+          6. CUSTOMIZED CORPORATE PACKAGES
           ========================================== */}
-      <section
-        ref={sec6Ref}
-        className="wp-section bg-[#FAF6F0] text-[#3A2E2A] border-b border-[#6B2523]/10"
-      >
-        <div className="wp-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-
-            {/* Left Photo */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={isSec6InView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 1 }}
-              className="lg:col-span-5 order-2 lg:order-1"
-            >
-              <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-xl border border-[#6B2523]/15 relative group">
-                <img
-                  src="/assets/Tanha Image/10.webp"
-                  alt="Exclusive corporate package setup"
-                  className="w-full h-full object-cover filter brightness-[0.92] group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-            </motion.div>
-
-            {/* Right Packages Content */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isSec6InView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 1, delay: 0.2 }}
-              className="lg:col-span-7 space-y-6 text-left order-1 lg:order-2"
-            >
-              <div className="space-y-3">
-                <span className="wp-badge wp-badge-maroon">
-                  BESPOKE PACKAGES
-                </span>
-                <h3 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#6B2523]">
-                  Customized Corporate Packages
-                </h3>
-                <div className="w-16 h-[2px] bg-[#6B2523]/40 rounded-full" />
-              </div>
-
-              <p className="text-base text-[#3A2E2A]/90 leading-relaxed font-body">
-                Our curated packages take care of every detail, from multi-course farm-to-table menus to dedicated team co-ordinators and high-end presentation configurations.
-              </p>
-
-              {/* WordPress Feature Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
-                {[
-                  "Artisanal Cocktail Pairings"
-                ].map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="p-3.5 rounded-xl bg-white border border-[#6B2523]/10 shadow-sm flex items-center gap-3 hover:border-[#6B2523]/30 transition-colors"
-                  >
-                    <span className="w-6 h-6 rounded-full bg-[#6B2523]/10 text-[#6B2523] flex items-center justify-center text-xs font-bold flex-shrink-0">
-                      ✦
-                    </span>
-                    <span className="text-sm font-semibold text-[#3A2E2A]">{item}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="pt-3">
-                <a
-                  href="#contact-form"
-                  className="wp-btn-pill bg-[#6B2523] text-[#F6E1CB] hover:bg-[#3A2E2A] hover:text-white shadow-md text-xs font-semibold"
-                >
-                  Request Proposal
-                </a>
-              </div>
-            </motion.div>
-
-          </div>
-        </div>
-      </section>
+      <CorporatePackagesSection />
 
       {/* ==========================================
           7. LET'S HOST YOUR NEXT TEAM GATHERING (WordPress Event Showcase)

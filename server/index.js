@@ -620,18 +620,60 @@ app.put('/api/gallery', async (req, res) => {
   }
 })
 
+app.post('/api/gallery/item', async (req, res) => {
+  const newItemData = {
+    id: req.body.id || `gallery-${Date.now()}`,
+    title: req.body.title || 'Tanah Moment',
+    category: req.body.category || 'Ambience',
+    image: req.body.image || '/assets/Tanha Ambiance/Ambiance-1.webp',
+    caption: req.body.caption || '',
+    tags: req.body.tags || []
+  }
+
+  try {
+    if (isDbConnected()) {
+      const created = await GalleryItem.create(newItemData)
+      return res.status(201).json({ success: true, item: created })
+    }
+    res.status(201).json({ success: true, item: newItemData })
+  } catch (err) {
+    console.error('Gallery item create error:', err)
+    res.status(500).json({ error: 'Failed to create gallery photo' })
+  }
+})
+
 app.put('/api/gallery/item/:id', async (req, res) => {
   const id = req.params.id
 
   try {
-    const updated = await GalleryItem.findOneAndUpdate({ id }, req.body, { new: true })
-    if (!updated) {
-      return res.status(404).json({ error: 'Gallery photo not found' })
+    if (isDbConnected()) {
+      const updated = await GalleryItem.findOneAndUpdate({ id }, req.body, { new: true })
+      if (!updated) {
+        return res.status(404).json({ error: 'Gallery photo not found' })
+      }
+      return res.json({ success: true, item: updated })
     }
-    res.json({ success: true, item: updated })
+    res.json({ success: true, item: { id, ...req.body } })
   } catch (err) {
     console.error('Gallery item update error:', err)
-    res.status(500).json({ error: 'Failed to update gallery photo in MongoDB' })
+    res.status(500).json({ error: 'Failed to update gallery photo' })
+  }
+})
+
+app.delete('/api/gallery/item/:id', async (req, res) => {
+  const id = req.params.id
+
+  try {
+    if (isDbConnected()) {
+      const result = await GalleryItem.deleteOne({ id })
+      if (result.deletedCount === 0) {
+        return res.status(404).json({ error: 'Gallery photo not found' })
+      }
+    }
+    res.json({ success: true, message: `Gallery item ${id} deleted` })
+  } catch (err) {
+    console.error('Gallery item delete error:', err)
+    res.status(500).json({ error: 'Failed to delete gallery photo' })
   }
 })
 
@@ -640,16 +682,18 @@ app.post('/api/gallery/reset', async (req, res) => {
     const galleryJsonPath = path.join(SRC_DATA_DIR, 'gallery.json')
     if (fs.existsSync(galleryJsonPath)) {
       const rawGallery = JSON.parse(fs.readFileSync(galleryJsonPath, 'utf-8'))
-      await GalleryItem.deleteMany({})
-      if (rawGallery.items?.length) {
-        await GalleryItem.insertMany(rawGallery.items)
+      if (isDbConnected()) {
+        await GalleryItem.deleteMany({})
+        if (rawGallery.items?.length) {
+          await GalleryItem.insertMany(rawGallery.items)
+        }
       }
       return res.json({ success: true, count: rawGallery.items.length })
     }
     res.json({ success: true, message: 'Reset completed' })
   } catch (err) {
     console.error('Gallery reset error:', err)
-    res.status(500).json({ error: 'Failed to reset gallery in MongoDB' })
+    res.status(500).json({ error: 'Failed to reset gallery' })
   }
 })
 

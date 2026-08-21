@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { CheckCircle } from 'lucide-react'
 import SEO from '../components/SEO'
+import CorporatePackagesSection from '../components/CorporatePackagesSection'
 
 const timeSlots = [
   '12:30 PM', '1:00 PM', '1:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM', '9:00 PM'
@@ -305,6 +306,9 @@ export default function Book() {
           </div>
 
         </div>
+      </div>
+      <div className="w-full">
+        <CorporatePackagesSection />
       </div>
     </main>
   )

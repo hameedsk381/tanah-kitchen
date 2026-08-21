@@ -300,24 +300,61 @@ export function MenuProvider({ children }) {
   }, [])
 
   // Gallery Methods with Server Sync
-  const updateGalleryItemCategory = useCallback((id, newCategory) => {
+  const addGalleryItem = useCallback((newItem) => {
+    const itemWithId = {
+      ...newItem,
+      id: newItem.id || `gallery-${Date.now()}`
+    }
     setGalleryData((prev) => {
       const updated = {
         ...prev,
-        items: prev.items.map((item) =>
-          item.id === id ? { ...item, category: newCategory } : item
-        )
+        items: [itemWithId, ...prev.items]
       }
-      // Async sync to server
-      fetch(`/api/gallery/item/${encodeURIComponent(id)}`, {
-        method: 'PUT',
+      fetch('/api/gallery/item', {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ category: newCategory })
+        body: JSON.stringify(itemWithId)
       }).catch((e) => console.warn('Server sync failed:', e))
 
       return updated
     })
   }, [])
+
+  const updateGalleryItem = useCallback((id, updatedFields) => {
+    setGalleryData((prev) => {
+      const updated = {
+        ...prev,
+        items: prev.items.map((item) =>
+          item.id === id ? { ...item, ...updatedFields } : item
+        )
+      }
+      fetch(`/api/gallery/item/${encodeURIComponent(id)}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedFields)
+      }).catch((e) => console.warn('Server sync failed:', e))
+
+      return updated
+    })
+  }, [])
+
+  const deleteGalleryItem = useCallback((id) => {
+    setGalleryData((prev) => {
+      const updated = {
+        ...prev,
+        items: prev.items.filter((item) => item.id !== id)
+      }
+      fetch(`/api/gallery/item/${encodeURIComponent(id)}`, {
+        method: 'DELETE'
+      }).catch((e) => console.warn('Server sync failed:', e))
+
+      return updated
+    })
+  }, [])
+
+  const updateGalleryItemCategory = useCallback((id, newCategory) => {
+    updateGalleryItem(id, { category: newCategory })
+  }, [updateGalleryItem])
 
   const resetGallery = useCallback(() => {
     setGalleryData(defaultGalleryData)
@@ -358,6 +395,9 @@ export function MenuProvider({ children }) {
       // Gallery
       galleryCategories: galleryData.categories || defaultGalleryData.categories,
       galleryItems: galleryData.items || defaultGalleryData.items,
+      addGalleryItem,
+      updateGalleryItem,
+      deleteGalleryItem,
       updateGalleryItemCategory,
       resetGallery,
       exportGalleryJson
@@ -375,6 +415,9 @@ export function MenuProvider({ children }) {
       updateBentoSlot,
       resetBento,
       galleryData,
+      addGalleryItem,
+      updateGalleryItem,
+      deleteGalleryItem,
       updateGalleryItemCategory,
       resetGallery,
       exportGalleryJson
