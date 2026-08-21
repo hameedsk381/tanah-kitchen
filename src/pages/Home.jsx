@@ -166,6 +166,9 @@ export default function Home() {
         <img
           src="/assets/Tanha%20Ambiance/Ambiance-9.webp"
           alt="Tanah Ambiance"
+          fetchPriority="high"
+          loading="eager"
+          decoding="async"
           className="absolute inset-0 w-full h-full object-cover z-0 filter brightness-[0.55] contrast-[1.05]"
         />
         {/* Dark Vignette Overlay for Readability */}

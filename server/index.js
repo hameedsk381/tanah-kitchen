@@ -1,6 +1,7 @@
 import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
+import compression from 'compression'
 import multer from 'multer'
 import fs from 'fs'
 import path from 'path'
@@ -32,14 +33,24 @@ if (!fs.existsSync(UPLOADS_DIR)) {
 const defaultCategories = ['Breakfast', 'Lunch', 'Dinner', 'Cocktails', 'Beverages', 'Desserts']
 const defaultGalleryCategories = ['All', 'Ambience', 'Rooftop', 'Events', 'Food']
 
-// Middleware
+// Middleware: Enable Gzip / Brotli Compression
+app.use(compression())
 app.use(cors())
 app.use(express.json({ limit: '50mb' }))
 app.use(express.urlencoded({ extended: true, limit: '50mb' }))
 
-// Static media
-app.use('/uploads', express.static(UPLOADS_DIR))
-app.use(express.static(path.join(ROOT_DIR, 'public')))
+// Static media caching config
+const STATIC_CACHE_OPTS = {
+  maxAge: '7d',
+  setHeaders: (res, filePath) => {
+    if (filePath.includes('/assets/') || filePath.endsWith('.webp') || filePath.endsWith('.png') || filePath.endsWith('.js') || filePath.endsWith('.css')) {
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable')
+    }
+  }
+}
+
+app.use('/uploads', express.static(UPLOADS_DIR, { maxAge: '30d' }))
+app.use(express.static(path.join(ROOT_DIR, 'public'), STATIC_CACHE_OPTS))
 
 // Configure Multer for file uploads
 const storage = multer.diskStorage({
@@ -506,9 +517,10 @@ app.get('/api/uploads', (req, res) => {
 
 // ── SERVE FRONTEND (PRODUCTION / SPA FALLBACK) ──
 if (fs.existsSync(DIST_DIR)) {
-  app.use(express.static(DIST_DIR))
+  app.use(express.static(DIST_DIR, STATIC_CACHE_OPTS))
   app.use((req, res, next) => {
     if ((req.method === 'GET' || req.method === 'HEAD') && !req.path.startsWith('/api') && !req.path.startsWith('/uploads')) {
+      res.setHeader('Cache-Control', 'no-cache')
       return res.sendFile(path.join(DIST_DIR, 'index.html'))
     }
     next()
