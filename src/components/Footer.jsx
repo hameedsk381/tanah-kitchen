@@ -157,7 +157,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 font-body">
           <p className="text-xs font-light text-[#EFE1D0]/60 text-center sm:text-left">
-            © {new Date().getFullYear()} Tanah Kitchen &amp; Bar. Architectural Gastronomy. All rights reserved.
+            © {new Date().getFullYear()} Tanah Kitchen &amp; Bar. Brand owned and operated by Shambhavi Hospitality. All rights reserved.
           </p>
           <div className="flex gap-6 text-xs font-light text-[#EFE1D0]/60">
             <Link to="/privacy-policy" className="hover:text-[#FFC470] transition-colors">Privacy Policy</Link>

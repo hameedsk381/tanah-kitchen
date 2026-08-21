@@ -49,6 +49,8 @@ export default function SEO({
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
+      <meta name="author" content="Shambhavi Hospitality" />
+      <meta name="copyright" content="Shambhavi Hospitality" />
       <meta name="robots" content="index, follow, max-image-preview:large" />
       <link rel="canonical" href={currentUrl} />
 
