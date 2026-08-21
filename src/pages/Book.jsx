@@ -75,13 +75,14 @@ export default function Book() {
       />
 
       {/* ── 1. Page Header (Spacious Luxury Banner) ── */}
-      <section className="section-dark relative py-16 lg:py-24 text-center border-b border-[#FFC470]/15 overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-25">
+      <section className="section-dark relative py-20 lg:py-28 text-center border-b border-[#FFC470]/15 overflow-hidden">
+        <div className="absolute inset-0 z-0">
           <img
-            src="/assets/Tanha Image/02.webp"
-            alt="Atmospheric rooftop dining experience"
-            className="w-full h-full object-cover filter brightness-75"
+            src="/assets/Tanha Ambiance/Ambiance-8.webp"
+            alt="Rooftop dining ambiance at Tanah Kitchen & Bar"
+            className="w-full h-full object-cover filter brightness-[0.4] scale-105"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#2A0E0C] via-[#6B2523]/50 to-[#2A0E0C]/70" />
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-6 space-y-4">
           <div className="inline-flex items-center gap-2">
