@@ -1,30 +1,30 @@
 import { useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { LogoOwl, TribalDiamond, DiamondDivider, WinkingOwl, FoodOwl, PartyOwl, BambooOwl } from '../components/illustrations'
+import { LogoOwl } from '../components/illustrations'
 import SEO from '../components/SEO'
 
 // Logo symbol breakdown from official Brand Story document
 const logoSymbols = [
   {
-    icon: WinkingOwl,
+    num: '01',
     symbol: 'Bird Head',
     meaning: 'Freedom',
     desc: "Returning home, finding peace, and enjoying the day's rewards. The bird atop the log represents homecoming and comfort."
   },
   {
-    icon: FoodOwl,
+    num: '02',
     symbol: 'Twig / Branch',
     meaning: 'Food & Nest',
     desc: 'Gathering materials, slow cooking, rustic nourishment. Every branch is intentional—built to make you feel at home.'
   },
   {
-    icon: PartyOwl,
+    num: '03',
     symbol: 'Wine Glass',
     meaning: 'Relax',
     desc: 'Slowing down, evening conversations, social warmth. The glass is an invitation to pause and be present.'
   },
   {
-    icon: BambooOwl,
+    num: '04',
     symbol: 'Bamboo',
     meaning: 'Home',
     desc: 'Shelter, stability, rootedness in nature. Bamboo is the original sanctuary—resilient, grounded, and welcoming.'
@@ -169,7 +169,7 @@ export default function AboutUs() {
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {logoSymbols.map(({ icon: Icon, symbol, meaning, desc }, i) => (
+            {logoSymbols.map(({ num, symbol, meaning, desc }, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
@@ -177,8 +177,8 @@ export default function AboutUs() {
                 transition={{ duration: 0.8, delay: i * 0.12 }}
                 className="wp-card p-7 text-left group"
               >
-                <div className="w-16 h-16 rounded-2xl bg-[#6B2523]/10 flex items-center justify-center p-3 text-[#6B2523] mb-5 group-hover:bg-[#6B2523] group-hover:text-[#FFC470] transition-colors duration-300">
-                  <Icon className="w-full h-full" color="currentColor" />
+                <div className="w-14 h-14 rounded-2xl bg-[#6B2523]/10 flex items-center justify-center text-[#6B2523] mb-5 font-display font-bold text-xl group-hover:bg-[#6B2523] group-hover:text-[#FFC470] transition-colors duration-300">
+                  {num}
                 </div>
                 <div className="text-[10px] tracking-[0.25em] uppercase font-bold text-[#6B2523]/60 font-body mb-1">
                   {symbol}

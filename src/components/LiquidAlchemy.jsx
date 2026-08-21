@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { DiamondDivider } from './illustrations'
 
 const packages = [
   "Team Lunch Packages",

@@ -1,7 +1,6 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
-import { StoryNestOwl, DiamondDivider } from './illustrations'
 
 const designPrinciples = [
   { contrast: 'Handcrafted', over: 'over polished' },
@@ -112,22 +111,20 @@ export default function Philosophy() {
               </div>
             </motion.div>
 
-            {/* Right Block: Large Handcrafted Story Owl Illustration */}
+            {/* Right Block: Authentic Sanctuary Atmosphere Photo */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 1.4, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-5 flex justify-center items-center relative"
             >
-              <div className="absolute w-[80%] aspect-square rounded-full border border-[#F2E8D8]/25 -z-10 animate-[spin_60s_linear_infinite]" />
-              <div className="absolute w-[95%] aspect-square rounded-full border border-dashed border-[#F2E8D8]/15 -z-10" />
-
-              <div className="bg-[#F2E8D8]/10 p-6 md:p-8 rounded-full backdrop-blur-sm border border-[#F2E8D8]/20 shadow-2xl">
-                <StoryNestOwl className="w-64 h-64 md:w-80 md:h-80" color="#F2E8D8" />
+              <div className="aspect-[4/5] w-full max-w-md rounded-3xl overflow-hidden shadow-2xl border border-[#F2E8D8]/20 relative group">
+                <img
+                  src="/assets/Tanha Ambiance/Ambiance-18.webp"
+                  alt="Tanah Sanctuary gathering space"
+                  className="w-full h-full object-cover filter brightness-95 group-hover:scale-105 transition-transform duration-700"
+                />
               </div>
-
-              <div className="absolute -bottom-4 -right-4 w-6 h-6 border-r-2 border-b-2 border-[#DEC8AB] opacity-60" />
-              <div className="absolute -top-4 -left-4 w-6 h-6 border-l-2 border-t-2 border-[#DEC8AB] opacity-60" />
             </motion.div>
 
           </div>

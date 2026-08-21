@@ -8,9 +8,7 @@ import {
   ChevronRight
 } from 'lucide-react'
 import {
-  LogoOwl,
-  StoryNestOwl,
-  TribalDiamond
+  LogoOwl
 } from '../components/illustrations'
 
 import SEO from '../components/SEO'

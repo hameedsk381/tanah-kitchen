@@ -2,7 +2,6 @@ import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowDownRight } from 'lucide-react'
-import { DiamondDivider } from './illustrations'
 
 export default function HeroExperience() {
   const containerRef = useRef(null)
@@ -60,10 +59,8 @@ export default function HeroExperience() {
             <span className="font-light italic text-bg-secondary">Unforgettable.</span>
           </h1>
 
-          {/* Decorative Tribal Divider Exactly Like PDF Page 2 */}
-          <div className="w-full max-w-xl mb-6">
-            <DiamondDivider color="var(--color-bg-secondary)" className="my-2 justify-start" />
-          </div>
+          {/* Clean Gold Accent Divider */}
+          <div className="w-16 h-[2px] bg-[var(--color-bg-secondary)]/50 rounded-full mb-6" />
 
           <p className="text-lg font-light text-bg-secondary max-w-xl mb-8 leading-relaxed font-display">
             Premium rooftop dining in Gachibowli — where great food, craft cocktails, and live sports come together under the stars.

@@ -5,19 +5,6 @@ import menuData from '../data/menu.json'
 import { useMenu } from '../context/MenuContext'
 import { LogoOwl } from '../components/illustrations'
 import SEO from '../components/SEO'
-import {
-  BirdSingleMalt,
-  BirdWhiskey,
-  BirdVodkaGin,
-  BirdTequilaRum,
-  BirdBrandyLiquor,
-  BirdWine,
-  BirdBeerChampagne,
-  BirdSoftDrink,
-  BirdSignatureCocktail,
-  BirdMocktail,
-  BirdShooter
-} from '../components/BarMascots'
 
 // Dynamic category helper using item data directly from Admin / Database
 function getMappedCategory(item) {
@@ -1207,7 +1194,6 @@ export default function Menu() {
             {/* Menu Cards */}
             <div className="w-full max-w-[780px] mx-auto px-4 sm:px-6 flex flex-col gap-[32px]">
               {LIQUID_SECTIONS.map((section, index) => {
-                const Mascot = section.Mascot;
                 return (
                   <React.Fragment key={section.id}>
                     <div 
@@ -1270,20 +1256,17 @@ export default function Menu() {
                           ))}
                         </div>
 
-                        {/* Card Bottom: Bird Mascot & Tagline */}
-                        <div className="mt-14 flex flex-col items-center justify-center text-center">
-                          <div className="mb-4">
-                            {Mascot && <Mascot className="w-[48px] h-[48px]" color="#75242A" />}
-                          </div>
+                        {/* Card Bottom: Tagline & Legal */}
+                        <div className="mt-10 flex flex-col items-center justify-center text-center">
                           <p 
-                            className="italic font-bold mb-8"
-                            style={{ color: 'var(--color-near-black)', fontSize: '26px', fontFamily: "'Caveat', cursive", lineHeight: 1.2 }}
+                            className="italic font-bold mb-6"
+                            style={{ color: 'var(--color-near-black)', fontSize: '24px', fontFamily: "'Caveat', cursive", lineHeight: 1.2 }}
                           >
                             "{section.tagline}"
                           </p>
                           
                           {/* Very bottom text */}
-                          <div className="w-full flex flex-col sm:flex-row justify-between items-center mt-4 pt-6 border-t border-[#75242A]/10 gap-3">
+                          <div className="w-full flex flex-col sm:flex-row justify-between items-center mt-2 pt-6 border-t border-[#75242A]/10 gap-3">
                             <span className="uppercase font-bold tracking-[0.25em]" style={{ color: 'var(--color-text-muted)', fontSize: '11px' }}>
                               TANAH
                             </span>
@@ -1294,13 +1277,6 @@ export default function Menu() {
                         </div>
                       </div>
                     </div>
-
-                    {/* Divider Mascot between cards (if not last) */}
-                    {index < LIQUID_SECTIONS.length - 1 && (
-                      <div className="flex justify-center w-full py-4">
-                        <BirdSingleMalt className="w-[48px] h-[48px]" color="#ECE9DA" />
-                      </div>
-                    )}
                   </React.Fragment>
                 );
               })}

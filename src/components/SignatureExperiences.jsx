@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { TribalDiamond } from './illustrations'
 
 const occasions = [
   {
