@@ -834,21 +834,21 @@ export default function Home() {
                 {[
                   {
                     icon: <Briefcase className="w-6 h-6 text-[#FFC470]" />,
-                    label: "Executive Board & Leadership Dining",
-                    capacity: "Capacity: 15–25 Guests • Private Dining Suite",
-                    desc: "High-impact executive meetings, private dinners, and strategic leadership retreats hosted in sound-insulated, raw-stone private dining suites with dedicated butler service and customized chef-curated tasting menus."
+                    label: "Rooftop Corporate Dining",
+                    capacity: "Capacity: 15–30 Guests • Private & Rooftop Dining",
+                    desc: "Host team dinners and corporate gatherings in Tanah’s relaxed rooftop setting, with great food, crafted drinks, and a comfortable ambience that makes every business gathering more enjoyable."
                   },
                   {
                     icon: <Users className="w-6 h-6 text-[#FFC470]" />,
-                    label: "Corporate Celebrations & Team Receptions",
-                    capacity: "Capacity: 40–60 Guests • Open Sky Rooftop Terrace",
-                    desc: "High-energy team outings, quarterly milestones, and brand launch receptions on our panoramic open-air terrace with live artisanal wood-fired cooking and craft mixology."
+                    label: "Corporate Celebrations & Team Events",
+                    capacity: "Capacity: 30–60 Guests • Rooftop Event Space",
+                    desc: "From team celebrations and office parties to brand events and milestone gatherings, Tanah offers a vibrant rooftop setting with delicious food, drinks, music, and an atmosphere designed for memorable celebrations."
                   },
                   {
                     icon: <Compass className="w-6 h-6 text-[#FFC470]" />,
-                    label: "Hands-On Culinary Team Experiences",
-                    capacity: "Capacity: 20–30 Guests • Live Wood-Fired Hearth",
-                    desc: "Interactive team-building masterclasses and artisanal cocktail pairing workshops led by master culinary curators, designed to foster authentic collaboration and shared memories."
+                    label: "Team Dining & Curated Experiences",
+                    capacity: "Capacity: 20–40 Guests • Food, Drinks & Entertainment",
+                    desc: "Bring your team together over specially curated food, signature cocktails, and engaging entertainment. Whether it’s a team dinner, celebration, or casual get-together, Tanah creates the perfect setting to connect, unwind, and make memories."
                   }
                 ].map((row, idx) => (
                   <div
