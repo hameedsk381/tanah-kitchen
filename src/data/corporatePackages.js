@@ -20,6 +20,7 @@ export const corporatePackagesData = {
       food: [
         "2 Veg Starters",
         "2 Non-Veg Starters (1 Chicken, 1 Fish)",
+        "Gourmet Pizza (Veg & Non-Veg Selection)",
         "2 Veg Main Courses",
         "2 Non-Veg Main Courses (1 Chicken, 1 Fish)",
         "Tandoori Roti / Naan",
@@ -45,6 +46,7 @@ export const corporatePackagesData = {
       food: [
         "3 Veg Starters",
         "2 Non-Veg Starters (1 Chicken, 1 Fish)",
+        "Gourmet Pizza (Veg & Non-Veg Selection)",
         "3 Veg Main Courses",
         "2 Non-Veg Main Courses (1 Chicken, 1 Fish)",
         "Tandoori Roti / Naan / Lachcha Paratha",
@@ -70,6 +72,7 @@ export const corporatePackagesData = {
       food: [
         "3 Veg Starters",
         "3 Non-Veg Starters (1 Chicken, 1 Fish, 1 Prawn)",
+        "Gourmet Pizza (Veg & Non-Veg Selection)",
         "3 Veg Main Courses",
         "2 Non-Veg Main Courses (1 Chicken, 1 Fish / Prawn)",
         "Tandoori Roti / Naan / Lachcha Paratha",
@@ -106,6 +109,7 @@ export const corporatePackagesData = {
       food: [
         "3 Veg Starters",
         "3 Non-Veg Starters (1 Chicken, 1 Fish, 1 Prawn / Mutton)",
+        "Gourmet Pizza (Veg & Non-Veg Selection)",
         "3 Veg Main Courses",
         "3 Non-Veg Main Courses (1 Chicken, 1 Fish & Prawn / Mutton)",
         "Tandoori Roti / Naan / Lachcha Paratha / Kulcha",

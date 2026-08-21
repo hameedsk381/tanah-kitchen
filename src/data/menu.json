@@ -1,293 +1,2208 @@
 {
-  "categories": ["All", "Breakfast", "Lunch", "Dinner", "Beverages", "Cocktails", "Desserts"],
+  "categories": [
+    "All",
+    "Soups",
+    "Classic Quick Bites",
+    "Veg Starters",
+    "Non-Veg Starters",
+    "Salads",
+    "Chef Specials",
+    "Wings",
+    "Tandoor",
+    "Curries",
+    "Indian Breads",
+    "Rice & Pulaos",
+    "Asian & Continental",
+    "Seafood",
+    "Continental",
+    "Gourmet Pizza",
+    "Telugu Comfort Food",
+    "Desserts"
+  ],
   "items": [
     {
-      "id": "b1",
-      "category": "Breakfast",
-      "name": "Ancient Grain Granola",
-      "desc": "House-toasted organic millets, wild forest honey, native berries, and farm-fresh curd.",
-      "price": 399,
-      "image": "/assets/Tanha Food/food-52.webp",
-      "tags": ["Organic", "Gluten-Free"]
-    },
-    {
-      "id": "b2",
-      "category": "Breakfast",
-      "name": "Tanah Avocado Sourdough",
-      "desc": "Hand-mashed avocado, heirloom cherry tomatoes, home-churned white butter, toasted sourdough.",
-      "price": 549,
-      "image": "/assets/Tanha Food/food-51.webp",
-      "tags": ["Signature", "Vegan Option"]
-    },
-    {
-      "id": "b3",
-      "category": "Breakfast",
-      "name": "Millet Idli & Heirloom Chutney",
-      "desc": "Steamed foxtail millet cakes served with stone-ground coconut chutney and forest herb sambar.",
+      "id": "soup-1",
+      "name": "Tamalapaku Tomato Soup",
+      "category": "Soups",
       "price": 249,
-      "image": "/assets/Tanha Food/food-3.webp",
-      "tags": ["Organic", "Gluten-Free"]
+      "isVeg": true,
+      "desc": "Fresh ripe tomato broth infused with aromatic betel leaf and subtle South Indian spices.",
+      "image": "/assets/Tanha Food/food-2.webp",
+      "tags": [
+        "Signature",
+        "Earthy"
+      ]
     },
     {
-      "id": "b4",
-      "category": "Breakfast",
-      "name": "South India Kodi Chips",
-      "desc": "Crispy-fried chicken strips spiced with regional podi, served with wood-pressed curry leaf and mint chutneys.",
-      "price": 399,
+      "id": "soup-2",
+      "name": "Tamalapaku Kodi Charu",
+      "category": "Soups",
+      "price": 249,
+      "isVeg": false,
+      "desc": "Andhra-style rustic chicken broth infused with fragrant betel leaves and crushed black pepper.",
       "image": "/assets/Tanha Food/food-14.webp",
-      "tags": ["Signature", "Crispy"]
+      "tags": [
+        "Chef Special",
+        "Spicy"
+      ]
     },
     {
-      "id": "b5",
-      "category": "Breakfast",
-      "name": "Earthy Quinoa Upma",
-      "desc": "Fluffy quinoa cooked with organic garden vegetables, toasted mustard seeds, curry leaves, and cashews.",
-      "price": 249,
-      "image": "/assets/Tanha Food/food-5.webp",
-      "tags": ["Hearty", "Vegan"]
+      "id": "soup-3",
+      "name": "Drumstick Soup",
+      "category": "Soups",
+      "price": 299,
+      "isVeg": true,
+      "desc": "Slow-simmered tender drumstick extract with regional herbs, cumin, and mild roasted garlic.",
+      "image": "/assets/Tanha Food/food-2.webp",
+      "tags": [
+        "Healthy",
+        "Comfort"
+      ]
     },
     {
-      "id": "l1",
-      "category": "Lunch",
-      "name": "Heritage Soil Thali",
-      "desc": "Curated selection of local seasonal curries, indigenous red rice, house-made pickles, and flatbreads.",
-      "price": 549,
-      "image": "/assets/Tanha Food/food-6.webp",
-      "tags": ["Must Try", "Chef Selection"]
+      "id": "soup-4",
+      "name": "Crab Soup",
+      "category": "Soups",
+      "price": 349,
+      "isVeg": false,
+      "desc": "Rich coastal crab claw broth with crushed black pepper, shallots, and fresh coriander root.",
+      "image": "/assets/Tanha Food/food-15.webp",
+      "tags": [
+        "Coastal Special",
+        "Hot"
+      ]
     },
     {
-      "id": "l2",
-      "category": "Lunch",
-      "name": "Claypot Mutton Biryani",
-      "desc": "Fragrant Basmati rice cooked with tender farm mutton, caramelized onions, cashew nuts, and rare spices, served with raita and salan.",
-      "price": 549,
+      "id": "soup-5",
+      "name": "Mutton Bone Soup",
+      "category": "Soups",
+      "price": 349,
+      "isVeg": false,
+      "desc": "Traditional marrow bone extract slow-boiled overnight with rustic Telangana spices and pepper.",
       "image": "/assets/Tanha Food/food-1.webp",
-      "tags": ["Best Seller", "Signature"]
+      "tags": [
+        "Traditional",
+        "Hearty"
+      ]
     },
     {
-      "id": "l3",
-      "category": "Lunch",
-      "name": "Earthy Root Vegetable Curry",
-      "desc": "Sweet potato, beetroot, and heritage carrots simmered in spiced coconut milk broth, served with red rice.",
+      "id": "soup-6",
+      "name": "Broccoli Almond Soup",
+      "category": "Soups",
+      "price": 349,
+      "isVeg": true,
+      "desc": "Creamy velvety broccoli soup garnished with toasted almond flakes and a drizzle of olive oil.",
+      "image": "/assets/Tanha Food/food-2.webp",
+      "tags": [
+        "Continental",
+        "Creamy"
+      ]
+    },
+    {
+      "id": "bite-1",
+      "name": "French Fries",
+      "category": "Classic Quick Bites",
+      "price": 299,
+      "isVeg": true,
+      "desc": "Crisp golden potato fries tossed with sea salt and served with house dips.",
+      "image": "/assets/Tanha Food/food-5.webp",
+      "tags": [
+        "Classic",
+        "Crunchy"
+      ]
+    },
+    {
+      "id": "bite-2",
+      "name": "American Cheese Fries",
+      "category": "Classic Quick Bites",
+      "price": 299,
+      "isVeg": true,
+      "desc": "Golden fries smothered in velvety melted cheddar cheese sauce and spring onions.",
+      "image": "/assets/Tanha Food/food-5.webp",
+      "tags": [
+        "Cheesy",
+        "Comfort"
+      ]
+    },
+    {
+      "id": "bite-3",
+      "name": "Peri Peri Fries",
+      "category": "Classic Quick Bites",
+      "price": 299,
+      "isVeg": true,
+      "desc": "Crunchy potato fries dusted with a fiery African bird's eye peri-peri spice blend.",
+      "image": "/assets/Tanha Food/food-5.webp",
+      "tags": [
+        "Spicy",
+        "Popular"
+      ]
+    },
+    {
+      "id": "bite-4",
+      "name": "Loaded Nachos — Veg",
+      "category": "Classic Quick Bites",
+      "price": 299,
+      "isVeg": true,
+      "desc": "Crispy corn tortilla chips loaded with fresh tomato salsa, pickled jalapenos, refried beans, and cheese sauce.",
+      "image": "/assets/Tanha Food/food-4.webp",
+      "tags": [
+        "Sharing",
+        "Cheesy"
+      ]
+    },
+    {
+      "id": "bite-5",
+      "name": "Loaded Nachos — Chicken",
+      "category": "Classic Quick Bites",
       "price": 399,
-      "image": "/assets/Tanha Food/food-8.webp",
-      "tags": ["Vegan", "Gluten-Free"]
+      "isVeg": false,
+      "desc": "Corn tortilla chips layered with spiced pulled chicken, melted cheese, salsa, and sour cream.",
+      "image": "/assets/Tanha Food/food-4.webp",
+      "tags": [
+        "Sharing",
+        "Bestseller"
+      ]
     },
     {
-      "id": "l4",
-      "category": "Lunch",
-      "name": "Tanah Green Salad",
-      "desc": "Crisp handpicked field greens, cucumbers, toasted pumpkin seeds, wood-pressed mustard dressing.",
-      "price": 249,
-      "image": "/assets/Tanha Food/food-9.webp",
-      "tags": ["Raw", "Zero Mile"]
-    },
-    {
-      "id": "l5",
-      "category": "Lunch",
-      "name": "Basil Pesto Millet Bowl",
-      "desc": "Cracked millets tossed in organic basil-walnut pesto, cherry tomatoes, and grilled yellow zucchini.",
-      "price": 399,
-      "image": "/assets/Tanha Food/food-49.webp",
-      "tags": ["Green", "Healthy"]
-    },
-    {
-      "id": "d1",
-      "category": "Dinner",
-      "name": "Wood-Fired Wild Mushroom Risotto",
-      "desc": "Slow-simmered arborio rice with hand-foraged mushrooms, truffle oil, and aged artisanal parmesan.",
-      "price": 549,
-      "image": "/assets/Tanha Food/food-11.webp",
-      "tags": ["Signature", "Luxury"]
-    },
-    {
-      "id": "d2",
-      "category": "Dinner",
-      "name": "Tandoori Dahi Kebab",
-      "desc": "Pan-seared hung curd patties spiced with green chilies, coriander, and royal cumin, served with a stone-ground mint dip.",
-      "price": 549,
+      "id": "bite-6",
+      "name": "Corn Ribs",
+      "category": "Classic Quick Bites",
+      "price": 299,
+      "isVeg": true,
+      "desc": "Char-grilled sweet corn ribs tossed in herb butter, lime juice, and smoked paprika.",
       "image": "/assets/Tanha Food/food-29.webp",
-      "tags": ["Vegetarian", "Melt-in-Mouth"]
+      "tags": [
+        "Grilled",
+        "Signature"
+      ]
     },
     {
-      "id": "d3",
-      "category": "Dinner",
-      "name": "Claypot Dal Earth",
-      "desc": "Black lentils slow-simmered for 24 hours on coal embers with rich farm cream and organic white butter.",
+      "id": "bite-7",
+      "name": "Onion Pakodi",
+      "category": "Classic Quick Bites",
+      "price": 299,
+      "isVeg": true,
+      "desc": "Crispy golden thinly-sliced onion fritters spiced with curry leaves, green chilies, and ajwain.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Telugu Classic",
+        "Crispy"
+      ]
+    },
+    {
+      "id": "bite-8",
+      "name": "Crispy Chicken Popcorn",
+      "category": "Classic Quick Bites",
       "price": 399,
-      "image": "/assets/Tanha Food/food-54.webp",
-      "tags": ["Legendary", "Slow Cooked"]
+      "isVeg": false,
+      "desc": "Bite-sized crunchy battered chicken chunks served with garlic aioli.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Quick Bite",
+        "Crispy"
+      ]
     },
     {
-      "id": "d4",
-      "category": "Dinner",
-      "name": "Continental Mutton Ravioli Pasta",
-      "desc": "House-made ravioli pockets stuffed with spiced slow-cooked mutton mince, tossed in a creamy caper and herb butter sauce.",
+      "id": "bite-9",
+      "name": "Chicken Pakodi — Boneless",
+      "category": "Classic Quick Bites",
+      "price": 449,
+      "isVeg": false,
+      "desc": "Andhra street-style spiced boneless chicken fritters fried with whole curry leaves and green chilies.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Bestseller",
+        "Spicy"
+      ]
+    },
+    {
+      "id": "veg-1",
+      "name": "Masala Corn",
+      "category": "Veg Starters",
+      "price": 449,
+      "isVeg": true,
+      "desc": "Sweet corn kernels tossed with butter, tangy chaat spices, lime, and fresh cilantro.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Light",
+        "Zesty"
+      ]
+    },
+    {
+      "id": "veg-2",
+      "name": "Pachimirchi Paneer",
+      "category": "Veg Starters",
+      "price": 449,
+      "isVeg": true,
+      "desc": "Fresh cottage cheese cubes tossed with fiery green chili paste, curry leaves, and mustard seeds.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Spicy",
+        "Andhra Style"
+      ]
+    },
+    {
+      "id": "veg-3",
+      "name": "Thotakura Liver Fry",
+      "category": "Veg Starters",
+      "price": 449,
+      "isVeg": true,
+      "desc": "Tender amaranth greens and soy morsels tossed in rustic village-style roasted spice blend.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Nutritious",
+        "Local"
+      ]
+    },
+    {
+      "id": "veg-4",
+      "name": "Miryala Mushroom Fry",
+      "category": "Veg Starters",
+      "price": 449,
+      "isVeg": true,
+      "desc": "Fresh button mushrooms sautéed in freshly cracked black pepper, garlic, and caramelized onions.",
+      "image": "/assets/Tanha Food/food-11.webp",
+      "tags": [
+        "Peppery",
+        "Earthy"
+      ]
+    },
+    {
+      "id": "veg-5",
+      "name": "Mamidi Mushroom",
+      "category": "Veg Starters",
+      "price": 449,
+      "isVeg": true,
+      "desc": "Mushrooms pan-tossed with raw mango relish, roasted spices, and crisp curry leaves.",
+      "image": "/assets/Tanha Food/food-11.webp",
+      "tags": [
+        "Tangy",
+        "Seasonal"
+      ]
+    },
+    {
+      "id": "veg-6",
+      "name": "Gongura Paneer",
+      "category": "Veg Starters",
+      "price": 449,
+      "isVeg": true,
+      "desc": "Paneer cubes tossed in signature tangy sorrel leaf (Gongura) masala reduction.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Signature",
+        "Tangy"
+      ]
+    },
+    {
+      "id": "veg-7",
+      "name": "Pandumirchi Mushroom / Paneer",
+      "category": "Veg Starters",
+      "price": 449,
+      "isVeg": true,
+      "desc": "Mushrooms & Paneer pan-seared with sun-ripened red chili paste from Rayalaseema.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Spicy",
+        "Rayalaseema"
+      ]
+    },
+    {
+      "id": "nv-1",
+      "name": "Karivepaku Kodi Fry",
+      "category": "Non-Veg Starters",
       "price": 549,
-      "image": "/assets/Tanha Food/food-12.webp",
-      "tags": ["Signature", "Rich"]
+      "isVeg": false,
+      "desc": "Tender chicken morsels roasted with aromatic hand-ground curry leaf podi and green chilies.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Signature",
+        "Aromatic"
+      ]
     },
     {
-      "id": "d5",
-      "category": "Dinner",
-      "name": "Wood-Fired Gourmet Pizza",
-      "desc": "Artisanal hand-stretched sourdough crust topped with organic cherry tomatoes, sliced kalamata olives, crisp broccoli, and fresh house-made mozzarella.",
-      "price": 399,
-      "image": "/assets/Tanha Food/food-31.webp",
-      "tags": ["Wood-Fired", "Artisanal"]
-    },
-    {
-      "id": "bv1",
-      "category": "Beverages",
-      "name": "Wild Forest Honey Lemonade",
-      "desc": "Squeezed organic lemons, wild-foraged honey, fresh garden mint, infused with activated charcoal.",
-      "price": 249,
-      "image": "/assets/Tanha Food/food-16.webp",
-      "tags": ["Refresher"]
-    },
-    {
-      "id": "bv2",
-      "category": "Beverages",
-      "name": "Golden Soil Milk",
-      "desc": "Warm organic almond milk infused with fresh turmeric root, green cardamom, black pepper, and honey.",
-      "price": 249,
-      "image": "/assets/Tanha Food/food-17.webp",
-      "tags": ["Healing", "Warm"]
-    },
-    {
-      "id": "bv3",
-      "category": "Beverages",
-      "name": "Araku Valley Cold Brew",
-      "desc": "Single-origin Araku Valley coffee beans cold-steeped for 18 hours, served over artisanal ice blocks.",
-      "price": 249,
-      "image": "/assets/Tanha Food/food-18.webp",
-      "tags": ["Caffeine"]
-    },
-    {
-      "id": "bv4",
-      "category": "Beverages",
-      "name": "Sparkling Kokum Nectar",
-      "desc": "Traditional kokum extract mixed with sparkling water, roasted cumin, and black salt.",
-      "price": 249,
-      "image": "/assets/Tanha Food/food-19.webp",
-      "tags": ["Digestion", "Cold"]
-    },
-    {
-      "id": "bv5",
-      "category": "Beverages",
-      "name": "Chilled Hibiscus Brew",
-      "desc": "Dried hibiscus flowers cold brewed with cardamoms and sweetened with wild honey.",
-      "price": 249,
-      "image": "/assets/Tanha Food/food-20.webp",
-      "tags": ["Floral", "Iced"]
-    },
-    {
-      "id": "c1",
-      "category": "Cocktails",
-      "name": "Rooftop Smoked Old Fashioned",
-      "desc": "Premium hand-blended oak infusion, orange bitters, organic cane extract, smoked under hickory smoke.",
+      "id": "nv-2",
+      "name": "Andhra Kodi Vepudu",
+      "category": "Non-Veg Starters",
       "price": 549,
-      "image": "/assets/Tanha Food/food-21.webp",
-      "tags": ["Signature", "Smoked"]
+      "isVeg": false,
+      "desc": "Fiery coastal Andhra dry-roasted chicken with caramelized shallots and whole spices.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Spicy",
+        "Bestseller"
+      ]
     },
     {
-      "id": "c2",
-      "category": "Cocktails",
-      "name": "Earthy Hibiscus Elixir",
-      "desc": "Fermented kokum nectar, botanical gin infusion, tonic water, dried rose hips garnish.",
-      "price": 549,
-      "image": "/assets/Tanha Food/food-22.webp",
-      "tags": ["Botanical", "Artisanal"]
-    },
-    {
-      "id": "c3",
-      "category": "Cocktails",
-      "name": "Basalt Stone Margarita",
-      "desc": "Agave distillate, fresh lime juice, organic orange nectar, served with a smoked black lava salt rim.",
-      "price": 549,
-      "image": "/assets/Tanha Food/food-23.webp",
-      "tags": ["Lava Salt", "Citrus"]
-    },
-    {
-      "id": "c4",
-      "category": "Cocktails",
-      "name": "Forest Herbal Mule",
-      "desc": "Vodka infused with fresh ginger root, lemongrass, mint leaves, topped with carbonated ginger beer.",
-      "price": 549,
-      "image": "/assets/Tanha Food/food-24.webp",
-      "tags": ["Spicy", "Refreshing"]
-    },
-    {
-      "id": "c5",
-      "category": "Cocktails",
-      "name": "Vedic Bramble Tonic",
-      "desc": "Wild forest blackberry juice, gin, fresh lemon juice, simple cane syrup, and green cardamoms.",
-      "price": 549,
-      "image": "/assets/Tanha Food/food-25.webp",
-      "tags": ["Vedic", "Berry"]
-    },
-    {
-      "id": "ds1",
-      "category": "Desserts",
-      "name": "Saffron Rabri Terracotta Bowl",
-      "desc": "Slow-reduced milk infused with Kashmiri saffron, topped with silver leaf, pistachios, served in clay bowl.",
-      "price": 399,
-      "image": "/assets/Tanha Food/food-26.webp",
-      "tags": ["Chef Special", "Traditional"]
-    },
-    {
-      "id": "ds2",
-      "category": "Desserts",
-      "name": "Charcoal Roasted Fig Tart",
-      "desc": "Local fresh figs roasted over charcoal, in a gluten-free almond crust, served with vanilla bean whip.",
-      "price": 399,
-      "image": "/assets/Tanha Food/food-27.webp",
-      "tags": ["Organic"]
-    },
-    {
-      "id": "ds3",
-      "category": "Desserts",
-      "name": "Millet Coconut Payasam",
-      "desc": "Barnyard millet cooked with fresh coconut milk, jaggery syrup, toasted cashew nuts, and cardamom.",
-      "price": 399,
-      "image": "/assets/Tanha Food/food-28.webp",
-      "tags": ["Vegan", "Gluten-Free"]
-    },
-    {
-      "id": "ds4",
-      "category": "Desserts",
-      "name": "Dark Chocolate Soil Cake",
-      "desc": "70% single-origin dark chocolate cake layered with cocoa soil crumb and beetroot raspberry gel.",
-      "price": 549,
-      "image": "/assets/Tanha Food/food-48.webp",
-      "tags": ["Signature", "Decadent"]
-    },
-    {
-      "id": "ds5",
-      "category": "Desserts",
-      "name": "Dehydrated Apple Rose Tart",
-      "desc": "Thinly sliced red apples arranged in rose shape, over stone ground almond flour base and forest honey.",
-      "price": 399,
-      "image": "/assets/Tanha Food/food-30.webp",
-      "tags": ["Rose Art", "Sweet"]
-    },
-    {
-      "id": "ds6",
-      "category": "Desserts",
-      "name": "Mango Tres Leches",
-      "desc": "Airy sponge cake steeped in three rich milks, layered with fresh Alphonso mango compote and cardamom-scented cream.",
+      "id": "nv-3",
+      "name": "Kodi Chips",
+      "category": "Non-Veg Starters",
       "price": 499,
-      "image": "/assets/Tanha Food/food-44.webp",
-      "tags": ["Chef Special", "Alphonso Mango"]
+      "isVeg": false,
+      "desc": "Crispy-fried thinly shredded chicken strips spiced with regional podi, served with mint chutney.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Tanah Original",
+        "Crispy"
+      ]
     },
     {
-      "id": "ds7",
-      "category": "Desserts",
-      "name": "Desi Tiramisu",
-      "desc": "Artisanal ladyfingers soaked in single-origin Araku Valley filter coffee, layered with whipped saffron mascarpone and cocoa pod dust.",
+      "id": "nv-4",
+      "name": "Gongura Chicken Fry",
+      "category": "Non-Veg Starters",
+      "price": 559,
+      "isVeg": false,
+      "desc": "Pan-roasted chicken tossed with tart red sorrel leaves and freshly pounded spices.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Tangy",
+        "Traditional"
+      ]
+    },
+    {
+      "id": "nv-5",
+      "name": "Kaju Chicken Fry",
+      "category": "Non-Veg Starters",
       "price": 549,
+      "isVeg": false,
+      "desc": "Succulent chicken pieces pan-roasted with golden toasted cashews and aromatic garam masala.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Rich",
+        "Nutty"
+      ]
+    },
+    {
+      "id": "salad-1",
+      "name": "Classic Caesar Salad",
+      "category": "Salads",
+      "price": 399,
+      "isVeg": true,
+      "desc": "Crisp romaine lettuce, eggless Caesar dressing, herb croutons, and aged Parmesan shavings.",
+      "image": "/assets/Tanha Food/food-4.webp",
+      "tags": [
+        "Continental",
+        "Fresh"
+      ]
+    },
+    {
+      "id": "salad-2",
+      "name": "Modern Greek Salad",
+      "category": "Salads",
+      "price": 399,
+      "isVeg": true,
+      "desc": "Fresh garden cucumbers, bell peppers, heirloom tomatoes, Kalamata olives, and creamy feta in extra virgin olive oil.",
+      "image": "/assets/Tanha Food/food-4.webp",
+      "tags": [
+        "Mediterranean",
+        "Healthy"
+      ]
+    },
+    {
+      "id": "spec-1",
+      "name": "Pandem Kodi Vepudu — Country Chicken",
+      "category": "Chef Specials",
+      "price": 549,
+      "isVeg": false,
+      "desc": "Authentic fiery country chicken dry roast from Godavari traditions cooked with shallots.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Chef Special",
+        "Fiery"
+      ]
+    },
+    {
+      "id": "spec-2",
+      "name": "Bezawada Fish Roast",
+      "category": "Chef Specials",
+      "price": 599,
+      "isVeg": false,
+      "desc": "Boneless river fish fillets pan-seared with traditional Vijayawada chili masala paste.",
+      "image": "/assets/Tanha Food/food-15.webp",
+      "tags": [
+        "Coastal",
+        "Spicy"
+      ]
+    },
+    {
+      "id": "spec-3",
+      "name": "Netallu Fry — Anchovies",
+      "category": "Chef Specials",
+      "price": 629,
+      "isVeg": false,
+      "desc": "Crispy shallow-fried coastal anchovies dusted with chili-garlic spice and curry leaves.",
+      "image": "/assets/Tanha Food/food-15.webp",
+      "tags": [
+        "Seafood Special",
+        "Crispy"
+      ]
+    },
+    {
+      "id": "spec-4",
+      "name": "Velluli Fish Fry — Boneless",
+      "category": "Chef Specials",
+      "price": 629,
+      "isVeg": false,
+      "desc": "Boneless fish steaks tossed with whole roasted garlic cloves, crushed pepper, and lemon juice.",
+      "image": "/assets/Tanha Food/food-15.webp",
+      "tags": [
+        "Garlicky",
+        "Must Try"
+      ]
+    },
+    {
+      "id": "spec-5",
+      "name": "Stuffed Crab",
+      "category": "Chef Specials",
+      "price": 629,
+      "isVeg": false,
+      "desc": "Spiced coastal crab meat baked inside natural crab shells with a golden breadcrumb crust.",
+      "image": "/assets/Tanha Food/food-15.webp",
+      "tags": [
+        "Gourmet",
+        "Signature"
+      ]
+    },
+    {
+      "id": "spec-6",
+      "name": "Natu Kodi Seekulu",
+      "category": "Chef Specials",
+      "price": 629,
+      "isVeg": false,
+      "desc": "Skewered country chicken marinated in rustic spices and roasted over slow charcoal embers.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Wood-Fired",
+        "Smoky"
+      ]
+    },
+    {
+      "id": "spec-7",
+      "name": "Rajugari Royyalu Vepudu",
+      "category": "Chef Specials",
+      "price": 649,
+      "isVeg": false,
+      "desc": "Royal Andhra style tiger prawns roasted with rich shallot gravy, green chilies, and coconut.",
+      "image": "/assets/Tanha Food/food-15.webp",
+      "tags": [
+        "Royal Recipe",
+        "Bestseller"
+      ]
+    },
+    {
+      "id": "spec-8",
+      "name": "Chinta Chigaru Royyalu Vepudu",
+      "category": "Chef Specials",
+      "price": 649,
+      "isVeg": false,
+      "desc": "Juicy prawns tossed with seasonal tender tamarind leaves (Chinta Chigaru) for a tart spicy kick.",
+      "image": "/assets/Tanha Food/food-15.webp",
+      "tags": [
+        "Seasonal",
+        "Unique"
+      ]
+    },
+    {
+      "id": "spec-9",
+      "name": "Creamy Coriander Chicken",
+      "category": "Chef Specials",
+      "price": 649,
+      "isVeg": false,
+      "desc": "Chicken chunks simmered in a velvety fresh coriander, green chili, and cashew cream sauce.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Creamy",
+        "Aromatic"
+      ]
+    },
+    {
+      "id": "spec-10",
+      "name": "Mutton Ghee Roast",
+      "category": "Chef Specials",
+      "price": 749,
+      "isVeg": false,
+      "desc": "Tender mutton cubes slow-roasted in pure desi ghee with Kundapur red chilies and whole spices.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Desi Ghee",
+        "Legendary"
+      ]
+    },
+    {
+      "id": "spec-11",
+      "name": "Telangana Mutton Vepudu",
+      "category": "Chef Specials",
+      "price": 749,
+      "isVeg": false,
+      "desc": "Fiery Telangana village-style mutton fry with hand-pounded spices, garlic, and fresh curry leaves.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Fiery",
+        "Telangana Pride"
+      ]
+    },
+    {
+      "id": "wing-1",
+      "name": "Khammam Karam Wings",
+      "category": "Wings",
+      "price": 499,
+      "isVeg": false,
+      "desc": "Crispy chicken wings tossed in fiery Khammam red chili sauce and garlic.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Fiery",
+        "Spicy"
+      ]
+    },
+    {
+      "id": "wing-2",
+      "name": "Peri Peri Grilled Wings",
+      "category": "Wings",
+      "price": 499,
+      "isVeg": false,
+      "desc": "Char-grilled chicken wings dusted with zesty peri-peri spice and citrus.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Grilled",
+        "Tangy"
+      ]
+    },
+    {
+      "id": "wing-3",
+      "name": "Ulavacharu Wings",
+      "category": "Wings",
+      "price": 499,
+      "isVeg": false,
+      "desc": "Crispy chicken wings glazed with reduced horse gram broth and caramelized shallots.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Tanah Original",
+        "Rich"
+      ]
+    },
+    {
+      "id": "wing-4",
+      "name": "BBQ Wings",
+      "category": "Wings",
+      "price": 499,
+      "isVeg": false,
+      "desc": "Smoky wood-fired glazed wings coated in house sweet and tangy barbecue sauce.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Smoky",
+        "Sweet & Tangy"
+      ]
+    },
+    {
+      "id": "wing-5",
+      "name": "Gongura Wings",
+      "category": "Wings",
+      "price": 499,
+      "isVeg": false,
+      "desc": "Chicken wings tossed in an authentic sour sorrel leaf glaze with roasted cumin.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Tangy",
+        "Regional"
+      ]
+    },
+    {
+      "id": "wing-6",
+      "name": "Tanah Telugu Wings Platter",
+      "category": "Wings",
+      "price": 1799,
+      "isVeg": false,
+      "desc": "Grand signature tasting platter featuring Khammam Karam, Peri Peri, Ulavacharu, and Gongura wings.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Party Platter",
+        "Grand Feast"
+      ]
+    },
+    {
+      "id": "tand-v1",
+      "name": "Dahi Kebab",
+      "category": "Tandoor",
+      "price": 399,
+      "isVeg": true,
+      "desc": "Melt-in-mouth spiced hung curd patties infused with green cardamom, coriander, and roasted cumin.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Chef Special",
+        "Delicate"
+      ]
+    },
+    {
+      "id": "tand-v2",
+      "name": "Malai Broccoli",
+      "category": "Tandoor",
+      "price": 429,
+      "isVeg": true,
+      "desc": "Char-grilled broccoli florets marinated in cream cheese, cardamom, and saffron in clay oven.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Creamy",
+        "Healthy"
+      ]
+    },
+    {
+      "id": "tand-v3",
+      "name": "Stuffed Mushroom",
+      "category": "Tandoor",
+      "price": 439,
+      "isVeg": true,
+      "desc": "Button mushrooms stuffed with spiced paneer, roasted peppers, and herbs, char-grilled.",
+      "image": "/assets/Tanha Food/food-11.webp",
+      "tags": [
+        "Gourmet",
+        "Juicy"
+      ]
+    },
+    {
+      "id": "tand-v4",
+      "name": "Paneer Tikka",
+      "category": "Tandoor",
+      "price": 439,
+      "isVeg": true,
+      "desc": "Cottage cheese cubes marinated in spiced yogurt and mustard oil, grilled with onions and capsicum.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Classic",
+        "Tandoori"
+      ]
+    },
+    {
+      "id": "tand-v5",
+      "name": "Peri Peri Paneer Tikka",
+      "category": "Tandoor",
+      "price": 439,
+      "isVeg": true,
+      "desc": "Claypot-roasted paneer glazed with zesty peri-peri marinade for a modern fusion twist.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Zesty",
+        "Spicy"
+      ]
+    },
+    {
+      "id": "tand-nv1",
+      "name": "Malai Chicken Tikka",
+      "category": "Tandoor",
+      "price": 499,
+      "isVeg": false,
+      "desc": "Succulent boneless chicken morsels in rich cream cheese, cardamom, and cashew marinade.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Mild",
+        "Creamy"
+      ]
+    },
+    {
+      "id": "tand-nv2",
+      "name": "Tandoori Chicken",
+      "category": "Tandoor",
+      "price": 499,
+      "isVeg": false,
+      "desc": "Classic whole spring chicken marinated in Kashmiri chili and yogurt, baked in earthen clay oven.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Bestseller",
+        "Classic"
+      ]
+    },
+    {
+      "id": "tand-nv3",
+      "name": "Garlic Chicken Tikka",
+      "category": "Tandoor",
+      "price": 499,
+      "isVeg": false,
+      "desc": "Chicken tikka skewers infused with charred roasted garlic cloves and fresh herbs.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Garlicky",
+        "Aromatic"
+      ]
+    },
+    {
+      "id": "tand-nv4",
+      "name": "Classic Chicken Tikka",
+      "category": "Tandoor",
+      "price": 499,
+      "isVeg": false,
+      "desc": "Traditional tandoor-roasted spiced chicken skewers served with mint chutney and onion salad.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Classic",
+        "Tandoori"
+      ]
+    },
+    {
+      "id": "tand-nv5",
+      "name": "Peri Peri Chicken",
+      "category": "Tandoor",
+      "price": 499,
+      "isVeg": false,
+      "desc": "Tandoor-baked chicken quarters with fiery African bird's eye chili marinade.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Fiery",
+        "Zesty"
+      ]
+    },
+    {
+      "id": "tand-nv6",
+      "name": "Stuffed Tangdi Kebab",
+      "category": "Tandoor",
+      "price": 559,
+      "isVeg": false,
+      "desc": "Chicken drumsticks stuffed with spiced minced chicken, cheese, and char-grilled.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Chef Special",
+        "Rich"
+      ]
+    },
+    {
+      "id": "tand-nv7",
+      "name": "Ajwaini Prawns",
+      "category": "Tandoor",
+      "price": 599,
+      "isVeg": false,
+      "desc": "Jumbo tiger prawns marinated in carom seeds, yogurt, yellow chili, and grilled over charcoal.",
+      "image": "/assets/Tanha Food/food-15.webp",
+      "tags": [
+        "Seafood",
+        "Aromatic"
+      ]
+    },
+    {
+      "id": "tand-nv8",
+      "name": "Mutton Sheekh Kebab",
+      "category": "Tandoor",
+      "price": 599,
+      "isVeg": false,
+      "desc": "Hand-ground minced mutton spiced with royal herbs, skewered and grilled to juicy perfection.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Mughlai",
+        "Juicy"
+      ]
+    },
+    {
+      "id": "tand-nv9",
+      "name": "Tandoori Prawns",
+      "category": "Tandoor",
+      "price": 599,
+      "isVeg": false,
+      "desc": "Tiger prawns seasoned with tandoori spices and cooked in clay hearth.",
+      "image": "/assets/Tanha Food/food-15.webp",
+      "tags": [
+        "Tandoori",
+        "Seafood"
+      ]
+    },
+    {
+      "id": "tand-nv10",
+      "name": "Kalmi Kebab",
+      "category": "Tandoor",
+      "price": 599,
+      "isVeg": false,
+      "desc": "Tender chicken thighs marinated in spiced egg, cashew paste, and saffron.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Royal",
+        "Succulent"
+      ]
+    },
+    {
+      "id": "tand-nv11",
+      "name": "Boti Kebab",
+      "category": "Tandoor",
+      "price": 599,
+      "isVeg": false,
+      "desc": "Tender boneless mutton chunks marinated in raw papaya and roasted spices, charcoal grilled.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Charcoal",
+        "Tender"
+      ]
+    },
+    {
+      "id": "curry-v1",
+      "name": "Gutti Vankaya Kura",
+      "category": "Curries",
+      "price": 439,
+      "isVeg": true,
+      "desc": "Baby brinjals stuffed with roasted peanut, sesame, and dry coconut masala in rich gravy.",
+      "image": "/assets/Tanha Food/food-6.webp",
+      "tags": [
+        "Andhra Icon",
+        "Traditional"
+      ]
+    },
+    {
+      "id": "curry-v2",
+      "name": "Tomato Kaju Curry",
+      "category": "Curries",
+      "price": 439,
+      "isVeg": true,
+      "desc": "Whole roasted cashews simmered in a luscious, tangy tomato and butter gravy.",
+      "image": "/assets/Tanha Food/food-6.webp",
+      "tags": [
+        "Rich",
+        "Nutty"
+      ]
+    },
+    {
+      "id": "curry-v3",
+      "name": "Paneer Butter Masala",
+      "category": "Curries",
+      "price": 439,
+      "isVeg": true,
+      "desc": "Fresh cottage cheese in silky, mildly-spiced tomato, butter, and cashew gravy.",
+      "image": "/assets/Tanha Food/food-6.webp",
+      "tags": [
+        "All-Time Favorite",
+        "Creamy"
+      ]
+    },
+    {
+      "id": "curry-v4",
+      "name": "Mushroom Masala",
+      "category": "Curries",
+      "price": 439,
+      "isVeg": true,
+      "desc": "Button mushrooms sautéed in a thick onion, tomato, and aromatic spice gravy.",
+      "image": "/assets/Tanha Food/food-11.webp",
+      "tags": [
+        "Hearty",
+        "Earthy"
+      ]
+    },
+    {
+      "id": "curry-v5",
+      "name": "Pappu (Mango / Tomato / Gongura / Thotakura)",
+      "category": "Curries",
+      "price": 439,
+      "isVeg": true,
+      "desc": "Comforting Telugu yellow lentils tempered with mustard, cumin, garlic, and desi ghee.",
+      "image": "/assets/Tanha Food/food-6.webp",
+      "tags": [
+        "Home Style",
+        "Comfort"
+      ]
+    },
+    {
+      "id": "curry-nv1",
+      "name": "Gongura Chicken Curry",
+      "category": "Curries",
+      "price": 439,
+      "isVeg": false,
+      "desc": "Chicken pieces simmered with tangy red sorrel leaves and roasted country spices.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Andhra Classic",
+        "Tangy"
+      ]
+    },
+    {
+      "id": "curry-nv2",
+      "name": "Andhra Kodi Koora",
+      "category": "Curries",
+      "price": 499,
+      "isVeg": false,
+      "desc": "Traditional coastal chicken curry prepared with freshly ground coriander and coconut paste.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Rustic",
+        "Spicy"
+      ]
+    },
+    {
+      "id": "curry-nv3",
+      "name": "Mango Chicken Curry",
+      "category": "Curries",
+      "price": 499,
+      "isVeg": false,
+      "desc": "Chicken cooked with raw green mango slices for a refreshing sweet-tart and spicy depth.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Seasonal",
+        "Unique"
+      ]
+    },
+    {
+      "id": "curry-nv4",
+      "name": "Tomato Kodi Guddu Kura",
+      "category": "Curries",
+      "price": 499,
+      "isVeg": false,
+      "desc": "Home-style chicken and golden boiled eggs cooked together in rich tomato-onion masala.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Comfort",
+        "Traditional"
+      ]
+    },
+    {
+      "id": "curry-nv5",
+      "name": "Butter Chicken",
+      "category": "Curries",
+      "price": 499,
+      "isVeg": false,
+      "desc": "Tandoori chicken morsels in smooth satin tomato-makhani gravy with fenugreek and butter.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Bestseller",
+        "Creamy"
+      ]
+    },
+    {
+      "id": "curry-nv6",
+      "name": "Chicken Tikka Masala",
+      "category": "Curries",
+      "price": 499,
+      "isVeg": false,
+      "desc": "Char-grilled chicken tikka in robust onion-tomato masala with diced peppers.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Tandoori Fusion",
+        "Rich"
+      ]
+    },
+    {
+      "id": "curry-nv7",
+      "name": "Kadai Chicken",
+      "category": "Curries",
+      "price": 499,
+      "isVeg": false,
+      "desc": "Chicken tossed with crunchy bell peppers and freshly pounded coriander-chili spices.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Semi-Dry",
+        "Spicy"
+      ]
+    },
+    {
+      "id": "curry-nv8",
+      "name": "Rara Chicken",
+      "category": "Curries",
+      "price": 499,
+      "isVeg": false,
+      "desc": "Chicken pieces slow-simmered in rich spiced minced chicken keema gravy.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Royal",
+        "Decadent"
+      ]
+    },
+    {
+      "id": "curry-nv9",
+      "name": "Mutton Curry",
+      "category": "Curries",
+      "price": 639,
+      "isVeg": false,
+      "desc": "Classic slow-cooked mutton gravy infused with cinnamon, cardamom, and caramelized shallots.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Slow-Cooked",
+        "Rich"
+      ]
+    },
+    {
+      "id": "curry-nv10",
+      "name": "Natu Kodi Pulusu",
+      "category": "Curries",
+      "price": 649,
+      "isVeg": false,
+      "desc": "Traditional free-range country chicken stew with thin, fiery pepper-shallot broth.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Country Chicken",
+        "Fiery"
+      ]
+    },
+    {
+      "id": "mutt-1",
+      "name": "Mango Mutton Curry",
+      "category": "Curries",
+      "price": 649,
+      "isVeg": false,
+      "desc": "Tender mutton pieces cooked with raw mango chunks for a sweet-tart spicy depth.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Seasonal",
+        "Chef Special"
+      ]
+    },
+    {
+      "id": "mutt-2",
+      "name": "Gongura Mutton Curry",
+      "category": "Curries",
+      "price": 649,
+      "isVeg": false,
+      "desc": "Mutton slow-simmered with sour Gongura leaves, green chilies, and desi ghee.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Signature",
+        "Tangy"
+      ]
+    },
+    {
+      "id": "mutt-3",
+      "name": "Mutton Rogan Josh",
+      "category": "Curries",
+      "price": 649,
+      "isVeg": false,
+      "desc": "Kashmiri-style slow-braised mutton with aromatic fennel, ginger, and Kashmiri chili essence.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Kashmiri",
+        "Aromatic"
+      ]
+    },
+    {
+      "id": "mutt-4",
+      "name": "Mutton Dalcha",
+      "category": "Curries",
+      "price": 649,
+      "isVeg": false,
+      "desc": "Authentic Hyderabadi mutton and chana dal stew simmered with tender bottle gourd.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Hyderabadi",
+        "Traditional"
+      ]
+    },
+    {
+      "id": "bread-1",
+      "name": "Roti — Butter / Plain",
+      "category": "Indian Breads",
+      "price": 79,
+      "isVeg": true,
+      "desc": "Whole wheat flatbread baked against earthen tandoor walls.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Tandoor",
+        "Whole Wheat"
+      ]
+    },
+    {
+      "id": "bread-2",
+      "name": "Plain Naan",
+      "category": "Indian Breads",
+      "price": 89,
+      "isVeg": true,
+      "desc": "Soft leavened refined flour bread baked in earthen clay oven.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Classic",
+        "Tandoor"
+      ]
+    },
+    {
+      "id": "bread-3",
+      "name": "Butter Naan / Garlic Naan",
+      "category": "Indian Breads",
+      "price": 99,
+      "isVeg": true,
+      "desc": "Fluffy naan brushed with melted farm butter or infused with roasted minced garlic.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Bestseller",
+        "Buttery"
+      ]
+    },
+    {
+      "id": "bread-4",
+      "name": "Lachha Paratha",
+      "category": "Indian Breads",
+      "price": 129,
+      "isVeg": true,
+      "desc": "Multi-layered flaky whole wheat bread cooked golden with ghee.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Flaky",
+        "Layered"
+      ]
+    },
+    {
+      "id": "bread-5",
+      "name": "Kulcha",
+      "category": "Indian Breads",
+      "price": 129,
+      "isVeg": true,
+      "desc": "Soft leavened bread sprinkled with coriander, nigella seeds, and mild herbs.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Punjabi",
+        "Soft"
+      ]
+    },
+    {
+      "id": "rice-1",
+      "name": "Plain Rice",
+      "category": "Rice & Pulaos",
+      "price": 159,
+      "isVeg": true,
+      "desc": "Steamed aged premium long-grain basmati rice.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Basic",
+        "Steamed"
+      ]
+    },
+    {
+      "id": "rice-2",
+      "name": "Bagara Rice",
+      "category": "Rice & Pulaos",
+      "price": 249,
+      "isVeg": true,
+      "desc": "Hyderabadi seasoned rice cooked with whole spices, mint, coriander, and caramelized onions.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Hyderabadi",
+        "Aromatic"
+      ]
+    },
+    {
+      "id": "rice-3",
+      "name": "Curd Rice",
+      "category": "Rice & Pulaos",
+      "price": 249,
+      "isVeg": true,
+      "desc": "Comforting tempered rice with home-set yogurt, mustard seeds, ginger, and pomegranate.",
+      "image": "/assets/Tanha Food/food-6.webp",
+      "tags": [
+        "Comfort",
+        "Cooling"
+      ]
+    },
+    {
+      "id": "rice-4",
+      "name": "Fried Rice — Veg",
+      "category": "Rice & Pulaos",
+      "price": 249,
+      "isVeg": true,
+      "desc": "Wok-tossed rice with crunchy garden vegetables and light soy seasoning.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Indo-Chinese",
+        "Classic"
+      ]
+    },
+    {
+      "id": "rice-5",
+      "name": "Fried Rice — Chicken",
+      "category": "Rice & Pulaos",
+      "price": 429,
+      "isVeg": false,
+      "desc": "Wok-fried rice with diced chicken, egg ribbons, spring onions, and oriental spices.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Indo-Chinese",
+        "Bestseller"
+      ]
+    },
+    {
+      "id": "rice-6",
+      "name": "Burnt Garlic Fried Rice",
+      "category": "Rice & Pulaos",
+      "price": 249,
+      "isVeg": true,
+      "desc": "Fragrant rice tossed in intense crispy golden burnt garlic and scallions.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Garlicky",
+        "Aromatic"
+      ]
+    },
+    {
+      "id": "rice-7",
+      "name": "Soft Noodles — Veg",
+      "category": "Rice & Pulaos",
+      "price": 249,
+      "isVeg": true,
+      "desc": "Classic stir-fried noodles with shredded cabbage, carrots, bell peppers, and scallions.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Noodles",
+        "Classic"
+      ]
+    },
+    {
+      "id": "rice-8",
+      "name": "Gutti Vankaya Pulao",
+      "category": "Rice & Pulaos",
+      "price": 399,
+      "isVeg": true,
+      "desc": "Fragrant spiced basmati rice layered with stuffed baby brinjals and roasted masala.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Andhra Icon",
+        "Signature"
+      ]
+    },
+    {
+      "id": "rice-9",
+      "name": "Pachi Mirchi Paneer Pulao",
+      "category": "Rice & Pulaos",
+      "price": 399,
+      "isVeg": true,
+      "desc": "Spicy green chili tempered basmati rice layered with succulent paneer cubes and ghee.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Spicy",
+        "Vegetarian"
+      ]
+    },
+    {
+      "id": "rice-10",
+      "name": "Mix Veg Pulao",
+      "category": "Rice & Pulaos",
+      "price": 399,
+      "isVeg": true,
+      "desc": "Aromatic basmati rice slow-cooked with fresh garden vegetables, mint, and whole spices.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Mild",
+        "Healthy"
+      ]
+    },
+    {
+      "id": "rice-11",
+      "name": "Mushroom Pulao",
+      "category": "Rice & Pulaos",
+      "price": 399,
+      "isVeg": true,
+      "desc": "Button mushrooms and spiced basmati rice slow-steamed with saffron and fried onions.",
+      "image": "/assets/Tanha Food/food-11.webp",
+      "tags": [
+        "Earthy",
+        "Rich"
+      ]
+    },
+    {
+      "id": "rice-12",
+      "name": "Pachi Mirchi Kodi Pulao",
+      "category": "Rice & Pulaos",
+      "price": 459,
+      "isVeg": false,
+      "desc": "Fiery green chili chicken pulao cooked in regional ghee with fragrant herbs.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Bestseller",
+        "Spicy"
+      ]
+    },
+    {
+      "id": "rice-13",
+      "name": "Chitti Muthyala Chicken Pulao",
+      "category": "Rice & Pulaos",
+      "price": 499,
+      "isVeg": false,
+      "desc": "Indigenous aromatic short-grain Chitti Muthyalu rice cooked with succulent chicken and spices.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Heritage Rice",
+        "Signature"
+      ]
+    },
+    {
+      "id": "rice-14",
+      "name": "Natukodi Pulao",
+      "category": "Rice & Pulaos",
+      "price": 599,
+      "isVeg": false,
+      "desc": "Free-range country chicken slow-cooked with aromatic Chitti Muthyalu pearl rice.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Country Chicken",
+        "Hearty"
+      ]
+    },
+    {
+      "id": "rice-15",
+      "name": "Chitti Muthyala Mutton Pulao",
+      "category": "Rice & Pulaos",
+      "price": 599,
+      "isVeg": false,
+      "desc": "Tender mutton pieces simmered in rich spices with traditional fragrant Chitti Muthyalu rice.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Tanah Pride",
+        "Rich"
+      ]
+    },
+    {
+      "id": "rice-16",
+      "name": "Chitti Muthyala Prawns Pulao",
+      "category": "Rice & Pulaos",
+      "price": 599,
+      "isVeg": false,
+      "desc": "Coastal tiger prawns cooked with indigenous pearl rice and regional coastal aromatics.",
+      "image": "/assets/Tanha Food/food-15.webp",
+      "tags": [
+        "Seafood",
+        "Signature"
+      ]
+    },
+    {
+      "id": "ac-v1",
+      "name": "Honey Chilli Lotus Stem",
+      "category": "Asian & Continental",
+      "price": 429,
+      "isVeg": true,
+      "desc": "Crispy sliced lotus stem chips glazed with sweet wild honey, sesame, and red chili.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Crunchy",
+        "Sweet & Spicy"
+      ]
+    },
+    {
+      "id": "ac-v2",
+      "name": "Mushroom Duplex",
+      "category": "Asian & Continental",
+      "price": 429,
+      "isVeg": true,
+      "desc": "Crispy crumb-fried button mushrooms stuffed with spiced cheese and spinach.",
+      "image": "/assets/Tanha Food/food-11.webp",
+      "tags": [
+        "Cheesy",
+        "Appetizer"
+      ]
+    },
+    {
+      "id": "ac-v3",
+      "name": "Crunchy Paneer",
+      "category": "Asian & Continental",
+      "price": 429,
+      "isVeg": true,
+      "desc": "Panko-crusted crispy paneer cubes served with sweet chili dipping sauce.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Crispy",
+        "Popular"
+      ]
+    },
+    {
+      "id": "ac-v4",
+      "name": "Veg Kulfi",
+      "category": "Asian & Continental",
+      "price": 439,
+      "isVeg": true,
+      "desc": "Savory tandoori vegetable and cheese mousse skewers shaped like kulfis and char-grilled.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Chef Special",
+        "Fusion"
+      ]
+    },
+    {
+      "id": "ac-v5",
+      "name": "Chilli Baby Corn",
+      "category": "Asian & Continental",
+      "price": 439,
+      "isVeg": true,
+      "desc": "Crispy baby corn tossed in wok with bell peppers, garlic, and dark soy sauce.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Indo-Chinese",
+        "Crunchy"
+      ]
+    },
+    {
+      "id": "ac-v6",
+      "name": "Crispy Corn Kernel",
+      "category": "Asian & Continental",
+      "price": 439,
+      "isVeg": true,
+      "desc": "Battered sweet corn fried crisp and tossed in chili-pepper seasoning with spring onions.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Bar Bite",
+        "Addictive"
+      ]
+    },
+    {
+      "id": "ac-v7",
+      "name": "Jalapeno Cheese Balls",
+      "category": "Asian & Continental",
+      "price": 439,
+      "isVeg": true,
+      "desc": "Golden molten cheese spheres infused with spicy jalapeno bits and herb crust.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Cheesy",
+        "Molten"
+      ]
+    },
+    {
+      "id": "ac-v8",
+      "name": "Jack Potato",
+      "category": "Asian & Continental",
+      "price": 439,
+      "isVeg": true,
+      "desc": "Baked jacket potatoes loaded with herb butter, cheddar, and tangy sour cream.",
+      "image": "/assets/Tanha Food/food-5.webp",
+      "tags": [
+        "Continental",
+        "Comfort"
+      ]
+    },
+    {
+      "id": "ac-v9",
+      "name": "Thai Chilli Mushroom",
+      "category": "Asian & Continental",
+      "price": 439,
+      "isVeg": true,
+      "desc": "Fresh mushrooms tossed in spicy Thai sweet chili sauce with kaffir lime and basil.",
+      "image": "/assets/Tanha Food/food-11.webp",
+      "tags": [
+        "Thai",
+        "Zesty"
+      ]
+    },
+    {
+      "id": "ac-v10",
+      "name": "Veg Paneer Rolls",
+      "category": "Asian & Continental",
+      "price": 439,
+      "isVeg": true,
+      "desc": "Crispy golden spring rolls packed with seasoned paneer, julienned vegetables, and glass noodles.",
+      "image": "/assets/Tanha Food/food-29.webp",
+      "tags": [
+        "Crispy",
+        "Snack"
+      ]
+    },
+    {
+      "id": "ac-nv1",
+      "name": "Chilli Eggs",
+      "category": "Asian & Continental",
+      "price": 459,
+      "isVeg": false,
+      "desc": "Boiled eggs battered, fried golden, and wok-tossed with chili garlic sauce and scallions.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Indo-Chinese",
+        "Spicy"
+      ]
+    },
+    {
+      "id": "ac-nv2",
+      "name": "Chicken Fingers",
+      "category": "Asian & Continental",
+      "price": 499,
+      "isVeg": false,
+      "desc": "Crumb-fried succulent chicken tenders served with house tartar dip and french fries.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Continental",
+        "Crispy"
+      ]
+    },
+    {
+      "id": "ac-nv3",
+      "name": "Thread Chicken",
+      "category": "Asian & Continental",
+      "price": 549,
+      "isVeg": false,
+      "desc": "Marinated chicken strips wrapped in crispy noodle threads and fried golden.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Chef Special",
+        "Crunchy"
+      ]
+    },
+    {
+      "id": "ac-nv4",
+      "name": "Chicken Meatballs with Buffalo Sauce",
+      "category": "Asian & Continental",
+      "price": 549,
+      "isVeg": false,
+      "desc": "Tender chicken meatballs glazed in tangy spicy buffalo sauce and sprinkled with sesame.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "American",
+        "Spicy"
+      ]
+    },
+    {
+      "id": "ac-nv5",
+      "name": "Chilli Chicken",
+      "category": "Asian & Continental",
+      "price": 549,
+      "isVeg": false,
+      "desc": "Classic Indo-Chinese style wok-tossed chicken with green chilies, bell peppers, and soy.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "All-Time Favorite",
+        "Spicy"
+      ]
+    },
+    {
+      "id": "ac-nv6",
+      "name": "Dragon Chicken",
+      "category": "Asian & Continental",
+      "price": 549,
+      "isVeg": false,
+      "desc": "Crispy chicken strips tossed in spicy red dragon chili sauce with toasted cashews.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Spicy",
+        "Nutty"
+      ]
+    },
+    {
+      "id": "ac-nv7",
+      "name": "Thai Chilli Chicken",
+      "category": "Asian & Continental",
+      "price": 549,
+      "isVeg": false,
+      "desc": "Chicken bites cooked in sweet and spicy Thai chili glaze with fresh Thai basil.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Thai",
+        "Sweet & Spicy"
+      ]
+    },
+    {
+      "id": "ac-nv8",
+      "name": "Thai Pai Chicken",
+      "category": "Asian & Continental",
+      "price": 549,
+      "isVeg": false,
+      "desc": "Crispy chicken tossed with Thai herbs, julienned ginger, and crushed red chilies.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Thai",
+        "Aromatic"
+      ]
+    },
+    {
+      "id": "ac-nv9",
+      "name": "Parmesan Chicken",
+      "category": "Asian & Continental",
+      "price": 549,
+      "isVeg": false,
+      "desc": "Herb-crusted chicken breast baked with parmesan cheese and tomato sauce.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Italian",
+        "Cheesy"
+      ]
+    },
+    {
+      "id": "ac-nv10",
+      "name": "Custard Chicken",
+      "category": "Asian & Continental",
+      "price": 549,
+      "isVeg": false,
+      "desc": "Golden fried chicken coated in a rich, creamy savory sauce with mild spices.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Unique",
+        "Creamy"
+      ]
+    },
+    {
+      "id": "ac-nv11",
+      "name": "Fish Fingers & Chips",
+      "category": "Asian & Continental",
+      "price": 629,
+      "isVeg": false,
+      "desc": "Crumbed fish fillets fried golden with steakhouse french fries and tartar sauce.",
+      "image": "/assets/Tanha Food/food-15.webp",
+      "tags": [
+        "British Classic",
+        "Crispy"
+      ]
+    },
+    {
+      "id": "ac-nv12",
+      "name": "Cheesy Garlic Shrimp Stuffed Zucchini",
+      "category": "Asian & Continental",
+      "price": 629,
+      "isVeg": false,
+      "desc": "Baked tender zucchini boats filled with garlic shrimp, parmesan, and melted mozzarella.",
+      "image": "/assets/Tanha Food/food-15.webp",
+      "tags": [
+        "Gourmet",
+        "Low Carb"
+      ]
+    },
+    {
+      "id": "ac-nv13",
+      "name": "Pesto Lamb Chops",
+      "category": "Asian & Continental",
+      "price": 629,
+      "isVeg": false,
+      "desc": "Tender grilled lamb chops brushed with vibrant fresh basil-pine nut pesto.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Grilled",
+        "Herbaceous"
+      ]
+    },
+    {
+      "id": "ac-nv14",
+      "name": "Thai Slice Kungi Lamb",
+      "category": "Asian & Continental",
+      "price": 649,
+      "isVeg": false,
+      "desc": "Thinly sliced lamb tossed with fiery bird's eye chilies, galangal, and bamboo shoots.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Thai",
+        "Fiery"
+      ]
+    },
+    {
+      "id": "sea-1",
+      "name": "Chilli Fish",
+      "category": "Seafood",
+      "price": 599,
+      "isVeg": false,
+      "desc": "Batter-fried fish tossed with chilies, garlic, and scallions in rich soy reduction.",
+      "image": "/assets/Tanha Food/food-15.webp",
+      "tags": [
+        "Indo-Chinese",
+        "Spicy"
+      ]
+    },
+    {
+      "id": "sea-2",
+      "name": "Lemon Fish",
+      "category": "Seafood",
+      "price": 599,
+      "isVeg": false,
+      "desc": "Pan-seared fish fillets in delicate lemon-butter sauce with capers and fresh parsley.",
+      "image": "/assets/Tanha Food/food-15.webp",
+      "tags": [
+        "Continental",
+        "Citrusy"
+      ]
+    },
+    {
+      "id": "sea-3",
+      "name": "Loose Prawns",
+      "category": "Seafood",
+      "price": 629,
+      "isVeg": false,
+      "desc": "Golden fried spiced prawns tossed with fried curry leaves and green chilies.",
+      "image": "/assets/Tanha Food/food-15.webp",
+      "tags": [
+        "Hyderabad Classic",
+        "Crispy"
+      ]
+    },
+    {
+      "id": "sea-4",
+      "name": "Tempura Prawns",
+      "category": "Seafood",
+      "price": 629,
+      "isVeg": false,
+      "desc": "Light and airy Japanese-style batter-fried prawns with sweet chili dip.",
+      "image": "/assets/Tanha Food/food-15.webp",
+      "tags": [
+        "Japanese",
+        "Crispy"
+      ]
+    },
+    {
+      "id": "sea-5",
+      "name": "Chimichurri Prawns",
+      "category": "Seafood",
+      "price": 649,
+      "isVeg": false,
+      "desc": "Grilled tiger prawns drizzled with Argentine fresh herb chimichurri sauce.",
+      "image": "/assets/Tanha Food/food-15.webp",
+      "tags": [
+        "Grilled",
+        "Herbaceous"
+      ]
+    },
+    {
+      "id": "sea-6",
+      "name": "Shrimp Chips",
+      "category": "Seafood",
+      "price": 649,
+      "isVeg": false,
+      "desc": "Crispy seasoned shrimp bites tossed with wafer seasonings and scallions.",
+      "image": "/assets/Tanha Food/food-15.webp",
+      "tags": [
+        "Snack",
+        "Crunchy"
+      ]
+    },
+    {
+      "id": "sea-7",
+      "name": "Chimichurri Lamb Chops",
+      "category": "Seafood",
+      "price": 699,
+      "isVeg": false,
+      "desc": "Char-grilled lamb chops served with fresh parsley-garlic chimichurri.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Chef Special",
+        "Grilled"
+      ]
+    },
+    {
+      "id": "entr-1",
+      "name": "Alfredo Pasta — Veg / Non-Veg",
+      "category": "Continental",
+      "price": 499,
+      "isVeg": false,
+      "desc": "Creamy parmesan and butter sauce tossed with penne, roasted garlic, and chicken or mushrooms.",
+      "image": "/assets/Tanha Food/food-11.webp",
+      "tags": [
+        "Italian",
+        "Creamy"
+      ]
+    },
+    {
+      "id": "entr-2",
+      "name": "Arrabbiata Pasta",
+      "category": "Continental",
+      "price": 449,
+      "isVeg": true,
+      "desc": "Penne pasta tossed in spicy garlic, tomato, and red chili sauce with fresh basil.",
+      "image": "/assets/Tanha Food/food-11.webp",
+      "tags": [
+        "Spicy",
+        "Classic"
+      ]
+    },
+    {
+      "id": "entr-3",
+      "name": "Enchilada Veg",
+      "category": "Continental",
+      "price": 499,
+      "isVeg": true,
+      "desc": "Baked Mexican corn tortillas rolled around spiced vegetables, beans, and melted cheese.",
+      "image": "/assets/Tanha Food/food-4.webp",
+      "tags": [
+        "Mexican",
+        "Cheesy"
+      ]
+    },
+    {
+      "id": "entr-4",
+      "name": "Tuscan Chicken with Herb Rice",
+      "category": "Continental",
+      "price": 559,
+      "isVeg": false,
+      "desc": "Seared chicken breast in creamy sun-dried tomato sauce with fragrant butter herb rice.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Tuscan",
+        "Gourmet"
+      ]
+    },
+    {
+      "id": "entr-5",
+      "name": "Mutton Ravioli Pasta",
+      "category": "Continental",
+      "price": 599,
+      "isVeg": false,
+      "desc": "Handcrafted pasta pockets stuffed with slow-cooked spiced mutton keema in sage butter sauce.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Artisanal",
+        "Handcrafted"
+      ]
+    },
+    {
+      "id": "entr-6",
+      "name": "Stuffed Chicken Grill Roll",
+      "category": "Continental",
+      "price": 599,
+      "isVeg": false,
+      "desc": "Rolled chicken breast stuffed with spinach and cheese, grilled golden with herb jus.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Grilled",
+        "Cheesy"
+      ]
+    },
+    {
+      "id": "entr-7",
+      "name": "Chicken Cordon Bleu & Cheese",
+      "category": "Continental",
+      "price": 599,
+      "isVeg": false,
+      "desc": "Crumb-fried chicken breast rolled with cheese and herbs, served with potato mash.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "French Classic",
+        "Rich"
+      ]
+    },
+    {
+      "id": "entr-8",
+      "name": "Chicken Kiev Creamy Mushroom",
+      "category": "Continental",
+      "price": 599,
+      "isVeg": false,
+      "desc": "Breaded chicken breast stuffed with herb butter, served with creamy mushroom sauce.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Continental",
+        "Must Try"
+      ]
+    },
+    {
+      "id": "entr-9",
+      "name": "Fish Florentine Herb Rice",
+      "category": "Continental",
+      "price": 599,
+      "isVeg": false,
+      "desc": "Baked fish fillet on a bed of seasoned spinach, mornay sauce, and herb butter rice.",
+      "image": "/assets/Tanha Food/food-15.webp",
+      "tags": [
+        "Seafood",
+        "Healthy"
+      ]
+    },
+    {
+      "id": "entr-10",
+      "name": "Chicken Ala King Zucchini",
+      "category": "Continental",
+      "price": 599,
+      "isVeg": false,
+      "desc": "Diced chicken and tender zucchini in a rich creamy sherry cream sauce with peppers.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Creamy",
+        "Comfort"
+      ]
+    },
+    {
+      "id": "pizz-1",
+      "name": "OTC Pizza",
+      "category": "Gourmet Pizza",
+      "price": 599,
+      "isVeg": true,
+      "desc": "Classic Onion, Tomato, and Capsicum on crispy thin crust with mozzarella cheese.",
+      "image": "/assets/Tanha Food/food-23.webp",
+      "tags": [
+        "Wood-Fired",
+        "Classic"
+      ]
+    },
+    {
+      "id": "pizz-2",
+      "name": "Tanah Farm House Pizza",
+      "category": "Gourmet Pizza",
+      "price": 649,
+      "isVeg": true,
+      "desc": "Handmade pizza with crisp golden crust, tomato sauce, melted cheese, bell peppers, corn, and basil.",
+      "image": "/assets/Tanha Food/food-23.webp",
+      "tags": [
+        "Signature",
+        "Farm Fresh"
+      ]
+    },
+    {
+      "id": "pizz-3",
+      "name": "Pesto Pizza",
+      "category": "Gourmet Pizza",
+      "price": 649,
+      "isVeg": true,
+      "desc": "Herb pizza base with house basil pesto, heirloom cherry tomatoes, and bocconcini.",
+      "image": "/assets/Tanha Food/food-23.webp",
+      "tags": [
+        "Artisanal",
+        "Pesto"
+      ]
+    },
+    {
+      "id": "pizz-4",
+      "name": "Margherita Pizza",
+      "category": "Gourmet Pizza",
+      "price": 699,
+      "isVeg": true,
+      "desc": "Classic Neapolitan pizza with San Marzano tomato sauce, fresh buffalo mozzarella, and basil.",
+      "image": "/assets/Tanha Food/food-23.webp",
+      "tags": [
+        "Neapolitan",
+        "Classic"
+      ]
+    },
+    {
+      "id": "pizz-5",
+      "name": "Butter Chicken Pizza",
+      "category": "Gourmet Pizza",
+      "price": 699,
+      "isVeg": false,
+      "desc": "Wood-fired crust topped with creamy butter chicken, red onions, and melted mozzarella.",
+      "image": "/assets/Tanha Food/food-23.webp",
+      "tags": [
+        "Fusion Favorite",
+        "Bestseller"
+      ]
+    },
+    {
+      "id": "pizz-6",
+      "name": "Chicken Tikka Pizza",
+      "category": "Gourmet Pizza",
+      "price": 699,
+      "isVeg": false,
+      "desc": "Tandoor chicken tikka chunks with bell peppers, red onion, and roasted spice oil.",
+      "image": "/assets/Tanha Food/food-23.webp",
+      "tags": [
+        "Tandoori",
+        "Spicy"
+      ]
+    },
+    {
+      "id": "pizz-7",
+      "name": "Peri Peri Chicken Pizza",
+      "category": "Gourmet Pizza",
+      "price": 699,
+      "isVeg": false,
+      "desc": "Fiery peri-peri chicken cubes, jalapenos, and mozzarella on wood-fired crust.",
+      "image": "/assets/Tanha Food/food-23.webp",
+      "tags": [
+        "Spicy",
+        "Zesty"
+      ]
+    },
+    {
+      "id": "pizz-8",
+      "name": "Mac & Cheese Pizza",
+      "category": "Gourmet Pizza",
+      "price": 699,
+      "isVeg": true,
+      "desc": "Decadent wood-fired pizza layered with creamy macaroni pasta and aged cheddar.",
+      "image": "/assets/Tanha Food/food-23.webp",
+      "tags": [
+        "Indulgent",
+        "Cheesy"
+      ]
+    },
+    {
+      "id": "pizz-9",
+      "name": "Pepperoni Pizza",
+      "category": "Gourmet Pizza",
+      "price": 799,
+      "isVeg": false,
+      "desc": "Artisan pizza loaded with spiced pepperoni slices, tomato sugo, and melted mozzarella.",
+      "image": "/assets/Tanha Food/food-23.webp",
+      "tags": [
+        "Classic",
+        "Gourmet"
+      ]
+    },
+    {
+      "id": "pizz-10",
+      "name": "Meat Lovers Pizza",
+      "category": "Gourmet Pizza",
+      "price": 799,
+      "isVeg": false,
+      "desc": "Loaded feast with chicken tikka, spiced keema, sausage, and smoked bacon bits.",
+      "image": "/assets/Tanha Food/food-23.webp",
+      "tags": [
+        "Grand Feast",
+        "Meat Lovers"
+      ]
+    },
+    {
+      "id": "comf-1",
+      "name": "Keema Roti",
+      "category": "Telugu Comfort Food",
+      "price": 249,
+      "isVeg": false,
+      "desc": "Fresh hot tandoori roti served with rustic spiced minced mutton keema curry.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Comfort",
+        "Street Style"
+      ]
+    },
+    {
+      "id": "comf-2",
+      "name": "Sambar Rice",
+      "category": "Telugu Comfort Food",
+      "price": 349,
+      "isVeg": true,
+      "desc": "Traditional slow-simmered lentil sambar rice with ghee tempering and appadalu.",
+      "image": "/assets/Tanha Food/food-6.webp",
+      "tags": [
+        "Comfort",
+        "Homestyle"
+      ]
+    },
+    {
+      "id": "comf-3",
+      "name": "Avakaya Mudda Pappu Annam — Pachipulusu & Veg Fry",
+      "category": "Telugu Comfort Food",
+      "price": 449,
+      "isVeg": true,
+      "desc": "Classic Andhra meal with hot rice, thick yellow dal, mango avakaya, raw tamarind rasam, and crispy fry.",
+      "image": "/assets/Tanha Food/food-6.webp",
+      "tags": [
+        "Authentic Andhra",
+        "Heart & Soul"
+      ]
+    },
+    {
+      "id": "comf-4",
+      "name": "Raagi Sangati — Chicken Curry",
+      "category": "Telugu Comfort Food",
+      "price": 549,
+      "isVeg": false,
+      "desc": "Wholesome hot finger millet mudde served with rich spicy country chicken curry and ghee.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Rayalaseema Pride",
+        "Healthy"
+      ]
+    },
+    {
+      "id": "spec-t1",
+      "name": "Avakaya Chicken Fried Rice",
+      "category": "Telugu Comfort Food",
+      "price": 499,
+      "isVeg": false,
+      "desc": "Wok-fried rice tossed with fiery Andhra avakaya mango pickle and succulent chicken.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Signature Fusion",
+        "Spicy"
+      ]
+    },
+    {
+      "id": "spec-t2",
+      "name": "Mamsam Ragi Sangati",
+      "category": "Telugu Comfort Food",
+      "price": 649,
+      "isVeg": false,
+      "desc": "Steaming hot ragi mudde served with rich slow-cooked mutton gravy and clarified butter.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Rayalaseema",
+        "Traditional"
+      ]
+    },
+    {
+      "id": "spec-t3",
+      "name": "Keema Ragi Sangati Chicken 65",
+      "category": "Telugu Comfort Food",
+      "price": 649,
+      "isVeg": false,
+      "desc": "Ragi mudde served with spiced mutton keema and crispy Andhra Chicken 65.",
+      "image": "/assets/Tanha Food/food-14.webp",
+      "tags": [
+        "Feast",
+        "Spicy"
+      ]
+    },
+    {
+      "id": "spec-t4",
+      "name": "Pappucharu Annam — Mutton Fry",
+      "category": "Telugu Comfort Food",
+      "price": 699,
+      "isVeg": false,
+      "desc": "Hot rice with seasoned lentil broth (Pappucharu) and dry-roasted Telangana mutton fry.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Grand Combo",
+        "Bestseller"
+      ]
+    },
+    {
+      "id": "spec-t5",
+      "name": "Dalcha Mutton with Bagara Rice",
+      "category": "Telugu Comfort Food",
+      "price": 699,
+      "isVeg": false,
+      "desc": "Aromatic spiced bagara rice served with authentic Hyderabadi mutton dalcha stew.",
+      "image": "/assets/Tanha Food/food-1.webp",
+      "tags": [
+        "Hyderabadi Dawat",
+        "Royal"
+      ]
+    },
+    {
+      "id": "des-1",
+      "name": "Junnu",
+      "category": "Desserts",
+      "price": 249,
+      "isVeg": true,
+      "desc": "Traditional South Indian steamed milk pudding made from colostrum milk, infused with black pepper and cardamom in a clay pot.",
+      "image": "/assets/Tanha Food/food-48.webp",
+      "tags": [
+        "Telugu Heritage",
+        "Claypot"
+      ]
+    },
+    {
+      "id": "des-2",
+      "name": "Pistachio Chocolate Samosa",
+      "category": "Desserts",
+      "price": 399,
+      "isVeg": true,
+      "desc": "Crispy golden pastry triangles filled with pistachio kunafa and molten dark chocolate.",
+      "image": "/assets/Tanha Food/food-48.webp",
+      "tags": [
+        "Fusion",
+        "Decadent"
+      ]
+    },
+    {
+      "id": "des-3",
+      "name": "Blueberry Cheese Cake",
+      "category": "Desserts",
+      "price": 399,
+      "isVeg": true,
+      "desc": "Creamy baked New York cheesecake topped with house-made wild blueberry compote.",
+      "image": "/assets/Tanha Food/food-44.webp",
+      "tags": [
+        "Artisanal",
+        "Bestseller"
+      ]
+    },
+    {
+      "id": "des-4",
+      "name": "Mango Cheese Cake",
+      "category": "Desserts",
+      "price": 399,
+      "isVeg": true,
+      "desc": "Velvety cheesecake infused with sweet Alphonso mango pulp on buttery biscuit crumb.",
+      "image": "/assets/Tanha Food/food-44.webp",
+      "tags": [
+        "Alphonso",
+        "Seasonal"
+      ]
+    },
+    {
+      "id": "des-5",
+      "name": "Desi Tiramisu",
+      "category": "Desserts",
+      "price": 399,
+      "isVeg": true,
+      "desc": "Single-origin Araku Valley filter coffee soaked sponge layered with saffron mascarpone and cocoa pod dust.",
       "image": "/assets/Tanha Food/food-45.webp",
-      "tags": ["Signature", "Araku Kaapi"]
+      "tags": [
+        "Araku Kaapi",
+        "Signature"
+      ]
+    },
+    {
+      "id": "des-6",
+      "name": "Mango Tres Leches",
+      "category": "Desserts",
+      "price": 399,
+      "isVeg": true,
+      "desc": "Airy sponge steeped in three rich milks, topped with fresh Alphonso mango compote.",
+      "image": "/assets/Tanha Food/food-44.webp",
+      "tags": [
+        "Tres Leches",
+        "Must Try"
+      ]
     }
   ]
 }
