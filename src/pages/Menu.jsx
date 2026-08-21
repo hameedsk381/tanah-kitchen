@@ -102,8 +102,7 @@ const LIQUID_SECTIONS = [
       { name: 'Glenfiddich 18yr', prices: ['1299/-', '23,000/-'] },
       { name: 'Hibiki', prices: ['1899/-', '34,000/-'] }
     ],
-    tagline: 'you get better with age',
-    Mascot: BirdSingleMalt
+    tagline: 'you get better with age'
   },
   {
     id: 'whiskey',
@@ -123,8 +122,7 @@ const LIQUID_SECTIONS = [
       { name: 'Jameson', prices: ['499/-', '5,999/-'] },
       { name: "Jack Daniel's NO 7", prices: ['399/-', '7,999/-'] }
     ],
-    tagline: 'never delay opening a bottle of whisky.',
-    Mascot: BirdWhiskey
+    tagline: 'never delay opening a bottle of whisky.'
   },
   {
     id: 'vodka',
@@ -136,8 +134,7 @@ const LIQUID_SECTIONS = [
       { name: 'Absolut', prices: ['499/-', '8,999/-'] },
       { name: 'Ketel One', prices: ['499/-', '7,999/-'] }
     ],
-    tagline: 'my willpower vs vodka (40%) vodka wins!',
-    Mascot: BirdVodkaGin
+    tagline: 'my willpower vs vodka (40%) vodka wins!'
   },
   {
     id: 'gin',
@@ -151,8 +148,7 @@ const LIQUID_SECTIONS = [
       { name: 'Monkey 47', prices: ['659/-', '14,999/-'] },
       { name: 'Roku Gin', prices: ['799/-', '14,999/-'] }
     ],
-    tagline: 'my willpower vs vodka (40%) vodka wins!',
-    Mascot: BirdVodkaGin
+    tagline: 'my willpower vs vodka (40%) vodka wins!'
   },
   {
     id: 'tequila',
@@ -166,8 +162,7 @@ const LIQUID_SECTIONS = [
       { name: 'Don Jilo', prices: ['899/-', '21,999/-'] },
       { name: 'Patron Silver Tequila', prices: ['1299/-', '22,999/-'] }
     ],
-    tagline: 'Magic Water for fun people',
-    Mascot: BirdTequilaRum
+    tagline: 'Magic Water for fun people'
   },
   {
     id: 'rum',
@@ -179,8 +174,7 @@ const LIQUID_SECTIONS = [
       { name: 'Bacardi Carta Blanc', prices: ['299/-', '4,999/-'] },
       { name: 'Bacardi Aged Rum', prices: ['499/-', '7,999/-'] }
     ],
-    tagline: 'Magic Water for fun people',
-    Mascot: BirdTequilaRum
+    tagline: 'Magic Water for fun people'
   },
   {
     id: 'brandy',
@@ -192,8 +186,7 @@ const LIQUID_SECTIONS = [
       { name: 'Hennessy VS (Cognac)', prices: ['599/-', '14,999/-'] },
       { name: 'St Remy Vsop', prices: ['699/-', '12,999/-'] }
     ],
-    tagline: 'Coco cola pepsi, Balayya bab sexy!',
-    Mascot: BirdBrandyLiquor
+    tagline: 'Coco cola pepsi, Balayya bab sexy!'
   },
   {
     id: 'liquor',
@@ -206,8 +199,7 @@ const LIQUID_SECTIONS = [
       { name: 'Martini Roso', prices: ['499/-', '9,999/-'] },
       { name: 'Jagermeister', prices: ['599/-', '10,999/-'] }
     ],
-    tagline: 'Coco cola pepsi, Balayya bab sexy!',
-    Mascot: BirdBrandyLiquor
+    tagline: 'Coco cola pepsi, Balayya bab sexy!'
   },
   {
     id: 'rosewine',
@@ -216,8 +208,7 @@ const LIQUID_SECTIONS = [
     items: [
       { name: 'Sula Zinfandel', prices: ['799/-', '5,999/-'] }
     ],
-    tagline: 'Will you accept this rose?',
-    Mascot: BirdWine
+    tagline: 'Will you accept this rose?'
   },
   {
     id: 'redwhite',
@@ -229,8 +220,7 @@ const LIQUID_SECTIONS = [
       { name: "Jacob's Creek Chardonnay", prices: ['999/-', '5,999/-'] },
       { name: "Jacob's Creek Shiraz", prices: ['999/-', '5,999/-'] }
     ],
-    tagline: 'Will you accept this rose?',
-    Mascot: BirdWine
+    tagline: 'Will you accept this rose?'
   },
   {
     id: 'beer',
@@ -244,8 +234,7 @@ const LIQUID_SECTIONS = [
       { name: 'Kingfisher Ultra', prices: ['459/-', '2,299/-'] },
       { name: 'Budweiser', prices: ['459/-', '2,299/-'] }
     ],
-    tagline: 'The sound of celebration begins with a cork.',
-    Mascot: BirdBeerChampagne
+    tagline: 'The sound of celebration begins with a cork.'
   },
   {
     id: 'champagne',
@@ -256,8 +245,7 @@ const LIQUID_SECTIONS = [
       { name: 'Moet Chandon Brut', prices: ['27,999/-'] },
       { name: 'Sula Brut', prices: ['2,499/-'] }
     ],
-    tagline: 'The sound of celebration begins with a cork.',
-    Mascot: BirdBeerChampagne
+    tagline: 'The sound of celebration begins with a cork.'
   },
   {
     id: 'softdrink',
@@ -277,8 +265,7 @@ const LIQUID_SECTIONS = [
       { name: 'Aerated Water (Glass)', prices: ['99/-'] },
       { name: 'Soda, Sprite, Thumsup', prices: ['99/-'] }
     ],
-    tagline: "It's time to Hydrate!",
-    Mascot: BirdSoftDrink
+    tagline: "It's time to Hydrate!"
   },
   {
     id: 'signature',
@@ -297,8 +284,7 @@ const LIQUID_SECTIONS = [
       { name: 'Pineapple Ginger', prices: ['799/-'], desc: 'Vodka, Pineapple Ginger Sourmix, Ginger Beer' },
       { name: 'The Og Picante', prices: ['799/-'], desc: 'Bartender Secret Recipe' }
     ],
-    tagline: 'This Is Where We Create',
-    Mascot: BirdSignatureCocktail
+    tagline: 'This Is Where We Create'
   },
   {
     id: 'mocktail',
@@ -317,8 +303,7 @@ const LIQUID_SECTIONS = [
       { name: 'Ice Tea', prices: ['349/-'], desc: 'Black Tea, Peach, Passion Fruit, Lime' },
       { name: 'Virgin Mojito', prices: ['349/-'], desc: 'Watermelon, Orange, Curry Leaf' }
     ],
-    tagline: 'I am unapologetically good',
-    Mascot: BirdMocktail
+    tagline: 'I am unapologetically good'
   },
   {
     id: 'classic',
@@ -338,8 +323,7 @@ const LIQUID_SECTIONS = [
       { name: '007 Martini', prices: ['699/-'], desc: 'Vodka or gin, olive brain, white wine' },
       { name: 'Espresso Martini', prices: ['669/-'], desc: 'Vodka, Kahlua, coffee' }
     ],
-    tagline: 'We respect the originals',
-    Mascot: BirdTequilaRum
+    tagline: 'We respect the originals'
   },
   {
     id: 'shooter',
@@ -353,8 +337,7 @@ const LIQUID_SECTIONS = [
       { name: 'Flatliner', prices: ['699/-'], desc: 'tequila, tabasco, sambuca, vanilla foam' },
       { name: 'Jager Bomb', prices: ['799/-'], desc: 'Jägermeister, Red Bull' }
     ],
-    tagline: "It's Time to call your driver",
-    Mascot: BirdShooter
+    tagline: "It's Time to call your driver"
   }
 ]
 
