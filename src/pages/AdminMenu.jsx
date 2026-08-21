@@ -126,19 +126,64 @@ export default function AdminMenu() {
     setTimeout(() => setToastMessage(''), 3000)
   }
 
-  // Upload handler for custom photos
-  const handleFileUpload = (file) => {
+  // Upload handler for custom photos (Node.js Server API + Offline Fallback)
+  const handleFileUpload = async (file) => {
     if (!file) return
     if (!file.type.startsWith('image/')) {
       showToast('⚠️ Please select a valid image file.')
       return
     }
 
-    if (file.size > 10 * 1024 * 1024) {
-      showToast('⚠️ Image must be under 10MB.')
+    if (file.size > 20 * 1024 * 1024) {
+      showToast('⚠️ Image must be under 20MB.')
       return
     }
 
+    showToast('⏳ Uploading photo...')
+
+    try {
+      // 1. Try uploading to Express server
+      const formData = new FormData()
+      formData.append('photo', file)
+
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData
+      })
+
+      if (res.ok) {
+        const data = await res.json()
+        if (data.url) {
+          const newUpload = {
+            path: data.url,
+            id: `server-upload-${Date.now()}`,
+            number: customUploads.length + 1,
+            name: file.name || data.filename,
+            isCustom: true
+          }
+
+          const updatedUploads = [newUpload, ...customUploads]
+          setCustomUploads(updatedUploads)
+          try {
+            localStorage.setItem('tanah_custom_uploads_v1', JSON.stringify(updatedUploads))
+          } catch (e) {}
+
+          if (photoPickerTarget === 'bento' && bentoDraft) {
+            setBentoDraft({ ...bentoDraft, image: data.url })
+          } else if (editingItem) {
+            setEditingItem({ ...editingItem, image: data.url })
+          }
+
+          setIsPhotoPickerOpen(false)
+          showToast('✓ Photo uploaded to server and assigned!')
+          return
+        }
+      }
+    } catch (err) {
+      console.warn('Server upload failed, using local base64 fallback:', err)
+    }
+
+    // 2. Fallback: Base64 FileReader
     const reader = new FileReader()
     reader.onload = (e) => {
       const dataUrl = e.target.result
@@ -155,10 +200,9 @@ export default function AdminMenu() {
       try {
         localStorage.setItem('tanah_custom_uploads_v1', JSON.stringify(updatedUploads))
       } catch (err) {
-        console.warn('LocalStorage full, uploaded photo will remain in memory for this session:', err)
+        console.warn('LocalStorage full:', err)
       }
 
-      // Assign directly
       if (photoPickerTarget === 'bento' && bentoDraft) {
         setBentoDraft({ ...bentoDraft, image: dataUrl })
       } else if (editingItem) {

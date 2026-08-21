@@ -84,6 +84,8 @@ const DEFAULT_BENTO_ITEMS = [
 ]
 
 export function MenuProvider({ children }) {
+  const [isServerConnected, setIsServerConnected] = useState(false)
+
   // 1. Menu Items State
   const [menuData, setMenuData] = useState(() => {
     try {
@@ -132,7 +134,52 @@ export function MenuProvider({ children }) {
     return defaultGalleryData
   })
 
-  // Persistence
+  // Fetch initial state from Node.js server API
+  useEffect(() => {
+    let isMounted = true
+
+    async function fetchServerData() {
+      try {
+        const [menuRes, bentoRes, galleryRes] = await Promise.allSettled([
+          fetch('/api/menu'),
+          fetch('/api/bento'),
+          fetch('/api/gallery')
+        ])
+
+        if (menuRes.status === 'fulfilled' && menuRes.value.ok) {
+          const serverMenu = await menuRes.value.json()
+          if (isMounted && serverMenu?.items?.length) {
+            setMenuData(serverMenu)
+            setIsServerConnected(true)
+          }
+        }
+
+        if (bentoRes.status === 'fulfilled' && bentoRes.value.ok) {
+          const serverBento = await bentoRes.value.json()
+          if (isMounted && Array.isArray(serverBento) && serverBento.length === 6) {
+            setBentoItems(serverBento)
+          }
+        }
+
+        if (galleryRes.status === 'fulfilled' && galleryRes.value.ok) {
+          const serverGallery = await galleryRes.value.json()
+          if (isMounted && serverGallery?.items?.length) {
+            setGalleryData(serverGallery)
+          }
+        }
+      } catch (err) {
+        console.warn('Node.js server not responding, running in local fallback mode:', err)
+      }
+    }
+
+    fetchServerData()
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
+  // Local Storage Sync
   useEffect(() => {
     try {
       if (menuData !== defaultMenuData) {
@@ -157,38 +204,67 @@ export function MenuProvider({ children }) {
     } catch (e) {}
   }, [galleryData])
 
-  // Menu Methods
+  // Menu Methods with Server Sync
   const updateItem = useCallback((id, updatedFields) => {
-    setMenuData((prev) => ({
-      ...prev,
-      items: prev.items.map((item) =>
-        item.id === id ? { ...item, ...updatedFields } : item
-      )
-    }))
+    setMenuData((prev) => {
+      const updated = {
+        ...prev,
+        items: prev.items.map((item) =>
+          item.id === id ? { ...item, ...updatedFields } : item
+        )
+      }
+      // Async sync to server
+      fetch(`/api/menu/item/${encodeURIComponent(id)}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedFields)
+      }).catch((e) => console.warn('Server sync failed:', e))
+
+      return updated
+    })
   }, [])
 
   const addItem = useCallback((newItem) => {
     const itemWithId = {
       ...newItem,
-      id: newItem.id || `custom_${Date.now()}`
+      id: newItem.id || `dish-${Date.now()}`
     }
-    setMenuData((prev) => ({
-      ...prev,
-      items: [itemWithId, ...prev.items]
-    }))
+    setMenuData((prev) => {
+      const updated = {
+        ...prev,
+        items: [itemWithId, ...prev.items]
+      }
+      // Async sync to server
+      fetch('/api/menu/item', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(itemWithId)
+      }).catch((e) => console.warn('Server sync failed:', e))
+
+      return updated
+    })
   }, [])
 
   const deleteItem = useCallback((id) => {
-    setMenuData((prev) => ({
-      ...prev,
-      items: prev.items.filter((item) => item.id !== id)
-    }))
+    setMenuData((prev) => {
+      const updated = {
+        ...prev,
+        items: prev.items.filter((item) => item.id !== id)
+      }
+      // Async sync to server
+      fetch(`/api/menu/item/${encodeURIComponent(id)}`, {
+        method: 'DELETE'
+      }).catch((e) => console.warn('Server sync failed:', e))
+
+      return updated
+    })
   }, [])
 
   const resetToDefault = useCallback(() => {
     setMenuData(defaultMenuData)
     try {
       localStorage.removeItem(LOCAL_STORAGE_MENU_KEY)
+      fetch('/api/menu/reset', { method: 'POST' }).catch((e) => console.warn(e))
     } catch (e) {}
   }, [])
 
@@ -204,34 +280,56 @@ export function MenuProvider({ children }) {
     downloadAnchor.remove()
   }, [menuData])
 
-  // Bento Methods
+  // Bento Methods with Server Sync
   const updateBentoSlot = useCallback((slotIndex, updatedFields) => {
-    setBentoItems((prev) =>
-      prev.map((item, idx) => (idx === slotIndex ? { ...item, ...updatedFields } : item))
-    )
+    setBentoItems((prev) => {
+      const updated = prev.map((item, idx) =>
+        idx === slotIndex ? { ...item, ...updatedFields } : item
+      )
+      // Async sync to server
+      fetch(`/api/bento/slot/${slotIndex}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedFields)
+      }).catch((e) => console.warn('Server sync failed:', e))
+
+      return updated
+    })
   }, [])
 
   const resetBento = useCallback(() => {
     setBentoItems(DEFAULT_BENTO_ITEMS)
     try {
       localStorage.removeItem(LOCAL_STORAGE_BENTO_KEY)
+      fetch('/api/bento/reset', { method: 'POST' }).catch((e) => console.warn(e))
     } catch (e) {}
   }, [])
 
-  // Gallery Methods
+  // Gallery Methods with Server Sync
   const updateGalleryItemCategory = useCallback((id, newCategory) => {
-    setGalleryData((prev) => ({
-      ...prev,
-      items: prev.items.map((item) =>
-        item.id === id ? { ...item, category: newCategory } : item
-      )
-    }))
+    setGalleryData((prev) => {
+      const updated = {
+        ...prev,
+        items: prev.items.map((item) =>
+          item.id === id ? { ...item, category: newCategory } : item
+        )
+      }
+      // Async sync to server
+      fetch(`/api/gallery/item/${encodeURIComponent(id)}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ category: newCategory })
+      }).catch((e) => console.warn('Server sync failed:', e))
+
+      return updated
+    })
   }, [])
 
   const resetGallery = useCallback(() => {
     setGalleryData(defaultGalleryData)
     try {
       localStorage.removeItem(LOCAL_STORAGE_GALLERY_KEY)
+      fetch('/api/gallery/reset', { method: 'POST' }).catch((e) => console.warn(e))
     } catch (e) {}
   }, [])
 
@@ -249,6 +347,7 @@ export function MenuProvider({ children }) {
 
   const contextValue = useMemo(
     () => ({
+      isServerConnected,
       categories: menuData.categories || defaultMenuData.categories,
       items: menuData.items || defaultMenuData.items,
       updateItem,
@@ -269,6 +368,7 @@ export function MenuProvider({ children }) {
       exportGalleryJson
     }),
     [
+      isServerConnected,
       menuData,
       updateItem,
       addItem,
