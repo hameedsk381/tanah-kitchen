@@ -218,26 +218,35 @@ app.post('/api/auth/change-password', async (req, res) => {
   }
 })
 
-// ── 1. MENU APIs (MongoDB with Instant Fallback) ──
+// ── 1. MENU APIs (MongoDB with Instant Fallback & Deduplication) ──
 app.get('/api/menu', async (req, res) => {
   try {
     if (isDbConnected()) {
-      const items = await MenuItem.find().sort({ createdAt: -1 }).lean()
-      if (items && items.length > 0) {
-        return res.json({
-          categories: defaultCategories,
-          items
-        })
+      const dbItems = await MenuItem.find().sort({ createdAt: -1 }).lean()
+      if (dbItems && dbItems.length > 0) {
+        const seenNames = new Set()
+        const seenIds = new Set()
+        const uniqueItems = []
+        for (const item of dbItems) {
+          const nameKey = (item.name || '').trim().toLowerCase()
+          if (!nameKey || seenNames.has(nameKey) || seenIds.has(item.id)) continue
+          seenNames.add(nameKey)
+          seenIds.add(item.id)
+          uniqueItems.push(item)
+        }
+        if (uniqueItems.length > 0) {
+          return res.json({
+            categories: defaultCategories,
+            items: uniqueItems
+          })
+        }
       }
     }
 
-    // Fallback or seed source
+    // Fallback or seed source from clean menu.json
     const menuJsonPath = path.join(SRC_DATA_DIR, 'menu.json')
     if (fs.existsSync(menuJsonPath)) {
       const raw = JSON.parse(fs.readFileSync(menuJsonPath, 'utf-8'))
-      if (isDbConnected() && raw.items?.length) {
-        await MenuItem.insertMany(raw.items).catch(() => {})
-      }
       return res.json(raw)
     }
 

@@ -83,6 +83,27 @@ const DEFAULT_BENTO_ITEMS = [
   }
 ]
 
+function sanitizeMenuItems(items) {
+  if (!Array.isArray(items) || items.length === 0) return defaultMenuData.items
+  const seenIds = new Set()
+  const seenNames = new Set()
+  const clean = []
+
+  for (const item of items) {
+    if (!item || !item.name) continue
+    const nameKey = item.name.trim().toLowerCase()
+    const idKey = item.id || `dish-${clean.length + 1}`
+
+    if (seenNames.has(nameKey) || seenIds.has(idKey)) continue
+
+    seenNames.add(nameKey)
+    seenIds.add(idKey)
+    clean.push(item)
+  }
+
+  return clean.length > 0 ? clean : defaultMenuData.items
+}
+
 export function MenuProvider({ children }) {
   const [isServerConnected, setIsServerConnected] = useState(false)
 
@@ -93,7 +114,10 @@ export function MenuProvider({ children }) {
       if (saved) {
         const parsed = JSON.parse(saved)
         if (parsed && Array.isArray(parsed.items) && parsed.items.length > 0) {
-          return parsed
+          return {
+            ...parsed,
+            items: sanitizeMenuItems(parsed.items)
+          }
         }
       }
     } catch (e) {
@@ -146,7 +170,10 @@ export function MenuProvider({ children }) {
       if (menuRes.status === 'fulfilled' && menuRes.value.ok) {
         const serverMenu = await menuRes.value.json()
         if (serverMenu?.items?.length) {
-          setMenuData(serverMenu)
+          setMenuData({
+            categories: serverMenu.categories || defaultMenuData.categories,
+            items: sanitizeMenuItems(serverMenu.items)
+          })
           setIsServerConnected(true)
         }
       }

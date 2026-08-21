@@ -462,8 +462,22 @@ export default function Menu() {
   }, [menuType])
 
   useEffect(() => {
-    const rawItems = contextItems && contextItems.length > 0 ? contextItems : menuData.items
-    let result = rawItems.map(item => {
+    const rawItems = contextItems && contextItems.length > 0 ? contextItems : []
+    
+    // Deduplicate by name and ID
+    const seenNames = new Set()
+    const seenIds = new Set()
+    const uniqueRaw = []
+    for (const item of rawItems) {
+      if (!item || !item.name) continue
+      const nameKey = item.name.trim().toLowerCase()
+      if (seenNames.has(nameKey) || seenIds.has(item.id)) continue
+      seenNames.add(nameKey)
+      seenIds.add(item.id)
+      uniqueRaw.push(item)
+    }
+
+    let result = uniqueRaw.map(item => {
       const profile = calculateSensoryProfile(item)
 
       // Calculate match percentage
