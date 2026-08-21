@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  tanah-kitchen:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tanah-kitchen-app
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+    volumes:
+      # Persist admin data (menu.json, bento.json, gallery.json)
+      - ./server/data:/app/server/data
+      # Persist custom uploaded images
+      - ./uploads:/app/uploads
