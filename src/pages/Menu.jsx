@@ -19,28 +19,9 @@ import {
   BirdShooter
 } from '../components/BarMascots'
 
-// Frontend categories requested by the user for Food
-const DISPLAY_CATEGORIES = ["All", "Starters", "Main Course", "Cocktails", "Beverages", "Desserts"]
-
-// Helper function to map database categories/items to requested frontend categories for Food
+// Dynamic category helper using item data directly from Admin / Database
 function getMappedCategory(item) {
-  if (item.category === 'Cocktails') return 'Cocktails'
-  if (item.category === 'Beverages') return 'Beverages'
-  if (item.category === 'Desserts') return 'Desserts'
-
-  const startersNames = [
-    "Ancient Grain Granola",
-    "Millet Idli & Heirloom Chutney",
-    "Earthy Quinoa Upma",
-    "Tanah Green Salad",
-    "Smoked Terracotta Paneer",
-    "Wood-fired Herb Crusted Potatoes"
-  ]
-
-  if (startersNames.includes(item.name)) {
-    return 'Starters'
-  }
-  return 'Main Course'
+  return item.category || 'Main Course'
 }
 
 // Calculate sensory profile of a menu item for Food
@@ -391,53 +372,40 @@ const LIQUID_SECTIONS = [
 ]
 
 function isNonVeg(item) {
-  const name = item.name.toLowerCase()
-  const desc = item.desc.toLowerCase()
+  if (typeof item.nonVeg === 'boolean') return item.nonVeg
+  const name = (item.name || '').toLowerCase()
+  const desc = (item.desc || '').toLowerCase()
   return (
     name.includes('chicken') ||
     name.includes('mutton') ||
     name.includes('kodi') ||
     name.includes('fish') ||
+    name.includes('prawn') ||
     desc.includes('chicken') ||
     desc.includes('mutton') ||
-    desc.includes('prawn')
+    desc.includes('prawn') ||
+    desc.includes('meat')
   )
 }
 
 function isChefSpecial(item) {
-  const tags = item.tags.map(t => t.toLowerCase())
+  if (typeof item.special === 'boolean') return item.special
+  const tags = Array.isArray(item.tags) ? item.tags.map(t => t.toLowerCase()) : []
   return (
     tags.includes('signature') ||
     tags.includes('chef special') ||
     tags.includes('chef selection') ||
     tags.includes('must try') ||
+    tags.includes('bestseller') ||
     tags.includes('best seller') ||
     tags.includes('legendary')
   )
 }
 
 function getPairingSuggestion(item) {
+  if (item.pairing) return item.pairing
   if (item.category === 'Cocktails' || item.category === 'Beverages') return null
-  const name = item.name.toLowerCase()
-  if (name.includes('biryani') || name.includes('mutton')) {
-    return '🍸 Pairs with: Rooftop Smoked Old Fashioned'
-  }
-  if (name.includes('risotto') || name.includes('mushroom')) {
-    return '🍷 Pairs with: Sula Dindori Viognier'
-  }
-  if (name.includes('kodi') || name.includes('chips') || name.includes('kebab')) {
-    return '🍹 Pairs with: Forest Herbal Mule'
-  }
-  if (name.includes('pizza') || name.includes('pasta') || name.includes('ravioli')) {
-    return '🍷 Pairs with: Jacob’s Creek Cabernet'
-  }
-  if (name.includes('chocolate') || name.includes('rabri') || name.includes('tart') || name.includes('payasam')) {
-    return '☕ Pairs with: Araku Valley Cold Brew'
-  }
-  if (name.includes('thali') || name.includes('paneer') || name.includes('dal')) {
-    return '🍸 Pairs with: Vedic Bramble Tonic'
-  }
-  return '🍹 Pairs with: Basalt Stone Margarita'
+  return '🍹 Pairs with: Artisanal House Mocktail / Cocktail'
 }
 
 function VegMark() {
@@ -866,7 +834,7 @@ export default function Menu() {
                   <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                     <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto no-scrollbar py-1">
                       {viewMode === 'classic' ? (
-                        DISPLAY_CATEGORIES.map((cat) => {
+                        ['All', ...Array.from(new Set((contextItems && contextItems.length > 0 ? contextItems : menuData.items).map(i => i.category).filter(Boolean)))].map((cat) => {
                           const isActive = selectedCategory === cat
                           return (
                             <button
