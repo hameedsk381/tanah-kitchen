@@ -4,6 +4,7 @@ import {
   Search,
   Plus,
   Edit2,
+  Edit3,
   Trash2,
   Image as ImageIcon,
   Download,
