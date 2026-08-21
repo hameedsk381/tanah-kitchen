@@ -971,14 +971,9 @@ export default function Home() {
                 Our curated packages take care of every detail, from multi-course farm-to-table menus to dedicated team co-ordinators and high-end presentation configurations.
               </p>
 
-              {/* WordPress 2-Column Feature Cards */}
+              {/* WordPress Feature Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
                 {[
-                  "Dedicated AV & Screen Setup",
-                  "Custom Menu Curation",
-                  "Private Host & Service Staff",
-                  "Complimentary Valet Parking",
-                  "Exclusive Area Booking Options",
                   "Artisanal Cocktail Pairings"
                 ].map((item, idx) => (
                   <div
