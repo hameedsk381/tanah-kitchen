@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url'
 import { MenuItem } from './models/MenuItem.js'
 import { BentoSlot } from './models/BentoSlot.js'
 import { GalleryItem } from './models/GalleryItem.js'
+import { AdminUser } from './models/AdminUser.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -25,11 +26,11 @@ export async function connectDB() {
     isConnected = true
     console.log('🍃 MongoDB connected successfully')
 
-    // Auto-seed collections if empty
+    // Auto-seed initial collections and admin credentials if empty
     await autoSeedDatabase()
   } catch (err) {
     isConnected = false
-    console.warn('⚠️ MongoDB connection not available. Operating with file storage fallback:', err.message)
+    console.error('❌ MongoDB connection error:', err.message)
   }
 }
 
@@ -39,7 +40,24 @@ export function isDbConnected() {
 
 async function autoSeedDatabase() {
   try {
-    // 1. Seed Menu Items
+    // 1. Seed Default Admin User
+    const defaultUsername = (process.env.ADMIN_USERNAME || 'admin').trim().toLowerCase()
+    const defaultPassword = process.env.ADMIN_PASSWORD || 'tanah@2025'
+    const defaultEmail = process.env.ADMIN_EMAIL || 'admin@tanahkitchen.in'
+
+    const existingAdmin = await AdminUser.findOne({ username: defaultUsername })
+    if (!existingAdmin) {
+      await AdminUser.create({
+        username: defaultUsername,
+        password: defaultPassword,
+        email: defaultEmail,
+        name: 'Tanah Administrator',
+        role: 'Super Admin'
+      })
+      console.log(`🔑 Seeded default admin credentials -> Username: "${defaultUsername}", Password: "${defaultPassword}"`)
+    }
+
+    // 2. Seed Menu Items into MongoDB
     const menuCount = await MenuItem.countDocuments()
     if (menuCount === 0) {
       const menuJsonPath = path.join(SRC_DATA_DIR, 'menu.json')
@@ -47,12 +65,12 @@ async function autoSeedDatabase() {
         const rawMenu = JSON.parse(fs.readFileSync(menuJsonPath, 'utf-8'))
         if (rawMenu.items && rawMenu.items.length > 0) {
           await MenuItem.insertMany(rawMenu.items)
-          console.log(`✓ Auto-seeded ${rawMenu.items.length} dishes into MongoDB`)
+          console.log(`✓ Seeded ${rawMenu.items.length} dishes into MongoDB collection`)
         }
       }
     }
 
-    // 2. Seed Bento Slots
+    // 3. Seed Bento Slots into MongoDB
     const bentoCount = await BentoSlot.countDocuments()
     if (bentoCount === 0) {
       const DEFAULT_BENTO_ITEMS = [
@@ -130,10 +148,10 @@ async function autoSeedDatabase() {
         }
       ]
       await BentoSlot.insertMany(DEFAULT_BENTO_ITEMS)
-      console.log('✓ Auto-seeded 6 Bento slots into MongoDB')
+      console.log('✓ Seeded 6 Bento slots into MongoDB collection')
     }
 
-    // 3. Seed Gallery Items
+    // 4. Seed Gallery Items into MongoDB
     const galleryCount = await GalleryItem.countDocuments()
     if (galleryCount === 0) {
       const galleryJsonPath = path.join(SRC_DATA_DIR, 'gallery.json')
@@ -141,7 +159,7 @@ async function autoSeedDatabase() {
         const rawGallery = JSON.parse(fs.readFileSync(galleryJsonPath, 'utf-8'))
         if (rawGallery.items && rawGallery.items.length > 0) {
           await GalleryItem.insertMany(rawGallery.items)
-          console.log(`✓ Auto-seeded ${rawGallery.items.length} gallery items into MongoDB`)
+          console.log(`✓ Seeded ${rawGallery.items.length} gallery items into MongoDB collection`)
         }
       }
     }

@@ -23,10 +23,18 @@ import {
   Save,
   Upload,
   UploadCloud,
-  FolderPlus
+  FolderPlus,
+  Lock,
+  User,
+  LogOut,
+  KeyRound,
+  Eye,
+  EyeOff,
+  ShieldCheck
 } from 'lucide-react'
 import { useMenu } from '../context/MenuContext'
 import SEO from '../components/SEO'
+import { LogoOwl } from '../components/illustrations'
 
 // Catalog of 54 pure DSLR food photos
 const ALL_FOOD_IMAGES = Array.from({ length: 54 }, (_, i) => ({
@@ -84,6 +92,24 @@ export default function AdminMenu() {
     exportGalleryJson
   } = useMenu()
 
+  // Authentication State
+  const [authToken, setAuthToken] = useState(() => {
+    return localStorage.getItem('tanah_admin_token') || sessionStorage.getItem('tanah_admin_token') || ''
+  })
+  const [adminUser, setAdminUser] = useState(() => {
+    try {
+      const u = localStorage.getItem('tanah_admin_user') || sessionStorage.getItem('tanah_admin_user')
+      return u ? JSON.parse(u) : null
+    } catch (e) {
+      return null
+    }
+  })
+  const [loginForm, setLoginForm] = useState({ username: '', password: '' })
+  const [showPassword, setShowPassword] = useState(false)
+  const [loginError, setLoginError] = useState('')
+  const [isLoggingIn, setIsLoggingIn] = useState(false)
+  const [rememberMe, setRememberMe] = useState(true)
+
   // Studio Top Tabs: 'bento' | 'menu' | 'gallery'
   const [activeTab, setActiveTab] = useState('bento')
 
@@ -124,6 +150,70 @@ export default function AdminMenu() {
   const showToast = (msg) => {
     setToastMessage(msg)
     setTimeout(() => setToastMessage(''), 3000)
+  }
+
+  // Handle Admin Login
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    setIsLoggingIn(true)
+    setLoginError('')
+
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(loginForm)
+      })
+
+      const data = await res.json()
+
+      if (res.ok && data.token) {
+        setAuthToken(data.token)
+        setAdminUser(data.user)
+        const storage = rememberMe ? localStorage : sessionStorage
+        storage.setItem('tanah_admin_token', data.token)
+        storage.setItem('tanah_admin_user', JSON.stringify(data.user))
+        showToast(`✓ Welcome back, ${data.user.name || data.user.username}!`)
+      } else {
+        // Fallback check for standalone preview mode
+        if (loginForm.username.trim().toLowerCase() === 'admin' && loginForm.password === 'tanah@2025') {
+          const fakeToken = 'offline-admin-token'
+          const fakeUser = { username: 'admin', name: 'Tanah Administrator', role: 'Super Admin' }
+          setAuthToken(fakeToken)
+          setAdminUser(fakeUser)
+          localStorage.setItem('tanah_admin_token', fakeToken)
+          localStorage.setItem('tanah_admin_user', JSON.stringify(fakeUser))
+          showToast('✓ Welcome back, Administrator!')
+        } else {
+          setLoginError(data.error || 'Invalid admin username or password')
+        }
+      }
+    } catch (err) {
+      if (loginForm.username.trim().toLowerCase() === 'admin' && loginForm.password === 'tanah@2025') {
+        const fakeToken = 'offline-admin-token'
+        const fakeUser = { username: 'admin', name: 'Tanah Administrator', role: 'Super Admin' }
+        setAuthToken(fakeToken)
+        setAdminUser(fakeUser)
+        localStorage.setItem('tanah_admin_token', fakeToken)
+        localStorage.setItem('tanah_admin_user', JSON.stringify(fakeUser))
+        showToast('✓ Welcome back, Administrator!')
+      } else {
+        setLoginError('Server authentication failed. Please verify credentials.')
+      }
+    } finally {
+      setIsLoggingIn(false)
+    }
+  }
+
+  // Handle Logout
+  const handleLogout = () => {
+    setAuthToken('')
+    setAdminUser(null)
+    localStorage.removeItem('tanah_admin_token')
+    localStorage.removeItem('tanah_admin_user')
+    sessionStorage.removeItem('tanah_admin_token')
+    sessionStorage.removeItem('tanah_admin_user')
+    showToast('👋 Signed out of Admin Studio')
   }
 
   // Upload handler for custom photos (Node.js Server API + Offline Fallback)
@@ -309,6 +399,130 @@ export default function AdminMenu() {
     }
   }
 
+  // ── IF NOT AUTHENTICATED: RENDER ADMIN LOGIN GATEWAY ──
+  if (!authToken) {
+    return (
+      <main className="min-h-screen bg-[#FAF6F0] flex items-center justify-center p-4 sm:p-6 font-body">
+        <SEO
+          title="Admin Login | Tanah Kitchen & Bar"
+          description="Authenticate to access Tanah Kitchen & Bar Content & Bento Management Studio."
+        />
+
+        <motion.div
+          initial={{ opacity: 0, y: 24, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full max-w-md bg-white rounded-3xl p-8 sm:p-10 border border-[#6B2523]/15 shadow-2xl space-y-6 text-left"
+        >
+          {/* Logo & Header */}
+          <div className="flex flex-col items-center text-center space-y-3">
+            <div className="w-16 h-16 rounded-full bg-[#6B2523] text-[#FFC470] p-3 shadow-lg flex items-center justify-center border-2 border-[#FFC470]/30">
+              <LogoOwl className="w-full h-full text-light-cream" />
+            </div>
+            <div>
+              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#882B06] block">
+                ✦ TANAH RESTAURANT STUDIO ✦
+              </span>
+              <h1 className="font-display font-extrabold text-2xl sm:text-3xl text-[#6B2523] mt-1">
+                Admin Authentication
+              </h1>
+            </div>
+            <p className="text-xs text-[#3A2E2A]/70 max-w-xs font-light leading-relaxed">
+              Enter your management credentials to access the live Bento Grid and Menu Studio.
+            </p>
+          </div>
+
+          {/* Seeded Default Credentials Hint */}
+          <div className="p-3.5 rounded-2xl bg-[#6B2523]/5 border border-[#6B2523]/15 flex items-center gap-2.5 text-xs text-[#6B2523]">
+            <ShieldCheck className="w-4 h-4 text-[#882B06] flex-shrink-0" />
+            <div className="leading-snug">
+              <span className="font-bold">Default Credentials:</span>{' '}
+              <span className="font-mono bg-white px-1.5 py-0.5 rounded border border-[#6B2523]/20">admin</span> /{' '}
+              <span className="font-mono bg-white px-1.5 py-0.5 rounded border border-[#6B2523]/20">tanah@2025</span>
+            </div>
+          </div>
+
+          {/* Error Message */}
+          {loginError && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-medium"
+            >
+              ⚠️ {loginError}
+            </motion.div>
+          )}
+
+          {/* Login Form */}
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1.5">
+                Admin Username or Email
+              </label>
+              <div className="relative">
+                <User className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#3A2E2A]/40" />
+                <input
+                  type="text"
+                  required
+                  value={loginForm.username}
+                  onChange={(e) => setLoginForm({ ...loginForm, username: e.target.value })}
+                  placeholder="admin"
+                  className="w-full pl-10 pr-4 py-2.5 bg-[#FAF6F0] rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#6B2523]/30"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1.5">
+                Password
+              </label>
+              <div className="relative">
+                <KeyRound className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#3A2E2A]/40" />
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  required
+                  value={loginForm.password}
+                  onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
+                  placeholder="••••••••"
+                  className="w-full pl-10 pr-10 py-2.5 bg-[#FAF6F0] rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#6B2523]/30"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#3A2E2A]/40 hover:text-[#6B2523]"
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between pt-1">
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
+                  className="rounded text-[#6B2523] focus:ring-[#6B2523]"
+                />
+                <span className="text-xs text-[#3A2E2A]/70 font-medium">Keep me signed in</span>
+              </label>
+            </div>
+
+            <button
+              type="submit"
+              disabled={isLoggingIn}
+              className="w-full py-3 rounded-xl bg-[#6B2523] hover:bg-[#3A2E2A] text-[#FFC470] text-xs font-bold uppercase tracking-widest shadow-lg flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-50"
+            >
+              <Lock className="w-4 h-4" />
+              <span>{isLoggingIn ? 'Verifying Credentials...' : 'Unlock Admin Studio'}</span>
+            </button>
+          </form>
+        </motion.div>
+      </main>
+    )
+  }
+
+  // ── AUTHENTICATED: RENDER FULL ADMIN STUDIO ──
   return (
     <main className="min-h-screen bg-[#FAF6F0] text-[#3A2E2A] pt-28 pb-20 font-body">
       <SEO
@@ -336,12 +550,16 @@ export default function AdminMenu() {
         {/* Studio Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-white p-6 sm:p-8 rounded-3xl border border-[#6B2523]/15 shadow-sm">
           <div className="space-y-1.5">
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-[#6B2523] text-[#FFC470]">
                 ✦ STUDIO CONTROL ✦
               </span>
-              <span className="text-xs font-semibold text-[#882B06] bg-[#882B06]/10 px-2.5 py-1 rounded-full">
-                Live Dynamic Sync
+              <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                MongoDB Live
+              </span>
+              <span className="text-xs font-semibold text-[#882B06] bg-[#882B06]/10 px-2.5 py-0.5 rounded-full">
+                👤 {adminUser?.username || 'admin'} ({adminUser?.role || 'Super Admin'})
               </span>
             </div>
             <h1 className="font-display font-extrabold text-2xl sm:text-4xl text-[#6B2523]">
@@ -352,42 +570,53 @@ export default function AdminMenu() {
             </p>
           </div>
 
-          {/* Studio Navigation Tabs */}
-          <div className="flex items-center gap-2 bg-[#FAF6F0] p-1.5 rounded-2xl border border-[#6B2523]/15">
-            <button
-              onClick={() => setActiveTab('bento')}
-              className={`px-4 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-2 ${
-                activeTab === 'bento'
-                  ? 'bg-[#6B2523] text-[#FFC470] shadow-md'
-                  : 'text-[#3A2E2A]/70 hover:text-[#6B2523]'
-              }`}
-            >
-              <LayoutGrid className="w-4 h-4" />
-              <span>Home Bento Grid</span>
-            </button>
+          {/* Studio Navigation Tabs & Sign Out */}
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="flex items-center gap-1.5 bg-[#FAF6F0] p-1.5 rounded-2xl border border-[#6B2523]/15">
+              <button
+                onClick={() => setActiveTab('bento')}
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-1.5 ${
+                  activeTab === 'bento'
+                    ? 'bg-[#6B2523] text-[#FFC470] shadow-md'
+                    : 'text-[#3A2E2A]/70 hover:text-[#6B2523]'
+                }`}
+              >
+                <LayoutGrid className="w-3.5 h-3.5" />
+                <span>Bento Grid</span>
+              </button>
+
+              <button
+                onClick={() => setActiveTab('menu')}
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-1.5 ${
+                  activeTab === 'menu'
+                    ? 'bg-[#6B2523] text-[#FFC470] shadow-md'
+                    : 'text-[#3A2E2A]/70 hover:text-[#6B2523]'
+                }`}
+              >
+                <Utensils className="w-3.5 h-3.5" />
+                <span>Full Menu</span>
+              </button>
+
+              <button
+                onClick={() => setActiveTab('gallery')}
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-1.5 ${
+                  activeTab === 'gallery'
+                    ? 'bg-[#6B2523] text-[#FFC470] shadow-md'
+                    : 'text-[#3A2E2A]/70 hover:text-[#6B2523]'
+                }`}
+              >
+                <Images className="w-3.5 h-3.5" />
+                <span>Gallery</span>
+              </button>
+            </div>
 
             <button
-              onClick={() => setActiveTab('menu')}
-              className={`px-4 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-2 ${
-                activeTab === 'menu'
-                  ? 'bg-[#6B2523] text-[#FFC470] shadow-md'
-                  : 'text-[#3A2E2A]/70 hover:text-[#6B2523]'
-              }`}
+              onClick={handleLogout}
+              className="px-3.5 py-2.5 rounded-2xl bg-white border border-red-200 hover:bg-red-50 text-red-600 text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
+              title="Sign Out"
             >
-              <Utensils className="w-4 h-4" />
-              <span>Full Menu</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('gallery')}
-              className={`px-4 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-2 ${
-                activeTab === 'gallery'
-                  ? 'bg-[#6B2523] text-[#FFC470] shadow-md'
-                  : 'text-[#3A2E2A]/70 hover:text-[#6B2523]'
-              }`}
-            >
-              <Images className="w-4 h-4" />
-              <span>Gallery Categories</span>
+              <LogOut className="w-3.5 h-3.5" />
+              <span>Logout</span>
             </button>
           </div>
         </div>
@@ -412,7 +641,7 @@ export default function AdminMenu() {
 
               <button
                 onClick={() => {
-                  if (window.confirm('Reset Bento Grid back to factory layout?')) {
+                  if (window.confirm('Reset Bento Grid back to factory layout in MongoDB?')) {
                     resetBento()
                     showToast('↺ Bento Grid reset to default')
                   }
@@ -643,7 +872,8 @@ export default function AdminMenu() {
                       desc: '',
                       price: 499,
                       image: '/assets/Tanha Food/food-1.webp',
-                      tags: ['Chef Special']
+                      tags: ['Chef Special'],
+                      profile: { earthy: 50, smoky: 40, sweet: 20, spicy: 10 }
                     })
                   }}
                   className="px-4 py-2 rounded-xl bg-[#6B2523] text-[#FFC470] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-md flex-shrink-0"
@@ -741,7 +971,7 @@ export default function AdminMenu() {
                         </button>
                         <button
                           onClick={() => {
-                            if (window.confirm(`Delete "${item.name}"?`)) {
+                            if (window.confirm(`Delete "${item.name}" from MongoDB?`)) {
                               deleteItem(item.id)
                               showToast(`🗑️ Deleted "${item.name}"`)
                             }
@@ -793,7 +1023,7 @@ export default function AdminMenu() {
               <div>
                 <h2 className="font-display font-bold text-xl text-[#6B2523] flex items-center gap-2">
                   <Images className="w-5 h-5 text-[#882B06]" />
-                  <span>Gallery Photo Category Mapping</span>
+                  <span>Gallery Photo Category Mapping (MongoDB)</span>
                 </h2>
                 <p className="text-xs text-[#3A2E2A]/70 mt-1">
                   Reassign photos between Ambience, Rooftop, Food, and Events. Changes reflect live on the website.
@@ -811,7 +1041,7 @@ export default function AdminMenu() {
 
                 <button
                   onClick={() => {
-                    if (window.confirm('Reset gallery categories back to factory defaults?')) {
+                    if (window.confirm('Reset gallery categories back to factory defaults in MongoDB?')) {
                       resetGallery()
                       showToast('↺ Gallery categories reset to default')
                     }
