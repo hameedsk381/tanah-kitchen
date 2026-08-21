@@ -809,48 +809,23 @@ export default function Menu() {
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                      {[
-                        {
-                          name: "Claypot Mutton Biryani",
-                          desc: "Tender farm mutton, caramelized onions & rare spices in earthen clay.",
-                          price: 549,
-                          image: "/assets/Tanha Food/food-1.webp",
-                          tag: "★ BESTSELLER",
-                          nonVeg: true,
-                          spice: 2
-                        },
-                        {
-                          name: "Wild Mushroom Risotto",
-                          desc: "Arborio rice, hand-foraged wild mushrooms & white truffle oil.",
-                          price: 549,
-                          image: "/assets/Tanha Food/food-11.webp",
-                          tag: "★ SIGNATURE",
-                          nonVeg: false,
-                          spice: 0
-                        },
-                        {
-                          name: "Heritage Soil Thali",
-                          desc: "Indigenous seasonal curries, red rice & house-made breads.",
-                          price: 549,
-                          image: "/assets/Tanha Food/food-6.webp",
-                          tag: "✦ CHEF SPECIAL",
-                          nonVeg: false,
-                          spice: 1
-                        }
-                      ].map((special, sIdx) => (
+                      {((filteredItems.filter(item => item.special).length >= 3 
+                          ? filteredItems.filter(item => item.special) 
+                          : filteredItems
+                        ).slice(0, 3)).map((special, sIdx) => (
                         <div
-                          key={sIdx}
+                          key={special.id || sIdx}
                           className="wp-card overflow-hidden group hover:border-[#6B2523]/30 transition-all flex flex-col justify-between"
                         >
                           <div className="relative aspect-[1/1] sm:aspect-[4/4.2] overflow-hidden bg-[#3A2E2A]/5">
                             <img
-                              src={special.image}
+                              src={special.image || "/assets/Tanha Food/food-1.webp"}
                               alt={special.name}
                               className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                             />
                             <div className="absolute top-3 left-3 z-10">
                               <span className="text-[9px] font-bold tracking-wider px-2.5 py-1 rounded-full bg-[#6B2523]/90 text-[#FFC470] backdrop-blur-md border border-[#FFC470]/30 shadow-md">
-                                {special.tag}
+                                {special.special ? "✦ CHEF SPECIAL" : (special.tags?.[0] || "★ FEATURED")}
                               </span>
                             </div>
                             <div className="absolute top-3 right-3 z-10 shadow-md">
