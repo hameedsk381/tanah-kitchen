@@ -6,16 +6,34 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import FloatingActionBar from './components/FloatingActionBar'
 
-// Code-split page chunks
-const Home = lazy(() => import('./pages/Home'))
-const AboutUs = lazy(() => import('./pages/AboutUs'))
-const Menu = lazy(() => import('./pages/Menu'))
-const Gallery = lazy(() => import('./pages/Gallery'))
-const Book = lazy(() => import('./pages/Book'))
-const Contact = lazy(() => import('./pages/Contact'))
-const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
-const TermsAndConditions = lazy(() => import('./pages/TermsAndConditions'))
-const AdminMenu = lazy(() => import('./pages/AdminMenu'))
+// Resilient Chunk Loader with Auto-Recovery on Deployments
+function lazyWithRetry(componentImport) {
+  return lazy(async () => {
+    const pageRefreshed = sessionStorage.getItem('tanah_chunk_refreshed') === 'true'
+    try {
+      const component = await componentImport()
+      sessionStorage.setItem('tanah_chunk_refreshed', 'false')
+      return component
+    } catch (error) {
+      if (!pageRefreshed) {
+        sessionStorage.setItem('tanah_chunk_refreshed', 'true')
+        window.location.reload()
+      }
+      throw error
+    }
+  })
+}
+
+// Code-split page chunks with auto-reload protection
+const Home = lazyWithRetry(() => import('./pages/Home'))
+const AboutUs = lazyWithRetry(() => import('./pages/AboutUs'))
+const Menu = lazyWithRetry(() => import('./pages/Menu'))
+const Gallery = lazyWithRetry(() => import('./pages/Gallery'))
+const Book = lazyWithRetry(() => import('./pages/Book'))
+const Contact = lazyWithRetry(() => import('./pages/Contact'))
+const PrivacyPolicy = lazyWithRetry(() => import('./pages/PrivacyPolicy'))
+const TermsAndConditions = lazyWithRetry(() => import('./pages/TermsAndConditions'))
+const AdminMenu = lazyWithRetry(() => import('./pages/AdminMenu'))
 
 // Lightweight luxury loading spinner
 function PageLoader() {

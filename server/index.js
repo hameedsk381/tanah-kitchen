@@ -745,8 +745,20 @@ app.get('/api/uploads', (req, res) => {
 // ── SERVE FRONTEND (PRODUCTION / SPA FALLBACK) ──
 if (fs.existsSync(DIST_DIR)) {
   app.use(express.static(DIST_DIR, STATIC_CACHE_OPTS))
+
+  // Return 404 for stale/missing assets instead of index.html
+  app.use('/assets', (req, res) => {
+    res.status(404).send('Asset chunk not found')
+  })
+
   app.use((req, res, next) => {
-    if ((req.method === 'GET' || req.method === 'HEAD') && !req.path.startsWith('/api') && !req.path.startsWith('/uploads')) {
+    if (
+      (req.method === 'GET' || req.method === 'HEAD') &&
+      !req.path.startsWith('/api') &&
+      !req.path.startsWith('/uploads') &&
+      !req.path.startsWith('/assets') &&
+      !req.path.includes('.')
+    ) {
       res.setHeader('Cache-Control', 'no-cache')
       return res.sendFile(path.join(DIST_DIR, 'index.html'))
     }
