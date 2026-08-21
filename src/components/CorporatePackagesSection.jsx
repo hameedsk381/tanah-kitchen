@@ -20,18 +20,25 @@ export default function CorporatePackagesSection() {
           <div className="space-y-3 max-w-2xl">
             <div className="flex items-center gap-2">
               <span className="wp-badge wp-badge-maroon">
-                ✦ OFFICIAL PACKAGES ✦
+                BESPOKE PACKAGES
               </span>
               <span className="text-xs font-bold uppercase tracking-widest text-[#882B06]">
                 Minimum 25 Pax
               </span>
             </div>
-            <h2 className="font-display font-bold text-3xl md:text-5xl text-[#6B2523] leading-tight">
-              TANAH Corporate & Gathering Packages
+            <h2 className="font-display font-bold text-3xl md:text-5xl text-[#6B2523] leading-tight uppercase">
+              Customized Corporate Packages
             </h2>
+            <div className="w-16 h-[2px] bg-[#6B2523]/40 rounded-full" />
             <p className="text-sm md:text-base text-[#3A2E2A]/85 font-body leading-relaxed">
-              Curated dining and celebration packages crafted for executive dinners, team offsites, milestone celebrations, and brand receptions on our rooftop sanctuary.
+              Our curated packages take care of every detail, from multi-course farm-to-table menus to dedicated team co-ordinators and high-end presentation configurations.
             </p>
+            <div className="inline-flex items-center gap-2 p-2.5 rounded-xl bg-white border border-[#6B2523]/15 shadow-2xs">
+              <span className="w-5 h-5 rounded-full bg-[#6B2523]/10 text-[#6B2523] flex items-center justify-center text-xs font-bold">
+                ✦
+              </span>
+              <span className="text-xs font-bold text-[#6B2523]">Artisanal Cocktail Pairings &amp; Custom Curation</span>
+            </div>
           </div>
 
           {/* Quick Contact Badge */}
@@ -162,9 +169,9 @@ export default function CorporatePackagesSection() {
                 <div className="pt-6 mt-4 border-t border-[#6B2523]/10">
                   <Link
                     to="/book"
-                    className="w-full py-2.5 rounded-xl bg-[#6B2523] hover:bg-[#3A2E2A] text-[#FFC470] text-xs font-bold uppercase tracking-wider text-center block shadow-xs transition-all"
+                    className="wp-btn-pill bg-[#6B2523] text-[#F6E1CB] hover:bg-[#3A2E2A] hover:text-white shadow-md text-xs font-bold tracking-wider uppercase text-center block w-full"
                   >
-                    Select {pkg.name}
+                    Request Proposal
                   </Link>
                 </div>
               </motion.div>
