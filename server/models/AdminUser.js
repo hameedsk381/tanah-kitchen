@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import bcrypt from 'bcryptjs'
 
 const AdminUserSchema = new mongoose.Schema(
   {
@@ -35,5 +36,13 @@ const AdminUserSchema = new mongoose.Schema(
     timestamps: true
   }
 )
+
+// Compare candidate password with stored hash or plaintext migration
+AdminUserSchema.methods.comparePassword = async function (candidatePassword) {
+  if (this.password.startsWith('$2a$') || this.password.startsWith('$2b$')) {
+    return await bcrypt.compare(candidatePassword, this.password)
+  }
+  return this.password === candidatePassword
+}
 
 export const AdminUser = mongoose.model('AdminUser', AdminUserSchema)

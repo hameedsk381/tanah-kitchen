@@ -26,8 +26,8 @@ services:
       - NODE_ENV=production
       - PORT=5000
       - MONGODB_URI=mongodb://mongo:27017/tanah_kitchen
-      - ADMIN_USERNAME=admin
-      - ADMIN_PASSWORD=tanah@2025
+      - ADMIN_USERNAME=${ADMIN_USERNAME:-admin}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
     volumes:
       # Host volume for custom uploaded photos
       - ./uploads:/app/uploads

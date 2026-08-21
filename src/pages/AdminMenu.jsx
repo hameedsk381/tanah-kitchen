@@ -175,31 +175,10 @@ export default function AdminMenu() {
         storage.setItem('tanah_admin_user', JSON.stringify(data.user))
         showToast(`✓ Welcome back, ${data.user.name || data.user.username}!`)
       } else {
-        // Fallback check for standalone preview mode
-        if (loginForm.username.trim().toLowerCase() === 'admin' && loginForm.password === 'tanah@2025') {
-          const fakeToken = 'offline-admin-token'
-          const fakeUser = { username: 'admin', name: 'Tanah Administrator', role: 'Super Admin' }
-          setAuthToken(fakeToken)
-          setAdminUser(fakeUser)
-          localStorage.setItem('tanah_admin_token', fakeToken)
-          localStorage.setItem('tanah_admin_user', JSON.stringify(fakeUser))
-          showToast('✓ Welcome back, Administrator!')
-        } else {
-          setLoginError(data.error || 'Invalid admin username or password')
-        }
+        setLoginError(data.error || 'Invalid admin credentials')
       }
     } catch (err) {
-      if (loginForm.username.trim().toLowerCase() === 'admin' && loginForm.password === 'tanah@2025') {
-        const fakeToken = 'offline-admin-token'
-        const fakeUser = { username: 'admin', name: 'Tanah Administrator', role: 'Super Admin' }
-        setAuthToken(fakeToken)
-        setAdminUser(fakeUser)
-        localStorage.setItem('tanah_admin_token', fakeToken)
-        localStorage.setItem('tanah_admin_user', JSON.stringify(fakeUser))
-        showToast('✓ Welcome back, Administrator!')
-      } else {
-        setLoginError('Server authentication failed. Please verify credentials.')
-      }
+      setLoginError('Server authentication failed. Please verify credentials.')
     } finally {
       setIsLoggingIn(false)
     }
@@ -430,16 +409,6 @@ export default function AdminMenu() {
             <p className="text-xs text-[#3A2E2A]/70 max-w-xs font-light leading-relaxed">
               Enter your management credentials to access the live Bento Grid and Menu Studio.
             </p>
-          </div>
-
-          {/* Seeded Default Credentials Hint */}
-          <div className="p-3.5 rounded-2xl bg-[#6B2523]/5 border border-[#6B2523]/15 flex items-center gap-2.5 text-xs text-[#6B2523]">
-            <ShieldCheck className="w-4 h-4 text-[#882B06] flex-shrink-0" />
-            <div className="leading-snug">
-              <span className="font-bold">Default Credentials:</span>{' '}
-              <span className="font-mono bg-white px-1.5 py-0.5 rounded border border-[#6B2523]/20">admin</span> /{' '}
-              <span className="font-mono bg-white px-1.5 py-0.5 rounded border border-[#6B2523]/20">tanah@2025</span>
-            </div>
           </div>
 
           {/* Error Message */}

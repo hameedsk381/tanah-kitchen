@@ -90,14 +90,19 @@ app.post('/api/auth/login', async (req, res) => {
       $or: [{ username: cleanUser }, { email: cleanUser }]
     })
 
-    if (!user || user.password !== password) {
-      return res.status(401).json({ error: 'Invalid admin username or password' })
+    if (!user) {
+      return res.status(401).json({ error: 'Invalid admin credentials' })
+    }
+
+    const isMatch = await user.comparePassword(password)
+    if (!isMatch) {
+      return res.status(401).json({ error: 'Invalid admin credentials' })
     }
 
     user.lastLogin = new Date()
     await user.save()
 
-    // Simple session token for admin verification
+    // Session token
     const token = Buffer.from(`${user.username}:${Date.now()}`).toString('base64')
 
     res.json({

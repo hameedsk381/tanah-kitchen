@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import bcrypt from 'bcryptjs'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -40,21 +41,24 @@ export function isDbConnected() {
 
 async function autoSeedDatabase() {
   try {
-    // 1. Seed Default Admin User
+    // 1. Seed Default Admin User if no admin exists
     const defaultUsername = (process.env.ADMIN_USERNAME || 'admin').trim().toLowerCase()
-    const defaultPassword = process.env.ADMIN_PASSWORD || 'tanah@2025'
+    const rawPassword = process.env.ADMIN_PASSWORD || 'tanah@2025'
     const defaultEmail = process.env.ADMIN_EMAIL || 'admin@tanahkitchen.in'
 
-    const existingAdmin = await AdminUser.findOne({ username: defaultUsername })
-    if (!existingAdmin) {
+    const adminCount = await AdminUser.countDocuments()
+    if (adminCount === 0) {
+      const salt = await bcrypt.genSalt(10)
+      const hashedPassword = await bcrypt.hash(rawPassword, salt)
+
       await AdminUser.create({
         username: defaultUsername,
-        password: defaultPassword,
+        password: hashedPassword,
         email: defaultEmail,
         name: 'Tanah Administrator',
         role: 'Super Admin'
       })
-      console.log(`🔑 Seeded default admin credentials -> Username: "${defaultUsername}", Password: "${defaultPassword}"`)
+      console.log(`🔑 Initialized admin user account for: ${defaultUsername}`)
     }
 
     // 2. Seed Menu Items into MongoDB
