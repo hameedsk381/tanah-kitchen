@@ -78,7 +78,7 @@ export default function Book() {
       <section className="section-dark relative py-20 lg:py-28 text-center border-b border-[#FFC470]/15 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/assets/Tanha Ambiance/Ambiance-8.webp"
+            src="/assets/Tanha Ambiance/Ambiance-25.webp"
             alt="Rooftop dining ambiance at Tanah Kitchen & Bar"
             className="w-full h-full object-cover filter brightness-[0.4] scale-105"
           />
@@ -178,7 +178,7 @@ export default function Book() {
               {/* Photo Card */}
               <div className="rounded-2xl overflow-hidden aspect-[16/10] border border-[#6B2523]/15 shadow-sm">
                 <img
-                  src="/assets/Tanha Ambiance/Ambiance-25.webp"
+                  src="/assets/Tanha Ambiance/Ambiance-8.webp"
                   alt="Rooftop terrace seating at Tanah"
                   className="w-full h-full object-cover"
                 />
