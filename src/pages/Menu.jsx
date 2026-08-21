@@ -433,7 +433,7 @@ function NonVegMark() {
 }
 
 export default function Menu() {
-  const { items: contextItems } = useMenu()
+  const { items: contextItems, refreshFromServer } = useMenu()
   const [menuType, setMenuType] = useState('food') // 'food' or 'liquid'
   const [viewMode, setViewMode] = useState('classic') // 'classic' or 'sensory'
   const [selectedCategory, setSelectedCategory] = useState('All')
@@ -441,6 +441,12 @@ export default function Menu() {
   const [searchQuery, setSearchQuery] = useState('')
   const [filteredItems, setFilteredItems] = useState([])
   const [hoveredItem, setHoveredItem] = useState(null)
+
+  useEffect(() => {
+    if (refreshFromServer) {
+      refreshFromServer()
+    }
+  }, [refreshFromServer])
 
   // Sensory Matcher State
   const [sensoryPrefs, setSensoryPrefs] = useState({

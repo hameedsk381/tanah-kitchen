@@ -134,50 +134,44 @@ export function MenuProvider({ children }) {
     return defaultGalleryData
   })
 
-  // Fetch initial state from Node.js server API
-  useEffect(() => {
-    let isMounted = true
+  // Fetch state directly from Node.js server API
+  const refreshFromServer = useCallback(async () => {
+    try {
+      const [menuRes, bentoRes, galleryRes] = await Promise.allSettled([
+        fetch('/api/menu'),
+        fetch('/api/bento'),
+        fetch('/api/gallery')
+      ])
 
-    async function fetchServerData() {
-      try {
-        const [menuRes, bentoRes, galleryRes] = await Promise.allSettled([
-          fetch('/api/menu'),
-          fetch('/api/bento'),
-          fetch('/api/gallery')
-        ])
-
-        if (menuRes.status === 'fulfilled' && menuRes.value.ok) {
-          const serverMenu = await menuRes.value.json()
-          if (isMounted && serverMenu?.items?.length) {
-            setMenuData(serverMenu)
-            setIsServerConnected(true)
-          }
+      if (menuRes.status === 'fulfilled' && menuRes.value.ok) {
+        const serverMenu = await menuRes.value.json()
+        if (serverMenu?.items?.length) {
+          setMenuData(serverMenu)
+          setIsServerConnected(true)
         }
-
-        if (bentoRes.status === 'fulfilled' && bentoRes.value.ok) {
-          const serverBento = await bentoRes.value.json()
-          if (isMounted && Array.isArray(serverBento) && serverBento.length === 6) {
-            setBentoItems(serverBento)
-          }
-        }
-
-        if (galleryRes.status === 'fulfilled' && galleryRes.value.ok) {
-          const serverGallery = await galleryRes.value.json()
-          if (isMounted && serverGallery?.items?.length) {
-            setGalleryData(serverGallery)
-          }
-        }
-      } catch (err) {
-        console.warn('Node.js server not responding, running in local fallback mode:', err)
       }
-    }
 
-    fetchServerData()
+      if (bentoRes.status === 'fulfilled' && bentoRes.value.ok) {
+        const serverBento = await bentoRes.value.json()
+        if (Array.isArray(serverBento) && serverBento.length === 6) {
+          setBentoItems(serverBento)
+        }
+      }
 
-    return () => {
-      isMounted = false
+      if (galleryRes.status === 'fulfilled' && galleryRes.value.ok) {
+        const serverGallery = await galleryRes.value.json()
+        if (serverGallery?.items?.length) {
+          setGalleryData(serverGallery)
+        }
+      }
+    } catch (err) {
+      console.warn('Server fetch warning:', err)
     }
   }, [])
+
+  useEffect(() => {
+    refreshFromServer()
+  }, [refreshFromServer])
 
   // Local Storage Sync
   useEffect(() => {
@@ -348,6 +342,7 @@ export function MenuProvider({ children }) {
   const contextValue = useMemo(
     () => ({
       isServerConnected,
+      refreshFromServer,
       categories: menuData.categories || defaultMenuData.categories,
       items: menuData.items || defaultMenuData.items,
       updateItem,
@@ -369,6 +364,7 @@ export function MenuProvider({ children }) {
     }),
     [
       isServerConnected,
+      refreshFromServer,
       menuData,
       updateItem,
       addItem,
