@@ -394,11 +394,11 @@ export default function AdminMenu() {
           className="w-full max-w-md bg-white rounded-3xl p-8 sm:p-10 border border-[#6B2523]/15 shadow-2xl space-y-6 text-left"
         >
           {/* Logo & Header */}
-          <div className="flex flex-col items-center text-center space-y-3">
+          <div className="flex flex-col items-center text-center space-y-3 bg-transparent">
             <img
               src="/assets/logo.png"
               alt="Tanah Logo"
-              className="h-16 w-16 sm:h-20 sm:w-20 object-contain drop-shadow-lg"
+              className="h-16 w-16 sm:h-20 sm:w-20 object-contain bg-transparent border-none shadow-none"
             />
             <div>
               <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#882B06] block">

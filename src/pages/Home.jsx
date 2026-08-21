@@ -1181,7 +1181,7 @@ export default function Home() {
                 <img
                   src="/assets/logo.png"
                   alt="Tanah Logo"
-                  className="h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 object-contain drop-shadow-xl"
+                  className="h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 object-contain bg-transparent border-none shadow-none"
                 />
                 
                 <div>
