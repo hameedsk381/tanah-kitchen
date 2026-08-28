@@ -55,7 +55,6 @@ const whyTanahList = [
   'Birthday Celebrations',
   'Corporate Events',
   'Family Gatherings',
-  'Wine Tasting Experiences',
   'Curated Dining Experiences',
   'Exclusive Table Reservations'
 ]
