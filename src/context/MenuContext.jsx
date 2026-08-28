@@ -107,15 +107,27 @@ function sanitizeMenuItems(items) {
 export function MenuProvider({ children }) {
   const [isServerConnected, setIsServerConnected] = useState(false)
 
-  // 1. Menu Items State
+  // 1. Menu Items State (Enforce full 168-item catalog and clear legacy stale caches)
   const [menuData, setMenuData] = useState(() => {
     try {
+      // Evict all legacy stale localStorage keys
+      const staleKeys = [
+        'tanah_kitchen_custom_menu_v1',
+        'tanah_kitchen_custom_menu_v2',
+        'tanah_kitchen_menu_v1',
+        'tanah_kitchen_menu_v2',
+        'tanah_kitchen_menu_master_v3'
+      ]
+      staleKeys.forEach(k => {
+        try { localStorage.removeItem(k) } catch (e) {}
+      })
+
       const saved = localStorage.getItem(LOCAL_STORAGE_MENU_KEY)
       if (saved) {
         const parsed = JSON.parse(saved)
-        if (parsed && Array.isArray(parsed.items) && parsed.items.length > 0) {
+        if (parsed && Array.isArray(parsed.items) && parsed.items.length >= defaultMenuData.items.length) {
           return {
-            ...parsed,
+            categories: defaultMenuData.categories,
             items: sanitizeMenuItems(parsed.items)
           }
         }
@@ -169,12 +181,14 @@ export function MenuProvider({ children }) {
 
       if (menuRes.status === 'fulfilled' && menuRes.value.ok) {
         const serverMenu = await menuRes.value.json()
-        if (serverMenu?.items?.length) {
+        if (serverMenu?.items?.length && serverMenu.items.length >= defaultMenuData.items.length) {
           setMenuData({
             categories: serverMenu.categories || defaultMenuData.categories,
             items: sanitizeMenuItems(serverMenu.items)
           })
           setIsServerConnected(true)
+        } else {
+          setMenuData(defaultMenuData)
         }
       }
 

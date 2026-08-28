@@ -428,7 +428,7 @@ export default function Menu() {
 
   // Dynamic Category & Dietary Counts
   const categoryCounts = useMemo(() => {
-    const raw = contextItems && contextItems.length > 0 ? contextItems : menuData.items
+    const raw = (contextItems && contextItems.length >= menuData.items.length) ? contextItems : menuData.items
     const counts = { All: 0 }
     let vegTotal = 0
     let nvTotal = 0
@@ -458,7 +458,8 @@ export default function Menu() {
   }, [contextItems, dietaryFilter])
 
   const availableCategories = useMemo(() => {
-    const allCats = ['All', ...Array.from(new Set((contextItems && contextItems.length > 0 ? contextItems : menuData.items).map(i => i.category).filter(Boolean)))]
+    const raw = (contextItems && contextItems.length >= menuData.items.length) ? contextItems : menuData.items
+    const allCats = ['All', ...Array.from(new Set(raw.map(i => getMappedCategory(i)).filter(Boolean)))]
     return allCats.filter(cat => (categoryCounts[cat] || 0) > 0)
   }, [contextItems, categoryCounts])
 
@@ -466,7 +467,7 @@ export default function Menu() {
     setDietaryFilter(filterId)
     // If the currently selected category has 0 items under the new filter, seamlessly reset to 'All'
     if (selectedCategory !== 'All') {
-      const raw = contextItems && contextItems.length > 0 ? contextItems : menuData.items
+      const raw = (contextItems && contextItems.length >= menuData.items.length) ? contextItems : menuData.items
       const hasMatchingInCat = raw.some(item => {
         if (getMappedCategory(item) !== selectedCategory) return false
         const nv = isNonVeg(item)
@@ -487,7 +488,7 @@ export default function Menu() {
   }, [menuType])
 
   useEffect(() => {
-    const rawItems = contextItems && contextItems.length > 0 ? contextItems : []
+    const rawItems = (contextItems && contextItems.length >= menuData.items.length) ? contextItems : menuData.items
     
     // Deduplicate by name and ID
     const seenNames = new Set()
@@ -936,7 +937,7 @@ export default function Menu() {
                         Filter:
                       </span>
                       {[
-                        { id: 'all', label: 'All Items', count: (contextItems?.length || menuData.items.length) },
+                        { id: 'all', label: 'All Items', count: (categoryCounts._vegTotal || 68) + (categoryCounts._nvTotal || 100) },
                         { id: 'veg', label: '🟢 Veg Only', count: categoryCounts._vegTotal || 68 },
                         { id: 'non-veg', label: '🔴 Non-Veg', count: categoryCounts._nvTotal || 100 },
                         { id: 'special', label: '✦ Chef Specials', count: categoryCounts._specialTotal || 35 }
