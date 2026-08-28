@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, Sliders, Sparkles, Flame, Cookie, Sprout, GlassWater } from 'lucide-react'
 import menuData from '../data/menu.json'
@@ -342,34 +342,20 @@ const LIQUID_SECTIONS = [
 ]
 
 function isNonVeg(item) {
-  if (typeof item.nonVeg === 'boolean') return item.nonVeg
+  if (!item) return false
+  const cat = (item.category || '').toLowerCase()
+  if (cat.includes('non-veg') || cat === 'seafood' || cat === 'wings') return true
+  if (cat.includes('veg starter') || cat === 'salads' || cat === 'indian breads' || cat === 'desserts') return false
   if (typeof item.isVeg === 'boolean') return !item.isVeg
+  if (typeof item.nonVeg === 'boolean') return item.nonVeg
   const name = (item.name || '').toLowerCase()
   const desc = (item.desc || '').toLowerCase()
-  return (
-    name.includes('chicken') ||
-    name.includes('mutton') ||
-    name.includes('kodi') ||
-    name.includes('fish') ||
-    name.includes('prawn') ||
-    name.includes('lamb') ||
-    name.includes('shrimp') ||
-    name.includes('crab') ||
-    name.includes('egg') ||
-    name.includes('anchov') ||
-    name.includes('wing') ||
-    name.includes('pepperoni') ||
-    name.includes('meat') ||
-    desc.includes('chicken') ||
-    desc.includes('mutton') ||
-    desc.includes('prawn') ||
-    desc.includes('lamb') ||
-    desc.includes('shrimp') ||
-    desc.includes('crab') ||
-    desc.includes('fish') ||
-    desc.includes('meat') ||
-    desc.includes('egg')
-  )
+  const nonVegKeywords = [
+    'chicken', 'mutton', 'kodi', 'fish', 'prawn', 'lamb', 'shrimp',
+    'crab', 'egg', 'anchov', 'netallu', 'wing', 'pepperoni', 'meat',
+    'bacon', 'pork', 'beef', 'duck', 'tuna', 'salmon', 'squid', 'calamari'
+  ]
+  return nonVegKeywords.some(kw => name.includes(kw) || desc.includes(kw))
 }
 
 function isChefSpecial(item) {
@@ -440,6 +426,61 @@ export default function Menu() {
     rich: 40
   })
 
+  // Dynamic Category & Dietary Counts
+  const categoryCounts = useMemo(() => {
+    const raw = contextItems && contextItems.length > 0 ? contextItems : menuData.items
+    const counts = { All: 0 }
+    let vegTotal = 0
+    let nvTotal = 0
+    let specialTotal = 0
+
+    for (const item of raw) {
+      if (!item || !item.name) continue
+      const nv = isNonVeg(item)
+      const isSpecial = isChefSpecial(item)
+
+      if (!nv) vegTotal++
+      if (nv) nvTotal++
+      if (isSpecial) specialTotal++
+
+      let matchesDiet = true
+      if (dietaryFilter === 'veg') matchesDiet = !nv && item.category !== 'Cocktails'
+      else if (dietaryFilter === 'non-veg') matchesDiet = nv
+      else if (dietaryFilter === 'special') matchesDiet = isSpecial
+
+      if (matchesDiet) {
+        counts.All = (counts.All || 0) + 1
+        const cat = getMappedCategory(item)
+        counts[cat] = (counts[cat] || 0) + 1
+      }
+    }
+    return { ...counts, _vegTotal: vegTotal, _nvTotal: nvTotal, _specialTotal: specialTotal }
+  }, [contextItems, dietaryFilter])
+
+  const availableCategories = useMemo(() => {
+    const allCats = ['All', ...Array.from(new Set((contextItems && contextItems.length > 0 ? contextItems : menuData.items).map(i => i.category).filter(Boolean)))]
+    return allCats.filter(cat => (categoryCounts[cat] || 0) > 0)
+  }, [contextItems, categoryCounts])
+
+  const handleDietaryFilterChange = (filterId) => {
+    setDietaryFilter(filterId)
+    // If the currently selected category has 0 items under the new filter, seamlessly reset to 'All'
+    if (selectedCategory !== 'All') {
+      const raw = contextItems && contextItems.length > 0 ? contextItems : menuData.items
+      const hasMatchingInCat = raw.some(item => {
+        if (getMappedCategory(item) !== selectedCategory) return false
+        const nv = isNonVeg(item)
+        if (filterId === 'veg') return !nv && item.category !== 'Cocktails'
+        if (filterId === 'non-veg') return nv
+        if (filterId === 'special') return isChefSpecial(item)
+        return true
+      })
+      if (!hasMatchingInCat) {
+        setSelectedCategory('All')
+      }
+    }
+  }
+
   useEffect(() => {
     document.title = menuType === 'food' ? 'Seasonal Menu | Tanah Kitchen & Bar' : 'Liquid Library | Tanah Kitchen & Bar'
     window.scrollTo(0, 0)
@@ -472,13 +513,15 @@ export default function Menu() {
 
       const avgDiff = (diffSpicy + diffSweet + diffEarthy + diffRich) / 4
       const matchScore = Math.max(0, Math.min(100, Math.round(100 - avgDiff)))
+      const itemIsNonVeg = isNonVeg(item)
 
       return {
         ...item,
         mappedCategory: getMappedCategory(item),
         profile,
         matchScore,
-        nonVeg: isNonVeg(item),
+        isVeg: !itemIsNonVeg,
+        nonVeg: itemIsNonVeg,
         special: isChefSpecial(item)
       }
     })
@@ -495,6 +538,13 @@ export default function Menu() {
         result = result.filter(item => item.special)
       }
     } else {
+      if (dietaryFilter === 'veg') {
+        result = result.filter(item => !item.nonVeg && item.category !== 'Cocktails')
+      } else if (dietaryFilter === 'non-veg') {
+        result = result.filter(item => item.nonVeg)
+      } else if (dietaryFilter === 'special') {
+        result = result.filter(item => item.special)
+      }
       // Sort by sensory match percentage in sensory mode
       result = result.sort((a, b) => b.matchScore - a.matchScore)
     }
@@ -835,19 +885,25 @@ export default function Menu() {
                   <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                     <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto no-scrollbar py-1">
                       {viewMode === 'classic' ? (
-                        ['All', ...Array.from(new Set((contextItems && contextItems.length > 0 ? contextItems : menuData.items).map(i => i.category).filter(Boolean)))].map((cat) => {
+                        availableCategories.map((cat) => {
                           const isActive = selectedCategory === cat
+                          const count = categoryCounts[cat] || 0
                           return (
                             <button
                               key={cat}
                               onClick={() => setSelectedCategory(cat)}
-                              className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase cursor-pointer transition-all duration-300 whitespace-nowrap ${
+                              className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase cursor-pointer transition-all duration-300 whitespace-nowrap flex items-center gap-1.5 ${
                                 isActive
                                   ? 'bg-[#6B2523] text-[#F6E1CB] shadow-sm'
                                   : 'bg-white text-[#3A2E2A] border border-[#6B2523]/15 hover:border-[#6B2523]/40'
                               }`}
                             >
-                              {cat}
+                              <span>{cat}</span>
+                              <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono font-bold leading-none ${
+                                isActive ? 'bg-[#FFC470]/30 text-[#FFC470]' : 'bg-[#6B2523]/10 text-[#6B2523]'
+                              }`}>
+                                {count}
+                              </span>
                             </button>
                           )
                         })
@@ -880,23 +936,28 @@ export default function Menu() {
                         Filter:
                       </span>
                       {[
-                        { id: 'all', label: 'All Items' },
-                        { id: 'veg', label: '🟢 Veg Only' },
-                        { id: 'non-veg', label: '🔴 Non-Veg' },
-                        { id: 'special', label: '✦ Chef Specials' }
+                        { id: 'all', label: 'All Items', count: (contextItems?.length || menuData.items.length) },
+                        { id: 'veg', label: '🟢 Veg Only', count: categoryCounts._vegTotal || 68 },
+                        { id: 'non-veg', label: '🔴 Non-Veg', count: categoryCounts._nvTotal || 100 },
+                        { id: 'special', label: '✦ Chef Specials', count: categoryCounts._specialTotal || 35 }
                       ].map((df) => {
                         const isDietActive = dietaryFilter === df.id
                         return (
                           <button
                             key={df.id}
-                            onClick={() => setDietaryFilter(df.id)}
-                            className={`px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer whitespace-nowrap ${
+                            onClick={() => handleDietaryFilterChange(df.id)}
+                            className={`px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
                               isDietActive
-                                ? 'bg-[#6B2523]/15 text-[#6B2523] border border-[#6B2523] font-bold'
-                                : 'bg-white/80 text-[#3A2E2A]/70 border border-[#6B2523]/10 hover:border-[#6B2523]/30'
+                                ? 'bg-[#6B2523] text-[#F6E1CB] border border-[#6B2523] font-bold shadow-sm'
+                                : 'bg-white/90 text-[#3A2E2A]/75 border border-[#6B2523]/15 hover:border-[#6B2523]/40'
                             }`}
                           >
-                            {df.label}
+                            <span>{df.label}</span>
+                            <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono font-bold leading-none ${
+                              isDietActive ? 'bg-[#FFC470]/30 text-[#FFC470]' : 'bg-[#6B2523]/10 text-[#6B2523]'
+                            }`}>
+                              {df.count}
+                            </span>
                           </button>
                         )
                       })}

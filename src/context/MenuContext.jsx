@@ -4,9 +4,9 @@ import defaultGalleryData from '../data/gallery.json'
 
 const MenuContext = createContext(null)
 
-const LOCAL_STORAGE_MENU_KEY = 'tanah_kitchen_custom_menu_v1'
-const LOCAL_STORAGE_BENTO_KEY = 'tanah_kitchen_custom_bento_v1'
-const LOCAL_STORAGE_GALLERY_KEY = 'tanah_kitchen_custom_gallery_v1'
+const LOCAL_STORAGE_MENU_KEY = 'tanah_kitchen_menu_master_v3'
+const LOCAL_STORAGE_BENTO_KEY = 'tanah_kitchen_custom_bento_v2'
+const LOCAL_STORAGE_GALLERY_KEY = 'tanah_kitchen_custom_gallery_v2'
 
 const DEFAULT_BENTO_ITEMS = [
   {
