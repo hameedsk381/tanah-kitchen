@@ -797,9 +797,6 @@ export default function Menu() {
                                 <h4 className="font-display text-base font-bold text-[#6B2523]">
                                   {special.name}
                                 </h4>
-                                <span className="font-display text-base font-bold text-[#6B2523]">
-                                  ₹{special.price}
-                                </span>
                               </div>
                               <p className="text-xs text-[#3A2E2A]/75 font-body leading-relaxed mt-1">
                                 {special.desc}
@@ -950,13 +947,6 @@ export default function Menu() {
                                   </span>
                                 )}
                               </div>
-
-                              {/* Price */}
-                              <div className="text-right flex-shrink-0">
-                                <span className="font-display text-xl font-extrabold text-[#6B2523] tracking-tight">
-                                  ₹{item.price}
-                                </span>
-                              </div>
                             </div>
 
                             <p className="text-xs font-light text-[#3A2E2A]/80 leading-relaxed font-body">
@@ -1054,9 +1044,6 @@ export default function Menu() {
                         <h4 className="font-display text-2xl font-bold text-[#6B2523]">
                           {activeShowcaseItem.name}
                         </h4>
-                        <span className="font-display text-2xl font-extrabold text-[#6B2523]">
-                          ₹{activeShowcaseItem.price}
-                        </span>
                       </div>
 
                       <p className="text-xs font-light text-[#3A2E2A]/80 leading-relaxed font-body">
@@ -1201,15 +1188,6 @@ export default function Menu() {
                           >
                             {section.name}
                           </h3>
-
-                          {/* Column Headers */}
-                          {section.headers && section.headers.length > 0 && (
-                            <div className="flex justify-end gap-4 sm:gap-12 font-bold uppercase flex-shrink-0 text-xs sm:text-sm" style={{ color: 'var(--color-primary-dark)' }}>
-                              {section.headers.map((h, i) => (
-                                <span key={i} className="w-[50px] sm:w-[70px] text-right">{h}</span>
-                              ))}
-                            </div>
-                          )}
                         </div>
 
                         {/* Item Rows */}
@@ -1226,15 +1204,6 @@ export default function Menu() {
                                   </p>
                                 )}
                               </div>
-                              
-                              {/* Prices */}
-                              {item.prices && item.prices.length > 0 && (
-                                <div className="flex justify-end gap-4 sm:gap-12 font-bold whitespace-nowrap text-xs sm:text-base flex-shrink-0" style={{ color: 'var(--color-near-black)' }}>
-                                  {item.prices.map((price, pIdx) => (
-                                    <span key={pIdx} className="w-[50px] sm:w-[70px] text-right">{price}</span>
-                                  ))}
-                                </div>
-                              )}
                             </div>
                           ))}
                         </div>
