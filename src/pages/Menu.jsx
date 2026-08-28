@@ -343,6 +343,7 @@ const LIQUID_SECTIONS = [
 
 function isNonVeg(item) {
   if (typeof item.nonVeg === 'boolean') return item.nonVeg
+  if (typeof item.isVeg === 'boolean') return !item.isVeg
   const name = (item.name || '').toLowerCase()
   const desc = (item.desc || '').toLowerCase()
   return (
@@ -351,10 +352,23 @@ function isNonVeg(item) {
     name.includes('kodi') ||
     name.includes('fish') ||
     name.includes('prawn') ||
+    name.includes('lamb') ||
+    name.includes('shrimp') ||
+    name.includes('crab') ||
+    name.includes('egg') ||
+    name.includes('anchov') ||
+    name.includes('wing') ||
+    name.includes('pepperoni') ||
+    name.includes('meat') ||
     desc.includes('chicken') ||
     desc.includes('mutton') ||
     desc.includes('prawn') ||
-    desc.includes('meat')
+    desc.includes('lamb') ||
+    desc.includes('shrimp') ||
+    desc.includes('crab') ||
+    desc.includes('fish') ||
+    desc.includes('meat') ||
+    desc.includes('egg')
   )
 }
 
