@@ -396,9 +396,6 @@ export default function Home() {
                         {bentoItems[0].desc}
                       </p>
                     </div>
-                    <span className="font-display text-2xl sm:text-3xl font-extrabold text-[#FFC470] flex-shrink-0">
-                      ₹{bentoItems[0].price}
-                    </span>
                   </div>
                   {bentoItems[0].pairing && (
                     <div className="pt-2 flex flex-wrap items-center gap-2 text-xs font-semibold text-[#FFC470]">
@@ -449,9 +446,6 @@ export default function Home() {
                       {bentoItems[1].desc}
                     </p>
                   </div>
-                  <span className="font-display text-xl sm:text-2xl font-extrabold text-[#FFC470] flex-shrink-0">
-                    ₹{bentoItems[1].price}
-                  </span>
                 </div>
               </motion.div>
             )}
@@ -488,14 +482,9 @@ export default function Home() {
                   <span className="text-[9px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
                     {bentoItems[2].category}
                   </span>
-                  <div className="flex justify-between items-baseline gap-1">
-                    <h4 className="font-display text-base font-bold text-white leading-tight">
-                      {bentoItems[2].title}
-                    </h4>
-                    <span className="font-display text-lg font-extrabold text-[#FFC470]">
-                      ₹{bentoItems[2].price}
-                    </span>
-                  </div>
+                  <h4 className="font-display text-base font-bold text-white leading-tight">
+                    {bentoItems[2].title}
+                  </h4>
                 </div>
               </motion.div>
             )}
@@ -530,14 +519,9 @@ export default function Home() {
                   <span className="text-[9px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
                     {bentoItems[3].category}
                   </span>
-                  <div className="flex justify-between items-baseline gap-1">
-                    <h4 className="font-display text-base font-bold text-white leading-tight">
-                      {bentoItems[3].title}
-                    </h4>
-                    <span className="font-display text-lg font-extrabold text-[#FFC470]">
-                      ₹{bentoItems[3].price}
-                    </span>
-                  </div>
+                  <h4 className="font-display text-base font-bold text-white leading-tight">
+                    {bentoItems[3].title}
+                  </h4>
                 </div>
               </motion.div>
             )}
@@ -572,14 +556,9 @@ export default function Home() {
                   <span className="text-[9px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
                     {bentoItems[4].category}
                   </span>
-                  <div className="flex justify-between items-baseline gap-1">
-                    <h4 className="font-display text-base font-bold text-white leading-tight">
-                      {bentoItems[4].title}
-                    </h4>
-                    <span className="font-display text-lg font-extrabold text-[#FFC470]">
-                      ₹{bentoItems[4].price}
-                    </span>
-                  </div>
+                  <h4 className="font-display text-base font-bold text-white leading-tight">
+                    {bentoItems[4].title}
+                  </h4>
                 </div>
               </motion.div>
             )}
@@ -614,14 +593,9 @@ export default function Home() {
                   <span className="text-[9px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
                     {bentoItems[5].category}
                   </span>
-                  <div className="flex justify-between items-baseline gap-1">
-                    <h4 className="font-display text-base font-bold text-white leading-tight">
-                      {bentoItems[5].title}
-                    </h4>
-                    <span className="font-display text-lg font-extrabold text-[#FFC470]">
-                      ₹{bentoItems[5].price}
-                    </span>
-                  </div>
+                  <h4 className="font-display text-base font-bold text-white leading-tight">
+                    {bentoItems[5].title}
+                  </h4>
                 </div>
               </motion.div>
             )}

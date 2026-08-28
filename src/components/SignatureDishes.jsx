@@ -118,9 +118,6 @@ export default function SignatureDishes() {
                     <span className="text-[9px] font-mono tracking-widest text-accent font-semibold">
                       {dish.tag}
                     </span>
-                    <span className="text-xl font-display text-text-dark font-medium">
-                      ₹{dish.price}
-                    </span>
                   </div>
 
                   <h3 className="font-display font-light text-2xl text-text-dark mb-3 transition-colors duration-300">

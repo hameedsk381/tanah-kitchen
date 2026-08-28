@@ -108,12 +108,9 @@ export default function CorporatePackagesSection() {
                     <h3 className="font-display font-bold text-2xl text-[#6B2523]">
                       {pkg.name}
                     </h3>
-                    <div className="mt-2">
-                      <span className="font-display font-extrabold text-2xl md:text-3xl text-[#3A2E2A]">
-                        ₹{pkg.price.toLocaleString('en-IN')}
-                      </span>
-                      <span className="text-[11px] text-[#3A2E2A]/70 font-semibold block">
-                        + taxes / person
+                    <div className="mt-2.5">
+                      <span className="text-xs font-bold uppercase tracking-wider text-[#882B06] bg-[#882B06]/10 px-3 py-1 rounded-full inline-block">
+                        Tailored Corporate Tier
                       </span>
                     </div>
                   </div>
@@ -186,7 +183,6 @@ export default function CorporatePackagesSection() {
               <thead>
                 <tr className="border-b-2 border-[#6B2523]/20 bg-[#FAF6F0]">
                   <th className="p-3.5 font-display font-bold text-[#6B2523] uppercase">Package</th>
-                  <th className="p-3.5 font-display font-bold text-[#6B2523] uppercase">Price/Person</th>
                   <th className="p-3.5 font-semibold text-[#3A2E2A] uppercase">Veg Starters</th>
                   <th className="p-3.5 font-semibold text-[#3A2E2A] uppercase">Non-Veg Starters</th>
                   <th className="p-3.5 font-semibold text-[#3A2E2A] uppercase">Pizza Selection</th>
@@ -200,7 +196,6 @@ export default function CorporatePackagesSection() {
                 {comparisonTable.map((row, idx) => (
                   <tr key={idx} className="border-b border-[#6B2523]/10 hover:bg-[#FAF6F0]/50 transition-colors">
                     <td className="p-3.5 font-display font-bold text-[#6B2523] text-base">{row.name}</td>
-                    <td className="p-3.5 font-extrabold text-[#882B06]">{row.price}</td>
                     <td className="p-3.5 font-bold text-emerald-700">{row.vegStarters}</td>
                     <td className="p-3.5 font-bold text-rose-700">{row.nonVegStarters}</td>
                     <td className="p-3.5 font-bold text-[#882B06]">{row.pizza}</td>
@@ -213,7 +208,7 @@ export default function CorporatePackagesSection() {
               </tbody>
             </table>
             <p className="text-[11px] text-[#3A2E2A]/70 italic mt-4">
-              * All prices are before applicable government taxes and service charges. Minimum guarantee of 25 guests applies.
+              * Minimum guarantee of 25 guests applies. Customizations and beverage pairing packages available upon inquiry.
             </p>
           </div>
         )}

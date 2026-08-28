@@ -12,8 +12,8 @@ export const corporatePackagesData = {
     {
       id: "the-frame",
       name: "THE FRAME",
-      price: 1699,
-      priceLabel: "₹1,699 + taxes / person",
+      price: 0,
+      priceLabel: "Custom Corporate Quote",
       alcoholType: "Non-Alcoholic",
       badge: "✦ ESSENTIAL CORPORATE",
       color: "#882B06",
@@ -37,8 +37,8 @@ export const corporatePackagesData = {
     {
       id: "homegrown",
       name: "HOMEGROWN",
-      price: 2299,
-      priceLabel: "₹2,299 + taxes / person",
+      price: 0,
+      priceLabel: "Custom Corporate Quote",
       alcoholType: "Draught Beer",
       badge: "★ MOST POPULAR",
       popular: true,
@@ -64,8 +64,8 @@ export const corporatePackagesData = {
     {
       id: "forbidden-hour",
       name: "FORBIDDEN HOUR",
-      price: 2799,
-      priceLabel: "₹2,799 + taxes / person",
+      price: 0,
+      priceLabel: "Custom Corporate Quote",
       alcoholType: "Beer + Premium Spirits",
       badge: "🍸 PREMIUM BAR",
       color: "#541B1A",
@@ -101,8 +101,8 @@ export const corporatePackagesData = {
     {
       id: "the-aristocrat",
       name: "THE ARISTOCRAT",
-      price: 3999,
-      priceLabel: "₹3,999 + taxes / person",
+      price: 0,
+      priceLabel: "Custom Corporate Quote",
       alcoholType: "Luxury Top-Shelf Spirits",
       badge: "👑 ULTRA LUXURY",
       color: "#3A2E2A",
@@ -142,7 +142,6 @@ export const corporatePackagesData = {
   comparisonTable: [
     {
       name: "The Frame",
-      price: "₹1,699",
       vegStarters: "3 Veg",
       nonVegStarters: "3 Non-Veg (2 Chk + 1 Fish)",
       pizza: "Veg & Non-Veg",
@@ -153,7 +152,6 @@ export const corporatePackagesData = {
     },
     {
       name: "Homegrown",
-      price: "₹2,299",
       vegStarters: "3 Veg",
       nonVegStarters: "3 Non-Veg (2 Chk + 1 Fish)",
       pizza: "Veg & Non-Veg",
@@ -164,7 +162,6 @@ export const corporatePackagesData = {
     },
     {
       name: "Forbidden Hour",
-      price: "₹2,799",
       vegStarters: "3 Veg",
       nonVegStarters: "3 Non-Veg (1 Chk + 1 Fish + 1 Prawn)",
       pizza: "Veg & Non-Veg",
@@ -175,7 +172,6 @@ export const corporatePackagesData = {
     },
     {
       name: "The Aristocrat",
-      price: "₹3,999",
       vegStarters: "3 Veg",
       nonVegStarters: "3 Non-Veg (1 Chk + 1 Fish + 1 Prawn/Mutton)",
       pizza: "Veg & Non-Veg",
