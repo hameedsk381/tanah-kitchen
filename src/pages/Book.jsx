@@ -99,7 +99,7 @@ export default function Book() {
           '@context': 'https://schema.org',
           '@type': 'FoodEstablishment',
           'name': 'Tanah Kitchen & Bar Reservations',
-          'url': 'https://tanahkitchen.in/book'
+          'url': 'https://tanahkitchen.com/book'
         }}
       />
 

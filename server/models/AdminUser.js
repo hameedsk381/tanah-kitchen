@@ -16,7 +16,7 @@ const AdminUserSchema = new mongoose.Schema(
     },
     email: {
       type: String,
-      default: 'admin@tanahkitchen.in',
+      default: 'admin@tanahkitchen.com',
       trim: true,
       lowercase: true
     },

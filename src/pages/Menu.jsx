@@ -213,7 +213,7 @@ export default function Menu() {
           '@context': 'https://schema.org',
           '@type': 'Menu',
           'name': 'Tanah Dining & Bar Menu',
-          'url': 'https://tanahkitchen.in/menu',
+          'url': 'https://tanahkitchen.com/menu',
           'mainEntity': {
             '@type': 'FoodEstablishment',
             'name': 'Tanah Kitchen & Bar'

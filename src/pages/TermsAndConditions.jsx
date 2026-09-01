@@ -18,7 +18,7 @@ export default function TermsAndConditions() {
           '@context': 'https://schema.org',
           '@type': 'WebPage',
           'name': 'Tanah Kitchen & Bar Terms and Conditions',
-          'url': 'https://tanahkitchen.in/terms-and-conditions'
+          'url': 'https://tanahkitchen.com/terms-and-conditions'
         }}
       />
 

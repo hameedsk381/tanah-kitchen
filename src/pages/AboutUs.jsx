@@ -89,7 +89,7 @@ export default function AboutUs() {
           '@context': 'https://schema.org',
           '@type': 'AboutPage',
           'name': 'The Tanah Story & Philosophy',
-          'url': 'https://tanahkitchen.in/about',
+          'url': 'https://tanahkitchen.com/about',
           'mainEntity': {
             '@type': 'Organization',
             'name': 'Tanah Kitchen & Bar',

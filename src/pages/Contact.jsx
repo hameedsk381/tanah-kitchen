@@ -55,7 +55,7 @@ export default function Contact() {
           '@context': 'https://schema.org',
           '@type': 'LocalBusiness',
           'name': 'Tanah Kitchen & Bar',
-          'url': 'https://tanahkitchen.in/contact',
+          'url': 'https://tanahkitchen.com/contact',
           'telephone': '+91-8977730291',
           'address': {
             '@type': 'PostalAddress',

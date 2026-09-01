@@ -31,7 +31,7 @@ export default function Gallery() {
           '@context': 'https://schema.org',
           '@type': 'ImageGallery',
           'name': 'Tanah Kitchen & Bar Visual Archives',
-          'url': 'https://tanahkitchen.in/gallery'
+          'url': 'https://tanahkitchen.com/gallery'
         }}
       />
 

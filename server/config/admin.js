@@ -20,6 +20,6 @@ export function getAdminConfig() {
   return {
     username: (process.env.ADMIN_USERNAME || 'admin').trim().toLowerCase(),
     password,
-    email: (process.env.ADMIN_EMAIL || 'admin@tanahkitchen.in').trim().toLowerCase()
+    email: (process.env.ADMIN_EMAIL || 'admin@tanahkitchen.com').trim().toLowerCase()
   }
 }

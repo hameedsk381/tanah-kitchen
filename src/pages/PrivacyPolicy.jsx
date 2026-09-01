@@ -18,7 +18,7 @@ export default function PrivacyPolicy() {
           '@context': 'https://schema.org',
           '@type': 'WebPage',
           'name': 'Tanah Kitchen & Bar Privacy Policy',
-          'url': 'https://tanahkitchen.in/privacy-policy'
+          'url': 'https://tanahkitchen.com/privacy-policy'
         }}
       />
 

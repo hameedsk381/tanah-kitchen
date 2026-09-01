@@ -3,43 +3,43 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <!-- 1. Home Page -->
   <url>
-    <loc>https://tanahkitchen.in/</loc>
+    <loc>https://tanahkitchen.com/</loc>
     <lastmod>2025-02-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://tanahkitchen.in/assets/Tanha%20Ambiance/Ambiance-9.webp</image:loc>
+      <image:loc>https://tanahkitchen.com/assets/Tanha%20Ambiance/Ambiance-9.webp</image:loc>
       <image:title>Tanah Kitchen &amp; Bar Rooftop Dining Ambiance</image:title>
     </image:image>
   </url>
 
   <!-- 2. Seasonal Menu & Liquid Library -->
   <url>
-    <loc>https://tanahkitchen.in/menu</loc>
+    <loc>https://tanahkitchen.com/menu</loc>
     <lastmod>2025-02-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://tanahkitchen.in/assets/Tanha%20Image/11.webp</image:loc>
+      <image:loc>https://tanahkitchen.com/assets/Tanha%20Image/11.webp</image:loc>
       <image:title>Claypot Mutton Biryani - Chef Special</image:title>
     </image:image>
   </url>
 
   <!-- 3. Table Booking & Reservations -->
   <url>
-    <loc>https://tanahkitchen.in/book</loc>
+    <loc>https://tanahkitchen.com/book</loc>
     <lastmod>2025-02-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://tanahkitchen.in/assets/Tanha%20Image/02.webp</image:loc>
+      <image:loc>https://tanahkitchen.com/assets/Tanha%20Image/02.webp</image:loc>
       <image:title>Reserve a Table at Tanah Kitchen</image:title>
     </image:image>
   </url>
 
   <!-- 4. Philosophy & Brand Story -->
   <url>
-    <loc>https://tanahkitchen.in/about</loc>
+    <loc>https://tanahkitchen.com/about</loc>
     <lastmod>2025-02-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -47,19 +47,19 @@
 
   <!-- 5. Visual Archives & Gallery -->
   <url>
-    <loc>https://tanahkitchen.in/gallery</loc>
+    <loc>https://tanahkitchen.com/gallery</loc>
     <lastmod>2025-02-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://tanahkitchen.in/assets/Tanha%20Ambiance/Ambiance-25.webp</image:loc>
+      <image:loc>https://tanahkitchen.com/assets/Tanha%20Ambiance/Ambiance-25.webp</image:loc>
       <image:title>Tanah Architecture &amp; Atmosphere</image:title>
     </image:image>
   </url>
 
   <!-- 6. Contact & Location Directions -->
   <url>
-    <loc>https://tanahkitchen.in/contact</loc>
+    <loc>https://tanahkitchen.com/contact</loc>
     <lastmod>2025-02-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -67,7 +67,7 @@
 
   <!-- 7. Privacy Policy -->
   <url>
-    <loc>https://tanahkitchen.in/privacy-policy</loc>
+    <loc>https://tanahkitchen.com/privacy-policy</loc>
     <lastmod>2025-02-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
@@ -75,7 +75,7 @@
 
   <!-- 8. Terms and Conditions -->
   <url>
-    <loc>https://tanahkitchen.in/terms-and-conditions</loc>
+    <loc>https://tanahkitchen.com/terms-and-conditions</loc>
     <lastmod>2025-02-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

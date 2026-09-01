@@ -175,7 +175,7 @@ export default function Home() {
           '@context': 'https://schema.org',
           '@type': ['Restaurant', 'BarOrPub'],
           'name': 'Tanah Bar & Kitchen',
-          'url': 'https://tanahkitchen.in/',
+          'url': 'https://tanahkitchen.com/',
           'telephone': '+91-8977730291',
           'servesCuisine': ['South Indian', 'Continental', 'North Indian', 'Gourmet Bites', 'Craft Cocktails'],
           'priceRange': '₹₹₹',

@@ -9,12 +9,12 @@ export default function SEO({
   description = 'Experience Tanah Kitchen & Bar in Gachibowli, Hyderabad. Rooftop dining, organic farm-to-table cuisine, wood-fired hearths, Liquid Library signature cocktails, and corporate gathering spaces.',
   keywords = DEFAULT_KEYWORDS,
   canonical,
-  ogImage = 'https://tanahkitchen.in/assets/logo.png',
+  ogImage = 'https://tanahkitchen.com/assets/logo.png',
   type = 'restaurant',
   schema
 }) {
   const location = useLocation()
-  const siteUrl = 'https://tanahkitchen.in'
+  const siteUrl = 'https://tanahkitchen.com'
 
   // Map known alias routes to their canonical master URL
   const aliasMap = {
