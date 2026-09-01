@@ -15,7 +15,7 @@
       "price": 249,
       "isVeg": true,
       "desc": "Fresh ripe tomato broth infused with aromatic betel leaf and subtle South Indian spices.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-2.webp",
+      "image": "/assets/Tanha Food/food-2.webp",
       "tags": [
         "Signature",
         "Earthy"
@@ -28,7 +28,7 @@
       "price": 249,
       "isVeg": false,
       "desc": "Andhra-style rustic chicken broth infused with fragrant betel leaves and crushed black pepper.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Chef Special",
         "Spicy"
@@ -41,7 +41,7 @@
       "price": 299,
       "isVeg": true,
       "desc": "Slow-simmered tender drumstick extract with regional herbs, cumin, and mild roasted garlic.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-2.webp",
+      "image": "/assets/Tanha Food/food-2.webp",
       "tags": [
         "Healthy",
         "Comfort"
@@ -54,7 +54,7 @@
       "price": 349,
       "isVeg": false,
       "desc": "Rich coastal crab claw broth with crushed black pepper, shallots, and fresh coriander root.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-15.webp",
+      "image": "/assets/Tanha Food/food-15.webp",
       "tags": [
         "Coastal Special",
         "Hot"
@@ -67,7 +67,7 @@
       "price": 349,
       "isVeg": false,
       "desc": "Traditional marrow bone extract slow-boiled overnight with rustic Telangana spices and pepper.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Traditional",
         "Hearty"
@@ -80,7 +80,7 @@
       "price": 349,
       "isVeg": true,
       "desc": "Creamy velvety broccoli soup garnished with toasted almond flakes and a drizzle of olive oil.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-2.webp",
+      "image": "/assets/Tanha Food/food-2.webp",
       "tags": [
         "Continental",
         "Creamy"
@@ -93,7 +93,7 @@
       "price": 299,
       "isVeg": true,
       "desc": "Crisp golden potato fries tossed with sea salt and served with house dips.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-5.webp",
+      "image": "/assets/Tanha Food/food-5.webp",
       "tags": [
         "Classic",
         "Crunchy"
@@ -106,7 +106,7 @@
       "price": 299,
       "isVeg": true,
       "desc": "Golden fries smothered in velvety melted cheddar cheese sauce and spring onions.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-5.webp",
+      "image": "/assets/Tanha Food/food-5.webp",
       "tags": [
         "Cheesy",
         "Comfort"
@@ -119,7 +119,7 @@
       "price": 299,
       "isVeg": true,
       "desc": "Crunchy potato fries dusted with a fiery African bird's eye peri-peri spice blend.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-5.webp",
+      "image": "/assets/Tanha Food/food-5.webp",
       "tags": [
         "Spicy",
         "Popular"
@@ -132,7 +132,7 @@
       "price": 299,
       "isVeg": true,
       "desc": "Crispy corn tortilla chips loaded with fresh tomato salsa, pickled jalapenos, refried beans, and cheese sauce.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-4.webp",
+      "image": "/assets/Tanha Food/food-4.webp",
       "tags": [
         "Sharing",
         "Cheesy"
@@ -145,7 +145,7 @@
       "price": 399,
       "isVeg": false,
       "desc": "Corn tortilla chips layered with spiced pulled chicken, melted cheese, salsa, and sour cream.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-4.webp",
+      "image": "/assets/Tanha Food/food-4.webp",
       "tags": [
         "Sharing",
         "Bestseller"
@@ -158,7 +158,7 @@
       "price": 299,
       "isVeg": true,
       "desc": "Char-grilled sweet corn ribs tossed in herb butter, lime juice, and smoked paprika.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Grilled",
         "Signature"
@@ -171,7 +171,7 @@
       "price": 299,
       "isVeg": true,
       "desc": "Crispy golden thinly-sliced onion fritters spiced with curry leaves, green chilies, and ajwain.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Telugu Classic",
         "Crispy"
@@ -184,7 +184,7 @@
       "price": 399,
       "isVeg": false,
       "desc": "Bite-sized crunchy battered chicken chunks served with garlic aioli.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Quick Bite",
         "Crispy"
@@ -197,7 +197,7 @@
       "price": 449,
       "isVeg": false,
       "desc": "Andhra street-style spiced boneless chicken fritters fried with whole curry leaves and green chilies.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Bestseller",
         "Spicy"
@@ -210,7 +210,7 @@
       "price": 449,
       "isVeg": true,
       "desc": "Sweet corn kernels tossed with butter, tangy chaat spices, lime, and fresh cilantro.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Light",
         "Zesty"
@@ -223,7 +223,7 @@
       "price": 449,
       "isVeg": true,
       "desc": "Fresh cottage cheese cubes tossed with fiery green chili paste, curry leaves, and mustard seeds.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Spicy",
         "Andhra Style"
@@ -236,7 +236,7 @@
       "price": 449,
       "isVeg": true,
       "desc": "Tender amaranth greens and soy morsels tossed in rustic village-style roasted spice blend.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Nutritious",
         "Local"
@@ -249,7 +249,7 @@
       "price": 449,
       "isVeg": true,
       "desc": "Fresh button mushrooms sautéed in freshly cracked black pepper, garlic, and caramelized onions.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-11.webp",
+      "image": "/assets/Tanha Food/food-11.webp",
       "tags": [
         "Peppery",
         "Earthy"
@@ -262,7 +262,7 @@
       "price": 449,
       "isVeg": true,
       "desc": "Mushrooms pan-tossed with raw mango relish, roasted spices, and crisp curry leaves.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-11.webp",
+      "image": "/assets/Tanha Food/food-11.webp",
       "tags": [
         "Tangy",
         "Seasonal"
@@ -275,7 +275,7 @@
       "price": 449,
       "isVeg": true,
       "desc": "Paneer cubes tossed in signature tangy sorrel leaf (Gongura) masala reduction.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Signature",
         "Tangy"
@@ -288,7 +288,7 @@
       "price": 449,
       "isVeg": true,
       "desc": "Mushrooms & Paneer pan-seared with sun-ripened red chili paste from Rayalaseema.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Spicy",
         "Rayalaseema"
@@ -301,7 +301,7 @@
       "price": 549,
       "isVeg": false,
       "desc": "Tender chicken morsels roasted with aromatic hand-ground curry leaf podi and green chilies.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Signature",
         "Aromatic"
@@ -314,7 +314,7 @@
       "price": 549,
       "isVeg": false,
       "desc": "Fiery coastal Andhra dry-roasted chicken with caramelized shallots and whole spices.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Spicy",
         "Bestseller"
@@ -327,7 +327,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Crispy-fried thinly shredded chicken strips spiced with regional podi, served with mint chutney.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Tanah Original",
         "Crispy"
@@ -340,7 +340,7 @@
       "price": 559,
       "isVeg": false,
       "desc": "Pan-roasted chicken tossed with tart red sorrel leaves and freshly pounded spices.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Tangy",
         "Traditional"
@@ -353,7 +353,7 @@
       "price": 549,
       "isVeg": false,
       "desc": "Succulent chicken pieces pan-roasted with golden toasted cashews and aromatic garam masala.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Rich",
         "Nutty"
@@ -366,7 +366,7 @@
       "price": 399,
       "isVeg": true,
       "desc": "Crisp romaine lettuce, eggless Caesar dressing, herb croutons, and aged Parmesan shavings.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-4.webp",
+      "image": "/assets/Tanha Food/food-4.webp",
       "tags": [
         "Continental",
         "Fresh"
@@ -379,7 +379,7 @@
       "price": 399,
       "isVeg": true,
       "desc": "Fresh garden cucumbers, bell peppers, heirloom tomatoes, Kalamata olives, and creamy feta in extra virgin olive oil.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-4.webp",
+      "image": "/assets/Tanha Food/food-4.webp",
       "tags": [
         "Mediterranean",
         "Healthy"
@@ -392,7 +392,7 @@
       "price": 549,
       "isVeg": false,
       "desc": "Authentic fiery country chicken dry roast from Godavari traditions cooked with shallots.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Chef Special",
         "Fiery"
@@ -405,7 +405,7 @@
       "price": 599,
       "isVeg": false,
       "desc": "Boneless river fish fillets pan-seared with traditional Vijayawada chili masala paste.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-15.webp",
+      "image": "/assets/Tanha Food/food-15.webp",
       "tags": [
         "Coastal",
         "Spicy"
@@ -418,7 +418,7 @@
       "price": 629,
       "isVeg": false,
       "desc": "Crispy shallow-fried coastal anchovies dusted with chili-garlic spice and curry leaves.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-15.webp",
+      "image": "/assets/Tanha Food/food-15.webp",
       "tags": [
         "Seafood Special",
         "Crispy"
@@ -431,7 +431,7 @@
       "price": 629,
       "isVeg": false,
       "desc": "Boneless fish steaks tossed with whole roasted garlic cloves, crushed pepper, and lemon juice.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-15.webp",
+      "image": "/assets/Tanha Food/food-15.webp",
       "tags": [
         "Garlicky",
         "Must Try"
@@ -444,7 +444,7 @@
       "price": 629,
       "isVeg": false,
       "desc": "Spiced coastal crab meat baked inside natural crab shells with a golden breadcrumb crust.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-15.webp",
+      "image": "/assets/Tanha Food/food-15.webp",
       "tags": [
         "Gourmet",
         "Signature"
@@ -457,7 +457,7 @@
       "price": 629,
       "isVeg": false,
       "desc": "Skewered country chicken marinated in rustic spices and roasted over slow charcoal embers.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Wood-Fired",
         "Smoky"
@@ -470,7 +470,7 @@
       "price": 649,
       "isVeg": false,
       "desc": "Royal Andhra style tiger prawns roasted with rich shallot gravy, green chilies, and coconut.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-15.webp",
+      "image": "/assets/Tanha Food/food-15.webp",
       "tags": [
         "Royal Recipe",
         "Bestseller"
@@ -483,7 +483,7 @@
       "price": 649,
       "isVeg": false,
       "desc": "Juicy prawns tossed with seasonal tender tamarind leaves (Chinta Chigaru) for a tart spicy kick.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-15.webp",
+      "image": "/assets/Tanha Food/food-15.webp",
       "tags": [
         "Seasonal",
         "Unique"
@@ -496,7 +496,7 @@
       "price": 649,
       "isVeg": false,
       "desc": "Chicken chunks simmered in a velvety fresh coriander, green chili, and cashew cream sauce.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Creamy",
         "Aromatic"
@@ -509,7 +509,7 @@
       "price": 749,
       "isVeg": false,
       "desc": "Tender mutton cubes slow-roasted in pure desi ghee with Kundapur red chilies and whole spices.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Desi Ghee",
         "Legendary"
@@ -522,7 +522,7 @@
       "price": 749,
       "isVeg": false,
       "desc": "Fiery Telangana village-style mutton fry with hand-pounded spices, garlic, and fresh curry leaves.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Fiery",
         "Telangana Pride"
@@ -535,7 +535,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Crispy chicken wings tossed in fiery Khammam red chili sauce and garlic.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Fiery",
         "Spicy"
@@ -548,7 +548,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Char-grilled chicken wings dusted with zesty peri-peri spice and citrus.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Grilled",
         "Tangy"
@@ -561,7 +561,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Crispy chicken wings glazed with reduced horse gram broth and caramelized shallots.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Tanah Original",
         "Rich"
@@ -574,7 +574,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Smoky wood-fired glazed wings coated in house sweet and tangy barbecue sauce.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Smoky",
         "Sweet & Tangy"
@@ -587,7 +587,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Chicken wings tossed in an authentic sour sorrel leaf glaze with roasted cumin.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Tangy",
         "Regional"
@@ -600,7 +600,7 @@
       "price": 1799,
       "isVeg": false,
       "desc": "Grand signature tasting platter featuring Khammam Karam, Peri Peri, Ulavacharu, and Gongura wings.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Party Platter",
         "Grand Feast"
@@ -613,7 +613,7 @@
       "price": 399,
       "isVeg": true,
       "desc": "Melt-in-mouth spiced hung curd patties infused with green cardamom, coriander, and roasted cumin.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Chef Special",
         "Delicate"
@@ -626,7 +626,7 @@
       "price": 429,
       "isVeg": true,
       "desc": "Char-grilled broccoli florets marinated in cream cheese, cardamom, and saffron in clay oven.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Creamy",
         "Healthy"
@@ -639,7 +639,7 @@
       "price": 439,
       "isVeg": true,
       "desc": "Button mushrooms stuffed with spiced paneer, roasted peppers, and herbs, char-grilled.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-11.webp",
+      "image": "/assets/Tanha Food/food-11.webp",
       "tags": [
         "Gourmet",
         "Juicy"
@@ -652,7 +652,7 @@
       "price": 439,
       "isVeg": true,
       "desc": "Cottage cheese cubes marinated in spiced yogurt and mustard oil, grilled with onions and capsicum.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Classic",
         "Tandoori"
@@ -665,7 +665,7 @@
       "price": 439,
       "isVeg": true,
       "desc": "Claypot-roasted paneer glazed with zesty peri-peri marinade for a modern fusion twist.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Zesty",
         "Spicy"
@@ -678,7 +678,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Succulent boneless chicken morsels in rich cream cheese, cardamom, and cashew marinade.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Mild",
         "Creamy"
@@ -691,7 +691,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Classic whole spring chicken marinated in Kashmiri chili and yogurt, baked in earthen clay oven.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Bestseller",
         "Classic"
@@ -704,7 +704,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Chicken tikka skewers infused with charred roasted garlic cloves and fresh herbs.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Garlicky",
         "Aromatic"
@@ -717,7 +717,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Traditional tandoor-roasted spiced chicken skewers served with mint chutney and onion salad.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Classic",
         "Tandoori"
@@ -730,7 +730,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Tandoor-baked chicken quarters with fiery African bird's eye chili marinade.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Fiery",
         "Zesty"
@@ -743,7 +743,7 @@
       "price": 559,
       "isVeg": false,
       "desc": "Chicken drumsticks stuffed with spiced minced chicken, cheese, and char-grilled.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Chef Special",
         "Rich"
@@ -756,7 +756,7 @@
       "price": 599,
       "isVeg": false,
       "desc": "Jumbo tiger prawns marinated in carom seeds, yogurt, yellow chili, and grilled over charcoal.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-15.webp",
+      "image": "/assets/Tanha Food/food-15.webp",
       "tags": [
         "Seafood",
         "Aromatic"
@@ -769,7 +769,7 @@
       "price": 599,
       "isVeg": false,
       "desc": "Hand-ground minced mutton spiced with royal herbs, skewered and grilled to juicy perfection.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Mughlai",
         "Juicy"
@@ -782,7 +782,7 @@
       "price": 599,
       "isVeg": false,
       "desc": "Tiger prawns seasoned with tandoori spices and cooked in clay hearth.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-15.webp",
+      "image": "/assets/Tanha Food/food-15.webp",
       "tags": [
         "Tandoori",
         "Seafood"
@@ -795,7 +795,7 @@
       "price": 599,
       "isVeg": false,
       "desc": "Tender chicken thighs marinated in spiced egg, cashew paste, and saffron.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Royal",
         "Succulent"
@@ -808,7 +808,7 @@
       "price": 599,
       "isVeg": false,
       "desc": "Tender boneless mutton chunks marinated in raw papaya and roasted spices, charcoal grilled.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Charcoal",
         "Tender"
@@ -821,7 +821,7 @@
       "price": 439,
       "isVeg": true,
       "desc": "Baby brinjals stuffed with roasted peanut, sesame, and dry coconut masala in rich gravy.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-6.webp",
+      "image": "/assets/Tanha Food/food-6.webp",
       "tags": [
         "Andhra Icon",
         "Traditional"
@@ -834,7 +834,7 @@
       "price": 439,
       "isVeg": true,
       "desc": "Whole roasted cashews simmered in a luscious, tangy tomato and butter gravy.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-6.webp",
+      "image": "/assets/Tanha Food/food-6.webp",
       "tags": [
         "Rich",
         "Nutty"
@@ -847,7 +847,7 @@
       "price": 439,
       "isVeg": true,
       "desc": "Fresh cottage cheese in silky, mildly-spiced tomato, butter, and cashew gravy.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-6.webp",
+      "image": "/assets/Tanha Food/food-6.webp",
       "tags": [
         "All-Time Favorite",
         "Creamy"
@@ -860,7 +860,7 @@
       "price": 439,
       "isVeg": true,
       "desc": "Button mushrooms sautéed in a thick onion, tomato, and aromatic spice gravy.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-11.webp",
+      "image": "/assets/Tanha Food/food-11.webp",
       "tags": [
         "Hearty",
         "Earthy"
@@ -873,7 +873,7 @@
       "price": 439,
       "isVeg": true,
       "desc": "Comforting Telugu yellow lentils tempered with mustard, cumin, garlic, and desi ghee.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-6.webp",
+      "image": "/assets/Tanha Food/food-6.webp",
       "tags": [
         "Home Style",
         "Comfort"
@@ -886,7 +886,7 @@
       "price": 439,
       "isVeg": false,
       "desc": "Chicken pieces simmered with tangy red sorrel leaves and roasted country spices.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Andhra Classic",
         "Tangy"
@@ -899,7 +899,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Traditional coastal chicken curry prepared with freshly ground coriander and coconut paste.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Rustic",
         "Spicy"
@@ -912,7 +912,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Chicken cooked with raw green mango slices for a refreshing sweet-tart and spicy depth.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Seasonal",
         "Unique"
@@ -925,7 +925,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Home-style chicken and golden boiled eggs cooked together in rich tomato-onion masala.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Comfort",
         "Traditional"
@@ -938,7 +938,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Tandoori chicken morsels in smooth satin tomato-makhani gravy with fenugreek and butter.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Bestseller",
         "Creamy"
@@ -951,7 +951,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Char-grilled chicken tikka in robust onion-tomato masala with diced peppers.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Tandoori Fusion",
         "Rich"
@@ -964,7 +964,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Chicken tossed with crunchy bell peppers and freshly pounded coriander-chili spices.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Semi-Dry",
         "Spicy"
@@ -977,7 +977,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Chicken pieces slow-simmered in rich spiced minced chicken keema gravy.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Royal",
         "Decadent"
@@ -990,7 +990,7 @@
       "price": 639,
       "isVeg": false,
       "desc": "Classic slow-cooked mutton gravy infused with cinnamon, cardamom, and caramelized shallots.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Slow-Cooked",
         "Rich"
@@ -1003,7 +1003,7 @@
       "price": 649,
       "isVeg": false,
       "desc": "Traditional free-range country chicken stew with thin, fiery pepper-shallot broth.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Country Chicken",
         "Fiery"
@@ -1016,7 +1016,7 @@
       "price": 649,
       "isVeg": false,
       "desc": "Tender mutton pieces cooked with raw mango chunks for a sweet-tart spicy depth.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Seasonal",
         "Chef Special"
@@ -1029,7 +1029,7 @@
       "price": 649,
       "isVeg": false,
       "desc": "Mutton slow-simmered with sour Gongura leaves, green chilies, and desi ghee.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Signature",
         "Tangy"
@@ -1042,7 +1042,7 @@
       "price": 649,
       "isVeg": false,
       "desc": "Kashmiri-style slow-braised mutton with aromatic fennel, ginger, and Kashmiri chili essence.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Kashmiri",
         "Aromatic"
@@ -1055,7 +1055,7 @@
       "price": 649,
       "isVeg": false,
       "desc": "Authentic Hyderabadi mutton and chana dal stew simmered with tender bottle gourd.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Hyderabadi",
         "Traditional"
@@ -1068,7 +1068,7 @@
       "price": 79,
       "isVeg": true,
       "desc": "Whole wheat flatbread baked against earthen tandoor walls.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Tandoor",
         "Whole Wheat"
@@ -1081,7 +1081,7 @@
       "price": 89,
       "isVeg": true,
       "desc": "Soft leavened refined flour bread baked in earthen clay oven.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Classic",
         "Tandoor"
@@ -1094,7 +1094,7 @@
       "price": 99,
       "isVeg": true,
       "desc": "Fluffy naan brushed with melted farm butter or infused with roasted minced garlic.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Bestseller",
         "Buttery"
@@ -1107,7 +1107,7 @@
       "price": 129,
       "isVeg": true,
       "desc": "Multi-layered flaky whole wheat bread cooked golden with ghee.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Flaky",
         "Layered"
@@ -1120,7 +1120,7 @@
       "price": 129,
       "isVeg": true,
       "desc": "Soft leavened bread sprinkled with coriander, nigella seeds, and mild herbs.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Punjabi",
         "Soft"
@@ -1133,7 +1133,7 @@
       "price": 159,
       "isVeg": true,
       "desc": "Steamed aged premium long-grain basmati rice.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Basic",
         "Steamed"
@@ -1146,7 +1146,7 @@
       "price": 249,
       "isVeg": true,
       "desc": "Hyderabadi seasoned rice cooked with whole spices, mint, coriander, and caramelized onions.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Hyderabadi",
         "Aromatic"
@@ -1159,7 +1159,7 @@
       "price": 249,
       "isVeg": true,
       "desc": "Comforting tempered rice with home-set yogurt, mustard seeds, ginger, and pomegranate.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-6.webp",
+      "image": "/assets/Tanha Food/food-6.webp",
       "tags": [
         "Comfort",
         "Cooling"
@@ -1172,7 +1172,7 @@
       "price": 249,
       "isVeg": true,
       "desc": "Wok-tossed rice with crunchy garden vegetables and light soy seasoning.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Indo-Chinese",
         "Classic"
@@ -1185,7 +1185,7 @@
       "price": 429,
       "isVeg": false,
       "desc": "Wok-fried rice with diced chicken, egg ribbons, spring onions, and oriental spices.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Indo-Chinese",
         "Bestseller"
@@ -1198,7 +1198,7 @@
       "price": 249,
       "isVeg": true,
       "desc": "Fragrant rice tossed in intense crispy golden burnt garlic and scallions.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Garlicky",
         "Aromatic"
@@ -1211,7 +1211,7 @@
       "price": 249,
       "isVeg": true,
       "desc": "Classic stir-fried noodles with shredded cabbage, carrots, bell peppers, and scallions.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Noodles",
         "Classic"
@@ -1224,7 +1224,7 @@
       "price": 399,
       "isVeg": true,
       "desc": "Fragrant spiced basmati rice layered with stuffed baby brinjals and roasted masala.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Andhra Icon",
         "Signature"
@@ -1237,7 +1237,7 @@
       "price": 399,
       "isVeg": true,
       "desc": "Spicy green chili tempered basmati rice layered with succulent paneer cubes and ghee.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Spicy",
         "Vegetarian"
@@ -1250,7 +1250,7 @@
       "price": 399,
       "isVeg": true,
       "desc": "Aromatic basmati rice slow-cooked with fresh garden vegetables, mint, and whole spices.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Mild",
         "Healthy"
@@ -1263,7 +1263,7 @@
       "price": 399,
       "isVeg": true,
       "desc": "Button mushrooms and spiced basmati rice slow-steamed with saffron and fried onions.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-11.webp",
+      "image": "/assets/Tanha Food/food-11.webp",
       "tags": [
         "Earthy",
         "Rich"
@@ -1276,7 +1276,7 @@
       "price": 459,
       "isVeg": false,
       "desc": "Fiery green chili chicken pulao cooked in regional ghee with fragrant herbs.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Bestseller",
         "Spicy"
@@ -1289,7 +1289,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Indigenous aromatic short-grain Chitti Muthyalu rice cooked with succulent chicken and spices.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Heritage Rice",
         "Signature"
@@ -1302,7 +1302,7 @@
       "price": 599,
       "isVeg": false,
       "desc": "Free-range country chicken slow-cooked with aromatic Chitti Muthyalu pearl rice.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Country Chicken",
         "Hearty"
@@ -1315,7 +1315,7 @@
       "price": 599,
       "isVeg": false,
       "desc": "Tender mutton pieces simmered in rich spices with traditional fragrant Chitti Muthyalu rice.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Tanah Pride",
         "Rich"
@@ -1328,7 +1328,7 @@
       "price": 599,
       "isVeg": false,
       "desc": "Coastal tiger prawns cooked with indigenous pearl rice and regional coastal aromatics.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-15.webp",
+      "image": "/assets/Tanha Food/food-15.webp",
       "tags": [
         "Seafood",
         "Signature"
@@ -1341,7 +1341,7 @@
       "price": 429,
       "isVeg": true,
       "desc": "Crispy sliced lotus stem chips glazed with sweet wild honey, sesame, and red chili.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Crunchy",
         "Sweet & Spicy"
@@ -1354,7 +1354,7 @@
       "price": 429,
       "isVeg": true,
       "desc": "Crispy crumb-fried button mushrooms stuffed with spiced cheese and spinach.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-11.webp",
+      "image": "/assets/Tanha Food/food-11.webp",
       "tags": [
         "Cheesy",
         "Appetizer"
@@ -1367,7 +1367,7 @@
       "price": 429,
       "isVeg": true,
       "desc": "Panko-crusted crispy paneer cubes served with sweet chili dipping sauce.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Crispy",
         "Popular"
@@ -1380,7 +1380,7 @@
       "price": 439,
       "isVeg": true,
       "desc": "Savory tandoori vegetable and cheese mousse skewers shaped like kulfis and char-grilled.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Chef Special",
         "Fusion"
@@ -1393,7 +1393,7 @@
       "price": 439,
       "isVeg": true,
       "desc": "Crispy baby corn tossed in wok with bell peppers, garlic, and dark soy sauce.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Indo-Chinese",
         "Crunchy"
@@ -1406,7 +1406,7 @@
       "price": 439,
       "isVeg": true,
       "desc": "Battered sweet corn fried crisp and tossed in chili-pepper seasoning with spring onions.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Bar Bite",
         "Addictive"
@@ -1419,7 +1419,7 @@
       "price": 439,
       "isVeg": true,
       "desc": "Golden molten cheese spheres infused with spicy jalapeno bits and herb crust.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Cheesy",
         "Molten"
@@ -1432,7 +1432,7 @@
       "price": 439,
       "isVeg": true,
       "desc": "Baked jacket potatoes loaded with herb butter, cheddar, and tangy sour cream.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-5.webp",
+      "image": "/assets/Tanha Food/food-5.webp",
       "tags": [
         "Continental",
         "Comfort"
@@ -1445,7 +1445,7 @@
       "price": 439,
       "isVeg": true,
       "desc": "Fresh mushrooms tossed in spicy Thai sweet chili sauce with kaffir lime and basil.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-11.webp",
+      "image": "/assets/Tanha Food/food-11.webp",
       "tags": [
         "Thai",
         "Zesty"
@@ -1458,7 +1458,7 @@
       "price": 439,
       "isVeg": true,
       "desc": "Crispy golden spring rolls packed with seasoned paneer, julienned vegetables, and glass noodles.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-29.webp",
+      "image": "/assets/Tanha Food/food-29.webp",
       "tags": [
         "Crispy",
         "Snack"
@@ -1471,7 +1471,7 @@
       "price": 459,
       "isVeg": false,
       "desc": "Boiled eggs battered, fried golden, and wok-tossed with chili garlic sauce and scallions.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Indo-Chinese",
         "Spicy"
@@ -1484,7 +1484,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Crumb-fried succulent chicken tenders served with house tartar dip and french fries.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Continental",
         "Crispy"
@@ -1497,7 +1497,7 @@
       "price": 549,
       "isVeg": false,
       "desc": "Marinated chicken strips wrapped in crispy noodle threads and fried golden.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Chef Special",
         "Crunchy"
@@ -1510,7 +1510,7 @@
       "price": 549,
       "isVeg": false,
       "desc": "Tender chicken meatballs glazed in tangy spicy buffalo sauce and sprinkled with sesame.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "American",
         "Spicy"
@@ -1523,7 +1523,7 @@
       "price": 549,
       "isVeg": false,
       "desc": "Classic Indo-Chinese style wok-tossed chicken with green chilies, bell peppers, and soy.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "All-Time Favorite",
         "Spicy"
@@ -1536,7 +1536,7 @@
       "price": 549,
       "isVeg": false,
       "desc": "Crispy chicken strips tossed in spicy red dragon chili sauce with toasted cashews.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Spicy",
         "Nutty"
@@ -1549,7 +1549,7 @@
       "price": 549,
       "isVeg": false,
       "desc": "Chicken bites cooked in sweet and spicy Thai chili glaze with fresh Thai basil.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Thai",
         "Sweet & Spicy"
@@ -1562,7 +1562,7 @@
       "price": 549,
       "isVeg": false,
       "desc": "Crispy chicken tossed with Thai herbs, julienned ginger, and crushed red chilies.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Thai",
         "Aromatic"
@@ -1575,7 +1575,7 @@
       "price": 549,
       "isVeg": false,
       "desc": "Herb-crusted chicken breast baked with parmesan cheese and tomato sauce.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Italian",
         "Cheesy"
@@ -1588,7 +1588,7 @@
       "price": 549,
       "isVeg": false,
       "desc": "Golden fried chicken coated in a rich, creamy savory sauce with mild spices.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Unique",
         "Creamy"
@@ -1601,7 +1601,7 @@
       "price": 629,
       "isVeg": false,
       "desc": "Crumbed fish fillets fried golden with steakhouse french fries and tartar sauce.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-15.webp",
+      "image": "/assets/Tanha Food/food-15.webp",
       "tags": [
         "British Classic",
         "Crispy"
@@ -1614,7 +1614,7 @@
       "price": 629,
       "isVeg": false,
       "desc": "Baked tender zucchini boats filled with garlic shrimp, parmesan, and melted mozzarella.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-15.webp",
+      "image": "/assets/Tanha Food/food-15.webp",
       "tags": [
         "Gourmet",
         "Low Carb"
@@ -1627,7 +1627,7 @@
       "price": 629,
       "isVeg": false,
       "desc": "Tender grilled lamb chops brushed with vibrant fresh basil-pine nut pesto.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Grilled",
         "Herbaceous"
@@ -1640,7 +1640,7 @@
       "price": 649,
       "isVeg": false,
       "desc": "Thinly sliced lamb tossed with fiery bird's eye chilies, galangal, and bamboo shoots.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Thai",
         "Fiery"
@@ -1653,7 +1653,7 @@
       "price": 599,
       "isVeg": false,
       "desc": "Batter-fried fish tossed with chilies, garlic, and scallions in rich soy reduction.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-15.webp",
+      "image": "/assets/Tanha Food/food-15.webp",
       "tags": [
         "Indo-Chinese",
         "Spicy"
@@ -1666,7 +1666,7 @@
       "price": 599,
       "isVeg": false,
       "desc": "Pan-seared fish fillets in delicate lemon-butter sauce with capers and fresh parsley.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-15.webp",
+      "image": "/assets/Tanha Food/food-15.webp",
       "tags": [
         "Continental",
         "Citrusy"
@@ -1679,7 +1679,7 @@
       "price": 629,
       "isVeg": false,
       "desc": "Golden fried spiced prawns tossed with fried curry leaves and green chilies.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-15.webp",
+      "image": "/assets/Tanha Food/food-15.webp",
       "tags": [
         "Hyderabad Classic",
         "Crispy"
@@ -1692,7 +1692,7 @@
       "price": 629,
       "isVeg": false,
       "desc": "Light and airy Japanese-style batter-fried prawns with sweet chili dip.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-15.webp",
+      "image": "/assets/Tanha Food/food-15.webp",
       "tags": [
         "Japanese",
         "Crispy"
@@ -1705,7 +1705,7 @@
       "price": 649,
       "isVeg": false,
       "desc": "Grilled tiger prawns drizzled with Argentine fresh herb chimichurri sauce.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-15.webp",
+      "image": "/assets/Tanha Food/food-15.webp",
       "tags": [
         "Grilled",
         "Herbaceous"
@@ -1718,7 +1718,7 @@
       "price": 649,
       "isVeg": false,
       "desc": "Crispy seasoned shrimp bites tossed with wafer seasonings and scallions.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-15.webp",
+      "image": "/assets/Tanha Food/food-15.webp",
       "tags": [
         "Snack",
         "Crunchy"
@@ -1731,7 +1731,7 @@
       "price": 699,
       "isVeg": false,
       "desc": "Char-grilled lamb chops served with fresh parsley-garlic chimichurri.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Chef Special",
         "Grilled"
@@ -1744,7 +1744,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Creamy parmesan and butter sauce tossed with penne, roasted garlic, and chicken or mushrooms.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-11.webp",
+      "image": "/assets/Tanha Food/food-11.webp",
       "tags": [
         "Italian",
         "Creamy"
@@ -1757,7 +1757,7 @@
       "price": 449,
       "isVeg": true,
       "desc": "Penne pasta tossed in spicy garlic, tomato, and red chili sauce with fresh basil.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-11.webp",
+      "image": "/assets/Tanha Food/food-11.webp",
       "tags": [
         "Spicy",
         "Classic"
@@ -1770,7 +1770,7 @@
       "price": 499,
       "isVeg": true,
       "desc": "Baked Mexican corn tortillas rolled around spiced vegetables, beans, and melted cheese.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-4.webp",
+      "image": "/assets/Tanha Food/food-4.webp",
       "tags": [
         "Mexican",
         "Cheesy"
@@ -1783,7 +1783,7 @@
       "price": 559,
       "isVeg": false,
       "desc": "Seared chicken breast in creamy sun-dried tomato sauce with fragrant butter herb rice.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Tuscan",
         "Gourmet"
@@ -1796,7 +1796,7 @@
       "price": 599,
       "isVeg": false,
       "desc": "Handcrafted pasta pockets stuffed with slow-cooked spiced mutton keema in sage butter sauce.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Artisanal",
         "Handcrafted"
@@ -1809,7 +1809,7 @@
       "price": 599,
       "isVeg": false,
       "desc": "Rolled chicken breast stuffed with spinach and cheese, grilled golden with herb jus.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Grilled",
         "Cheesy"
@@ -1822,7 +1822,7 @@
       "price": 599,
       "isVeg": false,
       "desc": "Crumb-fried chicken breast rolled with cheese and herbs, served with potato mash.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "French Classic",
         "Rich"
@@ -1835,7 +1835,7 @@
       "price": 599,
       "isVeg": false,
       "desc": "Breaded chicken breast stuffed with herb butter, served with creamy mushroom sauce.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Continental",
         "Must Try"
@@ -1848,7 +1848,7 @@
       "price": 599,
       "isVeg": false,
       "desc": "Baked fish fillet on a bed of seasoned spinach, mornay sauce, and herb butter rice.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-15.webp",
+      "image": "/assets/Tanha Food/food-15.webp",
       "tags": [
         "Seafood",
         "Healthy"
@@ -1861,7 +1861,7 @@
       "price": 599,
       "isVeg": false,
       "desc": "Diced chicken and tender zucchini in a rich creamy sherry cream sauce with peppers.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Creamy",
         "Comfort"
@@ -1874,7 +1874,7 @@
       "price": 599,
       "isVeg": true,
       "desc": "Classic Onion, Tomato, and Capsicum on crispy thin crust with mozzarella cheese.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-23.webp",
+      "image": "/assets/Tanha Food/food-23.webp",
       "tags": [
         "Wood-Fired",
         "Classic"
@@ -1887,7 +1887,7 @@
       "price": 649,
       "isVeg": true,
       "desc": "Handmade pizza with crisp golden crust, tomato sauce, melted cheese, bell peppers, corn, and basil.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-23.webp",
+      "image": "/assets/Tanha Food/food-23.webp",
       "tags": [
         "Signature",
         "Farm Fresh"
@@ -1900,7 +1900,7 @@
       "price": 649,
       "isVeg": true,
       "desc": "Herb pizza base with house basil pesto, heirloom cherry tomatoes, and bocconcini.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-23.webp",
+      "image": "/assets/Tanha Food/food-23.webp",
       "tags": [
         "Artisanal",
         "Pesto"
@@ -1913,7 +1913,7 @@
       "price": 699,
       "isVeg": true,
       "desc": "Classic Neapolitan pizza with San Marzano tomato sauce, fresh buffalo mozzarella, and basil.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-23.webp",
+      "image": "/assets/Tanha Food/food-23.webp",
       "tags": [
         "Neapolitan",
         "Classic"
@@ -1926,7 +1926,7 @@
       "price": 699,
       "isVeg": false,
       "desc": "Wood-fired crust topped with creamy butter chicken, red onions, and melted mozzarella.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-23.webp",
+      "image": "/assets/Tanha Food/food-23.webp",
       "tags": [
         "Fusion Favorite",
         "Bestseller"
@@ -1939,7 +1939,7 @@
       "price": 699,
       "isVeg": false,
       "desc": "Tandoor chicken tikka chunks with bell peppers, red onion, and roasted spice oil.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-23.webp",
+      "image": "/assets/Tanha Food/food-23.webp",
       "tags": [
         "Tandoori",
         "Spicy"
@@ -1952,7 +1952,7 @@
       "price": 699,
       "isVeg": false,
       "desc": "Fiery peri-peri chicken cubes, jalapenos, and mozzarella on wood-fired crust.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-23.webp",
+      "image": "/assets/Tanha Food/food-23.webp",
       "tags": [
         "Spicy",
         "Zesty"
@@ -1965,7 +1965,7 @@
       "price": 699,
       "isVeg": true,
       "desc": "Decadent wood-fired pizza layered with creamy macaroni pasta and aged cheddar.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-23.webp",
+      "image": "/assets/Tanha Food/food-23.webp",
       "tags": [
         "Indulgent",
         "Cheesy"
@@ -1978,7 +1978,7 @@
       "price": 799,
       "isVeg": false,
       "desc": "Artisan pizza loaded with spiced pepperoni slices, tomato sugo, and melted mozzarella.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-23.webp",
+      "image": "/assets/Tanha Food/food-23.webp",
       "tags": [
         "Classic",
         "Gourmet"
@@ -1991,7 +1991,7 @@
       "price": 799,
       "isVeg": false,
       "desc": "Loaded feast with chicken tikka, spiced keema, sausage, and smoked bacon bits.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-23.webp",
+      "image": "/assets/Tanha Food/food-23.webp",
       "tags": [
         "Grand Feast",
         "Meat Lovers"
@@ -2004,7 +2004,7 @@
       "price": 249,
       "isVeg": false,
       "desc": "Fresh hot tandoori roti served with rustic spiced minced mutton keema curry.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Comfort",
         "Street Style"
@@ -2017,7 +2017,7 @@
       "price": 349,
       "isVeg": true,
       "desc": "Traditional slow-simmered lentil sambar rice with ghee tempering and appadalu.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-6.webp",
+      "image": "/assets/Tanha Food/food-6.webp",
       "tags": [
         "Comfort",
         "Homestyle"
@@ -2030,7 +2030,7 @@
       "price": 449,
       "isVeg": true,
       "desc": "Classic Andhra meal with hot rice, thick yellow dal, mango avakaya, raw tamarind rasam, and crispy fry.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-6.webp",
+      "image": "/assets/Tanha Food/food-6.webp",
       "tags": [
         "Authentic Andhra",
         "Heart & Soul"
@@ -2043,7 +2043,7 @@
       "price": 549,
       "isVeg": false,
       "desc": "Wholesome hot finger millet mudde served with rich spicy country chicken curry and ghee.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Rayalaseema Pride",
         "Healthy"
@@ -2056,7 +2056,7 @@
       "price": 499,
       "isVeg": false,
       "desc": "Wok-fried rice tossed with fiery Andhra avakaya mango pickle and succulent chicken.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Signature Fusion",
         "Spicy"
@@ -2069,7 +2069,7 @@
       "price": 649,
       "isVeg": false,
       "desc": "Steaming hot ragi mudde served with rich slow-cooked mutton gravy and clarified butter.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Rayalaseema",
         "Traditional"
@@ -2082,7 +2082,7 @@
       "price": 649,
       "isVeg": false,
       "desc": "Ragi mudde served with spiced mutton keema and crispy Andhra Chicken 65.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-14.webp",
+      "image": "/assets/Tanha Food/food-14.webp",
       "tags": [
         "Feast",
         "Spicy"
@@ -2095,7 +2095,7 @@
       "price": 699,
       "isVeg": false,
       "desc": "Hot rice with seasoned lentil broth (Pappucharu) and dry-roasted Telangana mutton fry.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Grand Combo",
         "Bestseller"
@@ -2108,7 +2108,7 @@
       "price": 699,
       "isVeg": false,
       "desc": "Aromatic spiced bagara rice served with authentic Hyderabadi mutton dalcha stew.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp",
+      "image": "/assets/Tanha Food/food-1.webp",
       "tags": [
         "Hyderabadi Dawat",
         "Royal"
@@ -2121,7 +2121,7 @@
       "price": 249,
       "isVeg": true,
       "desc": "Traditional South Indian steamed milk pudding made from colostrum milk, infused with black pepper and cardamom in a clay pot.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-48.webp",
+      "image": "/assets/Tanha Food/food-48.webp",
       "tags": [
         "Telugu Heritage",
         "Claypot"
@@ -2134,7 +2134,7 @@
       "price": 399,
       "isVeg": true,
       "desc": "Crispy golden pastry triangles filled with pistachio kunafa and molten dark chocolate.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-48.webp",
+      "image": "/assets/Tanha Food/food-48.webp",
       "tags": [
         "Fusion",
         "Decadent"
@@ -2147,7 +2147,7 @@
       "price": 399,
       "isVeg": true,
       "desc": "Creamy baked New York cheesecake topped with house-made wild blueberry compote.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-44.webp",
+      "image": "/assets/Tanha Food/food-44.webp",
       "tags": [
         "Artisanal",
         "Bestseller"
@@ -2160,7 +2160,7 @@
       "price": 399,
       "isVeg": true,
       "desc": "Velvety cheesecake infused with sweet Alphonso mango pulp on buttery biscuit crumb.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-44.webp",
+      "image": "/assets/Tanha Food/food-44.webp",
       "tags": [
         "Alphonso",
         "Seasonal"
@@ -2173,7 +2173,7 @@
       "price": 399,
       "isVeg": true,
       "desc": "Single-origin Araku Valley filter coffee soaked sponge layered with saffron mascarpone and cocoa pod dust.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-45.webp",
+      "image": "/assets/Tanha Food/food-45.webp",
       "tags": [
         "Araku Kaapi",
         "Signature"
@@ -2186,7 +2186,7 @@
       "price": 399,
       "isVeg": true,
       "desc": "Airy sponge steeped in three rich milks, topped with fresh Alphonso mango compote.",
-      "image": "https://storage.googleapis.com/yesj/assets/Tanha Food/food-44.webp",
+      "image": "/assets/Tanha Food/food-44.webp",
       "tags": [
         "Tres Leches",
         "Must Try"

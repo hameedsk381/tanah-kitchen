@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Send, ArrowUp } from 'lucide-react'
 import contactData from '../data/contact.json'
+import { getCdnUrl } from '../utils/cdn'
 
 const EMAIL_PATTERN = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/
 
@@ -48,7 +49,7 @@ export default function Footer() {
           <div className="space-y-5">
             <Link to="/" className="flex items-center group">
               <img
-                src="https://storage.googleapis.com/yesj/assets/logos/logo-telugu-horizontal-light.png"
+                src={getCdnUrl('/assets/logos/logo-telugu-horizontal-light.png')}
                 alt="Tanah Kitchen & Bar (తనః)"
                 className="h-16 sm:h-20 w-auto object-contain bg-transparent border-none shadow-none transition-transform duration-300 group-hover:scale-105"
               />

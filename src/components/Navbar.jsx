@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import { LogoOwl } from './illustrations'
+import { getCdnUrl } from '../utils/cdn'
 
 const navLinks = [
   { label: 'Home', path: '/' },
@@ -85,7 +85,7 @@ export default function Navbar() {
               aria-label="Tanah Kitchen & Bar Home"
             >
               <img
-                src="https://storage.googleapis.com/yesj/assets/logos/logo-primary-horizontal-light.png"
+                src={getCdnUrl('/assets/logos/logo-primary-horizontal-light.png')}
                 alt="Tanah Kitchen & Bar"
                 fetchPriority="high"
                 loading="eager"

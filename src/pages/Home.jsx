@@ -198,7 +198,7 @@ export default function Home() {
         {/* Main Background Image */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
-            src="https://storage.googleapis.com/yesj/assets/Tanha Ambiance/Ambiance-9.webp"
+            src="/assets/Tanha Ambiance/Ambiance-9.webp"
             alt="Tanah Bar &amp; Kitchen Main Rooftop Ambiance"
             fetchPriority="high"
             loading="eager"
@@ -357,7 +357,7 @@ export default function Home() {
             >
               <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#5E332E]/15 aspect-[4/3] relative group">
                 <img
-                  src="https://storage.googleapis.com/yesj/assets/Tanha Ambiance/Ambiance-6.webp"
+                  src="/assets/Tanha Ambiance/Ambiance-6.webp"
                   alt="Tanah Kitchen Atmosphere"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-[0.92]"
                 />
@@ -1071,7 +1071,7 @@ export default function Home() {
             >
               <div className="aspect-[3/4] overflow-hidden rounded-2xl shadow-xl border border-white/10 relative group">
                 <img
-                  src="https://storage.googleapis.com/yesj/assets/Tanha Ambiance/Ambiance-26.webp"
+                  src="/assets/Tanha Ambiance/Ambiance-26.webp"
                   alt="Gathering area setup"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
@@ -1079,7 +1079,7 @@ export default function Home() {
 
               <div className="aspect-[3/4] overflow-hidden rounded-2xl shadow-xl border border-white/10 relative group mt-6 sm:mt-8">
                 <img
-                  src="https://storage.googleapis.com/yesj/assets/Tanha Ambiance/Ambiance-25.webp"
+                  src="/assets/Tanha Ambiance/Ambiance-25.webp"
                   alt="Outdoor gathering setup"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
@@ -1184,7 +1184,7 @@ export default function Home() {
             <div className="lg:col-span-4 bg-[#5E332E] text-[#E5E2DC] p-8 md:p-10 rounded-3xl flex flex-col justify-between shadow-xl border border-[#E5E2DC]/20 text-left">
               <div className="space-y-6">
                 <img
-                  src="https://storage.googleapis.com/yesj/assets/logos/logo-primary-vertical-light.png"
+                  src="/assets/logos/logo-primary-vertical-light.png"
                   alt="Tanah Kitchen & Bar"
                   className="h-20 sm:h-24 md:h-28 w-auto object-contain bg-transparent border-none shadow-none"
                 />

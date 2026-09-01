@@ -7,10 +7,15 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { connectDB, isDbConnected } from './db.js'
+import { requireAdmin } from './middleware/auth.js'
+import { requireAdminAndDb } from './lib/requireDb.js'
+import { loadMenuSeed, loadGallerySeed } from './lib/seed.js'
+import { validateAdminConfig, getAdminConfig } from './config/admin.js'
 import { MenuItem } from './models/MenuItem.js'
 import { BentoSlot } from './models/BentoSlot.js'
 import { GalleryItem } from './models/GalleryItem.js'
 import { AdminUser } from './models/AdminUser.js'
+import { Content } from './models/Content.js'
 import { Storage } from '@google-cloud/storage'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -19,11 +24,12 @@ const __dirname = path.dirname(__filename)
 const app = express()
 const PORT = process.env.PORT || 5000
 
+validateAdminConfig()
+
 // Directories
 const ROOT_DIR = path.resolve(__dirname, '..')
 const UPLOADS_DIR = path.join(ROOT_DIR, 'uploads')
 const DIST_DIR = path.join(ROOT_DIR, 'dist')
-const SRC_DATA_DIR = path.join(ROOT_DIR, 'src', 'data')
 
 // Ensure uploads directory exists
 if (!fs.existsSync(UPLOADS_DIR)) {
@@ -137,9 +143,7 @@ app.post('/api/auth/login', async (req, res) => {
   }
 
   const cleanUser = username.trim().toLowerCase()
-  const expectedUser = (process.env.ADMIN_USERNAME || 'admin').trim().toLowerCase()
-  const expectedPassword = process.env.ADMIN_PASSWORD || 'tanah@2025'
-  const expectedEmail = (process.env.ADMIN_EMAIL || 'admin@tanahkitchen.in').trim().toLowerCase()
+  const adminConfig = getAdminConfig()
 
   // 1. If MongoDB is connected, verify against MongoDB database
   if (isDbConnected()) {
@@ -173,15 +177,19 @@ app.post('/api/auth/login', async (req, res) => {
     }
   }
 
-  // 2. Direct Environment Fallback (Works whenever MongoDB is offline or starting)
-  if ((cleanUser === expectedUser || cleanUser === expectedEmail) && password === expectedPassword) {
-    const token = Buffer.from(`${expectedUser}:${Date.now()}`).toString('base64')
+  // 2. Environment credential fallback (when MongoDB is offline or no admin user yet)
+  if (
+    adminConfig &&
+    (cleanUser === adminConfig.username || cleanUser === adminConfig.email) &&
+    password === adminConfig.password
+  ) {
+    const token = Buffer.from(`${adminConfig.username}:${Date.now()}`).toString('base64')
     return res.json({
       success: true,
       token,
       user: {
-        username: expectedUser,
-        email: expectedEmail,
+        username: adminConfig.username,
+        email: adminConfig.email,
         name: 'Tanah Administrator',
         role: 'Super Admin',
         lastLogin: new Date()
@@ -219,13 +227,13 @@ app.get('/api/auth/me', async (req, res) => {
       }
     }
 
-    const expectedUser = (process.env.ADMIN_USERNAME || 'admin').trim().toLowerCase()
-    if (username.toLowerCase() === expectedUser) {
+    const adminConfig = getAdminConfig()
+    if (adminConfig && username.toLowerCase() === adminConfig.username) {
       return res.json({
         success: true,
         user: {
-          username: expectedUser,
-          email: process.env.ADMIN_EMAIL || 'admin@tanahkitchen.in',
+          username: adminConfig.username,
+          email: adminConfig.email,
           name: 'Tanah Administrator',
           role: 'Super Admin'
         }
@@ -238,7 +246,7 @@ app.get('/api/auth/me', async (req, res) => {
   }
 })
 
-app.post('/api/auth/change-password', async (req, res) => {
+app.post('/api/auth/change-password', requireAdmin, async (req, res) => {
   const { username, currentPassword, newPassword } = req.body
 
   if (!username || !currentPassword || !newPassword) {
@@ -260,10 +268,80 @@ app.post('/api/auth/change-password', async (req, res) => {
   }
 })
 
+// Require admin auth + MongoDB for all CMS mutations (GET routes remain public)
+const protectMutation = requireAdminAndDb(requireAdmin)
+app.use('/api/menu', (req, res, next) => {
+  if (req.method === 'GET') return next()
+  return protectMutation(req, res, next)
+})
+app.use('/api/bento', (req, res, next) => {
+  if (req.method === 'GET') return next()
+  return protectMutation(req, res, next)
+})
+app.use('/api/gallery', (req, res, next) => {
+  if (req.method === 'GET') return next()
+  return protectMutation(req, res, next)
+})
+app.use('/api/content', (req, res, next) => {
+  if (req.method === 'GET') return next()
+  return protectMutation(req, res, next)
+})
+
+// ── NEW CMS CONTENT APIs ──
+app.get('/api/content/:key', async (req, res) => {
+  try {
+    if (!isDbConnected()) return res.json({})
+    const content = await Content.findOne({ key: req.params.key }).lean()
+    return res.json(content ? content.data : {})
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch content' })
+  }
+})
+
+app.put('/api/content/:key', async (req, res) => {
+  try {
+    const updated = await Content.findOneAndUpdate(
+      { key: req.params.key },
+      { data: req.body, updatedAt: new Date() },
+      { new: true, upsert: true }
+    )
+    res.json({ success: true, data: updated.data })
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to save content' })
+  }
+})
+
+// ── RESERVATION API ──
+app.post('/api/reservations', async (req, res) => {
+  // Save to DB and stub webhook
+  try {
+    const reservation = req.body
+    
+    // Stub logging as webhook
+    console.log(`🛎️ New Reservation Request: ${reservation.name} for ${reservation.guests} guests on ${reservation.date} at ${reservation.time}`)
+    
+    // Here we'd save it to a Reservation model, but for now we just acknowledge it
+    res.status(201).json({ success: true, message: 'Reservation received successfully.' })
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to submit reservation' })
+  }
+})
+
+
 // ── 1. MENU APIs (MongoDB with Instant Fallback & Deduplication) ──
 app.get('/api/menu', async (req, res) => {
   try {
+    let categories = defaultCategories
+    const seedMenu = loadMenuSeed()
+
     if (isDbConnected()) {
+      const content = await Content.findOne({ key: 'menu-categories' }).lean()
+      if (content && content.data && content.data.categories) {
+        categories = content.data.categories
+      } else if (seedMenu && seedMenu.categories) {
+        categories = seedMenu.categories
+      }
+
       const dbItems = await MenuItem.find().sort({ createdAt: -1 }).lean()
       if (dbItems && dbItems.length > 0) {
         const seenNames = new Set()
@@ -278,26 +356,24 @@ app.get('/api/menu', async (req, res) => {
         }
         if (uniqueItems.length > 0) {
           return res.json({
-            categories: defaultCategories,
+            categories,
             items: uniqueItems
           })
         }
       }
     }
 
-    // Fallback or seed source from clean menu.json
-    const menuJsonPath = path.join(SRC_DATA_DIR, 'menu.json')
-    if (fs.existsSync(menuJsonPath)) {
-      const raw = JSON.parse(fs.readFileSync(menuJsonPath, 'utf-8'))
-      return res.json(raw)
+    // Read-only seed fallback when MongoDB is empty or offline
+    if (seedMenu) {
+      return res.json(seedMenu)
     }
 
-    res.json({ categories: defaultCategories, items: [] })
+    res.json({ categories, items: [] })
   } catch (err) {
     console.error('Menu fetch error:', err)
-    const menuJsonPath = path.join(SRC_DATA_DIR, 'menu.json')
-    if (fs.existsSync(menuJsonPath)) {
-      return res.json(JSON.parse(fs.readFileSync(menuJsonPath, 'utf-8')))
+    const seedMenu = loadMenuSeed()
+    if (seedMenu) {
+      return res.json(seedMenu)
     }
     res.status(500).json({ error: 'Failed to retrieve menu' })
   }
@@ -310,17 +386,8 @@ app.put('/api/menu', async (req, res) => {
   }
 
   try {
-    const menuJsonPath = path.join(SRC_DATA_DIR, 'menu.json')
-    if (fs.existsSync(menuJsonPath)) {
-      const current = JSON.parse(fs.readFileSync(menuJsonPath, 'utf-8'))
-      current.items = items
-      fs.writeFileSync(menuJsonPath, JSON.stringify(current, null, 2), 'utf-8')
-    }
-
-    if (isDbConnected()) {
-      await MenuItem.deleteMany({})
-      await MenuItem.insertMany(items)
-    }
+    await MenuItem.deleteMany({})
+    await MenuItem.insertMany(items)
     res.json({ success: true, count: items.length })
   } catch (err) {
     console.error('Menu bulk replace error:', err)
@@ -344,20 +411,8 @@ app.post('/api/menu/item', async (req, res) => {
   }
 
   try {
-    const menuJsonPath = path.join(SRC_DATA_DIR, 'menu.json')
-    if (fs.existsSync(menuJsonPath)) {
-      const current = JSON.parse(fs.readFileSync(menuJsonPath, 'utf-8'))
-      if (Array.isArray(current.items)) {
-        current.items = [newItemData, ...current.items]
-        fs.writeFileSync(menuJsonPath, JSON.stringify(current, null, 2), 'utf-8')
-      }
-    }
-
-    if (isDbConnected()) {
-      const created = await MenuItem.create(newItemData)
-      return res.status(201).json({ success: true, item: created })
-    }
-    res.status(201).json({ success: true, item: newItemData })
+    const created = await MenuItem.create(newItemData)
+    return res.status(201).json({ success: true, item: created })
   } catch (err) {
     console.error('Menu item create error:', err)
     res.status(500).json({ error: 'Failed to save dish' })
@@ -368,23 +423,11 @@ app.put('/api/menu/item/:id', async (req, res) => {
   const id = req.params.id
 
   try {
-    const menuJsonPath = path.join(SRC_DATA_DIR, 'menu.json')
-    if (fs.existsSync(menuJsonPath)) {
-      const current = JSON.parse(fs.readFileSync(menuJsonPath, 'utf-8'))
-      if (Array.isArray(current.items)) {
-        current.items = current.items.map(item => item.id === id ? { ...item, ...req.body } : item)
-        fs.writeFileSync(menuJsonPath, JSON.stringify(current, null, 2), 'utf-8')
-      }
+    const updated = await MenuItem.findOneAndUpdate({ id }, req.body, { new: true })
+    if (!updated) {
+      return res.status(404).json({ error: 'Dish not found' })
     }
-
-    if (isDbConnected()) {
-      const updated = await MenuItem.findOneAndUpdate({ id }, req.body, { new: true })
-      if (!updated) {
-        return res.status(404).json({ error: 'Dish not found' })
-      }
-      return res.json({ success: true, item: updated })
-    }
-    res.json({ success: true, item: { id, ...req.body } })
+    return res.json({ success: true, item: updated })
   } catch (err) {
     console.error('Menu item update error:', err)
     res.status(500).json({ error: 'Failed to update dish' })
@@ -395,20 +438,9 @@ app.delete('/api/menu/item/:id', async (req, res) => {
   const id = req.params.id
 
   try {
-    const menuJsonPath = path.join(SRC_DATA_DIR, 'menu.json')
-    if (fs.existsSync(menuJsonPath)) {
-      const current = JSON.parse(fs.readFileSync(menuJsonPath, 'utf-8'))
-      if (Array.isArray(current.items)) {
-        current.items = current.items.filter(item => item.id !== id)
-        fs.writeFileSync(menuJsonPath, JSON.stringify(current, null, 2), 'utf-8')
-      }
-    }
-
-    if (isDbConnected()) {
-      const result = await MenuItem.deleteOne({ id })
-      if (result.deletedCount === 0) {
-        return res.status(404).json({ error: 'Dish not found' })
-      }
+    const result = await MenuItem.deleteOne({ id })
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ error: 'Dish not found' })
     }
     res.json({ success: true, message: `Dish ${id} deleted` })
   } catch (err) {
@@ -419,18 +451,14 @@ app.delete('/api/menu/item/:id', async (req, res) => {
 
 app.post('/api/menu/reset', async (req, res) => {
   try {
-    const menuJsonPath = path.join(SRC_DATA_DIR, 'menu.json')
-    if (fs.existsSync(menuJsonPath)) {
-      const rawMenu = JSON.parse(fs.readFileSync(menuJsonPath, 'utf-8'))
-      if (isDbConnected()) {
-        await MenuItem.deleteMany({})
-        if (rawMenu.items?.length) {
-          await MenuItem.insertMany(rawMenu.items)
-        }
-      }
-      return res.json({ success: true, count: rawMenu.items.length })
+    const seedMenu = loadMenuSeed()
+    if (!seedMenu?.items?.length) {
+      return res.status(404).json({ error: 'Menu seed data not found' })
     }
-    res.json({ success: true, message: 'Reset completed' })
+
+    await MenuItem.deleteMany({})
+    await MenuItem.insertMany(seedMenu.items)
+    return res.json({ success: true, count: seedMenu.items.length })
   } catch (err) {
     console.error('Menu reset error:', err)
     res.status(500).json({ error: 'Failed to reset menu' })
@@ -442,92 +470,17 @@ app.get('/api/bento', async (req, res) => {
   try {
     if (isDbConnected()) {
       const slots = await BentoSlot.find().sort({ slot: 1 }).lean()
-      if (slots && slots.length === 6) {
+      if (slots && slots.length > 0) {
         return res.json(slots)
       }
     }
 
-    const defaultBento = [
-      {
-        id: 'bento-1',
-        slot: 1,
-        title: 'Claypot Mutton Biryani',
-        category: 'Wood-Fired Hearth',
-        price: 549,
-        tag: '★ BESTSELLER',
-        isVeg: false,
-        image: '/assets/Tanha Food/food-1.webp',
-        desc: 'Fragrant aged Basmati & farm-raised mutton slow-simmered in porous earthen clay with caramelized saffron embers.',
-        pairing: '🍸 Pairs with: Rooftop Smoked Old Fashioned'
-      },
-      {
-        id: 'bento-2',
-        slot: 2,
-        title: 'Wild Mushroom Risotto',
-        category: 'Continental Gastronomy',
-        price: 549,
-        tag: '★ SIGNATURE',
-        isVeg: true,
-        image: '/assets/Tanha Food/food-11.webp',
-        desc: 'Hand-foraged forest mushrooms, Italian arborio rice & white truffle oil.',
-        pairing: '🍷 Pairs with: Sula Dindori Viognier'
-      },
-      {
-        id: 'bento-3',
-        slot: 3,
-        title: 'Kodi Crisp',
-        category: 'Coastal Spice Bar',
-        price: 399,
-        tag: '✦ CHEF SPECIAL',
-        isVeg: false,
-        image: '/assets/Tanha Food/food-14.webp',
-        desc: 'Crispy chicken strips tossed in regional roasted podi & curry leaves.',
-        pairing: '🍹 Pairs with: Forest Herbal Mule'
-      },
-      {
-        id: 'bento-4',
-        slot: 4,
-        title: 'Dahi Kebabs',
-        category: 'Artisanal Starters',
-        price: 449,
-        tag: '★ VEG SPECIAL',
-        isVeg: true,
-        image: '/assets/Tanha Food/food-29.webp',
-        desc: 'Pan-seared spiced hung curd patties with green chilies & mint dip.',
-        pairing: '🍸 Pairs with: Basalt Stone Margarita'
-      },
-      {
-        id: 'bento-5',
-        slot: 5,
-        title: 'Mango Tres Leches',
-        category: 'Alphonso Mango',
-        price: 499,
-        tag: '★ DESSERT',
-        isVeg: true,
-        image: '/assets/Tanha Food/food-44.webp',
-        desc: 'Alphonso mango compote with airy sponge steeped in three rich milks.',
-        pairing: '☕ Pairs with: Araku Valley Cold Brew'
-      },
-      {
-        id: 'bento-6',
-        slot: 6,
-        title: 'Desi Tiramisu',
-        category: 'Araku Kaapi Infusion',
-        price: 549,
-        tag: '★ DESSERT',
-        isVeg: true,
-        image: '/assets/Tanha Food/food-45.webp',
-        desc: 'Single-origin Araku Valley filter coffee soaked sponge with saffron mascarpone.',
-        pairing: '☕ Pairs with: Single-Origin Espresso'
-      }
-    ]
-
-    if (isDbConnected()) {
-      await BentoSlot.deleteMany({})
-      await BentoSlot.insertMany(defaultBento).catch(() => {})
+    const seed = loadBentoSeed()
+    if (seed && seed.items) {
+      return res.json(seed.items)
     }
 
-    res.json(defaultBento)
+    res.json([])
   } catch (err) {
     console.error('Bento fetch error:', err)
     res.status(500).json({ error: 'Failed to retrieve Bento slots' })
@@ -540,10 +493,8 @@ app.put('/api/bento', async (req, res) => {
   }
 
   try {
-    if (isDbConnected()) {
-      await BentoSlot.deleteMany({})
-      await BentoSlot.insertMany(req.body)
-    }
+    await BentoSlot.deleteMany({})
+    await BentoSlot.insertMany(req.body)
     res.json({ success: true, data: req.body })
   } catch (err) {
     console.error('Bento replace error:', err)
@@ -556,15 +507,12 @@ app.put('/api/bento/slot/:index', async (req, res) => {
   const slotNumber = index + 1
 
   try {
-    if (isDbConnected()) {
-      const updated = await BentoSlot.findOneAndUpdate(
-        { slot: slotNumber },
-        req.body,
-        { new: true, upsert: true }
-      )
-      return res.json({ success: true, slot: updated })
-    }
-    res.json({ success: true, slot: { slot: slotNumber, ...req.body } })
+    const updated = await BentoSlot.findOneAndUpdate(
+      { slot: slotNumber },
+      req.body,
+      { new: true, upsert: true }
+    )
+    return res.json({ success: true, slot: updated })
   } catch (err) {
     console.error('Bento slot update error:', err)
     res.status(500).json({ error: 'Failed to update Bento slot' })
@@ -573,83 +521,14 @@ app.put('/api/bento/slot/:index', async (req, res) => {
 
 app.post('/api/bento/reset', async (req, res) => {
   try {
-    const DEFAULT_BENTO_ITEMS = [
-      {
-        id: 'bento-1',
-        slot: 1,
-        title: 'Claypot Mutton Biryani',
-        category: 'Wood-Fired Hearth',
-        price: 549,
-        tag: '★ BESTSELLER',
-        isVeg: false,
-        image: '/assets/Tanha Food/food-1.webp',
-        desc: 'Fragrant aged Basmati & farm-raised mutton slow-simmered in porous earthen clay with caramelized saffron embers.',
-        pairing: '🍸 Pairs with: Rooftop Smoked Old Fashioned'
-      },
-      {
-        id: 'bento-2',
-        slot: 2,
-        title: 'Wild Mushroom Risotto',
-        category: 'Continental Gastronomy',
-        price: 549,
-        tag: '★ SIGNATURE',
-        isVeg: true,
-        image: '/assets/Tanha Food/food-11.webp',
-        desc: 'Hand-foraged forest mushrooms, Italian arborio rice & white truffle oil.',
-        pairing: '🍷 Pairs with: Sula Dindori Viognier'
-      },
-      {
-        id: 'bento-3',
-        slot: 3,
-        title: 'Kodi Crisp',
-        category: 'Coastal Spice Bar',
-        price: 399,
-        tag: '✦ CHEF SPECIAL',
-        isVeg: false,
-        image: '/assets/Tanha Food/food-14.webp',
-        desc: 'Crispy chicken strips tossed in regional roasted podi & curry leaves.',
-        pairing: '🍹 Pairs with: Forest Herbal Mule'
-      },
-      {
-        id: 'bento-4',
-        slot: 4,
-        title: 'Dahi Kebabs',
-        category: 'Artisanal Starters',
-        price: 449,
-        tag: '★ VEG SPECIAL',
-        isVeg: true,
-        image: '/assets/Tanha Food/food-29.webp',
-        desc: 'Pan-seared spiced hung curd patties with green chilies & mint dip.',
-        pairing: '🍸 Pairs with: Basalt Stone Margarita'
-      },
-      {
-        id: 'bento-5',
-        slot: 5,
-        title: 'Mango Tres Leches',
-        category: 'Alphonso Mango',
-        price: 499,
-        tag: '★ DESSERT',
-        isVeg: true,
-        image: '/assets/Tanha Food/food-44.webp',
-        desc: 'Alphonso mango compote with airy sponge steeped in three rich milks.',
-        pairing: '☕ Pairs with: Araku Valley Cold Brew'
-      },
-      {
-        id: 'bento-6',
-        slot: 6,
-        title: 'Desi Tiramisu',
-        category: 'Araku Kaapi Infusion',
-        price: 549,
-        tag: '★ DESSERT',
-        isVeg: true,
-        image: '/assets/Tanha Food/food-45.webp',
-        desc: 'Single-origin Araku Valley filter coffee soaked sponge with saffron mascarpone.',
-        pairing: '☕ Pairs with: Single-Origin Espresso'
-      }
-    ]
+    const seed = loadBentoSeed()
+    if (!seed || !seed.items) {
+      return res.status(404).json({ error: 'Bento seed not found' })
+    }
+
     await BentoSlot.deleteMany({})
-    await BentoSlot.insertMany(DEFAULT_BENTO_ITEMS)
-    res.json({ success: true, data: DEFAULT_BENTO_ITEMS })
+    await BentoSlot.insertMany(seed.items)
+    res.json({ success: true, data: seed.items })
   } catch (err) {
     console.error('Bento reset error:', err)
     res.status(500).json({ error: 'Failed to reset Bento grid in MongoDB' })
@@ -659,31 +538,36 @@ app.post('/api/bento/reset', async (req, res) => {
 // ── 3. GALLERY APIs (MongoDB with Instant Fallback) ──
 app.get('/api/gallery', async (req, res) => {
   try {
+    let categories = defaultGalleryCategories
+    const seedGallery = loadGallerySeed()
+
     if (isDbConnected()) {
+      const content = await Content.findOne({ key: 'gallery-categories' }).lean()
+      if (content && content.data && content.data.categories) {
+        categories = content.data.categories
+      } else if (seedGallery && seedGallery.categories) {
+        categories = seedGallery.categories
+      }
+
       const items = await GalleryItem.find().lean()
       if (items && items.length > 0) {
         return res.json({
-          categories: defaultGalleryCategories,
+          categories,
           items
         })
       }
     }
 
-    const galleryJsonPath = path.join(SRC_DATA_DIR, 'gallery.json')
-    if (fs.existsSync(galleryJsonPath)) {
-      const raw = JSON.parse(fs.readFileSync(galleryJsonPath, 'utf-8'))
-      if (isDbConnected() && raw.items?.length) {
-        await GalleryItem.insertMany(raw.items).catch(() => {})
-      }
-      return res.json(raw)
+    if (seedGallery) {
+      return res.json(seedGallery)
     }
 
-    res.json({ categories: defaultGalleryCategories, items: [] })
+    res.json({ categories, items: [] })
   } catch (err) {
     console.error('Gallery fetch error:', err)
-    const galleryJsonPath = path.join(SRC_DATA_DIR, 'gallery.json')
-    if (fs.existsSync(galleryJsonPath)) {
-      return res.json(JSON.parse(fs.readFileSync(galleryJsonPath, 'utf-8')))
+    const seedGallery = loadGallerySeed()
+    if (seedGallery) {
+      return res.json(seedGallery)
     }
     res.status(500).json({ error: 'Failed to retrieve gallery' })
   }
@@ -716,11 +600,8 @@ app.post('/api/gallery/item', async (req, res) => {
   }
 
   try {
-    if (isDbConnected()) {
-      const created = await GalleryItem.create(newItemData)
-      return res.status(201).json({ success: true, item: created })
-    }
-    res.status(201).json({ success: true, item: newItemData })
+    const created = await GalleryItem.create(newItemData)
+    return res.status(201).json({ success: true, item: created })
   } catch (err) {
     console.error('Gallery item create error:', err)
     res.status(500).json({ error: 'Failed to create gallery photo' })
@@ -731,14 +612,11 @@ app.put('/api/gallery/item/:id', async (req, res) => {
   const id = req.params.id
 
   try {
-    if (isDbConnected()) {
-      const updated = await GalleryItem.findOneAndUpdate({ id }, req.body, { new: true })
-      if (!updated) {
-        return res.status(404).json({ error: 'Gallery photo not found' })
-      }
-      return res.json({ success: true, item: updated })
+    const updated = await GalleryItem.findOneAndUpdate({ id }, req.body, { new: true })
+    if (!updated) {
+      return res.status(404).json({ error: 'Gallery photo not found' })
     }
-    res.json({ success: true, item: { id, ...req.body } })
+    return res.json({ success: true, item: updated })
   } catch (err) {
     console.error('Gallery item update error:', err)
     res.status(500).json({ error: 'Failed to update gallery photo' })
@@ -749,11 +627,9 @@ app.delete('/api/gallery/item/:id', async (req, res) => {
   const id = req.params.id
 
   try {
-    if (isDbConnected()) {
-      const result = await GalleryItem.deleteOne({ id })
-      if (result.deletedCount === 0) {
-        return res.status(404).json({ error: 'Gallery photo not found' })
-      }
+    const result = await GalleryItem.deleteOne({ id })
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ error: 'Gallery photo not found' })
     }
     res.json({ success: true, message: `Gallery item ${id} deleted` })
   } catch (err) {
@@ -764,18 +640,14 @@ app.delete('/api/gallery/item/:id', async (req, res) => {
 
 app.post('/api/gallery/reset', async (req, res) => {
   try {
-    const galleryJsonPath = path.join(SRC_DATA_DIR, 'gallery.json')
-    if (fs.existsSync(galleryJsonPath)) {
-      const rawGallery = JSON.parse(fs.readFileSync(galleryJsonPath, 'utf-8'))
-      if (isDbConnected()) {
-        await GalleryItem.deleteMany({})
-        if (rawGallery.items?.length) {
-          await GalleryItem.insertMany(rawGallery.items)
-        }
-      }
-      return res.json({ success: true, count: rawGallery.items.length })
+    const seedGallery = loadGallerySeed()
+    if (!seedGallery?.items?.length) {
+      return res.status(404).json({ error: 'Gallery seed data not found' })
     }
-    res.json({ success: true, message: 'Reset completed' })
+
+    await GalleryItem.deleteMany({})
+    await GalleryItem.insertMany(seedGallery.items)
+    return res.json({ success: true, count: seedGallery.items.length })
   } catch (err) {
     console.error('Gallery reset error:', err)
     res.status(500).json({ error: 'Failed to reset gallery' })
@@ -792,7 +664,7 @@ app.get('/api/storage/status', (req, res) => {
   })
 })
 
-app.post('/api/upload', upload.single('photo'), async (req, res) => {
+app.post('/api/upload', requireAdmin, upload.single('photo'), async (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: 'No image file uploaded' })
   }
@@ -841,7 +713,7 @@ app.post('/api/upload', upload.single('photo'), async (req, res) => {
   }
 })
 
-app.get('/api/uploads', async (req, res) => {
+app.get('/api/uploads', requireAdmin, async (req, res) => {
   try {
     const list = []
     const seen = new Set()

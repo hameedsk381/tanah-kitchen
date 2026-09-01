@@ -16,6 +16,7 @@ import {
   Utensils,
   LayoutGrid,
   Images,
+  Settings,
   ChevronLeft,
   ChevronRight,
   Sliders,
@@ -34,6 +35,7 @@ import {
   ShieldCheck
 } from 'lucide-react'
 import { useMenu } from '../context/MenuContext'
+import { getAuthHeaders } from '../utils/apiAuth'
 import SEO from '../components/SEO'
 import { LogoOwl } from '../components/illustrations'
 
@@ -93,7 +95,8 @@ export default function AdminMenu() {
     deleteGalleryItem,
     updateGalleryItemCategory,
     resetGallery,
-    exportGalleryJson
+    exportGalleryJson,
+    syncError
   } = useMenu()
 
   // Authentication State
@@ -165,7 +168,15 @@ export default function AdminMenu() {
   }, [])
 
   useEffect(() => {
-    fetch('/api/uploads')
+    if (syncError) {
+      showToast(`❌ ${syncError}`)
+    }
+  }, [syncError])
+
+  useEffect(() => {
+    if (!authToken) return
+
+    fetch('/api/uploads', { headers: getAuthHeaders({ json: false }) })
       .then(res => res.json())
       .then(serverUploads => {
         if (Array.isArray(serverUploads) && serverUploads.length > 0) {
@@ -184,7 +195,7 @@ export default function AdminMenu() {
         }
       })
       .catch(() => {})
-  }, [isPhotoPickerOpen])
+  }, [authToken, isPhotoPickerOpen])
 
   const fileInputRef = useRef(null)
 
@@ -198,8 +209,6 @@ export default function AdminMenu() {
     e.preventDefault()
     setIsLoggingIn(true)
     setLoginError('')
-
-    const cleanUser = loginForm.username.trim().toLowerCase()
 
     try {
       const res = await fetch('/api/auth/login', {
@@ -218,33 +227,10 @@ export default function AdminMenu() {
         storage.setItem('tanah_admin_user', JSON.stringify(data.user))
         showToast(`✓ Welcome back, ${data.user.name || data.user.username}!`)
       } else {
-        // Fallback for offline dev
-        if (cleanUser === 'admin' && loginForm.password === 'tanah@2025') {
-          const fakeToken = 'offline-admin-session'
-          const fakeUser = { username: 'admin', name: 'Tanah Administrator', role: 'Super Admin' }
-          setAuthToken(fakeToken)
-          setAdminUser(fakeUser)
-          const storage = rememberMe ? localStorage : sessionStorage
-          storage.setItem('tanah_admin_token', fakeToken)
-          storage.setItem('tanah_admin_user', JSON.stringify(fakeUser))
-          showToast('✓ Welcome back, Administrator!')
-        } else {
-          setLoginError(data.error || 'Invalid admin credentials')
-        }
+        setLoginError(data.error || 'Invalid admin credentials')
       }
     } catch (err) {
-      if (cleanUser === 'admin' && loginForm.password === 'tanah@2025') {
-        const fakeToken = 'offline-admin-session'
-        const fakeUser = { username: 'admin', name: 'Tanah Administrator', role: 'Super Admin' }
-        setAuthToken(fakeToken)
-        setAdminUser(fakeUser)
-        const storage = rememberMe ? localStorage : sessionStorage
-        storage.setItem('tanah_admin_token', fakeToken)
-        storage.setItem('tanah_admin_user', JSON.stringify(fakeUser))
-        showToast('✓ Welcome back, Administrator!')
-      } else {
-        setLoginError('Authentication failed. Please verify credentials.')
-      }
+      setLoginError('Authentication failed. Please verify credentials and server connection.')
     } finally {
       setIsLoggingIn(false)
     }
@@ -283,8 +269,14 @@ export default function AdminMenu() {
 
       const res = await fetch('/api/upload', {
         method: 'POST',
+        headers: getAuthHeaders({ json: false }),
         body: formData
       })
+
+      if (res.status === 401) {
+        showToast('⚠️ Session expired. Please sign in again.')
+        return
+      }
 
       if (res.ok) {
         const data = await res.json()
@@ -315,43 +307,14 @@ export default function AdminMenu() {
           showToast('✓ Photo uploaded to server and assigned!')
           return
         }
+      } else {
+        const errData = await res.json()
+        showToast(`⚠️ Upload failed: ${errData.error || 'Unknown error'}`)
       }
     } catch (err) {
-      console.warn('Server upload failed, using local base64 fallback:', err)
+      console.error('Server upload failed:', err)
+      showToast('⚠️ Server upload failed. Please ensure the backend is running.')
     }
-
-    // 2. Fallback: Base64 FileReader
-    const reader = new FileReader()
-    reader.onload = (e) => {
-      const dataUrl = e.target.result
-      const newUpload = {
-        path: dataUrl,
-        id: `custom-upload-${Date.now()}`,
-        number: customUploads.length + 1,
-        name: file.name || `Uploaded Photo #${customUploads.length + 1}`,
-        isCustom: true
-      }
-
-      const updatedUploads = [newUpload, ...customUploads]
-      setCustomUploads(updatedUploads)
-      try {
-        localStorage.setItem('tanah_custom_uploads_v1', JSON.stringify(updatedUploads))
-      } catch (err) {
-        console.warn('LocalStorage full:', err)
-      }
-
-      if (photoPickerTarget === 'bento' && bentoDraft) {
-        setBentoDraft({ ...bentoDraft, image: dataUrl })
-      } else if (photoPickerTarget === 'gallery' && galleryDraft) {
-        setGalleryDraft({ ...galleryDraft, src: dataUrl, image: dataUrl })
-      } else if (editingItem) {
-        setEditingItem({ ...editingItem, image: dataUrl })
-      }
-
-      setIsPhotoPickerOpen(false)
-      showToast('✓ Photo uploaded and assigned!')
-    }
-    reader.readAsDataURL(file)
   }
 
   // Combined photo catalog (Custom Uploads + 54 DSLR Photos)
@@ -636,6 +599,14 @@ export default function AdminMenu() {
               >
                 <Images className="w-3.5 h-3.5" />
                 <span>Gallery</span>
+              </button>
+
+              <button
+                onClick={() => setActiveTab('cms')}
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-1.5 ${ activeTab === 'cms' ? 'bg-[#5E332E] text-[#E5E2DC] shadow-md' : 'text-[#1E1B18]/70 hover:text-[#5E332E]' }`}
+              >
+                <Settings className="w-3.5 h-3.5" />
+                <span>CMS Data</span>
               </button>
             </div>
 
@@ -2108,6 +2079,25 @@ export default function AdminMenu() {
           </div>
         )}
       </AnimatePresence>
+
+      {/* CMS DATA TAB */}
+      {activeTab === 'cms' && (
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 pb-32">
+          <div className="bg-[#FAF8F5] rounded-3xl p-6 sm:p-10 border border-[#5E332E]/10 shadow-sm relative overflow-hidden">
+            <h2 className="text-xl sm:text-2xl font-display font-bold text-[#5E332E] mb-6 flex items-center gap-2">
+              <Settings className="w-5 h-5" />
+              Advanced CMS Editor
+            </h2>
+            <div className="p-6 bg-white border border-[#5E332E]/20 rounded-2xl text-center">
+              <h3 className="text-[#1E1B18] font-bold mb-2">Editor Under Construction</h3>
+              <p className="text-sm text-[#1E1B18]/70">
+                The Bar Menu, corporate text, and booking configurations are currently managed via the backend /api/content endpoints. 
+                A full graphical editor is planned for the next release.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
     </main>
   )

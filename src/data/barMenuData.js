@@ -23,7 +23,7 @@ export const liquidLibraryData = [
     id: "signature-cocktails",
     name: "Signature Cocktails",
     tagline: barQuotes.signatureCocktails,
-    watermark: "https://storage.googleapis.com/yesj/assets/Tanha Food/food-21.webp",
+    watermark: "/assets/Tanha Food/food-21.webp",
     items: [
       { name: "Palapitta Song", desc: "Blend of Rum, Pineapple, Falernum, Narial Panni, Lime, & Salin", tag: "Signature" },
       { name: "Godavari Gulabi", desc: "Bourbon, Blueberry, Lime, Basil, Foam", tag: "Must Try" },
@@ -41,7 +41,7 @@ export const liquidLibraryData = [
     id: "classic-cocktails",
     name: "Classic Cocktails",
     tagline: barQuotes.classicCocktails,
-    watermark: "https://storage.googleapis.com/yesj/assets/Tanha Food/food-22.webp",
+    watermark: "/assets/Tanha Food/food-22.webp",
     items: [
       { name: "LIT", desc: "Tequila, Rum, Vodka, Gin, Triple Sec, Lemon Juice, Coke" },
       { name: "Cosmopolitan", desc: "Vodka, Triple Sec, Cranberry Juice" },
@@ -60,7 +60,7 @@ export const liquidLibraryData = [
     id: "mocktails",
     name: "Mocktails",
     tagline: barQuotes.mocktails,
-    watermark: "https://storage.googleapis.com/yesj/assets/Tanha Food/food-23.webp",
+    watermark: "/assets/Tanha Food/food-23.webp",
     items: [
       { name: "Mamidi Madhuram", desc: "Mango Cordial, Lime Simple Syrup, Bubbles" },
       { name: "Golconda Glow", desc: "Raspberry, Grenadine, Mint, Orange Juice, Simple Syrup, Bubbles" },
@@ -90,7 +90,7 @@ export const liquidLibraryData = [
     id: "single-malt",
     name: "Single Malt",
     tagline: barQuotes.singleMalt,
-    watermark: "https://storage.googleapis.com/yesj/assets/Tanha Food/food-21.webp",
+    watermark: "/assets/Tanha Food/food-21.webp",
     items: [
       { name: "Singleton 12 Yr", desc: "Single Malt Scotch Whisky" },
       { name: "Talisker 10 Yr", desc: "Isle of Skye Single Malt" },
@@ -109,7 +109,7 @@ export const liquidLibraryData = [
     id: "whiskey",
     name: "Whiskey",
     tagline: barQuotes.whiskey,
-    watermark: "https://storage.googleapis.com/yesj/assets/Tanha Food/food-21.webp",
+    watermark: "/assets/Tanha Food/food-21.webp",
     items: [
       { name: "Royal Salute", desc: "21 Year Old Blended Scotch" },
       { name: "Chivas 12 Yr", desc: "Blended Scotch Whisky" },
@@ -198,7 +198,7 @@ export const liquidLibraryData = [
     id: "wine",
     name: "Wine",
     tagline: barQuotes.wine,
-    watermark: "https://storage.googleapis.com/yesj/assets/Tanha Food/food-22.webp",
+    watermark: "/assets/Tanha Food/food-22.webp",
     subsections: [
       {
         title: "Rose Wine",

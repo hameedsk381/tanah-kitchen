@@ -1,12 +1,21 @@
 import React, { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react'
 import defaultMenuData from '../data/menu.json'
 import defaultGalleryData from '../data/gallery.json'
+import { getAuthHeaders } from '../utils/apiAuth'
 
 const MenuContext = createContext(null)
 
-const LOCAL_STORAGE_MENU_KEY = 'tanah_kitchen_menu_master_v4'
-const LOCAL_STORAGE_BENTO_KEY = 'tanah_kitchen_custom_bento_v2'
-const LOCAL_STORAGE_GALLERY_KEY = 'tanah_kitchen_custom_gallery_v2'
+/** Legacy keys — removed on mount so stale client caches cannot override the server. */
+const LEGACY_STORAGE_KEYS = [
+  'tanah_kitchen_custom_menu_v1',
+  'tanah_kitchen_custom_menu_v2',
+  'tanah_kitchen_menu_v1',
+  'tanah_kitchen_menu_v2',
+  'tanah_kitchen_menu_master_v3',
+  'tanah_kitchen_menu_master_v4',
+  'tanah_kitchen_custom_bento_v2',
+  'tanah_kitchen_custom_gallery_v2'
+]
 
 const DEFAULT_BENTO_ITEMS = [
   {
@@ -84,7 +93,7 @@ const DEFAULT_BENTO_ITEMS = [
 ]
 
 function sanitizeMenuItems(items) {
-  if (!Array.isArray(items) || items.length === 0) return defaultMenuData.items
+  if (!Array.isArray(items)) return []
   const seenIds = new Set()
   const seenNames = new Set()
   const clean = []
@@ -101,77 +110,30 @@ function sanitizeMenuItems(items) {
     clean.push(item)
   }
 
-  return clean.length > 0 ? clean : defaultMenuData.items
+  return clean
+}
+
+function clearLegacyStorage() {
+  try {
+    LEGACY_STORAGE_KEYS.forEach((key) => localStorage.removeItem(key))
+  } catch {
+    // ignore
+  }
 }
 
 export function MenuProvider({ children }) {
   const [isServerConnected, setIsServerConnected] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
-  // 1. Menu Items State (Enforce full 168-item catalog and clear legacy stale caches)
-  const [menuData, setMenuData] = useState(() => {
-    try {
-      // Evict all legacy stale localStorage keys
-      const staleKeys = [
-        'tanah_kitchen_custom_menu_v1',
-        'tanah_kitchen_custom_menu_v2',
-        'tanah_kitchen_menu_v1',
-        'tanah_kitchen_menu_v2',
-        'tanah_kitchen_menu_master_v3'
-      ]
-      staleKeys.forEach(k => {
-        try { localStorage.removeItem(k) } catch (e) {}
-      })
+  // Bundled JSON is only the initial placeholder until the first server fetch completes.
+  const [menuData, setMenuData] = useState(defaultMenuData)
+  const [bentoItems, setBentoItems] = useState(DEFAULT_BENTO_ITEMS)
+  const [galleryData, setGalleryData] = useState(defaultGalleryData)
 
-      const saved = localStorage.getItem(LOCAL_STORAGE_MENU_KEY)
-      if (saved) {
-        const parsed = JSON.parse(saved)
-        if (parsed && Array.isArray(parsed.items) && parsed.items.length >= defaultMenuData.items.length) {
-          return {
-            categories: defaultMenuData.categories,
-            items: sanitizeMenuItems(parsed.items)
-          }
-        }
-      }
-    } catch (e) {
-      console.warn('Using default menu data:', e)
-    }
-    return defaultMenuData
-  })
-
-  // 2. Bento Grid Items State
-  const [bentoItems, setBentoItems] = useState(() => {
-    try {
-      const saved = localStorage.getItem(LOCAL_STORAGE_BENTO_KEY)
-      if (saved) {
-        const parsed = JSON.parse(saved)
-        if (Array.isArray(parsed) && parsed.length === 6) {
-          return parsed
-        }
-      }
-    } catch (e) {
-      console.warn('Using default bento data:', e)
-    }
-    return DEFAULT_BENTO_ITEMS
-  })
-
-  // 3. Gallery Items State
-  const [galleryData, setGalleryData] = useState(() => {
-    try {
-      const saved = localStorage.getItem(LOCAL_STORAGE_GALLERY_KEY)
-      if (saved) {
-        const parsed = JSON.parse(saved)
-        if (parsed && Array.isArray(parsed.items) && parsed.items.length > 0) {
-          return parsed
-        }
-      }
-    } catch (e) {
-      console.warn('Using default gallery data:', e)
-    }
-    return defaultGalleryData
-  })
-
-  // Fetch state directly from Node.js server API
   const refreshFromServer = useCallback(async () => {
+    setIsLoading(true)
+    let serverReachable = false
+
     try {
       const [menuRes, bentoRes, galleryRes] = await Promise.allSettled([
         fetch('/api/menu'),
@@ -181,63 +143,52 @@ export function MenuProvider({ children }) {
 
       if (menuRes.status === 'fulfilled' && menuRes.value.ok) {
         const serverMenu = await menuRes.value.json()
-        if (serverMenu?.items?.length && serverMenu.items.length >= defaultMenuData.items.length) {
-          setMenuData({
-            categories: serverMenu.categories || defaultMenuData.categories,
-            items: sanitizeMenuItems(serverMenu.items)
-          })
-          setIsServerConnected(true)
-        } else {
-          setMenuData(defaultMenuData)
-        }
+        setMenuData({
+          categories: serverMenu.categories || defaultMenuData.categories,
+          items: sanitizeMenuItems(serverMenu.items)
+        })
+        serverReachable = true
       }
 
       if (bentoRes.status === 'fulfilled' && bentoRes.value.ok) {
         const serverBento = await bentoRes.value.json()
-        if (Array.isArray(serverBento) && serverBento.length === 6) {
+        if (Array.isArray(serverBento)) {
           setBentoItems(serverBento)
+          serverReachable = true
         }
       }
 
       if (galleryRes.status === 'fulfilled' && galleryRes.value.ok) {
         const serverGallery = await galleryRes.value.json()
-        if (serverGallery?.items?.length) {
-          setGalleryData(serverGallery)
-        }
+        setGalleryData({
+          categories: serverGallery.categories || defaultGalleryData.categories,
+          items: Array.isArray(serverGallery.items) ? serverGallery.items : []
+        })
+        serverReachable = true
       }
+
+      setIsServerConnected(serverReachable)
     } catch (err) {
       console.warn('Server fetch warning:', err)
+      setIsServerConnected(false)
+    } finally {
+      setIsLoading(false)
     }
   }, [])
 
   useEffect(() => {
+    clearLegacyStorage()
     refreshFromServer()
   }, [refreshFromServer])
 
-  // Local Storage Sync
-  useEffect(() => {
-    try {
-      if (menuData !== defaultMenuData) {
-        localStorage.setItem(LOCAL_STORAGE_MENU_KEY, JSON.stringify(menuData))
-      }
-    } catch (e) {}
-  }, [menuData])
+  const [syncError, setSyncError] = useState(null)
 
-  useEffect(() => {
-    try {
-      if (bentoItems !== DEFAULT_BENTO_ITEMS) {
-        localStorage.setItem(LOCAL_STORAGE_BENTO_KEY, JSON.stringify(bentoItems))
-      }
-    } catch (e) {}
-  }, [bentoItems])
-
-  useEffect(() => {
-    try {
-      if (galleryData !== defaultGalleryData) {
-        localStorage.setItem(LOCAL_STORAGE_GALLERY_KEY, JSON.stringify(galleryData))
-      }
-    } catch (e) {}
-  }, [galleryData])
+  const handleSyncError = (err) => {
+    console.error('Server sync failed:', err)
+    setSyncError(err.message || 'Server sync failed. Please check your connection and try again.')
+    setIsServerConnected(false)
+    refreshFromServer() // Revert optimistic update
+  }
 
   // Menu Methods with Server Sync
   const updateItem = useCallback((id, updatedFields) => {
@@ -248,12 +199,16 @@ export function MenuProvider({ children }) {
           item.id === id ? { ...item, ...updatedFields } : item
         )
       }
-      // Async sync to server
       fetch(`/api/menu/item/${encodeURIComponent(id)}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: getAuthHeaders(),
         body: JSON.stringify(updatedFields)
-      }).catch((e) => console.warn('Server sync failed:', e))
+      })
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to update dish')
+        setSyncError(null)
+      })
+      .catch(handleSyncError)
 
       return updated
     })
@@ -269,12 +224,16 @@ export function MenuProvider({ children }) {
         ...prev,
         items: [itemWithId, ...prev.items]
       }
-      // Async sync to server
       fetch('/api/menu/item', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: getAuthHeaders(),
         body: JSON.stringify(itemWithId)
-      }).catch((e) => console.warn('Server sync failed:', e))
+      })
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to add dish')
+        setSyncError(null)
+      })
+      .catch(handleSyncError)
 
       return updated
     })
@@ -286,22 +245,28 @@ export function MenuProvider({ children }) {
         ...prev,
         items: prev.items.filter((item) => item.id !== id)
       }
-      // Async sync to server
       fetch(`/api/menu/item/${encodeURIComponent(id)}`, {
-        method: 'DELETE'
-      }).catch((e) => console.warn('Server sync failed:', e))
+        method: 'DELETE',
+        headers: getAuthHeaders({ json: false })
+      })
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to delete dish')
+        setSyncError(null)
+      })
+      .catch(handleSyncError)
 
       return updated
     })
   }, [])
 
-  const resetToDefault = useCallback(() => {
-    setMenuData(defaultMenuData)
+  const resetToDefault = useCallback(async () => {
     try {
-      localStorage.removeItem(LOCAL_STORAGE_MENU_KEY)
-      fetch('/api/menu/reset', { method: 'POST' }).catch((e) => console.warn(e))
-    } catch (e) {}
-  }, [])
+      await fetch('/api/menu/reset', { method: 'POST', headers: getAuthHeaders({ json: false }) })
+      await refreshFromServer()
+    } catch (e) {
+      console.warn('Menu reset failed:', e)
+    }
+  }, [refreshFromServer])
 
   const exportJsonFile = useCallback(() => {
     const jsonString = `data:text/json;charset=utf-8,${encodeURIComponent(
@@ -321,24 +286,31 @@ export function MenuProvider({ children }) {
       const updated = prev.map((item, idx) =>
         idx === slotIndex ? { ...item, ...updatedFields } : item
       )
-      // Async sync to server
       fetch(`/api/bento/slot/${slotIndex}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: getAuthHeaders(),
         body: JSON.stringify(updatedFields)
-      }).catch((e) => console.warn('Server sync failed:', e))
+      })
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to update Bento slot')
+        setSyncError(null)
+      })
+      .catch(handleSyncError)
 
       return updated
     })
   }, [])
 
-  const resetBento = useCallback(() => {
-    setBentoItems(DEFAULT_BENTO_ITEMS)
+  const resetBento = useCallback(async () => {
     try {
-      localStorage.removeItem(LOCAL_STORAGE_BENTO_KEY)
-      fetch('/api/bento/reset', { method: 'POST' }).catch((e) => console.warn(e))
-    } catch (e) {}
-  }, [])
+      const res = await fetch('/api/bento/reset', { method: 'POST', headers: getAuthHeaders({ json: false }) })
+      if (!res.ok) throw new Error('Failed to reset Bento grid')
+      setSyncError(null)
+      await refreshFromServer()
+    } catch (e) {
+      handleSyncError(e)
+    }
+  }, [refreshFromServer])
 
   // Gallery Methods with Server Sync
   const addGalleryItem = useCallback((newItem) => {
@@ -353,9 +325,14 @@ export function MenuProvider({ children }) {
       }
       fetch('/api/gallery/item', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: getAuthHeaders(),
         body: JSON.stringify(itemWithId)
-      }).catch((e) => console.warn('Server sync failed:', e))
+      })
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to add gallery photo')
+        setSyncError(null)
+      })
+      .catch(handleSyncError)
 
       return updated
     })
@@ -371,9 +348,14 @@ export function MenuProvider({ children }) {
       }
       fetch(`/api/gallery/item/${encodeURIComponent(id)}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: getAuthHeaders(),
         body: JSON.stringify(updatedFields)
-      }).catch((e) => console.warn('Server sync failed:', e))
+      })
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to update gallery photo')
+        setSyncError(null)
+      })
+      .catch(handleSyncError)
 
       return updated
     })
@@ -386,8 +368,14 @@ export function MenuProvider({ children }) {
         items: prev.items.filter((item) => item.id !== id)
       }
       fetch(`/api/gallery/item/${encodeURIComponent(id)}`, {
-        method: 'DELETE'
-      }).catch((e) => console.warn('Server sync failed:', e))
+        method: 'DELETE',
+        headers: getAuthHeaders({ json: false })
+      })
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to delete gallery photo')
+        setSyncError(null)
+      })
+      .catch(handleSyncError)
 
       return updated
     })
@@ -397,13 +385,16 @@ export function MenuProvider({ children }) {
     updateGalleryItem(id, { category: newCategory })
   }, [updateGalleryItem])
 
-  const resetGallery = useCallback(() => {
-    setGalleryData(defaultGalleryData)
+  const resetGallery = useCallback(async () => {
     try {
-      localStorage.removeItem(LOCAL_STORAGE_GALLERY_KEY)
-      fetch('/api/gallery/reset', { method: 'POST' }).catch((e) => console.warn(e))
-    } catch (e) {}
-  }, [])
+      const res = await fetch('/api/gallery/reset', { method: 'POST', headers: getAuthHeaders({ json: false }) })
+      if (!res.ok) throw new Error('Failed to reset gallery')
+      setSyncError(null)
+      await refreshFromServer()
+    } catch (e) {
+      handleSyncError(e)
+    }
+  }, [refreshFromServer])
 
   const exportGalleryJson = useCallback(() => {
     const jsonString = `data:text/json;charset=utf-8,${encodeURIComponent(
@@ -420,22 +411,22 @@ export function MenuProvider({ children }) {
   const contextValue = useMemo(
     () => ({
       isServerConnected,
+      isLoading,
+      syncError,
       refreshFromServer,
       categories: menuData.categories || defaultMenuData.categories,
-      items: menuData.items || defaultMenuData.items,
+      items: menuData.items || [],
       updateItem,
       addItem,
       deleteItem,
       resetToDefault,
       exportJsonFile,
       rawMenuData: menuData,
-      // Bento
       bentoItems,
       updateBentoSlot,
       resetBento,
-      // Gallery
       galleryCategories: galleryData.categories || defaultGalleryData.categories,
-      galleryItems: galleryData.items || defaultGalleryData.items,
+      galleryItems: galleryData.items || [],
       addGalleryItem,
       updateGalleryItem,
       deleteGalleryItem,
@@ -445,6 +436,8 @@ export function MenuProvider({ children }) {
     }),
     [
       isServerConnected,
+      isLoading,
+      syncError,
       refreshFromServer,
       menuData,
       updateItem,

@@ -1,6 +1,7 @@
 import React from 'react'
+import { getCdnUrl } from '../utils/cdn'
 
-const GCS_LOGO_BASE = 'https://storage.googleapis.com/yesj/assets/logos';
+const GCS_LOGO_BASE = getCdnUrl('/assets/logos');
 
 // Official Tanah Brand Logos (6 Variations - Hosted on Google Cloud Storage)
 export const LogoPrimaryHorizontal = ({ className = "h-12 w-auto", alt = "Tanah Kitchen & Bar" }) => (

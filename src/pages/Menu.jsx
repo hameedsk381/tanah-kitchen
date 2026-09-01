@@ -6,6 +6,7 @@ import { useMenu } from '../context/MenuContext'
 import { LogoOwl } from '../components/illustrations'
 import SEO from '../components/SEO'
 import { liquidLibraryData } from '../data/barMenuData'
+import { getCdnUrl } from '../utils/cdn'
 
 // Dynamic category helper using item data directly from Admin / Database
 function getMappedCategory(item) {
@@ -246,7 +247,7 @@ export default function Menu() {
             <>
               <div className="mb-3 flex justify-center">
                 <img
-                  src="https://storage.googleapis.com/yesj/assets/logos/logo-wordmark-light.png"
+                  src="/assets/logos/logo-wordmark-light.png"
                   alt="Tanah Kitchen & Bar"
                   className="h-8 md:h-10 w-auto object-contain opacity-95"
                 />
@@ -272,7 +273,7 @@ export default function Menu() {
             <>
               <div className="mb-3 flex justify-center">
                 <img
-                  src="https://storage.googleapis.com/yesj/assets/logos/logo-wordmark-light.png"
+                  src="/assets/logos/logo-wordmark-light.png"
                   alt="Tanah Kitchen & Bar"
                   className="h-8 md:h-10 w-auto object-contain opacity-95"
                 />
