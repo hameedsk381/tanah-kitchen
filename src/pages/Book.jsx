@@ -62,7 +62,7 @@ export default function Book() {
   }
 
   return (
-    <main className="flex-grow pt-24 bg-[#FAF8F5] text-[#1E1B18]">
+    <main className="flex-grow pt-24 bg-[#FAF8F5] text-[#1E1B18] brand-dots-light">
       <SEO
         title="Reserve a Table & Corporate Dining | Tanah Kitchen & Bar Hyderabad"
         description="Book your table or host corporate dining events at Tanah Kitchen & Bar in Gachibowli. Select party size, date, time slots, and customized corporate dining packages."
@@ -75,7 +75,7 @@ export default function Book() {
       />
 
       {/* ── 1. Page Header (Spacious Luxury Banner) ── */}
-      <section className="section-dark relative py-20 lg:py-28 text-center border-b border-[#E5E2DC]/15 overflow-hidden">
+      <section className="section-dark relative py-20 lg:py-28 text-center border-b border-[#E5E2DC]/15 overflow-hidden brand-dots-dark">
         <div className="absolute inset-0 z-0">
           <img
             src="/assets/Tanha Ambiance/Ambiance-25.webp"
@@ -190,7 +190,7 @@ export default function Book() {
                 />
               </div>
 
-              <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#5E332E]/10 text-xs text-[#1E1B18]/85 flex items-center gap-2.5">
+              <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#5E332E]/10 text-xs text-[#1E1B18]/85 flex items-center gap-2.5 brand-dots-light">
                 <ShieldCheck className="w-4 h-4 text-[#5E332E] flex-shrink-0" />
                 <span>Instant reservation confirmation via SMS &amp; Email.</span>
               </div>
@@ -267,7 +267,7 @@ export default function Book() {
                         value={form.name}
                         onChange={handleChange}
                         placeholder="e.g. Sarah Sharma"
-                        className="w-full px-4 py-3 rounded-xl border border-[#5E332E]/20 text-sm focus:outline-none focus:border-[#5E332E] bg-[#FAF8F5]/40"
+                        className="w-full px-4 py-3 rounded-xl border border-[#5E332E]/20 text-sm focus:outline-none focus:border-[#5E332E] bg-[#FAF8F5]/40 brand-dots-light"
                       />
                       {errors.name && <span className="text-xs text-red-600 block mt-1 font-medium">{errors.name}</span>}
                     </div>
@@ -282,7 +282,7 @@ export default function Book() {
                         value={form.phone}
                         onChange={handleChange}
                         placeholder="+91 98765 43210"
-                        className="w-full px-4 py-3 rounded-xl border border-[#5E332E]/20 text-sm focus:outline-none focus:border-[#5E332E] bg-[#FAF8F5]/40"
+                        className="w-full px-4 py-3 rounded-xl border border-[#5E332E]/20 text-sm focus:outline-none focus:border-[#5E332E] bg-[#FAF8F5]/40 brand-dots-light"
                       />
                       {errors.phone && <span className="text-xs text-red-600 block mt-1 font-medium">{errors.phone}</span>}
                     </div>
@@ -299,7 +299,7 @@ export default function Book() {
                       value={form.email}
                       onChange={handleChange}
                       placeholder="sarah@example.com"
-                      className="w-full px-4 py-3 rounded-xl border border-[#5E332E]/20 text-sm focus:outline-none focus:border-[#5E332E] bg-[#FAF8F5]/40"
+                      className="w-full px-4 py-3 rounded-xl border border-[#5E332E]/20 text-sm focus:outline-none focus:border-[#5E332E] bg-[#FAF8F5]/40 brand-dots-light"
                     />
                     {errors.email && <span className="text-xs text-red-600 block mt-1 font-medium">{errors.email}</span>}
                   </div>
@@ -387,7 +387,7 @@ export default function Book() {
                       onChange={handleChange}
                       placeholder="Birthday celebration, anniversary, allergy notes, quiet corner preference..."
                       rows={2}
-                      className="w-full px-4 py-2.5 rounded-xl border border-[#5E332E]/20 text-sm focus:outline-none bg-[#FAF8F5]/40 resize-none"
+                      className="w-full px-4 py-2.5 rounded-xl border border-[#5E332E]/20 text-sm focus:outline-none bg-[#FAF8F5]/40 resize-none brand-dots-light"
                     />
                   </div>
 

@@ -160,7 +160,7 @@ export default function Home() {
       {/* ==========================================
           1. CINEMATIC HERO (WordPress Elementor Style Hero Banner with Live Badge & Quick Booking)
           ========================================== */}
-      <section className="section-dark relative min-h-[95vh] flex flex-col justify-center items-center pt-32 pb-20 px-6 md:px-12 overflow-hidden">
+      <section className="section-dark relative min-h-[95vh] flex flex-col justify-center items-center pt-32 pb-20 px-6 md:px-12 overflow-hidden brand-dots-dark">
         {/* Background Image */}
         <img
           src="/assets/Tanha%20Ambiance/Ambiance-9.webp"
@@ -268,7 +268,7 @@ export default function Home() {
       <section
         id="where-teams-gather"
         ref={sec2Ref}
-        className="wp-section bg-[#FAF8F5] text-[#1E1B18] border-b border-[#5E332E]/10"
+        className="wp-section bg-[#FAF8F5] text-[#1E1B18] border-b border-[#5E332E]/10 brand-dots-light"
       >
         <div className="wp-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -334,7 +334,7 @@ export default function Home() {
           ========================================== */}
       <section
         ref={secFoodRef}
-        className="wp-section bg-[#FAF8F5] text-[#1E1B18] border-b border-[#5E332E]/10 pt-16 pb-20"
+        className="wp-section bg-[#FAF8F5] text-[#1E1B18] border-b border-[#5E332E]/10 pt-16 pb-20 brand-dots-light"
       >
         <div className="wp-container space-y-10">
           
@@ -629,7 +629,7 @@ export default function Home() {
       <section
         id="why-tanah"
         ref={sec3Ref}
-        className="wp-section section-dark text-[#FAF8F5]"
+        className="wp-section section-dark text-[#FAF8F5] brand-dots-dark"
       >
         <div className="wp-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -712,7 +712,7 @@ export default function Home() {
           ========================================== */}
       <section
         ref={sec4Ref}
-        className="wp-section bg-[#FAF8F5] text-[#1E1B18] border-b border-[#5E332E]/10"
+        className="wp-section bg-[#FAF8F5] text-[#1E1B18] border-b border-[#5E332E]/10 brand-dots-light"
       >
         <div className="wp-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -784,7 +784,7 @@ export default function Home() {
           ========================================== */}
       <section
         ref={sec5Ref}
-        className="wp-section section-dark text-[#FAF8F5]"
+        className="wp-section section-dark text-[#FAF8F5] brand-dots-dark"
       >
         <div className="wp-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -911,7 +911,7 @@ export default function Home() {
           ========================================== */}
       <section
         ref={sec7Ref}
-        className="wp-section section-dark text-[#FAF8F5]"
+        className="wp-section section-dark text-[#FAF8F5] brand-dots-dark"
       >
         <div className="wp-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -987,7 +987,7 @@ export default function Home() {
       {/* ==========================================
           GUEST EXPERIENCES & 5-STAR TESTIMONIALS (WordPress Review Cards)
           ========================================== */}
-      <section className="wp-section bg-[#FAF8F5] text-[#1E1B18] border-b border-[#5E332E]/10 pt-16 pb-20">
+      <section className="wp-section bg-[#FAF8F5] text-[#1E1B18] border-b border-[#5E332E]/10 pt-16 pb-20 brand-dots-light">
         <div className="wp-container space-y-12">
           
           <div className="text-center max-w-2xl mx-auto space-y-3">
@@ -1069,7 +1069,7 @@ export default function Home() {
       <section
         id="contact-form"
         ref={sec8Ref}
-        className="wp-section bg-[#FAF8F5] text-[#1E1B18]"
+        className="wp-section bg-[#FAF8F5] text-[#1E1B18] brand-dots-light"
       >
         <div className="wp-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">

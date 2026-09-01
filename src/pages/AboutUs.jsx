@@ -81,7 +81,7 @@ export default function AboutUs() {
   const isSustainabilityInView = useInView(sustainabilityRef, { once: true, margin: '-100px' })
 
   return (
-    <main className="flex-grow pt-24 overflow-hidden bg-[#FAF8F5] text-[#1E1B18]">
+    <main className="flex-grow pt-24 overflow-hidden bg-[#FAF8F5] text-[#1E1B18] brand-dots-light">
       <SEO
         title="Our Philosophy & Brand Story | Tanah Kitchen & Bar Gachibowli"
         description="Discover the story of Tanah Kitchen & Bar. Meaning 'Earth', Tanah is built branch by branch like a nest—celebrating community, rest, organic architecture, and authentic hospitality."
@@ -100,7 +100,7 @@ export default function AboutUs() {
       />
 
       {/* ── 1. Hero Header (WordPress Page Title Banner) ── */}
-      <section className="section-dark relative py-20 lg:py-28 flex items-center justify-center border-b border-light-cream/15">
+      <section className="section-dark relative py-20 lg:py-28 flex items-center justify-center border-b border-light-cream/15 brand-dots-dark">
         <div className="absolute inset-0 opacity-20 mix-blend-multiply">
           <img
             src="/assets/Tanha Ambiance/Ambiance-12.webp"
@@ -148,7 +148,7 @@ export default function AboutUs() {
       </section>
 
       {/* ── 3. Logo Symbol Breakdown (WordPress 4-Column Card Grid) ── */}
-      <section ref={logoRef} className="wp-section bg-[#FAF8F5] border-b border-[#5E332E]/10">
+      <section ref={logoRef} className="wp-section bg-[#FAF8F5] border-b border-[#5E332E]/10 brand-dots-light">
         <div className="wp-container">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -217,7 +217,7 @@ export default function AboutUs() {
       </section>
 
       {/* ── 4. 7-Step Emotional Journey (WordPress Step Timeline) ── */}
-      <section ref={journeyRef} className="wp-section section-dark text-[#FAF8F5] border-b border-light-cream/10">
+      <section ref={journeyRef} className="wp-section section-dark text-[#FAF8F5] border-b border-light-cream/10 brand-dots-dark">
         <div className="wp-container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -269,7 +269,7 @@ export default function AboutUs() {
       </section>
 
       {/* ── 5. Why Tanah? (WordPress 2-Column Split Block) ── */}
-      <section ref={whyRef} className="wp-section bg-[#FAF8F5] border-b border-[#5E332E]/10">
+      <section ref={whyRef} className="wp-section bg-[#FAF8F5] border-b border-[#5E332E]/10 brand-dots-light">
         <div className="wp-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
@@ -340,7 +340,7 @@ export default function AboutUs() {
       </section>
 
       {/* ── 6. The Story Section (WordPress Editorial Block) ── */}
-      <section ref={storyRef} className="wp-section section-dark text-[#FAF8F5]">
+      <section ref={storyRef} className="wp-section section-dark text-[#FAF8F5] brand-dots-dark">
         <div className="wp-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
@@ -391,7 +391,7 @@ export default function AboutUs() {
       {/* ── 7. Circularity & Sustainability (WordPress 3-Column Card Grid) ── */}
       <section
         ref={sustainabilityRef}
-        className="wp-section bg-[#FAF8F5] text-[#1E1B18]"
+        className="wp-section bg-[#FAF8F5] text-[#1E1B18] brand-dots-light"
       >
         <div className="wp-container space-y-14">
           <motion.div

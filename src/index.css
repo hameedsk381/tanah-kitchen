@@ -75,12 +75,12 @@
 }
 
 /* ============================================================
-   BASE RESET & GLOBAL STYLES
+   BASE RESET & GLOBAL STYLES (With Authentic Brand Dot Texture)
    ============================================================ */
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  background-color: #E5E2DC;
+  background-color: #FAF8F5;
   color: #1E1B18;
   overflow-x: hidden;
   max-width: 100vw;
@@ -88,7 +88,12 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: #E5E2DC;
+  background-color: #FAF8F5;
+  background-image: 
+    radial-gradient(rgba(94, 51, 46, 0.22) 0.75px, transparent 0.75px),
+    radial-gradient(rgba(30, 27, 24, 0.18) 0.5px, transparent 0.5px);
+  background-size: 28px 28px;
+  background-position: 0 0, 14px 14px;
   color: #1E1B18;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -102,6 +107,25 @@ input, select, textarea {
   font-size: 16px !important;
 }
 
+/* Authentic Brand Organic Dotted Background Classes */
+.brand-dots-light {
+  background-color: #FAF8F5;
+  background-image: 
+    radial-gradient(rgba(94, 51, 46, 0.22) 0.75px, transparent 0.75px),
+    radial-gradient(rgba(30, 27, 24, 0.18) 0.5px, transparent 0.5px);
+  background-size: 28px 28px;
+  background-position: 0 0, 14px 14px;
+}
+
+.brand-dots-dark {
+  background-color: #5E332E;
+  background-image: 
+    radial-gradient(rgba(229, 226, 220, 0.16) 0.75px, transparent 0.75px),
+    radial-gradient(rgba(229, 226, 220, 0.08) 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
 /* Folk Art Tiled Pattern Background (Clean) */
 .folk-art-bg {
   position: relative;
@@ -113,7 +137,7 @@ input, select, textarea {
   width: 100%;
   height: 16px;
   margin: 16px 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='16' viewBox='0 0 24 16'%3E%3Cpath d='M6 8 L12 3 L18 8 L12 13 Z' stroke='%23DEC8AB' fill='none' stroke-width='1.5'/%3E%3Ccircle cx='2' cy='8' r='1' fill='%23DEC8AB'/%3E%3Ccircle cx='22' cy='8' r='1' fill='%23DEC8AB'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='16' viewBox='0 0 24 16'%3E%3Cpath d='M6 8 L12 3 L18 8 L12 13 Z' stroke='%23D0CCC4' fill='none' stroke-width='1.5'/%3E%3Ccircle cx='2' cy='8' r='1' fill='%23D0CCC4'/%3E%3Ccircle cx='22' cy='8' r='1' fill='%23D0CCC4'/%3E%3C/svg%3E");
   background-repeat: repeat-x;
   background-position: center;
 }
@@ -123,7 +147,7 @@ input, select, textarea {
   width: 100%;
   height: 16px;
   margin: 16px 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='16' viewBox='0 0 24 16'%3E%3Cpath d='M6 8 L12 3 L18 8 L12 13 Z' stroke='%236B2523' fill='none' stroke-width='1.5'/%3E%3Ccircle cx='2' cy='8' r='1' fill='%236B2523'/%3E%3Ccircle cx='22' cy='8' r='1' fill='%236B2523'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='16' viewBox='0 0 24 16'%3E%3Cpath d='M6 8 L12 3 L18 8 L12 13 Z' stroke='%235E332E' fill='none' stroke-width='1.5'/%3E%3Ccircle cx='2' cy='8' r='1' fill='%235E332E'/%3E%3Ccircle cx='22' cy='8' r='1' fill='%235E332E'/%3E%3C/svg%3E");
   background-repeat: repeat-x;
   background-position: center;
 }
