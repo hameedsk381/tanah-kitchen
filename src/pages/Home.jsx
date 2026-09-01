@@ -179,6 +179,20 @@ export default function Home() {
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           className="relative max-w-4xl mx-auto text-center flex flex-col items-center z-10 w-full"
         >
+          {/* Authentic Brand Siren Emblem */}
+          <motion.div
+            initial={{ scale: 0.85, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-3"
+          >
+            <img
+              src="/assets/logos/logo-siren-light.png"
+              alt="Tanah Siren Emblem"
+              className="h-14 sm:h-16 md:h-20 w-auto object-contain drop-shadow-md"
+            />
+          </motion.div>
+
           {/* Live Status Eyebrow Badge */}
           <div className="mb-5 flex items-center gap-2">
             <span className="wp-badge wp-badge-gold shadow-sm flex items-center gap-2">
@@ -339,7 +353,12 @@ export default function Home() {
         <div className="wp-container space-y-10">
           
           {/* Header */}
-          <div className="text-center max-w-2xl mx-auto space-y-3">
+          <div className="text-center max-w-2xl mx-auto space-y-3 flex flex-col items-center">
+            <img
+              src="/assets/logos/logo-wordmark-dark.png"
+              alt="Tanah Kitchen & Bar"
+              className="h-8 md:h-10 w-auto object-contain mb-1"
+            />
             <span className="wp-badge wp-badge-maroon">
               ✦ TASTE OF TANAH ✦
             </span>

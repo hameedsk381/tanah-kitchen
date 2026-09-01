@@ -635,6 +635,13 @@ export default function Menu() {
 
           {menuType === 'food' && (
             <>
+              <div className="mb-3 flex justify-center">
+                <img
+                  src="/assets/logos/logo-wordmark-light.png"
+                  alt="Tanah Kitchen & Bar"
+                  className="h-8 md:h-10 w-auto object-contain opacity-95"
+                />
+              </div>
               <div className="mb-4">
                 <span className="wp-badge wp-badge-gold">
                   GASTRONOMY CATALOG
@@ -1325,13 +1332,11 @@ export default function Menu() {
             className="w-full relative z-10 py-16 flex flex-col items-center text-center border-t"
             style={{ backgroundColor: 'var(--color-primary-dark)', borderColor: 'rgba(236, 233, 218, 0.15)' }}
           >
-            <LogoOwl className="w-[64px] h-[64px] mb-5" color="#ECE9DA" />
-            <h3 
-              className="uppercase tracking-[0.25em] font-bold mb-4"
-              style={{ color: 'var(--color-beige)', fontSize: '18px' }}
-            >
-              TANAH KITCHEN & BAR
-            </h3>
+            <img 
+              src="/assets/logos/logo-primary-vertical-light.png" 
+              alt="Tanah Kitchen & Bar" 
+              className="h-20 w-auto mb-5 object-contain" 
+            />
             <p className="max-w-[320px] leading-relaxed mx-auto" style={{ color: 'var(--color-beige)', fontSize: '13px', opacity: 0.85 }}>
               5th Floor, Vaishnavi Splendora, opp Meenakshi Bamboos, beside AIG Hospital, Gachibowli.
             </p>

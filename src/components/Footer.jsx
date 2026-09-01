@@ -59,6 +59,13 @@ export default function Footer() {
             <p className="text-[11px] font-light italic text-[#E5E2DC]/70 font-body">
               Built on the symbolism of birds, nests, and the earth — celebrating belonging, rest, and authentic hospitality. ESTD 2025.
             </p>
+            <div className="pt-1 flex items-center gap-2.5 opacity-80">
+              <img
+                src="/assets/logos/logo-telugu-horizontal-light.png"
+                alt="Tanah in Telugu (తనః)"
+                className="h-7 w-auto object-contain"
+              />
+            </div>
           </div>
 
           {/* Navigation Links */}
