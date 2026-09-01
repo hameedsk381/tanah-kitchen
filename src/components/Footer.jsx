@@ -48,9 +48,9 @@ export default function Footer() {
           <div className="space-y-4">
             <Link to="/" className="flex items-center group">
               <img
-                src="/assets/logo.png"
+                src="/assets/logos/logo-primary-horizontal-light.png"
                 alt="Tanah Kitchen & Bar"
-                className="h-16 sm:h-20 w-auto object-contain bg-transparent border-none shadow-none transition-transform duration-300 group-hover:scale-105"
+                className="h-14 sm:h-16 w-auto object-contain bg-transparent border-none shadow-none transition-transform duration-300 group-hover:scale-105"
               />
             </Link>
             <p className="text-xs font-light leading-relaxed text-[#FAF8F5]/80 font-body">

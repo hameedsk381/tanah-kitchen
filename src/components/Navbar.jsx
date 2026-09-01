@@ -97,9 +97,9 @@ export default function Navbar() {
               aria-label="Tanah Kitchen & Bar Home"
             >
               <img
-                src="/assets/logo.png"
+                src="/assets/logos/logo-primary-horizontal-light.png"
                 alt="Tanah Kitchen & Bar"
-                className="h-12 sm:h-14 md:h-16 lg:h-18 w-auto object-contain bg-transparent border-none shadow-none transition-all duration-300 group-hover:brightness-110 flex-shrink-0"
+                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain bg-transparent border-none shadow-none transition-all duration-300 group-hover:brightness-110 flex-shrink-0"
               />
             </Link>
 
