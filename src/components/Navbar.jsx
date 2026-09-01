@@ -93,22 +93,14 @@ export default function Navbar() {
             {/* Logo */}
             <Link
               to="/"
-              className="flex items-center gap-2.5 sm:gap-3.5 md:gap-4 group bg-transparent border-none p-0 outline-none transition-transform duration-300 hover:scale-[1.02]"
+              className="flex items-center group bg-transparent border-none p-0 outline-none transition-transform duration-300 hover:scale-[1.03]"
               aria-label="Tanah Kitchen & Bar Home"
             >
               <img
                 src="/assets/logo.png"
-                alt="Tanah Logo"
-                className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 object-contain bg-transparent border-none shadow-none transition-all duration-300 group-hover:brightness-110 flex-shrink-0"
+                alt="Tanah Kitchen & Bar"
+                className="h-12 sm:h-14 md:h-16 lg:h-18 w-auto object-contain bg-transparent border-none shadow-none transition-all duration-300 group-hover:brightness-110 flex-shrink-0"
               />
-              <div className="flex flex-col text-left bg-transparent">
-                <span className="font-display text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-[0.12em] uppercase text-light-cream leading-none">
-                  Tanah
-                </span>
-                <span className="text-[8px] sm:text-[9px] md:text-[10px] tracking-[0.35em] uppercase text-accent-gold font-body font-bold mt-1">
-                  Kitchen & Bar
-                </span>
-              </div>
             </Link>
 
             {/* Desktop Links */}

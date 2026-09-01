@@ -46,13 +46,12 @@ export default function Footer() {
 
           {/* Brand Column */}
           <div className="space-y-4">
-            <Link to="/" className="flex flex-col group">
-              <span className="font-display text-3xl font-extrabold tracking-[0.12em] uppercase text-[#F6E1CB] transition-colors duration-300">
-                Tanah
-              </span>
-              <span className="text-[9px] tracking-[0.35em] uppercase text-[#FFC470] font-body font-bold">
-                Kitchen & Bar
-              </span>
+            <Link to="/" className="flex items-center group">
+              <img
+                src="/assets/logo.png"
+                alt="Tanah Kitchen & Bar"
+                className="h-16 sm:h-20 w-auto object-contain bg-transparent border-none shadow-none transition-transform duration-300 group-hover:scale-105"
+              />
             </Link>
             <p className="text-xs font-light leading-relaxed text-[#EFE1D0]/80 font-body">
               TANAH is not simply a restaurant—it is a gathering place where people reconnect with one another through food, drink, stories, and the comforting feeling of coming home.

@@ -1079,20 +1079,14 @@ export default function Home() {
               <div className="space-y-6">
                 <img
                   src="/assets/logo.png"
-                  alt="Tanah Logo"
-                  className="h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 object-contain bg-transparent border-none shadow-none"
+                  alt="Tanah Kitchen & Bar"
+                  className="h-20 sm:h-24 md:h-28 w-auto object-contain bg-transparent border-none shadow-none"
                 />
                 
                 <div>
-                  <span className="text-[10px] tracking-[0.3em] uppercase text-[#FFC470] font-bold block mb-1 font-body">
+                  <span className="text-[10px] tracking-[0.3em] uppercase text-[#FFC470] font-bold block font-body">
                     GACHIBOWLI • HYDERABAD
                   </span>
-                  <h4 className="font-display text-3xl font-extrabold uppercase text-[#DEC8AB]">
-                    TANAH
-                  </h4>
-                  <p className="text-xs uppercase tracking-widest text-[#FFC470] font-semibold mt-1">
-                    Kitchen & Bar
-                  </p>
                 </div>
 
                 <div className="w-16 h-[2px] bg-[#FFC470]/40 rounded-full" />
