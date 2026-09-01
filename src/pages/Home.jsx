@@ -192,20 +192,31 @@ export default function Home() {
       <h1 className="sr-only">Tanah Bar &amp; Kitchen | South Indian Bar &amp; Kitchen with Roof Top Dining in Gachibowli, Hyderabad</h1>
 
       {/* ==========================================
-          1. CINEMATIC HERO (WordPress Elementor Style Hero Banner with Live Badge & Quick Booking)
+          1. CINEMATIC HERO (WordPress Elementor Style Hero Banner with Diffuse Palette Overlay)
           ========================================== */}
-      <section className="section-dark relative min-h-[95vh] flex flex-col justify-center items-center pt-32 pb-16 px-6 md:px-12 overflow-hidden">
-        {/* Background Image */}
-        <img
-          src="/assets/Tanha%20Ambiance/Ambiance-9.webp"
-          alt="Tanah Bar & Kitchen Ambiance"
-          fetchPriority="high"
-          loading="eager"
-          decoding="async"
-          className="absolute inset-0 w-full h-full object-cover z-0 filter brightness-[0.55] contrast-[1.05]"
-        />
-        {/* Dark Vignette Overlay for Readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1E1B18]/95 via-[#5E332E]/60 to-[#5E332E]/80 z-[1]" />
+      <section className="relative min-h-[95vh] flex flex-col justify-center items-center pt-32 pb-16 px-6 md:px-12 overflow-hidden bg-[#1E1B18]">
+        {/* Main Background Image */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img
+            src="https://storage.googleapis.com/yesj/assets/Tanha Ambiance/Ambiance-9.webp"
+            alt="Tanah Bar &amp; Kitchen Main Rooftop Ambiance"
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+            className="w-full h-full object-cover object-center filter brightness-[0.70] contrast-[1.08] scale-105 transition-transform duration-1000 ease-out"
+          />
+          {/* Atmospheric Radial Diffuse Glow */}
+          <div 
+            className="absolute inset-0 z-[1] pointer-events-none"
+            style={{
+              background: 'radial-gradient(ellipse at 50% 35%, rgba(94, 51, 46, 0.35) 0%, rgba(74, 36, 32, 0.65) 50%, rgba(30, 27, 24, 0.92) 85%, rgba(30, 27, 24, 0.98) 100%)'
+            }}
+          />
+          {/* Vertical Diffuse Gradient for Text Contrast */}
+          <div className="absolute inset-0 z-[2] bg-gradient-to-b from-[#1E1B18]/70 via-[#5E332E]/50 to-[#1E1B18]/95 backdrop-blur-[0.5px]" />
+          {/* Bottom Edge Diffuse Transition */}
+          <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#1E1B18] to-transparent z-[3]" />
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
