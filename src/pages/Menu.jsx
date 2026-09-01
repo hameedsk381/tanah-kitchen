@@ -88,7 +88,7 @@ const LIQUID_SECTIONS = [
     id: 'singlemalt',
     name: 'SINGLEMALT',
     headers: ['30ML', 'BTL'],
-    watermark: '/assets/Tanha Food/food-21.webp',
+    watermark: 'https://storage.googleapis.com/yesj/assets/Tanha Food/food-21.webp',
     items: [
       { name: 'Singleton 12 Yr', prices: ['799/-', '14,999/-'] },
       { name: 'Talisker 10 Yr', prices: ['659/-', '13,999/-'] },
@@ -108,7 +108,7 @@ const LIQUID_SECTIONS = [
     id: 'whiskey',
     name: 'WHISKEY',
     headers: ['30ML', 'BTL'],
-    watermark: '/assets/Tanha Food/food-21.webp',
+    watermark: 'https://storage.googleapis.com/yesj/assets/Tanha Food/food-21.webp',
     items: [
       { name: 'Royal Salute', prices: ['2,999/-', '49,999/-'] },
       { name: 'Chivas 12 YR', prices: ['459/-', '8,999/-'] },
@@ -168,7 +168,7 @@ const LIQUID_SECTIONS = [
     id: 'rum',
     name: 'RUM',
     headers: ['30ML', 'BTL'],
-    watermark: '/assets/Tanha Food/food-21.webp',
+    watermark: 'https://storage.googleapis.com/yesj/assets/Tanha Food/food-21.webp',
     items: [
       { name: 'Old Monk', prices: ['299/-', '3,999/-'] },
       { name: 'Bacardi Carta Blanc', prices: ['299/-', '4,999/-'] },
@@ -226,7 +226,7 @@ const LIQUID_SECTIONS = [
     id: 'beer',
     name: 'BEER & ALCOPOPS',
     headers: ['Pint', 'Bucket'],
-    watermark: '/assets/Tanha Image/05.webp',
+    watermark: 'https://storage.googleapis.com/yesj/assets/Tanha Image/05.webp',
     items: [
       { name: 'Corona Extra', prices: ['699/-', '2,899/-'] },
       { name: 'Hoegaarden', prices: ['699/-', '2,899/-'] },
@@ -271,7 +271,7 @@ const LIQUID_SECTIONS = [
     id: 'signature',
     name: 'SIGNATURE COCKTAILS',
     headers: ['Price'],
-    watermark: '/assets/Tanha Food/food-22.webp',
+    watermark: 'https://storage.googleapis.com/yesj/assets/Tanha Food/food-22.webp',
     items: [
       { name: 'Palapitta Song', prices: ['659/-'], desc: 'Blend of Rum, Pineapple, Falernum, Narial Panni, Lime, & Salin' },
       { name: 'Godavari Gulabi', prices: ['699/-'], desc: 'Bourbon, Blueberry, Lime, Basil, Foam' },
@@ -290,7 +290,7 @@ const LIQUID_SECTIONS = [
     id: 'mocktail',
     name: 'MOCKTAIL',
     headers: ['Price'],
-    watermark: '/assets/Tanha Food/food-22.webp',
+    watermark: 'https://storage.googleapis.com/yesj/assets/Tanha Food/food-22.webp',
     items: [
       { name: 'Mamidi Madhuram', prices: ['349/-'], desc: 'Mango Cordial, Lime Simple Syrup, Bubbles' },
       { name: 'Golconda Glow', prices: ['349/-'], desc: 'Raspberry, Grenadine, Mint, Orange Juice, Simple Syrup, Bubbles' },
@@ -309,7 +309,7 @@ const LIQUID_SECTIONS = [
     id: 'classic',
     name: 'CLASSIC COCKTAIL',
     headers: ['Price'],
-    watermark: '/assets/Tanha Food/food-22.webp', // The red Earthy Hibiscus Cocktail image from your photo
+    watermark: 'https://storage.googleapis.com/yesj/assets/Tanha Food/food-22.webp', // The red Earthy Hibiscus Cocktail image from your photo
     items: [
       { name: 'LIIT', prices: ['999/-'], desc: 'Tequila, rum, vodka, gin, triple sec, lemon juice, Coke' },
       { name: 'Cosmopolitan', prices: ['699/-'], desc: 'Vodka, triple sec, cranberry juice' },
@@ -329,7 +329,7 @@ const LIQUID_SECTIONS = [
     id: 'shooter',
     name: 'SHOOTER',
     headers: ['Price'],
-    watermark: '/assets/Tanha Food/food-22.webp', // The red Earthy Hibiscus Cocktail image from your photo
+    watermark: 'https://storage.googleapis.com/yesj/assets/Tanha Food/food-22.webp', // The red Earthy Hibiscus Cocktail image from your photo
     items: [
       { name: 'Kamikaze Shot', prices: ['499/-'], desc: 'Vodka, triple sec, lemon juice' },
       { name: 'Cheesecake Shot', prices: ['559/-'], desc: 'Vodka, strawberry purée, cream, biscuit' },
@@ -627,7 +627,7 @@ export default function Menu() {
             <>
               <div className="mb-3 flex justify-center">
                 <img
-                  src="/assets/logos/logo-wordmark-light.png"
+                  src="https://storage.googleapis.com/yesj/assets/logos/logo-wordmark-light.png"
                   alt="Tanah Kitchen & Bar"
                   className="h-8 md:h-10 w-auto object-contain opacity-95"
                 />
@@ -832,7 +832,7 @@ export default function Menu() {
                         >
                           <div className="relative aspect-[1/1] sm:aspect-[4/4.2] overflow-hidden bg-[#1E1B18]/5">
                             <img
-                              src={special.image || "/assets/Tanha Food/food-1.webp"}
+                              src={special.image || "https://storage.googleapis.com/yesj/assets/Tanha Food/food-1.webp"}
                               alt={special.name}
                               className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                             />
@@ -1170,7 +1170,7 @@ export default function Menu() {
           <div 
             className="fixed inset-0 z-0 pointer-events-none"
             style={{
-              backgroundImage: "url('/assets/Tanha Ambiance/Ambiance-9.webp')",
+              backgroundImage: "url('https://storage.googleapis.com/yesj/assets/Tanha Ambiance/Ambiance-9.webp')",
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundAttachment: 'fixed'
@@ -1303,7 +1303,7 @@ export default function Menu() {
             style={{ backgroundColor: 'var(--color-primary-dark)', borderColor: 'rgba(236, 233, 218, 0.15)' }}
           >
             <img 
-              src="/assets/logos/logo-primary-vertical-light.png" 
+              src="https://storage.googleapis.com/yesj/assets/logos/logo-primary-vertical-light.png" 
               alt="Tanah Kitchen & Bar" 
               className="h-20 w-auto mb-5 object-contain" 
             />

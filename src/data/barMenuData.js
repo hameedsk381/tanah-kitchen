@@ -23,7 +23,7 @@ export const signatureCocktails = [
     price: 659,
     priceLabel: "₹659",
     tag: "Signature",
-    image: "/assets/Tanha Food/food-21.webp"
+    image: "https://storage.googleapis.com/yesj/assets/Tanha Food/food-21.webp"
   },
   {
     id: "sig2",
@@ -32,7 +32,7 @@ export const signatureCocktails = [
     price: 699,
     priceLabel: "₹699",
     tag: "Must Try",
-    image: "/assets/Tanha Food/food-22.webp"
+    image: "https://storage.googleapis.com/yesj/assets/Tanha Food/food-22.webp"
   },
   {
     id: "sig3",
@@ -41,7 +41,7 @@ export const signatureCocktails = [
     price: 699,
     priceLabel: "₹699",
     tag: "Refreshing",
-    image: "/assets/Tanha Food/food-25.webp"
+    image: "https://storage.googleapis.com/yesj/assets/Tanha Food/food-25.webp"
   },
   {
     id: "sig4",
@@ -50,7 +50,7 @@ export const signatureCocktails = [
     price: 699,
     priceLabel: "₹699",
     tag: "Citrusy",
-    image: "/assets/Tanha Food/food-23.webp"
+    image: "https://storage.googleapis.com/yesj/assets/Tanha Food/food-23.webp"
   },
   {
     id: "sig5",
@@ -59,7 +59,7 @@ export const signatureCocktails = [
     price: 699,
     priceLabel: "₹699",
     tag: "House Special",
-    image: "/assets/Tanha Food/food-24.webp"
+    image: "https://storage.googleapis.com/yesj/assets/Tanha Food/food-24.webp"
   },
   {
     id: "sig6",
@@ -68,7 +68,7 @@ export const signatureCocktails = [
     price: 699,
     priceLabel: "₹699",
     tag: "Botanical",
-    image: "/assets/Tanha Food/food-21.webp"
+    image: "https://storage.googleapis.com/yesj/assets/Tanha Food/food-21.webp"
   },
   {
     id: "sig7",
@@ -77,7 +77,7 @@ export const signatureCocktails = [
     price: 699,
     priceLabel: "₹699",
     tag: "Floral & Royal",
-    image: "/assets/Tanha Food/food-22.webp"
+    image: "https://storage.googleapis.com/yesj/assets/Tanha Food/food-22.webp"
   },
   {
     id: "sig8",
@@ -86,7 +86,7 @@ export const signatureCocktails = [
     price: 799,
     priceLabel: "₹799",
     tag: "Exotic",
-    image: "/assets/Tanha Food/food-23.webp"
+    image: "https://storage.googleapis.com/yesj/assets/Tanha Food/food-23.webp"
   },
   {
     id: "sig9",
@@ -95,7 +95,7 @@ export const signatureCocktails = [
     price: 799,
     priceLabel: "₹799",
     tag: "Fiery",
-    image: "/assets/Tanha Food/food-24.webp"
+    image: "https://storage.googleapis.com/yesj/assets/Tanha Food/food-24.webp"
   },
   {
     id: "sig10",
@@ -104,7 +104,7 @@ export const signatureCocktails = [
     price: 799,
     priceLabel: "₹799",
     tag: "Chef Secret",
-    image: "/assets/Tanha Food/food-25.webp"
+    image: "https://storage.googleapis.com/yesj/assets/Tanha Food/food-25.webp"
   }
 ]
 
