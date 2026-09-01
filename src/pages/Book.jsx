@@ -87,7 +87,7 @@ export default function Book() {
         <div className="relative z-10 max-w-4xl mx-auto px-6 space-y-4">
           <div className="inline-flex items-center gap-2">
             <span className="wp-badge wp-badge-gold">
-              ✦ RESERVATIONS &amp; PRIVATE DINING ✦
+              ✦ ONLINE RESERVATIONS ✦
             </span>
           </div>
 
@@ -95,13 +95,13 @@ export default function Book() {
             className="font-display font-extrabold text-[#E5E2DC] leading-tight"
             style={{ fontSize: 'clamp(2.4rem, 5vw, 4.2rem)' }}
           >
-            Reserve Your Experience
+            Reserve Your Table Under the Sky
           </h1>
 
           <div className="w-20 h-[2px] bg-[#E5E2DC]/60 mx-auto rounded-full" />
 
           <p className="text-sm md:text-base font-light text-[#FAF8F5]/90 max-w-xl mx-auto font-body leading-relaxed">
-            Experience wood-fired gastronomy, crafted mixology, and panoramic rooftop ambience in Gachibowli, Hyderabad.
+            Secure your spot at Tanah for lunch, sunset drinks, or dinner under the stars.
           </p>
 
           {/* Mode Switcher Tabs */}
@@ -117,7 +117,7 @@ export default function Book() {
                   : 'bg-white/10 text-[#E5E2DC] hover:bg-white/20 border border-white/15'
               }`}
             >
-              🍽️ Table Reservation (1–10 Guests)
+              🍽️ Table Reservation (1–10+ Guests)
             </button>
 
             <a
@@ -248,11 +248,46 @@ export default function Book() {
                 >
                   <div className="border-b border-[#5E332E]/10 pb-4">
                     <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#5E332E] block mb-1">
-                      ONLINE TABLE RESERVATION
+                      RESERVE YOUR TABLE UNDER THE SKY
                     </span>
                     <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#5E332E]">
-                      Book Your Rooftop Table
+                      Book Your Experience
                     </h3>
+                    <p className="text-xs text-[#1E1B18]/70 mt-1 font-body">
+                      Secure your spot at Tanah for lunch, sunset drinks, or dinner under the stars.
+                    </p>
+                  </div>
+
+                  {/* Interactive Booking Tag Options */}
+                  <div>
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-2">
+                      Occasion / Gathering Type
+                    </label>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                      {[
+                        { id: 'tag1', label: 'Table for Friends & Family', icon: '👥' },
+                        { id: 'tag2', label: 'Open-Air Rooftop Seating', icon: '✨' },
+                        { id: 'tag3', label: 'Celebrations & Dinners', icon: '🎉' },
+                        { id: 'tag4', label: 'Drinks & Bites', icon: '🍸' }
+                      ].map((tag) => {
+                        const isSelected = form.bookingTag === tag.label || (!form.bookingTag && tag.id === 'tag1')
+                        return (
+                          <button
+                            type="button"
+                            key={tag.id}
+                            onClick={() => setForm({ ...form, bookingTag: tag.label })}
+                            className={`p-2.5 rounded-xl border text-[11px] font-semibold transition-all cursor-pointer text-center flex flex-col items-center justify-center gap-1 min-h-[58px] ${
+                              isSelected
+                                ? 'border-[#5E332E] bg-[#5E332E] text-[#E5E2DC] shadow-sm'
+                                : 'border-[#5E332E]/15 bg-[#FAF8F5]/60 text-[#1E1B18] hover:border-[#5E332E]/30'
+                            }`}
+                          >
+                            <span>{tag.icon}</span>
+                            <span className="leading-tight">{tag.label}</span>
+                          </button>
+                        )
+                      })}
+                    </div>
                   </div>
 
                   {/* Name & Phone */}
@@ -304,7 +339,7 @@ export default function Book() {
                     {errors.email && <span className="text-xs text-red-600 block mt-1 font-medium">{errors.email}</span>}
                   </div>
 
-                  {/* Date, Time & Party Size */}
+                  {/* Date, Time & Number of Guests */}
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div>
                       <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1.5">
@@ -338,7 +373,7 @@ export default function Book() {
 
                     <div>
                       <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1.5">
-                        Party Size *
+                        Number of Guests *
                       </label>
                       <select
                         name="guests"
@@ -346,7 +381,18 @@ export default function Book() {
                         onChange={handleChange}
                         className="w-full px-3.5 py-3 rounded-xl border border-[#5E332E]/20 text-xs sm:text-sm focus:outline-none bg-white"
                       >
-                        {partySizes.map((g) => (
+                        {[
+                          '1 Guest',
+                          '2 Guests',
+                          '3 Guests',
+                          '4 Guests',
+                          '5 Guests',
+                          '6 Guests',
+                          '7 Guests',
+                          '8 Guests',
+                          '9 Guests',
+                          '10+ Guests (Group/Event)'
+                        ].map((g) => (
                           <option key={g} value={g}>{g}</option>
                         ))}
                       </select>
@@ -359,7 +405,7 @@ export default function Book() {
                       Seating Preference
                     </label>
                     <div className="grid grid-cols-3 gap-2.5">
-                      {['Rooftop Open-Air', 'Covered Bamboo Nest', 'Bar High-Table'].map((pref) => (
+                      {['Rooftop Open-Air', 'Indoor Dining', 'First Available'].map((pref) => (
                         <button
                           type="button"
                           key={pref}
@@ -376,16 +422,16 @@ export default function Book() {
                     </div>
                   </div>
 
-                  {/* Notes */}
+                  {/* Special Requests / Notes */}
                   <div>
                     <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1.5">
-                      Special Dietary or Occasion Notes
+                      Special Requests / Notes
                     </label>
                     <textarea
                       name="notes"
                       value={form.notes}
                       onChange={handleChange}
-                      placeholder="Birthday celebration, anniversary, allergy notes, quiet corner preference..."
+                      placeholder="Special celebration, dietary requirements, quiet table preference..."
                       rows={2}
                       className="w-full px-4 py-2.5 rounded-xl border border-[#5E332E]/20 text-sm focus:outline-none bg-[#FAF8F5]/40 resize-none"
                     />
@@ -393,9 +439,9 @@ export default function Book() {
 
                   <button
                     type="submit"
-                    className="wp-btn-pill bg-[#5E332E] text-[#E5E2DC] hover:bg-[#1E1B18] hover:text-white shadow-lg w-full py-4 text-xs font-bold tracking-widest uppercase cursor-pointer transition-all"
+                    className="wp-btn-pill bg-[#5E332E] text-[#E5E2DC] hover:bg-[#1E1B18] hover:text-white shadow-lg w-full py-4 text-xs font-extrabold tracking-widest uppercase cursor-pointer transition-all"
                   >
-                    Confirm Table Reservation
+                    Confirm Reservation
                   </button>
                 </motion.form>
               )}

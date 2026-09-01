@@ -3,31 +3,31 @@ import { motion, useInView } from 'framer-motion'
 import { LogoOwl } from '../components/illustrations'
 import SEO from '../components/SEO'
 
-// Logo symbol breakdown from official Brand Story document
+// The Four Core Pillars from official Brand Story document
 const logoSymbols = [
   {
     num: '01',
-    symbol: 'Bird Head',
+    symbol: 'The Open Sky',
     meaning: 'Freedom',
-    desc: "Returning home, finding peace, and enjoying the day's rewards. The bird atop the log represents homecoming and comfort."
+    desc: 'An airy rooftop space that lets you breathe and break free from enclosed walls.'
   },
   {
     num: '02',
-    symbol: 'Twig / Branch',
+    symbol: 'The Comfort',
     meaning: 'Food & Nest',
-    desc: 'Gathering materials, slow cooking, rustic nourishment. Every branch is intentional—built to make you feel at home.'
+    desc: 'Thoughtfully crafted multi-cuisine dishes made to bring people together around a shared table.'
   },
   {
     num: '03',
-    symbol: 'Wine Glass',
+    symbol: 'The Bar',
     meaning: 'Relax',
-    desc: 'Slowing down, evening conversations, social warmth. The glass is an invitation to pause and be present.'
+    desc: 'Handcrafted cocktails, crisp beers, and refreshing drinks tailored to match every mood.'
   },
   {
     num: '04',
-    symbol: 'Bamboo',
+    symbol: 'The Gathering',
     meaning: 'Home',
-    desc: 'Shelter, stability, rootedness in nature. Bamboo is the original sanctuary—resilient, grounded, and welcoming.'
+    desc: 'A warm, welcoming space where every guest feels like an insider.'
   }
 ]
 
@@ -129,25 +129,25 @@ export default function AboutUs() {
       <section className="bg-[#4A2420] py-14 border-b border-[#5E332E]/40 text-[#E5E2DC]">
         <div className="wp-container text-center">
           <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#E5E2DC] block mb-4 font-body">
-            BRAND MANIFESTO
+            BRAND PHILOSOPHY
           </span>
           <blockquote
             className="font-display italic text-[#E5E2DC] leading-snug max-w-3xl mx-auto"
             style={{ fontSize: 'clamp(1.3rem, 2.5vw, 2rem)' }}
           >
-            "We've built this place like birds build their nests—branch by branch, to make you feel at home."
+            "In nature, birds travel thousands of miles, yet always seek a place to rest, reconnect, and belong."
           </blockquote>
           <div className="mt-6 flex items-center justify-center gap-3">
             <span className="h-px w-16 bg-[#E5E2DC]/30" />
             <span className="text-[#E5E2DC] text-xs tracking-[0.3em] font-body uppercase font-semibold">
-              Tanah Kitchen & Bar · ESTD 2025
+              Tanah Bar &amp; Kitchen · Grounded in Nature
             </span>
             <span className="h-px w-16 bg-[#E5E2DC]/30" />
           </div>
         </div>
       </section>
 
-      {/* ── 3. Logo Symbol Breakdown (WordPress 4-Column Card Grid) ── */}
+      {/* ── 3. Our Core Pillars (WordPress 4-Column Card Grid) ── */}
       <section ref={logoRef} className="wp-section bg-[#FAF8F5] border-b border-[#5E332E]/10">
         <div className="wp-container">
           <motion.div
@@ -157,13 +157,13 @@ export default function AboutUs() {
             className="text-center mb-14"
           >
             <span className="wp-badge wp-badge-maroon mb-3">
-              THE TANAH LOGO
+              THE 4 PILLARS
             </span>
             <h2 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#5E332E]">
-              Every Symbol Has a Story
+              Our Core Pillars
             </h2>
             <p className="mt-4 text-base font-light text-[#1E1B18]/75 max-w-xl mx-auto font-body leading-relaxed">
-              The logo was crafted to combine rustic charm, natural textures, and a handcrafted identity. Each element holds deep meaning rooted in the Tanah philosophy.
+              Every detail at Tanah—from our earthy textures and handcrafted motifs to our open-air roof—is anchored in four timeless principles.
             </p>
           </motion.div>
 
@@ -369,19 +369,17 @@ export default function AboutUs() {
                 THE TANAH STORY
               </span>
               <h2 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#E5E2DC]">
-                Our Foundation & Vision
+                Grounded in Nature, Built for Connection
               </h2>
+              <p className="text-base font-light text-[#FAF8F5]/95 leading-relaxed font-body">
+                Named after the word for "Earth," Tanah was born from a simple belief: everyone needs a nest. In a fast-paced city where days fly by, Tanah offers a serene, grounded space to slow down, share laughter, and savor life's finer moments.
+              </p>
               <p className="text-base font-light text-[#FAF8F5]/90 leading-relaxed font-body">
-                Every detail of our space—from the organic bamboo weave ceilings to the raw basalt dinner plates—is carefully crafted to reconnect people with nature. We aim to foster a culture of mindful gathering under Hyderabad's sky.
+                Like a bird building its nest branch by branch, every detail at Tanah—from our earthy textures and handcrafted motifs to our open-air roof—has been thoughtfully curated to make you feel right at home.
               </p>
-              <p className="text-base font-light text-[#FAF8F5]/80 leading-relaxed font-body">
-                We design environments that are not just beautiful, but deeply personal—where conversations flow naturally and people can build authentic relationships beyond the ordinary.
+              <p className="text-base font-light text-[#FAF8F5]/85 leading-relaxed font-body">
+                Whether you’re catching up with friends, gathering with family, unwinding after a long day, or celebrating a quiet milestone, Tanah is your sanctuary under the open sky. Because the best memories aren't made in rush hour—they’re built around great food, warm light, and meaningful conversations.
               </p>
-              <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
-                <p className="text-base italic font-display text-[#E5E2DC] leading-relaxed">
-                  "Birds find each other mid-flight, and so do we—at the bar, in the kitchen, over shared plates and poured stories."
-                </p>
-              </div>
             </motion.div>
 
           </div>

@@ -655,8 +655,8 @@ export default function Menu() {
                 <span className="italic font-normal text-[#E5E2DC]">Regional Flavors</span>
               </h1>
               <div className="w-20 h-[2px] bg-[#E5E2DC]/60 mx-auto rounded-full mb-4" />
-              <p className="text-sm md:text-base font-light max-w-xl mx-auto text-[#FAF8F5]/90 leading-relaxed font-body">
-                A chronicle of wood-fired gastronomy, traditional slow cooking, and stone-ground spices. Rested, prepared, and plated in Hyderabad.
+              <p className="text-sm md:text-base font-light max-w-2xl mx-auto text-[#FAF8F5]/90 leading-relaxed font-body">
+                Crafted with fresh ingredients, bold spices, and culinary artistry—our menu spans regional heritage to international favorites.
               </p>
 
               {/* Mode Selector Toggle (Classic Catalog vs Sensory Matcher) */}

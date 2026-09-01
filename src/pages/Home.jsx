@@ -135,19 +135,19 @@ export default function Home() {
   return (
     <main className="flex-grow overflow-x-hidden select-none bg-light-cream text-near-black">
       <SEO
-        title="Tanah Kitchen & Bar | Rooftop Restaurant & Bar in Gachibowli, Hyderabad"
-        description="Experience Tanah Kitchen & Bar in Gachibowli, Hyderabad. Rooftop dining, organic farm-to-table cuisine, wood-fired hearths, Liquid Library signature cocktails, and corporate gathering spaces."
+        title="Tanah Bar & Kitchen | South Indian Bar & Kitchen with Roof Top Dining in Gachibowli, Hyderabad"
+        description="Tanah Bar & Kitchen in Gachibowli, Hyderabad. South Indian soul food, craft cocktails under the stars, 120-seater indoor nest dining, 100-seater open-to-sky rooftop, and weekend live music."
         schema={{
           '@context': 'https://schema.org',
           '@type': ['Restaurant', 'BarOrPub'],
-          'name': 'Tanah Kitchen & Bar',
+          'name': 'Tanah Bar & Kitchen',
           'url': 'https://tanahkitchen.in/',
           'telephone': '+91-8977730291',
-          'servesCuisine': ['Indian', 'Continental', 'Wood-Fired', 'Cocktails'],
+          'servesCuisine': ['South Indian', 'Continental', 'North Indian', 'Gourmet Bites', 'Craft Cocktails'],
           'priceRange': '₹₹₹',
           'address': {
             '@type': 'PostalAddress',
-            'streetAddress': '5th Floor, Vaishnavi Splendora, opp Meenakshi Bamboos, beside AIG Hospital',
+            'streetAddress': '5th Floor, Vaishnavi Splendora, opp Meenakshi Bamboos, beside AIG Hospital, next to Deloitte Office',
             'addressLocality': 'Gachibowli',
             'addressRegion': 'Telangana',
             'postalCode': '500032',
@@ -155,16 +155,16 @@ export default function Home() {
           }
         }}
       />
-      <h1 className="sr-only">Tanah Kitchen & Bar - Premium Corporate Gathering & Dining</h1>
+      <h1 className="sr-only">Tanah Bar &amp; Kitchen | South Indian Bar &amp; Kitchen with Roof Top Dining in Gachibowli, Hyderabad</h1>
 
       {/* ==========================================
           1. CINEMATIC HERO (WordPress Elementor Style Hero Banner with Live Badge & Quick Booking)
           ========================================== */}
-      <section className="section-dark relative min-h-[95vh] flex flex-col justify-center items-center pt-32 pb-20 px-6 md:px-12 overflow-hidden">
+      <section className="section-dark relative min-h-[95vh] flex flex-col justify-center items-center pt-32 pb-16 px-6 md:px-12 overflow-hidden">
         {/* Background Image */}
         <img
           src="/assets/Tanha%20Ambiance/Ambiance-9.webp"
-          alt="Tanah Ambiance"
+          alt="Tanah Bar & Kitchen Ambiance"
           fetchPriority="high"
           loading="eager"
           decoding="async"
@@ -183,7 +183,7 @@ export default function Home() {
           <div className="mb-5 flex items-center gap-2">
             <span className="wp-badge wp-badge-gold shadow-sm flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              <span>OPEN TODAY • 12:00 PM – 11:30 PM • GACHIBOWLI</span>
+              <span>OPEN TODAY • 12:00 PM – 12:00 AM • GACHIBOWLI</span>
             </span>
           </div>
 
@@ -197,66 +197,65 @@ export default function Home() {
 
           <div className="w-24 h-[2px] bg-[#E5E2DC]/60 rounded-full mb-6" />
 
-          <p className="text-base md:text-lg font-light max-w-2xl leading-relaxed font-body text-[#FAF8F5]/95 px-4 mb-8">
-            An earthy sanctuary where conversations flow, plates are shared, and stories unfold over artisanal cocktails and open skies.
+          <p className="text-base md:text-lg font-light max-w-3xl leading-relaxed font-body text-[#FAF8F5]/95 px-4 mb-4">
+            Step away from the daily rush into a cozy nest or open-to-sky sanctuary. Whether it’s craft cocktails under the stars, rich South Indian soul food, or global gourmet bites with friends—Tanah is your space to ground yourself and belong.
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full max-w-md px-4 sm:px-0 mb-8">
+          <p className="text-xs md:text-sm font-light max-w-2xl leading-relaxed font-body text-[#E5E2DC]/85 px-4 mb-8">
+            At Tanah, weekends are built around music, food, and effortless connection. Whether you're taking the stage on Karaoke Friday, rocking out with live bands on Saturday, or soaking in open-air acoustic sets on Sunday—there’s a spot waiting for you.
+          </p>
+
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full max-w-md px-4 sm:px-0 mb-10">
             <a
               href="/book"
-              className="wp-btn-pill bg-[#E5E2DC] text-[#5E332E] hover:bg-white hover:text-[#5E332E] shadow-lg w-full sm:w-auto text-center font-bold"
+              className="wp-btn-pill bg-[#E5E2DC] text-[#5E332E] hover:bg-white hover:text-[#5E332E] shadow-lg w-full sm:w-auto text-center font-bold px-8 py-3.5 text-xs tracking-wider uppercase"
             >
-              Reserve a Table
+              Reserve Your Table
             </a>
             <a
               href="/menu"
-              className="wp-btn-pill bg-white/10 text-[#E5E2DC] border border-[#E5E2DC]/40 hover:bg-[#E5E2DC] hover:text-[#5E332E] w-full sm:w-auto text-center font-semibold backdrop-blur-sm"
+              className="wp-btn-pill bg-white/10 text-[#E5E2DC] border border-[#E5E2DC]/40 hover:bg-[#E5E2DC] hover:text-[#5E332E] w-full sm:w-auto text-center font-semibold px-8 py-3.5 text-xs tracking-wider uppercase backdrop-blur-sm"
             >
-              Explore Menu
+              Explore Our Menu
             </a>
           </div>
 
-          {/* Restaurant Quick Table Booking Selector Card */}
-          <div className="w-full max-w-2xl bg-black/40 backdrop-blur-md p-4 sm:p-5 rounded-2xl border border-white/15 shadow-2xl text-left grid grid-cols-1 sm:grid-cols-3 gap-3 items-center">
-            <div>
-              <label className="text-[10px] uppercase tracking-wider font-bold text-[#E5E2DC] block mb-1">
-                Party Size
-              </label>
-              <select
-                value={quickGuests}
-                onChange={(e) => setQuickGuests(e.target.value)}
-                className="w-full bg-white/10 border border-white/20 text-xs text-white rounded-xl px-3 py-2 focus:outline-none focus:border-[#E5E2DC]"
-              >
-                <option value="2 Guests" className="text-black">2 Guests</option>
-                <option value="4 Guests" className="text-black">4 Guests</option>
-                <option value="6-8 Guests" className="text-black">6-8 Guests</option>
-                <option value="10+ Corporate" className="text-black">10+ Corporate Party</option>
-              </select>
+          {/* Quick Highlights Bar */}
+          <div className="w-full max-w-4xl bg-black/40 backdrop-blur-md p-4 sm:p-5 rounded-2xl border border-white/15 shadow-2xl text-left grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-center">
+            <div className="border-b sm:border-b-0 sm:border-r border-white/15 pb-2 sm:pb-0 pr-2">
+              <span className="text-[10px] uppercase tracking-widest font-bold text-[#E5E2DC]/70 block mb-0.5">
+                Location
+              </span>
+              <p className="text-xs text-white font-medium">
+                Next to Deloitte Office, Gachibowli, Hyderabad
+              </p>
+            </div>
+
+            <div className="border-b sm:border-b-0 lg:border-r border-white/15 pb-2 sm:pb-0 pr-2">
+              <span className="text-[10px] uppercase tracking-widest font-bold text-[#E5E2DC]/70 block mb-0.5">
+                Ambience
+              </span>
+              <p className="text-xs text-white font-medium">
+                Both Indoor &amp; Open-Air Rooftop
+              </p>
+            </div>
+
+            <div className="border-b sm:border-b-0 sm:border-r border-white/15 pb-2 sm:pb-0 pr-2">
+              <span className="text-[10px] uppercase tracking-widest font-bold text-[#E5E2DC]/70 block mb-0.5">
+                Cuisines
+              </span>
+              <p className="text-xs text-white font-medium">
+                South Indian, Continental, North Indian, Gourmet Bites
+              </p>
             </div>
 
             <div>
-              <label className="text-[10px] uppercase tracking-wider font-bold text-[#E5E2DC] block mb-1">
-                Dining Slot
-              </label>
-              <select
-                value={quickMeal}
-                onChange={(e) => setQuickMeal(e.target.value)}
-                className="w-full bg-white/10 border border-white/20 text-xs text-white rounded-xl px-3 py-2 focus:outline-none focus:border-[#E5E2DC]"
-              >
-                <option value="Lunch (1:00 PM)" className="text-black">Lunch (1:00 PM)</option>
-                <option value="Dinner (7:30 PM)" className="text-black">Dinner (7:30 PM)</option>
-                <option value="Rooftop Sunset (6:00 PM)" className="text-black">Rooftop Sunset (6:00 PM)</option>
-              </select>
-            </div>
-
-            <div className="sm:pt-4">
-              <a
-                href="/book"
-                className="wp-btn-pill bg-[#E5E2DC] text-[#5E332E] hover:bg-white w-full text-center text-xs font-bold py-2.5 shadow-md flex items-center justify-center gap-1.5"
-              >
-                <span>Book Table</span>
-                <ChevronRight className="w-3.5 h-3.5" />
-              </a>
+              <span className="text-[10px] uppercase tracking-widest font-bold text-[#E5E2DC]/70 block mb-0.5">
+                Bar
+              </span>
+              <p className="text-xs text-white font-medium">
+                Craft Cocktails, Mocktails, Spirits, Draught Beer
+              </p>
             </div>
           </div>
         </motion.div>
@@ -624,7 +623,7 @@ export default function Home() {
       </section>
 
       {/* ==========================================
-          3. WHY TANAH (WordPress Feature Cards & Gallery)
+          3. WHY CHOOSE TANAH? (THE EXPERIENCE)
           ========================================== */}
       <section
         id="why-tanah"
@@ -642,36 +641,58 @@ export default function Home() {
               className="lg:col-span-6 space-y-6 text-left"
             >
               <span className="wp-badge wp-badge-gold">
-                ✦ CORPORATE HOSPITALITY &amp; RETREATS ✦
+                ✦ THE TANAH EXPERIENCE ✦
               </span>
 
               <h3 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#E5E2DC]">
-                Why Leaders &amp; Teams Choose Tanah
+                An Elevated Escape in Gachibowli
               </h3>
 
               <div className="w-16 h-[2px] bg-[#E5E2DC]/60 rounded-full" />
 
-              <p className="text-lg opacity-90 leading-relaxed font-body">
-                We believe in the transformative power of the shared table. Located in the heart of Gachibowli, Hyderabad, Tanah fuses raw architectural tranquility, zero-mile farm gastronomy, and bespoke luxury hospitality to host Hyderabad's most distinguished corporate retreats and celebrations.
+              <p className="text-base md:text-lg opacity-90 leading-relaxed font-body">
+                Nestled right next to the Deloitte Office in Gachibowli, Tanah brings together world-class dining, artisanal spirits, and a breezy open-air setting.
               </p>
 
-              {/* Bullet list in WordPress Card Container */}
-              <div className="space-y-3 pt-2">
+              {/* 5 Experience Features */}
+              <div className="space-y-3.5 pt-2">
                 {[
-                  "Premium corporate and leadership gatherings",
-                  "Spacious, flexible layouts engineered for premium client entertainment",
-                  "A hands-on culinary team experience",
-                  "Panoramic open-sky rooftop terrace with ambient festoon lighting",
-                  "Bespoke multi-course culinary packages tailored to all dietary preferences"
+                  {
+                    title: "120-Seater Indoor Nest Dining",
+                    desc: "Step into an indoor sanctuary surrounded by natural greenery, earthy textures, and bespoke nest-style seating enclosures designed for intimate conversations and shared meals."
+                  },
+                  {
+                    title: "Open-to-Sky Rooftop",
+                    desc: "A 100-seater outdoor sanctuary designed for starlit dinners, breezy evening drinks, and unhurried conversations."
+                  },
+                  {
+                    title: "Global Kitchen, Local Soul",
+                    desc: "From comforting South Indian classics and rich North Indian curries to Continental grills, Asian woks, and gourmet innovations."
+                  },
+                  {
+                    title: "Artisanal Bar & Craft Drinks",
+                    desc: "Signature cocktails, refreshing mocktails, fine spirits, and ice-cold draught beers poured to perfection."
+                  },
+                  {
+                    title: "Warm, Organic Ambience",
+                    desc: "An earthen, nature-inspired design philosophy that feels less like a venue and more like home."
+                  }
                 ].map((item, index) => (
                   <div
                     key={index}
-                    className="flex items-center gap-3.5 p-3.5 rounded-xl bg-white/5 border border-[#E5E2DC]/15 hover:border-[#E5E2DC]/40 transition-colors"
+                    className="p-4 rounded-2xl bg-white/5 border border-[#E5E2DC]/15 hover:border-[#E5E2DC]/40 transition-colors space-y-1"
                   >
-                    <span className="w-6 h-6 rounded-full bg-[#E5E2DC]/15 text-[#E5E2DC] flex items-center justify-center text-xs font-bold flex-shrink-0">
-                      ✓
-                    </span>
-                    <span className="text-sm md:text-base font-medium text-[#E5E2DC]">{item}</span>
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-5 h-5 rounded-full bg-[#E5E2DC]/20 text-[#E5E2DC] flex items-center justify-center text-xs font-bold flex-shrink-0">
+                        ✦
+                      </span>
+                      <h4 className="font-display text-base font-bold text-[#E5E2DC]">
+                        {item.title}
+                      </h4>
+                    </div>
+                    <p className="text-xs sm:text-sm font-light text-[#FAF8F5]/85 leading-relaxed font-body pl-7.5">
+                      {item.desc}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -687,7 +708,7 @@ export default function Home() {
               <div className="col-span-12 md:col-span-7 aspect-[3/4] overflow-hidden rounded-2xl shadow-2xl border border-white/10 relative">
                 <img
                   src="/assets/Tanha Food/food-1.webp"
-                  alt="Fine corporate gathering dish"
+                  alt="Tanah South Indian & Global Cuisine"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -696,7 +717,7 @@ export default function Home() {
                 <div className="aspect-[3/4] overflow-hidden rounded-2xl shadow-2xl border border-white/10 relative">
                   <img
                     src="/assets/Tanha Ambiance/Ambiance-22.webp"
-                    alt="Tanah rooftop lighting"
+                    alt="Tanah Rooftop Dining"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
@@ -874,27 +895,27 @@ export default function Home() {
       </section>
 
       {/* ==========================================
-          EVENTS & WEEKEND SUNDOWNERS CALLOUT BANNER
+          WEEKENDS SORTED AT TANAH CALLOUT BANNER
           ========================================== */}
-      <section className="bg-[#4A2420] border-y border-[#E5E2DC]/20 py-12 px-6 text-center text-[#E5E2DC] relative overflow-hidden">
+      <section className="bg-[#4A2420] border-y border-[#E5E2DC]/20 py-14 px-6 text-center text-[#E5E2DC] relative overflow-hidden">
         <div className="wp-container relative z-10 space-y-4">
           <div className="inline-flex items-center gap-2">
             <span className="wp-badge wp-badge-gold">
-              ✦ LIVE ROOFTOP EXPERIENCES ✦
+              ✦ WEEKEND PROGRAMMING ✦
             </span>
           </div>
-          <h3 className="font-display font-extrabold text-2xl sm:text-4xl text-[#E5E2DC] uppercase tracking-wide">
-            Weekend Sundowners &amp; Live Music
+          <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-[#E5E2DC] uppercase tracking-wider">
+            WEEKENDS SORTED AT TANAH
           </h3>
-          <p className="text-xs sm:text-sm text-[#FAF8F5]/85 max-w-xl mx-auto font-body leading-relaxed">
-            Unwind with rooftop views, soulful live music, refreshing cocktails, and delicious food. The perfect setting to relax, connect, and enjoy beautiful evenings at Tanah.
+          <p className="text-sm sm:text-base text-[#FAF8F5]/90 max-w-xl mx-auto font-body font-medium tracking-wide">
+            Live Band Performance &nbsp;|&nbsp; Karaoke &nbsp;|&nbsp; Acoustic
           </p>
-          <div className="pt-2">
+          <div className="pt-3">
             <a
               href="/book"
-              className="wp-btn-pill bg-[#E5E2DC] text-[#5E332E] hover:bg-white text-xs font-bold py-2.5 px-6 shadow-lg inline-flex items-center gap-2"
+              className="wp-btn-pill bg-[#E5E2DC] text-[#5E332E] hover:bg-white text-xs font-extrabold tracking-widest uppercase py-3.5 px-8 shadow-xl inline-flex items-center gap-2"
             >
-              <span>Reserve Sunset Table</span>
+              <span>RESERVE YOUR WEEKEND SPOT</span>
               <ChevronRight className="w-4 h-4" />
             </a>
           </div>

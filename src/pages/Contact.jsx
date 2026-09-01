@@ -87,11 +87,11 @@ export default function Contact() {
             className="font-display font-extrabold leading-tight text-[#E5E2DC] mb-4"
             style={{ fontSize: 'clamp(2.4rem, 6vw, 4.5rem)' }}
           >
-            Contact & Coordinates
+            Find Your Way to the Nest
           </h1>
           <div className="w-20 h-[2px] bg-[#E5E2DC]/60 mx-auto rounded-full mb-4" />
           <p className="text-sm md:text-base font-light max-w-xl mx-auto text-[#FAF8F5]/90 leading-relaxed font-body">
-            Reach out to our hospitality desk. Ask about events, corporate bookings, or special dining arrangements.
+            Conveniently located in Gachibowli with ample valet parking available.
           </p>
         </div>
       </section>
@@ -105,10 +105,10 @@ export default function Contact() {
             <div className="lg:col-span-5 space-y-6 text-left">
               <div>
                 <span className="wp-badge wp-badge-maroon mb-2">
-                  LOCATION & CONTACTS
+                  LOCATION &amp; CONTACTS
                 </span>
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-[#5E332E]">
-                  {contactData.brandName}
+                  Tanah Bar &amp; Kitchen
                 </h2>
               </div>
 
@@ -119,7 +119,10 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-display text-base font-bold text-[#5E332E] mb-1">Address</h4>
-                    <p className="whitespace-pre-line text-xs text-[#1E1B18]/80 font-body leading-relaxed">{contactData.address}</p>
+                    <p className="whitespace-pre-line text-xs text-[#1E1B18]/80 font-body leading-relaxed">
+                      Tanah Bar &amp; Kitchen, 5th Floor, Vaishnavi Splendora, opp Meenakshi Bamboos, beside AIG Hospital, Gachibowli, Hyderabad, Telangana 500032
+                    </p>
+                    <p className="text-[11px] text-[#5E332E] font-semibold mt-2">✦ Ample valet parking available</p>
                   </div>
                 </div>
 
@@ -128,9 +131,8 @@ export default function Contact() {
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-display text-base font-bold text-[#5E332E] mb-1">Reservations</h4>
-                    <p className="text-xs text-[#1E1B18]/80 font-body">{contactData.phone1}</p>
-                    <p className="text-xs text-[#1E1B18]/80 font-body">{contactData.phone2}</p>
+                    <h4 className="font-display text-base font-bold text-[#5E332E] mb-1">Reservations &amp; Inquiries</h4>
+                    <p className="text-xs text-[#1E1B18]/80 font-body">+91 89777 30291</p>
                   </div>
                 </div>
 
@@ -140,7 +142,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-display text-base font-bold text-[#5E332E] mb-1">E-Mail</h4>
-                    <p className="text-xs text-[#1E1B18]/80 font-body">{contactData.email}</p>
+                    <p className="text-xs text-[#1E1B18]/80 font-body">reservations@tanahkitchen.com</p>
                   </div>
                 </div>
 
@@ -149,9 +151,8 @@ export default function Contact() {
                     <Clock className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-display text-base font-bold text-[#5E332E] mb-1">Operating Timings</h4>
-                    <p className="text-xs text-[#1E1B18]/80 font-body"><strong>Fri &amp; Sat:</strong> 12:00 PM – 12:00 AM (Midnight)</p>
-                    <p className="text-xs text-[#1E1B18]/80 font-body"><strong>Sun – Thu:</strong> 12:00 PM – 11:00 PM</p>
+                    <h4 className="font-display text-base font-bold text-[#5E332E] mb-1">Opening Hours</h4>
+                    <p className="text-xs text-[#1E1B18]/80 font-body font-medium">Monday – Sunday: 12:00 PM – 12:00 AM</p>
                     <p className="text-[11px] text-[#5E332E] font-semibold mt-1">✦ Open 7 Days a Week</p>
                   </div>
                 </div>

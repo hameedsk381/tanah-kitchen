@@ -45,11 +45,11 @@ export default function Gallery() {
             className="font-display font-extrabold leading-tight text-[#E5E2DC] mb-4"
             style={{ fontSize: 'clamp(2.4rem, 6vw, 4.5rem)' }}
           >
-            The Visual Gallery
+            Moments at Tanah
           </h1>
           <div className="w-20 h-[2px] bg-[#E5E2DC]/60 mx-auto rounded-full mb-4" />
-          <p className="text-sm md:text-base font-light max-w-xl mx-auto text-[#FAF8F5]/90 leading-relaxed font-body">
-            A photographic archive documenting our agricultural soils, wood-fired kitchen flames, and architectural layouts.
+          <p className="text-base md:text-lg font-light max-w-xl mx-auto text-[#FAF8F5]/95 leading-relaxed font-body">
+            Step inside our urban nest through the lens.
           </p>
         </div>
       </section>
@@ -58,9 +58,9 @@ export default function Gallery() {
       <section className="wp-section bg-[#FAF8F5]">
         <div className="wp-container space-y-10">
 
-          {/* Categories Tab (Filter Pills) */}
+          {/* Categories Tab (Filter Pills: All | Rooftop & Vibe | Culinary Delights | Cocktails & Brews) */}
           <div className="flex items-center justify-center gap-3 overflow-x-auto w-full no-scrollbar pb-2">
-            {(galleryCategories || ['All', 'Ambience', 'Rooftop', 'Events', 'Food']).map((cat) => {
+            {['All', 'Rooftop & Vibe', 'Culinary Delights', 'Cocktails & Brews'].map((cat) => {
               const isActive = selectedCategory.toLowerCase() === cat.toLowerCase()
               return (
                 <button
