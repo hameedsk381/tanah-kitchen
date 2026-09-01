@@ -47,7 +47,7 @@ export default function Contact() {
   }
 
   return (
-    <main className="flex-grow pt-24 overflow-hidden bg-[#FAF6F0] text-[#3A2E2A]">
+    <main className="flex-grow pt-24 overflow-hidden bg-[#FAF8F5] text-[#1E1B18]">
       <SEO
         title="Contact Us & Location Directions | Tanah Kitchen & Bar Gachibowli"
         description="Get directions and contact information for Tanah Kitchen & Bar. Located on 5th Floor, Vaishnavi Splendora, opp Meenakshi Bamboos, beside AIG Hospital, Gachibowli, Hyderabad."
@@ -77,27 +77,27 @@ export default function Contact() {
             className="w-full h-full object-cover filter brightness-75"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#3A2E2A]/90 via-[#6B2523]/70 to-[#6B2523]/85" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1E1B18]/90 via-[#5E332E]/70 to-[#5E332E]/85" />
 
         <div className="relative z-10 wp-container">
           <span className="wp-badge wp-badge-gold mb-4">
             ✦ GET IN TOUCH ✦
           </span>
           <h1
-            className="font-display font-extrabold leading-tight text-[#F6E1CB] mb-4"
+            className="font-display font-extrabold leading-tight text-[#E5E2DC] mb-4"
             style={{ fontSize: 'clamp(2.4rem, 6vw, 4.5rem)' }}
           >
             Contact & Coordinates
           </h1>
-          <div className="w-20 h-[2px] bg-[#FFC470]/60 mx-auto rounded-full mb-4" />
-          <p className="text-sm md:text-base font-light max-w-xl mx-auto text-[#EFE1D0]/90 leading-relaxed font-body">
+          <div className="w-20 h-[2px] bg-[#E5E2DC]/60 mx-auto rounded-full mb-4" />
+          <p className="text-sm md:text-base font-light max-w-xl mx-auto text-[#FAF8F5]/90 leading-relaxed font-body">
             Reach out to our hospitality desk. Ask about events, corporate bookings, or special dining arrangements.
           </p>
         </div>
       </section>
 
       {/* ── 2. Details & Form Section (WordPress 2-Column Block) ── */}
-      <section className="wp-section bg-[#FAF6F0]">
+      <section className="wp-section bg-[#FAF8F5]">
         <div className="wp-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
@@ -107,52 +107,52 @@ export default function Contact() {
                 <span className="wp-badge wp-badge-maroon mb-2">
                   LOCATION & CONTACTS
                 </span>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-[#6B2523]">
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-[#5E332E]">
                   {contactData.brandName}
                 </h2>
               </div>
 
               <div className="space-y-3.5">
                 <div className="wp-card p-5 flex gap-4 items-start">
-                  <div className="p-2.5 rounded-xl bg-[#6B2523]/10 text-[#6B2523] flex-shrink-0">
+                  <div className="p-2.5 rounded-xl bg-[#5E332E]/10 text-[#5E332E] flex-shrink-0">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-display text-base font-bold text-[#6B2523] mb-1">Address</h4>
-                    <p className="whitespace-pre-line text-xs text-[#3A2E2A]/80 font-body leading-relaxed">{contactData.address}</p>
+                    <h4 className="font-display text-base font-bold text-[#5E332E] mb-1">Address</h4>
+                    <p className="whitespace-pre-line text-xs text-[#1E1B18]/80 font-body leading-relaxed">{contactData.address}</p>
                   </div>
                 </div>
 
                 <div className="wp-card p-5 flex gap-4 items-start">
-                  <div className="p-2.5 rounded-xl bg-[#6B2523]/10 text-[#6B2523] flex-shrink-0">
+                  <div className="p-2.5 rounded-xl bg-[#5E332E]/10 text-[#5E332E] flex-shrink-0">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-display text-base font-bold text-[#6B2523] mb-1">Reservations</h4>
-                    <p className="text-xs text-[#3A2E2A]/80 font-body">{contactData.phone1}</p>
-                    <p className="text-xs text-[#3A2E2A]/80 font-body">{contactData.phone2}</p>
+                    <h4 className="font-display text-base font-bold text-[#5E332E] mb-1">Reservations</h4>
+                    <p className="text-xs text-[#1E1B18]/80 font-body">{contactData.phone1}</p>
+                    <p className="text-xs text-[#1E1B18]/80 font-body">{contactData.phone2}</p>
                   </div>
                 </div>
 
                 <div className="wp-card p-5 flex gap-4 items-start">
-                  <div className="p-2.5 rounded-xl bg-[#6B2523]/10 text-[#6B2523] flex-shrink-0">
+                  <div className="p-2.5 rounded-xl bg-[#5E332E]/10 text-[#5E332E] flex-shrink-0">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-display text-base font-bold text-[#6B2523] mb-1">E-Mail</h4>
-                    <p className="text-xs text-[#3A2E2A]/80 font-body">{contactData.email}</p>
+                    <h4 className="font-display text-base font-bold text-[#5E332E] mb-1">E-Mail</h4>
+                    <p className="text-xs text-[#1E1B18]/80 font-body">{contactData.email}</p>
                   </div>
                 </div>
 
                 <div className="wp-card p-5 flex gap-4 items-start">
-                  <div className="p-2.5 rounded-xl bg-[#6B2523]/10 text-[#6B2523] flex-shrink-0">
+                  <div className="p-2.5 rounded-xl bg-[#5E332E]/10 text-[#5E332E] flex-shrink-0">
                     <Clock className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-display text-base font-bold text-[#6B2523] mb-1">Operating Timings</h4>
-                    <p className="text-xs text-[#3A2E2A]/80 font-body"><strong>Fri &amp; Sat:</strong> 12:00 PM – 12:00 AM (Midnight)</p>
-                    <p className="text-xs text-[#3A2E2A]/80 font-body"><strong>Sun – Thu:</strong> 12:00 PM – 11:00 PM</p>
-                    <p className="text-[11px] text-[#6B2523] font-semibold mt-1">✦ Open 7 Days a Week</p>
+                    <h4 className="font-display text-base font-bold text-[#5E332E] mb-1">Operating Timings</h4>
+                    <p className="text-xs text-[#1E1B18]/80 font-body"><strong>Fri &amp; Sat:</strong> 12:00 PM – 12:00 AM (Midnight)</p>
+                    <p className="text-xs text-[#1E1B18]/80 font-body"><strong>Sun – Thu:</strong> 12:00 PM – 11:00 PM</p>
+                    <p className="text-[11px] text-[#5E332E] font-semibold mt-1">✦ Open 7 Days a Week</p>
                   </div>
                 </div>
               </div>
@@ -161,7 +161,7 @@ export default function Contact() {
               <div className="flex flex-wrap gap-3 pt-2">
                 <a
                   href={`tel:${contactData.phone1.replace(/\s+/g, '')}`}
-                  className="wp-btn-pill bg-[#6B2523] text-[#F6E1CB] hover:bg-[#3A2E2A] text-xs font-bold"
+                  className="wp-btn-pill bg-[#5E332E] text-[#E5E2DC] hover:bg-[#1E1B18] text-xs font-bold"
                 >
                   <Phone className="w-4 h-4" />
                   Call Now
@@ -184,18 +184,18 @@ export default function Contact() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="p-10 bg-white rounded-3xl text-center space-y-6 shadow-xl border border-[#6B2523]/10"
+                  className="p-10 bg-white rounded-3xl text-center space-y-6 shadow-xl border border-[#5E332E]/10"
                 >
-                  <CheckCircle className="w-16 h-16 text-[#6B2523] mx-auto" />
-                  <h3 className="font-display text-3xl font-bold text-[#6B2523]">
+                  <CheckCircle className="w-16 h-16 text-[#5E332E] mx-auto" />
+                  <h3 className="font-display text-3xl font-bold text-[#5E332E]">
                     Inquiry Received
                   </h3>
-                  <p className="text-sm font-light text-[#3A2E2A]/80 leading-relaxed font-body max-w-md mx-auto">
-                    Thank you for contacting Tanah Kitchen & Bar. Our hospitality desk will get in touch with you at <span className="font-semibold text-[#6B2523]">{form.email}</span> shortly.
+                  <p className="text-sm font-light text-[#1E1B18]/80 leading-relaxed font-body max-w-md mx-auto">
+                    Thank you for contacting Tanah Kitchen & Bar. Our hospitality desk will get in touch with you at <span className="font-semibold text-[#5E332E]">{form.email}</span> shortly.
                   </p>
                   <button
                     onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', subject: 'General Inquiry', message: '' }) }}
-                    className="wp-btn-pill bg-[#6B2523] text-[#F6E1CB] hover:bg-[#3A2E2A] text-xs font-bold"
+                    className="wp-btn-pill bg-[#5E332E] text-[#E5E2DC] hover:bg-[#1E1B18] text-xs font-bold"
                   >
                     Send Another Message
                   </button>
@@ -204,20 +204,20 @@ export default function Contact() {
                 <form
                   onSubmit={handleSubmit}
                   noValidate
-                  className="p-8 md:p-12 bg-white rounded-3xl space-y-5 shadow-xl text-left border border-[#6B2523]/10 text-[#3A2E2A]"
+                  className="p-8 md:p-12 bg-white rounded-3xl space-y-5 shadow-xl text-left border border-[#5E332E]/10 text-[#1E1B18]"
                 >
                   <div>
                     <span className="wp-badge wp-badge-maroon mb-2">
                       MESSAGE US
                     </span>
-                    <h3 className="font-display text-2xl md:text-3xl font-bold text-[#6B2523]">
+                    <h3 className="font-display text-2xl md:text-3xl font-bold text-[#5E332E]">
                       Send an Inquiry
                     </h3>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="text-xs font-bold tracking-wider uppercase text-[#6B2523] block mb-1.5">
+                      <label className="text-xs font-bold tracking-wider uppercase text-[#5E332E] block mb-1.5">
                         Your Name *
                       </label>
                       <input
@@ -232,7 +232,7 @@ export default function Contact() {
                     </div>
 
                     <div>
-                      <label className="text-xs font-bold tracking-wider uppercase text-[#6B2523] block mb-1.5">
+                      <label className="text-xs font-bold tracking-wider uppercase text-[#5E332E] block mb-1.5">
                         Phone Number *
                       </label>
                       <input
@@ -248,7 +248,7 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold tracking-wider uppercase text-[#6B2523] block mb-1.5">
+                    <label className="text-xs font-bold tracking-wider uppercase text-[#5E332E] block mb-1.5">
                       Email Address *
                     </label>
                     <input
@@ -263,7 +263,7 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold tracking-wider uppercase text-[#6B2523] block mb-1.5">
+                    <label className="text-xs font-bold tracking-wider uppercase text-[#5E332E] block mb-1.5">
                       Message / Inquiry Details *
                     </label>
                     <textarea
@@ -279,7 +279,7 @@ export default function Contact() {
 
                   <button
                     type="submit"
-                    className="wp-btn-pill bg-[#6B2523] text-[#F6E1CB] hover:bg-[#3A2E2A] hover:text-white shadow-lg w-full py-4 text-xs font-bold tracking-widest mt-2"
+                    className="wp-btn-pill bg-[#5E332E] text-[#E5E2DC] hover:bg-[#1E1B18] hover:text-white shadow-lg w-full py-4 text-xs font-bold tracking-widest mt-2"
                   >
                     Send Message
                   </button>
@@ -292,7 +292,7 @@ export default function Contact() {
       </section>
 
       {/* ── 3. Embedded Google Map ── */}
-      <section className="w-full relative leading-none border-t border-[#6B2523]/15">
+      <section className="w-full relative leading-none border-t border-[#5E332E]/15">
         <iframe
           title="Tanah Kitchen & Bar Google Map Location"
           src={contactData.mapUrl}

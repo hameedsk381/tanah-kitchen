@@ -19,7 +19,7 @@ export default function LiquidAlchemy() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full py-24 bg-[#581B0A] text-[#F2E8D8] overflow-hidden"
+      className="relative w-full py-24 bg-[#4A2420] text-[#F2E8D8] overflow-hidden"
     >
       {/* Subtle overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-dark-brown/50 to-transparent pointer-events-none" />

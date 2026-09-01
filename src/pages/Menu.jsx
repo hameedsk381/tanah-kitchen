@@ -583,7 +583,7 @@ export default function Menu() {
   return (
     <main 
       className={`flex-grow pt-24 overflow-hidden text-left transition-colors duration-500 ${
-        menuType === 'liquid' ? 'min-h-screen relative' : 'bg-[#F6E1CB]'
+        menuType === 'liquid' ? 'min-h-screen relative' : 'bg-[#E5E2DC]'
       }`}
       style={menuType === 'liquid' ? { backgroundColor: 'var(--color-primary-dark)' } : {}}
     >
@@ -614,8 +614,8 @@ export default function Menu() {
                 onClick={() => setMenuType('food')}
                 className={`px-8 py-2.5 rounded-full text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer ${
                   menuType === 'food'
-                    ? 'bg-[#FFC470] text-[#6B2523] shadow-md'
-                    : 'text-[#F6E1CB]/80 hover:text-white'
+                    ? 'bg-[#E5E2DC] text-[#5E332E] shadow-md'
+                    : 'text-[#E5E2DC]/80 hover:text-white'
                 }`}
               >
                 Food Menu
@@ -624,8 +624,8 @@ export default function Menu() {
                 onClick={() => setMenuType('liquid')}
                 className={`px-8 py-2.5 rounded-full text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer ${
                   menuType === 'liquid'
-                    ? 'bg-[#FFC470] text-[#6B2523] shadow-md'
-                    : 'text-[#F6E1CB]/80 hover:text-white'
+                    ? 'bg-[#E5E2DC] text-[#5E332E] shadow-md'
+                    : 'text-[#E5E2DC]/80 hover:text-white'
                 }`}
               >
                 Liquid Library
@@ -641,14 +641,14 @@ export default function Menu() {
                 </span>
               </div>
               <h1
-                className="font-display font-extrabold leading-tight text-[#F6E1CB] mb-4"
+                className="font-display font-extrabold leading-tight text-[#E5E2DC] mb-4"
                 style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)' }}
               >
                 A Symphony of Global &amp; <br />
-                <span className="italic font-normal text-[#FFC470]">Regional Flavors</span>
+                <span className="italic font-normal text-[#E5E2DC]">Regional Flavors</span>
               </h1>
-              <div className="w-20 h-[2px] bg-[#FFC470]/60 mx-auto rounded-full mb-4" />
-              <p className="text-sm md:text-base font-light max-w-xl mx-auto text-[#EFE1D0]/90 leading-relaxed font-body">
+              <div className="w-20 h-[2px] bg-[#E5E2DC]/60 mx-auto rounded-full mb-4" />
+              <p className="text-sm md:text-base font-light max-w-xl mx-auto text-[#FAF8F5]/90 leading-relaxed font-body">
                 A chronicle of wood-fired gastronomy, traditional slow cooking, and stone-ground spices. Rested, prepared, and plated in Hyderabad.
               </p>
 
@@ -659,7 +659,7 @@ export default function Menu() {
                     onClick={() => setViewMode('classic')}
                     className={`px-6 py-2 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-300 cursor-pointer ${
                       viewMode === 'classic'
-                        ? 'bg-white text-[#6B2523] shadow-sm'
+                        ? 'bg-white text-[#5E332E] shadow-sm'
                         : 'text-white/75 hover:text-white'
                     }`}
                   >
@@ -669,7 +669,7 @@ export default function Menu() {
                     onClick={() => setViewMode('sensory')}
                     className={`px-6 py-2 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-300 cursor-pointer flex items-center gap-2 ${
                       viewMode === 'sensory'
-                        ? 'bg-white text-[#6B2523] shadow-sm'
+                        ? 'bg-white text-[#5E332E] shadow-sm'
                         : 'text-white/75 hover:text-white'
                     }`}
                   >
@@ -687,7 +687,7 @@ export default function Menu() {
         /* ==========================================
            FOOD MENU SECTION (WordPress Card Architecture)
            ========================================== */
-        <section className="wp-section bg-[#FAF6F0] text-[#3A2E2A]">
+        <section className="wp-section bg-[#FAF8F5] text-[#1E1B18]">
           <div className="wp-container">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
               
@@ -702,16 +702,16 @@ export default function Menu() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.5 }}
-                      className="p-6 md:p-8 rounded-2xl bg-white border border-[#6B2523]/15 shadow-md space-y-6 text-left"
+                      className="p-6 md:p-8 rounded-2xl bg-white border border-[#5E332E]/15 shadow-md space-y-6 text-left"
                     >
                       <div>
                         <span className="wp-badge wp-badge-maroon mb-2">
                           FLAVOUR EXPLORER
                         </span>
-                        <h2 className="text-2xl font-bold font-display text-[#6B2523]">
+                        <h2 className="text-2xl font-bold font-display text-[#5E332E]">
                           Curate Your Culinary Profile
                         </h2>
-                        <p className="text-xs text-[#3A2E2A]/75 mt-1 font-body">
+                        <p className="text-xs text-[#1E1B18]/75 mt-1 font-body">
                           Adjust the flavour dimensions or select a journey to align the menu.
                         </p>
                       </div>
@@ -722,12 +722,12 @@ export default function Menu() {
                           <button
                             key={journey.name}
                             onClick={() => handlePresetSelect(journey.profile)}
-                            className="p-3.5 rounded-xl text-left border border-[#6B2523]/15 bg-[#FAF6F0] hover:bg-[#6B2523] hover:border-[#6B2523] transition-all duration-300 group cursor-pointer"
+                            className="p-3.5 rounded-xl text-left border border-[#5E332E]/15 bg-[#FAF8F5] hover:bg-[#5E332E] hover:border-[#5E332E] transition-all duration-300 group cursor-pointer"
                           >
-                            <span className="block text-xs uppercase tracking-wider font-bold text-[#6B2523] group-hover:text-[#FFC470] transition-colors">
+                            <span className="block text-xs uppercase tracking-wider font-bold text-[#5E332E] group-hover:text-[#E5E2DC] transition-colors">
                               {journey.name}
                             </span>
-                            <span className="block text-xs text-[#3A2E2A]/70 group-hover:text-white/85 mt-1 font-light leading-snug font-body">
+                            <span className="block text-xs text-[#1E1B18]/70 group-hover:text-white/85 mt-1 font-light leading-snug font-body">
                               {journey.desc}
                             </span>
                           </button>
@@ -738,7 +738,7 @@ export default function Menu() {
                       <div className="grid grid-cols-2 gap-6 pt-2">
                         {/* Spicy Slider */}
                         <div className="space-y-2">
-                          <div className="flex justify-between items-center text-xs uppercase tracking-wider font-bold text-[#6B2523]">
+                          <div className="flex justify-between items-center text-xs uppercase tracking-wider font-bold text-[#5E332E]">
                             <span className="flex items-center gap-1.5">
                               <Flame className="w-4 h-4 text-orange-600" />
                               Heat & Spice
@@ -751,13 +751,13 @@ export default function Menu() {
                             max="100"
                             value={sensoryPrefs.spicy}
                             onChange={(e) => handleSliderChange('spicy', e.target.value)}
-                            className="w-full accent-[#6B2523] bg-[#6B2523]/20 h-1.5 rounded cursor-ew-resize"
+                            className="w-full accent-[#5E332E] bg-[#5E332E]/20 h-1.5 rounded cursor-ew-resize"
                           />
                         </div>
 
                         {/* Sweet Slider */}
                         <div className="space-y-2">
-                          <div className="flex justify-between items-center text-xs uppercase tracking-wider font-bold text-[#6B2523]">
+                          <div className="flex justify-between items-center text-xs uppercase tracking-wider font-bold text-[#5E332E]">
                             <span className="flex items-center gap-1.5">
                               <Cookie className="w-4 h-4 text-amber-600" />
                               Sweetness
@@ -770,13 +770,13 @@ export default function Menu() {
                             max="100"
                             value={sensoryPrefs.sweet}
                             onChange={(e) => handleSliderChange('sweet', e.target.value)}
-                            className="w-full accent-[#6B2523] bg-[#6B2523]/20 h-1.5 rounded cursor-ew-resize"
+                            className="w-full accent-[#5E332E] bg-[#5E332E]/20 h-1.5 rounded cursor-ew-resize"
                           />
                         </div>
 
                         {/* Earthy Slider */}
                         <div className="space-y-2">
-                          <div className="flex justify-between items-center text-xs uppercase tracking-wider font-bold text-[#6B2523]">
+                          <div className="flex justify-between items-center text-xs uppercase tracking-wider font-bold text-[#5E332E]">
                             <span className="flex items-center gap-1.5">
                               <Sprout className="w-4 h-4 text-emerald-600" />
                               Earthiness
@@ -789,13 +789,13 @@ export default function Menu() {
                             max="100"
                             value={sensoryPrefs.earthy}
                             onChange={(e) => handleSliderChange('earthy', e.target.value)}
-                            className="w-full accent-[#6B2523] bg-[#6B2523]/20 h-1.5 rounded cursor-ew-resize"
+                            className="w-full accent-[#5E332E] bg-[#5E332E]/20 h-1.5 rounded cursor-ew-resize"
                           />
                         </div>
 
                         {/* Rich Slider */}
                         <div className="space-y-2">
-                          <div className="flex justify-between items-center text-xs uppercase tracking-wider font-bold text-[#6B2523]">
+                          <div className="flex justify-between items-center text-xs uppercase tracking-wider font-bold text-[#5E332E]">
                             <span className="flex items-center gap-1.5">
                               <GlassWater className="w-4 h-4 text-sky-500" />
                               Richness
@@ -808,7 +808,7 @@ export default function Menu() {
                             max="100"
                             value={sensoryPrefs.rich}
                             onChange={(e) => handleSliderChange('rich', e.target.value)}
-                            className="w-full accent-[#6B2523] bg-[#6B2523]/20 h-1.5 rounded cursor-ew-resize"
+                            className="w-full accent-[#5E332E] bg-[#5E332E]/20 h-1.5 rounded cursor-ew-resize"
                           />
                         </div>
                       </div>
@@ -827,7 +827,7 @@ export default function Menu() {
                           ✦ CHEF'S CURATED SELECTION ✦
                         </span>
                       </div>
-                      <span className="text-xs font-semibold text-[#6B2523] uppercase tracking-wider hidden sm:inline">
+                      <span className="text-xs font-semibold text-[#5E332E] uppercase tracking-wider hidden sm:inline">
                         Handcrafted Daily
                       </span>
                     </div>
@@ -839,16 +839,16 @@ export default function Menu() {
                         ).slice(0, 3)).map((special, sIdx) => (
                         <div
                           key={special.id || sIdx}
-                          className="wp-card overflow-hidden group hover:border-[#6B2523]/30 transition-all flex flex-col justify-between"
+                          className="wp-card overflow-hidden group hover:border-[#5E332E]/30 transition-all flex flex-col justify-between"
                         >
-                          <div className="relative aspect-[1/1] sm:aspect-[4/4.2] overflow-hidden bg-[#3A2E2A]/5">
+                          <div className="relative aspect-[1/1] sm:aspect-[4/4.2] overflow-hidden bg-[#1E1B18]/5">
                             <img
                               src={special.image || "/assets/Tanha Food/food-1.webp"}
                               alt={special.name}
                               className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                             />
                             <div className="absolute top-3 left-3 z-10">
-                              <span className="text-[9px] font-bold tracking-wider px-2.5 py-1 rounded-full bg-[#6B2523]/90 text-[#FFC470] backdrop-blur-md border border-[#FFC470]/30 shadow-md">
+                              <span className="text-[9px] font-bold tracking-wider px-2.5 py-1 rounded-full bg-[#5E332E]/90 text-[#E5E2DC] backdrop-blur-md border border-[#E5E2DC]/30 shadow-md">
                                 {special.special ? "✦ CHEF SPECIAL" : (special.tags?.[0] || "★ FEATURED")}
                               </span>
                             </div>
@@ -860,18 +860,18 @@ export default function Menu() {
                           <div className="p-4 space-y-2 flex-grow flex flex-col justify-between">
                             <div>
                               <div className="flex justify-between items-start gap-2">
-                                <h4 className="font-display text-base font-bold text-[#6B2523]">
+                                <h4 className="font-display text-base font-bold text-[#5E332E]">
                                   {special.name}
                                 </h4>
                               </div>
-                              <p className="text-xs text-[#3A2E2A]/75 font-body leading-relaxed mt-1">
+                              <p className="text-xs text-[#1E1B18]/75 font-body leading-relaxed mt-1">
                                 {special.desc}
                               </p>
                             </div>
                             {special.spice > 0 && (
                               <div className="text-[10px] text-orange-700 font-semibold flex items-center gap-1 pt-1">
                                 <span>{'🌶️'.repeat(special.spice)}</span>
-                                <span className="text-[9px] text-[#3A2E2A]/60 font-body">Spice Level</span>
+                                <span className="text-[9px] text-[#1E1B18]/60 font-body">Spice Level</span>
                               </div>
                             )}
                           </div>
@@ -882,7 +882,7 @@ export default function Menu() {
                 )}
 
                 {/* Filters and Search Bar */}
-                <div className="space-y-3.5 border-b border-[#6B2523]/10 pb-6">
+                <div className="space-y-3.5 border-b border-[#5E332E]/10 pb-6">
                   {/* Category selection */}
                   <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                     <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto no-scrollbar py-1">
@@ -896,13 +896,13 @@ export default function Menu() {
                               onClick={() => setSelectedCategory(cat)}
                               className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase cursor-pointer transition-all duration-300 whitespace-nowrap flex items-center gap-1.5 ${
                                 isActive
-                                  ? 'bg-[#6B2523] text-[#F6E1CB] shadow-sm'
-                                  : 'bg-white text-[#3A2E2A] border border-[#6B2523]/15 hover:border-[#6B2523]/40'
+                                  ? 'bg-[#5E332E] text-[#E5E2DC] shadow-sm'
+                                  : 'bg-white text-[#1E1B18] border border-[#5E332E]/15 hover:border-[#5E332E]/40'
                               }`}
                             >
                               <span>{cat}</span>
                               <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono font-bold leading-none ${
-                                isActive ? 'bg-[#FFC470]/30 text-[#FFC470]' : 'bg-[#6B2523]/10 text-[#6B2523]'
+                                isActive ? 'bg-[#E5E2DC]/30 text-[#E5E2DC]' : 'bg-[#5E332E]/10 text-[#5E332E]'
                               }`}>
                                 {count}
                               </span>
@@ -910,8 +910,8 @@ export default function Menu() {
                           )
                         })
                       ) : (
-                        <div className="flex items-center gap-2 text-xs tracking-wider uppercase font-bold text-[#6B2523]">
-                          <Sparkles className="w-4 h-4 text-[#6B2523] animate-pulse" />
+                        <div className="flex items-center gap-2 text-xs tracking-wider uppercase font-bold text-[#5E332E]">
+                          <Sparkles className="w-4 h-4 text-[#5E332E] animate-pulse" />
                           Sorted by match accuracy
                         </div>
                       )}
@@ -927,14 +927,14 @@ export default function Menu() {
                         className="wp-form-input text-xs pr-10 py-2.5"
                         maxLength={50}
                       />
-                      <Search className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6B2523]/60" />
+                      <Search className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#5E332E]/60" />
                     </div>
                   </div>
 
                   {/* Dietary Quick Filter Row */}
                   {viewMode === 'classic' && (
                     <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pt-1">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#6B2523]/60 mr-1 flex-shrink-0">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#5E332E]/60 mr-1 flex-shrink-0">
                         Filter:
                       </span>
                       {[
@@ -950,13 +950,13 @@ export default function Menu() {
                             onClick={() => handleDietaryFilterChange(df.id)}
                             className={`px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
                               isDietActive
-                                ? 'bg-[#6B2523] text-[#F6E1CB] border border-[#6B2523] font-bold shadow-sm'
-                                : 'bg-white/90 text-[#3A2E2A]/75 border border-[#6B2523]/15 hover:border-[#6B2523]/40'
+                                ? 'bg-[#5E332E] text-[#E5E2DC] border border-[#5E332E] font-bold shadow-sm'
+                                : 'bg-white/90 text-[#1E1B18]/75 border border-[#5E332E]/15 hover:border-[#5E332E]/40'
                             }`}
                           >
                             <span>{df.label}</span>
                             <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono font-bold leading-none ${
-                              isDietActive ? 'bg-[#FFC470]/30 text-[#FFC470]' : 'bg-[#6B2523]/10 text-[#6B2523]'
+                              isDietActive ? 'bg-[#E5E2DC]/30 text-[#E5E2DC]' : 'bg-[#5E332E]/10 text-[#5E332E]'
                             }`}>
                               {df.count}
                             </span>
@@ -981,10 +981,10 @@ export default function Menu() {
                           exit={{ opacity: 0, scale: 0.98 }}
                           transition={{ duration: 0.35 }}
                           onMouseEnter={() => setHoveredItem(item)}
-                          className="wp-card p-5 flex gap-4 sm:gap-5 items-start group cursor-pointer text-left hover:border-[#6B2523]/30"
+                          className="wp-card p-5 flex gap-4 sm:gap-5 items-start group cursor-pointer text-left hover:border-[#5E332E]/30"
                         >
                           {/* Thumbnail with Dietary Marker */}
-                          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden bg-black/5 flex-shrink-0 relative border border-[#6B2523]/10">
+                          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden bg-black/5 flex-shrink-0 relative border border-[#5E332E]/10">
                             <img
                               src={item.image}
                               alt={item.name}
@@ -1002,12 +1002,12 @@ export default function Menu() {
                           <div className="flex-grow space-y-1.5 min-w-0">
                             <div className="flex items-baseline justify-between gap-3">
                               <div className="flex items-center gap-2 flex-wrap min-w-0">
-                                <h3 className="font-display text-lg font-bold text-[#6B2523] group-hover:text-[#882B06] transition-colors leading-snug">
+                                <h3 className="font-display text-lg font-bold text-[#5E332E] group-hover:text-[#5E332E] transition-colors leading-snug">
                                   {item.name}
                                 </h3>
 
                                 {item.special && (
-                                  <span className="text-[9px] font-bold tracking-wider px-2 py-0.5 bg-[#FFC470]/30 text-[#6B2523] border border-[#FFC470] rounded-full uppercase">
+                                  <span className="text-[9px] font-bold tracking-wider px-2 py-0.5 bg-[#E5E2DC]/30 text-[#5E332E] border border-[#E5E2DC] rounded-full uppercase">
                                     ✦ Special
                                   </span>
                                 )}
@@ -1019,21 +1019,21 @@ export default function Menu() {
                                 )}
 
                                 {viewMode === 'sensory' && (
-                                  <span className="text-[10px] tracking-wider px-2.5 py-0.5 bg-[#6B2523]/10 text-[#6B2523] rounded-full font-bold">
+                                  <span className="text-[10px] tracking-wider px-2.5 py-0.5 bg-[#5E332E]/10 text-[#5E332E] rounded-full font-bold">
                                     {item.matchScore}% Match
                                   </span>
                                 )}
                               </div>
                             </div>
 
-                            <p className="text-xs font-light text-[#3A2E2A]/80 leading-relaxed font-body">
+                            <p className="text-xs font-light text-[#1E1B18]/80 leading-relaxed font-body">
                               {item.desc}
                             </p>
 
                             {/* Food & Liquid Pairing Suggestion */}
                             {getPairingSuggestion(item) && (
-                              <div className="text-[10px] text-[#882B06] font-semibold flex items-center gap-1.5 pt-0.5">
-                                <span className="px-2 py-0.5 bg-[#FFC470]/20 rounded-md border border-[#FFC470]/50 font-sans">
+                              <div className="text-[10px] text-[#5E332E] font-semibold flex items-center gap-1.5 pt-0.5">
+                                <span className="px-2 py-0.5 bg-[#E5E2DC]/20 rounded-md border border-[#E5E2DC]/50 font-sans">
                                   {getPairingSuggestion(item)}
                                 </span>
                               </div>
@@ -1043,7 +1043,7 @@ export default function Menu() {
                               {item.tags.map((tag, tIdx) => (
                                 <span
                                   key={tIdx}
-                                  className="text-[9px] tracking-wider uppercase font-semibold text-[#6B2523] bg-[#6B2523]/5 px-2 py-0.5 rounded border border-[#6B2523]/10"
+                                  className="text-[9px] tracking-wider uppercase font-semibold text-[#5E332E] bg-[#5E332E]/5 px-2 py-0.5 rounded border border-[#5E332E]/10"
                                 >
                                   {tag}
                                 </span>
@@ -1061,14 +1061,14 @@ export default function Menu() {
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="text-center py-16 rounded-2xl border border-[#6B2523]/15 bg-white p-8"
+                    className="text-center py-16 rounded-2xl border border-[#5E332E]/15 bg-white p-8"
                   >
-                    <p className="font-display text-xl font-bold text-[#6B2523]">
+                    <p className="font-display text-xl font-bold text-[#5E332E]">
                       No items match your search.
                     </p>
                     <button
                       onClick={() => { setSelectedCategory('All'); setDietaryFilter('all'); setSearchQuery(''); }}
-                      className="wp-btn-pill bg-[#6B2523] text-[#F6E1CB] hover:bg-[#3A2E2A] mt-4 text-xs font-bold"
+                      className="wp-btn-pill bg-[#5E332E] text-[#E5E2DC] hover:bg-[#1E1B18] mt-4 text-xs font-bold"
                     >
                       Reset Filter
                     </button>
@@ -1079,8 +1079,8 @@ export default function Menu() {
               {/* RIGHT COLUMN: Sticky Hover Showcase */}
               <div className="hidden lg:block lg:col-span-5 sticky top-28 w-full text-left">
                 {activeShowcaseItem ? (
-                  <motion.div layout className="wp-card p-6 space-y-6 shadow-2xl border border-[#6B2523]/15">
-                    <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-white border border-[#6B2523]/10">
+                  <motion.div layout className="wp-card p-6 space-y-6 shadow-2xl border border-[#5E332E]/15">
+                    <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-white border border-[#5E332E]/10">
                       <AnimatePresence mode="wait">
                         <motion.img
                           key={activeShowcaseItem.id}
@@ -1095,40 +1095,40 @@ export default function Menu() {
                       </AnimatePresence>
 
                       <div className="absolute top-4 left-4 flex items-center gap-2">
-                        <span className="text-[9px] tracking-widest uppercase bg-white/95 backdrop-blur px-3 py-1 rounded-full border border-[#6B2523]/20 text-[#6B2523] font-bold shadow-sm flex items-center gap-1.5">
+                        <span className="text-[9px] tracking-widest uppercase bg-white/95 backdrop-blur px-3 py-1 rounded-full border border-[#5E332E]/20 text-[#5E332E] font-bold shadow-sm flex items-center gap-1.5">
                           {activeShowcaseItem.category !== 'Cocktails' && activeShowcaseItem.category !== 'Beverages' && (
                             activeShowcaseItem.nonVeg ? <NonVegMark /> : <VegMark />
                           )}
                           {activeShowcaseItem.category}
                         </span>
                         {activeShowcaseItem.special && (
-                          <span className="text-[9px] tracking-widest uppercase bg-[#6B2523] text-[#FFC470] px-3 py-1 rounded-full font-bold shadow-sm">
+                          <span className="text-[9px] tracking-widest uppercase bg-[#5E332E] text-[#E5E2DC] px-3 py-1 rounded-full font-bold shadow-sm">
                             ✦ Chef Pick
                           </span>
                         )}
                       </div>
 
                       {viewMode === 'sensory' && (
-                        <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur px-3.5 py-1.5 border border-[#6B2523]/20 text-[10px] tracking-wider font-bold flex items-center gap-1.5 rounded-full text-[#6B2523] shadow-md">
-                          <Sparkles className="w-3.5 h-3.5 text-[#6B2523] animate-spin-slow" />
+                        <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur px-3.5 py-1.5 border border-[#5E332E]/20 text-[10px] tracking-wider font-bold flex items-center gap-1.5 rounded-full text-[#5E332E] shadow-md">
+                          <Sparkles className="w-3.5 h-3.5 text-[#5E332E] animate-spin-slow" />
                           <span>{activeShowcaseItem.matchScore}% Match</span>
                         </div>
                       )}
                     </div>
 
                     <div className="space-y-3">
-                      <div className="flex justify-between items-baseline border-b border-[#6B2523]/10 pb-3">
-                        <h4 className="font-display text-2xl font-bold text-[#6B2523]">
+                      <div className="flex justify-between items-baseline border-b border-[#5E332E]/10 pb-3">
+                        <h4 className="font-display text-2xl font-bold text-[#5E332E]">
                           {activeShowcaseItem.name}
                         </h4>
                       </div>
 
-                      <p className="text-xs font-light text-[#3A2E2A]/80 leading-relaxed font-body">
+                      <p className="text-xs font-light text-[#1E1B18]/80 leading-relaxed font-body">
                         {activeShowcaseItem.desc}
                       </p>
 
                       {getPairingSuggestion(activeShowcaseItem) && (
-                        <div className="p-2.5 rounded-xl bg-[#FFC470]/20 border border-[#FFC470]/50 text-xs text-[#6B2523] font-semibold flex items-center gap-2">
+                        <div className="p-2.5 rounded-xl bg-[#E5E2DC]/20 border border-[#E5E2DC]/50 text-xs text-[#5E332E] font-semibold flex items-center gap-2">
                           <span>{getPairingSuggestion(activeShowcaseItem)}</span>
                         </div>
                       )}
@@ -1137,14 +1137,14 @@ export default function Menu() {
                         {activeShowcaseItem.tags.map((tag, tIdx) => (
                           <span
                             key={tIdx}
-                            className="text-[9px] tracking-wider uppercase font-semibold text-[#6B2523] bg-[#6B2523]/5 px-2 py-0.5 rounded border border-[#6B2523]/10"
+                            className="text-[9px] tracking-wider uppercase font-semibold text-[#5E332E] bg-[#5E332E]/5 px-2 py-0.5 rounded border border-[#5E332E]/10"
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
 
-                      <div className="grid grid-cols-2 gap-x-6 gap-y-3 pt-3 border-t border-[#6B2523]/10 text-[9px] uppercase tracking-wider opacity-80 font-bold text-[#6B2523]">
+                      <div className="grid grid-cols-2 gap-x-6 gap-y-3 pt-3 border-t border-[#5E332E]/10 text-[9px] uppercase tracking-wider opacity-80 font-bold text-[#5E332E]">
                         <div className="flex justify-between items-center">
                           <span className="flex items-center gap-1">
                             <Flame className="w-3.5 h-3.5 text-orange-600" /> Spice

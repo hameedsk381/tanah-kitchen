@@ -16,7 +16,7 @@ export const corporatePackagesData = {
       priceLabel: "Custom Corporate Quote",
       alcoholType: "Non-Alcoholic",
       badge: "✦ ESSENTIAL CORPORATE",
-      color: "#882B06",
+      color: "#5E332E",
       food: [
         "3 Veg Starters",
         "3 Non-Veg Starters (2 Chicken, 1 Fish)",
@@ -42,7 +42,7 @@ export const corporatePackagesData = {
       alcoholType: "Draught Beer",
       badge: "★ MOST POPULAR",
       popular: true,
-      color: "#6B2523",
+      color: "#5E332E",
       food: [
         "3 Veg Starters",
         "3 Non-Veg Starters (2 Chicken, 1 Fish)",
@@ -68,7 +68,7 @@ export const corporatePackagesData = {
       priceLabel: "Custom Corporate Quote",
       alcoholType: "Beer + Premium Spirits",
       badge: "🍸 PREMIUM BAR",
-      color: "#541B1A",
+      color: "#4A2420",
       food: [
         "3 Veg Starters",
         "3 Non-Veg Starters (1 Chicken, 1 Fish, 1 Prawn)",
@@ -105,7 +105,7 @@ export const corporatePackagesData = {
       priceLabel: "Custom Corporate Quote",
       alcoholType: "Luxury Top-Shelf Spirits",
       badge: "👑 ULTRA LUXURY",
-      color: "#3A2E2A",
+      color: "#1E1B18",
       food: [
         "3 Veg Starters",
         "3 Non-Veg Starters (1 Chicken, 1 Fish, 1 Prawn / Mutton)",

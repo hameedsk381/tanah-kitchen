@@ -22,9 +22,9 @@ const AdminMenu = lazy(() => import('./pages/AdminMenu'))
 // Lightweight luxury loading spinner
 function PageLoader() {
   return (
-    <div className="min-h-[70vh] flex flex-col items-center justify-center bg-[#FAF6F0] gap-4">
-      <div className="w-10 h-10 border-2 border-[#6B2523]/20 border-t-[#6B2523] rounded-full animate-spin" />
-      <span className="text-xs uppercase tracking-[0.25em] font-bold text-[#6B2523]/70 font-body">
+    <div className="min-h-[70vh] flex flex-col items-center justify-center bg-[#FAF8F5] gap-4">
+      <div className="w-10 h-10 border-2 border-[#5E332E]/20 border-t-[#5E332E] rounded-full animate-spin" />
+      <span className="text-xs uppercase tracking-[0.25em] font-bold text-[#5E332E]/70 font-body">
         Loading Sanctuary...
       </span>
     </div>

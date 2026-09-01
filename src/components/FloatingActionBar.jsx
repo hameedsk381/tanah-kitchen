@@ -33,13 +33,13 @@ export default function FloatingActionBar() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 30 }}
           transition={{ duration: 0.35, ease: 'easeOut' }}
-          className="fixed bottom-6 left-1/2 -translate-x-1/2 sm:left-auto sm:right-24 sm:translate-x-0 z-40 flex items-center gap-2.5 p-1.5 rounded-full bg-[#3A2E2A]/90 backdrop-blur-md border border-white/20 shadow-2xl"
+          className="fixed bottom-6 left-1/2 -translate-x-1/2 sm:left-auto sm:right-24 sm:translate-x-0 z-40 flex items-center gap-2.5 p-1.5 rounded-full bg-[#1E1B18]/90 backdrop-blur-md border border-white/20 shadow-2xl"
         >
           {/* Reserve Table Button */}
           {!isBookPage && (
             <Link
               to="/book"
-              className="wp-btn-pill bg-[#FFC470] text-[#6B2523] hover:bg-white hover:text-[#6B2523] text-xs font-extrabold py-2 px-4 shadow-md flex items-center gap-2 whitespace-nowrap"
+              className="wp-btn-pill bg-[#E5E2DC] text-[#5E332E] hover:bg-white hover:text-[#5E332E] text-xs font-extrabold py-2 px-4 shadow-md flex items-center gap-2 whitespace-nowrap"
             >
               <Calendar className="w-3.5 h-3.5" />
               <span>Reserve Table</span>
@@ -61,7 +61,7 @@ export default function FloatingActionBar() {
           {/* Quick Call Button (Mobile) */}
           <a
             href={`tel:${contactData.phone1.replace(/\s+/g, '')}`}
-            className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-[#FFC470] flex items-center justify-center transition-colors flex-shrink-0"
+            className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-[#E5E2DC] flex items-center justify-center transition-colors flex-shrink-0"
             aria-label="Call Restaurant"
             title="Call Restaurant"
           >

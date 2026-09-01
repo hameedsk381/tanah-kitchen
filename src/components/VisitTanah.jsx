@@ -14,7 +14,7 @@ export default function VisitTanah() {
       id="visit-tanah"
       ref={ref}
       style={{
-        background: 'var(--color-charcoal)', // Dark earth charcoal tone #1E1E1E
+        background: 'var(--color-charcoal)', // Dark earth charcoal tone #1E1B18
         color: 'var(--color-cream)'
       }}
       className="relative overflow-hidden w-full py-28"

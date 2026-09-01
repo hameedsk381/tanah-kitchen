@@ -52,25 +52,25 @@ export default function Navbar() {
             scrolled
               ? 'h-0 opacity-0 overflow-hidden py-0'
               : isHome
-              ? 'py-2 bg-transparent text-[#F6E1CB]/90 border-none'
-              : 'py-2 bg-[#541B1A] text-[#F6E1CB]/85 border-b border-[#FFC470]/15'
+              ? 'py-2 bg-transparent text-[#E5E2DC]/90 border-none'
+              : 'py-2 bg-[#4A2420] text-[#E5E2DC]/85 border-b border-[#E5E2DC]/15'
           }`}
         >
           <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
             <div className="flex items-center gap-6">
               <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FFC470]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#E5E2DC]" />
                 Opp. Meenakshi Bamboo Road, Gachibowli, Hyderabad
               </span>
               <span>•</span>
               <span>Open Daily: 12:00 PM – 11:30 PM</span>
             </div>
             <div className="flex items-center gap-6">
-              <a href="tel:+918977730291" className="hover:text-[#FFC470] transition-colors">
+              <a href="tel:+918977730291" className="hover:text-[#E5E2DC] transition-colors">
                 📞 +91 89777 30291
               </a>
-              <span className="text-[#FFC470]/40">|</span>
-              <span className="text-[#FFC470] font-semibold tracking-widest uppercase text-[10px]">
+              <span className="text-[#E5E2DC]/40">|</span>
+              <span className="text-[#E5E2DC] font-semibold tracking-widest uppercase text-[10px]">
                 Architectural Gastronomy
               </span>
             </div>
@@ -81,10 +81,10 @@ export default function Navbar() {
         <nav
           className={`transition-all duration-300 ${
             scrolled
-              ? 'py-3.5 bg-[#6B2523]/95 backdrop-blur-md shadow-lg border-b border-[#FFC470]/20'
+              ? 'py-3.5 bg-[#5E332E]/95 backdrop-blur-md shadow-lg border-b border-[#E5E2DC]/20'
               : isHome
               ? 'py-4 lg:py-5 bg-transparent border-none shadow-none'
-              : 'py-4 lg:py-5 bg-[#6B2523] border-b border-[#FFC470]/10'
+              : 'py-4 lg:py-5 bg-[#5E332E] border-b border-[#E5E2DC]/10'
           }`}
           role="navigation"
           aria-label="Main navigation"
@@ -113,15 +113,15 @@ export default function Navbar() {
                       to={link.path}
                       className={`text-xs font-semibold tracking-[0.18em] uppercase transition-all duration-200 relative py-1.5 ${
                         isActive
-                          ? 'text-[#FFC470]'
-                          : 'text-[#F6E1CB] hover:text-[#FFC470]'
+                          ? 'text-[#E5E2DC]'
+                          : 'text-[#E5E2DC] hover:text-[#E5E2DC]'
                       }`}
                     >
                       {link.label}
                       {isActive && (
                         <motion.span
                           layoutId="nav-underline"
-                          className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#FFC470] rounded-full"
+                          className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#E5E2DC] rounded-full"
                           transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                         />
                       )}
@@ -135,7 +135,7 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-4">
               <Link
                 to="/book"
-                className="wp-btn-pill bg-[#FFC470] text-[#6B2523] hover:bg-white hover:text-[#6B2523] shadow-md text-xs font-bold px-6 py-2.5"
+                className="wp-btn-pill bg-[#E5E2DC] text-[#5E332E] hover:bg-white hover:text-[#5E332E] shadow-md text-xs font-bold px-6 py-2.5"
               >
                 Book a Table
               </Link>
@@ -162,7 +162,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-x-0 top-0 z-40 flex flex-col pt-24 px-8 pb-10 gap-6 shadow-2xl border-b border-[#FFC470]/20 bg-[#6B2523] text-[#F6E1CB]"
+            className="fixed inset-x-0 top-0 z-40 flex flex-col pt-24 px-8 pb-10 gap-6 shadow-2xl border-b border-[#E5E2DC]/20 bg-[#5E332E] text-[#E5E2DC]"
             role="dialog"
             aria-label="Mobile navigation menu"
           >
@@ -180,8 +180,8 @@ export default function Navbar() {
                       to={link.path}
                       className={`font-display text-xl font-bold block py-2 transition-colors duration-200 ${
                         isActive
-                          ? 'text-[#FFC470]'
-                          : 'text-[#F6E1CB] hover:text-[#FFC470]'
+                          ? 'text-[#E5E2DC]'
+                          : 'text-[#E5E2DC] hover:text-[#E5E2DC]'
                       }`}
                     >
                       {link.label}
@@ -199,13 +199,13 @@ export default function Navbar() {
             >
               <Link
                 to="/book"
-                className="wp-btn-pill bg-[#FFC470] text-[#6B2523] hover:bg-white text-center justify-center w-full max-w-xs py-3 text-xs font-bold shadow-lg"
+                className="wp-btn-pill bg-[#E5E2DC] text-[#5E332E] hover:bg-white text-center justify-center w-full max-w-xs py-3 text-xs font-bold shadow-lg"
               >
                 Book a Table
               </Link>
               <a
                 href="tel:+918977730291"
-                className="text-xs text-[#FFC470] font-semibold tracking-wider hover:underline"
+                className="text-xs text-[#E5E2DC] font-semibold tracking-wider hover:underline"
               >
                 📞 Call: +91 89777 30291
               </a>

@@ -451,7 +451,7 @@ export default function AdminMenu() {
   // ── IF NOT AUTHENTICATED: RENDER ADMIN LOGIN GATEWAY ──
   if (!authToken) {
     return (
-      <main className="min-h-screen bg-[#FAF6F0] flex items-center justify-center p-4 sm:p-6 font-body">
+      <main className="min-h-screen bg-[#FAF8F5] flex items-center justify-center p-4 sm:p-6 font-body">
         <SEO
           title="Admin Login | Tanah Kitchen & Bar"
           description="Authenticate to access Tanah Kitchen & Bar Content & Bento Management Studio."
@@ -461,7 +461,7 @@ export default function AdminMenu() {
           initial={{ opacity: 0, y: 24, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full max-w-md bg-white rounded-3xl p-8 sm:p-10 border border-[#6B2523]/15 shadow-2xl space-y-6 text-left"
+          className="w-full max-w-md bg-white rounded-3xl p-8 sm:p-10 border border-[#5E332E]/15 shadow-2xl space-y-6 text-left"
         >
           {/* Logo & Header */}
           <div className="flex flex-col items-center text-center space-y-3 bg-transparent">
@@ -471,14 +471,14 @@ export default function AdminMenu() {
               className="h-16 w-16 sm:h-20 sm:w-20 object-contain bg-transparent border-none shadow-none"
             />
             <div>
-              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#882B06] block">
+              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#5E332E] block">
                 ✦ TANAH RESTAURANT STUDIO ✦
               </span>
-              <h1 className="font-display font-extrabold text-2xl sm:text-3xl text-[#6B2523] mt-1">
+              <h1 className="font-display font-extrabold text-2xl sm:text-3xl text-[#5E332E] mt-1">
                 Admin Authentication
               </h1>
             </div>
-            <p className="text-xs text-[#3A2E2A]/70 max-w-xs font-light leading-relaxed">
+            <p className="text-xs text-[#1E1B18]/70 max-w-xs font-light leading-relaxed">
               Enter your management credentials to access the live Bento Grid and Menu Studio.
             </p>
           </div>
@@ -497,40 +497,40 @@ export default function AdminMenu() {
           {/* Login Form */}
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1.5">
+              <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1.5">
                 Admin Username or Email
               </label>
               <div className="relative">
-                <User className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#3A2E2A]/40" />
+                <User className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#1E1B18]/40" />
                 <input
                   type="text"
                   required
                   value={loginForm.username}
                   onChange={(e) => setLoginForm({ ...loginForm, username: e.target.value })}
                   placeholder="admin"
-                  className="w-full pl-10 pr-4 py-2.5 bg-[#FAF6F0] rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#6B2523]/30"
+                  className="w-full pl-10 pr-4 py-2.5 bg-[#FAF8F5] rounded-xl border border-[#5E332E]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#5E332E]/30"
                 />
               </div>
             </div>
 
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1.5">
+              <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1.5">
                 Password
               </label>
               <div className="relative">
-                <KeyRound className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#3A2E2A]/40" />
+                <KeyRound className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#1E1B18]/40" />
                 <input
                   type={showPassword ? 'text' : 'password'}
                   required
                   value={loginForm.password}
                   onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
                   placeholder="••••••••"
-                  className="w-full pl-10 pr-10 py-2.5 bg-[#FAF6F0] rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#6B2523]/30"
+                  className="w-full pl-10 pr-10 py-2.5 bg-[#FAF8F5] rounded-xl border border-[#5E332E]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#5E332E]/30"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#3A2E2A]/40 hover:text-[#6B2523]"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#1E1B18]/40 hover:text-[#5E332E]"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
@@ -543,16 +543,16 @@ export default function AdminMenu() {
                   type="checkbox"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
-                  className="rounded text-[#6B2523] focus:ring-[#6B2523]"
+                  className="rounded text-[#5E332E] focus:ring-[#5E332E]"
                 />
-                <span className="text-xs text-[#3A2E2A]/70 font-medium">Keep me signed in</span>
+                <span className="text-xs text-[#1E1B18]/70 font-medium">Keep me signed in</span>
               </label>
             </div>
 
             <button
               type="submit"
               disabled={isLoggingIn}
-              className="w-full py-3 rounded-xl bg-[#6B2523] hover:bg-[#3A2E2A] text-[#FFC470] text-xs font-bold uppercase tracking-widest shadow-lg flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-50"
+              className="w-full py-3 rounded-xl bg-[#5E332E] hover:bg-[#1E1B18] text-[#E5E2DC] text-xs font-bold uppercase tracking-widest shadow-lg flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-50"
             >
               <Lock className="w-4 h-4" />
               <span>{isLoggingIn ? 'Verifying Credentials...' : 'Unlock Admin Studio'}</span>
@@ -565,7 +565,7 @@ export default function AdminMenu() {
 
   // ── AUTHENTICATED: RENDER FULL ADMIN STUDIO ──
   return (
-    <main className="min-h-screen bg-[#FAF6F0] text-[#3A2E2A] pt-28 pb-20 font-body">
+    <main className="min-h-screen bg-[#FAF8F5] text-[#1E1B18] pt-28 pb-20 font-body">
       <SEO
         title="Admin Content & Bento Studio | Tanah Kitchen"
         description="Live customizer for Home Page Bento Grid, Menu items, and Gallery category mapping."
@@ -578,7 +578,7 @@ export default function AdminMenu() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-24 right-6 z-50 bg-[#6B2523] text-[#FFC470] px-5 py-3 rounded-2xl shadow-2xl border border-[#FFC470]/30 text-xs font-bold flex items-center gap-2"
+            className="fixed top-24 right-6 z-50 bg-[#5E332E] text-[#E5E2DC] px-5 py-3 rounded-2xl shadow-2xl border border-[#E5E2DC]/30 text-xs font-bold flex items-center gap-2"
           >
             <Sparkles className="w-4 h-4" />
             <span>{toastMessage}</span>
@@ -589,37 +589,37 @@ export default function AdminMenu() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Studio Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-white p-6 sm:p-8 rounded-3xl border border-[#6B2523]/15 shadow-sm">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-white p-6 sm:p-8 rounded-3xl border border-[#5E332E]/15 shadow-sm">
           <div className="space-y-1.5">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-[#6B2523] text-[#FFC470]">
+              <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-[#5E332E] text-[#E5E2DC]">
                 ✦ STUDIO CONTROL ✦
               </span>
               <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 MongoDB Live
               </span>
-              <span className="text-xs font-semibold text-[#882B06] bg-[#882B06]/10 px-2.5 py-0.5 rounded-full">
+              <span className="text-xs font-semibold text-[#5E332E] bg-[#5E332E]/10 px-2.5 py-0.5 rounded-full">
                 👤 {adminUser?.username || 'admin'} ({adminUser?.role || 'Super Admin'})
               </span>
             </div>
-            <h1 className="font-display font-extrabold text-2xl sm:text-4xl text-[#6B2523]">
+            <h1 className="font-display font-extrabold text-2xl sm:text-4xl text-[#5E332E]">
               Visual Content &amp; Bento Studio
             </h1>
-            <p className="text-xs sm:text-sm text-[#3A2E2A]/80 max-w-xl font-light">
+            <p className="text-xs sm:text-sm text-[#1E1B18]/80 max-w-xl font-light">
               Upload custom photos, customize Home Page Bento Grid tiles, reassign gallery photo categories, and manage seasonal menu dishes.
             </p>
           </div>
 
           {/* Studio Navigation Tabs & Sign Out */}
           <div className="flex flex-wrap items-center gap-2">
-            <div className="flex items-center gap-1.5 bg-[#FAF6F0] p-1.5 rounded-2xl border border-[#6B2523]/15">
+            <div className="flex items-center gap-1.5 bg-[#FAF8F5] p-1.5 rounded-2xl border border-[#5E332E]/15">
               <button
                 onClick={() => setActiveTab('bento')}
                 className={`px-3.5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-1.5 ${
                   activeTab === 'bento'
-                    ? 'bg-[#6B2523] text-[#FFC470] shadow-md'
-                    : 'text-[#3A2E2A]/70 hover:text-[#6B2523]'
+                    ? 'bg-[#5E332E] text-[#E5E2DC] shadow-md'
+                    : 'text-[#1E1B18]/70 hover:text-[#5E332E]'
                 }`}
               >
                 <LayoutGrid className="w-3.5 h-3.5" />
@@ -630,8 +630,8 @@ export default function AdminMenu() {
                 onClick={() => setActiveTab('menu')}
                 className={`px-3.5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-1.5 ${
                   activeTab === 'menu'
-                    ? 'bg-[#6B2523] text-[#FFC470] shadow-md'
-                    : 'text-[#3A2E2A]/70 hover:text-[#6B2523]'
+                    ? 'bg-[#5E332E] text-[#E5E2DC] shadow-md'
+                    : 'text-[#1E1B18]/70 hover:text-[#5E332E]'
                 }`}
               >
                 <Utensils className="w-3.5 h-3.5" />
@@ -642,8 +642,8 @@ export default function AdminMenu() {
                 onClick={() => setActiveTab('gallery')}
                 className={`px-3.5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-1.5 ${
                   activeTab === 'gallery'
-                    ? 'bg-[#6B2523] text-[#FFC470] shadow-md'
-                    : 'text-[#3A2E2A]/70 hover:text-[#6B2523]'
+                    ? 'bg-[#5E332E] text-[#E5E2DC] shadow-md'
+                    : 'text-[#1E1B18]/70 hover:text-[#5E332E]'
                 }`}
               >
                 <Images className="w-3.5 h-3.5" />
@@ -669,13 +669,13 @@ export default function AdminMenu() {
           <div className="space-y-6">
             
             {/* Bento Control Bar */}
-            <div className="bg-white p-6 rounded-3xl border border-[#6B2523]/15 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="bg-white p-6 rounded-3xl border border-[#5E332E]/15 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
-                <h2 className="font-display font-bold text-xl text-[#6B2523] flex items-center gap-2">
-                  <Flame className="w-5 h-5 text-[#882B06]" />
+                <h2 className="font-display font-bold text-xl text-[#5E332E] flex items-center gap-2">
+                  <Flame className="w-5 h-5 text-[#5E332E]" />
                   <span>Home Page Bento Grid (6 Dynamic Slots)</span>
                 </h2>
-                <p className="text-xs text-[#3A2E2A]/70 mt-1">
+                <p className="text-xs text-[#1E1B18]/70 mt-1">
                   Click any slot below to change the dish, upload custom photos, edit title, pricing, tag, or beverage pairing.
                 </p>
               </div>
@@ -704,7 +704,7 @@ export default function AdminMenu() {
                     setEditingBentoIndex(0)
                     setBentoDraft({ ...bentoItems[0] })
                   }}
-                  className="md:col-span-7 relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all group cursor-pointer min-h-[320px] sm:min-h-[380px] border-2 border-transparent hover:border-[#6B2523] flex flex-col justify-between p-6 bg-black"
+                  className="md:col-span-7 relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all group cursor-pointer min-h-[320px] sm:min-h-[380px] border-2 border-transparent hover:border-[#5E332E] flex flex-col justify-between p-6 bg-black"
                 >
                   <img
                     src={bentoItems[0].image}
@@ -716,21 +716,21 @@ export default function AdminMenu() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20" />
 
                   <div className="relative z-10 flex items-center justify-between">
-                    <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md">
+                    <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-[#5E332E] text-[#E5E2DC] border border-[#E5E2DC]/30 shadow-md">
                       SLOT 1: {bentoItems[0].tag}
                     </span>
                     <div className="flex items-center gap-2">
                       <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-sm">
                         {bentoItems[0].isVeg ? <VegMark /> : <NonVegMark />}
                       </div>
-                      <span className="px-3 py-1 bg-white/20 group-hover:bg-[#6B2523] group-hover:text-[#FFC470] text-white backdrop-blur-md rounded-xl text-xs font-bold uppercase transition-colors">
+                      <span className="px-3 py-1 bg-white/20 group-hover:bg-[#5E332E] group-hover:text-[#E5E2DC] text-white backdrop-blur-md rounded-xl text-xs font-bold uppercase transition-colors">
                         Click to Edit
                       </span>
                     </div>
                   </div>
 
                   <div className="relative z-10 text-white space-y-1.5">
-                    <span className="text-[10px] uppercase tracking-wider text-[#FFC470] font-semibold block">
+                    <span className="text-[10px] uppercase tracking-wider text-[#E5E2DC] font-semibold block">
                       {bentoItems[0].category}
                     </span>
                     <div className="flex justify-between items-end gap-2">
@@ -742,12 +742,12 @@ export default function AdminMenu() {
                           {bentoItems[0].desc}
                         </p>
                       </div>
-                      <span className="font-display text-2xl font-extrabold text-[#FFC470] flex-shrink-0">
+                      <span className="font-display text-2xl font-extrabold text-[#E5E2DC] flex-shrink-0">
                         ₹{bentoItems[0].price}
                       </span>
                     </div>
                     {bentoItems[0].pairing && (
-                      <span className="text-[10px] text-[#FFC470] block pt-1 font-semibold">
+                      <span className="text-[10px] text-[#E5E2DC] block pt-1 font-semibold">
                         {bentoItems[0].pairing}
                       </span>
                     )}
@@ -762,7 +762,7 @@ export default function AdminMenu() {
                     setEditingBentoIndex(1)
                     setBentoDraft({ ...bentoItems[1] })
                   }}
-                  className="md:col-span-5 relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all group cursor-pointer min-h-[320px] sm:min-h-[380px] border-2 border-transparent hover:border-[#6B2523] flex flex-col justify-between p-6 bg-black"
+                  className="md:col-span-5 relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all group cursor-pointer min-h-[320px] sm:min-h-[380px] border-2 border-transparent hover:border-[#5E332E] flex flex-col justify-between p-6 bg-black"
                 >
                   <img
                     src={bentoItems[1].image}
@@ -774,21 +774,21 @@ export default function AdminMenu() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20" />
 
                   <div className="relative z-10 flex items-center justify-between">
-                    <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md">
+                    <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-[#5E332E] text-[#E5E2DC] border border-[#E5E2DC]/30 shadow-md">
                       SLOT 2: {bentoItems[1].tag}
                     </span>
                     <div className="flex items-center gap-2">
                       <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-sm">
                         {bentoItems[1].isVeg ? <VegMark /> : <NonVegMark />}
                       </div>
-                      <span className="px-3 py-1 bg-white/20 group-hover:bg-[#6B2523] group-hover:text-[#FFC470] text-white backdrop-blur-md rounded-xl text-xs font-bold uppercase transition-colors">
+                      <span className="px-3 py-1 bg-white/20 group-hover:bg-[#5E332E] group-hover:text-[#E5E2DC] text-white backdrop-blur-md rounded-xl text-xs font-bold uppercase transition-colors">
                         Click to Edit
                       </span>
                     </div>
                   </div>
 
                   <div className="relative z-10 text-white space-y-1">
-                    <span className="text-[10px] uppercase tracking-wider text-[#FFC470] font-semibold block">
+                    <span className="text-[10px] uppercase tracking-wider text-[#E5E2DC] font-semibold block">
                       {bentoItems[1].category}
                     </span>
                     <div className="flex justify-between items-end gap-2">
@@ -800,7 +800,7 @@ export default function AdminMenu() {
                           {bentoItems[1].desc}
                         </p>
                       </div>
-                      <span className="font-display text-xl font-extrabold text-[#FFC470] flex-shrink-0">
+                      <span className="font-display text-xl font-extrabold text-[#E5E2DC] flex-shrink-0">
                         ₹{bentoItems[1].price}
                       </span>
                     </div>
@@ -819,7 +819,7 @@ export default function AdminMenu() {
                       setEditingBentoIndex(slotIdx)
                       setBentoDraft({ ...bItem })
                     }}
-                    className="md:col-span-6 lg:col-span-3 relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all group cursor-pointer min-h-[220px] border-2 border-transparent hover:border-[#6B2523] flex flex-col justify-between p-5 bg-black"
+                    className="md:col-span-6 lg:col-span-3 relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all group cursor-pointer min-h-[220px] border-2 border-transparent hover:border-[#5E332E] flex flex-col justify-between p-5 bg-black"
                   >
                     <img
                       src={bItem.image}
@@ -831,7 +831,7 @@ export default function AdminMenu() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
 
                     <div className="relative z-10 flex items-center justify-between">
-                      <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md">
+                      <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#5E332E] text-[#E5E2DC] border border-[#E5E2DC]/30 shadow-md">
                         SLOT {slotIdx + 1}: {bItem.tag}
                       </span>
                       <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-sm">
@@ -840,14 +840,14 @@ export default function AdminMenu() {
                     </div>
 
                     <div className="relative z-10 text-white space-y-1">
-                      <span className="text-[9px] uppercase tracking-wider text-[#FFC470] font-semibold block">
+                      <span className="text-[9px] uppercase tracking-wider text-[#E5E2DC] font-semibold block">
                         {bItem.category}
                       </span>
                       <div className="flex justify-between items-baseline gap-1">
                         <h4 className="font-display text-base font-bold text-white leading-tight">
                           {bItem.title}
                         </h4>
-                        <span className="font-display text-lg font-extrabold text-[#FFC470]">
+                        <span className="font-display text-lg font-extrabold text-[#E5E2DC]">
                           ₹{bItem.price}
                         </span>
                       </div>
@@ -880,8 +880,8 @@ export default function AdminMenu() {
                     }}
                     className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all whitespace-nowrap ${
                       selectedCategory.toLowerCase() === cat.toLowerCase()
-                        ? 'bg-[#6B2523] text-[#FFC470] shadow-md'
-                        : 'bg-white text-[#3A2E2A]/75 hover:bg-white/80 border border-[#6B2523]/10'
+                        ? 'bg-[#5E332E] text-[#E5E2DC] shadow-md'
+                        : 'bg-white text-[#1E1B18]/75 hover:bg-white/80 border border-[#5E332E]/10'
                     }`}
                   >
                     {cat}
@@ -892,7 +892,7 @@ export default function AdminMenu() {
               {/* Action Buttons & Search */}
               <div className="flex items-center gap-3 w-full sm:w-auto">
                 <div className="relative flex-1 sm:w-64">
-                  <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#3A2E2A]/50" />
+                  <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#1E1B18]/50" />
                   <input
                     type="text"
                     value={searchQuery}
@@ -901,7 +901,7 @@ export default function AdminMenu() {
                       setDishPage(1)
                     }}
                     placeholder="Search dishes..."
-                    className="w-full pl-10 pr-4 py-2 bg-white rounded-xl border border-[#6B2523]/15 text-xs focus:outline-none"
+                    className="w-full pl-10 pr-4 py-2 bg-white rounded-xl border border-[#5E332E]/15 text-xs focus:outline-none"
                   />
                 </div>
 
@@ -917,7 +917,7 @@ export default function AdminMenu() {
                       profile: { earthy: 50, smoky: 40, sweet: 20, spicy: 10 }
                     })
                   }}
-                  className="px-4 py-2 rounded-xl bg-[#6B2523] text-[#FFC470] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-md flex-shrink-0"
+                  className="px-4 py-2 rounded-xl bg-[#5E332E] text-[#E5E2DC] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-md flex-shrink-0"
                 >
                   <Plus className="w-4 h-4" />
                   <span>Add Dish</span>
@@ -925,7 +925,7 @@ export default function AdminMenu() {
 
                 <button
                   onClick={exportJsonFile}
-                  className="p-2 bg-white rounded-xl border border-[#6B2523]/20 hover:bg-[#FAF6F0] text-[#6B2523] shadow-xs"
+                  className="p-2 bg-white rounded-xl border border-[#5E332E]/20 hover:bg-[#FAF8F5] text-[#5E332E] shadow-xs"
                   title="Export menu.json"
                 >
                   <Download className="w-4 h-4" />
@@ -945,7 +945,7 @@ export default function AdminMenu() {
                 return (
                   <div
                     key={item.id}
-                    className="bg-white rounded-3xl overflow-hidden border border-[#6B2523]/15 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
+                    className="bg-white rounded-3xl overflow-hidden border border-[#5E332E]/15 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
                   >
                     <div>
                       {/* Photo Frame */}
@@ -965,7 +965,7 @@ export default function AdminMenu() {
                             setIsPhotoPickerOpen(true)
                             setPhotoPage(1)
                           }}
-                          className="absolute inset-0 m-auto w-fit h-fit px-3.5 py-1.5 bg-black/80 hover:bg-[#6B2523] text-[#FFC470] backdrop-blur-md rounded-xl text-xs font-bold tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-all flex items-center gap-1.5 shadow-lg"
+                          className="absolute inset-0 m-auto w-fit h-fit px-3.5 py-1.5 bg-black/80 hover:bg-[#5E332E] text-[#E5E2DC] backdrop-blur-md rounded-xl text-xs font-bold tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-all flex items-center gap-1.5 shadow-lg"
                         >
                           <ImageIcon className="w-3.5 h-3.5" />
                           <span>Change Photo</span>
@@ -985,27 +985,27 @@ export default function AdminMenu() {
                       {/* Details */}
                       <div className="p-5 space-y-2">
                         <div className="flex justify-between items-start gap-2">
-                          <h3 className="font-display font-bold text-lg text-[#6B2523] leading-tight">
+                          <h3 className="font-display font-bold text-lg text-[#5E332E] leading-tight">
                             {item.name}
                           </h3>
-                          <span className="font-display text-lg font-extrabold text-[#882B06] flex-shrink-0">
+                          <span className="font-display text-lg font-extrabold text-[#5E332E] flex-shrink-0">
                             ₹{item.price}
                           </span>
                         </div>
 
-                        <p className="text-xs text-[#3A2E2A]/80 font-light leading-relaxed line-clamp-2">
+                        <p className="text-xs text-[#1E1B18]/80 font-light leading-relaxed line-clamp-2">
                           {item.desc}
                         </p>
                       </div>
                     </div>
 
                     {/* Footer Controls */}
-                    <div className="p-4 border-t border-[#6B2523]/10 bg-[#FAF6F0]/50 flex items-center justify-between">
-                      <span className="text-[10px] text-[#3A2E2A]/50 font-mono">ID: {item.id}</span>
+                    <div className="p-4 border-t border-[#5E332E]/10 bg-[#FAF8F5]/50 flex items-center justify-between">
+                      <span className="text-[10px] text-[#1E1B18]/50 font-mono">ID: {item.id}</span>
                       <div className="flex items-center gap-1.5">
                         <button
                           onClick={() => setEditingItem(item)}
-                          className="px-3 py-1.5 rounded-lg bg-white border border-[#6B2523]/20 hover:bg-[#6B2523] hover:text-[#FFC470] text-[#6B2523] text-xs font-bold flex items-center gap-1 transition-all"
+                          className="px-3 py-1.5 rounded-lg bg-white border border-[#5E332E]/20 hover:bg-[#5E332E] hover:text-[#E5E2DC] text-[#5E332E] text-xs font-bold flex items-center gap-1 transition-all"
                         >
                           <Edit2 className="w-3.5 h-3.5" />
                           <span>Edit</span>
@@ -1034,17 +1034,17 @@ export default function AdminMenu() {
                 <button
                   onClick={() => setDishPage((p) => Math.max(1, p - 1))}
                   disabled={dishPage === 1}
-                  className="p-2 rounded-xl bg-white border border-[#6B2523]/20 disabled:opacity-30 hover:bg-[#FAF6F0] text-[#6B2523]"
+                  className="p-2 rounded-xl bg-white border border-[#5E332E]/20 disabled:opacity-30 hover:bg-[#FAF8F5] text-[#5E332E]"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
-                <span className="text-xs font-semibold text-[#6B2523] px-3">
+                <span className="text-xs font-semibold text-[#5E332E] px-3">
                   Page {dishPage} of {totalDishPages}
                 </span>
                 <button
                   onClick={() => setDishPage((p) => Math.min(totalDishPages, p + 1))}
                   disabled={dishPage === totalDishPages}
-                  className="p-2 rounded-xl bg-white border border-[#6B2523]/20 disabled:opacity-30 hover:bg-[#FAF6F0] text-[#6B2523]"
+                  className="p-2 rounded-xl bg-white border border-[#5E332E]/20 disabled:opacity-30 hover:bg-[#FAF8F5] text-[#5E332E]"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
@@ -1060,13 +1060,13 @@ export default function AdminMenu() {
           <div className="space-y-6">
             
             {/* Gallery Top Bar */}
-            <div className="bg-white p-6 rounded-3xl border border-[#6B2523]/15 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="bg-white p-6 rounded-3xl border border-[#5E332E]/15 flex flex-col md:flex-row items-center justify-between gap-4">
               <div>
-                <h2 className="font-display font-bold text-xl text-[#6B2523] flex items-center gap-2">
-                  <Images className="w-5 h-5 text-[#882B06]" />
+                <h2 className="font-display font-bold text-xl text-[#5E332E] flex items-center gap-2">
+                  <Images className="w-5 h-5 text-[#5E332E]" />
                   <span>Gallery Photo Studio & Category Manager (MongoDB)</span>
                 </h2>
-                <p className="text-xs text-[#3A2E2A]/70 mt-1">
+                <p className="text-xs text-[#1E1B18]/70 mt-1">
                   Add new photos, update titles and categories, or remove photos. Changes sync live on the website.
                 </p>
               </div>
@@ -1085,7 +1085,7 @@ export default function AdminMenu() {
                     setIsAddGallery(true)
                     setIsGalleryModalOpen(true)
                   }}
-                  className="px-4 py-2 rounded-xl bg-[#6B2523] text-[#FFC470] hover:bg-[#3A2E2A] text-xs font-bold flex items-center gap-1.5 shadow-md transition-all cursor-pointer"
+                  className="px-4 py-2 rounded-xl bg-[#5E332E] text-[#E5E2DC] hover:bg-[#1E1B18] text-xs font-bold flex items-center gap-1.5 shadow-md transition-all cursor-pointer"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   <span>Add Photo</span>
@@ -1093,7 +1093,7 @@ export default function AdminMenu() {
 
                 <button
                   onClick={exportGalleryJson}
-                  className="px-3.5 py-2 rounded-xl bg-white border border-[#6B2523]/20 hover:bg-[#FAF6F0] text-[#6B2523] text-xs font-bold flex items-center gap-1.5 shadow-xs"
+                  className="px-3.5 py-2 rounded-xl bg-white border border-[#5E332E]/20 hover:bg-[#FAF8F5] text-[#5E332E] text-xs font-bold flex items-center gap-1.5 shadow-xs"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Export JSON</span>
@@ -1126,8 +1126,8 @@ export default function AdminMenu() {
                     }}
                     className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all whitespace-nowrap ${
                       galleryFilter.toLowerCase() === cat.toLowerCase()
-                        ? 'bg-[#6B2523] text-[#FFC470] shadow-md'
-                        : 'bg-white text-[#3A2E2A]/75 hover:bg-white/80 border border-[#6B2523]/10'
+                        ? 'bg-[#5E332E] text-[#E5E2DC] shadow-md'
+                        : 'bg-white text-[#1E1B18]/75 hover:bg-white/80 border border-[#5E332E]/10'
                     }`}
                   >
                     {cat}
@@ -1136,7 +1136,7 @@ export default function AdminMenu() {
               </div>
 
               <div className="relative w-full sm:w-64">
-                <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#3A2E2A]/40" />
+                <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#1E1B18]/40" />
                 <input
                   type="text"
                   value={gallerySearch}
@@ -1145,7 +1145,7 @@ export default function AdminMenu() {
                     setGalleryPage(1)
                   }}
                   placeholder="Search photo ID or path..."
-                  className="w-full pl-10 pr-4 py-2 bg-white rounded-xl border border-[#6B2523]/15 text-xs focus:outline-none"
+                  className="w-full pl-10 pr-4 py-2 bg-white rounded-xl border border-[#5E332E]/15 text-xs focus:outline-none"
                 />
               </div>
             </div>
@@ -1155,7 +1155,7 @@ export default function AdminMenu() {
               {paginatedGallery.map((gItem) => (
                 <div
                   key={gItem.id}
-                  className="bg-white rounded-2xl overflow-hidden border border-[#6B2523]/15 shadow-xs flex flex-col justify-between group hover:shadow-md transition-shadow"
+                  className="bg-white rounded-2xl overflow-hidden border border-[#5E332E]/15 shadow-xs flex flex-col justify-between group hover:shadow-md transition-shadow"
                 >
                   <div className="w-full h-44 overflow-hidden relative bg-black/5">
                     <img
@@ -1185,7 +1185,7 @@ export default function AdminMenu() {
                           setIsGalleryModalOpen(true)
                         }}
                         title="Edit Photo"
-                        className="p-1.5 rounded-lg bg-white/90 hover:bg-white text-[#6B2523] shadow-md transition-colors cursor-pointer"
+                        className="p-1.5 rounded-lg bg-white/90 hover:bg-white text-[#5E332E] shadow-md transition-colors cursor-pointer"
                       >
                         <Edit3 className="w-3.5 h-3.5" />
                       </button>
@@ -1205,12 +1205,12 @@ export default function AdminMenu() {
                     </div>
                   </div>
 
-                  <div className="p-3.5 space-y-2.5 bg-white border-t border-[#6B2523]/10">
+                  <div className="p-3.5 space-y-2.5 bg-white border-t border-[#5E332E]/10">
                     <div className="flex items-center justify-between">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#6B2523] truncate">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#5E332E] truncate">
                         {gItem.title || gItem.alt || gItem.id}
                       </span>
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#6B2523]/10 text-[#6B2523] flex-shrink-0">
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#5E332E]/10 text-[#5E332E] flex-shrink-0">
                         {gItem.category}
                       </span>
                     </div>
@@ -1222,7 +1222,7 @@ export default function AdminMenu() {
                         updateGalleryItemCategory(gItem.id, e.target.value)
                         showToast(`✓ Changed ${gItem.id} to "${e.target.value}"`)
                       }}
-                      className="w-full px-3 py-1.5 rounded-xl border border-[#6B2523]/20 text-xs font-bold text-[#6B2523] bg-[#FAF6F0] focus:outline-none focus:ring-2 focus:ring-[#6B2523]/25 cursor-pointer"
+                      className="w-full px-3 py-1.5 rounded-xl border border-[#5E332E]/20 text-xs font-bold text-[#5E332E] bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#5E332E]/25 cursor-pointer"
                     >
                       {['Ambience', 'Rooftop', 'Events', 'Food'].map((catOpt) => (
                         <option key={catOpt} value={catOpt}>
@@ -1241,17 +1241,17 @@ export default function AdminMenu() {
                 <button
                   onClick={() => setGalleryPage((p) => Math.max(1, p - 1))}
                   disabled={galleryPage === 1}
-                  className="p-2 rounded-xl bg-white border border-[#6B2523]/20 disabled:opacity-30 hover:bg-[#FAF6F0] text-[#6B2523]"
+                  className="p-2 rounded-xl bg-white border border-[#5E332E]/20 disabled:opacity-30 hover:bg-[#FAF8F5] text-[#5E332E]"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
-                <span className="text-xs font-semibold text-[#6B2523] px-3">
+                <span className="text-xs font-semibold text-[#5E332E] px-3">
                   Page {galleryPage} of {totalGalleryPages}
                 </span>
                 <button
                   onClick={() => setGalleryPage((p) => Math.min(totalGalleryPages, p + 1))}
                   disabled={galleryPage === totalGalleryPages}
-                  className="p-2 rounded-xl bg-white border border-[#6B2523]/20 disabled:opacity-30 hover:bg-[#FAF6F0] text-[#6B2523]"
+                  className="p-2 rounded-xl bg-white border border-[#5E332E]/20 disabled:opacity-30 hover:bg-[#FAF8F5] text-[#5E332E]"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
@@ -1270,20 +1270,20 @@ export default function AdminMenu() {
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
-              className="bg-white w-full max-w-xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col border border-[#6B2523]/20"
+              className="bg-white w-full max-w-xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col border border-[#5E332E]/20"
             >
-              <div className="p-5 border-b border-[#6B2523]/15 flex items-center justify-between bg-[#FAF6F0]">
+              <div className="p-5 border-b border-[#5E332E]/15 flex items-center justify-between bg-[#FAF8F5]">
                 <div>
-                  <h3 className="font-display font-bold text-xl text-[#6B2523]">
+                  <h3 className="font-display font-bold text-xl text-[#5E332E]">
                     Customize Bento Slot {editingBentoIndex + 1}
                   </h3>
-                  <p className="text-xs text-[#3A2E2A]/70">
+                  <p className="text-xs text-[#1E1B18]/70">
                     Upload a custom photo or choose a dish from the catalog.
                   </p>
                 </div>
                 <button
                   onClick={() => setEditingBentoIndex(null)}
-                  className="p-2 rounded-xl hover:bg-black/5 text-[#3A2E2A]/70"
+                  className="p-2 rounded-xl hover:bg-black/5 text-[#1E1B18]/70"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -1292,8 +1292,8 @@ export default function AdminMenu() {
               <form onSubmit={handleSaveBentoSlot} className="p-6 space-y-4 overflow-y-auto flex-1 text-left">
                 
                 {/* Autofill from Menu */}
-                <div className="p-3 bg-[#FAF6F0] rounded-2xl border border-[#6B2523]/15">
-                  <label className="text-[11px] font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                <div className="p-3 bg-[#FAF8F5] rounded-2xl border border-[#5E332E]/15">
+                  <label className="text-[11px] font-bold uppercase tracking-wider text-[#5E332E] block mb-1">
                     ⚡ Quick Autofill from Seasonal Menu
                   </label>
                   <select
@@ -1317,7 +1317,7 @@ export default function AdminMenu() {
                         showToast(`✓ Autofilled from "${selectedDish.name}"`)
                       }
                     }}
-                    className="w-full px-3 py-2 rounded-xl border border-[#6B2523]/20 text-xs font-semibold bg-white"
+                    className="w-full px-3 py-2 rounded-xl border border-[#5E332E]/20 text-xs font-semibold bg-white"
                   >
                     <option value="">-- Choose a dish to autofill --</option>
                     {items.map((i) => (
@@ -1329,8 +1329,8 @@ export default function AdminMenu() {
                 </div>
 
                 {/* Photo Preview & Dual Action Buttons (Upload & Browse) */}
-                <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-2xl bg-[#FAF6F0] border border-[#6B2523]/15">
-                  <div className="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 border border-[#6B2523]/20 bg-black">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-2xl bg-[#FAF8F5] border border-[#5E332E]/15">
+                  <div className="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 border border-[#5E332E]/20 bg-black">
                     <img
                       src={bentoDraft.image}
                       alt="Selected preview"
@@ -1338,11 +1338,11 @@ export default function AdminMenu() {
                     />
                   </div>
                   <div className="space-y-2 flex-1">
-                    <span className="text-[10px] font-mono text-[#3A2E2A]/70 block font-semibold truncate max-w-xs">
+                    <span className="text-[10px] font-mono text-[#1E1B18]/70 block font-semibold truncate max-w-xs">
                       {bentoDraft.image.startsWith('data:') ? 'Custom Uploaded Image (Base64)' : bentoDraft.image}
                     </span>
                     <div className="flex flex-wrap items-center gap-2">
-                      <label className="cursor-pointer px-3.5 py-1.5 rounded-lg bg-[#882B06] hover:bg-[#6B2523] text-[#FFC470] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm transition-all">
+                      <label className="cursor-pointer px-3.5 py-1.5 rounded-lg bg-[#5E332E] hover:bg-[#5E332E] text-[#E5E2DC] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm transition-all">
                         <Upload className="w-3.5 h-3.5" />
                         <span>Upload Photo</span>
                         <input
@@ -1364,7 +1364,7 @@ export default function AdminMenu() {
                           setIsPhotoPickerOpen(true)
                           setPhotoPage(1)
                         }}
-                        className="px-3.5 py-1.5 rounded-lg bg-white border border-[#6B2523]/25 text-[#6B2523] hover:bg-[#FAF6F0] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-xs transition-all"
+                        className="px-3.5 py-1.5 rounded-lg bg-white border border-[#5E332E]/25 text-[#5E332E] hover:bg-[#FAF8F5] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-xs transition-all"
                       >
                         <ImageIcon className="w-3.5 h-3.5" />
                         <span>Browse Catalog</span>
@@ -1375,7 +1375,7 @@ export default function AdminMenu() {
 
                 {/* Dish Title */}
                 <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1">
                     Tile Title *
                   </label>
                   <input
@@ -1383,14 +1383,14 @@ export default function AdminMenu() {
                     required
                     value={bentoDraft.title}
                     onChange={(e) => setBentoDraft({ ...bentoDraft, title: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#6B2523]/30"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#5E332E]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#5E332E]/30"
                   />
                 </div>
 
                 {/* Subtitle/Category & Price */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1">
                       Category / Subtitle
                     </label>
                     <input
@@ -1398,19 +1398,19 @@ export default function AdminMenu() {
                       value={bentoDraft.category}
                       onChange={(e) => setBentoDraft({ ...bentoDraft, category: e.target.value })}
                       placeholder="e.g. Wood-Fired Hearth"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#5E332E]/20 text-sm focus:outline-none"
                     />
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1">
                       Price (₹)
                     </label>
                     <input
                       type="number"
                       value={bentoDraft.price}
                       onChange={(e) => setBentoDraft({ ...bentoDraft, price: Number(e.target.value) })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#5E332E]/20 text-sm focus:outline-none"
                     />
                   </div>
                 </div>
@@ -1418,7 +1418,7 @@ export default function AdminMenu() {
                 {/* Tag & Veg/Non-Veg */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1">
                       Tag Badge
                     </label>
                     <input
@@ -1426,18 +1426,18 @@ export default function AdminMenu() {
                       value={bentoDraft.tag}
                       onChange={(e) => setBentoDraft({ ...bentoDraft, tag: e.target.value })}
                       placeholder="e.g. ★ BESTSELLER"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#5E332E]/20 text-sm focus:outline-none"
                     />
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1">
                       Dietary Type
                     </label>
                     <select
                       value={bentoDraft.isVeg ? 'veg' : 'non-veg'}
                       onChange={(e) => setBentoDraft({ ...bentoDraft, isVeg: e.target.value === 'veg' })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm bg-white"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#5E332E]/20 text-sm bg-white"
                     >
                       <option value="veg">🟢 Pure Veg</option>
                       <option value="non-veg">🔴 Non-Veg</option>
@@ -1447,20 +1447,20 @@ export default function AdminMenu() {
 
                 {/* Description */}
                 <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1">
                     Description
                   </label>
                   <textarea
                     rows={2}
                     value={bentoDraft.desc}
                     onChange={(e) => setBentoDraft({ ...bentoDraft, desc: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#5E332E]/20 text-sm focus:outline-none"
                   />
                 </div>
 
                 {/* Drink Pairing */}
                 <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1">
                     Drink Pairing (Optional)
                   </label>
                   <input
@@ -1468,7 +1468,7 @@ export default function AdminMenu() {
                     value={bentoDraft.pairing || ''}
                     onChange={(e) => setBentoDraft({ ...bentoDraft, pairing: e.target.value })}
                     placeholder="e.g. 🍸 Pairs with: Rooftop Smoked Old Fashioned"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#5E332E]/20 text-sm focus:outline-none"
                   />
                 </div>
 
@@ -1476,13 +1476,13 @@ export default function AdminMenu() {
                   <button
                     type="button"
                     onClick={() => setEditingBentoIndex(null)}
-                    className="px-4 py-2 rounded-xl text-xs font-bold text-[#3A2E2A]/70 hover:bg-black/5"
+                    className="px-4 py-2 rounded-xl text-xs font-bold text-[#1E1B18]/70 hover:bg-black/5"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="px-6 py-2.5 rounded-xl bg-[#6B2523] text-[#FFC470] hover:bg-[#3A2E2A] text-xs font-bold uppercase tracking-wider shadow-md"
+                    className="px-6 py-2.5 rounded-xl bg-[#5E332E] text-[#E5E2DC] hover:bg-[#1E1B18] text-xs font-bold uppercase tracking-wider shadow-md"
                   >
                     Save Bento Tile
                   </button>
@@ -1501,20 +1501,20 @@ export default function AdminMenu() {
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
-              className="bg-white w-full max-w-xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col border border-[#6B2523]/20"
+              className="bg-white w-full max-w-xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col border border-[#5E332E]/20"
             >
-              <div className="p-5 border-b border-[#6B2523]/15 flex items-center justify-between bg-[#FAF6F0]">
+              <div className="p-5 border-b border-[#5E332E]/15 flex items-center justify-between bg-[#FAF8F5]">
                 <div>
-                  <h3 className="font-display font-bold text-xl text-[#6B2523]">
+                  <h3 className="font-display font-bold text-xl text-[#5E332E]">
                     {isAddGallery ? 'Add New Gallery Photo' : 'Edit Gallery Photo'}
                   </h3>
-                  <p className="text-xs text-[#3A2E2A]/70">
+                  <p className="text-xs text-[#1E1B18]/70">
                     Set title, category, and choose a high-resolution photo.
                   </p>
                 </div>
                 <button
                   onClick={() => setIsGalleryModalOpen(false)}
-                  className="p-2 rounded-xl hover:bg-black/5 text-[#3A2E2A]/70"
+                  className="p-2 rounded-xl hover:bg-black/5 text-[#1E1B18]/70"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -1550,8 +1550,8 @@ export default function AdminMenu() {
                 className="p-6 space-y-4 overflow-y-auto flex-1 text-left"
               >
                 {/* Photo Preview & Choose/Upload */}
-                <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-2xl bg-[#FAF6F0] border border-[#6B2523]/15">
-                  <div className="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 border border-[#6B2523]/20 bg-black">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-2xl bg-[#FAF8F5] border border-[#5E332E]/15">
+                  <div className="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 border border-[#5E332E]/20 bg-black">
                     <img
                       src={galleryDraft.src}
                       alt="Selected preview"
@@ -1560,11 +1560,11 @@ export default function AdminMenu() {
                   </div>
 
                   <div className="flex-1 space-y-2">
-                    <span className="text-xs font-bold text-[#6B2523] block">
+                    <span className="text-xs font-bold text-[#5E332E] block">
                       Gallery Photo Source
                     </span>
                     <div className="flex flex-wrap gap-2">
-                      <label className="cursor-pointer px-3.5 py-2 rounded-xl bg-[#6B2523] hover:bg-[#3A2E2A] text-[#FFC470] text-xs font-bold flex items-center gap-1.5 shadow-xs transition-all">
+                      <label className="cursor-pointer px-3.5 py-2 rounded-xl bg-[#5E332E] hover:bg-[#1E1B18] text-[#E5E2DC] text-xs font-bold flex items-center gap-1.5 shadow-xs transition-all">
                         <Upload className="w-3.5 h-3.5" />
                         <span>Upload File</span>
                         <input
@@ -1586,7 +1586,7 @@ export default function AdminMenu() {
                           setPhotoPickerTarget('gallery')
                           setIsPhotoPickerOpen(true)
                         }}
-                        className="px-3.5 py-2 rounded-xl bg-white border border-[#6B2523]/20 hover:bg-white/80 text-[#6B2523] text-xs font-bold flex items-center gap-1.5 shadow-xs cursor-pointer"
+                        className="px-3.5 py-2 rounded-xl bg-white border border-[#5E332E]/20 hover:bg-white/80 text-[#5E332E] text-xs font-bold flex items-center gap-1.5 shadow-xs cursor-pointer"
                       >
                         <Images className="w-3.5 h-3.5" />
                         <span>Browse Catalog</span>
@@ -1598,7 +1598,7 @@ export default function AdminMenu() {
                 {/* Title & Category */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1">
                       Photo Title / Alt
                     </label>
                     <input
@@ -1607,18 +1607,18 @@ export default function AdminMenu() {
                       value={galleryDraft.title}
                       onChange={(e) => setGalleryDraft({ ...galleryDraft, title: e.target.value, alt: e.target.value })}
                       placeholder="e.g. Sunset on the Rooftop"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#5E332E]/20 text-sm focus:outline-none"
                     />
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1">
                       Category
                     </label>
                     <select
                       value={galleryDraft.category}
                       onChange={(e) => setGalleryDraft({ ...galleryDraft, category: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm bg-white"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#5E332E]/20 text-sm bg-white"
                     >
                       {['Ambience', 'Rooftop', 'Events', 'Food'].map((catOpt) => (
                         <option key={catOpt} value={catOpt}>
@@ -1631,7 +1631,7 @@ export default function AdminMenu() {
 
                 {/* Caption */}
                 <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1">
                     Caption / Story (Optional)
                   </label>
                   <textarea
@@ -1639,12 +1639,12 @@ export default function AdminMenu() {
                     value={galleryDraft.caption || ''}
                     onChange={(e) => setGalleryDraft({ ...galleryDraft, caption: e.target.value })}
                     placeholder="Short description of this moment..."
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#5E332E]/20 text-sm focus:outline-none"
                   />
                 </div>
 
                 {/* Footer Buttons */}
-                <div className="pt-4 flex items-center justify-end gap-3 border-t border-[#6B2523]/10">
+                <div className="pt-4 flex items-center justify-end gap-3 border-t border-[#5E332E]/10">
                   <button
                     type="button"
                     onClick={() => setIsGalleryModalOpen(false)}
@@ -1654,7 +1654,7 @@ export default function AdminMenu() {
                   </button>
                   <button
                     type="submit"
-                    className="px-5 py-2 rounded-xl bg-[#6B2523] hover:bg-[#3A2E2A] text-[#FFC470] text-xs font-bold uppercase tracking-wider shadow-md cursor-pointer"
+                    className="px-5 py-2 rounded-xl bg-[#5E332E] hover:bg-[#1E1B18] text-[#E5E2DC] text-xs font-bold uppercase tracking-wider shadow-md cursor-pointer"
                   >
                     {isAddGallery ? 'Add to Gallery' : 'Save Changes'}
                   </button>
@@ -1673,13 +1673,13 @@ export default function AdminMenu() {
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
-              className="bg-white w-full max-w-4xl max-h-[88vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col border border-[#6B2523]/20"
+              className="bg-white w-full max-w-4xl max-h-[88vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col border border-[#5E332E]/20"
             >
               {/* Header with Direct Upload Action */}
-              <div className="p-5 sm:p-6 border-b border-[#6B2523]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#FAF6F0]">
+              <div className="p-5 sm:p-6 border-b border-[#5E332E]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#FAF8F5]">
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="font-display font-bold text-lg sm:text-xl text-[#6B2523]">
+                    <h3 className="font-display font-bold text-lg sm:text-xl text-[#5E332E]">
                       Select or Upload Food Photograph
                     </h3>
                     <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
@@ -1690,13 +1690,13 @@ export default function AdminMenu() {
                       {storageInfo.connected ? '☁️ GCS Connected' : '📁 Local Storage'}
                     </span>
                   </div>
-                  <p className="text-xs text-[#3A2E2A]/70 font-light mt-0.5">
+                  <p className="text-xs text-[#1E1B18]/70 font-light mt-0.5">
                     Click any photo to assign it, or upload your own custom high-res image.
                   </p>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <label className="cursor-pointer px-4 py-2 rounded-xl bg-[#6B2523] hover:bg-[#3A2E2A] text-[#FFC470] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-md transition-all flex-shrink-0">
+                  <label className="cursor-pointer px-4 py-2 rounded-xl bg-[#5E332E] hover:bg-[#1E1B18] text-[#E5E2DC] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-md transition-all flex-shrink-0">
                     <Upload className="w-3.5 h-3.5" />
                     <span>Upload New Photo</span>
                     <input
@@ -1713,7 +1713,7 @@ export default function AdminMenu() {
 
                   <button
                     onClick={() => setIsPhotoPickerOpen(false)}
-                    className="p-2 rounded-xl hover:bg-black/5 text-[#3A2E2A]/70"
+                    className="p-2 rounded-xl hover:bg-black/5 text-[#1E1B18]/70"
                   >
                     <X className="w-5 h-5" />
                   </button>
@@ -1721,7 +1721,7 @@ export default function AdminMenu() {
               </div>
 
               {/* Photo Filter Tabs & Search */}
-              <div className="p-4 border-b border-[#6B2523]/10 bg-white flex flex-col sm:flex-row items-center justify-between gap-3">
+              <div className="p-4 border-b border-[#5E332E]/10 bg-white flex flex-col sm:flex-row items-center justify-between gap-3">
                 <div className="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0 scrollbar-none">
                   {customUploads.length > 0 && (
                     <button
@@ -1732,8 +1732,8 @@ export default function AdminMenu() {
                       }}
                       className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1 ${
                         selectedPhotoTab === 'uploads'
-                          ? 'bg-[#882B06] text-[#FFC470] shadow-xs'
-                          : 'bg-[#882B06]/10 text-[#882B06] hover:bg-[#882B06]/20'
+                          ? 'bg-[#5E332E] text-[#E5E2DC] shadow-xs'
+                          : 'bg-[#5E332E]/10 text-[#5E332E] hover:bg-[#5E332E]/20'
                       }`}
                     >
                       <FolderPlus className="w-3 h-3" />
@@ -1759,8 +1759,8 @@ export default function AdminMenu() {
                       }}
                       className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
                         photoPage === tab.page && selectedPhotoTab === 'all' && !imageSearchQuery
-                          ? 'bg-[#6B2523] text-[#FFC470] shadow-xs'
-                          : 'bg-[#FAF6F0] text-[#3A2E2A]/75 hover:bg-[#6B2523]/10'
+                          ? 'bg-[#5E332E] text-[#E5E2DC] shadow-xs'
+                          : 'bg-[#FAF8F5] text-[#1E1B18]/75 hover:bg-[#5E332E]/10'
                       }`}
                     >
                       {tab.label}
@@ -1769,7 +1769,7 @@ export default function AdminMenu() {
                 </div>
 
                 <div className="relative w-full sm:w-48 flex-shrink-0">
-                  <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-[#3A2E2A]/40" />
+                  <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-[#1E1B18]/40" />
                   <input
                     type="text"
                     value={imageSearchQuery}
@@ -1778,23 +1778,23 @@ export default function AdminMenu() {
                       setPhotoPage(1)
                     }}
                     placeholder="Search photo #..."
-                    className="w-full pl-8 pr-3 py-1.5 bg-[#FAF6F0] rounded-xl border border-[#6B2523]/15 text-xs focus:outline-none"
+                    className="w-full pl-8 pr-3 py-1.5 bg-[#FAF8F5] rounded-xl border border-[#5E332E]/15 text-xs focus:outline-none"
                   />
                 </div>
               </div>
 
               {/* Pure Visual Photo Grid */}
-              <div className="p-6 overflow-y-auto max-h-[58vh] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-5 bg-[#FAF6F0]/40">
+              <div className="p-6 overflow-y-auto max-h-[58vh] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-5 bg-[#FAF8F5]/40">
                 
                 {/* Upload Card as 1st Item */}
-                <label className="group relative rounded-2xl overflow-hidden cursor-pointer border-2 border-dashed border-[#6B2523]/30 hover:border-[#6B2523] transition-all h-40 sm:h-48 bg-white/70 hover:bg-white flex flex-col items-center justify-center text-center p-4">
-                  <div className="w-12 h-12 rounded-full bg-[#6B2523]/10 group-hover:bg-[#6B2523] text-[#6B2523] group-hover:text-[#FFC470] flex items-center justify-center mb-2 transition-all">
+                <label className="group relative rounded-2xl overflow-hidden cursor-pointer border-2 border-dashed border-[#5E332E]/30 hover:border-[#5E332E] transition-all h-40 sm:h-48 bg-white/70 hover:bg-white flex flex-col items-center justify-center text-center p-4">
+                  <div className="w-12 h-12 rounded-full bg-[#5E332E]/10 group-hover:bg-[#5E332E] text-[#5E332E] group-hover:text-[#E5E2DC] flex items-center justify-center mb-2 transition-all">
                     <UploadCloud className="w-6 h-6" />
                   </div>
-                  <span className="text-xs font-bold text-[#6B2523] block leading-tight">
+                  <span className="text-xs font-bold text-[#5E332E] block leading-tight">
                     Upload Custom Photo
                   </span>
-                  <span className="text-[9px] text-[#3A2E2A]/60 font-medium mt-1">
+                  <span className="text-[9px] text-[#1E1B18]/60 font-medium mt-1">
                     PNG, JPG, WEBP
                   </span>
                   <input
@@ -1834,8 +1834,8 @@ export default function AdminMenu() {
                       }}
                       className={`group relative rounded-2xl overflow-hidden cursor-pointer border-2 transition-all shadow-xs h-40 sm:h-48 bg-white ${
                         isSelected
-                          ? 'border-[#6B2523] ring-4 ring-[#6B2523]/30 scale-[1.02] shadow-lg'
-                          : 'border-transparent hover:border-[#6B2523]/50 hover:shadow-md'
+                          ? 'border-[#5E332E] ring-4 ring-[#5E332E]/30 scale-[1.02] shadow-lg'
+                          : 'border-transparent hover:border-[#5E332E]/50 hover:shadow-md'
                       }`}
                     >
                       <img
@@ -1846,12 +1846,12 @@ export default function AdminMenu() {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                       {isSelected && (
-                        <div className="absolute top-3 right-3 bg-[#6B2523] text-[#FFC470] p-1.5 rounded-full shadow-xl">
+                        <div className="absolute top-3 right-3 bg-[#5E332E] text-[#E5E2DC] p-1.5 rounded-full shadow-xl">
                           <Check className="w-4 h-4" />
                         </div>
                       )}
                       {img.isCustom && (
-                        <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-black/70 backdrop-blur-xs text-[9px] font-bold text-[#FFC470]">
+                        <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-black/70 backdrop-blur-xs text-[9px] font-bold text-[#E5E2DC]">
                           Custom Upload
                         </div>
                       )}
@@ -1861,22 +1861,22 @@ export default function AdminMenu() {
               </div>
 
               {/* Picker Footer */}
-              <div className="p-4 border-t border-[#6B2523]/15 bg-[#FAF6F0] flex items-center justify-between">
+              <div className="p-4 border-t border-[#5E332E]/15 bg-[#FAF8F5] flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => setPhotoPage((p) => Math.max(1, p - 1))}
                     disabled={photoPage === 1}
-                    className="px-3 py-1.5 rounded-xl bg-white border border-[#6B2523]/20 disabled:opacity-30 text-xs font-bold text-[#6B2523]"
+                    className="px-3 py-1.5 rounded-xl bg-white border border-[#5E332E]/20 disabled:opacity-30 text-xs font-bold text-[#5E332E]"
                   >
                     ← Previous
                   </button>
-                  <span className="text-xs text-[#3A2E2A]/70 font-semibold px-2">
+                  <span className="text-xs text-[#1E1B18]/70 font-semibold px-2">
                     Page {photoPage} of {totalPhotoPages}
                   </span>
                   <button
                     onClick={() => setPhotoPage((p) => Math.min(totalPhotoPages, p + 1))}
                     disabled={photoPage === totalPhotoPages}
-                    className="px-3 py-1.5 rounded-xl bg-white border border-[#6B2523]/20 disabled:opacity-30 text-xs font-bold text-[#6B2523]"
+                    className="px-3 py-1.5 rounded-xl bg-white border border-[#5E332E]/20 disabled:opacity-30 text-xs font-bold text-[#5E332E]"
                   >
                     Next →
                   </button>
@@ -1884,7 +1884,7 @@ export default function AdminMenu() {
 
                 <button
                   onClick={() => setIsPhotoPickerOpen(false)}
-                  className="px-5 py-2 rounded-xl bg-[#6B2523] text-[#FFC470] text-xs font-bold uppercase tracking-wider shadow-xs"
+                  className="px-5 py-2 rounded-xl bg-[#5E332E] text-[#E5E2DC] text-xs font-bold uppercase tracking-wider shadow-xs"
                 >
                   Close
                 </button>
@@ -1902,15 +1902,15 @@ export default function AdminMenu() {
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
-              className="bg-white w-full max-w-lg max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col border border-[#6B2523]/20"
+              className="bg-white w-full max-w-lg max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col border border-[#5E332E]/20"
             >
-              <div className="p-5 sm:p-6 border-b border-[#6B2523]/15 flex items-center justify-between bg-[#FAF6F0]">
-                <h3 className="font-display font-bold text-xl text-[#6B2523]">
+              <div className="p-5 sm:p-6 border-b border-[#5E332E]/15 flex items-center justify-between bg-[#FAF8F5]">
+                <h3 className="font-display font-bold text-xl text-[#5E332E]">
                   {editingItem.id ? 'Edit Dish Details' : 'Create New Menu Dish'}
                 </h3>
                 <button
                   onClick={() => setEditingItem(null)}
-                  className="p-2 rounded-xl hover:bg-black/5 text-[#3A2E2A]/70"
+                  className="p-2 rounded-xl hover:bg-black/5 text-[#1E1B18]/70"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -1919,8 +1919,8 @@ export default function AdminMenu() {
               <form onSubmit={handleSaveItem} className="p-6 space-y-4 overflow-y-auto flex-1 text-left">
                 
                 {/* Photo Preview & Dual Action Buttons */}
-                <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-2xl bg-[#FAF6F0] border border-[#6B2523]/15">
-                  <div className="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 border border-[#6B2523]/20 bg-black/5">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-2xl bg-[#FAF8F5] border border-[#5E332E]/15">
+                  <div className="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 border border-[#5E332E]/20 bg-black/5">
                     <img
                       src={editingItem.image || '/assets/Tanha Food/food-1.webp'}
                       alt="Selected preview"
@@ -1928,11 +1928,11 @@ export default function AdminMenu() {
                     />
                   </div>
                   <div className="space-y-2 flex-1">
-                    <span className="text-[10px] font-mono text-[#3A2E2A]/70 block font-semibold truncate max-w-xs">
+                    <span className="text-[10px] font-mono text-[#1E1B18]/70 block font-semibold truncate max-w-xs">
                       {editingItem.image?.startsWith('data:') ? 'Custom Uploaded Image (Base64)' : editingItem.image}
                     </span>
                     <div className="flex flex-wrap items-center gap-2">
-                      <label className="cursor-pointer px-3.5 py-1.5 rounded-lg bg-[#882B06] hover:bg-[#6B2523] text-[#FFC470] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm transition-all">
+                      <label className="cursor-pointer px-3.5 py-1.5 rounded-lg bg-[#5E332E] hover:bg-[#5E332E] text-[#E5E2DC] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm transition-all">
                         <Upload className="w-3.5 h-3.5" />
                         <span>Upload Photo</span>
                         <input
@@ -1954,7 +1954,7 @@ export default function AdminMenu() {
                           setIsPhotoPickerOpen(true)
                           setPhotoPage(1)
                         }}
-                        className="px-3.5 py-1.5 rounded-lg bg-white border border-[#6B2523]/25 text-[#6B2523] hover:bg-[#FAF6F0] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-xs transition-all"
+                        className="px-3.5 py-1.5 rounded-lg bg-white border border-[#5E332E]/25 text-[#5E332E] hover:bg-[#FAF8F5] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-xs transition-all"
                       >
                         <ImageIcon className="w-3.5 h-3.5" />
                         <span>Browse Catalog</span>
@@ -1966,7 +1966,7 @@ export default function AdminMenu() {
                 {/* Name & Special Tag */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="sm:col-span-2">
-                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1">
                       Dish Name *
                     </label>
                     <input
@@ -1975,12 +1975,12 @@ export default function AdminMenu() {
                       value={editingItem.name}
                       onChange={(e) => setEditingItem({ ...editingItem, name: e.target.value })}
                       placeholder="e.g. Claypot Mutton Biryani"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#6B2523]/30"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#5E332E]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#5E332E]/30"
                     />
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1">
                       Special Badge
                     </label>
                     <button
@@ -1988,8 +1988,8 @@ export default function AdminMenu() {
                       onClick={() => setEditingItem({ ...editingItem, special: !editingItem.special })}
                       className={`w-full py-2.5 px-3 rounded-xl text-xs font-bold transition-all border ${
                         editingItem.special
-                          ? 'bg-[#6B2523] text-[#FFC470] border-[#6B2523]'
-                          : 'bg-white text-[#3A2E2A]/70 border-[#6B2523]/20'
+                          ? 'bg-[#5E332E] text-[#E5E2DC] border-[#5E332E]'
+                          : 'bg-white text-[#1E1B18]/70 border-[#5E332E]/20'
                       }`}
                     >
                       {editingItem.special ? '✦ Special' : 'Standard'}
@@ -2000,13 +2000,13 @@ export default function AdminMenu() {
                 {/* Category & Price */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1">
                       Category
                     </label>
                     <select
                       value={editingItem.category}
                       onChange={(e) => setEditingItem({ ...editingItem, category: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm bg-white"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#5E332E]/20 text-sm bg-white"
                     >
                       {['Breakfast', 'Lunch', 'Dinner', 'Cocktails', 'Beverages', 'Desserts'].map((cat) => (
                         <option key={cat} value={cat}>
@@ -2017,7 +2017,7 @@ export default function AdminMenu() {
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1">
                       Price (₹) *
                     </label>
                     <input
@@ -2028,7 +2028,7 @@ export default function AdminMenu() {
                       onChange={(e) =>
                         setEditingItem({ ...editingItem, price: Number(e.target.value) })
                       }
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#5E332E]/20 text-sm"
                     />
                   </div>
                 </div>
@@ -2036,13 +2036,13 @@ export default function AdminMenu() {
                 {/* Dietary Type & Spice Level */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1">
                       Dietary Type
                     </label>
                     <select
                       value={editingItem.nonVeg ? 'non-veg' : 'veg'}
                       onChange={(e) => setEditingItem({ ...editingItem, nonVeg: e.target.value === 'non-veg' })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm bg-white"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#5E332E]/20 text-sm bg-white"
                     >
                       <option value="veg">🟢 Pure Vegetarian</option>
                       <option value="non-veg">🔴 Non-Vegetarian</option>
@@ -2050,7 +2050,7 @@ export default function AdminMenu() {
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1">
                       Spice Level
                     </label>
                     <select
@@ -2072,7 +2072,7 @@ export default function AdminMenu() {
                           }
                         })
                       }}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm bg-white"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#5E332E]/20 text-sm bg-white"
                     >
                       <option value="0">Mild / Non-Spicy</option>
                       <option value="1">Medium 🌶️</option>
@@ -2083,7 +2083,7 @@ export default function AdminMenu() {
 
                 {/* Beverage / Liquid Pairing */}
                 <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1">
                     Drink Pairing Recommendation
                   </label>
                   <input
@@ -2091,13 +2091,13 @@ export default function AdminMenu() {
                     value={editingItem.pairing || ''}
                     onChange={(e) => setEditingItem({ ...editingItem, pairing: e.target.value })}
                     placeholder="e.g. 🍸 Pairs with: Rooftop Smoked Old Fashioned"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#5E332E]/20 text-sm"
                   />
                 </div>
 
                 {/* Culinary Description */}
                 <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1">
                     Culinary Description
                   </label>
                   <textarea
@@ -2105,13 +2105,13 @@ export default function AdminMenu() {
                     value={editingItem.desc}
                     onChange={(e) => setEditingItem({ ...editingItem, desc: e.target.value })}
                     placeholder="Describe ingredients and cooking craft..."
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#5E332E]/20 text-sm"
                   />
                 </div>
 
                 {/* Tags */}
                 <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-[#6B2523] block mb-1">
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1">
                     Tags (Comma separated)
                   </label>
                   <input
@@ -2124,7 +2124,7 @@ export default function AdminMenu() {
                       })
                     }
                     placeholder="e.g. ★ BESTSELLER, Signature, Vegan"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#6B2523]/20 text-sm"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#5E332E]/20 text-sm"
                   />
                 </div>
 
@@ -2132,13 +2132,13 @@ export default function AdminMenu() {
                   <button
                     type="button"
                     onClick={() => setEditingItem(null)}
-                    className="px-4 py-2 rounded-xl text-xs font-bold text-[#3A2E2A]/70 hover:bg-black/5"
+                    className="px-4 py-2 rounded-xl text-xs font-bold text-[#1E1B18]/70 hover:bg-black/5"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="px-6 py-2.5 rounded-xl bg-[#6B2523] text-[#FFC470] hover:bg-[#3A2E2A] text-xs font-bold uppercase tracking-wider shadow-md"
+                    className="px-6 py-2.5 rounded-xl bg-[#5E332E] text-[#E5E2DC] hover:bg-[#1E1B18] text-xs font-bold uppercase tracking-wider shadow-md"
                   >
                     Save Dish Details
                   </button>

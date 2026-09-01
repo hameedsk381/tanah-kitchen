@@ -81,7 +81,7 @@ export default function AboutUs() {
   const isSustainabilityInView = useInView(sustainabilityRef, { once: true, margin: '-100px' })
 
   return (
-    <main className="flex-grow pt-24 overflow-hidden bg-[#FAF6F0] text-[#3A2E2A]">
+    <main className="flex-grow pt-24 overflow-hidden bg-[#FAF8F5] text-[#1E1B18]">
       <SEO
         title="Our Philosophy & Brand Story | Tanah Kitchen & Bar Gachibowli"
         description="Discover the story of Tanah Kitchen & Bar. Meaning 'Earth', Tanah is built branch by branch like a nest—celebrating community, rest, organic architecture, and authentic hospitality."
@@ -108,47 +108,47 @@ export default function AboutUs() {
             className="w-full h-full object-cover filter brightness-75"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#3A2E2A]/90 via-[#6B2523]/70 to-[#6B2523]/85" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1E1B18]/90 via-[#5E332E]/70 to-[#5E332E]/85" />
 
         <div className="relative z-10 text-center px-6 wp-container">
           <span className="wp-badge wp-badge-gold mb-4">
             ✦ THE CHRONICLE ✦
           </span>
           <h1
-            className="font-display font-extrabold leading-tight text-[#F6E1CB] mb-4"
+            className="font-display font-extrabold leading-tight text-[#E5E2DC] mb-4"
             style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)' }}
           >
             Grounded in Nature, <br />
-            <span className="italic font-normal text-[#FFC470]">Built for Connection</span>
+            <span className="italic font-normal text-[#E5E2DC]">Built for Connection</span>
           </h1>
-          <div className="w-20 h-[2px] bg-[#FFC470]/60 mx-auto rounded-full mt-4" />
+          <div className="w-20 h-[2px] bg-[#E5E2DC]/60 mx-auto rounded-full mt-4" />
         </div>
       </section>
 
       {/* ── 2. Brand Manifesto Banner (WordPress Callout Block) ── */}
-      <section className="bg-[#541B1A] py-14 border-b border-[#6B2523]/40 text-[#DEC8AB]">
+      <section className="bg-[#4A2420] py-14 border-b border-[#5E332E]/40 text-[#E5E2DC]">
         <div className="wp-container text-center">
-          <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#FFC470] block mb-4 font-body">
+          <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#E5E2DC] block mb-4 font-body">
             BRAND MANIFESTO
           </span>
           <blockquote
-            className="font-display italic text-[#F6E1CB] leading-snug max-w-3xl mx-auto"
+            className="font-display italic text-[#E5E2DC] leading-snug max-w-3xl mx-auto"
             style={{ fontSize: 'clamp(1.3rem, 2.5vw, 2rem)' }}
           >
             "We've built this place like birds build their nests—branch by branch, to make you feel at home."
           </blockquote>
           <div className="mt-6 flex items-center justify-center gap-3">
-            <span className="h-px w-16 bg-[#DEC8AB]/30" />
-            <span className="text-[#FFC470] text-xs tracking-[0.3em] font-body uppercase font-semibold">
+            <span className="h-px w-16 bg-[#E5E2DC]/30" />
+            <span className="text-[#E5E2DC] text-xs tracking-[0.3em] font-body uppercase font-semibold">
               Tanah Kitchen & Bar · ESTD 2025
             </span>
-            <span className="h-px w-16 bg-[#DEC8AB]/30" />
+            <span className="h-px w-16 bg-[#E5E2DC]/30" />
           </div>
         </div>
       </section>
 
       {/* ── 3. Logo Symbol Breakdown (WordPress 4-Column Card Grid) ── */}
-      <section ref={logoRef} className="wp-section bg-[#FAF6F0] border-b border-[#6B2523]/10">
+      <section ref={logoRef} className="wp-section bg-[#FAF8F5] border-b border-[#5E332E]/10">
         <div className="wp-container">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -159,10 +159,10 @@ export default function AboutUs() {
             <span className="wp-badge wp-badge-maroon mb-3">
               THE TANAH LOGO
             </span>
-            <h2 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#6B2523]">
+            <h2 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#5E332E]">
               Every Symbol Has a Story
             </h2>
-            <p className="mt-4 text-base font-light text-[#3A2E2A]/75 max-w-xl mx-auto font-body leading-relaxed">
+            <p className="mt-4 text-base font-light text-[#1E1B18]/75 max-w-xl mx-auto font-body leading-relaxed">
               The logo was crafted to combine rustic charm, natural textures, and a handcrafted identity. Each element holds deep meaning rooted in the Tanah philosophy.
             </p>
           </motion.div>
@@ -176,16 +176,16 @@ export default function AboutUs() {
                 transition={{ duration: 0.8, delay: i * 0.12 }}
                 className="wp-card p-7 text-left group"
               >
-                <div className="w-14 h-14 rounded-2xl bg-[#6B2523]/10 flex items-center justify-center text-[#6B2523] mb-5 font-display font-bold text-xl group-hover:bg-[#6B2523] group-hover:text-[#FFC470] transition-colors duration-300">
+                <div className="w-14 h-14 rounded-2xl bg-[#5E332E]/10 flex items-center justify-center text-[#5E332E] mb-5 font-display font-bold text-xl group-hover:bg-[#5E332E] group-hover:text-[#E5E2DC] transition-colors duration-300">
                   {num}
                 </div>
-                <div className="text-[10px] tracking-[0.25em] uppercase font-bold text-[#6B2523]/60 font-body mb-1">
+                <div className="text-[10px] tracking-[0.25em] uppercase font-bold text-[#5E332E]/60 font-body mb-1">
                   {symbol}
                 </div>
-                <h3 className="font-display text-2xl font-bold text-[#6B2523] mb-3">
+                <h3 className="font-display text-2xl font-bold text-[#5E332E] mb-3">
                   {meaning}
                 </h3>
-                <p className="text-xs font-light text-[#3A2E2A]/75 leading-relaxed font-body">
+                <p className="text-xs font-light text-[#1E1B18]/75 leading-relaxed font-body">
                   {desc}
                 </p>
               </motion.div>
@@ -199,14 +199,14 @@ export default function AboutUs() {
             transition={{ duration: 0.9, delay: 0.5 }}
             className="mt-14 text-center"
           >
-            <p className="text-xs tracking-[0.3em] uppercase text-[#6B2523]/70 font-bold font-body mb-4">
+            <p className="text-xs tracking-[0.3em] uppercase text-[#5E332E]/70 font-bold font-body mb-4">
               ✦ BRAND DNA ✦
             </p>
             <div className="flex flex-wrap justify-center gap-2.5 max-w-2xl mx-auto">
               {brandKeywords.map((kw, i) => (
                 <span
                   key={i}
-                  className="text-xs font-semibold rounded-full bg-white border border-[#6B2523]/20 text-[#6B2523] px-4 py-1.5 font-body tracking-wider uppercase shadow-sm hover:bg-[#6B2523] hover:text-[#F6E1CB] transition-all duration-300 cursor-default"
+                  className="text-xs font-semibold rounded-full bg-white border border-[#5E332E]/20 text-[#5E332E] px-4 py-1.5 font-body tracking-wider uppercase shadow-sm hover:bg-[#5E332E] hover:text-[#E5E2DC] transition-all duration-300 cursor-default"
                 >
                   {kw}
                 </span>
@@ -217,7 +217,7 @@ export default function AboutUs() {
       </section>
 
       {/* ── 4. 7-Step Emotional Journey (WordPress Step Timeline) ── */}
-      <section ref={journeyRef} className="wp-section section-dark text-[#EFE1D0] border-b border-light-cream/10">
+      <section ref={journeyRef} className="wp-section section-dark text-[#FAF8F5] border-b border-light-cream/10">
         <div className="wp-container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -228,10 +228,10 @@ export default function AboutUs() {
             <span className="wp-badge wp-badge-gold mb-3">
               THE EXPERIENCE
             </span>
-            <h2 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#DEC8AB]">
+            <h2 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#E5E2DC]">
               Your Journey at Tanah
             </h2>
-            <p className="mt-4 text-base font-light text-[#EFE1D0]/80 max-w-xl mx-auto font-body leading-relaxed">
+            <p className="mt-4 text-base font-light text-[#FAF8F5]/80 max-w-xl mx-auto font-body leading-relaxed">
               Every visit is designed to move through seven emotional states—from arrival to belonging.
             </p>
           </motion.div>
@@ -248,17 +248,17 @@ export default function AboutUs() {
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="w-10 h-10 rounded-full bg-[#FFC470]/20 text-[#FFC470] flex items-center justify-center font-display font-bold text-sm">
+                    <span className="w-10 h-10 rounded-full bg-[#E5E2DC]/20 text-[#E5E2DC] flex items-center justify-center font-display font-bold text-sm">
                       {item.step}
                     </span>
-                    <span className="text-[10px] uppercase tracking-widest text-[#FFC470]/60 font-body font-semibold">
+                    <span className="text-[10px] uppercase tracking-widest text-[#E5E2DC]/60 font-body font-semibold">
                       Phase {item.step}
                     </span>
                   </div>
-                  <h4 className="font-display text-xl font-bold text-[#DEC8AB] mb-2">
+                  <h4 className="font-display text-xl font-bold text-[#E5E2DC] mb-2">
                     {item.title}
                   </h4>
-                  <p className="text-xs font-light text-[#EFE1D0]/75 leading-relaxed font-body">
+                  <p className="text-xs font-light text-[#FAF8F5]/75 leading-relaxed font-body">
                     {item.desc}
                   </p>
                 </div>
@@ -269,7 +269,7 @@ export default function AboutUs() {
       </section>
 
       {/* ── 5. Why Tanah? (WordPress 2-Column Split Block) ── */}
-      <section ref={whyRef} className="wp-section bg-[#FAF6F0] border-b border-[#6B2523]/10">
+      <section ref={whyRef} className="wp-section bg-[#FAF8F5] border-b border-[#5E332E]/10">
         <div className="wp-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
@@ -283,10 +283,10 @@ export default function AboutUs() {
                 <span className="wp-badge wp-badge-maroon mb-3">
                   PRIVATE DINING & EVENTS
                 </span>
-                <h2 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#6B2523]">
+                <h2 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#5E332E]">
                   Why Tanah?
                 </h2>
-                <p className="text-lg font-display italic text-[#6B2523]/85 mt-2">
+                <p className="text-lg font-display italic text-[#5E332E]/85 mt-2">
                   Intimate gatherings, celebrated with exceptional food and ambiance.
                 </p>
               </div>
@@ -295,17 +295,17 @@ export default function AboutUs() {
                 {whyTanahList.map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-3 rounded-xl bg-white border border-[#6B2523]/10 flex items-center gap-2.5 shadow-sm text-sm font-medium text-[#3A2E2A]"
+                    className="p-3 rounded-xl bg-white border border-[#5E332E]/10 flex items-center gap-2.5 shadow-sm text-sm font-medium text-[#1E1B18]"
                   >
-                    <span className="text-[#6B2523] font-bold">✦</span>
+                    <span className="text-[#5E332E] font-bold">✦</span>
                     {item}
                   </div>
                 ))}
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#6B2523]/5 border-l-4 border-[#6B2523]">
-                <p className="text-base font-display leading-relaxed text-[#6B2523]">
-                  Whether it's a dinner for <span className="font-bold text-[#6B2523]">10</span> or a celebration for <span className="font-bold text-[#6B2523]">200</span>, Tanah creates private dining experiences people remember.
+              <div className="p-5 rounded-2xl bg-[#5E332E]/5 border-l-4 border-[#5E332E]">
+                <p className="text-base font-display leading-relaxed text-[#5E332E]">
+                  Whether it's a dinner for <span className="font-bold text-[#5E332E]">10</span> or a celebration for <span className="font-bold text-[#5E332E]">200</span>, Tanah creates private dining experiences people remember.
                 </p>
               </div>
             </motion.div>
@@ -316,7 +316,7 @@ export default function AboutUs() {
               animate={isWhyInView ? { opacity: 1 } : {}}
               transition={{ duration: 1.2, delay: 0.2 }}
             >
-              <div className="col-span-12 md:col-span-7 aspect-[3/4] overflow-hidden rounded-2xl shadow-xl border border-[#6B2523]/15">
+              <div className="col-span-12 md:col-span-7 aspect-[3/4] overflow-hidden rounded-2xl shadow-xl border border-[#5E332E]/15">
                 <img
                   src="/assets/Tanha Food/food-1.webp"
                   alt="Curated food at Tanah"
@@ -325,7 +325,7 @@ export default function AboutUs() {
               </div>
 
               <div className="col-span-12 md:col-span-5 flex flex-col gap-4">
-                <div className="w-full aspect-[3/4] overflow-hidden rounded-2xl shadow-xl border border-[#6B2523]/15">
+                <div className="w-full aspect-[3/4] overflow-hidden rounded-2xl shadow-xl border border-[#5E332E]/15">
                   <img
                     src="/assets/Tanha Ambiance/Ambiance-3.webp"
                     alt="Tanah architecture detail"
@@ -340,7 +340,7 @@ export default function AboutUs() {
       </section>
 
       {/* ── 6. The Story Section (WordPress Editorial Block) ── */}
-      <section ref={storyRef} className="wp-section section-dark text-[#EFE1D0]">
+      <section ref={storyRef} className="wp-section section-dark text-[#FAF8F5]">
         <div className="wp-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
@@ -368,17 +368,17 @@ export default function AboutUs() {
               <span className="wp-badge wp-badge-gold">
                 THE TANAH STORY
               </span>
-              <h2 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#DEC8AB]">
+              <h2 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#E5E2DC]">
                 Our Foundation & Vision
               </h2>
-              <p className="text-base font-light text-[#EFE1D0]/90 leading-relaxed font-body">
+              <p className="text-base font-light text-[#FAF8F5]/90 leading-relaxed font-body">
                 Every detail of our space—from the organic bamboo weave ceilings to the raw basalt dinner plates—is carefully crafted to reconnect people with nature. We aim to foster a culture of mindful gathering under Hyderabad's sky.
               </p>
-              <p className="text-base font-light text-[#EFE1D0]/80 leading-relaxed font-body">
+              <p className="text-base font-light text-[#FAF8F5]/80 leading-relaxed font-body">
                 We design environments that are not just beautiful, but deeply personal—where conversations flow naturally and people can build authentic relationships beyond the ordinary.
               </p>
               <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
-                <p className="text-base italic font-display text-[#FFC470] leading-relaxed">
+                <p className="text-base italic font-display text-[#E5E2DC] leading-relaxed">
                   "Birds find each other mid-flight, and so do we—at the bar, in the kitchen, over shared plates and poured stories."
                 </p>
               </div>
@@ -391,7 +391,7 @@ export default function AboutUs() {
       {/* ── 7. Circularity & Sustainability (WordPress 3-Column Card Grid) ── */}
       <section
         ref={sustainabilityRef}
-        className="wp-section bg-[#FAF6F0] text-[#3A2E2A]"
+        className="wp-section bg-[#FAF8F5] text-[#1E1B18]"
       >
         <div className="wp-container space-y-14">
           <motion.div
@@ -403,10 +403,10 @@ export default function AboutUs() {
             <span className="wp-badge wp-badge-maroon">
               CIRCULARITY
             </span>
-            <h2 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#6B2523]">
+            <h2 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#5E332E]">
               Earthy Stewardship
             </h2>
-            <p className="text-base font-light text-[#3A2E2A]/75 leading-relaxed font-body">
+            <p className="text-base font-light text-[#1E1B18]/75 leading-relaxed font-body">
               Our culinary philosophy centers on local stewardship, seasonal circularity, and reducing food waste through natural charcoal preservation.
             </p>
           </motion.div>
@@ -433,11 +433,11 @@ export default function AboutUs() {
                 transition={{ duration: 0.8, delay: i * 0.1 }}
                 className="wp-card p-8 text-left space-y-3.5"
               >
-                <div className="w-10 h-10 rounded-xl bg-[#6B2523]/10 text-[#6B2523] flex items-center justify-center font-bold text-lg">
+                <div className="w-10 h-10 rounded-xl bg-[#5E332E]/10 text-[#5E332E] flex items-center justify-center font-bold text-lg">
                   0{i + 1}
                 </div>
-                <h3 className="font-display text-2xl font-bold text-[#6B2523]">{item.title}</h3>
-                <p className="text-sm font-light text-[#3A2E2A]/75 leading-relaxed font-body">{item.desc}</p>
+                <h3 className="font-display text-2xl font-bold text-[#5E332E]">{item.title}</h3>
+                <p className="text-sm font-light text-[#1E1B18]/75 leading-relaxed font-body">{item.desc}</p>
               </motion.div>
             ))}
           </div>

@@ -37,7 +37,7 @@ export default function Footer() {
   return (
     <footer
       id="footer"
-      className="bg-[#541B1A] text-[#F6E1CB] relative overflow-hidden border-t border-[#FFC470]/20 pt-20 pb-12"
+      className="bg-[#4A2420] text-[#E5E2DC] relative overflow-hidden border-t border-[#E5E2DC]/20 pt-20 pb-12"
       aria-label="Site footer"
     >
       <div className="wp-container relative z-10">
@@ -53,17 +53,17 @@ export default function Footer() {
                 className="h-16 sm:h-20 w-auto object-contain bg-transparent border-none shadow-none transition-transform duration-300 group-hover:scale-105"
               />
             </Link>
-            <p className="text-xs font-light leading-relaxed text-[#EFE1D0]/80 font-body">
+            <p className="text-xs font-light leading-relaxed text-[#FAF8F5]/80 font-body">
               TANAH is not simply a restaurant—it is a gathering place where people reconnect with one another through food, drink, stories, and the comforting feeling of coming home.
             </p>
-            <p className="text-[11px] font-light italic text-[#FFC470]/70 font-body">
+            <p className="text-[11px] font-light italic text-[#E5E2DC]/70 font-body">
               Built on the symbolism of birds, nests, and the earth — celebrating belonging, rest, and authentic hospitality. ESTD 2025.
             </p>
           </div>
 
           {/* Navigation Links */}
           <div>
-            <h4 className="font-display text-base font-bold uppercase tracking-wider mb-5 text-[#FFC470]">
+            <h4 className="font-display text-base font-bold uppercase tracking-wider mb-5 text-[#E5E2DC]">
               Quick Links
             </h4>
             <ul className="flex flex-col gap-3 font-body">
@@ -71,9 +71,9 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     to={link.path}
-                    className="text-xs text-[#EFE1D0]/80 hover:text-[#FFC470] transition-colors duration-200 flex items-center gap-2"
+                    className="text-xs text-[#FAF8F5]/80 hover:text-[#E5E2DC] transition-colors duration-200 flex items-center gap-2"
                   >
-                    <span className="text-[#FFC470]/50 text-[10px]">✦</span>
+                    <span className="text-[#E5E2DC]/50 text-[10px]">✦</span>
                     {link.label}
                   </Link>
                 </li>
@@ -83,22 +83,22 @@ export default function Footer() {
 
           {/* Contact Details */}
           <div>
-            <h4 className="font-display text-base font-bold uppercase tracking-wider mb-5 text-[#FFC470]">
+            <h4 className="font-display text-base font-bold uppercase tracking-wider mb-5 text-[#E5E2DC]">
               Tanah Gachibowli
             </h4>
-            <ul className="flex flex-col gap-4 text-xs font-light text-[#EFE1D0]/85 font-body">
+            <ul className="flex flex-col gap-4 text-xs font-light text-[#FAF8F5]/85 font-body">
               <li className="leading-relaxed">
                 📍 {contactData.address}
               </li>
               <li>
-                <span className="text-[#FFC470] font-semibold">Reservations &amp; Hours:</span><br />
-                <a href="tel:+918977730291" className="hover:text-[#FFC470] transition-colors">
+                <span className="text-[#E5E2DC] font-semibold">Reservations &amp; Hours:</span><br />
+                <a href="tel:+918977730291" className="hover:text-[#E5E2DC] transition-colors">
                   📞 +91 89777 30291
                 </a><br />
-                <a href="mailto:reservations@tanahkitchen.com" className="hover:text-[#FFC470] transition-colors">
+                <a href="mailto:reservations@tanahkitchen.com" className="hover:text-[#E5E2DC] transition-colors">
                   ✉️ reservations@tanahkitchen.com
                 </a><br />
-                <span className="text-[11px] text-[#EFE1D0]/70 mt-1 block">
+                <span className="text-[11px] text-[#FAF8F5]/70 mt-1 block">
                   Fri–Sat: 12 PM–12 AM | Sun–Thu: 12 PM–11 PM
                 </span>
               </li>
@@ -107,17 +107,17 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h4 className="font-display text-base font-bold uppercase tracking-wider mb-5 text-[#FFC470]">
+            <h4 className="font-display text-base font-bold uppercase tracking-wider mb-5 text-[#E5E2DC]">
               Chronicles
             </h4>
-            <p className="text-xs font-light mb-4 leading-relaxed text-[#EFE1D0]/80 font-body">
+            <p className="text-xs font-light mb-4 leading-relaxed text-[#FAF8F5]/80 font-body">
               Subscribe to receive updates on rare seasonal menus, events, and table openings.
             </p>
             {subscribed ? (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-xs py-3.5 px-4 rounded-xl border border-[#FFC470]/30 bg-[#FFC470]/10 text-[#FFC470] font-semibold"
+                className="text-xs py-3.5 px-4 rounded-xl border border-[#E5E2DC]/30 bg-[#E5E2DC]/10 text-[#E5E2DC] font-semibold"
               >
                 ✓ Welcome to the Tanah Chronicles.
               </motion.div>
@@ -132,19 +132,19 @@ export default function Footer() {
                       if (emailError) setEmailError('')
                     }}
                     placeholder="E-mail Address"
-                    className="wp-form-input text-xs flex-1 py-2.5 px-4 bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:bg-white/20 focus:border-[#FFC470]"
+                    className="wp-form-input text-xs flex-1 py-2.5 px-4 bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:bg-white/20 focus:border-[#E5E2DC]"
                     maxLength={120}
                   />
                   <button
                     type="submit"
-                    className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-300 bg-[#FFC470] text-[#6B2523] hover:bg-white cursor-pointer font-bold shadow-md"
+                    className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-300 bg-[#E5E2DC] text-[#5E332E] hover:bg-white cursor-pointer font-bold shadow-md"
                     aria-label="Subscribe"
                   >
                     <Send className="w-4 h-4" />
                   </button>
                 </div>
                 {emailError && (
-                  <p className="text-xs text-[#FFC470] font-semibold" role="alert">
+                  <p className="text-xs text-[#E5E2DC] font-semibold" role="alert">
                     {emailError}
                   </p>
                 )}
@@ -158,12 +158,12 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 font-body">
-          <p className="text-xs font-light text-[#EFE1D0]/60 text-center sm:text-left">
+          <p className="text-xs font-light text-[#FAF8F5]/60 text-center sm:text-left">
             © {new Date().getFullYear()} Tanah Kitchen &amp; Bar. Brand owned and operated by Shambhavi Hospitality. All rights reserved.
           </p>
-          <div className="flex gap-6 text-xs font-light text-[#EFE1D0]/60">
-            <Link to="/privacy-policy" className="hover:text-[#FFC470] transition-colors">Privacy Policy</Link>
-            <Link to="/terms-and-conditions" className="hover:text-[#FFC470] transition-colors">Terms of Use</Link>
+          <div className="flex gap-6 text-xs font-light text-[#FAF8F5]/60">
+            <Link to="/privacy-policy" className="hover:text-[#E5E2DC] transition-colors">Privacy Policy</Link>
+            <Link to="/terms-and-conditions" className="hover:text-[#E5E2DC] transition-colors">Terms of Use</Link>
           </div>
         </div>
       </div>
@@ -171,7 +171,7 @@ export default function Footer() {
       {/* Scroll to Top */}
       <motion.button
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 z-40 w-11 h-11 rounded-full flex items-center justify-center cursor-pointer bg-[#FFC470] text-[#6B2523] hover:bg-white shadow-2xl"
+        className="fixed bottom-8 right-8 z-40 w-11 h-11 rounded-full flex items-center justify-center cursor-pointer bg-[#E5E2DC] text-[#5E332E] hover:bg-white shadow-2xl"
         whileHover={{ scale: 1.08, y: -2 }}
         whileTap={{ scale: 0.95 }}
         aria-label="Scroll back to top"

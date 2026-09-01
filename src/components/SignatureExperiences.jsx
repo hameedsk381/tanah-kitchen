@@ -38,7 +38,7 @@ export default function SignatureExperiences() {
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 bg-[#882B06] text-[#F2E8D8] p-8 md:p-12 shadow-2xl flex flex-col justify-between relative border border-[#581B0A]"
+            className="lg:col-span-6 bg-[#5E332E] text-[#F2E8D8] p-8 md:p-12 shadow-2xl flex flex-col justify-between relative border border-[#4A2420]"
           >
             {/* Background pattern details */}
             <div className="absolute top-0 bottom-0 right-4 w-[2px] bg-[#F2E8D8]/10 flex flex-col justify-around py-8 items-center">
@@ -102,7 +102,7 @@ export default function SignatureExperiences() {
                 <p className="text-xs text-accent tracking-widest font-mono uppercase">Scale from 10 to 200 Guests</p>
               </div>
 
-              <div className="hidden sm:flex gap-1 text-[#882B06] opacity-75">
+              <div className="hidden sm:flex gap-1 text-[#5E332E] opacity-75">
                 <span>◇</span><span>.</span><span>◇</span><span>.</span><span>◇</span><span>.</span><span>◇</span>
               </div>
             </div>

@@ -23,7 +23,7 @@ export default function Gallery() {
   }, [selectedCategory, galleryItems])
 
   return (
-    <main className="flex-grow pt-24 overflow-hidden bg-[#FAF6F0] text-[#3A2E2A]">
+    <main className="flex-grow pt-24 overflow-hidden bg-[#FAF8F5] text-[#1E1B18]">
       <SEO
         title="Visual Gallery & Ambiance | Tanah Kitchen & Bar Hyderabad"
         description="Browse high-definition photos of Tanah Kitchen & Bar. Rooftop dining terrace, woven bamboo tree canopy, custom ceramics, signature dishes, and mixology cocktails in Gachibowli."
@@ -42,20 +42,20 @@ export default function Gallery() {
             ✦ VISUAL ARCHIVE ✦
           </span>
           <h1
-            className="font-display font-extrabold leading-tight text-[#F6E1CB] mb-4"
+            className="font-display font-extrabold leading-tight text-[#E5E2DC] mb-4"
             style={{ fontSize: 'clamp(2.4rem, 6vw, 4.5rem)' }}
           >
             The Visual Gallery
           </h1>
-          <div className="w-20 h-[2px] bg-[#FFC470]/60 mx-auto rounded-full mb-4" />
-          <p className="text-sm md:text-base font-light max-w-xl mx-auto text-[#EFE1D0]/90 leading-relaxed font-body">
+          <div className="w-20 h-[2px] bg-[#E5E2DC]/60 mx-auto rounded-full mb-4" />
+          <p className="text-sm md:text-base font-light max-w-xl mx-auto text-[#FAF8F5]/90 leading-relaxed font-body">
             A photographic archive documenting our agricultural soils, wood-fired kitchen flames, and architectural layouts.
           </p>
         </div>
       </section>
 
       {/* ── 2. Main Gallery Grid ── */}
-      <section className="wp-section bg-[#FAF6F0]">
+      <section className="wp-section bg-[#FAF8F5]">
         <div className="wp-container space-y-10">
 
           {/* Categories Tab (Filter Pills) */}
@@ -68,8 +68,8 @@ export default function Gallery() {
                   onClick={() => setSelectedCategory(cat)}
                   className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase cursor-pointer transition-all duration-300 whitespace-nowrap ${
                     isActive
-                      ? 'bg-[#6B2523] text-[#F6E1CB] shadow-sm'
-                      : 'bg-white text-[#3A2E2A] border border-[#6B2523]/15 hover:border-[#6B2523]/40'
+                      ? 'bg-[#5E332E] text-[#E5E2DC] shadow-sm'
+                      : 'bg-white text-[#1E1B18] border border-[#5E332E]/15 hover:border-[#5E332E]/40'
                   }`}
                 >
                   {cat}
@@ -93,7 +93,7 @@ export default function Gallery() {
                   exit={{ opacity: 0, scale: 0.98 }}
                   transition={{ duration: 0.4 }}
                   onClick={() => setLightbox(item)}
-                  className="group relative overflow-hidden cursor-pointer rounded-2xl aspect-square border border-[#6B2523]/15 shadow-sm hover:shadow-xl transition-all duration-500 bg-white"
+                  className="group relative overflow-hidden cursor-pointer rounded-2xl aspect-square border border-[#5E332E]/15 shadow-sm hover:shadow-xl transition-all duration-500 bg-white"
                 >
                   <img
                     src={item.src || item.image}
@@ -126,7 +126,7 @@ export default function Gallery() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-4xl max-h-[85vh] bg-[#3A2E2A] rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+              className="relative max-w-4xl max-h-[85vh] bg-[#1E1B18] rounded-2xl overflow-hidden shadow-2xl border border-white/10"
             >
               <button
                 onClick={() => setLightbox(null)}

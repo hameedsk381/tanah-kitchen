@@ -31,7 +31,7 @@
   --color-near-black: #1E1B18;
 
   /* Warm Accent & Border Tones */
-  --color-accent-gold: #FFC470;
+  --color-accent-gold: #E5E2DC;
   --color-border-accent: #D0CCC4;
 
   /* Background mappings */
@@ -51,8 +51,8 @@
   --color-cream: #FAF8F5;
   --color-forest: #1B4332;
   --color-forest-dark: #14342A;
-  --color-terracotta: #882B06;
-  --color-terracotta-light: #D4A574;
+  --color-terracotta: #5E332E;
+  --color-terracotta-light: #D0CCC4;
   --color-charcoal: #1E1B18;
   --color-brown: #5E332E;
   --color-brown-light: #8A4F47;
@@ -80,16 +80,16 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  background-color: #F6E1CB;
-  color: #3A2E2A;
+  background-color: #E5E2DC;
+  color: #1E1B18;
   overflow-x: hidden;
   max-width: 100vw;
 }
 
 body {
   font-family: var(--font-body);
-  background-color: #F6E1CB;
-  color: #3A2E2A;
+  background-color: #E5E2DC;
+  color: #1E1B18;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   position: relative;
@@ -130,8 +130,8 @@ input, select, textarea {
 
 /* Section Theme System classes */
 .section-dark {
-  background-color: #6B2523 !important;
-  color: #EFE1D0 !important;
+  background-color: #5E332E !important;
+  color: #FAF8F5 !important;
 }
 
 .section-dark h1,
@@ -141,22 +141,22 @@ input, select, textarea {
 .section-dark h5,
 .section-dark h6,
 .section-dark .section-heading {
-  color: #DEC8AB !important;
+  color: #E5E2DC !important;
 }
 
 .section-dark .section-accent {
-  color: #FFC470 !important;
+  color: #E5E2DC !important;
 }
 
 .section-dark .section-divider,
 .section-dark .section-icon {
-  color: #DEC8AB !important;
-  stroke: #DEC8AB !important;
+  color: #E5E2DC !important;
+  stroke: #E5E2DC !important;
 }
 
 .section-light {
-  background-color: #F6E1CB !important;
-  color: #3A2E2A !important;
+  background-color: #E5E2DC !important;
+  color: #1E1B18 !important;
 }
 
 .section-light h1,
@@ -166,17 +166,17 @@ input, select, textarea {
 .section-light h5,
 .section-light h6,
 .section-light .section-heading {
-  color: #6B2523 !important;
+  color: #5E332E !important;
 }
 
 .section-light .section-accent {
-  color: #6B2523 !important;
+  color: #5E332E !important;
 }
 
 .section-light .section-divider,
 .section-light .section-icon {
-  color: #6B2523 !important;
-  stroke: #6B2523 !important;
+  color: #5E332E !important;
+  stroke: #5E332E !important;
 }
 
 /* Display Headings & Base Headings */
@@ -424,12 +424,12 @@ h6,
 /* Logo color auto-switching based on section background */
 .section-dark .logo-mark,
 .section-dark svg.logo-mark {
-  color: #DEC8AB !important;
+  color: #E5E2DC !important;
 }
 
 .section-light .logo-mark,
 .section-light svg.logo-mark {
-  color: #6B2523 !important;
+  color: #5E332E !important;
 }
 
 /* ============================================================
@@ -480,7 +480,7 @@ h6,
 }
 
 .wp-card-dark {
-  background-color: #581B0A;
+  background-color: #4A2420;
   border: 1px solid rgba(222, 200, 171, 0.15);
   border-radius: 1rem;
   box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.25);
@@ -508,13 +508,13 @@ h6,
 
 .wp-badge-maroon {
   background-color: rgba(107, 37, 35, 0.08);
-  color: #6B2523;
+  color: #5E332E;
   border: 1px solid rgba(107, 37, 35, 0.15);
 }
 
 .wp-badge-gold {
   background-color: rgba(255, 196, 112, 0.15);
-  color: #FFC470;
+  color: #E5E2DC;
   border: 1px solid rgba(255, 196, 112, 0.3);
 }
 
@@ -545,7 +545,7 @@ h6,
   border-radius: 0.6rem;
   border: 1px solid rgba(107, 37, 35, 0.2);
   background-color: #FFFFFF;
-  color: #3A2E2A;
+  color: #1E1B18;
   font-family: var(--font-body);
   font-size: 0.9rem;
   transition: all 0.3s ease;
@@ -553,6 +553,6 @@ h6,
 }
 
 .wp-form-input:focus {
-  border-color: #6B2523;
+  border-color: #5E332E;
   box-shadow: 0 0 0 3px rgba(107, 37, 35, 0.12);
 }

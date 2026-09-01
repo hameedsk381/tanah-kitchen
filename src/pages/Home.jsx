@@ -171,7 +171,7 @@ export default function Home() {
           className="absolute inset-0 w-full h-full object-cover z-0 filter brightness-[0.55] contrast-[1.05]"
         />
         {/* Dark Vignette Overlay for Readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#3A2E2A]/95 via-[#6B2523]/60 to-[#6B2523]/80 z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1E1B18]/95 via-[#5E332E]/60 to-[#5E332E]/80 z-[1]" />
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -188,29 +188,29 @@ export default function Home() {
           </div>
 
           <h2
-            className="font-display font-extrabold leading-[1.15] tracking-wide text-[#F6E1CB] mb-5"
+            className="font-display font-extrabold leading-[1.15] tracking-wide text-[#E5E2DC] mb-5"
             style={{ fontSize: 'clamp(2.4rem, 6vw, 4.6rem)' }}
           >
             Your Urban Nest in the<br />
-            <span className="italic font-normal text-[#FFC470]">Heart of Gachibowli.</span>
+            <span className="italic font-normal text-[#E5E2DC]">Heart of Gachibowli.</span>
           </h2>
 
-          <div className="w-24 h-[2px] bg-[#FFC470]/60 rounded-full mb-6" />
+          <div className="w-24 h-[2px] bg-[#E5E2DC]/60 rounded-full mb-6" />
 
-          <p className="text-base md:text-lg font-light max-w-2xl leading-relaxed font-body text-[#EFE1D0]/95 px-4 mb-8">
+          <p className="text-base md:text-lg font-light max-w-2xl leading-relaxed font-body text-[#FAF8F5]/95 px-4 mb-8">
             An earthy sanctuary where conversations flow, plates are shared, and stories unfold over artisanal cocktails and open skies.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full max-w-md px-4 sm:px-0 mb-8">
             <a
               href="/book"
-              className="wp-btn-pill bg-[#FFC470] text-[#6B2523] hover:bg-white hover:text-[#6B2523] shadow-lg w-full sm:w-auto text-center font-bold"
+              className="wp-btn-pill bg-[#E5E2DC] text-[#5E332E] hover:bg-white hover:text-[#5E332E] shadow-lg w-full sm:w-auto text-center font-bold"
             >
               Reserve a Table
             </a>
             <a
               href="/menu"
-              className="wp-btn-pill bg-white/10 text-[#F6E1CB] border border-[#FFC470]/40 hover:bg-[#FFC470] hover:text-[#6B2523] w-full sm:w-auto text-center font-semibold backdrop-blur-sm"
+              className="wp-btn-pill bg-white/10 text-[#E5E2DC] border border-[#E5E2DC]/40 hover:bg-[#E5E2DC] hover:text-[#5E332E] w-full sm:w-auto text-center font-semibold backdrop-blur-sm"
             >
               Explore Menu
             </a>
@@ -219,13 +219,13 @@ export default function Home() {
           {/* Restaurant Quick Table Booking Selector Card */}
           <div className="w-full max-w-2xl bg-black/40 backdrop-blur-md p-4 sm:p-5 rounded-2xl border border-white/15 shadow-2xl text-left grid grid-cols-1 sm:grid-cols-3 gap-3 items-center">
             <div>
-              <label className="text-[10px] uppercase tracking-wider font-bold text-[#FFC470] block mb-1">
+              <label className="text-[10px] uppercase tracking-wider font-bold text-[#E5E2DC] block mb-1">
                 Party Size
               </label>
               <select
                 value={quickGuests}
                 onChange={(e) => setQuickGuests(e.target.value)}
-                className="w-full bg-white/10 border border-white/20 text-xs text-white rounded-xl px-3 py-2 focus:outline-none focus:border-[#FFC470]"
+                className="w-full bg-white/10 border border-white/20 text-xs text-white rounded-xl px-3 py-2 focus:outline-none focus:border-[#E5E2DC]"
               >
                 <option value="2 Guests" className="text-black">2 Guests</option>
                 <option value="4 Guests" className="text-black">4 Guests</option>
@@ -235,13 +235,13 @@ export default function Home() {
             </div>
 
             <div>
-              <label className="text-[10px] uppercase tracking-wider font-bold text-[#FFC470] block mb-1">
+              <label className="text-[10px] uppercase tracking-wider font-bold text-[#E5E2DC] block mb-1">
                 Dining Slot
               </label>
               <select
                 value={quickMeal}
                 onChange={(e) => setQuickMeal(e.target.value)}
-                className="w-full bg-white/10 border border-white/20 text-xs text-white rounded-xl px-3 py-2 focus:outline-none focus:border-[#FFC470]"
+                className="w-full bg-white/10 border border-white/20 text-xs text-white rounded-xl px-3 py-2 focus:outline-none focus:border-[#E5E2DC]"
               >
                 <option value="Lunch (1:00 PM)" className="text-black">Lunch (1:00 PM)</option>
                 <option value="Dinner (7:30 PM)" className="text-black">Dinner (7:30 PM)</option>
@@ -252,7 +252,7 @@ export default function Home() {
             <div className="sm:pt-4">
               <a
                 href="/book"
-                className="wp-btn-pill bg-[#FFC470] text-[#6B2523] hover:bg-white w-full text-center text-xs font-bold py-2.5 shadow-md flex items-center justify-center gap-1.5"
+                className="wp-btn-pill bg-[#E5E2DC] text-[#5E332E] hover:bg-white w-full text-center text-xs font-bold py-2.5 shadow-md flex items-center justify-center gap-1.5"
               >
                 <span>Book Table</span>
                 <ChevronRight className="w-3.5 h-3.5" />
@@ -268,7 +268,7 @@ export default function Home() {
       <section
         id="where-teams-gather"
         ref={sec2Ref}
-        className="wp-section bg-[#FAF6F0] text-[#3A2E2A] border-b border-[#6B2523]/10"
+        className="wp-section bg-[#FAF8F5] text-[#1E1B18] border-b border-[#5E332E]/10"
       >
         <div className="wp-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -284,24 +284,24 @@ export default function Home() {
                 CORPORATE SANCTUARY
               </span>
 
-              <h3 className="font-display font-bold leading-tight text-3xl md:text-5xl text-[#6B2523]">
+              <h3 className="font-display font-bold leading-tight text-3xl md:text-5xl text-[#5E332E]">
                 Where Teams Gather
               </h3>
 
-              <div className="w-16 h-[2px] bg-[#6B2523]/40 rounded-full" />
+              <div className="w-16 h-[2px] bg-[#5E332E]/40 rounded-full" />
 
-              <p className="text-lg leading-relaxed font-body text-[#3A2E2A]/90">
+              <p className="text-lg leading-relaxed font-body text-[#1E1B18]/90">
                 More than a venue, Tanah is a carefully orchestrated sanctuary. Our atmospheric spaces offer natural lighting, premium wooden features, and custom catering designed to build lasting professional bonds outside the office.
               </p>
 
-              <p className="text-base text-[#3A2E2A]/80 leading-relaxed font-body">
+              <p className="text-base text-[#1E1B18]/80 leading-relaxed font-body">
                 Whether conducting board retreats, hosting key clients, or celebrating major milestones, we curate custom dining atmospheres that blend corporate precision with the ease of nature.
               </p>
 
               <div className="pt-2">
                 <a
                   href="#why-tanah"
-                  className="wp-btn-pill bg-[#6B2523] text-[#F6E1CB] hover:bg-[#3A2E2A] hover:text-white shadow-md text-xs font-semibold"
+                  className="wp-btn-pill bg-[#5E332E] text-[#E5E2DC] hover:bg-[#1E1B18] hover:text-white shadow-md text-xs font-semibold"
                 >
                   Learn More <ChevronRight className="w-4 h-4" />
                 </a>
@@ -315,7 +315,7 @@ export default function Home() {
               transition={{ duration: 1, delay: 0.15 }}
               className="lg:col-span-6"
             >
-              <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#6B2523]/15 aspect-[4/3] relative group">
+              <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#5E332E]/15 aspect-[4/3] relative group">
                 <img
                   src="/assets/Tanha Image/02.webp"
                   alt="Tanah Kitchen Atmosphere"
@@ -334,7 +334,7 @@ export default function Home() {
           ========================================== */}
       <section
         ref={secFoodRef}
-        className="wp-section bg-[#FAF6F0] text-[#3A2E2A] border-b border-[#6B2523]/10 pt-16 pb-20"
+        className="wp-section bg-[#FAF8F5] text-[#1E1B18] border-b border-[#5E332E]/10 pt-16 pb-20"
       >
         <div className="wp-container space-y-10">
           
@@ -343,11 +343,11 @@ export default function Home() {
             <span className="wp-badge wp-badge-maroon">
               ✦ TASTE OF TANAH ✦
             </span>
-            <h3 className="font-display font-extrabold text-3xl md:text-5xl text-[#6B2523]">
+            <h3 className="font-display font-extrabold text-3xl md:text-5xl text-[#5E332E]">
               Chef's Culinary Signatures
             </h3>
-            <div className="w-20 h-[2px] bg-[#6B2523]/40 mx-auto rounded-full" />
-            <p className="text-sm md:text-base text-[#3A2E2A]/80 font-body leading-relaxed">
+            <div className="w-20 h-[2px] bg-[#5E332E]/40 mx-auto rounded-full" />
+            <p className="text-sm md:text-base text-[#1E1B18]/80 font-body leading-relaxed">
               Crafted from zero-mile agricultural crops, slow wood-fired embers, and centuries-old culinary traditions.
             </p>
           </div>
@@ -361,7 +361,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7 }}
-                className="md:col-span-7 relative rounded-3xl overflow-hidden shadow-2xl group min-h-[360px] sm:min-h-[420px] lg:min-h-[460px] border border-[#6B2523]/15 flex flex-col justify-between p-6 sm:p-8"
+                className="md:col-span-7 relative rounded-3xl overflow-hidden shadow-2xl group min-h-[360px] sm:min-h-[420px] lg:min-h-[460px] border border-[#5E332E]/15 flex flex-col justify-between p-6 sm:p-8"
               >
                 <img
                   src={bentoItems[0].image}
@@ -374,7 +374,7 @@ export default function Home() {
 
                 {/* Top Badges */}
                 <div className="relative z-10 flex items-center justify-between">
-                  <span className="text-[10px] font-bold tracking-widest uppercase px-3.5 py-1.5 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/40 shadow-lg font-sans">
+                  <span className="text-[10px] font-bold tracking-widest uppercase px-3.5 py-1.5 rounded-full bg-[#5E332E] text-[#E5E2DC] border border-[#E5E2DC]/40 shadow-lg font-sans">
                     {bentoItems[0].tag || '★ BESTSELLER'}
                   </span>
                   <div className="bg-white/95 backdrop-blur-md p-1.5 rounded-lg shadow-md">
@@ -384,7 +384,7 @@ export default function Home() {
 
                 {/* Bottom Info Overlay */}
                 <div className="relative z-10 space-y-2 text-white">
-                  <span className="text-[11px] uppercase tracking-[0.2em] text-[#FFC470] font-bold font-sans">
+                  <span className="text-[11px] uppercase tracking-[0.2em] text-[#E5E2DC] font-bold font-sans">
                     {bentoItems[0].category}
                   </span>
                   <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
@@ -398,7 +398,7 @@ export default function Home() {
                     </div>
                   </div>
                   {bentoItems[0].pairing && (
-                    <div className="pt-2 flex flex-wrap items-center gap-2 text-xs font-semibold text-[#FFC470]">
+                    <div className="pt-2 flex flex-wrap items-center gap-2 text-xs font-semibold text-[#E5E2DC]">
                       <span className="px-2.5 py-1 rounded-md bg-black/40 backdrop-blur-sm border border-white/10">
                         {bentoItems[0].pairing}
                       </span>
@@ -414,7 +414,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.15 }}
-                className="md:col-span-5 relative rounded-3xl overflow-hidden shadow-xl group min-h-[320px] sm:min-h-[380px] lg:min-h-[460px] border border-[#6B2523]/15 flex flex-col justify-between p-6 sm:p-8"
+                className="md:col-span-5 relative rounded-3xl overflow-hidden shadow-xl group min-h-[320px] sm:min-h-[380px] lg:min-h-[460px] border border-[#5E332E]/15 flex flex-col justify-between p-6 sm:p-8"
               >
                 <img
                   src={bentoItems[1].image}
@@ -426,7 +426,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
 
                 <div className="relative z-10 flex items-center justify-between">
-                  <span className="text-[9px] font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md font-sans">
+                  <span className="text-[9px] font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-[#5E332E] text-[#E5E2DC] border border-[#E5E2DC]/30 shadow-md font-sans">
                     {bentoItems[1].tag || '★ SIGNATURE'}
                   </span>
                   <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-md">
@@ -436,7 +436,7 @@ export default function Home() {
 
                 <div className="relative z-10 text-white flex justify-between items-end gap-2">
                   <div>
-                    <span className="text-[10px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
+                    <span className="text-[10px] uppercase tracking-wider text-[#E5E2DC] font-semibold font-sans">
                       {bentoItems[1].category}
                     </span>
                     <h4 className="font-display text-xl sm:text-2xl font-bold text-white leading-tight">
@@ -458,7 +458,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.2 }}
-                className="md:col-span-6 lg:col-span-3 relative rounded-3xl overflow-hidden shadow-xl group min-h-[230px] border border-[#6B2523]/15 flex flex-col justify-between p-5"
+                className="md:col-span-6 lg:col-span-3 relative rounded-3xl overflow-hidden shadow-xl group min-h-[230px] border border-[#5E332E]/15 flex flex-col justify-between p-5"
               >
                 <img
                   src={bentoItems[2].image}
@@ -470,7 +470,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
 
                 <div className="relative z-10 flex items-center justify-between">
-                  <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md font-sans">
+                  <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#5E332E] text-[#E5E2DC] border border-[#E5E2DC]/30 shadow-md font-sans">
                     {bentoItems[2].tag || '✦ SPECIAL'}
                   </span>
                   <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-md">
@@ -479,7 +479,7 @@ export default function Home() {
                 </div>
 
                 <div className="relative z-10 text-white space-y-1">
-                  <span className="text-[9px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
+                  <span className="text-[9px] uppercase tracking-wider text-[#E5E2DC] font-semibold font-sans">
                     {bentoItems[2].category}
                   </span>
                   <h4 className="font-display text-base font-bold text-white leading-tight">
@@ -495,7 +495,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.25 }}
-                className="md:col-span-6 lg:col-span-3 relative rounded-3xl overflow-hidden shadow-xl group min-h-[230px] border border-[#6B2523]/15 flex flex-col justify-between p-5"
+                className="md:col-span-6 lg:col-span-3 relative rounded-3xl overflow-hidden shadow-xl group min-h-[230px] border border-[#5E332E]/15 flex flex-col justify-between p-5"
               >
                 <img
                   src={bentoItems[3].image}
@@ -507,7 +507,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
 
                 <div className="relative z-10 flex items-center justify-between">
-                  <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md font-sans">
+                  <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#5E332E] text-[#E5E2DC] border border-[#E5E2DC]/30 shadow-md font-sans">
                     {bentoItems[3].tag || '★ VEG SPECIAL'}
                   </span>
                   <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-md">
@@ -516,7 +516,7 @@ export default function Home() {
                 </div>
 
                 <div className="relative z-10 text-white space-y-1">
-                  <span className="text-[9px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
+                  <span className="text-[9px] uppercase tracking-wider text-[#E5E2DC] font-semibold font-sans">
                     {bentoItems[3].category}
                   </span>
                   <h4 className="font-display text-base font-bold text-white leading-tight">
@@ -532,7 +532,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.3 }}
-                className="md:col-span-6 lg:col-span-3 relative rounded-3xl overflow-hidden shadow-xl group min-h-[230px] border border-[#6B2523]/15 flex flex-col justify-between p-5"
+                className="md:col-span-6 lg:col-span-3 relative rounded-3xl overflow-hidden shadow-xl group min-h-[230px] border border-[#5E332E]/15 flex flex-col justify-between p-5"
               >
                 <img
                   src={bentoItems[4].image}
@@ -544,7 +544,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
 
                 <div className="relative z-10 flex items-center justify-between">
-                  <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md font-sans">
+                  <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#5E332E] text-[#E5E2DC] border border-[#E5E2DC]/30 shadow-md font-sans">
                     {bentoItems[4].tag || '★ DESSERT'}
                   </span>
                   <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-md">
@@ -553,7 +553,7 @@ export default function Home() {
                 </div>
 
                 <div className="relative z-10 text-white space-y-1">
-                  <span className="text-[9px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
+                  <span className="text-[9px] uppercase tracking-wider text-[#E5E2DC] font-semibold font-sans">
                     {bentoItems[4].category}
                   </span>
                   <h4 className="font-display text-base font-bold text-white leading-tight">
@@ -569,7 +569,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isSecFoodInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.35 }}
-                className="md:col-span-6 lg:col-span-3 relative rounded-3xl overflow-hidden shadow-xl group min-h-[230px] border border-[#6B2523]/15 flex flex-col justify-between p-5"
+                className="md:col-span-6 lg:col-span-3 relative rounded-3xl overflow-hidden shadow-xl group min-h-[230px] border border-[#5E332E]/15 flex flex-col justify-between p-5"
               >
                 <img
                   src={bentoItems[5].image}
@@ -581,7 +581,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
 
                 <div className="relative z-10 flex items-center justify-between">
-                  <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#6B2523] text-[#FFC470] border border-[#FFC470]/30 shadow-md font-sans">
+                  <span className="text-[8px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-[#5E332E] text-[#E5E2DC] border border-[#E5E2DC]/30 shadow-md font-sans">
                     {bentoItems[5].tag || '★ DESSERT'}
                   </span>
                   <div className="bg-white/95 backdrop-blur-md p-1 rounded-md shadow-md">
@@ -590,7 +590,7 @@ export default function Home() {
                 </div>
 
                 <div className="relative z-10 text-white space-y-1">
-                  <span className="text-[9px] uppercase tracking-wider text-[#FFC470] font-semibold font-sans">
+                  <span className="text-[9px] uppercase tracking-wider text-[#E5E2DC] font-semibold font-sans">
                     {bentoItems[5].category}
                   </span>
                   <h4 className="font-display text-base font-bold text-white leading-tight">
@@ -606,14 +606,14 @@ export default function Home() {
           <div className="text-center pt-4 flex flex-wrap justify-center items-center gap-4">
             <a
               href="/menu"
-              className="wp-btn-pill bg-[#6B2523] text-[#F6E1CB] hover:bg-[#3A2E2A] hover:text-white text-xs font-bold tracking-widest uppercase shadow-lg inline-flex items-center gap-2"
+              className="wp-btn-pill bg-[#5E332E] text-[#E5E2DC] hover:bg-[#1E1B18] hover:text-white text-xs font-bold tracking-widest uppercase shadow-lg inline-flex items-center gap-2"
             >
               <span>Explore Full Seasonal Menu</span>
               <ChevronRight className="w-4 h-4" />
             </a>
             <a
               href="/book"
-              className="wp-btn-pill bg-[#FFC470] text-[#6B2523] hover:bg-white text-xs font-bold tracking-widest uppercase shadow-lg inline-flex items-center gap-2"
+              className="wp-btn-pill bg-[#E5E2DC] text-[#5E332E] hover:bg-white text-xs font-bold tracking-widest uppercase shadow-lg inline-flex items-center gap-2"
             >
               <span>Reserve a Table</span>
               <ChevronRight className="w-4 h-4" />
@@ -629,7 +629,7 @@ export default function Home() {
       <section
         id="why-tanah"
         ref={sec3Ref}
-        className="wp-section section-dark text-[#EFE1D0]"
+        className="wp-section section-dark text-[#FAF8F5]"
       >
         <div className="wp-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -645,11 +645,11 @@ export default function Home() {
                 ✦ CORPORATE HOSPITALITY &amp; RETREATS ✦
               </span>
 
-              <h3 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#DEC8AB]">
+              <h3 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#E5E2DC]">
                 Why Leaders &amp; Teams Choose Tanah
               </h3>
 
-              <div className="w-16 h-[2px] bg-[#FFC470]/60 rounded-full" />
+              <div className="w-16 h-[2px] bg-[#E5E2DC]/60 rounded-full" />
 
               <p className="text-lg opacity-90 leading-relaxed font-body">
                 We believe in the transformative power of the shared table. Located in the heart of Gachibowli, Hyderabad, Tanah fuses raw architectural tranquility, zero-mile farm gastronomy, and bespoke luxury hospitality to host Hyderabad's most distinguished corporate retreats and celebrations.
@@ -666,12 +666,12 @@ export default function Home() {
                 ].map((item, index) => (
                   <div
                     key={index}
-                    className="flex items-center gap-3.5 p-3.5 rounded-xl bg-white/5 border border-[#FFC470]/15 hover:border-[#FFC470]/40 transition-colors"
+                    className="flex items-center gap-3.5 p-3.5 rounded-xl bg-white/5 border border-[#E5E2DC]/15 hover:border-[#E5E2DC]/40 transition-colors"
                   >
-                    <span className="w-6 h-6 rounded-full bg-[#FFC470]/15 text-[#FFC470] flex items-center justify-center text-xs font-bold flex-shrink-0">
+                    <span className="w-6 h-6 rounded-full bg-[#E5E2DC]/15 text-[#E5E2DC] flex items-center justify-center text-xs font-bold flex-shrink-0">
                       ✓
                     </span>
-                    <span className="text-sm md:text-base font-medium text-[#F6E1CB]">{item}</span>
+                    <span className="text-sm md:text-base font-medium text-[#E5E2DC]">{item}</span>
                   </div>
                 ))}
               </div>
@@ -712,7 +712,7 @@ export default function Home() {
           ========================================== */}
       <section
         ref={sec4Ref}
-        className="wp-section bg-[#FAF6F0] text-[#3A2E2A] border-b border-[#6B2523]/10"
+        className="wp-section bg-[#FAF8F5] text-[#1E1B18] border-b border-[#5E332E]/10"
       >
         <div className="wp-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -724,14 +724,14 @@ export default function Home() {
               transition={{ duration: 1 }}
               className="lg:col-span-5 flex justify-center"
             >
-              <div className="rounded-3xl overflow-hidden border border-[#6B2523]/15 shadow-xl aspect-[4/5] w-full max-w-sm relative group bg-white">
+              <div className="rounded-3xl overflow-hidden border border-[#5E332E]/15 shadow-xl aspect-[4/5] w-full max-w-sm relative group bg-white">
                 <img
                   src="/assets/Tanha Ambiance/Ambiance-2.webp"
                   alt="Tanah architectural rooftop sanctuary"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#3A2E2A]/85 via-transparent to-transparent flex flex-col justify-end p-6 text-left">
-                  <span className="text-xs uppercase tracking-[0.25em] font-bold text-[#FFC470]">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1E1B18]/85 via-transparent to-transparent flex flex-col justify-end p-6 text-left">
+                  <span className="text-xs uppercase tracking-[0.25em] font-bold text-[#E5E2DC]">
                     Tanah Sanctuary
                   </span>
                   <span className="text-xs text-white/90 font-light mt-1 font-body">
@@ -752,20 +752,20 @@ export default function Home() {
                 OUR ANCESTRY &amp; ETHOS
               </span>
 
-              <h3 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#6B2523]">
+              <h3 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#5E332E]">
                 The Tanah Story
               </h3>
 
-              <div className="w-16 h-[2px] bg-[#6B2523]/40 rounded-full" />
+              <div className="w-16 h-[2px] bg-[#5E332E]/40 rounded-full" />
 
               {/* Callout Quote Card */}
-              <div className="p-6 rounded-2xl bg-[#6B2523]/5 border-l-4 border-[#6B2523]">
-                <p className="text-lg md:text-xl font-display italic text-[#6B2523] leading-relaxed">
+              <div className="p-6 rounded-2xl bg-[#5E332E]/5 border-l-4 border-[#5E332E]">
+                <p className="text-lg md:text-xl font-display italic text-[#5E332E] leading-relaxed">
                   "Architecture shaped by the sanctuary of the nest, cuisine inspired by agricultural ancestry."
                 </p>
               </div>
 
-              <div className="space-y-4 text-base text-[#3A2E2A]/85 leading-relaxed font-body">
+              <div className="space-y-4 text-base text-[#1E1B18]/85 leading-relaxed font-body">
                 <p>
                   Rooted in the Sanskrit &amp; regional earth tradition, Tanah emerged in Gachibowli, Hyderabad, as an architectural sanctuary where founders, corporate teams, and connoisseurs transition from demanding schedules to grounded, natural atmospheres. Our design blends handcrafted bamboo arches, local basalt stone, and living canopies into an organic gathering haven.
                 </p>
@@ -784,7 +784,7 @@ export default function Home() {
           ========================================== */}
       <section
         ref={sec5Ref}
-        className="wp-section section-dark text-[#EFE1D0]"
+        className="wp-section section-dark text-[#FAF8F5]"
       >
         <div className="wp-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -800,29 +800,29 @@ export default function Home() {
                 <span className="wp-badge wp-badge-gold">
                   SPATIAL EXCELLENCE
                 </span>
-                <h3 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#DEC8AB]">
+                <h3 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#E5E2DC]">
                   Designed for Every Occasion
                 </h3>
-                <div className="w-16 h-[2px] bg-[#FFC470]/60 rounded-full" />
+                <div className="w-16 h-[2px] bg-[#E5E2DC]/60 rounded-full" />
               </div>
 
               {/* WordPress Cards Grid with Space Capacities */}
               <div className="space-y-4 pt-2">
                 {[
                   {
-                    icon: <Briefcase className="w-6 h-6 text-[#FFC470]" />,
+                    icon: <Briefcase className="w-6 h-6 text-[#E5E2DC]" />,
                     label: "Rooftop Corporate Dining",
                     capacity: "Capacity: 15–30 Guests • Private & Rooftop Dining",
                     desc: "Host team dinners and corporate gatherings in Tanah’s relaxed rooftop setting, with great food, crafted drinks, and a comfortable ambience that makes every business gathering more enjoyable."
                   },
                   {
-                    icon: <Users className="w-6 h-6 text-[#FFC470]" />,
+                    icon: <Users className="w-6 h-6 text-[#E5E2DC]" />,
                     label: "Corporate Celebrations & Team Events",
                     capacity: "Capacity: 30–60 Guests • Rooftop Event Space",
                     desc: "From team celebrations and office parties to brand events and milestone gatherings, Tanah offers a vibrant rooftop setting with delicious food, drinks, music, and an atmosphere designed for memorable celebrations."
                   },
                   {
-                    icon: <Compass className="w-6 h-6 text-[#FFC470]" />,
+                    icon: <Compass className="w-6 h-6 text-[#E5E2DC]" />,
                     label: "Team Dining & Curated Experiences",
                     capacity: "Capacity: 20–40 Guests • Food, Drinks & Entertainment",
                     desc: "Bring your team together over specially curated food, signature cocktails, and engaging entertainment. Whether it’s a team dinner, celebration, or casual get-together, Tanah creates the perfect setting to connect, unwind, and make memories."
@@ -832,19 +832,19 @@ export default function Home() {
                     key={idx}
                     className="wp-card-dark p-6 flex items-start gap-4"
                   >
-                    <div className="p-3 bg-[#FFC470]/15 rounded-xl flex-shrink-0 text-[#FFC470]">
+                    <div className="p-3 bg-[#E5E2DC]/15 rounded-xl flex-shrink-0 text-[#E5E2DC]">
                       {row.icon}
                     </div>
                     <div className="space-y-1.5">
                       <div className="flex flex-wrap items-center justify-between gap-2">
-                        <h4 className="font-display text-lg md:text-xl font-bold text-[#FFC470]">
+                        <h4 className="font-display text-lg md:text-xl font-bold text-[#E5E2DC]">
                           {row.label}
                         </h4>
-                        <span className="text-[10px] font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-white/10 text-[#FFC470] border border-[#FFC470]/30 font-sans">
+                        <span className="text-[10px] font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-white/10 text-[#E5E2DC] border border-[#E5E2DC]/30 font-sans">
                           {row.capacity}
                         </span>
                       </div>
-                      <p className="text-sm text-[#EFE1D0]/80 leading-relaxed font-body">
+                      <p className="text-sm text-[#FAF8F5]/80 leading-relaxed font-body">
                         {row.desc}
                       </p>
                     </div>
@@ -876,23 +876,23 @@ export default function Home() {
       {/* ==========================================
           EVENTS & WEEKEND SUNDOWNERS CALLOUT BANNER
           ========================================== */}
-      <section className="bg-[#541B1A] border-y border-[#FFC470]/20 py-12 px-6 text-center text-[#F6E1CB] relative overflow-hidden">
+      <section className="bg-[#4A2420] border-y border-[#E5E2DC]/20 py-12 px-6 text-center text-[#E5E2DC] relative overflow-hidden">
         <div className="wp-container relative z-10 space-y-4">
           <div className="inline-flex items-center gap-2">
             <span className="wp-badge wp-badge-gold">
               ✦ LIVE ROOFTOP EXPERIENCES ✦
             </span>
           </div>
-          <h3 className="font-display font-extrabold text-2xl sm:text-4xl text-[#F6E1CB] uppercase tracking-wide">
+          <h3 className="font-display font-extrabold text-2xl sm:text-4xl text-[#E5E2DC] uppercase tracking-wide">
             Weekend Sundowners &amp; Live Music
           </h3>
-          <p className="text-xs sm:text-sm text-[#EFE1D0]/85 max-w-xl mx-auto font-body leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#FAF8F5]/85 max-w-xl mx-auto font-body leading-relaxed">
             Unwind with rooftop views, soulful live music, refreshing cocktails, and delicious food. The perfect setting to relax, connect, and enjoy beautiful evenings at Tanah.
           </p>
           <div className="pt-2">
             <a
               href="/book"
-              className="wp-btn-pill bg-[#FFC470] text-[#6B2523] hover:bg-white text-xs font-bold py-2.5 px-6 shadow-lg inline-flex items-center gap-2"
+              className="wp-btn-pill bg-[#E5E2DC] text-[#5E332E] hover:bg-white text-xs font-bold py-2.5 px-6 shadow-lg inline-flex items-center gap-2"
             >
               <span>Reserve Sunset Table</span>
               <ChevronRight className="w-4 h-4" />
@@ -911,7 +911,7 @@ export default function Home() {
           ========================================== */}
       <section
         ref={sec7Ref}
-        className="wp-section section-dark text-[#EFE1D0]"
+        className="wp-section section-dark text-[#FAF8F5]"
       >
         <div className="wp-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -927,11 +927,11 @@ export default function Home() {
                 PLAN AN EXPERIENCE
               </span>
 
-              <h3 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#DEC8AB]">
+              <h3 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#E5E2DC]">
                 Let's Host Your Next Team Gathering
               </h3>
 
-              <div className="w-16 h-[2px] bg-[#FFC470]/60 rounded-full" />
+              <div className="w-16 h-[2px] bg-[#E5E2DC]/60 rounded-full" />
 
               <p className="text-base opacity-90 leading-relaxed font-body">
                 Let our corporate curators configure a tailored experience. Fill out the reservation details below or contact our events team.
@@ -947,10 +947,10 @@ export default function Home() {
                     key={idx}
                     className="flex items-center gap-3.5 p-3.5 rounded-xl bg-white/5 border border-white/10"
                   >
-                    <span className="w-6 h-6 rounded-full bg-[#FFC470]/20 text-[#FFC470] flex items-center justify-center text-xs font-bold flex-shrink-0">
+                    <span className="w-6 h-6 rounded-full bg-[#E5E2DC]/20 text-[#E5E2DC] flex items-center justify-center text-xs font-bold flex-shrink-0">
                       ◇
                     </span>
-                    <span className="text-sm font-medium text-[#F6E1CB]">{item}</span>
+                    <span className="text-sm font-medium text-[#E5E2DC]">{item}</span>
                   </div>
                 ))}
               </div>
@@ -987,20 +987,20 @@ export default function Home() {
       {/* ==========================================
           GUEST EXPERIENCES & 5-STAR TESTIMONIALS (WordPress Review Cards)
           ========================================== */}
-      <section className="wp-section bg-[#FAF6F0] text-[#3A2E2A] border-b border-[#6B2523]/10 pt-16 pb-20">
+      <section className="wp-section bg-[#FAF8F5] text-[#1E1B18] border-b border-[#5E332E]/10 pt-16 pb-20">
         <div className="wp-container space-y-12">
           
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="wp-badge wp-badge-maroon">
               ✦ GUEST REVIEWS &amp; PRAISE ✦
             </span>
-            <h3 className="font-display font-extrabold text-3xl md:text-5xl text-[#6B2523]">
+            <h3 className="font-display font-extrabold text-3xl md:text-5xl text-[#5E332E]">
               Voices from Our Tables
             </h3>
-            <div className="w-20 h-[2px] bg-[#6B2523]/40 mx-auto rounded-full" />
+            <div className="w-20 h-[2px] bg-[#5E332E]/40 mx-auto rounded-full" />
             
             {/* Google Rating Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#6B2523]/15 shadow-sm text-xs font-bold text-[#6B2523]">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#5E332E]/15 shadow-sm text-xs font-bold text-[#5E332E]">
               <span className="text-amber-500 text-sm">★★★★★</span>
               <span>4.9 / 5.0 Google &amp; Dining Reviews (420+ Reviews)</span>
             </div>
@@ -1032,27 +1032,27 @@ export default function Home() {
             ].map((review, rIdx) => (
               <div
                 key={rIdx}
-                className="wp-card p-6 md:p-8 flex flex-col justify-between space-y-6 hover:border-[#6B2523]/30 transition-all shadow-md"
+                className="wp-card p-6 md:p-8 flex flex-col justify-between space-y-6 hover:border-[#5E332E]/30 transition-all shadow-md"
               >
                 <div className="space-y-3">
                   <div className="flex text-amber-500 text-sm">
                     {'★'.repeat(review.stars)}
                   </div>
-                  <p className="text-xs sm:text-sm font-light text-[#3A2E2A]/85 italic leading-relaxed font-body">
+                  <p className="text-xs sm:text-sm font-light text-[#1E1B18]/85 italic leading-relaxed font-body">
                     "{review.quote}"
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-[#6B2523]/10 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#6B2523]/10 text-[#6B2523] flex items-center justify-center font-bold text-sm flex-shrink-0">
+                <div className="pt-4 border-t border-[#5E332E]/10 flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-[#5E332E]/10 text-[#5E332E] flex items-center justify-center font-bold text-sm flex-shrink-0">
                     {review.author[0]}
                   </div>
                   <div>
-                    <h5 className="font-display text-sm font-bold text-[#6B2523]">
+                    <h5 className="font-display text-sm font-bold text-[#5E332E]">
                       {review.author}
                     </h5>
-                    <p className="text-[11px] text-[#3A2E2A]/70 font-body">
-                      {review.role} • <span className="font-semibold text-[#882B06]">{review.company}</span>
+                    <p className="text-[11px] text-[#1E1B18]/70 font-body">
+                      {review.role} • <span className="font-semibold text-[#5E332E]">{review.company}</span>
                     </p>
                   </div>
                 </div>
@@ -1069,13 +1069,13 @@ export default function Home() {
       <section
         id="contact-form"
         ref={sec8Ref}
-        className="wp-section bg-[#FAF6F0] text-[#3A2E2A]"
+        className="wp-section bg-[#FAF8F5] text-[#1E1B18]"
       >
         <div className="wp-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
 
             {/* Left Brand Summary Card */}
-            <div className="lg:col-span-4 bg-[#6B2523] text-[#F6E1CB] p-8 md:p-10 rounded-3xl flex flex-col justify-between shadow-xl border border-[#FFC470]/20 text-left">
+            <div className="lg:col-span-4 bg-[#5E332E] text-[#E5E2DC] p-8 md:p-10 rounded-3xl flex flex-col justify-between shadow-xl border border-[#E5E2DC]/20 text-left">
               <div className="space-y-6">
                 <img
                   src="/assets/logo.png"
@@ -1084,19 +1084,19 @@ export default function Home() {
                 />
                 
                 <div>
-                  <span className="text-[10px] tracking-[0.3em] uppercase text-[#FFC470] font-bold block font-body">
+                  <span className="text-[10px] tracking-[0.3em] uppercase text-[#E5E2DC] font-bold block font-body">
                     GACHIBOWLI • HYDERABAD
                   </span>
                 </div>
 
-                <div className="w-16 h-[2px] bg-[#FFC470]/40 rounded-full" />
+                <div className="w-16 h-[2px] bg-[#E5E2DC]/40 rounded-full" />
 
-                <p className="text-sm font-light text-[#EFE1D0]/90 leading-relaxed font-body">
+                <p className="text-sm font-light text-[#FAF8F5]/90 leading-relaxed font-body">
                   Rooted in nature, crafted for people. We create intimate corporate dining experiences and celebrations that inspire authentic relationships.
                 </p>
               </div>
 
-              <div className="pt-8 border-t border-[#FFC470]/20 space-y-3 text-xs text-[#EFE1D0]/85 font-body">
+              <div className="pt-8 border-t border-[#E5E2DC]/20 space-y-3 text-xs text-[#FAF8F5]/85 font-body">
                 <p className="flex items-center gap-2">
                   <span>📍</span> 5th Floor, Opp. Meenakshi Bamboo Road, Gachibowli
                 </p>
@@ -1110,23 +1110,23 @@ export default function Home() {
             </div>
 
             {/* Right WordPress Reservation Form Card */}
-            <div className="lg:col-span-8 bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-[#6B2523]/10 text-left">
+            <div className="lg:col-span-8 bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-[#5E332E]/10 text-left">
               {submitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className="py-12 px-6 text-center space-y-6"
                 >
-                  <CheckCircle className="w-16 h-16 mx-auto text-[#6B2523]" />
-                  <h3 className="font-display text-3xl font-bold text-[#6B2523]">
+                  <CheckCircle className="w-16 h-16 mx-auto text-[#5E332E]" />
+                  <h3 className="font-display text-3xl font-bold text-[#5E332E]">
                     Thank You
                   </h3>
-                  <p className="text-base text-[#3A2E2A]/80 leading-relaxed max-w-lg mx-auto font-body">
-                    Thank you, <span className="font-semibold text-[#6B2523]">{form.name}</span>. We have reserved your interest for a party of <span className="font-semibold text-[#6B2523]">{form.guests}</span> on <span className="font-semibold text-[#6B2523]">{form.date}</span>. Our experience curator will follow up via <span className="font-semibold text-[#6B2523]">{form.email}</span> shortly.
+                  <p className="text-base text-[#1E1B18]/80 leading-relaxed max-w-lg mx-auto font-body">
+                    Thank you, <span className="font-semibold text-[#5E332E]">{form.name}</span>. We have reserved your interest for a party of <span className="font-semibold text-[#5E332E]">{form.guests}</span> on <span className="font-semibold text-[#5E332E]">{form.date}</span>. Our experience curator will follow up via <span className="font-semibold text-[#5E332E]">{form.email}</span> shortly.
                   </p>
                   <button
                     onClick={() => { setSubmitted(false); setForm({ name: '', email: '', date: '', time: '', guests: '', notes: '' }) }}
-                    className="wp-btn-pill bg-[#6B2523] text-[#F6E1CB] hover:bg-[#3A2E2A] text-xs font-semibold"
+                    className="wp-btn-pill bg-[#5E332E] text-[#E5E2DC] hover:bg-[#1E1B18] text-xs font-semibold"
                   >
                     Submit Another Inquiry
                   </button>
@@ -1137,10 +1137,10 @@ export default function Home() {
                     <span className="wp-badge wp-badge-maroon mb-2">
                       RESERVE YOUR NEST
                     </span>
-                    <h3 className="font-display text-2xl md:text-4xl font-extrabold text-[#6B2523]">
+                    <h3 className="font-display text-2xl md:text-4xl font-extrabold text-[#5E332E]">
                       Start Your Corporate Story
                     </h3>
-                    <p className="text-sm text-[#3A2E2A]/70 mt-1 font-body">
+                    <p className="text-sm text-[#1E1B18]/70 mt-1 font-body">
                       Fill in the details below and our team will get back to confirm your booking.
                     </p>
                   </div>
@@ -1149,7 +1149,7 @@ export default function Home() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       {/* Name */}
                       <div>
-                        <label className="block text-xs font-bold tracking-wider uppercase mb-1.5 text-[#6B2523]">
+                        <label className="block text-xs font-bold tracking-wider uppercase mb-1.5 text-[#5E332E]">
                           Full Name *
                         </label>
                         <input
@@ -1170,7 +1170,7 @@ export default function Home() {
 
                       {/* Email */}
                       <div>
-                        <label className="block text-xs font-bold tracking-wider uppercase mb-1.5 text-[#6B2523]">
+                        <label className="block text-xs font-bold tracking-wider uppercase mb-1.5 text-[#5E332E]">
                           Email Address *
                         </label>
                         <input
@@ -1193,7 +1193,7 @@ export default function Home() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                       {/* Date */}
                       <div>
-                        <label className="block text-xs font-bold tracking-wider uppercase mb-1.5 text-[#6B2523]">
+                        <label className="block text-xs font-bold tracking-wider uppercase mb-1.5 text-[#5E332E]">
                           Date *
                         </label>
                         <input
@@ -1213,7 +1213,7 @@ export default function Home() {
 
                       {/* Time */}
                       <div>
-                        <label className="block text-xs font-bold tracking-wider uppercase mb-1.5 text-[#6B2523]">
+                        <label className="block text-xs font-bold tracking-wider uppercase mb-1.5 text-[#5E332E]">
                           Time Slot *
                         </label>
                         <select
@@ -1236,7 +1236,7 @@ export default function Home() {
 
                       {/* Guests */}
                       <div>
-                        <label className="block text-xs font-bold tracking-wider uppercase mb-1.5 text-[#6B2523]">
+                        <label className="block text-xs font-bold tracking-wider uppercase mb-1.5 text-[#5E332E]">
                           Party Size *
                         </label>
                         <select
@@ -1260,7 +1260,7 @@ export default function Home() {
 
                     {/* Notes */}
                     <div>
-                      <label className="block text-xs font-bold tracking-wider uppercase mb-1.5 text-[#6B2523]">
+                      <label className="block text-xs font-bold tracking-wider uppercase mb-1.5 text-[#5E332E]">
                         Dietary / Event Notes
                       </label>
                       <textarea
@@ -1276,7 +1276,7 @@ export default function Home() {
 
                     <button
                       type="submit"
-                      className="wp-btn-pill bg-[#6B2523] text-[#F6E1CB] hover:bg-[#3A2E2A] hover:text-white shadow-lg w-full py-4 text-xs font-bold tracking-widest mt-2"
+                      className="wp-btn-pill bg-[#5E332E] text-[#E5E2DC] hover:bg-[#1E1B18] hover:text-white shadow-lg w-full py-4 text-xs font-bold tracking-widest mt-2"
                     >
                       Submit Event Inquiry
                     </button>

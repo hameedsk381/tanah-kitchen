@@ -24,7 +24,7 @@ export default function Philosophy() {
       <section
         id="philosophy"
         ref={containerRef}
-        className="relative w-full bg-[#882B06] text-[#F2E8D8] py-24 md:py-32 overflow-hidden"
+        className="relative w-full bg-[#5E332E] text-[#F2E8D8] py-24 md:py-32 overflow-hidden"
       >
         <div className="absolute inset-0 bg-gradient-to-t from-dark-brown/40 via-transparent to-transparent pointer-events-none z-0" />
 
@@ -69,8 +69,8 @@ export default function Philosophy() {
 
               <div className="space-y-6 text-base font-light text-[#F2E8D8]/95 leading-relaxed font-body">
                 {/* Etymology */}
-                <div className="border-l-2 border-[#DEC8AB]/50 pl-5">
-                  <p className="text-sm font-semibold tracking-[0.15em] uppercase text-[#DEC8AB] mb-1 font-body">Tanah — تناه — "Earth"</p>
+                <div className="border-l-2 border-[#E5E2DC]/50 pl-5">
+                  <p className="text-sm font-semibold tracking-[0.15em] uppercase text-[#E5E2DC] mb-1 font-body">Tanah — تناه — "Earth"</p>
                   <p className="text-sm opacity-85">
                     Grounding. Nourishment. Warmth. Belonging. Named after the word meaning "Earth", Tanah was born from the belief that humans—like birds—always seek a place to rest, reconnect, and belong.
                   </p>
@@ -89,13 +89,13 @@ export default function Philosophy() {
                 </p>
 
                 {/* Brand Manifesto */}
-                <div className="bg-[#F2E8D8]/10 border border-[#DEC8AB]/30 p-5 mt-2">
-                  <p className="text-base italic font-display text-[#DEC8AB] leading-relaxed">
+                <div className="bg-[#F2E8D8]/10 border border-[#E5E2DC]/30 p-5 mt-2">
+                  <p className="text-base italic font-display text-[#E5E2DC] leading-relaxed">
                     "We've built this place like birds build their nests—branch by branch, to make you feel at home."
                   </p>
                 </div>
 
-                <p className="text-xl font-display text-[#DEC8AB] italic pt-2">
+                <p className="text-xl font-display text-[#E5E2DC] italic pt-2">
                   Because the best moments are not planned.<br />
                   They happen around a table.
                 </p>
@@ -104,7 +104,7 @@ export default function Philosophy() {
               <div className="mt-10">
                 <Link
                   to="/about"
-                  className="btn-outline border-[#F2E8D8] text-[#F2E8D8] hover:bg-[#F2E8D8] hover:text-[#882B06] py-3.5 px-8 text-[9px] tracking-[0.2em]"
+                  className="btn-outline border-[#F2E8D8] text-[#F2E8D8] hover:bg-[#F2E8D8] hover:text-[#5E332E] py-3.5 px-8 text-[9px] tracking-[0.2em]"
                 >
                   Discover Our Journey
                 </Link>
@@ -134,7 +134,7 @@ export default function Philosophy() {
       {/* ── Section 2: Design Principles ── */}
       <section
         ref={principlesRef}
-        className="relative w-full bg-[#F6E1CB] py-16 border-t border-[#6B2523]/10 overflow-hidden"
+        className="relative w-full bg-[#E5E2DC] py-16 border-t border-[#5E332E]/10 overflow-hidden"
       >
         <div className="max-width-container px-8 mx-auto">
           <motion.div
@@ -143,10 +143,10 @@ export default function Philosophy() {
             transition={{ duration: 1 }}
             className="text-center mb-10"
           >
-            <span className="text-[10px] font-semibold tracking-[0.5em] uppercase text-[#6B2523] block mb-2 font-body">
+            <span className="text-[10px] font-semibold tracking-[0.5em] uppercase text-[#5E332E] block mb-2 font-body">
               DESIGN PRINCIPLES
             </span>
-            <h3 className="font-display text-2xl md:text-3xl text-[#6B2523]">How We Think</h3>
+            <h3 className="font-display text-2xl md:text-3xl text-[#5E332E]">How We Think</h3>
           </motion.div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -156,12 +156,12 @@ export default function Philosophy() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isPrinciplesInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: i * 0.08 }}
-                className="border border-[#6B2523]/20 p-4 text-center group hover:bg-[#6B2523] hover:border-[#6B2523] transition-all duration-500"
+                className="border border-[#5E332E]/20 p-4 text-center group hover:bg-[#5E332E] hover:border-[#5E332E] transition-all duration-500"
               >
-                <p className="font-display font-bold text-sm text-[#6B2523] group-hover:text-[#F6E1CB] transition-colors duration-500 uppercase tracking-wide">
+                <p className="font-display font-bold text-sm text-[#5E332E] group-hover:text-[#E5E2DC] transition-colors duration-500 uppercase tracking-wide">
                   {p.contrast}
                 </p>
-                <p className="text-[10px] text-[#3A2E2A]/50 group-hover:text-[#F6E1CB]/60 transition-colors duration-500 mt-1 font-body">
+                <p className="text-[10px] text-[#1E1B18]/50 group-hover:text-[#E5E2DC]/60 transition-colors duration-500 mt-1 font-body">
                   {p.over}
                 </p>
               </motion.div>
