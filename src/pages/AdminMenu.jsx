@@ -885,6 +885,19 @@ export default function AdminMenu() {
                 >
                   <Download className="w-4 h-4" />
                 </button>
+
+                <button
+                  onClick={() => {
+                    if (window.confirm('Reset menu items back to factory defaults in MongoDB?')) {
+                      resetToDefault()
+                      showToast('↺ Menu items reset to default')
+                    }
+                  }}
+                  className="p-2 bg-white rounded-xl border border-red-200 hover:bg-red-50 text-red-600 shadow-xs"
+                  title="Reset Menu"
+                >
+                  <RotateCcw className="w-4 h-4" />
+                </button>
               </div>
             </div>
 
