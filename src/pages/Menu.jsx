@@ -330,16 +330,22 @@ export default function Menu() {
                           onClick={() => setHoveredItem(item)}
                           className="group relative rounded-2xl overflow-hidden bg-white border border-[#5E332E]/10 p-3 hover:border-[#5E332E]/40 transition-all cursor-pointer shadow-sm hover:shadow-md"
                         >
-                          <div className="aspect-square w-full rounded-xl overflow-hidden mb-2 relative">
-                            <img
-                              src={item.image}
-                              alt={item.name}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            />
-                            <div className="absolute top-1.5 left-1.5 shadow-sm">
+                          {item.image && item.image.trim() !== '' ? (
+                            <div className="aspect-square w-full rounded-xl overflow-hidden mb-2 relative">
+                              <img
+                                src={item.image}
+                                alt={item.name}
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                              />
+                              <div className="absolute top-1.5 left-1.5 shadow-sm">
+                                {item.nonVeg ? <NonVegMark /> : <VegMark />}
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="mb-2 flex items-center gap-1.5">
                               {item.nonVeg ? <NonVegMark /> : <VegMark />}
                             </div>
-                          </div>
+                          )}
                           <h4 className="font-display font-bold text-xs text-[#5E332E] line-clamp-1 group-hover:text-[#5E332E]">
                             {item.name}
                           </h4>
@@ -419,72 +425,82 @@ export default function Menu() {
                 {/* Items List */}
                 <motion.div layout className="space-y-4">
                   <AnimatePresence>
-                    {filteredItems.map((item) => (
-                      <motion.div
-                        layout
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.95 }}
-                        transition={{ duration: 0.2 }}
-                        key={item.id}
-                        onMouseEnter={() => setHoveredItem(item)}
-                        className="wp-card p-5 flex gap-4 sm:gap-5 items-start group cursor-pointer text-left hover:border-[#5E332E]/30"
-                      >
-                        {/* Thumbnail with Dietary Marker */}
-                        <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden bg-black/5 flex-shrink-0 relative border border-[#5E332E]/10">
-                          <img
-                            src={item.image}
-                            alt={item.name}
-                            loading="lazy"
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                          <div className="absolute top-1.5 left-1.5 shadow-sm">
-                            {item.nonVeg ? <NonVegMark /> : <VegMark />}
-                          </div>
-                        </div>
-
-                        {/* Text Description & Badges */}
-                        <div className="flex-grow space-y-1.5 min-w-0">
-                          <div className="flex items-baseline justify-between gap-3">
-                            <div className="flex items-center gap-2 flex-wrap min-w-0">
-                              <h3 className="font-display text-lg font-bold text-[#5E332E] group-hover:text-[#5E332E] transition-colors leading-snug">
-                                {item.name}
-                              </h3>
-
-                              {item.special && (
-                                <span className="text-[9px] font-bold tracking-wider px-2 py-0.5 bg-[#E5E2DC]/30 text-[#5E332E] border border-[#E5E2DC] rounded-full uppercase">
-                                  ✦ Special
-                                </span>
-                              )}
-                            </div>
-                          </div>
-
-                          <p className="text-xs font-light text-[#1E1B18]/80 leading-relaxed font-body">
-                            {item.desc}
-                          </p>
-
-                          {/* Pairing Suggestion */}
-                          {getPairingSuggestion(item) && (
-                            <div className="text-[10px] text-[#5E332E] font-semibold flex items-center gap-1.5 pt-0.5">
-                              <span className="px-2 py-0.5 bg-[#E5E2DC]/20 rounded-md border border-[#E5E2DC]/50 font-sans">
-                                {getPairingSuggestion(item)}
-                              </span>
+                    {filteredItems.map((item) => {
+                      const hasImage = Boolean(item.image && item.image.trim() !== '')
+                      return (
+                        <motion.div
+                          layout
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, scale: 0.95 }}
+                          transition={{ duration: 0.2 }}
+                          key={item.id}
+                          onMouseEnter={() => setHoveredItem(item)}
+                          className="wp-card p-5 flex gap-4 sm:gap-5 items-start group cursor-pointer text-left hover:border-[#5E332E]/30"
+                        >
+                          {/* Thumbnail with Dietary Marker (Only if image exists) */}
+                          {hasImage && (
+                            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden bg-black/5 flex-shrink-0 relative border border-[#5E332E]/10">
+                              <img
+                                src={item.image}
+                                alt={item.name}
+                                loading="lazy"
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                              />
+                              <div className="absolute top-1.5 left-1.5 shadow-sm">
+                                {item.nonVeg ? <NonVegMark /> : <VegMark />}
+                              </div>
                             </div>
                           )}
 
-                          <div className="flex flex-wrap gap-1.5 pt-1">
-                            {item.tags.map((tag, tIdx) => (
-                              <span
-                                key={tIdx}
-                                className="text-[9px] tracking-wider uppercase font-semibold text-[#5E332E] bg-[#5E332E]/5 px-2 py-0.5 rounded border border-[#5E332E]/10"
-                              >
-                                {tag}
-                              </span>
-                            ))}
+                          {/* Text Description & Badges */}
+                          <div className="flex-grow space-y-1.5 min-w-0">
+                            <div className="flex items-baseline justify-between gap-3">
+                              <div className="flex items-center gap-2.5 flex-wrap min-w-0">
+                                {!hasImage && (
+                                  <div className="flex-shrink-0">
+                                    {item.nonVeg ? <NonVegMark /> : <VegMark />}
+                                  </div>
+                                )}
+                                <h3 className="font-display text-lg font-bold text-[#5E332E] group-hover:text-[#5E332E] transition-colors leading-snug">
+                                  {item.name}
+                                </h3>
+
+                                {item.special && (
+                                  <span className="text-[9px] font-bold tracking-wider px-2 py-0.5 bg-[#E5E2DC]/30 text-[#5E332E] border border-[#E5E2DC] rounded-full uppercase">
+                                    ✦ Special
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+
+                            <p className="text-xs font-light text-[#1E1B18]/80 leading-relaxed font-body">
+                              {item.desc}
+                            </p>
+
+                            {/* Pairing Suggestion */}
+                            {getPairingSuggestion(item) && (
+                              <div className="text-[10px] text-[#5E332E] font-semibold flex items-center gap-1.5 pt-0.5">
+                                <span className="px-2 py-0.5 bg-[#E5E2DC]/20 rounded-md border border-[#E5E2DC]/50 font-sans">
+                                  {getPairingSuggestion(item)}
+                                </span>
+                              </div>
+                            )}
+
+                            <div className="flex flex-wrap gap-1.5 pt-1">
+                              {item.tags && item.tags.map((tag, tIdx) => (
+                                <span
+                                  key={tIdx}
+                                  className="text-[9px] tracking-wider uppercase font-semibold text-[#5E332E] bg-[#5E332E]/5 px-2 py-0.5 rounded border border-[#5E332E]/10"
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
                           </div>
-                        </div>
-                      </motion.div>
-                    ))}
+                        </motion.div>
+                      )
+                    })}
                   </AnimatePresence>
                 </motion.div>
 
@@ -512,22 +528,36 @@ export default function Menu() {
               <div className="hidden lg:block lg:col-span-5 sticky top-28 w-full text-left">
                 {activeShowcaseItem ? (
                   <motion.div layout className="wp-card p-6 space-y-6 shadow-2xl border border-[#5E332E]/15">
-                    <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-white border border-[#5E332E]/10">
-                      <AnimatePresence mode="wait">
-                        <motion.img
-                          key={activeShowcaseItem.id}
-                          src={activeShowcaseItem.image}
-                          alt={activeShowcaseItem.name}
-                          initial={{ opacity: 0, scale: 1.05 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.98 }}
-                          transition={{ duration: 0.4 }}
-                          className="w-full h-full object-cover filter brightness-[0.88] contrast-[1.05]"
-                        />
-                      </AnimatePresence>
+                    {activeShowcaseItem.image && activeShowcaseItem.image.trim() !== '' ? (
+                      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-white border border-[#5E332E]/10">
+                        <AnimatePresence mode="wait">
+                          <motion.img
+                            key={activeShowcaseItem.id}
+                            src={activeShowcaseItem.image}
+                            alt={activeShowcaseItem.name}
+                            initial={{ opacity: 0, scale: 1.05 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.98 }}
+                            transition={{ duration: 0.4 }}
+                            className="w-full h-full object-cover filter brightness-[0.88] contrast-[1.05]"
+                          />
+                        </AnimatePresence>
 
-                      <div className="absolute top-4 left-4 flex items-center gap-2">
-                        <span className="text-[9px] tracking-widest uppercase bg-white/95 backdrop-blur px-3 py-1 rounded-full border border-[#5E332E]/20 text-[#5E332E] font-bold shadow-sm flex items-center gap-1.5">
+                        <div className="absolute top-4 left-4 flex items-center gap-2">
+                          <span className="text-[9px] tracking-widest uppercase bg-white/95 backdrop-blur px-3 py-1 rounded-full border border-[#5E332E]/20 text-[#5E332E] font-bold shadow-sm flex items-center gap-1.5">
+                            {activeShowcaseItem.nonVeg ? <NonVegMark /> : <VegMark />}
+                            {activeShowcaseItem.category}
+                          </span>
+                          {activeShowcaseItem.special && (
+                            <span className="text-[9px] tracking-widest uppercase bg-[#5E332E] text-[#E5E2DC] px-3 py-1 rounded-full font-bold shadow-sm">
+                              ✦ Chef Pick
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="p-4 rounded-2xl bg-[#5E332E]/5 border border-[#5E332E]/10 flex items-center justify-between">
+                        <span className="text-[10px] tracking-widest uppercase px-3 py-1 rounded-full bg-white border border-[#5E332E]/20 text-[#5E332E] font-bold flex items-center gap-1.5">
                           {activeShowcaseItem.nonVeg ? <NonVegMark /> : <VegMark />}
                           {activeShowcaseItem.category}
                         </span>
@@ -537,7 +567,7 @@ export default function Menu() {
                           </span>
                         )}
                       </div>
-                    </div>
+                    )}
 
                     <div className="space-y-3">
                       <div className="flex justify-between items-baseline border-b border-[#5E332E]/10 pb-3">
@@ -557,7 +587,7 @@ export default function Menu() {
                       )}
 
                       <div className="flex flex-wrap gap-1.5 pt-1">
-                        {activeShowcaseItem.tags.map((tag, tIdx) => (
+                        {activeShowcaseItem.tags && activeShowcaseItem.tags.map((tag, tIdx) => (
                           <span
                             key={tIdx}
                             className="text-[9px] tracking-wider uppercase font-semibold text-[#5E332E] bg-[#5E332E]/5 px-2 py-0.5 rounded border border-[#5E332E]/10"
