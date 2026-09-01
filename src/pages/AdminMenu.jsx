@@ -153,6 +153,38 @@ export default function AdminMenu() {
   const [imageSearchQuery, setImageSearchQuery] = useState('')
   const [photoPage, setPhotoPage] = useState(1)
   const [toastMessage, setToastMessage] = useState('')
+  const [storageInfo, setStorageInfo] = useState({ engine: 'local', provider: 'Local Disk' })
+
+  useEffect(() => {
+    fetch('/api/storage/status')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.provider) setStorageInfo(data)
+      })
+      .catch(() => {})
+  }, [])
+
+  useEffect(() => {
+    fetch('/api/uploads')
+      .then(res => res.json())
+      .then(serverUploads => {
+        if (Array.isArray(serverUploads) && serverUploads.length > 0) {
+          const formatted = serverUploads.map((u, idx) => ({
+            path: u.url,
+            id: `server-upload-${idx}-${u.filename}`,
+            number: idx + 1,
+            name: u.filename || `Photo #${idx + 1}`,
+            isCustom: true,
+            storage: u.storage || 'gcs'
+          }))
+          setCustomUploads(formatted)
+          try {
+            localStorage.setItem('tanah_custom_uploads_v1', JSON.stringify(formatted))
+          } catch(e) {}
+        }
+      })
+      .catch(() => {})
+  }, [isPhotoPickerOpen])
 
   const fileInputRef = useRef(null)
 
@@ -1646,9 +1678,18 @@ export default function AdminMenu() {
               {/* Header with Direct Upload Action */}
               <div className="p-5 sm:p-6 border-b border-[#6B2523]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#FAF6F0]">
                 <div>
-                  <h3 className="font-display font-bold text-lg sm:text-xl text-[#6B2523]">
-                    Select or Upload Food Photograph
-                  </h3>
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-display font-bold text-lg sm:text-xl text-[#6B2523]">
+                      Select or Upload Food Photograph
+                    </h3>
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
+                      storageInfo.connected 
+                        ? 'bg-emerald-50 text-emerald-700 border-emerald-300'
+                        : 'bg-amber-50 text-amber-700 border-amber-300'
+                    }`}>
+                      {storageInfo.connected ? '☁️ GCS Connected' : '📁 Local Storage'}
+                    </span>
+                  </div>
                   <p className="text-xs text-[#3A2E2A]/70 font-light mt-0.5">
                     Click any photo to assign it, or upload your own custom high-res image.
                   </p>

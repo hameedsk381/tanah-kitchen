@@ -11,6 +11,7 @@ import { MenuItem } from './models/MenuItem.js'
 import { BentoSlot } from './models/BentoSlot.js'
 import { GalleryItem } from './models/GalleryItem.js'
 import { AdminUser } from './models/AdminUser.js'
+import { Storage } from '@google-cloud/storage'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -27,6 +28,43 @@ const SRC_DATA_DIR = path.join(ROOT_DIR, 'src', 'data')
 // Ensure uploads directory exists
 if (!fs.existsSync(UPLOADS_DIR)) {
   fs.mkdirSync(UPLOADS_DIR, { recursive: true })
+}
+
+// ── GOOGLE CLOUD STORAGE CONFIGURATION ──
+let gcsBucket = null
+let gcsBucketName = process.env.GCP_STORAGE_BUCKET || ''
+
+try {
+  const gcsOptions = {}
+
+  if (process.env.GCP_PROJECT_ID) {
+    gcsOptions.projectId = process.env.GCP_PROJECT_ID
+  }
+
+  if (process.env.GCP_CLIENT_EMAIL && process.env.GCP_PRIVATE_KEY) {
+    gcsOptions.credentials = {
+      client_email: process.env.GCP_CLIENT_EMAIL,
+      private_key: process.env.GCP_PRIVATE_KEY.replace(/\\n/g, '\n')
+    }
+  } else if (process.env.GCP_SERVICE_ACCOUNT_KEY) {
+    try {
+      gcsOptions.credentials = JSON.parse(process.env.GCP_SERVICE_ACCOUNT_KEY)
+    } catch (e) {
+      console.warn('⚠️ Could not parse GCP_SERVICE_ACCOUNT_KEY JSON:', e.message)
+    }
+  } else if (process.env.GOOGLE_APPLICATION_CREDENTIALS && fs.existsSync(process.env.GOOGLE_APPLICATION_CREDENTIALS)) {
+    gcsOptions.keyFilename = process.env.GOOGLE_APPLICATION_CREDENTIALS
+  }
+
+  if (gcsBucketName && (gcsOptions.credentials || gcsOptions.keyFilename || process.env.GOOGLE_APPLICATION_CREDENTIALS)) {
+    const storage = new Storage(gcsOptions)
+    gcsBucket = storage.bucket(gcsBucketName)
+    console.log(`☁️ Google Cloud Storage initialized for bucket: ${gcsBucketName}`)
+  } else {
+    console.log('ℹ️ Google Cloud Storage not fully configured. Using local disk storage fallback (/uploads).')
+  }
+} catch (err) {
+  console.warn('⚠️ Google Cloud Storage initialization skipped:', err.message)
 }
 
 // Load default fallback categories
@@ -740,39 +778,113 @@ app.post('/api/gallery/reset', async (req, res) => {
   }
 })
 
-// ── 4. FILE UPLOADS API ──
-app.post('/api/upload', upload.single('photo'), (req, res) => {
-  if (!req.file) {
-    return res.status(400).json({ error: 'No image file uploaded' })
-  }
-  const fileUrl = `/uploads/${req.file.filename}`
-  res.status(201).json({
-    success: true,
-    url: fileUrl,
-    filename: req.file.filename,
-    originalName: req.file.originalname,
-    size: req.file.size
+// ── 4. FILE UPLOADS & CLOUD STORAGE API ──
+app.get('/api/storage/status', (req, res) => {
+  res.json({
+    engine: gcsBucket ? 'gcs' : 'local',
+    connected: Boolean(gcsBucket),
+    bucket: gcsBucketName || null,
+    provider: gcsBucket ? 'Google Cloud Storage' : 'Local Disk (/uploads)'
   })
 })
 
-app.get('/api/uploads', (req, res) => {
+app.post('/api/upload', upload.single('photo'), async (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: 'No image file uploaded' })
+  }
+
+  const filename = req.file.filename
+  const localFilePath = path.join(UPLOADS_DIR, filename)
+
+  // 1. If Google Cloud Storage is active, upload to GCS bucket
+  if (gcsBucket) {
+    try {
+      const destination = `uploads/${filename}`
+      await gcsBucket.upload(localFilePath, {
+        destination,
+        metadata: {
+          contentType: req.file.mimetype,
+          cacheControl: 'public, max-age=31536000, immutable'
+        }
+      })
+
+      const publicPrefix = process.env.GCP_PUBLIC_URL_PREFIX || `https://storage.googleapis.com/${gcsBucketName}`
+      const gcsUrl = `${publicPrefix.replace(/\/$/, '')}/${destination}`
+
+      return res.status(201).json({
+        success: true,
+        url: gcsUrl,
+        filename,
+        originalName: req.file.originalname,
+        size: req.file.size,
+        storage: 'gcs'
+      })
+    } catch (gcsErr) {
+      console.error('⚠️ GCS upload error, falling back to local URL:', gcsErr.message)
+    }
+  }
+
+  // 2. Local Disk Fallback URL
+  const fileUrl = `/uploads/${filename}`
+  res.status(201).json({
+    success: true,
+    url: fileUrl,
+    filename,
+    originalName: req.file.originalname,
+    size: req.file.size,
+    storage: 'local'
+  })
+})
+
+app.get('/api/uploads', async (req, res) => {
   try {
-    const files = fs.readdirSync(UPLOADS_DIR)
-    const list = files
-      .filter((f) => !f.startsWith('.'))
-      .map((filename) => {
+    const list = []
+    const seen = new Set()
+
+    // 1. Retrieve uploaded items from Google Cloud Storage
+    if (gcsBucket) {
+      try {
+        const [files] = await gcsBucket.getFiles({ prefix: 'uploads/' })
+        const publicPrefix = process.env.GCP_PUBLIC_URL_PREFIX || `https://storage.googleapis.com/${gcsBucketName}`
+
+        for (const file of files) {
+          const filename = path.basename(file.name)
+          if (!filename || filename === 'uploads') continue
+          const url = `${publicPrefix.replace(/\/$/, '')}/${file.name}`
+          seen.add(filename)
+          list.push({
+            filename,
+            url,
+            createdAt: file.metadata.timeCreated || new Date(),
+            size: Number(file.metadata.size) || 0,
+            storage: 'gcs'
+          })
+        }
+      } catch (err) {
+        console.warn('Could not list GCS files:', err.message)
+      }
+    }
+
+    // 2. Combine with local disk uploads
+    if (fs.existsSync(UPLOADS_DIR)) {
+      const localFiles = fs.readdirSync(UPLOADS_DIR)
+      for (const filename of localFiles) {
+        if (filename.startsWith('.') || seen.has(filename)) continue
         const stats = fs.statSync(path.join(UPLOADS_DIR, filename))
-        return {
+        list.push({
           filename,
           url: `/uploads/${filename}`,
           createdAt: stats.birthtime,
-          size: stats.size
-        }
-      })
-      .sort((a, b) => b.createdAt - a.createdAt)
+          size: stats.size,
+          storage: 'local'
+        })
+      }
+    }
+
+    list.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
     res.json(list)
   } catch (err) {
-    res.status(500).json({ error: 'Could not read uploads directory' })
+    res.status(500).json({ error: 'Could not read uploads catalog' })
   }
 })
 

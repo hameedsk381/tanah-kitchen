@@ -28,6 +28,11 @@ services:
       - MONGODB_URI=mongodb://mongo:27017/tanah_kitchen
       - ADMIN_USERNAME=${ADMIN_USERNAME:-admin}
       - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - GCP_PROJECT_ID=${GCP_PROJECT_ID}
+      - GCP_STORAGE_BUCKET=${GCP_STORAGE_BUCKET}
+      - GCP_CLIENT_EMAIL=${GCP_CLIENT_EMAIL}
+      - GCP_PRIVATE_KEY=${GCP_PRIVATE_KEY}
+      - GCP_PUBLIC_URL_PREFIX=${GCP_PUBLIC_URL_PREFIX}
     volumes:
       # Host volume for custom uploaded photos
       - ./uploads:/app/uploads
