@@ -60,10 +60,15 @@
   --color-beige-dark: #D0CCC4;
   --color-dark-brown: #331A17;
 
-  /* Typography */
-  --font-display: 'Baloo 2', system-ui, sans-serif;
-  --font-body: 'Poppins', system-ui, sans-serif;
-  --font-sans: 'Poppins', system-ui, sans-serif;
+  /* Typography (Official Brand Typeface Tier) */
+  --font-neuzon: 'Neuzon', 'Neuzon W00', 'Syne', system-ui, sans-serif;
+  --font-heading-now: 'Heading Now', 'Heading Now W05', 'Oswald', 'Bebas Neue', sans-serif;
+  --font-ageo: 'Ageo', 'Ageo Personal Use', 'Outfit', 'Poppins', system-ui, sans-serif;
+
+  --font-display: var(--font-neuzon);
+  --font-secondary: var(--font-heading-now);
+  --font-body: var(--font-ageo);
+  --font-sans: var(--font-ageo);
 
   /* Spacing */
   --spacing-section: clamp(5rem, 8vw, 8rem);
