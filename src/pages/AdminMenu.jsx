@@ -830,7 +830,7 @@ export default function AdminMenu() {
               
               {/* Category Filter */}
               <div className="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 scrollbar-none">
-                {['All', 'Breakfast', 'Lunch', 'Dinner', 'Cocktails', 'Beverages', 'Desserts'].map((cat) => (
+                {['All', ...(categories || []).filter(c => c !== 'All')].map((cat) => (
                   <button
                     key={cat}
                     onClick={() => {
@@ -1072,7 +1072,7 @@ export default function AdminMenu() {
             {/* Category Filter Tabs & Search */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 scrollbar-none">
-                {['All', 'Ambience', 'Rooftop', 'Events', 'Food'].map((cat) => (
+                {['All', ...(galleryCategories || []).filter(c => c !== 'All')].map((cat) => (
                   <button
                     key={cat}
                     onClick={() => {
