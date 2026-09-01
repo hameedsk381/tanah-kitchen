@@ -1,12 +1,30 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { CheckCircle, Calendar, Clock, Users, Phone, Mail, MapPin, Sparkles, ChevronRight, ShieldCheck } from 'lucide-react'
+import { CheckCircle, Calendar, Clock, Users, Phone, Mail, MapPin, Sparkles, ChevronRight, ChevronDown, Check, ShieldCheck } from 'lucide-react'
 import SEO from '../components/SEO'
 import CorporatePackagesSection from '../components/CorporatePackagesSection'
 
 const timeSlots = [
-  '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM',
-  '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM', '9:00 PM', '9:30 PM'
+  // Lunch Slots
+  { slot: '12:00 PM', period: 'Lunch' },
+  { slot: '12:30 PM', period: 'Lunch' },
+  { slot: '1:00 PM', period: 'Lunch' },
+  { slot: '1:30 PM', period: 'Lunch' },
+  { slot: '2:00 PM', period: 'Lunch' },
+  { slot: '2:30 PM', period: 'Lunch' },
+  { slot: '3:00 PM', period: 'Lunch' },
+  { slot: '3:30 PM', period: 'Lunch' },
+  // Dinner Slots
+  { slot: '6:30 PM', period: 'Dinner' },
+  { slot: '7:00 PM', period: 'Dinner' },
+  { slot: '7:30 PM', period: 'Dinner' },
+  { slot: '8:00 PM', period: 'Dinner' },
+  { slot: '8:30 PM', period: 'Dinner' },
+  { slot: '9:00 PM', period: 'Dinner' },
+  { slot: '9:30 PM', period: 'Dinner' },
+  { slot: '10:00 PM', period: 'Dinner' },
+  { slot: '10:30 PM', period: 'Dinner' },
+  { slot: '11:00 PM', period: 'Dinner' }
 ]
 
 const partySizes = [
@@ -15,6 +33,9 @@ const partySizes = [
 
 export default function Book() {
   const [activeMode, setActiveMode] = useState('table') // 'table' | 'corporate'
+  const [timeDropdownOpen, setTimeDropdownOpen] = useState(false)
+  const timeDropdownRef = useRef(null)
+
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -30,6 +51,14 @@ export default function Book() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+
+    const handleClickOutside = (event) => {
+      if (timeDropdownRef.current && !timeDropdownRef.current.contains(event.target)) {
+        setTimeDropdownOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
   const handleChange = (e) => {
@@ -343,20 +372,98 @@ export default function Book() {
                       {errors.date && <span className="text-xs text-red-600 block mt-1 font-medium">{errors.date}</span>}
                     </div>
 
-                    <div>
+                    <div className="relative" ref={timeDropdownRef}>
                       <label className="text-xs font-bold uppercase tracking-wider text-[#5E332E] block mb-1.5">
                         Time Slot *
                       </label>
-                      <select
-                        name="time"
-                        value={form.time}
-                        onChange={handleChange}
-                        className="w-full px-3.5 py-3 rounded-xl border border-[#5E332E]/20 text-xs sm:text-sm focus:outline-none bg-white"
+                      <button
+                        type="button"
+                        onClick={() => setTimeDropdownOpen(!timeDropdownOpen)}
+                        className="w-full px-3.5 py-3 rounded-xl border border-[#5E332E]/20 text-xs sm:text-sm bg-white text-left flex items-center justify-between focus:outline-none focus:border-[#5E332E] cursor-pointer shadow-xs"
                       >
-                        {timeSlots.map((t) => (
-                          <option key={t} value={t}>{t}</option>
-                        ))}
-                      </select>
+                        <div className="flex items-center gap-2 text-[#1E1B18] font-medium">
+                          <Clock className="w-4 h-4 text-[#5E332E]/70" />
+                          <span>{form.time || 'Select Time'}</span>
+                        </div>
+                        <ChevronDown className={`w-4 h-4 text-[#5E332E]/70 transition-transform duration-200 ${timeDropdownOpen ? 'rotate-180' : ''}`} />
+                      </button>
+
+                      {/* Smoothly Scrollable Time Dropdown Menu */}
+                      <AnimatePresence>
+                        {timeDropdownOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 5 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 5 }}
+                            transition={{ duration: 0.15 }}
+                            className="absolute left-0 right-0 top-full mt-1.5 bg-white rounded-2xl border border-[#5E332E]/20 shadow-2xl z-50 overflow-hidden"
+                          >
+                            <div className="p-2 border-b border-[#5E332E]/10 bg-[#FAF8F5]/80 flex items-center justify-between text-[11px] font-bold uppercase text-[#5E332E] tracking-wider">
+                              <span>Select Time Slot</span>
+                              <span className="font-normal text-[10px] text-[#1E1B18]/60">12:00 PM – 12:00 AM</span>
+                            </div>
+
+                            <div 
+                              className="max-h-56 overflow-y-auto p-1.5 divide-y divide-[#5E332E]/5 scrollbar-thin scrollbar-thumb-[#5E332E]/30"
+                              style={{ maxHeight: '220px', WebkitOverflowScrolling: 'touch' }}
+                            >
+                              {/* Lunch Section */}
+                              <div className="px-2 py-1 text-[10px] font-extrabold uppercase tracking-widest text-[#5E332E]/60">
+                                ☀️ Lunch &amp; Afternoon
+                              </div>
+                              {timeSlots.filter(t => t.period === 'Lunch').map((t) => {
+                                const isSelected = form.time === t.slot
+                                return (
+                                  <button
+                                    type="button"
+                                    key={t.slot}
+                                    onClick={() => {
+                                      setForm({ ...form, time: t.slot })
+                                      setTimeDropdownOpen(false)
+                                    }}
+                                    className={`w-full px-3 py-2 text-left rounded-lg text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${
+                                      isSelected
+                                        ? 'bg-[#5E332E] text-[#E5E2DC]'
+                                        : 'text-[#1E1B18] hover:bg-[#FAF8F5] hover:text-[#5E332E]'
+                                    }`}
+                                  >
+                                    <span>{t.slot}</span>
+                                    {isSelected && <Check className="w-3.5 h-3.5" />}
+                                  </button>
+                                )
+                              })}
+
+                              {/* Dinner Section */}
+                              <div className="px-2 py-1 text-[10px] font-extrabold uppercase tracking-widest text-[#5E332E]/60 mt-1">
+                                🌙 Sunset &amp; Dinner
+                              </div>
+                              {timeSlots.filter(t => t.period === 'Dinner').map((t) => {
+                                const isSelected = form.time === t.slot
+                                return (
+                                  <button
+                                    type="button"
+                                    key={t.slot}
+                                    onClick={() => {
+                                      setForm({ ...form, time: t.slot })
+                                      setTimeDropdownOpen(false)
+                                    }}
+                                    className={`w-full px-3 py-2 text-left rounded-lg text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${
+                                      isSelected
+                                        ? 'bg-[#5E332E] text-[#E5E2DC]'
+                                        : 'text-[#1E1B18] hover:bg-[#FAF8F5] hover:text-[#5E332E]'
+                                    }`}
+                                  >
+                                    <span>{t.slot}</span>
+                                    {isSelected && <Check className="w-3.5 h-3.5" />}
+                                  </button>
+                                )
+                              })}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+
+                      {errors.time && <span className="text-xs text-red-600 block mt-1 font-medium">{errors.time}</span>}
                     </div>
 
                     <div>
