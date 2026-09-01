@@ -221,12 +221,12 @@ export default function Menu() {
       />
       
       {/* 1. Page Header with Food/Liquid Switcher */}
-      <section className={`relative py-20 md:py-24 text-center ${menuType === 'liquid' ? 'border-b border-[#ECE9DA]/15 bg-transparent' : 'section-dark border-b border-light-cream/15'}`}>
+      <section className="section-dark bg-[#5E332E] relative py-20 md:py-24 text-center border-b border-[#E5E2DC]/15">
         <div className="relative z-10 px-8 max-width-container mx-auto">
           
           {/* Main Menu Type Selector */}
           <div className="flex justify-center mb-8">
-            <div className="inline-flex rounded-full border border-white/20 p-1.5 bg-black/20 backdrop-blur-md shadow-lg">
+            <div className="inline-flex rounded-full border border-white/20 p-1.5 bg-black/30 backdrop-blur-md shadow-lg">
               <button
                 onClick={() => setMenuType('food')}
                 className={`px-8 py-2.5 rounded-full text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer ${ menuType === 'food' ? 'bg-[#E5E2DC] text-[#5E332E] shadow-md' : 'text-[#E5E2DC]/80 hover:text-white' }`}
