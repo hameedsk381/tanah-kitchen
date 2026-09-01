@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs'
 import { MenuItem } from './models/MenuItem.js'
 import { BentoSlot } from './models/BentoSlot.js'
 import { GalleryItem } from './models/GalleryItem.js'
+import { Content } from './models/Content.js'
 import { AdminUser } from './models/AdminUser.js'
 import { getAdminConfig } from './config/admin.js'
 import { loadMenuSeed, loadGallerySeed, loadBentoSeed } from './lib/seed.js'
@@ -81,6 +82,19 @@ async function autoSeedDatabase() {
         await GalleryItem.insertMany(rawGallery.items)
         console.log(`✓ Seeded ${rawGallery.items.length} gallery items into MongoDB collection`)
       }
+    }
+
+    // 5. Seed CMS Content into MongoDB
+    const contentCount = await Content.countDocuments()
+    if (contentCount === 0) {
+      const defaultContact = {
+        phoneNumbers: ['+91-8977730291', '+91-8977730292'],
+        whatsappNumber: '+91-8977730291',
+        email: 'reservations@tanahkitchen.com',
+        address: 'Sy no 43, 44 & 45, Khajaguda Hills, beside Lanco Hills Road, Chitrapuri Colony, Hyderabad, Telangana 500104'
+      }
+      await Content.create({ key: 'contact', value: defaultContact })
+      console.log('✓ Seeded default CMS Content (contact) into MongoDB')
     }
   } catch (err) {
     console.error('Error during MongoDB auto-seeding:', err)
