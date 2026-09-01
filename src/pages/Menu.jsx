@@ -242,7 +242,7 @@ export default function Menu() {
             </div>
           </div>
 
-          {menuType === 'food' && (
+          {menuType === 'food' ? (
             <>
               <div className="mb-3 flex justify-center">
                 <img
@@ -266,6 +266,31 @@ export default function Menu() {
               <div className="w-20 h-[2px] bg-[#E5E2DC]/60 mx-auto rounded-full mb-4" />
               <p className="text-sm md:text-base font-light max-w-2xl mx-auto text-[#FAF8F5]/90 leading-relaxed font-body">
                 Crafted with fresh ingredients, bold spices, and culinary artistry—our menu spans regional heritage to international favorites.
+              </p>
+            </>
+          ) : (
+            <>
+              <div className="mb-3 flex justify-center">
+                <img
+                  src="https://storage.googleapis.com/yesj/assets/logos/logo-wordmark-light.png"
+                  alt="Tanah Kitchen & Bar"
+                  className="h-8 md:h-10 w-auto object-contain opacity-95"
+                />
+              </div>
+              <div className="mb-4">
+                <span className="wp-badge wp-badge-gold">
+                  ARTISANAL SPIRITS &amp; MIXOLOGY
+                </span>
+              </div>
+              <h1
+                className="font-display font-extrabold leading-tight text-[#E5E2DC] mb-4"
+                style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)' }}
+              >
+                The Liquid Library
+              </h1>
+              <div className="w-20 h-[2px] bg-[#E5E2DC]/60 mx-auto rounded-full mb-4" />
+              <p className="text-sm md:text-base font-light max-w-2xl mx-auto text-[#FAF8F5]/90 leading-relaxed font-body">
+                From aged single malts and craft botanical gin to bespoke rooftop cocktails and refreshing mocktails—curated for discerning palates.
               </p>
             </>
           )}
@@ -554,46 +579,21 @@ export default function Menu() {
         </section>
       ) : (
         /* ==========================================
-           LIQUID LIBRARY SECTION (16 Categories - No Prices)
+           LIQUID LIBRARY SECTION (16 Categories - Solid Silver Birch Canvas)
            ========================================== */
-        <div className="w-full relative section-dark min-h-screen text-center py-12">
-          {/* Main Content Container */}
-          <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 relative z-10">
-            {/* Header / Intro */}
-            <div className="flex flex-col items-center mb-12 sm:mb-16">
-              <div className="w-16 h-16 rounded-full bg-[#E5E2DC]/10 border border-[#E5E2DC]/20 flex items-center justify-center mb-4">
-                <LogoOwl className="w-8 h-8 text-[#E5E2DC]" />
-              </div>
-              <span className="wp-badge wp-badge-gold mb-3">
-                ARTISANAL SPIRITS &amp; MIXOLOGY
-              </span>
-              <h2 className="font-display text-4xl sm:text-5xl font-extrabold uppercase tracking-wide text-[#E5E2DC] mb-3">
-                Liquid Library
-              </h2>
-              <div className="w-24 h-[2px] bg-[#E5E2DC]/60 rounded-full mb-4" />
-              <p className="max-w-[620px] text-xs sm:text-sm font-light leading-relaxed text-[#FAF8F5]/85">
-                From aged single malts and craft botanical gin to bespoke rooftop cocktails and refreshing mocktails—curated for discerning palates.
-              </p>
-            </div>
-
-            {/* Liquid Library Menu Cards */}
-            <div className="w-full max-w-[840px] mx-auto px-4 sm:px-6 flex flex-col gap-8">
+        <section className="wp-section bg-[#FAF8F5] text-[#1E1B18] py-16">
+          <div className="wp-container">
+            {/* Liquid Library Menu Cards Grid */}
+            <div className="w-full max-w-[900px] mx-auto flex flex-col gap-10">
               {LIQUID_SECTIONS.map((section) => (
                 <div 
                   key={section.id}
                   id={`liquid-${section.id}`}
-                  className="w-full relative rounded-3xl p-6 sm:p-10 md:p-12 overflow-hidden border border-[#5E332E]/15 bg-[#FAF8F5] text-[#1E1B18] shadow-lg"
-                  style={{
-                    backgroundImage: section.watermark 
-                      ? `linear-gradient(rgba(250, 248, 245, 0.94), rgba(250, 248, 245, 0.94)), url('${section.watermark}')`
-                      : 'none',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                  }}
+                  className="w-full relative rounded-3xl p-6 sm:p-10 md:p-12 overflow-hidden border border-[#5E332E]/15 bg-white text-[#1E1B18] shadow-md hover:shadow-lg transition-shadow duration-300"
                 >
                   <div className="relative z-10 space-y-6">
                     {/* Category Heading */}
-                    <div className="border-b border-[#5E332E]/20 pb-4 flex items-center justify-between flex-wrap gap-2">
+                    <div className="border-b border-[#5E332E]/15 pb-4 flex items-center justify-between flex-wrap gap-2">
                       <div>
                         <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#5E332E] block mb-1">
                           LIQUID COLLECTION
@@ -611,9 +611,9 @@ export default function Menu() {
 
                     {/* Standard Items List */}
                     {section.items && (
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 pt-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 pt-2">
                         {section.items.map((item, idx) => (
-                          <div key={idx} className="p-4 rounded-2xl bg-white/70 border border-[#5E332E]/10 hover:border-[#5E332E]/30 transition-all text-left space-y-1">
+                          <div key={idx} className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#5E332E]/10 hover:border-[#5E332E]/30 transition-all text-left space-y-1.5">
                             <div className="flex items-center justify-between gap-2">
                               <h4 className="font-display text-base font-bold text-[#5E332E]">
                                 {item.name}
@@ -644,7 +644,7 @@ export default function Menu() {
                             </h4>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                               {sub.items.map((item, idx) => (
-                                <div key={idx} className="p-4 rounded-2xl bg-white/70 border border-[#5E332E]/10 hover:border-[#5E332E]/30 transition-all text-left space-y-1">
+                                <div key={idx} className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#5E332E]/10 hover:border-[#5E332E]/30 transition-all text-left space-y-1.5">
                                   <h5 className="font-display text-base font-bold text-[#5E332E]">
                                     {item.name}
                                   </h5>
@@ -663,8 +663,8 @@ export default function Menu() {
 
                     {/* Card Bottom Tagline */}
                     {section.tagline && (
-                      <div className="pt-6 border-t border-[#5E332E]/15 text-center">
-                        <p className="text-sm font-medium font-body text-[#5E332E]">
+                      <div className="pt-6 border-t border-[#5E332E]/10 text-center">
+                        <p className="text-xs sm:text-sm font-medium font-body text-[#5E332E]">
                           "{section.tagline}"
                         </p>
                       </div>
@@ -673,31 +673,8 @@ export default function Menu() {
                 </div>
               ))}
             </div>
-
-            {/* Diamond Border Strip */}
-            <div 
-              className="w-full overflow-hidden mt-20 mb-8 flex justify-center tracking-[0.5em] font-bold opacity-90 select-none"
-              style={{ color: 'var(--color-beige)', fontSize: '18px' }}
-            >
-               ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆ · · ◆
-            </div>
           </div>
-          
-          {/* Page Footer */}
-          <footer 
-            className="w-full relative z-10 py-16 flex flex-col items-center text-center border-t"
-            style={{ backgroundColor: 'var(--color-primary-dark)', borderColor: 'rgba(236, 233, 218, 0.15)' }}
-          >
-            <img 
-              src="https://storage.googleapis.com/yesj/assets/logos/logo-telugu-horizontal-light.png" 
-              alt="Tanah Kitchen & Bar (తనః)" 
-              className="h-16 w-auto mb-5 object-contain" 
-            />
-            <p className="max-w-[320px] leading-relaxed mx-auto" style={{ color: 'var(--color-beige)', fontSize: '13px', opacity: 0.85 }}>
-              5th Floor, Vaishnavi Splendora, opp Meenakshi Bamboos, beside AIG Hospital, Gachibowli.
-            </p>
-          </footer>
-        </div>
+        </section>
       )}
     </div>
   )
