@@ -213,55 +213,6 @@ export default function AboutUs() {
               ))}
             </div>
           </motion.div>
-
-          {/* 6 Official Logo Variations Grid */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isLogoInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="mt-16 pt-12 border-t border-[#5E332E]/15"
-          >
-            <div className="text-center mb-8">
-              <span className="wp-badge wp-badge-maroon mb-2">
-                OFFICIAL BRAND MARKS
-              </span>
-              <h3 className="font-display font-bold text-2xl md:text-3xl text-[#5E332E]">
-                Identity &amp; Regional Marks
-              </h3>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {[
-                { title: 'Primary Vertical Logo', src: '/assets/logos/logo-primary-vertical.png', desc: 'Main architectural emblem & establishment stamp' },
-                { title: 'The Siren', src: '/assets/logos/logo-siren.png', desc: 'The bird & wine-glass hospitality device' },
-                { title: 'Word Mark', src: '/assets/logos/logo-wordmark.png', desc: 'Standalone handcrafted brand typography' },
-                { title: 'Primary Horizontal Logo', src: '/assets/logos/logo-primary-horizontal.png', desc: 'Primary navigation & header lockup' },
-                { title: 'Telugu Logo', src: '/assets/logos/logo-telugu.png', desc: 'Authentic regional script identity (తనః)' },
-                { title: 'Telugu Horizontal Logo', src: '/assets/logos/logo-telugu-horizontal.png', desc: 'Regional bilingual header lockup' }
-              ].map((logo, lIdx) => (
-                <div
-                  key={lIdx}
-                  className="bg-white rounded-2xl p-6 border border-[#5E332E]/15 shadow-sm hover:shadow-md transition-all flex flex-col items-center justify-between text-center group"
-                >
-                  <div className="h-28 flex items-center justify-center p-2 mb-4">
-                    <img
-                      src={logo.src}
-                      alt={logo.title}
-                      className="max-h-full max-w-full object-contain filter group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-display font-bold text-sm text-[#5E332E]">
-                      {logo.title}
-                    </h4>
-                    <p className="text-[11px] text-[#1E1B18]/70 mt-1 font-body">
-                      {logo.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </section>
 
