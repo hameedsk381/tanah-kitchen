@@ -1,29 +1,17 @@
 {
   "categories": [
     "All",
-    "Soups",
-    "Classic Quick Bites",
-    "Veg Starters",
-    "Non-Veg Starters",
-    "Salads",
-    "Chef Specials",
-    "Wings",
-    "Tandoor",
-    "Curries",
-    "Indian Breads",
-    "Rice & Pulaos",
-    "Asian & Continental",
-    "Seafood",
+    "South Indian",
+    "North Indian",
     "Continental",
-    "Gourmet Pizza",
-    "Telugu Comfort Food",
-    "Desserts"
+    "Asian",
+    "Gourmet Bites"
   ],
   "items": [
     {
       "id": "soup-1",
       "name": "Tamalapaku Tomato Soup",
-      "category": "Soups",
+      "category": "Gourmet Bites",
       "price": 249,
       "isVeg": true,
       "desc": "Fresh ripe tomato broth infused with aromatic betel leaf and subtle South Indian spices.",
@@ -36,7 +24,7 @@
     {
       "id": "soup-2",
       "name": "Tamalapaku Kodi Charu",
-      "category": "Soups",
+      "category": "South Indian",
       "price": 249,
       "isVeg": false,
       "desc": "Andhra-style rustic chicken broth infused with fragrant betel leaves and crushed black pepper.",
@@ -49,7 +37,7 @@
     {
       "id": "soup-3",
       "name": "Drumstick Soup",
-      "category": "Soups",
+      "category": "South Indian",
       "price": 299,
       "isVeg": true,
       "desc": "Slow-simmered tender drumstick extract with regional herbs, cumin, and mild roasted garlic.",
@@ -62,7 +50,7 @@
     {
       "id": "soup-4",
       "name": "Crab Soup",
-      "category": "Soups",
+      "category": "Gourmet Bites",
       "price": 349,
       "isVeg": false,
       "desc": "Rich coastal crab claw broth with crushed black pepper, shallots, and fresh coriander root.",
@@ -75,7 +63,7 @@
     {
       "id": "soup-5",
       "name": "Mutton Bone Soup",
-      "category": "Soups",
+      "category": "South Indian",
       "price": 349,
       "isVeg": false,
       "desc": "Traditional marrow bone extract slow-boiled overnight with rustic Telangana spices and pepper.",
@@ -88,7 +76,7 @@
     {
       "id": "soup-6",
       "name": "Broccoli Almond Soup",
-      "category": "Soups",
+      "category": "Gourmet Bites",
       "price": 349,
       "isVeg": true,
       "desc": "Creamy velvety broccoli soup garnished with toasted almond flakes and a drizzle of olive oil.",
@@ -101,7 +89,7 @@
     {
       "id": "bite-1",
       "name": "French Fries",
-      "category": "Classic Quick Bites",
+      "category": "Gourmet Bites",
       "price": 299,
       "isVeg": true,
       "desc": "Crisp golden potato fries tossed with sea salt and served with house dips.",
@@ -114,7 +102,7 @@
     {
       "id": "bite-2",
       "name": "American Cheese Fries",
-      "category": "Classic Quick Bites",
+      "category": "Gourmet Bites",
       "price": 299,
       "isVeg": true,
       "desc": "Golden fries smothered in velvety melted cheddar cheese sauce and spring onions.",
@@ -127,7 +115,7 @@
     {
       "id": "bite-3",
       "name": "Peri Peri Fries",
-      "category": "Classic Quick Bites",
+      "category": "Gourmet Bites",
       "price": 299,
       "isVeg": true,
       "desc": "Crunchy potato fries dusted with a fiery African bird's eye peri-peri spice blend.",
@@ -140,7 +128,7 @@
     {
       "id": "bite-4",
       "name": "Loaded Nachos — Veg",
-      "category": "Classic Quick Bites",
+      "category": "Gourmet Bites",
       "price": 299,
       "isVeg": true,
       "desc": "Crispy corn tortilla chips loaded with fresh tomato salsa, pickled jalapenos, refried beans, and cheese sauce.",
@@ -153,7 +141,7 @@
     {
       "id": "bite-5",
       "name": "Loaded Nachos — Chicken",
-      "category": "Classic Quick Bites",
+      "category": "Gourmet Bites",
       "price": 399,
       "isVeg": false,
       "desc": "Corn tortilla chips layered with spiced pulled chicken, melted cheese, salsa, and sour cream.",
@@ -166,7 +154,7 @@
     {
       "id": "bite-6",
       "name": "Corn Ribs",
-      "category": "Classic Quick Bites",
+      "category": "Gourmet Bites",
       "price": 299,
       "isVeg": true,
       "desc": "Char-grilled sweet corn ribs tossed in herb butter, lime juice, and smoked paprika.",
@@ -179,7 +167,7 @@
     {
       "id": "bite-7",
       "name": "Onion Pakodi",
-      "category": "Classic Quick Bites",
+      "category": "South Indian",
       "price": 299,
       "isVeg": true,
       "desc": "Crispy golden thinly-sliced onion fritters spiced with curry leaves, green chilies, and ajwain.",
@@ -192,7 +180,7 @@
     {
       "id": "bite-8",
       "name": "Crispy Chicken Popcorn",
-      "category": "Classic Quick Bites",
+      "category": "Gourmet Bites",
       "price": 399,
       "isVeg": false,
       "desc": "Bite-sized crunchy battered chicken chunks served with garlic aioli.",
@@ -205,7 +193,7 @@
     {
       "id": "bite-9",
       "name": "Chicken Pakodi — Boneless",
-      "category": "Classic Quick Bites",
+      "category": "South Indian",
       "price": 449,
       "isVeg": false,
       "desc": "Andhra street-style spiced boneless chicken fritters fried with whole curry leaves and green chilies.",
@@ -218,7 +206,7 @@
     {
       "id": "veg-1",
       "name": "Masala Corn",
-      "category": "Veg Starters",
+      "category": "North Indian",
       "price": 449,
       "isVeg": true,
       "desc": "Sweet corn kernels tossed with butter, tangy chaat spices, lime, and fresh cilantro.",
@@ -231,7 +219,7 @@
     {
       "id": "veg-2",
       "name": "Pachimirchi Paneer",
-      "category": "Veg Starters",
+      "category": "North Indian",
       "price": 449,
       "isVeg": true,
       "desc": "Fresh cottage cheese cubes tossed with fiery green chili paste, curry leaves, and mustard seeds.",
@@ -244,7 +232,7 @@
     {
       "id": "veg-3",
       "name": "Thotakura Liver Fry",
-      "category": "Veg Starters",
+      "category": "Gourmet Bites",
       "price": 449,
       "isVeg": true,
       "desc": "Tender amaranth greens and soy morsels tossed in rustic village-style roasted spice blend.",
@@ -257,7 +245,7 @@
     {
       "id": "veg-4",
       "name": "Miryala Mushroom Fry",
-      "category": "Veg Starters",
+      "category": "Gourmet Bites",
       "price": 449,
       "isVeg": true,
       "desc": "Fresh button mushrooms sautéed in freshly cracked black pepper, garlic, and caramelized onions.",
@@ -270,7 +258,7 @@
     {
       "id": "veg-5",
       "name": "Mamidi Mushroom",
-      "category": "Veg Starters",
+      "category": "Gourmet Bites",
       "price": 449,
       "isVeg": true,
       "desc": "Mushrooms pan-tossed with raw mango relish, roasted spices, and crisp curry leaves.",
@@ -283,7 +271,7 @@
     {
       "id": "veg-6",
       "name": "Gongura Paneer",
-      "category": "Veg Starters",
+      "category": "South Indian",
       "price": 449,
       "isVeg": true,
       "desc": "Paneer cubes tossed in signature tangy sorrel leaf (Gongura) masala reduction.",
@@ -296,7 +284,7 @@
     {
       "id": "veg-7",
       "name": "Pandumirchi Mushroom / Paneer",
-      "category": "Veg Starters",
+      "category": "North Indian",
       "price": 449,
       "isVeg": true,
       "desc": "Mushrooms & Paneer pan-seared with sun-ripened red chili paste from Rayalaseema.",
@@ -309,7 +297,7 @@
     {
       "id": "nv-1",
       "name": "Karivepaku Kodi Fry",
-      "category": "Non-Veg Starters",
+      "category": "South Indian",
       "price": 549,
       "isVeg": false,
       "desc": "Tender chicken morsels roasted with aromatic hand-ground curry leaf podi and green chilies.",
@@ -322,7 +310,7 @@
     {
       "id": "nv-2",
       "name": "Andhra Kodi Vepudu",
-      "category": "Non-Veg Starters",
+      "category": "South Indian",
       "price": 549,
       "isVeg": false,
       "desc": "Fiery coastal Andhra dry-roasted chicken with caramelized shallots and whole spices.",
@@ -335,7 +323,7 @@
     {
       "id": "nv-3",
       "name": "Kodi Chips",
-      "category": "Non-Veg Starters",
+      "category": "South Indian",
       "price": 499,
       "isVeg": false,
       "desc": "Crispy-fried thinly shredded chicken strips spiced with regional podi, served with mint chutney.",
@@ -348,7 +336,7 @@
     {
       "id": "nv-4",
       "name": "Gongura Chicken Fry",
-      "category": "Non-Veg Starters",
+      "category": "South Indian",
       "price": 559,
       "isVeg": false,
       "desc": "Pan-roasted chicken tossed with tart red sorrel leaves and freshly pounded spices.",
@@ -361,7 +349,7 @@
     {
       "id": "nv-5",
       "name": "Kaju Chicken Fry",
-      "category": "Non-Veg Starters",
+      "category": "Gourmet Bites",
       "price": 549,
       "isVeg": false,
       "desc": "Succulent chicken pieces pan-roasted with golden toasted cashews and aromatic garam masala.",
@@ -374,7 +362,7 @@
     {
       "id": "salad-1",
       "name": "Classic Caesar Salad",
-      "category": "Salads",
+      "category": "Gourmet Bites",
       "price": 399,
       "isVeg": true,
       "desc": "Crisp romaine lettuce, eggless Caesar dressing, herb croutons, and aged Parmesan shavings.",
@@ -387,7 +375,7 @@
     {
       "id": "salad-2",
       "name": "Modern Greek Salad",
-      "category": "Salads",
+      "category": "Gourmet Bites",
       "price": 399,
       "isVeg": true,
       "desc": "Fresh garden cucumbers, bell peppers, heirloom tomatoes, Kalamata olives, and creamy feta in extra virgin olive oil.",
@@ -400,7 +388,7 @@
     {
       "id": "spec-1",
       "name": "Pandem Kodi Vepudu — Country Chicken",
-      "category": "Chef Specials",
+      "category": "South Indian",
       "price": 549,
       "isVeg": false,
       "desc": "Authentic fiery country chicken dry roast from Godavari traditions cooked with shallots.",
@@ -413,7 +401,7 @@
     {
       "id": "spec-2",
       "name": "Bezawada Fish Roast",
-      "category": "Chef Specials",
+      "category": "Gourmet Bites",
       "price": 599,
       "isVeg": false,
       "desc": "Boneless river fish fillets pan-seared with traditional Vijayawada chili masala paste.",
@@ -426,7 +414,7 @@
     {
       "id": "spec-3",
       "name": "Netallu Fry — Anchovies",
-      "category": "Chef Specials",
+      "category": "Gourmet Bites",
       "price": 629,
       "isVeg": false,
       "desc": "Crispy shallow-fried coastal anchovies dusted with chili-garlic spice and curry leaves.",
@@ -439,7 +427,7 @@
     {
       "id": "spec-4",
       "name": "Velluli Fish Fry — Boneless",
-      "category": "Chef Specials",
+      "category": "Gourmet Bites",
       "price": 629,
       "isVeg": false,
       "desc": "Boneless fish steaks tossed with whole roasted garlic cloves, crushed pepper, and lemon juice.",
@@ -452,7 +440,7 @@
     {
       "id": "spec-5",
       "name": "Stuffed Crab",
-      "category": "Chef Specials",
+      "category": "Gourmet Bites",
       "price": 629,
       "isVeg": false,
       "desc": "Spiced coastal crab meat baked inside natural crab shells with a golden breadcrumb crust.",
@@ -465,7 +453,7 @@
     {
       "id": "spec-6",
       "name": "Natu Kodi Seekulu",
-      "category": "Chef Specials",
+      "category": "South Indian",
       "price": 629,
       "isVeg": false,
       "desc": "Skewered country chicken marinated in rustic spices and roasted over slow charcoal embers.",
@@ -478,7 +466,7 @@
     {
       "id": "spec-7",
       "name": "Rajugari Royyalu Vepudu",
-      "category": "Chef Specials",
+      "category": "Gourmet Bites",
       "price": 649,
       "isVeg": false,
       "desc": "Royal Andhra style tiger prawns roasted with rich shallot gravy, green chilies, and coconut.",
@@ -491,7 +479,7 @@
     {
       "id": "spec-8",
       "name": "Chinta Chigaru Royyalu Vepudu",
-      "category": "Chef Specials",
+      "category": "Gourmet Bites",
       "price": 649,
       "isVeg": false,
       "desc": "Juicy prawns tossed with seasonal tender tamarind leaves (Chinta Chigaru) for a tart spicy kick.",
@@ -504,7 +492,7 @@
     {
       "id": "spec-9",
       "name": "Creamy Coriander Chicken",
-      "category": "Chef Specials",
+      "category": "Gourmet Bites",
       "price": 649,
       "isVeg": false,
       "desc": "Chicken chunks simmered in a velvety fresh coriander, green chili, and cashew cream sauce.",
@@ -517,7 +505,7 @@
     {
       "id": "spec-10",
       "name": "Mutton Ghee Roast",
-      "category": "Chef Specials",
+      "category": "South Indian",
       "price": 749,
       "isVeg": false,
       "desc": "Tender mutton cubes slow-roasted in pure desi ghee with Kundapur red chilies and whole spices.",
@@ -530,7 +518,7 @@
     {
       "id": "spec-11",
       "name": "Telangana Mutton Vepudu",
-      "category": "Chef Specials",
+      "category": "South Indian",
       "price": 749,
       "isVeg": false,
       "desc": "Fiery Telangana village-style mutton fry with hand-pounded spices, garlic, and fresh curry leaves.",
@@ -543,7 +531,7 @@
     {
       "id": "wing-1",
       "name": "Khammam Karam Wings",
-      "category": "Wings",
+      "category": "Gourmet Bites",
       "price": 499,
       "isVeg": false,
       "desc": "Crispy chicken wings tossed in fiery Khammam red chili sauce and garlic.",
@@ -556,7 +544,7 @@
     {
       "id": "wing-2",
       "name": "Peri Peri Grilled Wings",
-      "category": "Wings",
+      "category": "Gourmet Bites",
       "price": 499,
       "isVeg": false,
       "desc": "Char-grilled chicken wings dusted with zesty peri-peri spice and citrus.",
@@ -569,7 +557,7 @@
     {
       "id": "wing-3",
       "name": "Ulavacharu Wings",
-      "category": "Wings",
+      "category": "South Indian",
       "price": 499,
       "isVeg": false,
       "desc": "Crispy chicken wings glazed with reduced horse gram broth and caramelized shallots.",
@@ -582,7 +570,7 @@
     {
       "id": "wing-4",
       "name": "BBQ Wings",
-      "category": "Wings",
+      "category": "Gourmet Bites",
       "price": 499,
       "isVeg": false,
       "desc": "Smoky wood-fired glazed wings coated in house sweet and tangy barbecue sauce.",
@@ -595,7 +583,7 @@
     {
       "id": "wing-5",
       "name": "Gongura Wings",
-      "category": "Wings",
+      "category": "South Indian",
       "price": 499,
       "isVeg": false,
       "desc": "Chicken wings tossed in an authentic sour sorrel leaf glaze with roasted cumin.",
@@ -608,7 +596,7 @@
     {
       "id": "wing-6",
       "name": "Tanah Telugu Wings Platter",
-      "category": "Wings",
+      "category": "Gourmet Bites",
       "price": 1799,
       "isVeg": false,
       "desc": "Grand signature tasting platter featuring Khammam Karam, Peri Peri, Ulavacharu, and Gongura wings.",
@@ -621,7 +609,7 @@
     {
       "id": "tand-v1",
       "name": "Dahi Kebab",
-      "category": "Tandoor",
+      "category": "North Indian",
       "price": 399,
       "isVeg": true,
       "desc": "Melt-in-mouth spiced hung curd patties infused with green cardamom, coriander, and roasted cumin.",
@@ -634,7 +622,7 @@
     {
       "id": "tand-v2",
       "name": "Malai Broccoli",
-      "category": "Tandoor",
+      "category": "North Indian",
       "price": 429,
       "isVeg": true,
       "desc": "Char-grilled broccoli florets marinated in cream cheese, cardamom, and saffron in clay oven.",
@@ -647,7 +635,7 @@
     {
       "id": "tand-v3",
       "name": "Stuffed Mushroom",
-      "category": "Tandoor",
+      "category": "North Indian",
       "price": 439,
       "isVeg": true,
       "desc": "Button mushrooms stuffed with spiced paneer, roasted peppers, and herbs, char-grilled.",
@@ -660,7 +648,7 @@
     {
       "id": "tand-v4",
       "name": "Paneer Tikka",
-      "category": "Tandoor",
+      "category": "North Indian",
       "price": 439,
       "isVeg": true,
       "desc": "Cottage cheese cubes marinated in spiced yogurt and mustard oil, grilled with onions and capsicum.",
@@ -673,7 +661,7 @@
     {
       "id": "tand-v5",
       "name": "Peri Peri Paneer Tikka",
-      "category": "Tandoor",
+      "category": "North Indian",
       "price": 439,
       "isVeg": true,
       "desc": "Claypot-roasted paneer glazed with zesty peri-peri marinade for a modern fusion twist.",
@@ -686,7 +674,7 @@
     {
       "id": "tand-nv1",
       "name": "Malai Chicken Tikka",
-      "category": "Tandoor",
+      "category": "North Indian",
       "price": 499,
       "isVeg": false,
       "desc": "Succulent boneless chicken morsels in rich cream cheese, cardamom, and cashew marinade.",
@@ -699,7 +687,7 @@
     {
       "id": "tand-nv2",
       "name": "Tandoori Chicken",
-      "category": "Tandoor",
+      "category": "North Indian",
       "price": 499,
       "isVeg": false,
       "desc": "Classic whole spring chicken marinated in Kashmiri chili and yogurt, baked in earthen clay oven.",
@@ -712,7 +700,7 @@
     {
       "id": "tand-nv3",
       "name": "Garlic Chicken Tikka",
-      "category": "Tandoor",
+      "category": "North Indian",
       "price": 499,
       "isVeg": false,
       "desc": "Chicken tikka skewers infused with charred roasted garlic cloves and fresh herbs.",
@@ -725,7 +713,7 @@
     {
       "id": "tand-nv4",
       "name": "Classic Chicken Tikka",
-      "category": "Tandoor",
+      "category": "North Indian",
       "price": 499,
       "isVeg": false,
       "desc": "Traditional tandoor-roasted spiced chicken skewers served with mint chutney and onion salad.",
@@ -738,7 +726,7 @@
     {
       "id": "tand-nv5",
       "name": "Peri Peri Chicken",
-      "category": "Tandoor",
+      "category": "North Indian",
       "price": 499,
       "isVeg": false,
       "desc": "Tandoor-baked chicken quarters with fiery African bird's eye chili marinade.",
@@ -751,7 +739,7 @@
     {
       "id": "tand-nv6",
       "name": "Stuffed Tangdi Kebab",
-      "category": "Tandoor",
+      "category": "North Indian",
       "price": 559,
       "isVeg": false,
       "desc": "Chicken drumsticks stuffed with spiced minced chicken, cheese, and char-grilled.",
@@ -764,7 +752,7 @@
     {
       "id": "tand-nv7",
       "name": "Ajwaini Prawns",
-      "category": "Tandoor",
+      "category": "North Indian",
       "price": 599,
       "isVeg": false,
       "desc": "Jumbo tiger prawns marinated in carom seeds, yogurt, yellow chili, and grilled over charcoal.",
@@ -777,7 +765,7 @@
     {
       "id": "tand-nv8",
       "name": "Mutton Sheekh Kebab",
-      "category": "Tandoor",
+      "category": "South Indian",
       "price": 599,
       "isVeg": false,
       "desc": "Hand-ground minced mutton spiced with royal herbs, skewered and grilled to juicy perfection.",
@@ -790,7 +778,7 @@
     {
       "id": "tand-nv9",
       "name": "Tandoori Prawns",
-      "category": "Tandoor",
+      "category": "North Indian",
       "price": 599,
       "isVeg": false,
       "desc": "Tiger prawns seasoned with tandoori spices and cooked in clay hearth.",
@@ -803,7 +791,7 @@
     {
       "id": "tand-nv10",
       "name": "Kalmi Kebab",
-      "category": "Tandoor",
+      "category": "North Indian",
       "price": 599,
       "isVeg": false,
       "desc": "Tender chicken thighs marinated in spiced egg, cashew paste, and saffron.",
@@ -816,7 +804,7 @@
     {
       "id": "tand-nv11",
       "name": "Boti Kebab",
-      "category": "Tandoor",
+      "category": "North Indian",
       "price": 599,
       "isVeg": false,
       "desc": "Tender boneless mutton chunks marinated in raw papaya and roasted spices, charcoal grilled.",
@@ -829,7 +817,7 @@
     {
       "id": "curry-v1",
       "name": "Gutti Vankaya Kura",
-      "category": "Curries",
+      "category": "North Indian",
       "price": 439,
       "isVeg": true,
       "desc": "Baby brinjals stuffed with roasted peanut, sesame, and dry coconut masala in rich gravy.",
@@ -842,7 +830,7 @@
     {
       "id": "curry-v2",
       "name": "Tomato Kaju Curry",
-      "category": "Curries",
+      "category": "North Indian",
       "price": 439,
       "isVeg": true,
       "desc": "Whole roasted cashews simmered in a luscious, tangy tomato and butter gravy.",
@@ -855,7 +843,7 @@
     {
       "id": "curry-v3",
       "name": "Paneer Butter Masala",
-      "category": "Curries",
+      "category": "North Indian",
       "price": 439,
       "isVeg": true,
       "desc": "Fresh cottage cheese in silky, mildly-spiced tomato, butter, and cashew gravy.",
@@ -868,7 +856,7 @@
     {
       "id": "curry-v4",
       "name": "Mushroom Masala",
-      "category": "Curries",
+      "category": "North Indian",
       "price": 439,
       "isVeg": true,
       "desc": "Button mushrooms sautéed in a thick onion, tomato, and aromatic spice gravy.",
@@ -881,7 +869,7 @@
     {
       "id": "curry-v5",
       "name": "Pappu (Mango / Tomato / Gongura / Thotakura)",
-      "category": "Curries",
+      "category": "South Indian",
       "price": 439,
       "isVeg": true,
       "desc": "Comforting Telugu yellow lentils tempered with mustard, cumin, garlic, and desi ghee.",
@@ -894,7 +882,7 @@
     {
       "id": "curry-nv1",
       "name": "Gongura Chicken Curry",
-      "category": "Curries",
+      "category": "South Indian",
       "price": 439,
       "isVeg": false,
       "desc": "Chicken pieces simmered with tangy red sorrel leaves and roasted country spices.",
@@ -907,7 +895,7 @@
     {
       "id": "curry-nv2",
       "name": "Andhra Kodi Koora",
-      "category": "Curries",
+      "category": "South Indian",
       "price": 499,
       "isVeg": false,
       "desc": "Traditional coastal chicken curry prepared with freshly ground coriander and coconut paste.",
@@ -920,7 +908,7 @@
     {
       "id": "curry-nv3",
       "name": "Mango Chicken Curry",
-      "category": "Curries",
+      "category": "North Indian",
       "price": 499,
       "isVeg": false,
       "desc": "Chicken cooked with raw green mango slices for a refreshing sweet-tart and spicy depth.",
@@ -933,7 +921,7 @@
     {
       "id": "curry-nv4",
       "name": "Tomato Kodi Guddu Kura",
-      "category": "Curries",
+      "category": "South Indian",
       "price": 499,
       "isVeg": false,
       "desc": "Home-style chicken and golden boiled eggs cooked together in rich tomato-onion masala.",
@@ -946,7 +934,7 @@
     {
       "id": "curry-nv5",
       "name": "Butter Chicken",
-      "category": "Curries",
+      "category": "North Indian",
       "price": 499,
       "isVeg": false,
       "desc": "Tandoori chicken morsels in smooth satin tomato-makhani gravy with fenugreek and butter.",
@@ -959,7 +947,7 @@
     {
       "id": "curry-nv6",
       "name": "Chicken Tikka Masala",
-      "category": "Curries",
+      "category": "North Indian",
       "price": 499,
       "isVeg": false,
       "desc": "Char-grilled chicken tikka in robust onion-tomato masala with diced peppers.",
@@ -972,7 +960,7 @@
     {
       "id": "curry-nv7",
       "name": "Kadai Chicken",
-      "category": "Curries",
+      "category": "North Indian",
       "price": 499,
       "isVeg": false,
       "desc": "Chicken tossed with crunchy bell peppers and freshly pounded coriander-chili spices.",
@@ -985,7 +973,7 @@
     {
       "id": "curry-nv8",
       "name": "Rara Chicken",
-      "category": "Curries",
+      "category": "North Indian",
       "price": 499,
       "isVeg": false,
       "desc": "Chicken pieces slow-simmered in rich spiced minced chicken keema gravy.",
@@ -998,7 +986,7 @@
     {
       "id": "curry-nv9",
       "name": "Mutton Curry",
-      "category": "Curries",
+      "category": "South Indian",
       "price": 639,
       "isVeg": false,
       "desc": "Classic slow-cooked mutton gravy infused with cinnamon, cardamom, and caramelized shallots.",
@@ -1011,7 +999,7 @@
     {
       "id": "curry-nv10",
       "name": "Natu Kodi Pulusu",
-      "category": "Curries",
+      "category": "South Indian",
       "price": 649,
       "isVeg": false,
       "desc": "Traditional free-range country chicken stew with thin, fiery pepper-shallot broth.",
@@ -1024,7 +1012,7 @@
     {
       "id": "mutt-1",
       "name": "Mango Mutton Curry",
-      "category": "Curries",
+      "category": "South Indian",
       "price": 649,
       "isVeg": false,
       "desc": "Tender mutton pieces cooked with raw mango chunks for a sweet-tart spicy depth.",
@@ -1037,7 +1025,7 @@
     {
       "id": "mutt-2",
       "name": "Gongura Mutton Curry",
-      "category": "Curries",
+      "category": "South Indian",
       "price": 649,
       "isVeg": false,
       "desc": "Mutton slow-simmered with sour Gongura leaves, green chilies, and desi ghee.",
@@ -1050,7 +1038,7 @@
     {
       "id": "mutt-3",
       "name": "Mutton Rogan Josh",
-      "category": "Curries",
+      "category": "South Indian",
       "price": 649,
       "isVeg": false,
       "desc": "Kashmiri-style slow-braised mutton with aromatic fennel, ginger, and Kashmiri chili essence.",
@@ -1063,7 +1051,7 @@
     {
       "id": "mutt-4",
       "name": "Mutton Dalcha",
-      "category": "Curries",
+      "category": "South Indian",
       "price": 649,
       "isVeg": false,
       "desc": "Authentic Hyderabadi mutton and chana dal stew simmered with tender bottle gourd.",
@@ -1076,7 +1064,7 @@
     {
       "id": "bread-1",
       "name": "Roti — Butter / Plain",
-      "category": "Indian Breads",
+      "category": "North Indian",
       "price": 79,
       "isVeg": true,
       "desc": "Whole wheat flatbread baked against earthen tandoor walls.",
@@ -1089,7 +1077,7 @@
     {
       "id": "bread-2",
       "name": "Plain Naan",
-      "category": "Indian Breads",
+      "category": "North Indian",
       "price": 89,
       "isVeg": true,
       "desc": "Soft leavened refined flour bread baked in earthen clay oven.",
@@ -1102,7 +1090,7 @@
     {
       "id": "bread-3",
       "name": "Butter Naan / Garlic Naan",
-      "category": "Indian Breads",
+      "category": "North Indian",
       "price": 99,
       "isVeg": true,
       "desc": "Fluffy naan brushed with melted farm butter or infused with roasted minced garlic.",
@@ -1115,7 +1103,7 @@
     {
       "id": "bread-4",
       "name": "Lachha Paratha",
-      "category": "Indian Breads",
+      "category": "North Indian",
       "price": 129,
       "isVeg": true,
       "desc": "Multi-layered flaky whole wheat bread cooked golden with ghee.",
@@ -1128,7 +1116,7 @@
     {
       "id": "bread-5",
       "name": "Kulcha",
-      "category": "Indian Breads",
+      "category": "North Indian",
       "price": 129,
       "isVeg": true,
       "desc": "Soft leavened bread sprinkled with coriander, nigella seeds, and mild herbs.",
@@ -1141,7 +1129,7 @@
     {
       "id": "rice-1",
       "name": "Plain Rice",
-      "category": "Rice & Pulaos",
+      "category": "Gourmet Bites",
       "price": 159,
       "isVeg": true,
       "desc": "Steamed aged premium long-grain basmati rice.",
@@ -1154,7 +1142,7 @@
     {
       "id": "rice-2",
       "name": "Bagara Rice",
-      "category": "Rice & Pulaos",
+      "category": "Gourmet Bites",
       "price": 249,
       "isVeg": true,
       "desc": "Hyderabadi seasoned rice cooked with whole spices, mint, coriander, and caramelized onions.",
@@ -1167,7 +1155,7 @@
     {
       "id": "rice-3",
       "name": "Curd Rice",
-      "category": "Rice & Pulaos",
+      "category": "Gourmet Bites",
       "price": 249,
       "isVeg": true,
       "desc": "Comforting tempered rice with home-set yogurt, mustard seeds, ginger, and pomegranate.",
@@ -1180,7 +1168,7 @@
     {
       "id": "rice-4",
       "name": "Fried Rice — Veg",
-      "category": "Rice & Pulaos",
+      "category": "Asian",
       "price": 249,
       "isVeg": true,
       "desc": "Wok-tossed rice with crunchy garden vegetables and light soy seasoning.",
@@ -1193,7 +1181,7 @@
     {
       "id": "rice-5",
       "name": "Fried Rice — Chicken",
-      "category": "Rice & Pulaos",
+      "category": "Asian",
       "price": 429,
       "isVeg": false,
       "desc": "Wok-fried rice with diced chicken, egg ribbons, spring onions, and oriental spices.",
@@ -1206,7 +1194,7 @@
     {
       "id": "rice-6",
       "name": "Burnt Garlic Fried Rice",
-      "category": "Rice & Pulaos",
+      "category": "Asian",
       "price": 249,
       "isVeg": true,
       "desc": "Fragrant rice tossed in intense crispy golden burnt garlic and scallions.",
@@ -1219,7 +1207,7 @@
     {
       "id": "rice-7",
       "name": "Soft Noodles — Veg",
-      "category": "Rice & Pulaos",
+      "category": "Asian",
       "price": 249,
       "isVeg": true,
       "desc": "Classic stir-fried noodles with shredded cabbage, carrots, bell peppers, and scallions.",
@@ -1232,7 +1220,7 @@
     {
       "id": "rice-8",
       "name": "Gutti Vankaya Pulao",
-      "category": "Rice & Pulaos",
+      "category": "South Indian",
       "price": 399,
       "isVeg": true,
       "desc": "Fragrant spiced basmati rice layered with stuffed baby brinjals and roasted masala.",
@@ -1245,7 +1233,7 @@
     {
       "id": "rice-9",
       "name": "Pachi Mirchi Paneer Pulao",
-      "category": "Rice & Pulaos",
+      "category": "South Indian",
       "price": 399,
       "isVeg": true,
       "desc": "Spicy green chili tempered basmati rice layered with succulent paneer cubes and ghee.",
@@ -1258,7 +1246,7 @@
     {
       "id": "rice-10",
       "name": "Mix Veg Pulao",
-      "category": "Rice & Pulaos",
+      "category": "South Indian",
       "price": 399,
       "isVeg": true,
       "desc": "Aromatic basmati rice slow-cooked with fresh garden vegetables, mint, and whole spices.",
@@ -1271,7 +1259,7 @@
     {
       "id": "rice-11",
       "name": "Mushroom Pulao",
-      "category": "Rice & Pulaos",
+      "category": "South Indian",
       "price": 399,
       "isVeg": true,
       "desc": "Button mushrooms and spiced basmati rice slow-steamed with saffron and fried onions.",
@@ -1284,7 +1272,7 @@
     {
       "id": "rice-12",
       "name": "Pachi Mirchi Kodi Pulao",
-      "category": "Rice & Pulaos",
+      "category": "South Indian",
       "price": 459,
       "isVeg": false,
       "desc": "Fiery green chili chicken pulao cooked in regional ghee with fragrant herbs.",
@@ -1297,7 +1285,7 @@
     {
       "id": "rice-13",
       "name": "Chitti Muthyala Chicken Pulao",
-      "category": "Rice & Pulaos",
+      "category": "South Indian",
       "price": 499,
       "isVeg": false,
       "desc": "Indigenous aromatic short-grain Chitti Muthyalu rice cooked with succulent chicken and spices.",
@@ -1310,7 +1298,7 @@
     {
       "id": "rice-14",
       "name": "Natukodi Pulao",
-      "category": "Rice & Pulaos",
+      "category": "South Indian",
       "price": 599,
       "isVeg": false,
       "desc": "Free-range country chicken slow-cooked with aromatic Chitti Muthyalu pearl rice.",
@@ -1323,7 +1311,7 @@
     {
       "id": "rice-15",
       "name": "Chitti Muthyala Mutton Pulao",
-      "category": "Rice & Pulaos",
+      "category": "South Indian",
       "price": 599,
       "isVeg": false,
       "desc": "Tender mutton pieces simmered in rich spices with traditional fragrant Chitti Muthyalu rice.",
@@ -1336,7 +1324,7 @@
     {
       "id": "rice-16",
       "name": "Chitti Muthyala Prawns Pulao",
-      "category": "Rice & Pulaos",
+      "category": "South Indian",
       "price": 599,
       "isVeg": false,
       "desc": "Coastal tiger prawns cooked with indigenous pearl rice and regional coastal aromatics.",
@@ -1349,7 +1337,7 @@
     {
       "id": "ac-v1",
       "name": "Honey Chilli Lotus Stem",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 429,
       "isVeg": true,
       "desc": "Crispy sliced lotus stem chips glazed with sweet wild honey, sesame, and red chili.",
@@ -1362,7 +1350,7 @@
     {
       "id": "ac-v2",
       "name": "Mushroom Duplex",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 429,
       "isVeg": true,
       "desc": "Crispy crumb-fried button mushrooms stuffed with spiced cheese and spinach.",
@@ -1375,7 +1363,7 @@
     {
       "id": "ac-v3",
       "name": "Crunchy Paneer",
-      "category": "Asian & Continental",
+      "category": "North Indian",
       "price": 429,
       "isVeg": true,
       "desc": "Panko-crusted crispy paneer cubes served with sweet chili dipping sauce.",
@@ -1388,7 +1376,7 @@
     {
       "id": "ac-v4",
       "name": "Veg Kulfi",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 439,
       "isVeg": true,
       "desc": "Savory tandoori vegetable and cheese mousse skewers shaped like kulfis and char-grilled.",
@@ -1401,7 +1389,7 @@
     {
       "id": "ac-v5",
       "name": "Chilli Baby Corn",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 439,
       "isVeg": true,
       "desc": "Crispy baby corn tossed in wok with bell peppers, garlic, and dark soy sauce.",
@@ -1414,7 +1402,7 @@
     {
       "id": "ac-v6",
       "name": "Crispy Corn Kernel",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 439,
       "isVeg": true,
       "desc": "Battered sweet corn fried crisp and tossed in chili-pepper seasoning with spring onions.",
@@ -1427,7 +1415,7 @@
     {
       "id": "ac-v7",
       "name": "Jalapeno Cheese Balls",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 439,
       "isVeg": true,
       "desc": "Golden molten cheese spheres infused with spicy jalapeno bits and herb crust.",
@@ -1440,7 +1428,7 @@
     {
       "id": "ac-v8",
       "name": "Jack Potato",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 439,
       "isVeg": true,
       "desc": "Baked jacket potatoes loaded with herb butter, cheddar, and tangy sour cream.",
@@ -1453,7 +1441,7 @@
     {
       "id": "ac-v9",
       "name": "Thai Chilli Mushroom",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 439,
       "isVeg": true,
       "desc": "Fresh mushrooms tossed in spicy Thai sweet chili sauce with kaffir lime and basil.",
@@ -1466,7 +1454,7 @@
     {
       "id": "ac-v10",
       "name": "Veg Paneer Rolls",
-      "category": "Asian & Continental",
+      "category": "North Indian",
       "price": 439,
       "isVeg": true,
       "desc": "Crispy golden spring rolls packed with seasoned paneer, julienned vegetables, and glass noodles.",
@@ -1479,7 +1467,7 @@
     {
       "id": "ac-nv1",
       "name": "Chilli Eggs",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 459,
       "isVeg": false,
       "desc": "Boiled eggs battered, fried golden, and wok-tossed with chili garlic sauce and scallions.",
@@ -1492,7 +1480,7 @@
     {
       "id": "ac-nv2",
       "name": "Chicken Fingers",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 499,
       "isVeg": false,
       "desc": "Crumb-fried succulent chicken tenders served with house tartar dip and french fries.",
@@ -1505,7 +1493,7 @@
     {
       "id": "ac-nv3",
       "name": "Thread Chicken",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 549,
       "isVeg": false,
       "desc": "Marinated chicken strips wrapped in crispy noodle threads and fried golden.",
@@ -1518,7 +1506,7 @@
     {
       "id": "ac-nv4",
       "name": "Chicken Meatballs with Buffalo Sauce",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 549,
       "isVeg": false,
       "desc": "Tender chicken meatballs glazed in tangy spicy buffalo sauce and sprinkled with sesame.",
@@ -1531,7 +1519,7 @@
     {
       "id": "ac-nv5",
       "name": "Chilli Chicken",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 549,
       "isVeg": false,
       "desc": "Classic Indo-Chinese style wok-tossed chicken with green chilies, bell peppers, and soy.",
@@ -1544,7 +1532,7 @@
     {
       "id": "ac-nv6",
       "name": "Dragon Chicken",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 549,
       "isVeg": false,
       "desc": "Crispy chicken strips tossed in spicy red dragon chili sauce with toasted cashews.",
@@ -1557,7 +1545,7 @@
     {
       "id": "ac-nv7",
       "name": "Thai Chilli Chicken",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 549,
       "isVeg": false,
       "desc": "Chicken bites cooked in sweet and spicy Thai chili glaze with fresh Thai basil.",
@@ -1570,7 +1558,7 @@
     {
       "id": "ac-nv8",
       "name": "Thai Pai Chicken",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 549,
       "isVeg": false,
       "desc": "Crispy chicken tossed with Thai herbs, julienned ginger, and crushed red chilies.",
@@ -1583,7 +1571,7 @@
     {
       "id": "ac-nv9",
       "name": "Parmesan Chicken",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 549,
       "isVeg": false,
       "desc": "Herb-crusted chicken breast baked with parmesan cheese and tomato sauce.",
@@ -1596,7 +1584,7 @@
     {
       "id": "ac-nv10",
       "name": "Custard Chicken",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 549,
       "isVeg": false,
       "desc": "Golden fried chicken coated in a rich, creamy savory sauce with mild spices.",
@@ -1609,7 +1597,7 @@
     {
       "id": "ac-nv11",
       "name": "Fish Fingers & Chips",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 629,
       "isVeg": false,
       "desc": "Crumbed fish fillets fried golden with steakhouse french fries and tartar sauce.",
@@ -1622,7 +1610,7 @@
     {
       "id": "ac-nv12",
       "name": "Cheesy Garlic Shrimp Stuffed Zucchini",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 629,
       "isVeg": false,
       "desc": "Baked tender zucchini boats filled with garlic shrimp, parmesan, and melted mozzarella.",
@@ -1635,7 +1623,7 @@
     {
       "id": "ac-nv13",
       "name": "Pesto Lamb Chops",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 629,
       "isVeg": false,
       "desc": "Tender grilled lamb chops brushed with vibrant fresh basil-pine nut pesto.",
@@ -1648,7 +1636,7 @@
     {
       "id": "ac-nv14",
       "name": "Thai Slice Kungi Lamb",
-      "category": "Asian & Continental",
+      "category": "Asian",
       "price": 649,
       "isVeg": false,
       "desc": "Thinly sliced lamb tossed with fiery bird's eye chilies, galangal, and bamboo shoots.",
@@ -1661,7 +1649,7 @@
     {
       "id": "sea-1",
       "name": "Chilli Fish",
-      "category": "Seafood",
+      "category": "Asian",
       "price": 599,
       "isVeg": false,
       "desc": "Batter-fried fish tossed with chilies, garlic, and scallions in rich soy reduction.",
@@ -1674,7 +1662,7 @@
     {
       "id": "sea-2",
       "name": "Lemon Fish",
-      "category": "Seafood",
+      "category": "Gourmet Bites",
       "price": 599,
       "isVeg": false,
       "desc": "Pan-seared fish fillets in delicate lemon-butter sauce with capers and fresh parsley.",
@@ -1687,7 +1675,7 @@
     {
       "id": "sea-3",
       "name": "Loose Prawns",
-      "category": "Seafood",
+      "category": "Gourmet Bites",
       "price": 629,
       "isVeg": false,
       "desc": "Golden fried spiced prawns tossed with fried curry leaves and green chilies.",
@@ -1700,7 +1688,7 @@
     {
       "id": "sea-4",
       "name": "Tempura Prawns",
-      "category": "Seafood",
+      "category": "Gourmet Bites",
       "price": 629,
       "isVeg": false,
       "desc": "Light and airy Japanese-style batter-fried prawns with sweet chili dip.",
@@ -1713,7 +1701,7 @@
     {
       "id": "sea-5",
       "name": "Chimichurri Prawns",
-      "category": "Seafood",
+      "category": "Gourmet Bites",
       "price": 649,
       "isVeg": false,
       "desc": "Grilled tiger prawns drizzled with Argentine fresh herb chimichurri sauce.",
@@ -1726,7 +1714,7 @@
     {
       "id": "sea-6",
       "name": "Shrimp Chips",
-      "category": "Seafood",
+      "category": "Gourmet Bites",
       "price": 649,
       "isVeg": false,
       "desc": "Crispy seasoned shrimp bites tossed with wafer seasonings and scallions.",
@@ -1739,7 +1727,7 @@
     {
       "id": "sea-7",
       "name": "Chimichurri Lamb Chops",
-      "category": "Seafood",
+      "category": "Gourmet Bites",
       "price": 699,
       "isVeg": false,
       "desc": "Char-grilled lamb chops served with fresh parsley-garlic chimichurri.",
@@ -1804,7 +1792,7 @@
     {
       "id": "entr-5",
       "name": "Mutton Ravioli Pasta",
-      "category": "Continental",
+      "category": "South Indian",
       "price": 599,
       "isVeg": false,
       "desc": "Handcrafted pasta pockets stuffed with slow-cooked spiced mutton keema in sage butter sauce.",
@@ -1882,7 +1870,7 @@
     {
       "id": "pizz-1",
       "name": "OTC Pizza",
-      "category": "Gourmet Pizza",
+      "category": "Continental",
       "price": 599,
       "isVeg": true,
       "desc": "Classic Onion, Tomato, and Capsicum on crispy thin crust with mozzarella cheese.",
@@ -1895,7 +1883,7 @@
     {
       "id": "pizz-2",
       "name": "Tanah Farm House Pizza",
-      "category": "Gourmet Pizza",
+      "category": "Continental",
       "price": 649,
       "isVeg": true,
       "desc": "Handmade pizza with crisp golden crust, tomato sauce, melted cheese, bell peppers, corn, and basil.",
@@ -1908,7 +1896,7 @@
     {
       "id": "pizz-3",
       "name": "Pesto Pizza",
-      "category": "Gourmet Pizza",
+      "category": "Continental",
       "price": 649,
       "isVeg": true,
       "desc": "Herb pizza base with house basil pesto, heirloom cherry tomatoes, and bocconcini.",
@@ -1921,7 +1909,7 @@
     {
       "id": "pizz-4",
       "name": "Margherita Pizza",
-      "category": "Gourmet Pizza",
+      "category": "Continental",
       "price": 699,
       "isVeg": true,
       "desc": "Classic Neapolitan pizza with San Marzano tomato sauce, fresh buffalo mozzarella, and basil.",
@@ -1934,7 +1922,7 @@
     {
       "id": "pizz-5",
       "name": "Butter Chicken Pizza",
-      "category": "Gourmet Pizza",
+      "category": "North Indian",
       "price": 699,
       "isVeg": false,
       "desc": "Wood-fired crust topped with creamy butter chicken, red onions, and melted mozzarella.",
@@ -1947,7 +1935,7 @@
     {
       "id": "pizz-6",
       "name": "Chicken Tikka Pizza",
-      "category": "Gourmet Pizza",
+      "category": "North Indian",
       "price": 699,
       "isVeg": false,
       "desc": "Tandoor chicken tikka chunks with bell peppers, red onion, and roasted spice oil.",
@@ -1960,7 +1948,7 @@
     {
       "id": "pizz-7",
       "name": "Peri Peri Chicken Pizza",
-      "category": "Gourmet Pizza",
+      "category": "Continental",
       "price": 699,
       "isVeg": false,
       "desc": "Fiery peri-peri chicken cubes, jalapenos, and mozzarella on wood-fired crust.",
@@ -1973,7 +1961,7 @@
     {
       "id": "pizz-8",
       "name": "Mac & Cheese Pizza",
-      "category": "Gourmet Pizza",
+      "category": "Continental",
       "price": 699,
       "isVeg": true,
       "desc": "Decadent wood-fired pizza layered with creamy macaroni pasta and aged cheddar.",
@@ -1986,7 +1974,7 @@
     {
       "id": "pizz-9",
       "name": "Pepperoni Pizza",
-      "category": "Gourmet Pizza",
+      "category": "Continental",
       "price": 799,
       "isVeg": false,
       "desc": "Artisan pizza loaded with spiced pepperoni slices, tomato sugo, and melted mozzarella.",
@@ -1999,7 +1987,7 @@
     {
       "id": "pizz-10",
       "name": "Meat Lovers Pizza",
-      "category": "Gourmet Pizza",
+      "category": "Continental",
       "price": 799,
       "isVeg": false,
       "desc": "Loaded feast with chicken tikka, spiced keema, sausage, and smoked bacon bits.",
@@ -2012,7 +2000,7 @@
     {
       "id": "comf-1",
       "name": "Keema Roti",
-      "category": "Telugu Comfort Food",
+      "category": "South Indian",
       "price": 249,
       "isVeg": false,
       "desc": "Fresh hot tandoori roti served with rustic spiced minced mutton keema curry.",
@@ -2025,7 +2013,7 @@
     {
       "id": "comf-2",
       "name": "Sambar Rice",
-      "category": "Telugu Comfort Food",
+      "category": "South Indian",
       "price": 349,
       "isVeg": true,
       "desc": "Traditional slow-simmered lentil sambar rice with ghee tempering and appadalu.",
@@ -2038,7 +2026,7 @@
     {
       "id": "comf-3",
       "name": "Avakaya Mudda Pappu Annam — Pachipulusu & Veg Fry",
-      "category": "Telugu Comfort Food",
+      "category": "South Indian",
       "price": 449,
       "isVeg": true,
       "desc": "Classic Andhra meal with hot rice, thick yellow dal, mango avakaya, raw tamarind rasam, and crispy fry.",
@@ -2051,7 +2039,7 @@
     {
       "id": "comf-4",
       "name": "Raagi Sangati — Chicken Curry",
-      "category": "Telugu Comfort Food",
+      "category": "South Indian",
       "price": 549,
       "isVeg": false,
       "desc": "Wholesome hot finger millet mudde served with rich spicy country chicken curry and ghee.",
@@ -2064,7 +2052,7 @@
     {
       "id": "spec-t1",
       "name": "Avakaya Chicken Fried Rice",
-      "category": "Telugu Comfort Food",
+      "category": "South Indian",
       "price": 499,
       "isVeg": false,
       "desc": "Wok-fried rice tossed with fiery Andhra avakaya mango pickle and succulent chicken.",
@@ -2077,7 +2065,7 @@
     {
       "id": "spec-t2",
       "name": "Mamsam Ragi Sangati",
-      "category": "Telugu Comfort Food",
+      "category": "South Indian",
       "price": 649,
       "isVeg": false,
       "desc": "Steaming hot ragi mudde served with rich slow-cooked mutton gravy and clarified butter.",
@@ -2090,7 +2078,7 @@
     {
       "id": "spec-t3",
       "name": "Keema Ragi Sangati Chicken 65",
-      "category": "Telugu Comfort Food",
+      "category": "South Indian",
       "price": 649,
       "isVeg": false,
       "desc": "Ragi mudde served with spiced mutton keema and crispy Andhra Chicken 65.",
@@ -2103,7 +2091,7 @@
     {
       "id": "spec-t4",
       "name": "Pappucharu Annam — Mutton Fry",
-      "category": "Telugu Comfort Food",
+      "category": "South Indian",
       "price": 699,
       "isVeg": false,
       "desc": "Hot rice with seasoned lentil broth (Pappucharu) and dry-roasted Telangana mutton fry.",
@@ -2116,7 +2104,7 @@
     {
       "id": "spec-t5",
       "name": "Dalcha Mutton with Bagara Rice",
-      "category": "Telugu Comfort Food",
+      "category": "South Indian",
       "price": 699,
       "isVeg": false,
       "desc": "Aromatic spiced bagara rice served with authentic Hyderabadi mutton dalcha stew.",
@@ -2129,7 +2117,7 @@
     {
       "id": "des-1",
       "name": "Junnu",
-      "category": "Desserts",
+      "category": "Gourmet Bites",
       "price": 249,
       "isVeg": true,
       "desc": "Traditional South Indian steamed milk pudding made from colostrum milk, infused with black pepper and cardamom in a clay pot.",
@@ -2142,7 +2130,7 @@
     {
       "id": "des-2",
       "name": "Pistachio Chocolate Samosa",
-      "category": "Desserts",
+      "category": "Gourmet Bites",
       "price": 399,
       "isVeg": true,
       "desc": "Crispy golden pastry triangles filled with pistachio kunafa and molten dark chocolate.",
@@ -2155,7 +2143,7 @@
     {
       "id": "des-3",
       "name": "Blueberry Cheese Cake",
-      "category": "Desserts",
+      "category": "Gourmet Bites",
       "price": 399,
       "isVeg": true,
       "desc": "Creamy baked New York cheesecake topped with house-made wild blueberry compote.",
@@ -2168,7 +2156,7 @@
     {
       "id": "des-4",
       "name": "Mango Cheese Cake",
-      "category": "Desserts",
+      "category": "Gourmet Bites",
       "price": 399,
       "isVeg": true,
       "desc": "Velvety cheesecake infused with sweet Alphonso mango pulp on buttery biscuit crumb.",
@@ -2181,7 +2169,7 @@
     {
       "id": "des-5",
       "name": "Desi Tiramisu",
-      "category": "Desserts",
+      "category": "Gourmet Bites",
       "price": 399,
       "isVeg": true,
       "desc": "Single-origin Araku Valley filter coffee soaked sponge layered with saffron mascarpone and cocoa pod dust.",
@@ -2194,7 +2182,7 @@
     {
       "id": "des-6",
       "name": "Mango Tres Leches",
-      "category": "Desserts",
+      "category": "Gourmet Bites",
       "price": 399,
       "isVeg": true,
       "desc": "Airy sponge steeped in three rich milks, topped with fresh Alphonso mango compote.",

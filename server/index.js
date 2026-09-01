@@ -72,7 +72,7 @@ try {
 }
 
 // Load default fallback categories
-const defaultCategories = ['Breakfast', 'Lunch', 'Dinner', 'Cocktails', 'Beverages', 'Desserts']
+const defaultCategories = ['South Indian', 'North Indian', 'Continental', 'Asian', 'Gourmet Bites']
 const defaultGalleryCategories = ['All', 'Ambience', 'Rooftop', 'Events', 'Food']
 
 // Middleware: Enable Gzip / Brotli Compression

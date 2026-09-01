@@ -5,6 +5,7 @@ import menuData from '../data/menu.json'
 import { useMenu } from '../context/MenuContext'
 import { LogoOwl } from '../components/illustrations'
 import SEO from '../components/SEO'
+import { liquidLibraryData } from '../data/barMenuData'
 
 // Dynamic category helper using item data directly from Admin / Database
 function getMappedCategory(item) {
@@ -82,264 +83,8 @@ const PRESET_JOURNEYS = [
   }
 ]
 
-// Liquid Library (Bar Menu) Sections and Items Dataset
-const LIQUID_SECTIONS = [
-  {
-    id: 'singlemalt',
-    name: 'SINGLEMALT',
-    headers: ['30ML', 'BTL'],
-    watermark: 'https://storage.googleapis.com/yesj/assets/Tanha Food/food-21.webp',
-    items: [
-      { name: 'Singleton 12 Yr', prices: ['799/-', '14,999/-'] },
-      { name: 'Talisker 10 Yr', prices: ['659/-', '13,999/-'] },
-      { name: 'Laphroaig', prices: ['699/-', '12,999/-'] },
-      { name: 'Glenlivet 12yr', prices: ['799/-', '13,999/-'] },
-      { name: 'Glenlivet 15yr', prices: ['899/-', '14,999/-'] },
-      { name: 'Glenlivet 18yr', prices: ['1299/-', '22,999/-'] },
-      { name: 'Glenmorangie 10yr', prices: ['899/-', '13,999/-'] },
-      { name: 'Glenfiddich 12yr', prices: ['799/-', '13,999/-'] },
-      { name: 'Glenfiddich 15yr', prices: ['899/-', '14,999/-'] },
-      { name: 'Glenfiddich 18yr', prices: ['1299/-', '23,000/-'] },
-      { name: 'Hibiki', prices: ['1899/-', '34,000/-'] }
-    ],
-    tagline: 'you get better with age'
-  },
-  {
-    id: 'whiskey',
-    name: 'WHISKEY',
-    headers: ['30ML', 'BTL'],
-    watermark: 'https://storage.googleapis.com/yesj/assets/Tanha Food/food-21.webp',
-    items: [
-      { name: 'Royal Salute', prices: ['2,999/-', '49,999/-'] },
-      { name: 'Chivas 12 YR', prices: ['459/-', '8,999/-'] },
-      { name: 'Chivas 18 YR', prices: ['899/-', '18,999/-'] },
-      { name: 'JW Black Label', prices: ['549/-', '8,999/-'] },
-      { name: "Teacher's Highland", prices: ['399/-', '5,999/-'] },
-      { name: "Teacher's 50", prices: ['459/-', '5,999/-'] },
-      { name: 'Ballantine', prices: ['459/-', '5,999/-'] },
-      { name: '100 Pipers 12YR', prices: ['459/-', '6,999/-'] },
-      { name: 'Jim Beam', prices: ['399/-', '5,899/-'] },
-      { name: 'Jameson', prices: ['499/-', '5,999/-'] },
-      { name: "Jack Daniel's NO 7", prices: ['399/-', '7,999/-'] }
-    ],
-    tagline: 'never delay opening a bottle of whisky.'
-  },
-  {
-    id: 'vodka',
-    name: 'VODKA',
-    headers: ['30ML', 'BTL'],
-    items: [
-      { name: 'Beluga Nobel', prices: ['999/-', '16,999/-'] },
-      { name: 'Grey Goose', prices: ['699/-', '12,999/-'] },
-      { name: 'Absolut', prices: ['499/-', '8,999/-'] },
-      { name: 'Ketel One', prices: ['499/-', '7,999/-'] }
-    ],
-    tagline: 'my willpower vs vodka (40%) vodka wins!'
-  },
-  {
-    id: 'gin',
-    name: 'GIN',
-    headers: ['30ML', 'BTL'],
-    items: [
-      { name: 'Greater Than', prices: ['399/-', '5,999/-'] },
-      { name: 'Bombay Sapphire', prices: ['499/-', '7,999/-'] },
-      { name: 'Beefeater', prices: ['499/-', '7,999/-'] },
-      { name: 'Tanqueray No 10', prices: ['659/-', '14,999/-'] },
-      { name: 'Monkey 47', prices: ['659/-', '14,999/-'] },
-      { name: 'Roku Gin', prices: ['799/-', '14,999/-'] }
-    ],
-    tagline: 'my willpower vs vodka (40%) vodka wins!'
-  },
-  {
-    id: 'tequila',
-    name: 'TEQUILA',
-    headers: ['30ML', 'BTL'],
-    items: [
-      { name: 'Don Angle', prices: ['599/-', '10,999/-'] },
-      { name: 'Jose Cuervo Silver', prices: ['599/-', '10,999/-'] },
-      { name: 'Jose Cuervo Reposado', prices: ['699/-', '12,999/-'] },
-      { name: '1800 Silver', prices: ['799/-', '13,999/-'] },
-      { name: 'Don Jilo', prices: ['899/-', '21,999/-'] },
-      { name: 'Patron Silver Tequila', prices: ['1299/-', '22,999/-'] }
-    ],
-    tagline: 'Magic Water for fun people'
-  },
-  {
-    id: 'rum',
-    name: 'RUM',
-    headers: ['30ML', 'BTL'],
-    watermark: 'https://storage.googleapis.com/yesj/assets/Tanha Food/food-21.webp',
-    items: [
-      { name: 'Old Monk', prices: ['299/-', '3,999/-'] },
-      { name: 'Bacardi Carta Blanc', prices: ['299/-', '4,999/-'] },
-      { name: 'Bacardi Aged Rum', prices: ['499/-', '7,999/-'] }
-    ],
-    tagline: 'Magic Water for fun people'
-  },
-  {
-    id: 'brandy',
-    name: 'BRANDY & COGNAC',
-    headers: ['30ML', 'BTL'],
-    items: [
-      { name: 'Mansion House (Brandy)', prices: ['249/-', '3,999/-'] },
-      { name: 'Xclamation Brandy', prices: ['399/-', '5,999/-'] },
-      { name: 'Hennessy VS (Cognac)', prices: ['599/-', '14,999/-'] },
-      { name: 'St Remy Vsop', prices: ['699/-', '12,999/-'] }
-    ],
-    tagline: 'Coco cola pepsi, Balayya bab sexy!'
-  },
-  {
-    id: 'liquor',
-    name: 'LIQUOR',
-    headers: ['30ML', 'BTL'],
-    items: [
-      { name: 'Baileys', prices: ['499/-', '9,999/-'] },
-      { name: 'Sambuca', prices: ['499/-', '9,999/-'] },
-      { name: 'Kahlua', prices: ['499/-', '9,999/-'] },
-      { name: 'Martini Roso', prices: ['499/-', '9,999/-'] },
-      { name: 'Jagermeister', prices: ['599/-', '10,999/-'] }
-    ],
-    tagline: 'Coco cola pepsi, Balayya bab sexy!'
-  },
-  {
-    id: 'rosewine',
-    name: 'ROSE WINE',
-    headers: ['Glass', 'BTL'],
-    items: [
-      { name: 'Sula Zinfandel', prices: ['799/-', '5,999/-'] }
-    ],
-    tagline: 'Will you accept this rose?'
-  },
-  {
-    id: 'redwhite',
-    name: 'RED WINE & WHITE WINE',
-    headers: ['Glass', 'BTL'],
-    items: [
-      { name: 'Sula Chardonnay White', prices: ['799/-', '4,999/-'] },
-      { name: 'Sula Cabernet Shiraz (Red)', prices: ['799/-', '4,999/-'] },
-      { name: "Jacob's Creek Chardonnay", prices: ['999/-', '5,999/-'] },
-      { name: "Jacob's Creek Shiraz", prices: ['999/-', '5,999/-'] }
-    ],
-    tagline: 'Will you accept this rose?'
-  },
-  {
-    id: 'beer',
-    name: 'BEER & ALCOPOPS',
-    headers: ['Pint', 'Bucket'],
-    watermark: 'https://storage.googleapis.com/yesj/assets/Tanha Image/05.webp',
-    items: [
-      { name: 'Corona Extra', prices: ['699/-', '2,899/-'] },
-      { name: 'Hoegaarden', prices: ['699/-', '2,899/-'] },
-      { name: 'Heineken', prices: ['459/-', '2,299/-'] },
-      { name: 'Kingfisher Ultra', prices: ['459/-', '2,299/-'] },
-      { name: 'Budweiser', prices: ['459/-', '2,299/-'] }
-    ],
-    tagline: 'The sound of celebration begins with a cork.'
-  },
-  {
-    id: 'champagne',
-    name: 'CHAMPAGNE & SPARKLING',
-    headers: ['BTL only'],
-    items: [
-      { name: 'Zonin Prosecco', prices: ['10,999/-'] },
-      { name: 'Moet Chandon Brut', prices: ['27,999/-'] },
-      { name: 'Sula Brut', prices: ['2,499/-'] }
-    ],
-    tagline: 'The sound of celebration begins with a cork.'
-  },
-  {
-    id: 'softdrink',
-    name: 'SOFT DRINK',
-    headers: ['Price'],
-    items: [
-      { name: 'Fresh Lime Soda / Water', prices: ['189/-'] },
-      { name: 'Canned Juice', prices: ['199/-'] },
-      { name: 'Ginger Ale', prices: ['169/-'] },
-      { name: 'Tonic Water', prices: ['169/-'] },
-      { name: 'Red Bull', prices: ['299/-'] },
-      { name: 'Coke Can', prices: ['129/-'] },
-      { name: 'Sprite Can', prices: ['129/-'] },
-      { name: 'Water Bottle', prices: ['99/-'] },
-      { name: 'Diet Coke', prices: ['129/-'] },
-      { name: 'Fresh Juice (Orange, Watermelon)', prices: ['299/-'] },
-      { name: 'Aerated Water (Glass)', prices: ['99/-'] },
-      { name: 'Soda, Sprite, Thumsup', prices: ['99/-'] }
-    ],
-    tagline: "It's time to Hydrate!"
-  },
-  {
-    id: 'signature',
-    name: 'SIGNATURE COCKTAILS',
-    headers: ['Price'],
-    watermark: 'https://storage.googleapis.com/yesj/assets/Tanha Food/food-22.webp',
-    items: [
-      { name: 'Palapitta Song', prices: ['659/-'], desc: 'Blend of Rum, Pineapple, Falernum, Narial Panni, Lime, & Salin' },
-      { name: 'Godavari Gulabi', prices: ['699/-'], desc: 'Bourbon, Blueberry, Lime, Basil, Foam' },
-      { name: 'Botanical Garden', prices: ['699/-'], desc: 'Gin, Grapefruit Juice, Simple Syrup, Lime Juice, Tonic Water' },
-      { name: 'Japanese Blossom', prices: ['699/-'], desc: 'Whiskey, Orange Juice, Yuzu Puree, Sourmix' },
-      { name: 'Profit & Loss (P&L)', prices: ['699/-'], desc: 'Gin, Kaffir Lime, Basil, Lime Simple Syrup' },
-      { name: 'Echo of Tanah', prices: ['699/-'], desc: 'Gin, Kaffir Lime, Coconut Water, Salin, Lime' },
-      { name: 'Tanah Queen', prices: ['699/-'], desc: 'Tequila, Sour Mix, Bluepea Tea, Apple Juice, Lavender' },
-      { name: 'Yuzu Heaven', prices: ['799/-'], desc: 'Dark Rum, Cardamom, Pineapple Cordial, Yuzu & Lime' },
-      { name: 'Pineapple Ginger', prices: ['799/-'], desc: 'Vodka, Pineapple Ginger Sourmix, Ginger Beer' },
-      { name: 'The Og Picante', prices: ['799/-'], desc: 'Bartender Secret Recipe' }
-    ],
-    tagline: 'This Is Where We Create'
-  },
-  {
-    id: 'mocktail',
-    name: 'MOCKTAIL',
-    headers: ['Price'],
-    watermark: 'https://storage.googleapis.com/yesj/assets/Tanha Food/food-22.webp',
-    items: [
-      { name: 'Mamidi Madhuram', prices: ['349/-'], desc: 'Mango Cordial, Lime Simple Syrup, Bubbles' },
-      { name: 'Golconda Glow', prices: ['349/-'], desc: 'Raspberry, Grenadine, Mint, Orange Juice, Simple Syrup, Bubbles' },
-      { name: 'Pinky Promise', prices: ['349/-'], desc: 'Watermelon Pulp, Vanilla, Whipped Cream, Pineapple, Simple Syrup' },
-      { name: 'Pine Pathar', prices: ['349/-'], desc: 'Coffee Simple Syrup, Tonic Water, Banana Foam' },
-      { name: 'Citrus Cluster', prices: ['349/-'], desc: 'Orange Juice, Passionfruit, Yuzu Puree, Lime Juice, Basil Foam' },
-      { name: 'Tanah Verde', prices: ['349/-'], desc: 'Cucumber, Basil, Lime, Simple Syrup, Pineapple Bubbles' },
-      { name: 'Spicy Melon Tempest', prices: ['349/-'], desc: 'Watermelon Juice, Melon Syrup, Mint, Chatmasala, Soda' },
-      { name: 'Slush', prices: ['349/-'], desc: 'Ampanna & Green Apple, Kiwi & Chilly, Mango' },
-      { name: 'Ice Tea', prices: ['349/-'], desc: 'Black Tea, Peach, Passion Fruit, Lime' },
-      { name: 'Virgin Mojito', prices: ['349/-'], desc: 'Watermelon, Orange, Curry Leaf' }
-    ],
-    tagline: 'I am unapologetically good'
-  },
-  {
-    id: 'classic',
-    name: 'CLASSIC COCKTAIL',
-    headers: ['Price'],
-    watermark: 'https://storage.googleapis.com/yesj/assets/Tanha Food/food-22.webp', // The red Earthy Hibiscus Cocktail image from your photo
-    items: [
-      { name: 'LIIT', prices: ['999/-'], desc: 'Tequila, rum, vodka, gin, triple sec, lemon juice, Coke' },
-      { name: 'Cosmopolitan', prices: ['699/-'], desc: 'Vodka, triple sec, cranberry juice' },
-      { name: 'Moscow Mule', prices: ['699/-'], desc: 'Vodka, lemon juice, ginger ale' },
-      { name: 'Bramble', prices: ['699/-'], desc: 'Gin, lemon juice, simple syrup, raspberry purée' },
-      { name: 'Bees Knees', prices: ['699/-'], desc: 'Gin, lemon juice, honey syrup' },
-      { name: 'Whiskey Sour', prices: ['699/-'], desc: 'Whiskey, lemon juice, simple syrup, egg white, angostura bitter' },
-      { name: 'Mojito', prices: ['659/-'], desc: 'Rum, lemon juice, mint, soda' },
-      { name: 'Old Fashioned', prices: ['699/-'], desc: 'Whiskey, angostura bitters, sugar' },
-      { name: 'Margarita', prices: ['799/-'], desc: 'Tequila, triple sec, lemon juice' },
-      { name: '007 Martini', prices: ['699/-'], desc: 'Vodka or gin, olive brain, white wine' },
-      { name: 'Espresso Martini', prices: ['669/-'], desc: 'Vodka, Kahlua, coffee' }
-    ],
-    tagline: 'We respect the originals'
-  },
-  {
-    id: 'shooter',
-    name: 'SHOOTER',
-    headers: ['Price'],
-    watermark: 'https://storage.googleapis.com/yesj/assets/Tanha Food/food-22.webp', // The red Earthy Hibiscus Cocktail image from your photo
-    items: [
-      { name: 'Kamikaze Shot', prices: ['499/-'], desc: 'Vodka, triple sec, lemon juice' },
-      { name: 'Cheesecake Shot', prices: ['559/-'], desc: 'Vodka, strawberry purée, cream, biscuit' },
-      { name: 'B-52', prices: ['669/-'], desc: 'Kahlua, Baileys, triple sec (layered)' },
-      { name: 'Flatliner', prices: ['699/-'], desc: 'tequila, tabasco, sambuca, vanilla foam' },
-      { name: 'Jager Bomb', prices: ['799/-'], desc: 'Jägermeister, Red Bull' }
-    ],
-    tagline: "It's Time to call your driver"
-  }
-]
+// Liquid Library Dataset (All 16 Sections)
+const LIQUID_SECTIONS = liquidLibraryData
 
 function isNonVeg(item) {
   if (!item) return false
@@ -1215,77 +960,102 @@ export default function Menu() {
               </p>
             </div>
 
-            {/* Menu Cards */}
-            <div className="w-full max-w-[780px] mx-auto px-4 sm:px-6 flex flex-col gap-[32px]">
-              {LIQUID_SECTIONS.map((section, index) => {
-                return (
-                  <React.Fragment key={section.id}>
-                    <div 
-                      className="w-full relative rounded-[8px] p-6 sm:p-10 md:p-12 overflow-hidden"
-                      style={{
-                        backgroundColor: 'var(--color-beige)',
-                        boxShadow: '0 4px 24px rgba(111,41,44,0.18)',
-                        // Apply the selective drink watermark directly as a background card overlay
-                        backgroundImage: section.watermark 
-                          ? `linear-gradient(rgba(236, 233, 218, 0.93), rgba(236, 233, 218, 0.93)), url('${section.watermark}')`
-                          : 'none',
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                      }}
-                    >
-                      <div className="relative z-10">
-                        <div className="flex justify-between items-end border-b-[1px] pb-3 mb-8 gap-2" style={{ borderColor: 'rgba(117, 36, 42, 0.3)' }}>
-                          {/* Category Heading */}
-                          <h3 
-                            className="uppercase font-bold tracking-wider m-0 leading-none text-left text-2xl sm:text-3xl"
-                            style={{ color: 'var(--color-primary-dark)', fontFamily: "'Oswald', Impact, sans-serif" }}
-                          >
-                            {section.name}
-                          </h3>
-                        </div>
-
-                        {/* Item Rows */}
-                        <div className="flex flex-col gap-[20px]">
-                          {section.items.map((item, idx) => (
-                            <div key={idx} className="flex justify-between items-baseline gap-2 sm:gap-6">
-                              <div className="flex-1 min-w-0 pr-2">
-                                <span className="font-semibold block leading-tight text-left text-sm sm:text-lg" style={{ color: 'var(--color-primary-dark)' }}>
-                                  {item.name}
-                                </span>
-                                {item.desc && (
-                                  <p className="mt-1 mb-0 leading-snug text-left text-[11px] sm:text-xs opacity-75" style={{ color: 'var(--color-text-muted)' }}>
-                                    {item.desc}
-                                  </p>
-                                )}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-
-                        {/* Card Bottom: Tagline & Legal */}
-                        <div className="mt-10 flex flex-col items-center justify-center text-center">
-                          <p 
-                            className="font-bold mb-6"
-                            style={{ color: 'var(--color-near-black)', fontSize: '24px', fontFamily: "'Caveat', cursive", lineHeight: 1.2 }}
-                          >
-                            "{section.tagline}"
-                          </p>
-                          
-                          {/* Very bottom text */}
-                          <div className="w-full flex flex-col sm:flex-row justify-between items-center mt-2 pt-6 border-t border-[#75242A]/10 gap-3">
-                            <span className="uppercase font-bold tracking-[0.25em]" style={{ color: 'var(--color-text-muted)', fontSize: '11px' }}>
-                              TANAH
-                            </span>
-                            <span className="" style={{ color: 'var(--color-text-muted)', fontSize: '11px' }}>
-                              *Subject to availability | Govt. Taxes applicable
-                            </span>
-                          </div>
-                        </div>
+            {/* Liquid Library Menu Cards */}
+            <div className="w-full max-w-[840px] mx-auto px-4 sm:px-6 flex flex-col gap-8">
+              {LIQUID_SECTIONS.map((section) => (
+                <div 
+                  key={section.id}
+                  id={`liquid-${section.id}`}
+                  className="w-full relative rounded-3xl p-6 sm:p-10 md:p-12 overflow-hidden border border-[#5E332E]/15 bg-[#FAF8F5] text-[#1E1B18] shadow-lg"
+                  style={{
+                    backgroundImage: section.watermark 
+                      ? `linear-gradient(rgba(250, 248, 245, 0.94), rgba(250, 248, 245, 0.94)), url('${section.watermark}')`
+                      : 'none',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                  }}
+                >
+                  <div className="relative z-10 space-y-6">
+                    {/* Category Heading */}
+                    <div className="border-b border-[#5E332E]/20 pb-4 flex items-center justify-between flex-wrap gap-2">
+                      <div>
+                        <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#5E332E] block mb-1">
+                          LIQUID COLLECTION
+                        </span>
+                        <h3 className="font-display font-extrabold tracking-wide text-2xl sm:text-3xl text-[#5E332E] uppercase">
+                          {section.name}
+                        </h3>
                       </div>
+                      {section.items && (
+                        <span className="text-[11px] font-bold px-3 py-1 bg-[#5E332E]/10 text-[#5E332E] rounded-full">
+                          {section.items.length} Selections
+                        </span>
+                      )}
                     </div>
-                  </React.Fragment>
-                );
-              })}
+
+                    {/* Standard Items List */}
+                    {section.items && (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 pt-2">
+                        {section.items.map((item, idx) => (
+                          <div key={idx} className="p-4 rounded-2xl bg-white/70 border border-[#5E332E]/10 hover:border-[#5E332E]/30 transition-all text-left space-y-1">
+                            <div className="flex items-center justify-between gap-2">
+                              <h4 className="font-display text-base font-bold text-[#5E332E]">
+                                {item.name}
+                              </h4>
+                              {item.tag && (
+                                <span className="text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 bg-[#5E332E] text-[#E5E2DC] rounded-full flex-shrink-0">
+                                  {item.tag}
+                                </span>
+                              )}
+                            </div>
+                            {item.desc && (
+                              <p className="text-xs font-light text-[#1E1B18]/75 leading-relaxed font-body">
+                                {item.desc}
+                              </p>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Wine Subsections List */}
+                    {section.subsections && (
+                      <div className="space-y-6 pt-2">
+                        {section.subsections.map((sub, sIdx) => (
+                          <div key={sIdx} className="space-y-3">
+                            <h4 className="font-display text-sm font-bold uppercase tracking-wider text-[#5E332E] flex items-center gap-2">
+                              <span>🍷</span> {sub.title}
+                            </h4>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                              {sub.items.map((item, idx) => (
+                                <div key={idx} className="p-4 rounded-2xl bg-white/70 border border-[#5E332E]/10 hover:border-[#5E332E]/30 transition-all text-left space-y-1">
+                                  <h5 className="font-display text-base font-bold text-[#5E332E]">
+                                    {item.name}
+                                  </h5>
+                                  {item.desc && (
+                                    <p className="text-xs font-light text-[#1E1B18]/75 leading-relaxed font-body">
+                                      {item.desc}
+                                    </p>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Card Bottom Tagline */}
+                    {section.tagline && (
+                      <div className="pt-6 border-t border-[#5E332E]/15 text-center">
+                        <p className="text-sm font-medium font-body text-[#5E332E]">
+                          "{section.tagline}"
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
 
             {/* Diamond Border Strip before Footer */}
