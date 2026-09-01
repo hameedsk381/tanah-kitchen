@@ -1,6 +1,42 @@
 @import "tailwindcss";
 
 /* ============================================================
+   OFFICIAL BRAND TYPEFACES: NEUZON
+   ============================================================ */
+@font-face {
+  font-family: 'Neuzon';
+  src: url('/fonts/Neuzon-Regular.woff2') format('woff2'),
+       url('/fonts/Neuzon-Regular.woff') format('woff'),
+       url('/fonts/Neuzon-Regular.ttf') format('truetype'),
+       url('https://storage.googleapis.com/yesj/assets/fonts/Neuzon-Regular.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neuzon W00';
+  src: url('/fonts/Neuzon-Regular.woff2') format('woff2'),
+       url('/fonts/Neuzon-Regular.woff') format('woff'),
+       url('/fonts/Neuzon-Regular.ttf') format('truetype'),
+       url('https://storage.googleapis.com/yesj/assets/fonts/Neuzon-Regular.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neuzon W00 Regular';
+  src: url('/fonts/Neuzon-Regular.woff2') format('woff2'),
+       url('/fonts/Neuzon-Regular.woff') format('woff'),
+       url('/fonts/Neuzon-Regular.ttf') format('truetype'),
+       url('https://storage.googleapis.com/yesj/assets/fonts/Neuzon-Regular.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
    TANAH KITCHEN & BAR – Design System (Tailwind CSS v4)
    ============================================================ */
 
