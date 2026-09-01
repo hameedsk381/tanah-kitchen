@@ -2082,23 +2082,116 @@ export default function AdminMenu() {
 
       {/* CMS DATA TAB */}
       {activeTab === 'cms' && (
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 pb-32">
-          <div className="bg-[#FAF8F5] rounded-3xl p-6 sm:p-10 border border-[#5E332E]/10 shadow-sm relative overflow-hidden">
-            <h2 className="text-xl sm:text-2xl font-display font-bold text-[#5E332E] mb-6 flex items-center gap-2">
-              <Settings className="w-5 h-5" />
-              Advanced CMS Editor
-            </h2>
-            <div className="p-6 bg-white border border-[#5E332E]/20 rounded-2xl text-center">
-              <h3 className="text-[#1E1B18] font-bold mb-2">Editor Under Construction</h3>
-              <p className="text-sm text-[#1E1B18]/70">
-                The Bar Menu, corporate text, and booking configurations are currently managed via the backend /api/content endpoints. 
-                A full graphical editor is planned for the next release.
-              </p>
-            </div>
-          </div>
-        </div>
+        <CmsEditor />
       )}
 
     </main>
+  )
+}
+
+function CmsEditor() {
+  const [keys] = useState(['contact', 'bar-menu', 'corporate', 'booking-config', 'menu-categories', 'gallery-categories'])
+  const [selectedKey, setSelectedKey] = useState('contact')
+  const [dataStr, setDataStr] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [saveStatus, setSaveStatus] = useState('')
+
+  useEffect(() => {
+    setIsLoading(true)
+    fetch(`/api/content/${selectedKey}`)
+      .then(r => r.json())
+      .then(d => {
+        setDataStr(JSON.stringify(d, null, 2))
+        setIsLoading(false)
+      })
+      .catch(err => {
+        console.error(err)
+        setIsLoading(false)
+      })
+  }, [selectedKey])
+
+  const handleSave = async () => {
+    try {
+      setSaveStatus('Saving...')
+      let parsed = {}
+      if (dataStr.trim()) {
+        parsed = JSON.parse(dataStr)
+      }
+      const res = await fetch(`/api/content/${selectedKey}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('tanah_admin_token') || sessionStorage.getItem('tanah_admin_token')}`
+        },
+        body: JSON.stringify(parsed)
+      })
+      if (!res.ok) throw new Error('Failed to save')
+      setSaveStatus('Saved successfully!')
+      setTimeout(() => setSaveStatus(''), 3000)
+    } catch (err) {
+      setSaveStatus(`Error: ${err.message}`)
+    }
+  }
+
+  return (
+    <div className="max-w-7xl mx-auto px-6 sm:px-8 pb-32">
+      <div className="bg-[#FAF8F5] rounded-3xl p-6 sm:p-10 border border-[#5E332E]/10 shadow-sm relative overflow-hidden flex flex-col sm:flex-row gap-6">
+        
+        {/* Keys Sidebar */}
+        <div className="w-full sm:w-64 space-y-2 border-r border-[#5E332E]/10 pr-4">
+          <h2 className="text-xl font-display font-bold text-[#5E332E] mb-4 flex items-center gap-2">
+            <Settings className="w-5 h-5" />
+            CMS Models
+          </h2>
+          {keys.map(k => (
+            <button
+              key={k}
+              onClick={() => setSelectedKey(k)}
+              className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-bold transition-all ${selectedKey === k ? 'bg-[#5E332E] text-[#E5E2DC]' : 'hover:bg-[#5E332E]/10 text-[#5E332E]'}`}
+            >
+              {k}
+            </button>
+          ))}
+        </div>
+
+        {/* Editor Area */}
+        <div className="flex-1 flex flex-col">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="font-bold text-[#5E332E] uppercase tracking-wider">{selectedKey}</h3>
+            <div className="flex items-center gap-4">
+              {saveStatus && (
+                <span className={`text-xs font-bold ${saveStatus.includes('Error') ? 'text-red-500' : 'text-emerald-600'}`}>
+                  {saveStatus}
+                </span>
+              )}
+              <button
+                onClick={handleSave}
+                disabled={isLoading}
+                className="px-5 py-2 rounded-xl bg-[#5E332E] text-[#E5E2DC] hover:bg-[#1E1B18] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-md transition-all disabled:opacity-50"
+              >
+                <Save className="w-4 h-4" />
+                <span>Save</span>
+              </button>
+            </div>
+          </div>
+          <div className="flex-1 bg-[#1E1B18] rounded-2xl p-4 overflow-hidden border border-[#5E332E]/20">
+            {isLoading ? (
+              <div className="h-64 flex items-center justify-center text-white/50 text-sm">Loading data...</div>
+            ) : (
+              <textarea
+                value={dataStr}
+                onChange={(e) => setDataStr(e.target.value)}
+                className="w-full h-[500px] bg-transparent text-emerald-400 font-mono text-xs sm:text-sm focus:outline-none resize-none"
+                spellCheck={false}
+              />
+            )}
+          </div>
+          <p className="text-[10px] text-[#1E1B18]/50 mt-2 font-mono">
+            Ensure the format is valid JSON before saving. Invalid JSON will be rejected.
+          </p>
+        </div>
+
+      </div>
+    </div>
   )
 }
