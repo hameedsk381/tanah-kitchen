@@ -22,16 +22,22 @@ services:
       - mongo
     ports:
       - "5000:5000"
+    env_file:
+      - .env
     environment:
       - NODE_ENV=production
       - PORT=5000
-      - MONGODB_URI=mongodb://mongo:27017/tanah_kitchen
+      - MONGODB_URI=${MONGODB_URI:-mongodb://mongo:27017/tanah_kitchen}
       - ADMIN_USERNAME=${ADMIN_USERNAME:-admin}
       - ADMIN_PASSWORD=${ADMIN_PASSWORD}
-      - GCP_PROJECT_ID=${GCP_PROJECT_ID}
-      - GCP_STORAGE_BUCKET=${GCP_STORAGE_BUCKET}
-      - GCP_CLIENT_EMAIL=${GCP_CLIENT_EMAIL}
-      - GCP_PRIVATE_KEY=${GCP_PRIVATE_KEY}
+      - GCS_PROJECT_ID=${GCS_PROJECT_ID:-${GCP_PROJECT_ID}}
+      - GCS_BUCKET_NAME=${GCS_BUCKET_NAME:-${GCP_STORAGE_BUCKET}}
+      - GCS_CLIENT_EMAIL=${GCS_CLIENT_EMAIL:-${GCP_CLIENT_EMAIL}}
+      - GCS_PRIVATE_KEY=${GCS_PRIVATE_KEY:-${GCP_PRIVATE_KEY}}
+      - GCP_PROJECT_ID=${GCS_PROJECT_ID:-${GCP_PROJECT_ID}}
+      - GCP_STORAGE_BUCKET=${GCS_BUCKET_NAME:-${GCP_STORAGE_BUCKET}}
+      - GCP_CLIENT_EMAIL=${GCS_CLIENT_EMAIL:-${GCP_CLIENT_EMAIL}}
+      - GCP_PRIVATE_KEY=${GCS_PRIVATE_KEY:-${GCP_PRIVATE_KEY}}
       - GCP_PUBLIC_URL_PREFIX=${GCP_PUBLIC_URL_PREFIX}
     volumes:
       # Host volume for custom uploaded photos
