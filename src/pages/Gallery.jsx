@@ -23,7 +23,7 @@ export default function Gallery() {
   }, [selectedCategory, galleryItems])
 
   return (
-    <main className="flex-grow pt-24 overflow-hidden bg-[#FAF8F5] text-[#1E1B18] brand-dots-light">
+    <main className="flex-grow pt-24 overflow-hidden bg-[#FAF8F5] text-[#1E1B18]">
       <SEO
         title="Visual Gallery & Ambiance | Tanah Kitchen & Bar Hyderabad"
         description="Browse high-definition photos of Tanah Kitchen & Bar. Rooftop dining terrace, woven bamboo tree canopy, custom ceramics, signature dishes, and mixology cocktails in Gachibowli."
@@ -36,7 +36,7 @@ export default function Gallery() {
       />
 
       {/* ── 1. Page Header (WordPress Banner) ── */}
-      <section className="section-dark relative py-20 lg:py-28 text-center border-b border-light-cream/15 brand-dots-dark">
+      <section className="section-dark relative py-20 lg:py-28 text-center border-b border-light-cream/15">
         <div className="relative z-10 wp-container">
           <span className="wp-badge wp-badge-gold mb-4">
             ✦ VISUAL ARCHIVE ✦
@@ -55,7 +55,7 @@ export default function Gallery() {
       </section>
 
       {/* ── 2. Main Gallery Grid ── */}
-      <section className="wp-section bg-[#FAF8F5] brand-dots-light">
+      <section className="wp-section bg-[#FAF8F5]">
         <div className="wp-container space-y-10">
 
           {/* Categories Tab (Filter Pills) */}

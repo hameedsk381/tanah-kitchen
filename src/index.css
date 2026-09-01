@@ -75,7 +75,7 @@
 }
 
 /* ============================================================
-   BASE RESET & GLOBAL STYLES (With Authentic Brand Dot Texture)
+   BASE RESET & GLOBAL STYLES (Clean Solid Brand Canvas)
    ============================================================ */
 html {
   scroll-behavior: smooth;
@@ -89,11 +89,6 @@ html {
 body {
   font-family: var(--font-body);
   background-color: #FAF8F5;
-  background-image: 
-    radial-gradient(rgba(94, 51, 46, 0.22) 0.75px, transparent 0.75px),
-    radial-gradient(rgba(30, 27, 24, 0.18) 0.5px, transparent 0.5px);
-  background-size: 28px 28px;
-  background-position: 0 0, 14px 14px;
   color: #1E1B18;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -105,25 +100,6 @@ body {
 /* Form inputs font sizing for iOS touch devices to prevent zoom */
 input, select, textarea {
   font-size: 16px !important;
-}
-
-/* Authentic Brand Organic Dotted Background Classes */
-.brand-dots-light {
-  background-color: #FAF8F5;
-  background-image: 
-    radial-gradient(rgba(94, 51, 46, 0.22) 0.75px, transparent 0.75px),
-    radial-gradient(rgba(30, 27, 24, 0.18) 0.5px, transparent 0.5px);
-  background-size: 28px 28px;
-  background-position: 0 0, 14px 14px;
-}
-
-.brand-dots-dark {
-  background-color: #5E332E;
-  background-image: 
-    radial-gradient(rgba(229, 226, 220, 0.16) 0.75px, transparent 0.75px),
-    radial-gradient(rgba(229, 226, 220, 0.08) 0.5px, transparent 0.5px);
-  background-size: 24px 24px;
-  background-position: 0 0, 12px 12px;
 }
 
 /* Folk Art Tiled Pattern Background (Clean) */

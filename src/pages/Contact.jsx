@@ -47,7 +47,7 @@ export default function Contact() {
   }
 
   return (
-    <main className="flex-grow pt-24 overflow-hidden bg-[#FAF8F5] text-[#1E1B18] brand-dots-light">
+    <main className="flex-grow pt-24 overflow-hidden bg-[#FAF8F5] text-[#1E1B18]">
       <SEO
         title="Contact Us & Location Directions | Tanah Kitchen & Bar Gachibowli"
         description="Get directions and contact information for Tanah Kitchen & Bar. Located on 5th Floor, Vaishnavi Splendora, opp Meenakshi Bamboos, beside AIG Hospital, Gachibowli, Hyderabad."
@@ -69,7 +69,7 @@ export default function Contact() {
       />
 
       {/* ── 1. Page Header (WordPress Banner) ── */}
-      <section className="section-dark relative py-20 lg:py-28 text-center border-b border-light-cream/15 overflow-hidden brand-dots-dark">
+      <section className="section-dark relative py-20 lg:py-28 text-center border-b border-light-cream/15 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20 mix-blend-multiply">
           <img
             src="/assets/Tanha Ambiance/Ambiance-9.webp"
@@ -97,7 +97,7 @@ export default function Contact() {
       </section>
 
       {/* ── 2. Details & Form Section (WordPress 2-Column Block) ── */}
-      <section className="wp-section bg-[#FAF8F5] brand-dots-light">
+      <section className="wp-section bg-[#FAF8F5]">
         <div className="wp-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 

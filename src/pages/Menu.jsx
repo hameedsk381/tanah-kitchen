@@ -687,7 +687,7 @@ export default function Menu() {
         /* ==========================================
            FOOD MENU SECTION (WordPress Card Architecture)
            ========================================== */
-        <section className="wp-section bg-[#FAF8F5] text-[#1E1B18] brand-dots-light">
+        <section className="wp-section bg-[#FAF8F5] text-[#1E1B18]">
           <div className="wp-container">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
               
@@ -722,7 +722,7 @@ export default function Menu() {
                           <button
                             key={journey.name}
                             onClick={() => handlePresetSelect(journey.profile)}
-                            className="p-3.5 rounded-xl text-left border border-[#5E332E]/15 bg-[#FAF8F5] hover:bg-[#5E332E] hover:border-[#5E332E] transition-all duration-300 group cursor-pointer brand-dots-light"
+                            className="p-3.5 rounded-xl text-left border border-[#5E332E]/15 bg-[#FAF8F5] hover:bg-[#5E332E] hover:border-[#5E332E] transition-all duration-300 group cursor-pointer"
                           >
                             <span className="block text-xs uppercase tracking-wider font-bold text-[#5E332E] group-hover:text-[#E5E2DC] transition-colors">
                               {journey.name}
