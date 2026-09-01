@@ -307,10 +307,10 @@ export default function Home() {
       </section>
 
       {/* ==========================================
-          2. WHERE TEAMS GATHER (WordPress Alternating Split Block)
+          2. WHERE PEOPLE GATHER (WordPress Alternating Split Block)
           ========================================== */}
       <section
-        id="where-teams-gather"
+        id="where-people-gather"
         ref={sec2Ref}
         className="wp-section bg-[#FAF8F5] text-[#1E1B18] border-b border-[#5E332E]/10"
       >
@@ -325,21 +325,21 @@ export default function Home() {
               className="lg:col-span-6 space-y-6 text-left"
             >
               <span className="wp-badge wp-badge-maroon">
-                CORPORATE SANCTUARY
+                AN ELEVATED SANCTUARY
               </span>
 
               <h3 className="font-display font-bold leading-tight text-3xl md:text-5xl text-[#5E332E]">
-                Where Teams Gather
+                Where People Gather
               </h3>
 
               <div className="w-16 h-[2px] bg-[#5E332E]/40 rounded-full" />
 
               <p className="text-lg leading-relaxed font-body text-[#1E1B18]/90">
-                More than a venue, Tanah is a carefully orchestrated sanctuary. Our atmospheric spaces offer natural lighting, premium wooden features, and custom catering designed to build lasting professional bonds outside the office.
+                More than a venue, Tanah is a carefully orchestrated sanctuary in Gachibowli. Our atmospheric spaces offer natural lighting, premium wooden aesthetics, and world-class culinary craftsmanship designed to create lasting memories with the people who matter most.
               </p>
 
               <p className="text-base text-[#1E1B18]/80 leading-relaxed font-body">
-                Whether conducting board retreats, hosting key clients, or celebrating major milestones, we curate custom dining atmospheres that blend corporate precision with the ease of nature.
+                Whether unwinding over sunset cocktails with friends, enjoying leisurely family dinners, soaking in live weekend music, or hosting celebratory group gatherings—we curate welcoming atmospheres that blend exceptional dining with the comforting ease of nature.
               </p>
 
               <div className="pt-2">
@@ -347,7 +347,7 @@ export default function Home() {
                   href="#why-tanah"
                   className="wp-btn-pill bg-[#5E332E] text-[#E5E2DC] hover:bg-[#1E1B18] hover:text-white shadow-md text-xs font-semibold"
                 >
-                  Learn More <ChevronRight className="w-4 h-4" />
+                  Explore Experiences <ChevronRight className="w-4 h-4" />
                 </a>
               </div>
             </motion.div>
@@ -876,22 +876,22 @@ export default function Home() {
               <div className="space-y-4 pt-2">
                 {[
                   {
-                    icon: <Briefcase className="w-6 h-6 text-[#E5E2DC]" />,
-                    label: "Rooftop Corporate Dining",
-                    capacity: "Capacity: 15–30 Guests • Private & Rooftop Dining",
-                    desc: "Host team dinners and corporate gatherings in Tanah’s relaxed rooftop setting, with great food, crafted drinks, and a comfortable ambience that makes every business gathering more enjoyable."
+                    icon: <Compass className="w-6 h-6 text-[#E5E2DC]" />,
+                    label: "Open-Air Rooftop & Sunset Dining",
+                    capacity: "Intimate to Large Gatherings • Open-to-Sky Sanctuary",
+                    desc: "Enjoy panoramic rooftop views, gentle breezes, craft mixology, and rich South Indian soul food under the Hyderabad stars—perfect for dates, friends, and family dinners."
                   },
                   {
                     icon: <Users className="w-6 h-6 text-[#E5E2DC]" />,
-                    label: "Corporate Celebrations & Team Events",
-                    capacity: "Capacity: 30–60 Guests • Rooftop Event Space",
-                    desc: "From team celebrations and office parties to brand events and milestone gatherings, Tanah offers a vibrant rooftop setting with delicious food, drinks, music, and an atmosphere designed for memorable celebrations."
+                    label: "Celebrations, Birthdays & Milestone Events",
+                    capacity: "Capacity: 15–60+ Guests • Vibrant Event Spaces",
+                    desc: "From milestone birthdays, anniversaries, and reunions to festive parties, Tanah provides a dynamic rooftop setting with gourmet culinary spreads, artisanal spirits, live weekend music, and memorable hospitality."
                   },
                   {
-                    icon: <Compass className="w-6 h-6 text-[#E5E2DC]" />,
-                    label: "Team Dining & Curated Experiences",
-                    capacity: "Capacity: 20–40 Guests • Food, Drinks & Entertainment",
-                    desc: "Bring your team together over specially curated food, signature cocktails, and engaging entertainment. Whether it’s a team dinner, celebration, or casual get-together, Tanah creates the perfect setting to connect, unwind, and make memories."
+                    icon: <Briefcase className="w-6 h-6 text-[#E5E2DC]" />,
+                    label: "Team Dinners & Group Gatherings",
+                    capacity: "Custom Group Capacities • Indoor & Terrace Zones",
+                    desc: "Unwind after a busy day with colleagues and friends over curated sharing platters, signature cocktails, and a relaxed environment where conversations happen effortlessly."
                   }
                 ].map((row, idx) => (
                   <div
@@ -1204,10 +1204,10 @@ export default function Home() {
                       RESERVE YOUR NEST
                     </span>
                     <h3 className="font-display text-2xl md:text-4xl font-extrabold text-[#5E332E]">
-                      Start Your Corporate Story
+                      Book Your Dining Experience
                     </h3>
                     <p className="text-sm text-[#1E1B18]/70 mt-1 font-body">
-                      Fill in the details below and our team will get back to confirm your booking.
+                      Fill in the details below and our team will get back to confirm your table.
                     </p>
                   </div>
 
