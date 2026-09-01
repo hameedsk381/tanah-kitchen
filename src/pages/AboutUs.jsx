@@ -118,8 +118,8 @@ export default function AboutUs() {
             className="font-display font-extrabold leading-tight text-[#F6E1CB] mb-4"
             style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)' }}
           >
-            Rooted in Earth, <br />
-            <span className="italic font-normal text-[#FFC470]">Choreographed by Fire</span>
+            Grounded in Nature, <br />
+            <span className="italic font-normal text-[#FFC470]">Built for Connection</span>
           </h1>
           <div className="w-20 h-[2px] bg-[#FFC470]/60 mx-auto rounded-full mt-4" />
         </div>

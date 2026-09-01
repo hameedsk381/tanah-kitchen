@@ -191,28 +191,28 @@ export default function Home() {
             className="font-display font-extrabold leading-[1.15] tracking-wide text-[#F6E1CB] mb-5"
             style={{ fontSize: 'clamp(2.4rem, 6vw, 4.6rem)' }}
           >
-            Where Teams Gather &<br />
-            <span className="italic font-normal text-[#FFC470]">Stories Unfold.</span>
+            Your Urban Nest in the<br />
+            <span className="italic font-normal text-[#FFC470]">Heart of Gachibowli.</span>
           </h2>
 
           <div className="w-24 h-[2px] bg-[#FFC470]/60 rounded-full mb-6" />
 
           <p className="text-base md:text-lg font-light max-w-2xl leading-relaxed font-body text-[#EFE1D0]/95 px-4 mb-8">
-            A premium corporate sanctuary inspired by local elements, crafted for meaningful team interactions and refined gastronomy.
+            An earthy sanctuary where conversations flow, plates are shared, and stories unfold over artisanal cocktails and open skies.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full max-w-md px-4 sm:px-0 mb-8">
             <a
-              href="#contact-form"
+              href="/book"
               className="wp-btn-pill bg-[#FFC470] text-[#6B2523] hover:bg-white hover:text-[#6B2523] shadow-lg w-full sm:w-auto text-center font-bold"
             >
-              Reserve Experience
+              Reserve a Table
             </a>
             <a
               href="/menu"
               className="wp-btn-pill bg-white/10 text-[#F6E1CB] border border-[#FFC470]/40 hover:bg-[#FFC470] hover:text-[#6B2523] w-full sm:w-auto text-center font-semibold backdrop-blur-sm"
             >
-              View Food Menu
+              Explore Menu
             </a>
           </div>
 

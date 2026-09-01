@@ -644,7 +644,8 @@ export default function Menu() {
                 className="font-display font-extrabold leading-tight text-[#F6E1CB] mb-4"
                 style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)' }}
               >
-                The Seasonal Menu
+                A Symphony of Global &amp; <br />
+                <span className="italic font-normal text-[#FFC470]">Regional Flavors</span>
               </h1>
               <div className="w-20 h-[2px] bg-[#FFC470]/60 mx-auto rounded-full mb-4" />
               <p className="text-sm md:text-base font-light max-w-xl mx-auto text-[#EFE1D0]/90 leading-relaxed font-body">
