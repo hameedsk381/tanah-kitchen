@@ -770,11 +770,11 @@ export default function Home() {
               className="lg:col-span-7 space-y-6 text-left"
             >
               <span className="wp-badge wp-badge-maroon">
-                OUR ANCESTRY &amp; ETHOS
+                OUR PHILOSOPHY &amp; ETHOS
               </span>
 
               <h3 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#5E332E]">
-                The Tanah Story
+                THE STORY OF TANAH
               </h3>
 
               <div className="w-16 h-[2px] bg-[#5E332E]/40 rounded-full" />
@@ -782,16 +782,16 @@ export default function Home() {
               {/* Callout Quote Card */}
               <div className="p-6 rounded-2xl bg-[#5E332E]/5 border-l-4 border-[#5E332E]">
                 <p className="text-lg md:text-xl font-display text-[#5E332E] leading-relaxed">
-                  "Architecture shaped by the sanctuary of the nest, cuisine inspired by agricultural ancestry."
+                  “In nature, birds travel thousands of miles, yet always seek a place to rest, reconnect, and belong. Tanah was born from that simple idea.”
                 </p>
               </div>
 
               <div className="space-y-4 text-base text-[#1E1B18]/85 leading-relaxed font-body">
                 <p>
-                  Rooted in the Sanskrit &amp; regional earth tradition, Tanah emerged in Gachibowli, Hyderabad, as an architectural sanctuary where founders, corporate teams, and connoisseurs transition from demanding schedules to grounded, natural atmospheres. Our design blends handcrafted bamboo arches, local basalt stone, and living canopies into an organic gathering haven.
+                  Named after the word meaning ‘Earth’, Tanah is designed as a gathering place where teams and professionals come together beyond the work place to unwind after work, share exceptional food, celebrate achievements, strengthen relationships, and create memorable experiences.
                 </p>
                 <p>
-                  Every gathering is elevated by our authentic wood-fired hearths, seasonal micro-farm produce, and hand-milled heirloom grains. We bring ancient gastronomic wisdom and world-class luxury hospitality together under one panoramic sky.
+                  Like a nest built branch by branch, every corner of Tanah has been thoughtfully created to make people feel welcome, comfortable, and connected. Because the best teams are not built in meeting rooms. They are built around conversations.
                 </p>
               </div>
             </motion.div>

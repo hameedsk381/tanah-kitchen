@@ -366,19 +366,21 @@ export default function AboutUs() {
               transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <span className="wp-badge wp-badge-gold">
-                THE TANAH STORY
+                OUR PHILOSOPHY
               </span>
               <h2 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#E5E2DC]">
-                Grounded in Nature, Built for Connection
+                THE STORY OF TANAH
               </h2>
+              <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
+                <p className="text-base font-display text-[#E5E2DC] leading-relaxed">
+                  “In nature, birds travel thousands of miles, yet always seek a place to rest, reconnect, and belong. Tanah was born from that simple idea.”
+                </p>
+              </div>
               <p className="text-base font-light text-[#FAF8F5]/95 leading-relaxed font-body">
-                Named after the word for "Earth," Tanah was born from a simple belief: everyone needs a nest. In a fast-paced city where days fly by, Tanah offers a serene, grounded space to slow down, share laughter, and savor life's finer moments.
+                Named after the word meaning ‘Earth’, Tanah is designed as a gathering place where teams and professionals come together beyond the work place to unwind after work, share exceptional food, celebrate achievements, strengthen relationships, and create memorable experiences.
               </p>
               <p className="text-base font-light text-[#FAF8F5]/90 leading-relaxed font-body">
-                Like a bird building its nest branch by branch, every detail at Tanah—from our earthy textures and handcrafted motifs to our open-air roof—has been thoughtfully curated to make you feel right at home.
-              </p>
-              <p className="text-base font-light text-[#FAF8F5]/85 leading-relaxed font-body">
-                Whether you’re catching up with friends, gathering with family, unwinding after a long day, or celebrating a quiet milestone, Tanah is your sanctuary under the open sky. Because the best memories aren't made in rush hour—they’re built around great food, warm light, and meaningful conversations.
+                Like a nest built branch by branch, every corner of Tanah has been thoughtfully created to make people feel welcome, comfortable, and connected. Because the best teams are not built in meeting rooms. They are built around conversations.
               </p>
             </motion.div>
 
