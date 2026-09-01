@@ -45,27 +45,20 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-16 text-left">
 
           {/* Brand Column */}
-          <div className="space-y-4">
+          <div className="space-y-5">
             <Link to="/" className="flex items-center group">
               <img
-                src="https://storage.googleapis.com/yesj/assets/logos/logo-primary-horizontal-light.png"
-                alt="Tanah Kitchen & Bar"
-                className="h-14 sm:h-16 w-auto object-contain bg-transparent border-none shadow-none transition-transform duration-300 group-hover:scale-105"
+                src="https://storage.googleapis.com/yesj/assets/logos/logo-telugu-horizontal-light.png"
+                alt="Tanah Kitchen & Bar (తనః)"
+                className="h-16 sm:h-20 w-auto object-contain bg-transparent border-none shadow-none transition-transform duration-300 group-hover:scale-105"
               />
             </Link>
-            <p className="text-xs font-light leading-relaxed text-[#FAF8F5]/80 font-body">
+            <p className="text-xs font-light leading-relaxed text-[#FAF8F5]/85 font-body">
               TANAH is not simply a restaurant—it is a gathering place where people reconnect with one another through food, drink, stories, and the comforting feeling of coming home.
             </p>
             <p className="text-[11px] font-light text-[#E5E2DC]/70 font-body">
               Built on the symbolism of birds, nests, and the earth — celebrating belonging, rest, and authentic hospitality. ESTD 2025.
             </p>
-            <div className="pt-1 flex items-center gap-2.5 opacity-80">
-              <img
-                src="https://storage.googleapis.com/yesj/assets/logos/logo-telugu-horizontal-light.png"
-                alt="Tanah in Telugu (తనః)"
-                className="h-7 w-auto object-contain"
-              />
-            </div>
           </div>
 
           {/* Navigation Links */}
