@@ -81,13 +81,16 @@ export default function Navbar() {
             {/* Logo */}
             <Link
               to="/"
-              className="flex items-center group bg-transparent border-none p-0 outline-none transition-transform duration-300 hover:scale-[1.03]"
+              className="flex items-center group bg-transparent border-none p-0 outline-none transition-transform duration-300 hover:scale-[1.02]"
               aria-label="Tanah Kitchen & Bar Home"
             >
               <img
                 src="https://storage.googleapis.com/yesj/assets/logos/logo-primary-horizontal-light.png"
                 alt="Tanah Kitchen & Bar"
-                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain bg-transparent border-none shadow-none transition-all duration-300 group-hover:brightness-110 flex-shrink-0"
+                fetchPriority="high"
+                loading="eager"
+                decoding="async"
+                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain bg-transparent border-none shadow-none transition-all duration-300 group-hover:brightness-110 flex-shrink-0 [image-rendering:auto]"
               />
             </Link>
 
