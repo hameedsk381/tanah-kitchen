@@ -32,9 +32,12 @@ import {
   KeyRound,
   Eye,
   EyeOff,
-  ShieldCheck
+  ShieldCheck,
+  Camera,
+  FolderOpen
 } from 'lucide-react'
 import { useMenu } from '../context/MenuContext'
+import { getCdnUrl } from '../utils/cdn'
 import { getAuthHeaders } from '../utils/apiAuth'
 import SEO from '../components/SEO'
 import { LogoOwl } from '../components/illustrations'
