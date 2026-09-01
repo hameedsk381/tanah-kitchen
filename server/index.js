@@ -32,25 +32,29 @@ if (!fs.existsSync(UPLOADS_DIR)) {
 
 // ── GOOGLE CLOUD STORAGE CONFIGURATION ──
 let gcsBucket = null
-let gcsBucketName = process.env.GCP_STORAGE_BUCKET || ''
+let gcsBucketName = process.env.GCS_BUCKET_NAME || process.env.GCP_STORAGE_BUCKET || process.env.GCS_STORAGE_BUCKET || ''
 
 try {
   const gcsOptions = {}
 
-  if (process.env.GCP_PROJECT_ID) {
-    gcsOptions.projectId = process.env.GCP_PROJECT_ID
+  const projectId = process.env.GCS_PROJECT_ID || process.env.GCP_PROJECT_ID
+  if (projectId) {
+    gcsOptions.projectId = projectId
   }
 
-  if (process.env.GCP_CLIENT_EMAIL && process.env.GCP_PRIVATE_KEY) {
+  const clientEmail = process.env.GCS_CLIENT_EMAIL || process.env.GCP_CLIENT_EMAIL
+  const privateKey = (process.env.GCS_PRIVATE_KEY || process.env.GCP_PRIVATE_KEY || '').replace(/\\n/g, '\n')
+
+  if (clientEmail && privateKey) {
     gcsOptions.credentials = {
-      client_email: process.env.GCP_CLIENT_EMAIL,
-      private_key: process.env.GCP_PRIVATE_KEY.replace(/\\n/g, '\n')
+      client_email: clientEmail,
+      private_key: privateKey
     }
-  } else if (process.env.GCP_SERVICE_ACCOUNT_KEY) {
+  } else if (process.env.GCP_SERVICE_ACCOUNT_KEY || process.env.GCS_SERVICE_ACCOUNT_KEY) {
     try {
-      gcsOptions.credentials = JSON.parse(process.env.GCP_SERVICE_ACCOUNT_KEY)
+      gcsOptions.credentials = JSON.parse(process.env.GCP_SERVICE_ACCOUNT_KEY || process.env.GCS_SERVICE_ACCOUNT_KEY)
     } catch (e) {
-      console.warn('⚠️ Could not parse GCP_SERVICE_ACCOUNT_KEY JSON:', e.message)
+      console.warn('⚠️ Could not parse service account JSON:', e.message)
     }
   } else if (process.env.GOOGLE_APPLICATION_CREDENTIALS && fs.existsSync(process.env.GOOGLE_APPLICATION_CREDENTIALS)) {
     gcsOptions.keyFilename = process.env.GOOGLE_APPLICATION_CREDENTIALS
