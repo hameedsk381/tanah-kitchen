@@ -9,38 +9,56 @@
      Tanah Kitchen & Bar – Design System Palette
      ============================================================ */
 
-  /* Primary */
-  --color-primary-dark: #6B2523;
-  --color-light-cream: #F6E1CB;
+  /* ============================================================
+     Official Tanah Brand Palette (Pantone Standards)
+     ============================================================ */
+
+  /* 1. PANTONE PQ-19-1435TCX Cherry Mahogany */
+  --color-cherry-mahogany: #5E332E;
+  --color-cherry-mahogany-dark: #4A2420;
+  --color-cherry-mahogany-light: #7A3B35;
+  --color-primary-dark: #5E332E;
+
+  /* 2. PANTONE 13-4403 TPG Silver Birch */
+  --color-silver-birch: #E5E2DC;
+  --color-silver-birch-light: #FAF8F5;
+  --color-silver-birch-muted: #D0CCC4;
+  --color-light-cream: #E5E2DC;
+
+  /* 3. PANTONE Black 6 C */
+  --color-black-6c: #1E1B18;
+  --color-black-6c-deep: #131211;
+  --color-near-black: #1E1B18;
+
+  /* Warm Accent & Border Tones */
   --color-accent-gold: #FFC470;
-  --color-border-accent: #DEC8AB;
-  --color-near-black: #3A2E2A;
+  --color-border-accent: #D0CCC4;
 
   /* Background mappings */
-  --color-bg-primary: var(--color-light-cream);
-  --color-bg-secondary: var(--color-primary-dark);
+  --color-bg-primary: var(--color-silver-birch-light);
+  --color-bg-secondary: var(--color-cherry-mahogany);
 
   /* Text */
-  --color-text-dark: var(--color-near-black);
-  --color-text-light: #EFE1D0;
-  --color-text-muted: #8A7F7A;
+  --color-text-dark: var(--color-black-6c);
+  --color-text-light: #FAF8F5;
+  --color-text-muted: #78736E;
 
-  /* Accent (redundant alias kept for backward compat) */
-  --color-accent: var(--color-primary-dark);
+  /* Accent aliases */
+  --color-accent: var(--color-cherry-mahogany);
   --color-accent-gold-color: var(--color-accent-gold);
 
-  /* Undefined vars used across components – now defined */
-  --color-cream: #FFFDF8;
+  /* Semantic earth tones */
+  --color-cream: #FAF8F5;
   --color-forest: #1B4332;
   --color-forest-dark: #14342A;
   --color-terracotta: #882B06;
   --color-terracotta-light: #D4A574;
-  --color-charcoal: #1E1E1E;
-  --color-brown: #8B4513;
-  --color-brown-light: #A0785A;
-  --color-beige: #F2E8D5;
-  --color-beige-dark: #D9C5A0;
-  --color-dark-brown: #2C1810;
+  --color-charcoal: #1E1B18;
+  --color-brown: #5E332E;
+  --color-brown-light: #8A4F47;
+  --color-beige: #E5E2DC;
+  --color-beige-dark: #D0CCC4;
+  --color-dark-brown: #331A17;
 
   /* Typography */
   --font-display: 'Baloo 2', system-ui, sans-serif;
