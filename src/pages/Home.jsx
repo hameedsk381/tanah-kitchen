@@ -242,12 +242,8 @@ export default function Home() {
 
           <div className="w-24 h-[2px] bg-[#E5E2DC]/60 rounded-full mb-6" />
 
-          <p className="text-base md:text-lg font-light max-w-3xl leading-relaxed font-body text-[#FAF8F5]/95 px-4 mb-4">
+          <p className="text-base md:text-lg font-light max-w-3xl leading-relaxed font-body text-[#FAF8F5]/95 px-4 mb-8">
             Step away from the daily rush into a cozy nest or open-to-sky sanctuary. Whether it’s craft cocktails under the stars, rich South Indian soul food, or global gourmet bites with friends—Tanah is your space to ground yourself and belong.
-          </p>
-
-          <p className="text-xs md:text-sm font-light max-w-2xl leading-relaxed font-body text-[#E5E2DC]/85 px-4 mb-8">
-            At Tanah, weekends are built around music, food, and effortless connection. Whether you're taking the stage on Karaoke Friday, rocking out with live bands on Saturday, or soaking in open-air acoustic sets on Sunday—there’s a spot waiting for you.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full max-w-md px-4 sm:px-0 mb-10">
@@ -940,22 +936,66 @@ export default function Home() {
       </section>
 
       {/* ==========================================
-          WEEKENDS SORTED AT TANAH CALLOUT BANNER
+          WEEKENDS SORTED AT TANAH (Dedicated Music & Gathering Section)
           ========================================== */}
-      <section className="bg-[#4A2420] border-y border-[#E5E2DC]/20 py-14 px-6 text-center text-[#E5E2DC] relative overflow-hidden">
-        <div className="wp-container relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2">
-            <span className="wp-badge wp-badge-gold">
-              ✦ WEEKEND PROGRAMMING ✦
-            </span>
+      <section className="bg-[#4A2420] border-y border-[#E5E2DC]/20 py-16 px-6 text-center text-[#E5E2DC] relative overflow-hidden">
+        <div className="wp-container relative z-10 space-y-8 max-w-5xl mx-auto">
+          
+          <div className="space-y-3 max-w-2xl mx-auto">
+            <div className="inline-flex items-center gap-2">
+              <span className="wp-badge wp-badge-gold">
+                ✦ LIVE MUSIC &amp; EXPERIENCES ✦
+              </span>
+            </div>
+            <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-[#E5E2DC] uppercase tracking-wider">
+              WEEKENDS SORTED AT TANAH
+            </h3>
+            <div className="w-20 h-[2px] bg-[#E5E2DC]/40 mx-auto rounded-full" />
+            <p className="text-sm md:text-base text-[#FAF8F5]/90 leading-relaxed font-body">
+              At Tanah, weekends are built around music, food, and effortless connection. Whether you're taking the stage on Karaoke Friday, rocking out with live bands on Saturday, or soaking in open-air acoustic sets on Sunday—there’s a spot waiting for you.
+            </p>
           </div>
-          <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-[#E5E2DC] uppercase tracking-wider">
-            WEEKENDS SORTED AT TANAH
-          </h3>
-          <p className="text-sm sm:text-base text-[#FAF8F5]/90 max-w-xl mx-auto font-body font-medium tracking-wide">
-            Live Band Performance &nbsp;|&nbsp; Karaoke &nbsp;|&nbsp; Acoustic
-          </p>
-          <div className="pt-3">
+
+          {/* 3-Day Weekend Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 pt-4 text-left">
+            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#E5E2DC]/30 transition-all space-y-2">
+              <span className="text-[10px] font-extrabold tracking-widest uppercase text-[#E5E2DC]/80 block">
+                FRIDAY NIGHT
+              </span>
+              <h4 className="font-display text-xl font-bold text-[#E5E2DC]">
+                🎤 Karaoke Friday
+              </h4>
+              <p className="text-xs text-[#FAF8F5]/80 font-body leading-relaxed">
+                Take the stage, sing your favorite anthems, and kick off the weekend over craft cocktails and gourmet bites.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#E5E2DC]/30 transition-all space-y-2">
+              <span className="text-[10px] font-extrabold tracking-widest uppercase text-[#E5E2DC]/80 block">
+                SATURDAY NIGHT
+              </span>
+              <h4 className="font-display text-xl font-bold text-[#E5E2DC]">
+                🎸 Live Bands
+              </h4>
+              <p className="text-xs text-[#FAF8F5]/80 font-body leading-relaxed">
+                High-energy live performances, electric rooftop atmosphere, and soulful dining under the Hyderabad night sky.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#E5E2DC]/30 transition-all space-y-2">
+              <span className="text-[10px] font-extrabold tracking-widest uppercase text-[#E5E2DC]/80 block">
+                SUNDAY EVENING
+              </span>
+              <h4 className="font-display text-xl font-bold text-[#E5E2DC]">
+                🎶 Open-Air Acoustic
+              </h4>
+              <p className="text-xs text-[#FAF8F5]/80 font-body leading-relaxed">
+                Soak in soothing acoustic sets, comforting heritage soul food, and gentle sunset breezes to round off your week.
+              </p>
+            </div>
+          </div>
+
+          <div className="pt-4">
             <a
               href="/book"
               className="wp-btn-pill bg-[#E5E2DC] text-[#5E332E] hover:bg-white text-xs font-extrabold tracking-widest uppercase py-3.5 px-8 shadow-xl inline-flex items-center gap-2"
