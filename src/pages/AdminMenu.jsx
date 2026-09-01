@@ -917,13 +917,13 @@ export default function AdminMenu() {
                   >
                     <div>
                       {/* Photo Frame */}
-                      <div className="relative aspect-[16/10] overflow-hidden bg-black/5">
+                      <div className="relative aspect-[16/10] overflow-hidden bg-black/5 flex items-center justify-center">
                         <img
-                          src={item.image}
+                          src={item.image ? item.image : getCdnUrl('/assets/logos/logo-siren-dark.png')}
                           alt={item.name}
                           loading="lazy"
                           decoding="async"
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          className={`w-full h-full group-hover:scale-105 transition-transform duration-500 ${item.image ? 'object-cover' : 'object-contain p-8 opacity-20'}`}
                         />
 
                         <button
@@ -1868,16 +1868,16 @@ export default function AdminMenu() {
                 
                 {/* Photo Preview & Dual Action Buttons */}
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-2xl bg-[#FAF8F5] border border-[#5E332E]/15">
-                  <div className="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 border border-[#5E332E]/20 bg-black/5">
+                  <div className="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 border border-[#5E332E]/20 bg-black/5 flex items-center justify-center">
                     <img
-                      src={editingItem.image || '/assets/Tanha Food/food-1.webp'}
+                      src={editingItem.image ? editingItem.image : getCdnUrl('/assets/logos/logo-siren-dark.png')}
                       alt="Selected preview"
-                      className="w-full h-full object-cover"
+                      className={`w-full h-full ${editingItem.image ? 'object-cover' : 'object-contain p-4 opacity-30'}`}
                     />
                   </div>
                   <div className="space-y-2 flex-1">
                     <span className="text-[10px] font-mono text-[#1E1B18]/70 block font-semibold truncate max-w-xs">
-                      {editingItem.image?.startsWith('data:') ? 'Custom Uploaded Image (Base64)' : editingItem.image}
+                      {editingItem.image ? (editingItem.image.startsWith('data:') ? 'Custom Uploaded Image (Base64)' : editingItem.image) : 'No image (Logo Fallback)'}
                     </span>
                     <div className="flex flex-wrap items-center gap-2">
                       <label className="cursor-pointer px-3.5 py-1.5 rounded-lg bg-[#5E332E] hover:bg-[#5E332E] text-[#E5E2DC] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm transition-all">
@@ -1907,6 +1907,17 @@ export default function AdminMenu() {
                         <ImageIcon className="w-3.5 h-3.5" />
                         <span>Browse Catalog</span>
                       </button>
+
+                      {editingItem.image && (
+                        <button
+                          type="button"
+                          onClick={() => setEditingItem({ ...editingItem, image: '' })}
+                          className="px-3.5 py-1.5 rounded-lg bg-white border border-red-200 text-red-600 hover:bg-red-50 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-xs transition-all"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                          <span>Remove</span>
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>

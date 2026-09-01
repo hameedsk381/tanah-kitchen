@@ -529,18 +529,17 @@ export default function Menu() {
               <div className="hidden lg:block lg:col-span-5 sticky top-28 w-full text-left">
                 {activeShowcaseItem ? (
                   <motion.div layout className="wp-card p-6 space-y-6 shadow-2xl border border-[#5E332E]/15">
-                    {activeShowcaseItem.image && activeShowcaseItem.image.trim() !== '' ? (
-                      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-white border border-[#5E332E]/10">
+                      <div className={`relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-[#5E332E]/10 flex items-center justify-center ${activeShowcaseItem.image ? 'bg-white' : 'bg-white/50'}`}>
                         <AnimatePresence mode="wait">
                           <motion.img
                             key={activeShowcaseItem.id}
-                            src={activeShowcaseItem.image}
+                            src={activeShowcaseItem.image ? activeShowcaseItem.image : getCdnUrl('/assets/logos/logo-siren-dark.png')}
                             alt={activeShowcaseItem.name}
                             initial={{ opacity: 0, scale: 1.05 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.98 }}
                             transition={{ duration: 0.4 }}
-                            className="w-full h-full object-cover filter brightness-[0.88] contrast-[1.05]"
+                            className={`w-full h-full ${activeShowcaseItem.image ? 'object-cover filter brightness-[0.88] contrast-[1.05]' : 'object-contain p-12 opacity-20 filter-none'}`}
                           />
                         </AnimatePresence>
 
@@ -556,19 +555,7 @@ export default function Menu() {
                           )}
                         </div>
                       </div>
-                    ) : (
-                      <div className="p-4 rounded-2xl bg-[#5E332E]/5 border border-[#5E332E]/10 flex items-center justify-between">
-                        <span className="text-[10px] tracking-widest uppercase px-3 py-1 rounded-full bg-white border border-[#5E332E]/20 text-[#5E332E] font-bold flex items-center gap-1.5">
-                          {activeShowcaseItem.nonVeg ? <NonVegMark /> : <VegMark />}
-                          {activeShowcaseItem.category}
-                        </span>
-                        {activeShowcaseItem.special && (
-                          <span className="text-[9px] tracking-widest uppercase bg-[#5E332E] text-[#E5E2DC] px-3 py-1 rounded-full font-bold shadow-sm">
-                            ✦ Chef Pick
-                          </span>
-                        )}
-                      </div>
-                    )}
+
 
                     <div className="space-y-3">
                       <div className="flex justify-between items-baseline border-b border-[#5E332E]/10 pb-3">
