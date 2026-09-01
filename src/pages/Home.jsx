@@ -361,7 +361,7 @@ export default function Home() {
             >
               <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#5E332E]/15 aspect-[4/3] relative group">
                 <img
-                  src="/assets/Tanha Image/02.webp"
+                  src="https://storage.googleapis.com/yesj/assets/Tanha Ambiance/Ambiance-6.webp"
                   alt="Tanah Kitchen Atmosphere"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-[0.92]"
                 />
@@ -1031,7 +1031,7 @@ export default function Home() {
             >
               <div className="aspect-[3/4] overflow-hidden rounded-2xl shadow-xl border border-white/10 relative group">
                 <img
-                  src="/assets/Tanha Ambiance/Ambiance-26.webp"
+                  src="https://storage.googleapis.com/yesj/assets/Tanha Ambiance/Ambiance-26.webp"
                   alt="Gathering area setup"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
@@ -1039,7 +1039,7 @@ export default function Home() {
 
               <div className="aspect-[3/4] overflow-hidden rounded-2xl shadow-xl border border-white/10 relative group mt-6 sm:mt-8">
                 <img
-                  src="/assets/Tanha Image/04.webp"
+                  src="https://storage.googleapis.com/yesj/assets/Tanha Ambiance/Ambiance-25.webp"
                   alt="Outdoor gathering setup"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
