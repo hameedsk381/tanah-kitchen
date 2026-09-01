@@ -66,11 +66,7 @@ export default function Gallery() {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase cursor-pointer transition-all duration-300 whitespace-nowrap ${
-                    isActive
-                      ? 'bg-[#5E332E] text-[#E5E2DC] shadow-sm'
-                      : 'bg-white text-[#1E1B18] border border-[#5E332E]/15 hover:border-[#5E332E]/40'
-                  }`}
+                  className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase cursor-pointer transition-all duration-300 whitespace-nowrap ${ isActive ? 'bg-[#5E332E] text-[#E5E2DC] shadow-sm' : 'bg-white text-[#1E1B18] border border-[#5E332E]/15 hover:border-[#5E332E]/40' }`}
                 >
                   {cat}
                 </button>

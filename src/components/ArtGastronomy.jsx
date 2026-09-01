@@ -27,7 +27,7 @@ export default function ArtGastronomy() {
             </span>
             <h2 className="font-display font-light text-text-light leading-tight" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
               Art &<br />
-              <span className="italic text-gold">Gastronomy</span>
+              <span className="text-gold">Gastronomy</span>
             </h2>
             <p className="text-sm font-light text-text-muted leading-relaxed">
               {quoteSection.quote}

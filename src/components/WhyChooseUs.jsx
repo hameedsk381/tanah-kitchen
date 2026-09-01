@@ -156,7 +156,7 @@ export default function WhyChooseUs() {
           />
 
           <p
-            className="font-display text-2xl md:text-3xl font-light italic leading-normal mb-4 relative z-10"
+            className="font-display text-2xl md:text-3xl font-light leading-normal mb-4 relative z-10"
             style={{ color: 'var(--color-cream)' }}
           >
             "Earth is not just where we get our food; it is the source of our culinary imagination."

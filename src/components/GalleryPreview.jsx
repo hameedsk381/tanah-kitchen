@@ -20,7 +20,7 @@ export default function GalleryPreview() {
               VISUAL ARCHIVES
             </span>
             <h2 className="font-display font-light text-warm-ivory" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.2rem)' }}>
-              A View of <span className="italic text-copper">Tanah</span>
+              A View of <span className="text-copper">Tanah</span>
             </h2>
           </div>
           <Link

@@ -113,7 +113,7 @@ export default function Reservation() {
               }}
             >
               Reserve <br />
-              <span className="italic" style={{ color: 'var(--color-terracotta-light)' }}>Your Table</span>
+              <span className="" style={{ color: 'var(--color-terracotta-light)' }}>Your Table</span>
             </h2>
             <p
               className="text-base font-light mb-10 leading-relaxed"

@@ -56,7 +56,7 @@ export default function HeroExperience() {
           >
             Rooftop Dining.<br />
             Wood-Fired.<br />
-            <span className="font-light italic text-bg-secondary">Unforgettable.</span>
+            <span className="font-light text-bg-secondary">Unforgettable.</span>
           </h1>
 
           {/* Clean Gold Accent Divider */}

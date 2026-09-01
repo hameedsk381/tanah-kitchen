@@ -68,11 +68,7 @@ export default function CorporatePackagesSection() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 whitespace-nowrap cursor-pointer ${
-                activeTab === tab.id
-                  ? 'bg-[#5E332E] text-[#E5E2DC] shadow-md'
-                  : 'bg-white text-[#1E1B18] border border-[#5E332E]/15 hover:border-[#5E332E]/40'
-              }`}
+              className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 whitespace-nowrap cursor-pointer ${ activeTab === tab.id ? 'bg-[#5E332E] text-[#E5E2DC] shadow-md' : 'bg-white text-[#1E1B18] border border-[#5E332E]/15 hover:border-[#5E332E]/40' }`}
             >
               {tab.label}
             </button>
@@ -88,11 +84,7 @@ export default function CorporatePackagesSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
-                className={`rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 relative bg-white border ${
-                  pkg.popular
-                    ? 'border-[#5E332E] shadow-xl ring-2 ring-[#5E332E]/20'
-                    : 'border-[#5E332E]/15 shadow-sm hover:shadow-md'
-                }`}
+                className={`rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 relative bg-white border ${ pkg.popular ? 'border-[#5E332E] shadow-xl ring-2 ring-[#5E332E]/20' : 'border-[#5E332E]/15 shadow-sm hover:shadow-md' }`}
               >
                 {pkg.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#5E332E] text-[#E5E2DC] text-[9px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full shadow-md">
@@ -207,7 +199,7 @@ export default function CorporatePackagesSection() {
                 ))}
               </tbody>
             </table>
-            <p className="text-[11px] text-[#1E1B18]/70 italic mt-4">
+            <p className="text-[11px] text-[#1E1B18]/70 mt-4">
               * Minimum guarantee of 25 guests applies. Customizations and beverage pairing packages available upon inquiry.
             </p>
           </div>
@@ -237,11 +229,7 @@ export default function CorporatePackagesSection() {
                 <button
                   key={sub.id}
                   onClick={() => setSelectedPoolCategory(sub.id)}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all cursor-pointer ${
-                    selectedPoolCategory === sub.id
-                      ? 'bg-[#5E332E] text-[#E5E2DC] shadow-sm'
-                      : 'bg-[#FAF8F5] text-[#1E1B18] hover:bg-[#5E332E]/10'
-                  }`}
+                  className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all cursor-pointer ${ selectedPoolCategory === sub.id ? 'bg-[#5E332E] text-[#E5E2DC] shadow-sm' : 'bg-[#FAF8F5] text-[#1E1B18] hover:bg-[#5E332E]/10' }`}
                 >
                   {sub.label}
                 </button>

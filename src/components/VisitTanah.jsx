@@ -72,7 +72,7 @@ export default function VisitTanah() {
                   color: 'var(--color-cream)'
                 }}
               >
-                Visit <span className="italic font-light" style={{ color: 'var(--color-terracotta-light)' }}>Tanah</span>
+                Visit <span className="font-light" style={{ color: 'var(--color-terracotta-light)' }}>Tanah</span>
               </h2>
               <p
                 className="text-base font-light mt-4"

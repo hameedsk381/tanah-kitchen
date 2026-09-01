@@ -192,7 +192,7 @@ export default function Home() {
             style={{ fontSize: 'clamp(2.4rem, 6vw, 4.6rem)' }}
           >
             Your Urban Nest in the<br />
-            <span className="italic font-normal text-[#E5E2DC]">Heart of Gachibowli.</span>
+            <span className="font-normal text-[#E5E2DC]">Heart of Gachibowli.</span>
           </h2>
 
           <div className="w-24 h-[2px] bg-[#E5E2DC]/60 rounded-full mb-6" />
@@ -781,7 +781,7 @@ export default function Home() {
 
               {/* Callout Quote Card */}
               <div className="p-6 rounded-2xl bg-[#5E332E]/5 border-l-4 border-[#5E332E]">
-                <p className="text-lg md:text-xl font-display italic text-[#5E332E] leading-relaxed">
+                <p className="text-lg md:text-xl font-display text-[#5E332E] leading-relaxed">
                   "Architecture shaped by the sanctuary of the nest, cuisine inspired by agricultural ancestry."
                 </p>
               </div>
@@ -1059,7 +1059,7 @@ export default function Home() {
                   <div className="flex text-amber-500 text-sm">
                     {'★'.repeat(review.stars)}
                   </div>
-                  <p className="text-xs sm:text-sm font-light text-[#1E1B18]/85 italic leading-relaxed font-body">
+                  <p className="text-xs sm:text-sm font-light text-[#1E1B18]/85 leading-relaxed font-body">
                     "{review.quote}"
                   </p>
                 </div>

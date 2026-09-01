@@ -40,7 +40,7 @@ export default function Philosophy() {
             <span className="text-[10px] font-semibold tracking-[0.5em] uppercase text-[#F2E8D8]/60 block mb-6 font-body">
               GATHERING PLACE
             </span>
-            <blockquote className="font-display italic leading-snug text-[#F2E8D8]" style={{ fontSize: 'clamp(1.3rem, 3vw, 2rem)' }}>
+            <blockquote className="font-display leading-snug text-[#F2E8D8]" style={{ fontSize: 'clamp(1.3rem, 3vw, 2rem)' }}>
               "Birds find each other mid-flight, and so do we—at the bar, in the kitchen, over shared plates and poured stories."
             </blockquote>
             <DiamondDivider className="mt-8" color="var(--color-light-cream)" />
@@ -90,12 +90,12 @@ export default function Philosophy() {
 
                 {/* Brand Manifesto */}
                 <div className="bg-[#F2E8D8]/10 border border-[#E5E2DC]/30 p-5 mt-2">
-                  <p className="text-base italic font-display text-[#E5E2DC] leading-relaxed">
+                  <p className="text-base font-display text-[#E5E2DC] leading-relaxed">
                     "We've built this place like birds build their nests—branch by branch, to make you feel at home."
                   </p>
                 </div>
 
-                <p className="text-xl font-display text-[#E5E2DC] italic pt-2">
+                <p className="text-xl font-display text-[#E5E2DC] pt-2">
                   Because the best moments are not planned.<br />
                   They happen around a table.
                 </p>

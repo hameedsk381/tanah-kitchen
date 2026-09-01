@@ -29,7 +29,7 @@ export default function ReservationCTA() {
           </span>
           
           <h2 className="font-display font-light text-warm-ivory leading-tight" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
-            Experience <span className="italic text-copper">Tanah Kitchen & Bar</span>
+            Experience <span className="text-copper">Tanah Kitchen & Bar</span>
           </h2>
           
           <p className="text-sm font-light text-sand-beige max-w-xl mx-auto leading-relaxed">

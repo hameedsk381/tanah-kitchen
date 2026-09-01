@@ -48,13 +48,7 @@ export default function Navbar() {
       <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         {/* Top Announcement / Info Bar */}
         <div
-          className={`hidden lg:block transition-all duration-300 text-[11px] font-medium tracking-wider ${
-            scrolled
-              ? 'h-0 opacity-0 overflow-hidden py-0'
-              : isHome
-              ? 'py-2 bg-transparent text-[#E5E2DC]/90 border-none'
-              : 'py-2 bg-[#4A2420] text-[#E5E2DC]/85 border-b border-[#E5E2DC]/15'
-          }`}
+          className={`hidden lg:block transition-all duration-300 text-[11px] font-medium tracking-wider ${ scrolled ? 'h-0 opacity-0 overflow-hidden py-0' : isHome ? 'py-2 bg-transparent text-[#E5E2DC]/90 border-none' : 'py-2 bg-[#4A2420] text-[#E5E2DC]/85 border-b border-[#E5E2DC]/15' }`}
         >
           <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
             <div className="flex items-center gap-6">
@@ -79,13 +73,7 @@ export default function Navbar() {
 
         {/* Main Sticky Navbar */}
         <nav
-          className={`transition-all duration-300 ${
-            scrolled
-              ? 'py-3.5 bg-[#5E332E]/95 backdrop-blur-md shadow-lg border-b border-[#E5E2DC]/20'
-              : isHome
-              ? 'py-4 lg:py-5 bg-transparent border-none shadow-none'
-              : 'py-4 lg:py-5 bg-[#5E332E] border-b border-[#E5E2DC]/10'
-          }`}
+          className={`transition-all duration-300 ${ scrolled ? 'py-3.5 bg-[#5E332E]/95 backdrop-blur-md shadow-lg border-b border-[#E5E2DC]/20' : isHome ? 'py-4 lg:py-5 bg-transparent border-none shadow-none' : 'py-4 lg:py-5 bg-[#5E332E] border-b border-[#E5E2DC]/10' }`}
           role="navigation"
           aria-label="Main navigation"
         >
@@ -111,11 +99,7 @@ export default function Navbar() {
                   <li key={link.label}>
                     <Link
                       to={link.path}
-                      className={`text-xs font-semibold tracking-[0.18em] uppercase transition-all duration-200 relative py-1.5 ${
-                        isActive
-                          ? 'text-[#E5E2DC]'
-                          : 'text-[#E5E2DC] hover:text-[#E5E2DC]'
-                      }`}
+                      className={`text-xs font-semibold tracking-[0.18em] uppercase transition-all duration-200 relative py-1.5 ${ isActive ? 'text-[#E5E2DC]' : 'text-[#E5E2DC] hover:text-[#E5E2DC]' }`}
                     >
                       {link.label}
                       {isActive && (
@@ -178,11 +162,7 @@ export default function Navbar() {
                   >
                     <Link
                       to={link.path}
-                      className={`font-display text-xl font-bold block py-2 transition-colors duration-200 ${
-                        isActive
-                          ? 'text-[#E5E2DC]'
-                          : 'text-[#E5E2DC] hover:text-[#E5E2DC]'
-                      }`}
+                      className={`font-display text-xl font-bold block py-2 transition-colors duration-200 ${ isActive ? 'text-[#E5E2DC]' : 'text-[#E5E2DC] hover:text-[#E5E2DC]' }`}
                     >
                       {link.label}
                     </Link>

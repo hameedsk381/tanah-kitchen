@@ -616,11 +616,7 @@ export default function AdminMenu() {
             <div className="flex items-center gap-1.5 bg-[#FAF8F5] p-1.5 rounded-2xl border border-[#5E332E]/15">
               <button
                 onClick={() => setActiveTab('bento')}
-                className={`px-3.5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-1.5 ${
-                  activeTab === 'bento'
-                    ? 'bg-[#5E332E] text-[#E5E2DC] shadow-md'
-                    : 'text-[#1E1B18]/70 hover:text-[#5E332E]'
-                }`}
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-1.5 ${ activeTab === 'bento' ? 'bg-[#5E332E] text-[#E5E2DC] shadow-md' : 'text-[#1E1B18]/70 hover:text-[#5E332E]' }`}
               >
                 <LayoutGrid className="w-3.5 h-3.5" />
                 <span>Bento Grid</span>
@@ -628,11 +624,7 @@ export default function AdminMenu() {
 
               <button
                 onClick={() => setActiveTab('menu')}
-                className={`px-3.5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-1.5 ${
-                  activeTab === 'menu'
-                    ? 'bg-[#5E332E] text-[#E5E2DC] shadow-md'
-                    : 'text-[#1E1B18]/70 hover:text-[#5E332E]'
-                }`}
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-1.5 ${ activeTab === 'menu' ? 'bg-[#5E332E] text-[#E5E2DC] shadow-md' : 'text-[#1E1B18]/70 hover:text-[#5E332E]' }`}
               >
                 <Utensils className="w-3.5 h-3.5" />
                 <span>Full Menu</span>
@@ -640,11 +632,7 @@ export default function AdminMenu() {
 
               <button
                 onClick={() => setActiveTab('gallery')}
-                className={`px-3.5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-1.5 ${
-                  activeTab === 'gallery'
-                    ? 'bg-[#5E332E] text-[#E5E2DC] shadow-md'
-                    : 'text-[#1E1B18]/70 hover:text-[#5E332E]'
-                }`}
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-1.5 ${ activeTab === 'gallery' ? 'bg-[#5E332E] text-[#E5E2DC] shadow-md' : 'text-[#1E1B18]/70 hover:text-[#5E332E]' }`}
               >
                 <Images className="w-3.5 h-3.5" />
                 <span>Gallery</span>
@@ -878,11 +866,7 @@ export default function AdminMenu() {
                       setSelectedCategory(cat)
                       setDishPage(1)
                     }}
-                    className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all whitespace-nowrap ${
-                      selectedCategory.toLowerCase() === cat.toLowerCase()
-                        ? 'bg-[#5E332E] text-[#E5E2DC] shadow-md'
-                        : 'bg-white text-[#1E1B18]/75 hover:bg-white/80 border border-[#5E332E]/10'
-                    }`}
+                    className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all whitespace-nowrap ${ selectedCategory.toLowerCase() === cat.toLowerCase() ? 'bg-[#5E332E] text-[#E5E2DC] shadow-md' : 'bg-white text-[#1E1B18]/75 hover:bg-white/80 border border-[#5E332E]/10' }`}
                   >
                     {cat}
                   </button>
@@ -1124,11 +1108,7 @@ export default function AdminMenu() {
                       setGalleryFilter(cat)
                       setGalleryPage(1)
                     }}
-                    className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all whitespace-nowrap ${
-                      galleryFilter.toLowerCase() === cat.toLowerCase()
-                        ? 'bg-[#5E332E] text-[#E5E2DC] shadow-md'
-                        : 'bg-white text-[#1E1B18]/75 hover:bg-white/80 border border-[#5E332E]/10'
-                    }`}
+                    className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all whitespace-nowrap ${ galleryFilter.toLowerCase() === cat.toLowerCase() ? 'bg-[#5E332E] text-[#E5E2DC] shadow-md' : 'bg-white text-[#1E1B18]/75 hover:bg-white/80 border border-[#5E332E]/10' }`}
                   >
                     {cat}
                   </button>
@@ -1682,11 +1662,7 @@ export default function AdminMenu() {
                     <h3 className="font-display font-bold text-lg sm:text-xl text-[#5E332E]">
                       Select or Upload Food Photograph
                     </h3>
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
-                      storageInfo.connected 
-                        ? 'bg-emerald-50 text-emerald-700 border-emerald-300'
-                        : 'bg-amber-50 text-amber-700 border-amber-300'
-                    }`}>
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${ storageInfo.connected ? 'bg-emerald-50 text-emerald-700 border-emerald-300' : 'bg-amber-50 text-amber-700 border-amber-300' }`}>
                       {storageInfo.connected ? '☁️ GCS Connected' : '📁 Local Storage'}
                     </span>
                   </div>
@@ -1730,11 +1706,7 @@ export default function AdminMenu() {
                         setImageSearchQuery('')
                         setPhotoPage(1)
                       }}
-                      className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1 ${
-                        selectedPhotoTab === 'uploads'
-                          ? 'bg-[#5E332E] text-[#E5E2DC] shadow-xs'
-                          : 'bg-[#5E332E]/10 text-[#5E332E] hover:bg-[#5E332E]/20'
-                      }`}
+                      className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1 ${ selectedPhotoTab === 'uploads' ? 'bg-[#5E332E] text-[#E5E2DC] shadow-xs' : 'bg-[#5E332E]/10 text-[#5E332E] hover:bg-[#5E332E]/20' }`}
                     >
                       <FolderPlus className="w-3 h-3" />
                       <span>Uploaded ({customUploads.length})</span>
@@ -1757,11 +1729,7 @@ export default function AdminMenu() {
                         setImageSearchQuery('')
                         setPhotoPage(tab.page)
                       }}
-                      className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
-                        photoPage === tab.page && selectedPhotoTab === 'all' && !imageSearchQuery
-                          ? 'bg-[#5E332E] text-[#E5E2DC] shadow-xs'
-                          : 'bg-[#FAF8F5] text-[#1E1B18]/75 hover:bg-[#5E332E]/10'
-                      }`}
+                      className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${ photoPage === tab.page && selectedPhotoTab === 'all' && !imageSearchQuery ? 'bg-[#5E332E] text-[#E5E2DC] shadow-xs' : 'bg-[#FAF8F5] text-[#1E1B18]/75 hover:bg-[#5E332E]/10' }`}
                     >
                       {tab.label}
                     </button>
@@ -1832,11 +1800,7 @@ export default function AdminMenu() {
                         setIsPhotoPickerOpen(false)
                         showToast(`✓ Assigned ${img.name || img.id}`)
                       }}
-                      className={`group relative rounded-2xl overflow-hidden cursor-pointer border-2 transition-all shadow-xs h-40 sm:h-48 bg-white ${
-                        isSelected
-                          ? 'border-[#5E332E] ring-4 ring-[#5E332E]/30 scale-[1.02] shadow-lg'
-                          : 'border-transparent hover:border-[#5E332E]/50 hover:shadow-md'
-                      }`}
+                      className={`group relative rounded-2xl overflow-hidden cursor-pointer border-2 transition-all shadow-xs h-40 sm:h-48 bg-white ${ isSelected ? 'border-[#5E332E] ring-4 ring-[#5E332E]/30 scale-[1.02] shadow-lg' : 'border-transparent hover:border-[#5E332E]/50 hover:shadow-md' }`}
                     >
                       <img
                         src={img.path}
@@ -1986,11 +1950,7 @@ export default function AdminMenu() {
                     <button
                       type="button"
                       onClick={() => setEditingItem({ ...editingItem, special: !editingItem.special })}
-                      className={`w-full py-2.5 px-3 rounded-xl text-xs font-bold transition-all border ${
-                        editingItem.special
-                          ? 'bg-[#5E332E] text-[#E5E2DC] border-[#5E332E]'
-                          : 'bg-white text-[#1E1B18]/70 border-[#5E332E]/20'
-                      }`}
+                      className={`w-full py-2.5 px-3 rounded-xl text-xs font-bold transition-all border ${ editingItem.special ? 'bg-[#5E332E] text-[#E5E2DC] border-[#5E332E]' : 'bg-white text-[#1E1B18]/70 border-[#5E332E]/20' }`}
                     >
                       {editingItem.special ? '✦ Special' : 'Standard'}
                     </button>

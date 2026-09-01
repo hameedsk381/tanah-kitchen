@@ -28,7 +28,7 @@ export default function LocationSection() {
                 Coordinates
               </span>
               <h2 className="font-display font-light text-text-light" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.2rem)' }}>
-                Find <span className="italic text-gold">Tanah</span>
+                Find <span className="text-gold">Tanah</span>
               </h2>
             </div>
 

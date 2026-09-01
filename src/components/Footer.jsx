@@ -56,7 +56,7 @@ export default function Footer() {
             <p className="text-xs font-light leading-relaxed text-[#FAF8F5]/80 font-body">
               TANAH is not simply a restaurant—it is a gathering place where people reconnect with one another through food, drink, stories, and the comforting feeling of coming home.
             </p>
-            <p className="text-[11px] font-light italic text-[#E5E2DC]/70 font-body">
+            <p className="text-[11px] font-light text-[#E5E2DC]/70 font-body">
               Built on the symbolism of birds, nests, and the earth — celebrating belonging, rest, and authentic hospitality. ESTD 2025.
             </p>
             <div className="pt-1 flex items-center gap-2.5 opacity-80">

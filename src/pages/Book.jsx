@@ -111,11 +111,7 @@ export default function Book() {
                 setActiveMode('table')
                 document.getElementById('booking-form-card')?.scrollIntoView({ behavior: 'smooth' })
               }}
-              className={`px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer shadow-md ${
-                activeMode === 'table'
-                  ? 'bg-[#E5E2DC] text-[#5E332E]'
-                  : 'bg-white/10 text-[#E5E2DC] hover:bg-white/20 border border-white/15'
-              }`}
+              className={`px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer shadow-md ${ activeMode === 'table' ? 'bg-[#E5E2DC] text-[#5E332E]' : 'bg-white/10 text-[#E5E2DC] hover:bg-white/20 border border-white/15' }`}
             >
               🍽️ Table Reservation (1–10+ Guests)
             </button>
@@ -123,11 +119,7 @@ export default function Book() {
             <a
               href="#corporate-packages"
               onClick={() => setActiveMode('corporate')}
-              className={`px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer shadow-md ${
-                activeMode === 'corporate'
-                  ? 'bg-[#E5E2DC] text-[#5E332E]'
-                  : 'bg-white/10 text-[#E5E2DC] hover:bg-white/20 border border-white/15'
-              }`}
+              className={`px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer shadow-md ${ activeMode === 'corporate' ? 'bg-[#E5E2DC] text-[#5E332E]' : 'bg-white/10 text-[#E5E2DC] hover:bg-white/20 border border-white/15' }`}
             >
               💼 Corporate Packages (25+ Guests)
             </a>
@@ -276,11 +268,7 @@ export default function Book() {
                             type="button"
                             key={tag.id}
                             onClick={() => setForm({ ...form, bookingTag: tag.label })}
-                            className={`p-2.5 rounded-xl border text-[11px] font-semibold transition-all cursor-pointer text-center flex flex-col items-center justify-center gap-1 min-h-[58px] ${
-                              isSelected
-                                ? 'border-[#5E332E] bg-[#5E332E] text-[#E5E2DC] shadow-sm'
-                                : 'border-[#5E332E]/15 bg-[#FAF8F5]/60 text-[#1E1B18] hover:border-[#5E332E]/30'
-                            }`}
+                            className={`p-2.5 rounded-xl border text-[11px] font-semibold transition-all cursor-pointer text-center flex flex-col items-center justify-center gap-1 min-h-[58px] ${ isSelected ? 'border-[#5E332E] bg-[#5E332E] text-[#E5E2DC] shadow-sm' : 'border-[#5E332E]/15 bg-[#FAF8F5]/60 text-[#1E1B18] hover:border-[#5E332E]/30' }`}
                           >
                             <span>{tag.icon}</span>
                             <span className="leading-tight">{tag.label}</span>
@@ -410,11 +398,7 @@ export default function Book() {
                           type="button"
                           key={pref}
                           onClick={() => setForm({ ...form, seatingPreference: pref })}
-                          className={`p-2.5 rounded-xl border text-xs font-semibold transition-all cursor-pointer text-center ${
-                            form.seatingPreference === pref
-                              ? 'border-[#5E332E] bg-[#5E332E] text-[#E5E2DC] shadow-xs'
-                              : 'border-[#5E332E]/15 bg-white text-[#1E1B18] hover:bg-[#FAF8F5]'
-                          }`}
+                          className={`p-2.5 rounded-xl border text-xs font-semibold transition-all cursor-pointer text-center ${ form.seatingPreference === pref ? 'border-[#5E332E] bg-[#5E332E] text-[#E5E2DC] shadow-xs' : 'border-[#5E332E]/15 bg-white text-[#1E1B18] hover:bg-[#FAF8F5]' }`}
                         >
                           {pref}
                         </button>

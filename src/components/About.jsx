@@ -89,7 +89,7 @@ export default function About() {
               }}
             >
               Nurtured by Soil, <br />
-              <span className="italic" style={{ color: 'var(--color-brown)' }}>Inspired by Earth.</span>
+              <span className="" style={{ color: 'var(--color-brown)' }}>Inspired by Earth.</span>
             </h2>
 
             <p

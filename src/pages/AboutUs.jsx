@@ -119,7 +119,7 @@ export default function AboutUs() {
             style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)' }}
           >
             Grounded in Nature, <br />
-            <span className="italic font-normal text-[#E5E2DC]">Built for Connection</span>
+            <span className="font-normal text-[#E5E2DC]">Built for Connection</span>
           </h1>
           <div className="w-20 h-[2px] bg-[#E5E2DC]/60 mx-auto rounded-full mt-4" />
         </div>
@@ -132,7 +132,7 @@ export default function AboutUs() {
             BRAND PHILOSOPHY
           </span>
           <blockquote
-            className="font-display italic text-[#E5E2DC] leading-snug max-w-3xl mx-auto"
+            className="font-display text-[#E5E2DC] leading-snug max-w-3xl mx-auto"
             style={{ fontSize: 'clamp(1.3rem, 2.5vw, 2rem)' }}
           >
             "In nature, birds travel thousands of miles, yet always seek a place to rest, reconnect, and belong."
@@ -286,7 +286,7 @@ export default function AboutUs() {
                 <h2 className="font-display font-bold text-3xl md:text-5xl leading-tight text-[#5E332E]">
                   Why Tanah?
                 </h2>
-                <p className="text-lg font-display italic text-[#5E332E]/85 mt-2">
+                <p className="text-lg font-display text-[#5E332E]/85 mt-2">
                   Intimate gatherings, celebrated with exceptional food and ambiance.
                 </p>
               </div>

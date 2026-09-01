@@ -60,7 +60,7 @@ export default function SignatureExperiences() {
               <div className="space-y-6 max-w-lg">
                 {occasions.map((occ, i) => (
                   <div key={i} className="flex gap-4 items-start border-b border-bg-secondary/15 pb-4 last:border-b-0">
-                    <span className="font-display italic text-lg text-bg-secondary min-w-[24px]">
+                    <span className="font-display text-lg text-bg-secondary min-w-[24px]">
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <div>
@@ -73,7 +73,7 @@ export default function SignatureExperiences() {
             </div>
 
             <div className="mt-12 pt-6 border-t border-bg-secondary/15">
-              <p className="text-base font-display italic text-bg-secondary">
+              <p className="text-base font-display text-bg-secondary">
                 At Tanah, every gathering becomes a story worth sharing. Because every great gathering deserves the right setting.
               </p>
             </div>

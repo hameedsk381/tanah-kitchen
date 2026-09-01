@@ -51,7 +51,7 @@ export default function LiquidAlchemy() {
             </p>
 
             <div className="border-t border-bg-secondary/15 pt-6">
-              <h3 className="font-display text-xl text-bg-primary mb-4 font-semibold italic">Flexible Options</h3>
+              <h3 className="font-display text-xl text-bg-primary mb-4 font-semibold">Flexible Options</h3>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
                 {packages.map((pkg, i) => (
                   <li key={i} className="flex items-center gap-3 text-sm font-light text-bg-secondary/90">
@@ -62,7 +62,7 @@ export default function LiquidAlchemy() {
               </ul>
             </div>
 
-            <p className="text-base font-display text-bg-secondary italic pt-4">
+            <p className="text-base font-display text-bg-secondary pt-4">
               We handle the experience so you can focus on your people.
             </p>
           </motion.div>

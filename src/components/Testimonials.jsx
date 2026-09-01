@@ -137,7 +137,7 @@ export default function Testimonials() {
 
                 {/* Text */}
                 <p
-                  className="font-display italic text-lg md:text-xl leading-relaxed mt-6 mb-8"
+                  className="font-display text-lg md:text-xl leading-relaxed mt-6 mb-8"
                   style={{ color: 'var(--color-charcoal)' }}
                 >
                   "{testimonials[current].text}"

@@ -63,7 +63,7 @@ export default function LiveSportsEvents() {
                 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}
               >
                 Live Sports &<br />
-                <span className="italic text-copper">Rooftop Gatherings</span>
+                <span className="text-copper">Rooftop Gatherings</span>
               </h2>
               <p className="text-sm font-light text-sand-beige mt-6 leading-relaxed max-w-xl">
                 Experience the thrills of live sports and live soundscapes at Hyderabad's premier rooftop destination. Giant screens, acoustic performances, and slow-matured cocktails come together under the open skies.

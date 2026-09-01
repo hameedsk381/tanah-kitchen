@@ -582,9 +582,7 @@ export default function Menu() {
 
   return (
     <main 
-      className={`flex-grow pt-24 overflow-hidden text-left transition-colors duration-500 ${
-        menuType === 'liquid' ? 'min-h-screen relative' : 'bg-[#E5E2DC]'
-      }`}
+      className={`flex-grow pt-24 overflow-hidden text-left transition-colors duration-500 ${ menuType === 'liquid' ? 'min-h-screen relative' : 'bg-[#E5E2DC]' }`}
       style={menuType === 'liquid' ? { backgroundColor: 'var(--color-primary-dark)' } : {}}
     >
       <SEO
@@ -612,21 +610,13 @@ export default function Menu() {
             <div className="inline-flex rounded-full border border-white/20 p-1.5 bg-black/20 backdrop-blur-md shadow-lg">
               <button
                 onClick={() => setMenuType('food')}
-                className={`px-8 py-2.5 rounded-full text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer ${
-                  menuType === 'food'
-                    ? 'bg-[#E5E2DC] text-[#5E332E] shadow-md'
-                    : 'text-[#E5E2DC]/80 hover:text-white'
-                }`}
+                className={`px-8 py-2.5 rounded-full text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer ${ menuType === 'food' ? 'bg-[#E5E2DC] text-[#5E332E] shadow-md' : 'text-[#E5E2DC]/80 hover:text-white' }`}
               >
                 Food Menu
               </button>
               <button
                 onClick={() => setMenuType('liquid')}
-                className={`px-8 py-2.5 rounded-full text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer ${
-                  menuType === 'liquid'
-                    ? 'bg-[#E5E2DC] text-[#5E332E] shadow-md'
-                    : 'text-[#E5E2DC]/80 hover:text-white'
-                }`}
+                className={`px-8 py-2.5 rounded-full text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer ${ menuType === 'liquid' ? 'bg-[#E5E2DC] text-[#5E332E] shadow-md' : 'text-[#E5E2DC]/80 hover:text-white' }`}
               >
                 Liquid Library
               </button>
@@ -652,7 +642,7 @@ export default function Menu() {
                 style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)' }}
               >
                 A Symphony of Global &amp; <br />
-                <span className="italic font-normal text-[#E5E2DC]">Regional Flavors</span>
+                <span className="font-normal text-[#E5E2DC]">Regional Flavors</span>
               </h1>
               <div className="w-20 h-[2px] bg-[#E5E2DC]/60 mx-auto rounded-full mb-4" />
               <p className="text-sm md:text-base font-light max-w-2xl mx-auto text-[#FAF8F5]/90 leading-relaxed font-body">
@@ -664,21 +654,13 @@ export default function Menu() {
                 <div className="inline-flex rounded-full border border-white/15 p-1 bg-black/20 backdrop-blur">
                   <button
                     onClick={() => setViewMode('classic')}
-                    className={`px-6 py-2 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-300 cursor-pointer ${
-                      viewMode === 'classic'
-                        ? 'bg-white text-[#5E332E] shadow-sm'
-                        : 'text-white/75 hover:text-white'
-                    }`}
+                    className={`px-6 py-2 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-300 cursor-pointer ${ viewMode === 'classic' ? 'bg-white text-[#5E332E] shadow-sm' : 'text-white/75 hover:text-white' }`}
                   >
                     Classic Catalog
                   </button>
                   <button
                     onClick={() => setViewMode('sensory')}
-                    className={`px-6 py-2 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-300 cursor-pointer flex items-center gap-2 ${
-                      viewMode === 'sensory'
-                        ? 'bg-white text-[#5E332E] shadow-sm'
-                        : 'text-white/75 hover:text-white'
-                    }`}
+                    className={`px-6 py-2 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-300 cursor-pointer flex items-center gap-2 ${ viewMode === 'sensory' ? 'bg-white text-[#5E332E] shadow-sm' : 'text-white/75 hover:text-white' }`}
                   >
                     <Sliders className="w-3.5 h-3.5" />
                     Sensory Matcher
@@ -901,16 +883,10 @@ export default function Menu() {
                             <button
                               key={cat}
                               onClick={() => setSelectedCategory(cat)}
-                              className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase cursor-pointer transition-all duration-300 whitespace-nowrap flex items-center gap-1.5 ${
-                                isActive
-                                  ? 'bg-[#5E332E] text-[#E5E2DC] shadow-sm'
-                                  : 'bg-white text-[#1E1B18] border border-[#5E332E]/15 hover:border-[#5E332E]/40'
-                              }`}
+                              className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase cursor-pointer transition-all duration-300 whitespace-nowrap flex items-center gap-1.5 ${ isActive ? 'bg-[#5E332E] text-[#E5E2DC] shadow-sm' : 'bg-white text-[#1E1B18] border border-[#5E332E]/15 hover:border-[#5E332E]/40' }`}
                             >
                               <span>{cat}</span>
-                              <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono font-bold leading-none ${
-                                isActive ? 'bg-[#E5E2DC]/30 text-[#E5E2DC]' : 'bg-[#5E332E]/10 text-[#5E332E]'
-                              }`}>
+                              <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono font-bold leading-none ${ isActive ? 'bg-[#E5E2DC]/30 text-[#E5E2DC]' : 'bg-[#5E332E]/10 text-[#5E332E]' }`}>
                                 {count}
                               </span>
                             </button>
@@ -955,16 +931,10 @@ export default function Menu() {
                           <button
                             key={df.id}
                             onClick={() => handleDietaryFilterChange(df.id)}
-                            className={`px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
-                              isDietActive
-                                ? 'bg-[#5E332E] text-[#E5E2DC] border border-[#5E332E] font-bold shadow-sm'
-                                : 'bg-white/90 text-[#1E1B18]/75 border border-[#5E332E]/15 hover:border-[#5E332E]/40'
-                            }`}
+                            className={`px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${ isDietActive ? 'bg-[#5E332E] text-[#E5E2DC] border border-[#5E332E] font-bold shadow-sm' : 'bg-white/90 text-[#1E1B18]/75 border border-[#5E332E]/15 hover:border-[#5E332E]/40' }`}
                           >
                             <span>{df.label}</span>
-                            <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono font-bold leading-none ${
-                              isDietActive ? 'bg-[#E5E2DC]/30 text-[#E5E2DC]' : 'bg-[#5E332E]/10 text-[#5E332E]'
-                            }`}>
+                            <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono font-bold leading-none ${ isDietActive ? 'bg-[#E5E2DC]/30 text-[#E5E2DC]' : 'bg-[#5E332E]/10 text-[#5E332E]' }`}>
                               {df.count}
                             </span>
                           </button>
@@ -1234,7 +1204,7 @@ export default function Menu() {
                 LIQUID LIBRARY
               </h2>
               <p 
-                className="italic font-bold m-0"
+                className="font-bold m-0"
                 style={{ 
                   color: 'rgba(236, 233, 218, 0.8)', 
                   fontSize: '28px', 
@@ -1295,7 +1265,7 @@ export default function Menu() {
                         {/* Card Bottom: Tagline & Legal */}
                         <div className="mt-10 flex flex-col items-center justify-center text-center">
                           <p 
-                            className="italic font-bold mb-6"
+                            className="font-bold mb-6"
                             style={{ color: 'var(--color-near-black)', fontSize: '24px', fontFamily: "'Caveat', cursive", lineHeight: 1.2 }}
                           >
                             "{section.tagline}"
@@ -1306,7 +1276,7 @@ export default function Menu() {
                             <span className="uppercase font-bold tracking-[0.25em]" style={{ color: 'var(--color-text-muted)', fontSize: '11px' }}>
                               TANAH
                             </span>
-                            <span className="italic" style={{ color: 'var(--color-text-muted)', fontSize: '11px' }}>
+                            <span className="" style={{ color: 'var(--color-text-muted)', fontSize: '11px' }}>
                               *Subject to availability | Govt. Taxes applicable
                             </span>
                           </div>
