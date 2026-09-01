@@ -268,6 +268,13 @@ app.put('/api/menu', async (req, res) => {
   }
 
   try {
+    const menuJsonPath = path.join(SRC_DATA_DIR, 'menu.json')
+    if (fs.existsSync(menuJsonPath)) {
+      const current = JSON.parse(fs.readFileSync(menuJsonPath, 'utf-8'))
+      current.items = items
+      fs.writeFileSync(menuJsonPath, JSON.stringify(current, null, 2), 'utf-8')
+    }
+
     if (isDbConnected()) {
       await MenuItem.deleteMany({})
       await MenuItem.insertMany(items)
@@ -275,7 +282,7 @@ app.put('/api/menu', async (req, res) => {
     res.json({ success: true, count: items.length })
   } catch (err) {
     console.error('Menu bulk replace error:', err)
-    res.status(500).json({ error: 'Failed to update menu in MongoDB' })
+    res.status(500).json({ error: 'Failed to update menu' })
   }
 })
 
@@ -295,6 +302,15 @@ app.post('/api/menu/item', async (req, res) => {
   }
 
   try {
+    const menuJsonPath = path.join(SRC_DATA_DIR, 'menu.json')
+    if (fs.existsSync(menuJsonPath)) {
+      const current = JSON.parse(fs.readFileSync(menuJsonPath, 'utf-8'))
+      if (Array.isArray(current.items)) {
+        current.items = [newItemData, ...current.items]
+        fs.writeFileSync(menuJsonPath, JSON.stringify(current, null, 2), 'utf-8')
+      }
+    }
+
     if (isDbConnected()) {
       const created = await MenuItem.create(newItemData)
       return res.status(201).json({ success: true, item: created })
@@ -310,6 +326,15 @@ app.put('/api/menu/item/:id', async (req, res) => {
   const id = req.params.id
 
   try {
+    const menuJsonPath = path.join(SRC_DATA_DIR, 'menu.json')
+    if (fs.existsSync(menuJsonPath)) {
+      const current = JSON.parse(fs.readFileSync(menuJsonPath, 'utf-8'))
+      if (Array.isArray(current.items)) {
+        current.items = current.items.map(item => item.id === id ? { ...item, ...req.body } : item)
+        fs.writeFileSync(menuJsonPath, JSON.stringify(current, null, 2), 'utf-8')
+      }
+    }
+
     if (isDbConnected()) {
       const updated = await MenuItem.findOneAndUpdate({ id }, req.body, { new: true })
       if (!updated) {
@@ -328,6 +353,15 @@ app.delete('/api/menu/item/:id', async (req, res) => {
   const id = req.params.id
 
   try {
+    const menuJsonPath = path.join(SRC_DATA_DIR, 'menu.json')
+    if (fs.existsSync(menuJsonPath)) {
+      const current = JSON.parse(fs.readFileSync(menuJsonPath, 'utf-8'))
+      if (Array.isArray(current.items)) {
+        current.items = current.items.filter(item => item.id !== id)
+        fs.writeFileSync(menuJsonPath, JSON.stringify(current, null, 2), 'utf-8')
+      }
+    }
+
     if (isDbConnected()) {
       const result = await MenuItem.deleteOne({ id })
       if (result.deletedCount === 0) {
