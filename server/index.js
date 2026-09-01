@@ -800,44 +800,45 @@ app.post('/api/upload', upload.single('photo'), async (req, res) => {
   const filename = req.file.filename
   const localFilePath = path.join(UPLOADS_DIR, filename)
 
-  // 1. If Google Cloud Storage is active, upload to GCS bucket
-  if (gcsBucket) {
-    try {
-      const destination = `uploads/${filename}`
-      await gcsBucket.upload(localFilePath, {
-        destination,
-        metadata: {
-          contentType: req.file.mimetype,
-          cacheControl: 'public, max-age=31536000, immutable'
-        }
-      })
-
-      const publicPrefix = process.env.GCP_PUBLIC_URL_PREFIX || `https://storage.googleapis.com/${gcsBucketName}`
-      const gcsUrl = `${publicPrefix.replace(/\/$/, '')}/${destination}`
-
-      return res.status(201).json({
-        success: true,
-        url: gcsUrl,
-        filename,
-        originalName: req.file.originalname,
-        size: req.file.size,
-        storage: 'gcs'
-      })
-    } catch (gcsErr) {
-      console.error('⚠️ GCS upload error, falling back to local URL:', gcsErr.message)
-    }
+  if (!gcsBucket) {
+    // Delete local temp file immediately
+    try { if (fs.existsSync(localFilePath)) fs.unlinkSync(localFilePath); } catch (e) {}
+    return res.status(500).json({
+      error: 'Google Cloud Storage is not configured. Local disk storage is disabled per policy.'
+    })
   }
 
-  // 2. Local Disk Fallback URL
-  const fileUrl = `/uploads/${filename}`
-  res.status(201).json({
-    success: true,
-    url: fileUrl,
-    filename,
-    originalName: req.file.originalname,
-    size: req.file.size,
-    storage: 'local'
-  })
+  try {
+    const destination = `uploads/${filename}`
+    await gcsBucket.upload(localFilePath, {
+      destination,
+      metadata: {
+        contentType: req.file.mimetype,
+        cacheControl: 'public, max-age=31536000, immutable'
+      }
+    })
+
+    // Immediately clean up local temp file
+    try { if (fs.existsSync(localFilePath)) fs.unlinkSync(localFilePath); } catch (e) {}
+
+    const publicPrefix = process.env.GCP_PUBLIC_URL_PREFIX || `https://storage.googleapis.com/${gcsBucketName}`
+    const gcsUrl = `${publicPrefix.replace(/\/$/, '')}/${destination}`
+
+    return res.status(201).json({
+      success: true,
+      url: gcsUrl,
+      filename,
+      originalName: req.file.originalname,
+      size: req.file.size,
+      storage: 'gcs'
+    })
+  } catch (gcsErr) {
+    console.error('❌ GCS upload failed:', gcsErr.message)
+    try { if (fs.existsSync(localFilePath)) fs.unlinkSync(localFilePath); } catch (e) {}
+    return res.status(500).json({
+      error: `Failed to upload to Google Cloud Storage (${gcsBucketName}): ${gcsErr.message}`
+    })
+  }
 })
 
 app.get('/api/uploads', async (req, res) => {

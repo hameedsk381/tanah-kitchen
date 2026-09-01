@@ -48,7 +48,7 @@ export default function Footer() {
           <div className="space-y-4">
             <Link to="/" className="flex items-center group">
               <img
-                src="/assets/logos/logo-primary-horizontal-light.png"
+                src="https://storage.googleapis.com/yesj/assets/logos/logo-primary-horizontal-light.png"
                 alt="Tanah Kitchen & Bar"
                 className="h-14 sm:h-16 w-auto object-contain bg-transparent border-none shadow-none transition-transform duration-300 group-hover:scale-105"
               />
@@ -61,7 +61,7 @@ export default function Footer() {
             </p>
             <div className="pt-1 flex items-center gap-2.5 opacity-80">
               <img
-                src="/assets/logos/logo-telugu-horizontal-light.png"
+                src="https://storage.googleapis.com/yesj/assets/logos/logo-telugu-horizontal-light.png"
                 alt="Tanah in Telugu (తనః)"
                 className="h-7 w-auto object-contain"
               />

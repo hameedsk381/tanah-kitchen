@@ -1099,7 +1099,7 @@ export default function Home() {
             <div className="lg:col-span-4 bg-[#5E332E] text-[#E5E2DC] p-8 md:p-10 rounded-3xl flex flex-col justify-between shadow-xl border border-[#E5E2DC]/20 text-left">
               <div className="space-y-6">
                 <img
-                  src="/assets/logos/logo-primary-vertical-light.png"
+                  src="https://storage.googleapis.com/yesj/assets/logos/logo-primary-vertical-light.png"
                   alt="Tanah Kitchen & Bar"
                   className="h-20 sm:h-24 md:h-28 w-auto object-contain bg-transparent border-none shadow-none"
                 />
