@@ -833,7 +833,7 @@ export default function AdminMenu() {
               
               {/* Category Filter */}
               <div className="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 scrollbar-none">
-                {['All', ...(categories || []).filter(c => c !== 'All')].map((cat) => (
+                {['All', ...Array.from(new Set((items || []).map(i => i.category || 'Main Course'))).filter(c => c !== 'All').sort()].map((cat) => (
                   <button
                     key={cat}
                     onClick={() => {
