@@ -19,7 +19,8 @@
       "tags": [
         "Signature",
         "Earthy"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "soup-2",
@@ -32,7 +33,8 @@
       "tags": [
         "Chef Special",
         "Spicy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "soup-3",
@@ -45,7 +47,8 @@
       "tags": [
         "Healthy",
         "Comfort"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "soup-4",
@@ -58,7 +61,8 @@
       "tags": [
         "Coastal Special",
         "Hot"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "soup-5",
@@ -71,7 +75,8 @@
       "tags": [
         "Traditional",
         "Hearty"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "soup-6",
@@ -84,7 +89,8 @@
       "tags": [
         "Continental",
         "Creamy"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "bite-1",
@@ -97,7 +103,8 @@
       "tags": [
         "Classic",
         "Crunchy"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "bite-2",
@@ -110,7 +117,8 @@
       "tags": [
         "Cheesy",
         "Comfort"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "bite-3",
@@ -123,7 +131,8 @@
       "tags": [
         "Spicy",
         "Popular"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "bite-4",
@@ -136,7 +145,8 @@
       "tags": [
         "Sharing",
         "Cheesy"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "bite-5",
@@ -149,7 +159,8 @@
       "tags": [
         "Sharing",
         "Bestseller"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "bite-6",
@@ -162,7 +173,8 @@
       "tags": [
         "Grilled",
         "Signature"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "bite-7",
@@ -175,7 +187,8 @@
       "tags": [
         "Telugu Classic",
         "Crispy"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "bite-8",
@@ -188,7 +201,8 @@
       "tags": [
         "Quick Bite",
         "Crispy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "bite-9",
@@ -201,7 +215,8 @@
       "tags": [
         "Bestseller",
         "Spicy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "veg-1",
@@ -214,7 +229,8 @@
       "tags": [
         "Light",
         "Zesty"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "veg-2",
@@ -227,7 +243,8 @@
       "tags": [
         "Spicy",
         "Andhra Style"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "veg-3",
@@ -240,7 +257,8 @@
       "tags": [
         "Nutritious",
         "Local"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "veg-4",
@@ -253,7 +271,8 @@
       "tags": [
         "Peppery",
         "Earthy"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "veg-5",
@@ -266,7 +285,8 @@
       "tags": [
         "Tangy",
         "Seasonal"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "veg-6",
@@ -279,7 +299,8 @@
       "tags": [
         "Signature",
         "Tangy"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "veg-7",
@@ -292,7 +313,8 @@
       "tags": [
         "Spicy",
         "Rayalaseema"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "nv-1",
@@ -305,7 +327,8 @@
       "tags": [
         "Signature",
         "Aromatic"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "nv-2",
@@ -318,7 +341,8 @@
       "tags": [
         "Spicy",
         "Bestseller"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "nv-3",
@@ -331,7 +355,8 @@
       "tags": [
         "Tanah Original",
         "Crispy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "nv-4",
@@ -344,7 +369,8 @@
       "tags": [
         "Tangy",
         "Traditional"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "nv-5",
@@ -357,7 +383,8 @@
       "tags": [
         "Rich",
         "Nutty"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "salad-1",
@@ -370,7 +397,8 @@
       "tags": [
         "Continental",
         "Fresh"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "salad-2",
@@ -383,7 +411,8 @@
       "tags": [
         "Mediterranean",
         "Healthy"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "spec-1",
@@ -396,7 +425,8 @@
       "tags": [
         "Chef Special",
         "Fiery"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "spec-2",
@@ -409,7 +439,8 @@
       "tags": [
         "Coastal",
         "Spicy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "spec-3",
@@ -422,7 +453,8 @@
       "tags": [
         "Seafood Special",
         "Crispy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "spec-4",
@@ -435,7 +467,8 @@
       "tags": [
         "Garlicky",
         "Must Try"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "spec-5",
@@ -448,7 +481,8 @@
       "tags": [
         "Gourmet",
         "Signature"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "spec-6",
@@ -461,7 +495,8 @@
       "tags": [
         "Wood-Fired",
         "Smoky"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "spec-7",
@@ -474,7 +509,8 @@
       "tags": [
         "Royal Recipe",
         "Bestseller"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "spec-8",
@@ -487,7 +523,8 @@
       "tags": [
         "Seasonal",
         "Unique"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "spec-9",
@@ -500,7 +537,8 @@
       "tags": [
         "Creamy",
         "Aromatic"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "spec-10",
@@ -513,7 +551,8 @@
       "tags": [
         "Desi Ghee",
         "Legendary"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "spec-11",
@@ -526,7 +565,8 @@
       "tags": [
         "Fiery",
         "Telangana Pride"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "wing-1",
@@ -539,7 +579,8 @@
       "tags": [
         "Fiery",
         "Spicy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "wing-2",
@@ -552,7 +593,8 @@
       "tags": [
         "Grilled",
         "Tangy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "wing-3",
@@ -565,7 +607,8 @@
       "tags": [
         "Tanah Original",
         "Rich"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "wing-4",
@@ -578,7 +621,8 @@
       "tags": [
         "Smoky",
         "Sweet & Tangy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "wing-5",
@@ -591,7 +635,8 @@
       "tags": [
         "Tangy",
         "Regional"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "wing-6",
@@ -604,7 +649,8 @@
       "tags": [
         "Party Platter",
         "Grand Feast"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "tand-v1",
@@ -617,7 +663,8 @@
       "tags": [
         "Chef Special",
         "Delicate"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "tand-v2",
@@ -630,7 +677,8 @@
       "tags": [
         "Creamy",
         "Healthy"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "tand-v3",
@@ -643,7 +691,8 @@
       "tags": [
         "Gourmet",
         "Juicy"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "tand-v4",
@@ -656,7 +705,8 @@
       "tags": [
         "Classic",
         "Tandoori"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "tand-v5",
@@ -669,7 +719,8 @@
       "tags": [
         "Zesty",
         "Spicy"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "tand-nv1",
@@ -682,7 +733,8 @@
       "tags": [
         "Mild",
         "Creamy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "tand-nv2",
@@ -695,7 +747,8 @@
       "tags": [
         "Bestseller",
         "Classic"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "tand-nv3",
@@ -708,7 +761,8 @@
       "tags": [
         "Garlicky",
         "Aromatic"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "tand-nv4",
@@ -721,7 +775,8 @@
       "tags": [
         "Classic",
         "Tandoori"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "tand-nv5",
@@ -734,7 +789,8 @@
       "tags": [
         "Fiery",
         "Zesty"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "tand-nv6",
@@ -747,7 +803,8 @@
       "tags": [
         "Chef Special",
         "Rich"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "tand-nv7",
@@ -760,7 +817,8 @@
       "tags": [
         "Seafood",
         "Aromatic"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "tand-nv8",
@@ -773,7 +831,8 @@
       "tags": [
         "Mughlai",
         "Juicy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "tand-nv9",
@@ -786,7 +845,8 @@
       "tags": [
         "Tandoori",
         "Seafood"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "tand-nv10",
@@ -799,7 +859,8 @@
       "tags": [
         "Royal",
         "Succulent"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "tand-nv11",
@@ -812,7 +873,8 @@
       "tags": [
         "Charcoal",
         "Tender"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "curry-v1",
@@ -825,7 +887,8 @@
       "tags": [
         "Andhra Icon",
         "Traditional"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "curry-v2",
@@ -838,7 +901,8 @@
       "tags": [
         "Rich",
         "Nutty"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "curry-v3",
@@ -851,7 +915,8 @@
       "tags": [
         "All-Time Favorite",
         "Creamy"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "curry-v4",
@@ -864,7 +929,8 @@
       "tags": [
         "Hearty",
         "Earthy"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "curry-v5",
@@ -877,7 +943,8 @@
       "tags": [
         "Home Style",
         "Comfort"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "curry-nv1",
@@ -890,7 +957,8 @@
       "tags": [
         "Andhra Classic",
         "Tangy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "curry-nv2",
@@ -903,7 +971,8 @@
       "tags": [
         "Rustic",
         "Spicy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "curry-nv3",
@@ -916,7 +985,8 @@
       "tags": [
         "Seasonal",
         "Unique"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "curry-nv4",
@@ -929,7 +999,8 @@
       "tags": [
         "Comfort",
         "Traditional"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "curry-nv5",
@@ -942,7 +1013,8 @@
       "tags": [
         "Bestseller",
         "Creamy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "curry-nv6",
@@ -955,7 +1027,8 @@
       "tags": [
         "Tandoori Fusion",
         "Rich"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "curry-nv7",
@@ -968,7 +1041,8 @@
       "tags": [
         "Semi-Dry",
         "Spicy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "curry-nv8",
@@ -981,7 +1055,8 @@
       "tags": [
         "Royal",
         "Decadent"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "curry-nv9",
@@ -994,7 +1069,8 @@
       "tags": [
         "Slow-Cooked",
         "Rich"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "curry-nv10",
@@ -1007,7 +1083,8 @@
       "tags": [
         "Country Chicken",
         "Fiery"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "mutt-1",
@@ -1020,7 +1097,8 @@
       "tags": [
         "Seasonal",
         "Chef Special"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "mutt-2",
@@ -1033,7 +1111,8 @@
       "tags": [
         "Signature",
         "Tangy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "mutt-3",
@@ -1046,7 +1125,8 @@
       "tags": [
         "Kashmiri",
         "Aromatic"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "mutt-4",
@@ -1059,7 +1139,8 @@
       "tags": [
         "Hyderabadi",
         "Traditional"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "bread-1",
@@ -1072,7 +1153,8 @@
       "tags": [
         "Tandoor",
         "Whole Wheat"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "bread-2",
@@ -1085,7 +1167,8 @@
       "tags": [
         "Classic",
         "Tandoor"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "bread-3",
@@ -1098,7 +1181,8 @@
       "tags": [
         "Bestseller",
         "Buttery"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "bread-4",
@@ -1111,7 +1195,8 @@
       "tags": [
         "Flaky",
         "Layered"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "bread-5",
@@ -1124,7 +1209,8 @@
       "tags": [
         "Punjabi",
         "Soft"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "rice-1",
@@ -1137,7 +1223,8 @@
       "tags": [
         "Basic",
         "Steamed"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "rice-2",
@@ -1150,7 +1237,8 @@
       "tags": [
         "Hyderabadi",
         "Aromatic"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "rice-3",
@@ -1163,7 +1251,8 @@
       "tags": [
         "Comfort",
         "Cooling"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "rice-4",
@@ -1176,7 +1265,8 @@
       "tags": [
         "Indo-Chinese",
         "Classic"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "rice-5",
@@ -1189,7 +1279,8 @@
       "tags": [
         "Indo-Chinese",
         "Bestseller"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "rice-6",
@@ -1202,7 +1293,8 @@
       "tags": [
         "Garlicky",
         "Aromatic"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "rice-7",
@@ -1215,7 +1307,8 @@
       "tags": [
         "Noodles",
         "Classic"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "rice-8",
@@ -1228,7 +1321,8 @@
       "tags": [
         "Andhra Icon",
         "Signature"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "rice-9",
@@ -1241,7 +1335,8 @@
       "tags": [
         "Spicy",
         "Vegetarian"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "rice-10",
@@ -1254,7 +1349,8 @@
       "tags": [
         "Mild",
         "Healthy"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "rice-11",
@@ -1267,7 +1363,8 @@
       "tags": [
         "Earthy",
         "Rich"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "rice-12",
@@ -1280,7 +1377,8 @@
       "tags": [
         "Bestseller",
         "Spicy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "rice-13",
@@ -1293,7 +1391,8 @@
       "tags": [
         "Heritage Rice",
         "Signature"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "rice-14",
@@ -1306,7 +1405,8 @@
       "tags": [
         "Country Chicken",
         "Hearty"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "rice-15",
@@ -1319,7 +1419,8 @@
       "tags": [
         "Tanah Pride",
         "Rich"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "rice-16",
@@ -1332,7 +1433,8 @@
       "tags": [
         "Seafood",
         "Signature"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "ac-v1",
@@ -1345,7 +1447,8 @@
       "tags": [
         "Crunchy",
         "Sweet & Spicy"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "ac-v2",
@@ -1358,7 +1461,8 @@
       "tags": [
         "Cheesy",
         "Appetizer"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "ac-v3",
@@ -1371,7 +1475,8 @@
       "tags": [
         "Crispy",
         "Popular"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "ac-v4",
@@ -1384,7 +1489,8 @@
       "tags": [
         "Chef Special",
         "Fusion"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "ac-v5",
@@ -1397,7 +1503,8 @@
       "tags": [
         "Indo-Chinese",
         "Crunchy"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "ac-v6",
@@ -1410,7 +1517,8 @@
       "tags": [
         "Bar Bite",
         "Addictive"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "ac-v7",
@@ -1423,7 +1531,8 @@
       "tags": [
         "Cheesy",
         "Molten"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "ac-v8",
@@ -1436,7 +1545,8 @@
       "tags": [
         "Continental",
         "Comfort"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "ac-v9",
@@ -1449,7 +1559,8 @@
       "tags": [
         "Thai",
         "Zesty"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "ac-v10",
@@ -1462,7 +1573,8 @@
       "tags": [
         "Crispy",
         "Snack"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "ac-nv1",
@@ -1475,7 +1587,8 @@
       "tags": [
         "Indo-Chinese",
         "Spicy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "ac-nv2",
@@ -1488,7 +1601,8 @@
       "tags": [
         "Continental",
         "Crispy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "ac-nv3",
@@ -1501,7 +1615,8 @@
       "tags": [
         "Chef Special",
         "Crunchy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "ac-nv4",
@@ -1514,7 +1629,8 @@
       "tags": [
         "American",
         "Spicy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "ac-nv5",
@@ -1527,7 +1643,8 @@
       "tags": [
         "All-Time Favorite",
         "Spicy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "ac-nv6",
@@ -1540,7 +1657,8 @@
       "tags": [
         "Spicy",
         "Nutty"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "ac-nv7",
@@ -1553,7 +1671,8 @@
       "tags": [
         "Thai",
         "Sweet & Spicy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "ac-nv8",
@@ -1566,7 +1685,8 @@
       "tags": [
         "Thai",
         "Aromatic"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "ac-nv9",
@@ -1579,7 +1699,8 @@
       "tags": [
         "Italian",
         "Cheesy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "ac-nv10",
@@ -1592,7 +1713,8 @@
       "tags": [
         "Unique",
         "Creamy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "ac-nv11",
@@ -1605,7 +1727,8 @@
       "tags": [
         "British Classic",
         "Crispy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "ac-nv12",
@@ -1618,7 +1741,8 @@
       "tags": [
         "Gourmet",
         "Low Carb"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "ac-nv13",
@@ -1631,7 +1755,8 @@
       "tags": [
         "Grilled",
         "Herbaceous"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "ac-nv14",
@@ -1644,7 +1769,8 @@
       "tags": [
         "Thai",
         "Fiery"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "sea-1",
@@ -1657,7 +1783,8 @@
       "tags": [
         "Indo-Chinese",
         "Spicy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "sea-2",
@@ -1670,7 +1797,8 @@
       "tags": [
         "Continental",
         "Citrusy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "sea-3",
@@ -1683,7 +1811,8 @@
       "tags": [
         "Hyderabad Classic",
         "Crispy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "sea-4",
@@ -1696,7 +1825,8 @@
       "tags": [
         "Japanese",
         "Crispy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "sea-5",
@@ -1709,7 +1839,8 @@
       "tags": [
         "Grilled",
         "Herbaceous"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "sea-6",
@@ -1722,7 +1853,8 @@
       "tags": [
         "Snack",
         "Crunchy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "sea-7",
@@ -1735,7 +1867,8 @@
       "tags": [
         "Chef Special",
         "Grilled"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "entr-1",
@@ -1748,7 +1881,8 @@
       "tags": [
         "Italian",
         "Creamy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "entr-2",
@@ -1761,7 +1895,8 @@
       "tags": [
         "Spicy",
         "Classic"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "entr-3",
@@ -1774,7 +1909,8 @@
       "tags": [
         "Mexican",
         "Cheesy"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "entr-4",
@@ -1787,7 +1923,8 @@
       "tags": [
         "Tuscan",
         "Gourmet"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "entr-5",
@@ -1800,7 +1937,8 @@
       "tags": [
         "Artisanal",
         "Handcrafted"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "entr-6",
@@ -1813,7 +1951,8 @@
       "tags": [
         "Grilled",
         "Cheesy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "entr-7",
@@ -1826,7 +1965,8 @@
       "tags": [
         "French Classic",
         "Rich"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "entr-8",
@@ -1839,7 +1979,8 @@
       "tags": [
         "Continental",
         "Must Try"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "entr-9",
@@ -1852,7 +1993,8 @@
       "tags": [
         "Seafood",
         "Healthy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "entr-10",
@@ -1865,7 +2007,8 @@
       "tags": [
         "Creamy",
         "Comfort"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "pizz-1",
@@ -1878,7 +2021,8 @@
       "tags": [
         "Wood-Fired",
         "Classic"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "pizz-2",
@@ -1891,7 +2035,8 @@
       "tags": [
         "Signature",
         "Farm Fresh"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "pizz-3",
@@ -1904,7 +2049,8 @@
       "tags": [
         "Artisanal",
         "Pesto"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "pizz-4",
@@ -1917,7 +2063,8 @@
       "tags": [
         "Neapolitan",
         "Classic"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "pizz-5",
@@ -1930,7 +2077,8 @@
       "tags": [
         "Fusion Favorite",
         "Bestseller"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "pizz-6",
@@ -1943,7 +2091,8 @@
       "tags": [
         "Tandoori",
         "Spicy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "pizz-7",
@@ -1956,7 +2105,8 @@
       "tags": [
         "Spicy",
         "Zesty"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "pizz-8",
@@ -1969,7 +2119,8 @@
       "tags": [
         "Indulgent",
         "Cheesy"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "pizz-9",
@@ -1982,7 +2133,8 @@
       "tags": [
         "Classic",
         "Gourmet"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "pizz-10",
@@ -1995,7 +2147,8 @@
       "tags": [
         "Grand Feast",
         "Meat Lovers"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "comf-1",
@@ -2008,7 +2161,8 @@
       "tags": [
         "Comfort",
         "Street Style"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "comf-2",
@@ -2021,7 +2175,8 @@
       "tags": [
         "Comfort",
         "Homestyle"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "comf-3",
@@ -2034,7 +2189,8 @@
       "tags": [
         "Authentic Andhra",
         "Heart & Soul"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "comf-4",
@@ -2047,7 +2203,8 @@
       "tags": [
         "Rayalaseema Pride",
         "Healthy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "spec-t1",
@@ -2060,7 +2217,8 @@
       "tags": [
         "Signature Fusion",
         "Spicy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "spec-t2",
@@ -2073,7 +2231,8 @@
       "tags": [
         "Rayalaseema",
         "Traditional"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "spec-t3",
@@ -2086,7 +2245,8 @@
       "tags": [
         "Feast",
         "Spicy"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "spec-t4",
@@ -2099,7 +2259,8 @@
       "tags": [
         "Grand Combo",
         "Bestseller"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "spec-t5",
@@ -2112,7 +2273,8 @@
       "tags": [
         "Hyderabadi Dawat",
         "Royal"
-      ]
+      ],
+      "nonVeg": true
     },
     {
       "id": "des-1",
@@ -2125,7 +2287,8 @@
       "tags": [
         "Telugu Heritage",
         "Claypot"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "des-2",
@@ -2138,7 +2301,8 @@
       "tags": [
         "Fusion",
         "Decadent"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "des-3",
@@ -2151,7 +2315,8 @@
       "tags": [
         "Artisanal",
         "Bestseller"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "des-4",
@@ -2164,7 +2329,8 @@
       "tags": [
         "Alphonso",
         "Seasonal"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "des-5",
@@ -2177,7 +2343,8 @@
       "tags": [
         "Araku Kaapi",
         "Signature"
-      ]
+      ],
+      "nonVeg": false
     },
     {
       "id": "des-6",
@@ -2190,7 +2357,8 @@
       "tags": [
         "Tres Leches",
         "Must Try"
-      ]
+      ],
+      "nonVeg": false
     }
   ]
 }
