@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search } from 'lucide-react'
-import menuData from '../data/menu.json'
 import { useMenu } from '../context/MenuContext'
 import { LogoOwl } from '../components/illustrations'
 import SEO from '../components/SEO'
@@ -363,7 +362,7 @@ export default function Menu() {
                     </div>
 
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                      {menuData.items.filter(i => isChefSpecial(i)).slice(0, 3).map((item) => (
+                      {trendingItems.map((item) => (
                         <div
                           key={item.id}
                           onClick={() => setHoveredItem(item)}
