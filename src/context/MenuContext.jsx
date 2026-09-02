@@ -142,7 +142,7 @@ export function MenuProvider({ children }) {
       if (menuRes.status === 'fulfilled' && menuRes.value.ok) {
         const serverMenu = await menuRes.value.json()
         setMenuData({
-          categories: serverMenu.categories || defaultMenuData.categories,
+          categories: serverMenu.categories || [],
           items: sanitizeMenuItems(serverMenu.items)
         })
         serverReachable = true
@@ -159,7 +159,7 @@ export function MenuProvider({ children }) {
       if (galleryRes.status === 'fulfilled' && galleryRes.value.ok) {
         const serverGallery = await galleryRes.value.json()
         setGalleryData({
-          categories: serverGallery.categories || defaultGalleryData.categories,
+          categories: serverGallery.categories || [],
           items: Array.isArray(serverGallery.items) ? serverGallery.items : []
         })
         serverReachable = true
