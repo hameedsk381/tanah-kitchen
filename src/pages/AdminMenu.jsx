@@ -2116,19 +2116,135 @@ export default function AdminMenu() {
   )
 }
 
+
+const DEFAULT_CMS_TEMPLATES = {
+  'contact': {
+    phoneNumbers: ['+91-8977730291', '+91-8977730292'],
+    whatsappNumber: '+91-8977730291',
+    email: 'reservations@tanahkitchen.com',
+    address: 'Sy no 43, 44 & 45, Khajaguda Hills, beside Lanco Hills Road, Chitrapuri Colony, Hyderabad, Telangana 500104'
+  },
+  'menu-config': {
+    chefRecommendationsTitle: 'CHEF RECOMMENDATIONS',
+    chefRecommendationsSubtitle: 'Signature Highlights'
+  },
+  'menu-categories': {
+    categories: ['South Indian', 'North Indian', 'Continental', 'Asian', 'Gourmet Bites']
+  },
+  'gallery-categories': {
+    categories: ['All', 'Ambience', 'Rooftop', 'Events', 'Food']
+  },
+  'booking-config': {
+    lunchSlots: ['12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM'],
+    dinnerSlots: ['6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM', '9:00 PM', '9:30 PM', '10:00 PM']
+  },
+  'bar-menu': {},
+  'corporate': {}
+}
+
+function DynamicJsonForm({ data, onChange }) {
+  if (typeof data !== 'object' || data === null) {
+    return <div className="text-red-500 text-xs p-4 bg-red-50 rounded-xl">Data is not a JSON object. Please switch to Code View.</div>
+  }
+
+  const handleChange = (key, val) => {
+    onChange({ ...data, [key]: val })
+  }
+
+  if (Object.keys(data).length === 0) {
+    return <p className="text-sm text-[#1E1B18]/50 p-4">This configuration is empty. Please save the default template or switch to Code View.</p>
+  }
+
+  return (
+    <div className="space-y-5 p-2">
+      {Object.entries(data).map(([k, v]) => {
+         if (typeof v === 'string' || typeof v === 'number') {
+           return (
+             <div key={k} className="flex flex-col gap-1.5">
+               <label className="text-xs font-bold text-[#5E332E] tracking-wider uppercase">{k}</label>
+               {typeof v === 'string' && v.length > 50 ? (
+                 <textarea 
+                   value={v} 
+                   onChange={e => handleChange(k, e.target.value)} 
+                   className="p-3 rounded-xl border border-[#5E332E]/20 text-sm w-full bg-white focus:outline-none focus:border-[#5E332E]/50 resize-y min-h-[80px]"
+                 />
+               ) : (
+                 <input 
+                   type={typeof v === 'number' ? 'number' : 'text'}
+                   value={v} 
+                   onChange={e => handleChange(k, typeof v === 'number' ? Number(e.target.value) : e.target.value)} 
+                   className="p-3 rounded-xl border border-[#5E332E]/20 text-sm w-full bg-white focus:outline-none focus:border-[#5E332E]/50"
+                 />
+               )}
+             </div>
+           )
+         } else if (Array.isArray(v) && (v.length === 0 || v.every(item => typeof item === 'string'))) {
+           return (
+             <div key={k} className="flex flex-col gap-2 p-4 bg-[#5E332E]/5 rounded-2xl border border-[#5E332E]/10">
+               <label className="text-xs font-bold text-[#5E332E] tracking-wider uppercase">{k} (List)</label>
+               {v.map((item, idx) => (
+                 <div key={idx} className="flex items-center gap-2">
+                   <input 
+                     type="text" 
+                     value={item} 
+                     onChange={e => {
+                       const newArr = [...v];
+                       newArr[idx] = e.target.value;
+                       handleChange(k, newArr);
+                     }}
+                     className="flex-1 p-2.5 rounded-xl border border-[#5E332E]/20 text-sm bg-white focus:outline-none"
+                   />
+                   <button onClick={() => {
+                     const newArr = v.filter((_, i) => i !== idx);
+                     handleChange(k, newArr);
+                   }} className="text-red-500 font-bold text-xs hover:bg-red-50 px-3 py-2 rounded-xl transition-all">
+                     Remove
+                   </button>
+                 </div>
+               ))}
+               <button onClick={() => handleChange(k, [...v, ''])} className="text-xs text-[#5E332E] font-bold hover:bg-[#5E332E]/10 px-4 py-2 rounded-xl border border-[#5E332E]/20 mt-1 self-start transition-all bg-white">
+                 + Add Item
+               </button>
+             </div>
+           )
+         } else if (typeof v === 'boolean') {
+           return (
+             <div key={k} className="flex items-center gap-3 p-2">
+               <input type="checkbox" checked={v} onChange={e => handleChange(k, e.target.checked)} className="w-5 h-5 accent-[#5E332E]" />
+               <label className="text-sm font-bold text-[#5E332E]">{k}</label>
+             </div>
+           )
+         } else {
+            return (
+              <div key={k} className="flex flex-col gap-1 p-4 bg-gray-100 rounded-2xl border border-gray-200">
+               <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">{k} (Advanced Object)</label>
+               <span className="text-xs text-gray-400">Please switch to "Code View" to edit this complex field.</span>
+              </div>
+            )
+         }
+      })}
+    </div>
+  )
+}
+
 function CmsEditor() {
   const [keys] = useState(['contact', 'bar-menu', 'corporate', 'booking-config', 'menu-categories', 'gallery-categories', 'menu-config'])
   const [selectedKey, setSelectedKey] = useState('contact')
   const [dataStr, setDataStr] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [saveStatus, setSaveStatus] = useState('')
+  const [viewMode, setViewMode] = useState('form') // 'form' or 'code'
 
   useEffect(() => {
     setIsLoading(true)
     fetch(`/api/content/${selectedKey}`)
       .then(r => r.json())
       .then(d => {
-        setDataStr(JSON.stringify(d, null, 2))
+        if (!d || Object.keys(d).length === 0) {
+          setDataStr(JSON.stringify(DEFAULT_CMS_TEMPLATES[selectedKey] || {}, null, 2))
+        } else {
+          setDataStr(JSON.stringify(d, null, 2))
+        }
         setIsLoading(false)
       })
       .catch(err => {
@@ -2160,21 +2276,29 @@ function CmsEditor() {
     }
   }
 
+  let parsedData = {}
+  let parseError = false
+  try {
+    parsedData = JSON.parse(dataStr || '{}')
+  } catch (e) {
+    parseError = true
+  }
+
   return (
     <div className="max-w-7xl mx-auto px-6 sm:px-8 pb-32">
-      <div className="bg-[#FAF8F5] rounded-3xl p-6 sm:p-10 border border-[#5E332E]/10 shadow-sm relative overflow-hidden flex flex-col sm:flex-row gap-6">
+      <div className="bg-[#FAF8F5] rounded-3xl p-6 sm:p-10 border border-[#5E332E]/10 shadow-sm relative overflow-hidden flex flex-col sm:flex-row gap-8">
         
         {/* Keys Sidebar */}
-        <div className="w-full sm:w-64 space-y-2 border-r border-[#5E332E]/10 pr-4">
-          <h2 className="text-xl font-display font-bold text-[#5E332E] mb-4 flex items-center gap-2">
+        <div className="w-full sm:w-64 space-y-2 sm:border-r border-[#5E332E]/10 sm:pr-6 shrink-0">
+          <h2 className="text-xl font-display font-bold text-[#5E332E] mb-6 flex items-center gap-2">
             <Settings className="w-5 h-5" />
-            CMS Models
+            Website Data
           </h2>
           {keys.map(k => (
             <button
               key={k}
               onClick={() => setSelectedKey(k)}
-              className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-bold transition-all ${selectedKey === k ? 'bg-[#5E332E] text-[#E5E2DC]' : 'hover:bg-[#5E332E]/10 text-[#5E332E]'}`}
+              className={`w-full text-left px-4 py-3 rounded-xl text-sm font-bold transition-all ${selectedKey === k ? 'bg-[#5E332E] text-[#E5E2DC] shadow-md' : 'hover:bg-[#5E332E]/10 text-[#5E332E]'}`}
             >
               {k}
             </button>
@@ -2182,40 +2306,80 @@ function CmsEditor() {
         </div>
 
         {/* Editor Area */}
-        <div className="flex-1 flex flex-col">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="font-bold text-[#5E332E] uppercase tracking-wider">{selectedKey}</h3>
-            <div className="flex items-center gap-4">
-              {saveStatus && (
-                <span className={`text-xs font-bold ${saveStatus.includes('Error') ? 'text-red-500' : 'text-emerald-600'}`}>
-                  {saveStatus}
-                </span>
-              )}
-              <button
-                onClick={handleSave}
-                disabled={isLoading}
-                className="px-5 py-2 rounded-xl bg-[#5E332E] text-[#E5E2DC] hover:bg-[#1E1B18] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-md transition-all disabled:opacity-50"
-              >
-                <Save className="w-4 h-4" />
-                <span>Save</span>
-              </button>
+        <div className="flex-1 flex flex-col min-w-0">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
+            <div>
+              <h3 className="font-bold text-[#5E332E] text-lg uppercase tracking-wider">{selectedKey}</h3>
+              <p className="text-xs text-[#1E1B18]/60 mt-1">Manage public configuration for this section.</p>
+            </div>
+            
+            <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+              <div className="flex items-center bg-white rounded-xl p-1 border border-[#5E332E]/20 shadow-sm shrink-0">
+                <button
+                  onClick={() => setViewMode('form')}
+                  className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${viewMode === 'form' ? 'bg-[#5E332E] text-white' : 'text-[#5E332E] hover:bg-[#5E332E]/5'}`}
+                >
+                  Form View
+                </button>
+                <button
+                  onClick={() => setViewMode('code')}
+                  className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${viewMode === 'code' ? 'bg-[#5E332E] text-white' : 'text-[#5E332E] hover:bg-[#5E332E]/5'}`}
+                >
+                  Code View
+                </button>
+              </div>
+
+              <div className="flex items-center gap-3 ml-auto">
+                {saveStatus && (
+                  <span className={`text-xs font-bold ${saveStatus.includes('Error') ? 'text-red-500' : 'text-emerald-600'}`}>
+                    {saveStatus}
+                  </span>
+                )}
+                <button
+                  onClick={handleSave}
+                  disabled={isLoading || (viewMode === 'code' && parseError)}
+                  className="px-6 py-2.5 rounded-xl bg-[#5E332E] text-[#E5E2DC] hover:bg-[#1E1B18] text-sm font-bold uppercase tracking-wider flex items-center gap-2 shadow-md transition-all disabled:opacity-50 shrink-0"
+                >
+                  <Check className="w-4 h-4" />
+                  <span>Save Changes</span>
+                </button>
+              </div>
             </div>
           </div>
-          <div className="flex-1 bg-[#1E1B18] rounded-2xl p-4 overflow-hidden border border-[#5E332E]/20">
+
+          <div className="flex-1 flex flex-col min-h-[500px]">
             {isLoading ? (
-              <div className="h-64 flex items-center justify-center text-white/50 text-sm">Loading data...</div>
+              <div className="h-64 flex items-center justify-center text-[#5E332E]/50 font-bold">Loading data...</div>
+            ) : viewMode === 'form' ? (
+              <div className="bg-white flex-1 rounded-2xl p-6 border border-[#5E332E]/15 shadow-sm overflow-y-auto">
+                {parseError ? (
+                  <div className="text-red-500 text-sm p-4 bg-red-50 rounded-xl">
+                    Invalid JSON syntax detected. Please fix errors in Code View before using the Form.
+                  </div>
+                ) : (
+                  <DynamicJsonForm 
+                    data={parsedData} 
+                    onChange={newData => setDataStr(JSON.stringify(newData, null, 2))} 
+                  />
+                )}
+              </div>
             ) : (
-              <textarea
-                value={dataStr}
-                onChange={(e) => setDataStr(e.target.value)}
-                className="w-full h-[500px] bg-transparent text-emerald-400 font-mono text-xs sm:text-sm focus:outline-none resize-none"
-                spellCheck={false}
-              />
+              <div className="flex-1 bg-[#1E1B18] rounded-2xl p-4 overflow-hidden border border-[#5E332E]/20 shadow-inner flex flex-col">
+                <textarea
+                  value={dataStr}
+                  onChange={(e) => setDataStr(e.target.value)}
+                  className="w-full flex-1 bg-transparent text-emerald-400 font-mono text-xs sm:text-sm focus:outline-none resize-none hide-scrollbar min-h-[500px]"
+                  spellCheck={false}
+                />
+              </div>
             )}
           </div>
-          <p className="text-[10px] text-[#1E1B18]/50 mt-2 font-mono">
-            Ensure the format is valid JSON before saving. Invalid JSON will be rejected.
-          </p>
+          
+          {viewMode === 'code' && (
+            <p className="text-[10px] text-[#1E1B18]/50 mt-3 font-mono">
+              Ensure the format is valid JSON before saving. Invalid JSON will be rejected.
+            </p>
+          )}
         </div>
 
       </div>
