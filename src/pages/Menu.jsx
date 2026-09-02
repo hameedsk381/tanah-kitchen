@@ -77,7 +77,7 @@ function NonVegMark() {
 }
 
 export default function Menu() {
-  const { items: contextItems, refreshFromServer } = useMenu()
+  const { items: contextItems, refreshFromServer, menuConfig = {} } = useMenu()
   const [menuType, setMenuType] = useState('food') // 'food' or 'liquid'
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [dietaryFilter, setDietaryFilter] = useState('all') // 'all', 'veg', 'non-veg', 'special'
@@ -352,10 +352,10 @@ export default function Menu() {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <span className="wp-badge wp-badge-maroon">
-                          CHEF RECOMMENDATIONS
+                          {menuConfig.chefRecommendationsTitle || 'CHEF RECOMMENDATIONS'}
                         </span>
                         <h2 className="text-sm font-bold tracking-wider uppercase text-[#5E332E]">
-                          Signature Highlights
+                          {menuConfig.chefRecommendationsSubtitle || 'Signature Highlights'}
                         </h2>
                       </div>
                       <span className="text-[11px] text-[#1E1B18]/60 font-body">Curated Gastronomy</span>

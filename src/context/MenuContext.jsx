@@ -143,7 +143,8 @@ export function MenuProvider({ children }) {
         const serverMenu = await menuRes.value.json()
         setMenuData({
           categories: serverMenu.categories || [],
-          items: sanitizeMenuItems(serverMenu.items)
+          items: sanitizeMenuItems(serverMenu.items),
+          config: serverMenu.config || {}
         })
         serverReachable = true
       }
@@ -414,6 +415,7 @@ export function MenuProvider({ children }) {
       refreshFromServer,
       categories: menuData.categories || [],
       items: menuData.items || [],
+      menuConfig: menuData.config || {},
       updateItem,
       addItem,
       deleteItem,

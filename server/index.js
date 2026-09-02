@@ -339,11 +339,20 @@ app.post('/api/reservations', async (req, res) => {
 app.get('/api/menu', async (req, res) => {
   try {
     let categories = []
+    let config = {
+      chefRecommendationsTitle: "CHEF RECOMMENDATIONS",
+      chefRecommendationsSubtitle: "Signature Highlights"
+    }
     
     if (isDbConnected()) {
-      const content = await Content.findOne({ key: 'menu-categories' }).lean()
-      if (content && content.data && content.data.categories) {
-        categories = content.data.categories
+      const catContent = await Content.findOne({ key: 'menu-categories' }).lean()
+      if (catContent && catContent.data && catContent.data.categories) {
+        categories = catContent.data.categories
+      }
+
+      const confContent = await Content.findOne({ key: 'menu-config' }).lean()
+      if (confContent && confContent.data) {
+        config = { ...config, ...confContent.data }
       }
 
       const dbItems = await MenuItem.find().sort({ createdAt: -1 }).lean()
@@ -358,11 +367,11 @@ app.get('/api/menu', async (req, res) => {
           seenIds.add(item.id)
           uniqueItems.push(item)
         }
-        return res.json({ categories, items: uniqueItems })
+        return res.json({ categories, items: uniqueItems, config })
       }
     }
 
-    res.json({ categories, items: [] })
+    res.json({ categories, items: [], config })
   } catch (err) {
     console.error('Menu fetch error:', err)
     res.status(500).json({ error: 'Failed to retrieve menu' })

@@ -2117,7 +2117,7 @@ export default function AdminMenu() {
 }
 
 function CmsEditor() {
-  const [keys] = useState(['contact', 'bar-menu', 'corporate', 'booking-config', 'menu-categories', 'gallery-categories'])
+  const [keys] = useState(['contact', 'bar-menu', 'corporate', 'booking-config', 'menu-categories', 'gallery-categories', 'menu-config'])
   const [selectedKey, setSelectedKey] = useState('contact')
   const [dataStr, setDataStr] = useState('')
   const [isLoading, setIsLoading] = useState(false)
