@@ -77,9 +77,7 @@ try {
   console.warn('⚠️ Google Cloud Storage initialization skipped:', err.message)
 }
 
-// Load default fallback categories
-const defaultCategories = ['South Indian', 'North Indian', 'Continental', 'Asian', 'Gourmet Bites']
-const defaultGalleryCategories = ['All', 'Ambience', 'Rooftop', 'Events', 'Food']
+
 
 // Middleware: Enable Gzip / Brotli Compression
 app.use(compression())
@@ -340,15 +338,12 @@ app.post('/api/reservations', async (req, res) => {
 // ── 1. MENU APIs (MongoDB with Instant Fallback & Deduplication) ──
 app.get('/api/menu', async (req, res) => {
   try {
-    let categories = defaultCategories
-    const seedMenu = loadMenuSeed()
-
+    let categories = []
+    
     if (isDbConnected()) {
       const content = await Content.findOne({ key: 'menu-categories' }).lean()
       if (content && content.data && content.data.categories) {
         categories = content.data.categories
-      } else if (seedMenu && seedMenu.categories) {
-        categories = seedMenu.categories
       }
 
       const dbItems = await MenuItem.find().sort({ createdAt: -1 }).lean()
@@ -363,27 +358,13 @@ app.get('/api/menu', async (req, res) => {
           seenIds.add(item.id)
           uniqueItems.push(item)
         }
-        if (uniqueItems.length > 0) {
-          return res.json({
-            categories,
-            items: uniqueItems
-          })
-        }
+        return res.json({ categories, items: uniqueItems })
       }
-    }
-
-    // Read-only seed fallback when MongoDB is empty or offline
-    if (seedMenu) {
-      return res.json(seedMenu)
     }
 
     res.json({ categories, items: [] })
   } catch (err) {
     console.error('Menu fetch error:', err)
-    const seedMenu = loadMenuSeed()
-    if (seedMenu) {
-      return res.json(seedMenu)
-    }
     res.status(500).json({ error: 'Failed to retrieve menu' })
   }
 })
@@ -483,12 +464,6 @@ app.get('/api/bento', async (req, res) => {
         return res.json(slots)
       }
     }
-
-    const seed = loadBentoSeed()
-    if (seed && seed.items) {
-      return res.json(seed.items)
-    }
-
     res.json([])
   } catch (err) {
     console.error('Bento fetch error:', err)
@@ -547,37 +522,23 @@ app.post('/api/bento/reset', async (req, res) => {
 // ── 3. GALLERY APIs (MongoDB with Instant Fallback) ──
 app.get('/api/gallery', async (req, res) => {
   try {
-    let categories = defaultGalleryCategories
-    const seedGallery = loadGallerySeed()
-
+    let categories = []
+    
     if (isDbConnected()) {
       const content = await Content.findOne({ key: 'gallery-categories' }).lean()
       if (content && content.data && content.data.categories) {
         categories = content.data.categories
-      } else if (seedGallery && seedGallery.categories) {
-        categories = seedGallery.categories
       }
 
       const items = await GalleryItem.find().lean()
       if (items && items.length > 0) {
-        return res.json({
-          categories,
-          items
-        })
+        return res.json({ categories, items })
       }
-    }
-
-    if (seedGallery) {
-      return res.json(seedGallery)
     }
 
     res.json({ categories, items: [] })
   } catch (err) {
     console.error('Gallery fetch error:', err)
-    const seedGallery = loadGallerySeed()
-    if (seedGallery) {
-      return res.json(seedGallery)
-    }
     res.status(500).json({ error: 'Failed to retrieve gallery' })
   }
 })

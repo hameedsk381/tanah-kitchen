@@ -45,57 +45,16 @@ async function autoSeedDatabase() {
       await AdminUser.create({
         username: adminConfig.username,
         password: hashedPassword,
-        email: adminConfig.email,
-        name: 'Tanah Administrator',
-        role: 'Super Admin'
+        email: adminConfig.email
       })
       console.log(`🔑 Initialized admin user account for: ${adminConfig.username}`)
     } else if (adminCount === 0) {
       console.warn('⚠️ Skipping admin seed — set ADMIN_PASSWORD to create the initial admin user')
     }
-
-    // 2. Seed Menu Items into MongoDB
-    const menuCount = await MenuItem.countDocuments()
-    if (menuCount === 0) {
-      const rawMenu = loadMenuSeed()
-      if (rawMenu?.items?.length) {
-        await MenuItem.insertMany(rawMenu.items)
-        console.log(`✓ Seeded ${rawMenu.items.length} dishes into MongoDB collection`)
-      }
-    }
-
-    // 3. Seed Bento Slots into MongoDB
-    const bentoCount = await BentoSlot.countDocuments()
-    if (bentoCount === 0) {
-      const bentoSeed = loadBentoSeed()
-      if (bentoSeed && bentoSeed.items && bentoSeed.items.length) {
-        await BentoSlot.insertMany(bentoSeed.items)
-        console.log(`✓ Seeded ${bentoSeed.items.length} Bento Slots into MongoDB`)
-      }
-    }
-
-    // 4. Seed Gallery Items into MongoDB
-    const galleryCount = await GalleryItem.countDocuments()
-    if (galleryCount === 0) {
-      const rawGallery = loadGallerySeed()
-      if (rawGallery?.items?.length) {
-        await GalleryItem.insertMany(rawGallery.items)
-        console.log(`✓ Seeded ${rawGallery.items.length} gallery items into MongoDB collection`)
-      }
-    }
-
-    // 5. Seed CMS Content into MongoDB
-    const contentCount = await Content.countDocuments()
-    if (contentCount === 0) {
-      const defaultContact = {
-        phoneNumbers: ['+91-8977730291', '+91-8977730292'],
-        whatsappNumber: '+91-8977730291',
-        email: 'reservations@tanahkitchen.com',
-        address: 'Sy no 43, 44 & 45, Khajaguda Hills, beside Lanco Hills Road, Chitrapuri Colony, Hyderabad, Telangana 500104'
-      }
-      await Content.create({ key: 'contact', value: defaultContact })
-      console.log('✓ Seeded default CMS Content (contact) into MongoDB')
-    }
+    
+    // Note: Menu, Gallery, Bento, and CMS Content are no longer auto-seeded on startup.
+    // The database is the strict source of truth. If empty, the user can use the 
+    // "Reset" buttons in the Admin Panel to manually import factory defaults.
   } catch (err) {
     console.error('Error during MongoDB auto-seeding:', err)
   }

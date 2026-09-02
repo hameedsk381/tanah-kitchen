@@ -1,6 +1,4 @@
 import React, { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react'
-import defaultMenuData from '../data/menu.json'
-import defaultGalleryData from '../data/gallery.json'
 import { getAuthHeaders } from '../utils/apiAuth'
 
 const MenuContext = createContext(null)
@@ -126,9 +124,9 @@ export function MenuProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true)
 
   // Bundled JSON is only the initial placeholder until the first server fetch completes.
-  const [menuData, setMenuData] = useState(defaultMenuData)
-  const [bentoItems, setBentoItems] = useState(DEFAULT_BENTO_ITEMS)
-  const [galleryData, setGalleryData] = useState(defaultGalleryData)
+  const [menuData, setMenuData] = useState({ categories: [], items: [] })
+  const [bentoItems, setBentoItems] = useState([])
+  const [galleryData, setGalleryData] = useState({ categories: [], items: [] })
 
   const refreshFromServer = useCallback(async () => {
     setIsLoading(true)
@@ -414,7 +412,7 @@ export function MenuProvider({ children }) {
       isLoading,
       syncError,
       refreshFromServer,
-      categories: menuData.categories || defaultMenuData.categories,
+      categories: menuData.categories || [],
       items: menuData.items || [],
       updateItem,
       addItem,
@@ -425,7 +423,7 @@ export function MenuProvider({ children }) {
       bentoItems,
       updateBentoSlot,
       resetBento,
-      galleryCategories: galleryData.categories || defaultGalleryData.categories,
+      galleryCategories: galleryData.categories || [],
       galleryItems: galleryData.items || [],
       addGalleryItem,
       updateGalleryItem,

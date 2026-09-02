@@ -94,7 +94,7 @@ export default function Menu() {
 
   // Dynamic Category & Dietary Counts
   const categoryCounts = useMemo(() => {
-    const raw = (contextItems && contextItems.length >= menuData.items.length) ? contextItems : menuData.items
+    const raw = contextItems || []
     const counts = { All: 0 }
     let vegTotal = 0
     let nvTotal = 0
@@ -124,7 +124,7 @@ export default function Menu() {
   }, [contextItems, dietaryFilter])
 
   const availableCategories = useMemo(() => {
-    const raw = (contextItems && contextItems.length >= menuData.items.length) ? contextItems : menuData.items
+    const raw = contextItems || []
     const allCats = ['All', ...Array.from(new Set(raw.map(i => getMappedCategory(i)).filter(Boolean)))]
     return allCats.filter(cat => (categoryCounts[cat] || 0) > 0)
   }, [contextItems, categoryCounts])
@@ -132,7 +132,7 @@ export default function Menu() {
   const handleDietaryFilterChange = (filterId) => {
     setDietaryFilter(filterId)
     if (selectedCategory !== 'All') {
-      const raw = (contextItems && contextItems.length >= menuData.items.length) ? contextItems : menuData.items
+      const raw = contextItems || []
       const hasMatchingInCat = raw.some(item => {
         if (getMappedCategory(item) !== selectedCategory) return false
         const nv = isNonVeg(item)
@@ -146,14 +146,52 @@ export default function Menu() {
       }
     }
   }
-
   useEffect(() => {
     document.title = menuType === 'food' ? 'Seasonal Menu | Tanah Kitchen & Bar' : 'Liquid Library | Tanah Kitchen & Bar'
     window.scrollTo(0, 0)
   }, [menuType])
 
+  // Filter food based on selected tab and search query
+  const filteredItemsComputed = useMemo(() => {
+    if (menuType !== 'food') return []
+    let filtered = contextItems || []
+    
+    // Admin / Database mapped categories
+    if (selectedCategory !== 'All') {
+      filtered = filtered.filter(item => getMappedCategory(item) === selectedCategory)
+    }
+    
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase()
+      filtered = filtered.filter(
+        item => 
+          (item.name || '').toLowerCase().includes(q) || 
+          (item.desc || '').toLowerCase().includes(q)
+      )
+    }
+    return filtered
+  }, [menuType, selectedCategory, searchQuery, contextItems])
+
+  // Extract dynamically generated food categories from Admin / Database
+  const foodCategories = useMemo(() => {
+    const raw = contextItems || []
+    const cats = new Set(raw.map(item => getMappedCategory(item)))
+    return ['All', ...Array.from(cats)].sort()
+  }, [contextItems])
+
+  // Randomize trending items purely from contextItems
+  const trendingItems = useMemo(() => {
+    if (menuType !== 'food') return []
+    const raw = contextItems || []
+    const specials = raw.filter(isChefSpecial)
+    if (specials.length >= 3) {
+      return [...specials].sort(() => 0.5 - Math.random()).slice(0, 3)
+    }
+    return [...raw].sort(() => 0.5 - Math.random()).slice(0, 3)
+  }, [menuType, contextItems])
+
   useEffect(() => {
-    const rawItems = (contextItems && contextItems.length >= menuData.items.length) ? contextItems : menuData.items
+    const rawItems = contextItems || []
     
     // Deduplicate by name and ID
     const seenNames = new Set()
@@ -201,7 +239,7 @@ export default function Menu() {
     setFilteredItems(result)
   }, [selectedCategory, dietaryFilter, searchQuery, contextItems])
 
-  const activeShowcaseItem = hoveredItem || filteredItems[0] || menuData.items[0]
+  const activeShowcaseItem = hoveredItem || filteredItems[0] 
 
   return (
     <div className="min-h-screen bg-[#FAF8F5] text-[#1E1B18] pt-24 font-body">
