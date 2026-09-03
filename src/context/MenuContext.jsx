@@ -258,15 +258,6 @@ export function MenuProvider({ children }) {
     })
   }, [])
 
-  const resetToDefault = useCallback(async () => {
-    try {
-      await fetch('/api/menu/reset', { method: 'POST', headers: getAuthHeaders({ json: false }) })
-      await refreshFromServer()
-    } catch (e) {
-      console.warn('Menu reset failed:', e)
-    }
-  }, [refreshFromServer])
-
   const exportJsonFile = useCallback(() => {
     const jsonString = `data:text/json;charset=utf-8,${encodeURIComponent(
       JSON.stringify(menuData, null, 2)
@@ -419,19 +410,19 @@ export function MenuProvider({ children }) {
       updateItem,
       addItem,
       deleteItem,
-      resetToDefault,
+      
       exportJsonFile,
       rawMenuData: menuData,
       bentoItems,
       updateBentoSlot,
-      resetBento,
+      
       galleryCategories: galleryData.categories || [],
       galleryItems: galleryData.items || [],
       addGalleryItem,
       updateGalleryItem,
       deleteGalleryItem,
       updateGalleryItemCategory,
-      resetGallery,
+      
       exportGalleryJson
     }),
     [
@@ -443,17 +434,17 @@ export function MenuProvider({ children }) {
       updateItem,
       addItem,
       deleteItem,
-      resetToDefault,
+      
       exportJsonFile,
       bentoItems,
       updateBentoSlot,
-      resetBento,
+      
       galleryData,
       addGalleryItem,
       updateGalleryItem,
       deleteGalleryItem,
       updateGalleryItemCategory,
-      resetGallery,
+      
       exportGalleryJson
     ]
   )

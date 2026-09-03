@@ -6,7 +6,6 @@ import { GalleryItem } from './models/GalleryItem.js'
 import { Content } from './models/Content.js'
 import { AdminUser } from './models/AdminUser.js'
 import { getAdminConfig } from './config/admin.js'
-import { loadMenuSeed, loadGallerySeed, loadBentoSeed } from './lib/seed.js'
 
 let isConnected = false
 

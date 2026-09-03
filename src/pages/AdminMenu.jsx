@@ -84,12 +84,12 @@ export default function AdminMenu() {
     updateItem,
     addItem,
     deleteItem,
-    resetToDefault,
+    
     exportJsonFile,
     // Bento
     bentoItems,
     updateBentoSlot,
-    resetBento,
+    
     // Gallery
     galleryCategories,
     galleryItems,
@@ -97,7 +97,7 @@ export default function AdminMenu() {
     updateGalleryItem,
     deleteGalleryItem,
     updateGalleryItemCategory,
-    resetGallery,
+    
     exportGalleryJson,
     syncError
   } = useMenu()

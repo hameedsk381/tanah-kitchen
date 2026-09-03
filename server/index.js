@@ -9,7 +9,6 @@ import { fileURLToPath } from 'url'
 import { connectDB, isDbConnected } from './db.js'
 import { requireAdmin } from './middleware/auth.js'
 import { requireAdminAndDb } from './lib/requireDb.js'
-import { loadMenuSeed, loadGallerySeed } from './lib/seed.js'
 import { validateAdminConfig, getAdminConfig } from './config/admin.js'
 import { MenuItem } from './models/MenuItem.js'
 import { BentoSlot } from './models/BentoSlot.js'
@@ -448,23 +447,6 @@ app.delete('/api/menu/item/:id', async (req, res) => {
   }
 })
 
-app.post('/api/menu/reset', async (req, res) => {
-  try {
-    const seedMenu = loadMenuSeed()
-    if (!seedMenu?.items?.length) {
-      return res.status(404).json({ error: 'Menu seed data not found' })
-    }
-
-    await MenuItem.deleteMany({})
-    await MenuItem.insertMany(seedMenu.items)
-    return res.json({ success: true, count: seedMenu.items.length })
-  } catch (err) {
-    console.error('Menu reset error:', err)
-    res.status(500).json({ error: 'Failed to reset menu' })
-  }
-})
-
-// ── 2. BENTO GRID APIs (MongoDB with Instant Fallback) ──
 app.get('/api/bento', async (req, res) => {
   try {
     if (isDbConnected()) {
@@ -512,23 +494,6 @@ app.put('/api/bento/slot/:index', async (req, res) => {
   }
 })
 
-app.post('/api/bento/reset', async (req, res) => {
-  try {
-    const seed = loadBentoSeed()
-    if (!seed || !seed.items) {
-      return res.status(404).json({ error: 'Bento seed not found' })
-    }
-
-    await BentoSlot.deleteMany({})
-    await BentoSlot.insertMany(seed.items)
-    res.json({ success: true, data: seed.items })
-  } catch (err) {
-    console.error('Bento reset error:', err)
-    res.status(500).json({ error: 'Failed to reset Bento grid in MongoDB' })
-  }
-})
-
-// ── 3. GALLERY APIs (MongoDB with Instant Fallback) ──
 app.get('/api/gallery', async (req, res) => {
   try {
     let categories = []
@@ -615,32 +580,6 @@ app.delete('/api/gallery/item/:id', async (req, res) => {
     console.error('Gallery item delete error:', err)
     res.status(500).json({ error: 'Failed to delete gallery photo' })
   }
-})
-
-app.post('/api/gallery/reset', async (req, res) => {
-  try {
-    const seedGallery = loadGallerySeed()
-    if (!seedGallery?.items?.length) {
-      return res.status(404).json({ error: 'Gallery seed data not found' })
-    }
-
-    await GalleryItem.deleteMany({})
-    await GalleryItem.insertMany(seedGallery.items)
-    return res.json({ success: true, count: seedGallery.items.length })
-  } catch (err) {
-    console.error('Gallery reset error:', err)
-    res.status(500).json({ error: 'Failed to reset gallery' })
-  }
-})
-
-// ── 4. FILE UPLOADS & CLOUD STORAGE API ──
-app.get('/api/storage/status', (req, res) => {
-  res.json({
-    engine: gcsBucket ? 'gcs' : 'local',
-    connected: Boolean(gcsBucket),
-    bucket: gcsBucketName || null,
-    provider: gcsBucket ? 'Google Cloud Storage' : 'Local Disk (/uploads)'
-  })
 })
 
 app.post('/api/upload', requireAdmin, upload.single('photo'), async (req, res) => {
