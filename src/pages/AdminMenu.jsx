@@ -85,7 +85,7 @@ export default function AdminMenu() {
     addItem,
     deleteItem,
     
-    exportJsonFile,
+    
     // Bento
     bentoItems,
     updateBentoSlot,
@@ -98,7 +98,7 @@ export default function AdminMenu() {
     deleteGalleryItem,
     updateGalleryItemCategory,
     
-    exportGalleryJson,
+    
     syncError
   } = useMenu()
 
@@ -881,13 +881,7 @@ export default function AdminMenu() {
                   <span>Add Dish</span>
                 </button>
 
-                <button
-                  onClick={exportJsonFile}
-                  className="p-2 bg-white rounded-xl border border-[#5E332E]/20 hover:bg-[#FAF8F5] text-[#5E332E] shadow-xs"
-                  title="Export menu.json"
-                >
-                  <Download className="w-4 h-4" />
-                </button>
+                
 
                 <button
                   onClick={() => {
@@ -1062,13 +1056,7 @@ export default function AdminMenu() {
                   <span>Add Photo</span>
                 </button>
 
-                <button
-                  onClick={exportGalleryJson}
-                  className="px-3.5 py-2 rounded-xl bg-white border border-[#5E332E]/20 hover:bg-[#FAF8F5] text-[#5E332E] text-xs font-bold flex items-center gap-1.5 shadow-xs"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>Export JSON</span>
-                </button>
+                
 
                 <button
                   onClick={() => {

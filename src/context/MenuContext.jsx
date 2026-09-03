@@ -258,18 +258,6 @@ export function MenuProvider({ children }) {
     })
   }, [])
 
-  const exportJsonFile = useCallback(() => {
-    const jsonString = `data:text/json;charset=utf-8,${encodeURIComponent(
-      JSON.stringify(menuData, null, 2)
-    )}`
-    const downloadAnchor = document.createElement('a')
-    downloadAnchor.setAttribute('href', jsonString)
-    downloadAnchor.setAttribute('download', 'menu.json')
-    document.body.appendChild(downloadAnchor)
-    downloadAnchor.click()
-    downloadAnchor.remove()
-  }, [menuData])
-
   // Bento Methods with Server Sync
   const updateBentoSlot = useCallback((slotIndex, updatedFields) => {
     setBentoItems((prev) => {
@@ -386,18 +374,6 @@ export function MenuProvider({ children }) {
     }
   }, [refreshFromServer])
 
-  const exportGalleryJson = useCallback(() => {
-    const jsonString = `data:text/json;charset=utf-8,${encodeURIComponent(
-      JSON.stringify(galleryData, null, 2)
-    )}`
-    const downloadAnchor = document.createElement('a')
-    downloadAnchor.setAttribute('href', jsonString)
-    downloadAnchor.setAttribute('download', 'gallery.json')
-    document.body.appendChild(downloadAnchor)
-    downloadAnchor.click()
-    downloadAnchor.remove()
-  }, [galleryData])
-
   const contextValue = useMemo(
     () => ({
       isServerConnected,
@@ -411,7 +387,7 @@ export function MenuProvider({ children }) {
       addItem,
       deleteItem,
       
-      exportJsonFile,
+      
       rawMenuData: menuData,
       bentoItems,
       updateBentoSlot,
@@ -423,7 +399,7 @@ export function MenuProvider({ children }) {
       deleteGalleryItem,
       updateGalleryItemCategory,
       
-      exportGalleryJson
+      
     }),
     [
       isServerConnected,
@@ -435,7 +411,7 @@ export function MenuProvider({ children }) {
       addItem,
       deleteItem,
       
-      exportJsonFile,
+      
       bentoItems,
       updateBentoSlot,
       
@@ -445,7 +421,7 @@ export function MenuProvider({ children }) {
       deleteGalleryItem,
       updateGalleryItemCategory,
       
-      exportGalleryJson
+      
     ]
   )
 
