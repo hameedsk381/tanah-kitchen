@@ -1686,7 +1686,6 @@ export default function AdminMenu() {
               {/* Photo Filter Tabs & Search */}
               <div className="p-4 border-b border-[#5E332E]/10 bg-white flex flex-col sm:flex-row items-center justify-between gap-3">
                 <div className="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0 scrollbar-none">
-                  {customUploads.length > 0 && (
                     <button
                       onClick={() => {
                         setSelectedPhotoTab('uploads')
@@ -1698,7 +1697,6 @@ export default function AdminMenu() {
                       <FolderPlus className="w-3 h-3" />
                       <span>Uploaded ({customUploads.length})</span>
                     </button>
-                  )}
 
                   {[
                     { label: 'Photos 1–8', page: 1 },

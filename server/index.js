@@ -644,7 +644,7 @@ app.get('/api/uploads', requireAdmin, async (req, res) => {
 
         for (const file of files) {
           const filename = path.basename(file.name)
-          if (!filename || filename === 'uploads') continue
+          if (!filename || filename === 'uploads' || !filename.match(/\.(jpg|jpeg|png|webp|gif|svg)$/i)) continue
           const url = `${publicPrefix.replace(/\/$/, '')}/${file.name}`
           seen.add(filename)
           list.push({
@@ -664,7 +664,7 @@ app.get('/api/uploads', requireAdmin, async (req, res) => {
     if (fs.existsSync(UPLOADS_DIR)) {
       const localFiles = fs.readdirSync(UPLOADS_DIR)
       for (const filename of localFiles) {
-        if (filename.startsWith('.') || seen.has(filename)) continue
+        if (filename.startsWith('.') || seen.has(filename) || !filename.match(/\.(jpg|jpeg|png|webp|gif|svg)$/i)) continue
         const stats = fs.statSync(path.join(UPLOADS_DIR, filename))
         list.push({
           filename,
