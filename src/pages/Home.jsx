@@ -357,8 +357,8 @@ export default function Home() {
             >
               <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#5E332E]/15 aspect-[4/3] relative group">
                 <img
-                  src="/assets/Tanha Ambiance/Ambiance-6.webp"
-                  alt="Tanah Kitchen Atmosphere"
+                  src="/assets/Tanha Ambiance/Ambiance-7.webp"
+                  alt="Where People Gather at Tanah"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-[0.92]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
