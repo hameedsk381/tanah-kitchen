@@ -35,3 +35,6 @@ Thumbs.db
 # Large media assets
 public/video/hero-video.mp4
 
+
+# Local Uploads
+uploads/
