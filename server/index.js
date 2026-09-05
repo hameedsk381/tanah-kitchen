@@ -582,6 +582,16 @@ app.delete('/api/gallery/item/:id', async (req, res) => {
   }
 })
 
+// ── 4. FILE UPLOADS & CLOUD STORAGE API ──
+app.get('/api/storage/status', (req, res) => {
+  res.json({
+    engine: gcsBucket ? 'gcs' : 'local',
+    connected: Boolean(gcsBucket),
+    bucket: gcsBucketName || null,
+    provider: gcsBucket ? 'Google Cloud Storage' : 'Local Disk (/uploads)'
+  })
+})
+
 app.post('/api/upload', requireAdmin, upload.single('photo'), async (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: 'No image file uploaded' })
