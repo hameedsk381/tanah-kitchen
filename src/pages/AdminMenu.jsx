@@ -642,18 +642,6 @@ export default function AdminMenu() {
                 </p>
               </div>
 
-              <button
-                onClick={() => {
-                  if (window.confirm('Reset Bento Grid back to factory layout in MongoDB?')) {
-                    resetBento()
-                    showToast('↺ Bento Grid reset to default')
-                  }
-                }}
-                className="px-4 py-2 rounded-xl bg-white border border-red-200 hover:bg-red-50 text-red-600 text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
-              >
-                <RotateCcw className="w-3.5 h-3.5" />
-                <span>Reset Bento Layout</span>
-              </button>
             </div>
 
             {/* Live Bento Layout Preview / Click-to-Edit */}
@@ -880,21 +868,6 @@ export default function AdminMenu() {
                   <Plus className="w-4 h-4" />
                   <span>Add Dish</span>
                 </button>
-
-                
-
-                <button
-                  onClick={() => {
-                    if (window.confirm('Reset menu items back to factory defaults in MongoDB?')) {
-                      resetToDefault()
-                      showToast('↺ Menu items reset to default')
-                    }
-                  }}
-                  className="p-2 bg-white rounded-xl border border-red-200 hover:bg-red-50 text-red-600 shadow-xs"
-                  title="Reset Menu"
-                >
-                  <RotateCcw className="w-4 h-4" />
-                </button>
               </div>
             </div>
 
@@ -1056,20 +1029,6 @@ export default function AdminMenu() {
                   <span>Add Photo</span>
                 </button>
 
-                
-
-                <button
-                  onClick={() => {
-                    if (window.confirm('Reset gallery categories back to factory defaults in MongoDB?')) {
-                      resetGallery()
-                      showToast('↺ Gallery categories reset to default')
-                    }
-                  }}
-                  className="px-3.5 py-2 rounded-xl bg-white border border-red-200 hover:bg-red-50 text-red-600 text-xs font-bold flex items-center gap-1.5 shadow-xs"
-                >
-                  <RotateCcw className="w-3.5 h-3.5" />
-                  <span>Reset</span>
-                </button>
               </div>
             </div>
 
