@@ -159,8 +159,9 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 font-body">
-          <p className="text-xs font-light text-[#FAF8F5]/60 text-center sm:text-left">
-            © {new Date().getFullYear()} Tanah Kitchen &amp; Bar. Brand owned and operated by Shambhavi Hospitality. All rights reserved.
+          <p className="text-xs font-light text-[#FAF8F5]/60 text-center sm:text-left leading-relaxed">
+            © {new Date().getFullYear()} Tanah Kitchen &amp; Bar. Brand owned and operated by Shambhavi Hospitality. All rights reserved.<br className="hidden sm:block" />
+            Built by <a href="https://hamathopc.in" target="_blank" rel="noopener noreferrer" className="hover:text-[#E5E2DC] transition-colors">Hamath OPC Pvt Limited</a>.
           </p>
           <div className="flex gap-6 text-xs font-light text-[#FAF8F5]/60">
             <Link to="/privacy-policy" className="hover:text-[#E5E2DC] transition-colors">Privacy Policy</Link>
