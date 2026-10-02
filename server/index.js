@@ -4,6 +4,7 @@ import cors from 'cors'
 import compression from 'compression'
 import multer from 'multer'
 import bcrypt from 'bcryptjs'
+import rateLimit from 'express-rate-limit'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -25,6 +26,9 @@ const __dirname = path.dirname(__filename)
 
 const app = express()
 const PORT = process.env.PORT || 5000
+
+// Number of reverse proxies in front of the app, so req.ip is the real client (needed for rate limiting)
+app.set('trust proxy', Number(process.env.TRUST_PROXY ?? 1))
 
 validateAdminConfig()
 validateJwtConfig()
@@ -330,7 +334,15 @@ app.put('/api/content/:key', async (req, res) => {
 const RESERVATION_EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const str = (v) => (typeof v === 'string' ? v.trim() : '')
 
-app.post('/api/reservations', async (req, res) => {
+const reservationLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 5,
+  standardHeaders: 'draft-7',
+  legacyHeaders: false,
+  message: { error: 'Too many reservation requests. Please try again in a few minutes or call us to book.' }
+})
+
+app.post('/api/reservations', reservationLimiter, async (req, res) => {
   const body = req.body || {}
   const data = {
     name: str(body.name),
