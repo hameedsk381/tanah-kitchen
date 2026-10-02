@@ -16,6 +16,10 @@ const GalleryItemSchema = new mongoose.Schema(
       type: String,
       default: ''
     },
+    caption: {
+      type: String,
+      default: ''
+    },
     category: {
       type: String,
       required: true,

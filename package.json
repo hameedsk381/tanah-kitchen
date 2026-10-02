@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "server": "node server/index.js",
     "start": "node server/index.js",
-    "import:menu": "node server/importMenu.js",
+    "import:seed": "node server/importSeed.js",
     "docker:build": "docker build -t tanah-kitchen .",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down"
