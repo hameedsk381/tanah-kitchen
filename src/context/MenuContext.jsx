@@ -111,6 +111,22 @@ function sanitizeMenuItems(items) {
   return clean
 }
 
+async function ensureOk(res, fallback) {
+  if (res.ok) return
+  let message = fallback
+  try {
+    const body = await res.json()
+    if (body && body.error) message = body.error
+  } catch {
+    // non-JSON error body
+  }
+  if (res.status === 401) {
+    window.dispatchEvent(new Event('tanah:auth-expired'))
+    message = 'Your admin session has expired. Please sign in again.'
+  }
+  throw new Error(message)
+}
+
 function clearLegacyStorage() {
   try {
     LEGACY_STORAGE_KEYS.forEach((key) => localStorage.removeItem(key))
@@ -203,8 +219,8 @@ export function MenuProvider({ children }) {
         headers: getAuthHeaders(),
         body: JSON.stringify(updatedFields)
       })
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to update dish')
+      .then(async res => {
+        await ensureOk(res, 'Failed to update dish')
         setSyncError(null)
       })
       .catch(handleSyncError)
@@ -228,8 +244,8 @@ export function MenuProvider({ children }) {
         headers: getAuthHeaders(),
         body: JSON.stringify(itemWithId)
       })
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to add dish')
+      .then(async res => {
+        await ensureOk(res, 'Failed to add dish')
         setSyncError(null)
       })
       .catch(handleSyncError)
@@ -248,8 +264,8 @@ export function MenuProvider({ children }) {
         method: 'DELETE',
         headers: getAuthHeaders({ json: false })
       })
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to delete dish')
+      .then(async res => {
+        await ensureOk(res, 'Failed to delete dish')
         setSyncError(null)
       })
       .catch(handleSyncError)
@@ -269,8 +285,8 @@ export function MenuProvider({ children }) {
         headers: getAuthHeaders(),
         body: JSON.stringify(updatedFields)
       })
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to update Bento slot')
+      .then(async res => {
+        await ensureOk(res, 'Failed to update Bento slot')
         setSyncError(null)
       })
       .catch(handleSyncError)
@@ -306,8 +322,8 @@ export function MenuProvider({ children }) {
         headers: getAuthHeaders(),
         body: JSON.stringify(itemWithId)
       })
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to add gallery photo')
+      .then(async res => {
+        await ensureOk(res, 'Failed to add gallery photo')
         setSyncError(null)
       })
       .catch(handleSyncError)
@@ -329,8 +345,8 @@ export function MenuProvider({ children }) {
         headers: getAuthHeaders(),
         body: JSON.stringify(updatedFields)
       })
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to update gallery photo')
+      .then(async res => {
+        await ensureOk(res, 'Failed to update gallery photo')
         setSyncError(null)
       })
       .catch(handleSyncError)
@@ -349,8 +365,8 @@ export function MenuProvider({ children }) {
         method: 'DELETE',
         headers: getAuthHeaders({ json: false })
       })
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to delete gallery photo')
+      .then(async res => {
+        await ensureOk(res, 'Failed to delete gallery photo')
         setSyncError(null)
       })
       .catch(handleSyncError)

@@ -34,8 +34,10 @@ import {
   EyeOff,
   ShieldCheck,
   Camera,
-  FolderOpen
+  FolderOpen,
+  CalendarCheck
 } from 'lucide-react'
+import AdminReservations from '../components/AdminReservations'
 import { useMenu } from '../context/MenuContext'
 import { getCdnUrl } from '../utils/cdn'
 import { getAuthHeaders } from '../utils/apiAuth'
@@ -175,6 +177,31 @@ export default function AdminMenu() {
       showToast(`❌ ${syncError}`)
     }
   }, [syncError])
+
+  useEffect(() => {
+    if (!authToken) return
+
+    const signOut = (message) => {
+      setAuthToken('')
+      setAdminUser(null)
+      ;['tanah_admin_token', 'tanah_admin_user'].forEach((k) => {
+        localStorage.removeItem(k)
+        sessionStorage.removeItem(k)
+      })
+      setLoginError(message)
+    }
+
+    const onExpired = () => signOut('Your admin session has expired. Please sign in again.')
+    window.addEventListener('tanah:auth-expired', onExpired)
+
+    fetch('/api/auth/me', { headers: getAuthHeaders({ json: false }) })
+      .then((res) => {
+        if (res.status === 401) onExpired()
+      })
+      .catch(() => {})
+
+    return () => window.removeEventListener('tanah:auth-expired', onExpired)
+  }, [authToken])
 
   useEffect(() => {
     if (!authToken) return
@@ -602,6 +629,14 @@ export default function AdminMenu() {
               >
                 <Images className="w-3.5 h-3.5" />
                 <span>Gallery</span>
+              </button>
+
+              <button
+                onClick={() => setActiveTab('reservations')}
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-1.5 ${ activeTab === 'reservations' ? 'bg-[#5E332E] text-[#E5E2DC] shadow-md' : 'text-[#1E1B18]/70 hover:text-[#5E332E]' }`}
+              >
+                <CalendarCheck className="w-3.5 h-3.5" />
+                <span>Reservations</span>
               </button>
 
               <button
@@ -2056,6 +2091,8 @@ export default function AdminMenu() {
       {activeTab === 'cms' && (
         <CmsEditor />
       )}
+
+      {activeTab === 'reservations' && <AdminReservations />}
 
     </main>
   )
