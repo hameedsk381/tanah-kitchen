@@ -3,6 +3,7 @@ import express from 'express'
 import cors from 'cors'
 import compression from 'compression'
 import multer from 'multer'
+import bcrypt from 'bcryptjs'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -10,6 +11,7 @@ import { connectDB, isDbConnected } from './db.js'
 import { requireAdmin } from './middleware/auth.js'
 import { requireAdminAndDb } from './lib/requireDb.js'
 import { validateAdminConfig, getAdminConfig } from './config/admin.js'
+import { validateJwtConfig, signAdminToken, verifyAdminToken } from './lib/jwt.js'
 import { MenuItem } from './models/MenuItem.js'
 import { BentoSlot } from './models/BentoSlot.js'
 import { GalleryItem } from './models/GalleryItem.js'
@@ -24,6 +26,7 @@ const app = express()
 const PORT = process.env.PORT || 5000
 
 validateAdminConfig()
+validateJwtConfig()
 
 // Directories
 const ROOT_DIR = path.resolve(__dirname, '..')
@@ -164,7 +167,7 @@ app.post('/api/auth/login', async (req, res) => {
           user.lastLogin = new Date()
           await user.save()
 
-          const token = Buffer.from(`${user.username}:${Date.now()}`).toString('base64')
+          const token = signAdminToken(user.username)
           return res.json({
             success: true,
             token,
@@ -189,7 +192,7 @@ app.post('/api/auth/login', async (req, res) => {
     (cleanUser === adminConfig.username || cleanUser === adminConfig.email) &&
     password === adminConfig.password
   ) {
-    const token = Buffer.from(`${adminConfig.username}:${Date.now()}`).toString('base64')
+    const token = signAdminToken(adminConfig.username)
     return res.json({
       success: true,
       token,
@@ -213,9 +216,11 @@ app.get('/api/auth/me', async (req, res) => {
   }
 
   try {
-    const token = authHeader.replace('Bearer ', '')
-    const decoded = Buffer.from(token, 'base64').toString('ascii')
-    const [username] = decoded.split(':')
+    const token = authHeader.replace('Bearer ', '').trim()
+    const username = verifyAdminToken(token)
+    if (!username) {
+      return res.status(401).json({ error: 'Session expired' })
+    }
 
     if (isDbConnected()) {
       const user = await AdminUser.findOne({ username }).lean()
@@ -253,19 +258,22 @@ app.get('/api/auth/me', async (req, res) => {
 })
 
 app.post('/api/auth/change-password', requireAdmin, async (req, res) => {
-  const { username, currentPassword, newPassword } = req.body
+  const { currentPassword, newPassword } = req.body
 
-  if (!username || !currentPassword || !newPassword) {
-    return res.status(400).json({ error: 'All fields are required' })
+  if (!currentPassword || !newPassword) {
+    return res.status(400).json({ error: 'Current and new passwords are required' })
+  }
+  if (typeof newPassword !== 'string' || newPassword.length < 8) {
+    return res.status(400).json({ error: 'New password must be at least 8 characters' })
   }
 
   try {
-    const user = await AdminUser.findOne({ username: username.trim().toLowerCase() })
-    if (!user || user.password !== currentPassword) {
+    const user = await AdminUser.findOne({ username: req.adminUser.username })
+    if (!user || !(await user.comparePassword(currentPassword))) {
       return res.status(401).json({ error: 'Current password is incorrect' })
     }
 
-    user.password = newPassword
+    user.password = await bcrypt.hash(newPassword, 10)
     await user.save()
 
     res.json({ success: true, message: 'Password updated successfully' })

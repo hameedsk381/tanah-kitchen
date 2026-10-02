@@ -1,9 +1,10 @@
 import { isDbConnected } from '../db.js'
 import { AdminUser } from '../models/AdminUser.js'
 import { getAdminConfig } from '../config/admin.js'
+import { verifyAdminToken } from '../lib/jwt.js'
 
 /**
- * Validates admin Bearer token (same format as /api/auth/login).
+ * Validates the signed JWT issued by /api/auth/login.
  * Attaches req.adminUser on success.
  */
 export async function requireAdmin(req, res, next) {
@@ -18,11 +19,10 @@ export async function requireAdmin(req, res, next) {
   }
 
   try {
-    const decoded = Buffer.from(token, 'base64').toString('ascii')
-    const [username] = decoded.split(':')
+    const username = verifyAdminToken(token)
 
     if (!username) {
-      return res.status(401).json({ error: 'Invalid token' })
+      return res.status(401).json({ error: 'Invalid or expired session' })
     }
 
     const cleanUsername = username.trim().toLowerCase()
