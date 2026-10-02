@@ -50,10 +50,17 @@ async function autoSeedDatabase() {
     } else if (adminCount === 0) {
       console.warn('⚠️ Skipping admin seed — set ADMIN_PASSWORD to create the initial admin user')
     }
-    
-    // Note: Menu, Gallery, Bento, and CMS Content are no longer auto-seeded on startup.
-    // The database is the strict source of truth. If empty, the user can use the 
-    // "Reset" buttons in the Admin Panel to manually import factory defaults.
+
+    // Menu, Gallery, Bento, and CMS Content are not auto-seeded; the database is the source of truth.
+    const [menuCount, bentoCount, galleryCount] = await Promise.all([
+      MenuItem.countDocuments(),
+      BentoSlot.countDocuments(),
+      GalleryItem.countDocuments()
+    ])
+    console.log(`📊 DB "${mongoose.connection.name}": ${menuCount} menu items, ${bentoCount} bento slots, ${galleryCount} gallery items`)
+    if (menuCount === 0) {
+      console.warn('⚠️ Menu is empty — the public menu will show no items until menu data is added')
+    }
   } catch (err) {
     console.error('Error during MongoDB auto-seeding:', err)
   }
