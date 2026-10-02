@@ -9,6 +9,7 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { connectDB, isDbConnected } from './db.js'
+import { startBackupSchedule } from './lib/backup.js'
 import { requireAdmin } from './middleware/auth.js'
 import { requireAdminAndDb } from './lib/requireDb.js'
 import { validateAdminConfig, getAdminConfig } from './config/admin.js'
@@ -778,6 +779,7 @@ if (fs.existsSync(DIST_DIR)) {
 
 // Connect to MongoDB and start server
 connectDB().then(() => {
+  startBackupSchedule()
   app.listen(PORT, () => {
     console.log(`✨ Tanah Kitchen & Bar Server running on http://localhost:${PORT}`)
     console.log(`📁 Serving static assets from ${DIST_DIR}`)
