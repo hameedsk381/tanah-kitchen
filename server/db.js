@@ -6,6 +6,7 @@ import { GalleryItem } from './models/GalleryItem.js'
 import { Content } from './models/Content.js'
 import { AdminUser } from './models/AdminUser.js'
 import { getAdminConfig } from './config/admin.js'
+import { seedDefaults } from './lib/seed.js'
 
 let isConnected = false
 
@@ -51,7 +52,12 @@ async function autoSeedDatabase() {
       console.warn('⚠️ Skipping admin seed — set ADMIN_PASSWORD to create the initial admin user')
     }
 
-    // Menu, Gallery, Bento, and CMS Content are not auto-seeded; the database is the source of truth.
+    // Seed default menu/bento/gallery only into empty collections (never overwrites admin changes).
+    // Set SEED_ON_STARTUP=false to disable.
+    if (process.env.SEED_ON_STARTUP !== 'false') {
+      await seedDefaults({ onlyIfEmpty: true, log: (m) => console.log(`🌱 ${m}`) })
+    }
+
     const [menuCount, bentoCount, galleryCount] = await Promise.all([
       MenuItem.countDocuments(),
       BentoSlot.countDocuments(),

@@ -593,12 +593,12 @@ app.put('/api/gallery', async (req, res) => {
 app.post('/api/gallery/item', async (req, res) => {
   const newItemData = {
     id: req.body.id || `gallery-${Date.now()}`,
-    title: req.body.title || 'Tanah Moment',
+    src: req.body.src || req.body.image || '/assets/Tanha Ambiance/Ambiance-1.webp',
+    alt: req.body.alt || req.body.title || 'Tanah Moment',
     category: req.body.category || 'Ambience',
-    image: req.body.image || '/assets/Tanha Ambiance/Ambiance-1.webp',
-    caption: req.body.caption || '',
-    tags: req.body.tags || []
+    caption: req.body.caption || ''
   }
+  if (req.body.span) newItemData.span = req.body.span
 
   try {
     const created = await GalleryItem.create(newItemData)
