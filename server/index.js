@@ -17,6 +17,7 @@ import { BentoSlot } from './models/BentoSlot.js'
 import { GalleryItem } from './models/GalleryItem.js'
 import { AdminUser } from './models/AdminUser.js'
 import { Content } from './models/Content.js'
+import { Reservation } from './models/Reservation.js'
 import { Storage } from '@google-cloud/storage'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -326,18 +327,54 @@ app.put('/api/content/:key', async (req, res) => {
 })
 
 // ── RESERVATION API ──
+const RESERVATION_EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const str = (v) => (typeof v === 'string' ? v.trim() : '')
+
 app.post('/api/reservations', async (req, res) => {
-  // Save to DB and stub webhook
+  const body = req.body || {}
+  const data = {
+    name: str(body.name),
+    email: str(body.email),
+    phone: str(body.phone),
+    date: str(body.date),
+    time: str(body.time),
+    guests: str(body.guests),
+    seatingPreference: str(body.seatingPreference),
+    notes: str(body.notes)
+  }
+
+  const errors = {}
+  if (data.name.length < 2 || data.name.length > 80) errors.name = 'Valid name is required'
+  if (!RESERVATION_EMAIL.test(data.email) || data.email.length > 120) errors.email = 'Valid email is required'
+  if (data.phone && (data.phone.length < 8 || data.phone.length > 30)) errors.phone = 'Invalid phone number'
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(data.date) || Number.isNaN(Date.parse(data.date))) errors.date = 'Valid date is required'
+  if (!data.time || data.time.length > 20) errors.time = 'Time is required'
+  if (!data.guests || data.guests.length > 40) errors.guests = 'Party size is required'
+  if (data.notes.length > 500) errors.notes = 'Notes are too long'
+  if (Object.keys(errors).length > 0) {
+    return res.status(400).json({ error: 'Invalid reservation details', fields: errors })
+  }
+
+  if (!isDbConnected()) {
+    return res.status(503).json({ error: 'Reservations are temporarily unavailable. Please call us to book.' })
+  }
+
   try {
-    const reservation = req.body
-    
-    // Stub logging as webhook
-    console.log(`🛎️ New Reservation Request: ${reservation.name} for ${reservation.guests} guests on ${reservation.date} at ${reservation.time}`)
-    
-    // Here we'd save it to a Reservation model, but for now we just acknowledge it
-    res.status(201).json({ success: true, message: 'Reservation received successfully.' })
+    const reservation = await Reservation.create(data)
+    console.log(`🛎️ New reservation ${reservation._id}: ${data.name}, ${data.guests}, ${data.date} ${data.time}`)
+    res.status(201).json({ success: true, id: reservation._id, message: 'Reservation received successfully.' })
   } catch (err) {
+    console.error('Reservation save failed:', err.message)
     res.status(500).json({ error: 'Failed to submit reservation' })
+  }
+})
+
+app.get('/api/reservations', requireAdmin, async (req, res) => {
+  try {
+    const reservations = await Reservation.find().sort({ createdAt: -1 }).limit(500).lean()
+    res.json(reservations)
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch reservations' })
   }
 })
 

@@ -47,6 +47,8 @@ export default function Book() {
     seatingPreference: 'Rooftop Open-Air'
   })
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState('')
   const [errors, setErrors] = useState({})
 
   useEffect(() => {
@@ -79,15 +81,31 @@ export default function Book() {
     return errs
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const errs = validate()
     if (Object.keys(errs).length > 0) {
       setErrors(errs)
       return
     }
-    console.log('Table Booking Form Submitted:', form)
-    setSubmitted(true)
+    setSubmitting(true)
+    setSubmitError('')
+    try {
+      const res = await fetch('/api/reservations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form)
+      })
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data.error || 'Could not submit your reservation. Please try again.')
+      }
+      setSubmitted(true)
+    } catch (err) {
+      setSubmitError(err.message)
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -237,7 +255,7 @@ export default function Book() {
                     Reservation Requested!
                   </h3>
                   <p className="text-sm font-light text-[#1E1B18]/80 max-w-md mx-auto leading-relaxed font-body">
-                    Thank you, <strong className="text-[#5E332E]">{form.name}</strong>. We have reserved a table for your party of <strong className="text-[#5E332E]">{form.guests}</strong> on <strong className="text-[#5E332E]">{form.date}</strong> at <strong className="text-[#5E332E]">{form.time}</strong> ({form.seatingPreference}).
+                    Thank you, <strong className="text-[#5E332E]">{form.name}</strong>. We have received your request for a table for your party of <strong className="text-[#5E332E]">{form.guests}</strong> on <strong className="text-[#5E332E]">{form.date}</strong> at <strong className="text-[#5E332E]">{form.time}</strong> ({form.seatingPreference}).
                   </p>
                   <div className="pt-4">
                     <button
@@ -528,11 +546,16 @@ export default function Book() {
                     />
                   </div>
 
+                  {submitError && (
+                    <p role="alert" className="text-xs text-red-600 font-body">{submitError}</p>
+                  )}
+
                   <button
                     type="submit"
-                    className="wp-btn-pill bg-[#5E332E] text-[#E5E2DC] hover:bg-[#1E1B18] hover:text-white shadow-lg w-full py-4 text-xs font-extrabold tracking-widest uppercase cursor-pointer transition-all"
+                    disabled={submitting}
+                    className="wp-btn-pill bg-[#5E332E] text-[#E5E2DC] hover:bg-[#1E1B18] hover:text-white shadow-lg w-full py-4 text-xs font-extrabold tracking-widest uppercase cursor-pointer transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    Confirm Reservation
+                    {submitting ? 'Submitting…' : 'Confirm Reservation'}
                   </button>
                 </motion.form>
               )}

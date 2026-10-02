@@ -16,6 +16,8 @@ export default function Reservation() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState('')
   const [errors, setErrors] = useState({})
   const [form, setForm] = useState({
     name: '',
@@ -56,14 +58,31 @@ export default function Reservation() {
     }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const errs = validate()
     if (Object.keys(errs).length > 0) {
       setErrors(errs)
       return
     }
-    setSubmitted(true)
+    setSubmitting(true)
+    setSubmitError('')
+    try {
+      const res = await fetch('/api/reservations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form)
+      })
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data.error || 'Could not submit your reservation. Please try again.')
+      }
+      setSubmitted(true)
+    } catch (err) {
+      setSubmitError(err.message)
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -153,10 +172,10 @@ export default function Reservation() {
               >
                 <CheckCircle className="w-16 h-16 mx-auto mb-6" style={{ color: 'var(--color-terracotta-light)' }} />
                 <h3 className="font-display text-3xl font-bold mb-4 text-white">
-                  Table Reserved Successfully
+                  Reservation Request Received
                 </h3>
                 <p className="text-sm font-light leading-relaxed mb-6" style={{ color: 'var(--color-beige)' }}>
-                  Thank you, <span className="font-semibold text-white">{form.name}</span>. We have saved a table for your party of <span className="font-semibold text-white">{form.guests}</span> on <span className="font-semibold text-white">{form.date}</span> at <span className="font-semibold text-white">{form.time}</span>. A confirmation details list has been dispatched to <span className="font-semibold text-white">{form.email}</span>.
+                  Thank you, <span className="font-semibold text-white">{form.name}</span>. We have received your request for a table for <span className="font-semibold text-white">{form.guests}</span> on <span className="font-semibold text-white">{form.date}</span> at <span className="font-semibold text-white">{form.time}</span>. Our team will contact you at <span className="font-semibold text-white">{form.email}</span> to confirm.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
@@ -307,11 +326,18 @@ export default function Reservation() {
                   />
                 </div>
 
+                {submitError && (
+                  <p role="alert" className="text-xs" style={{ color: 'var(--color-terracotta-light)' }}>
+                    {submitError}
+                  </p>
+                )}
+
                 <button
                   type="submit"
-                  className="btn-primary w-full text-center justify-center py-4 mt-4"
+                  disabled={submitting}
+                  className="btn-primary w-full text-center justify-center py-4 mt-4 disabled:opacity-60"
                 >
-                  Confirm Table Booking
+                  {submitting ? 'Submitting…' : 'Confirm Table Booking'}
                 </button>
               </form>
             )}
